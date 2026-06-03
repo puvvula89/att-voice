@@ -11,6 +11,16 @@ let _playCtx = null;
 let _nextPlayTime = 0;
 const OUTPUT_SAMPLE_RATE = 24000;
 
+/**
+ * True while the agent's audio is still playing (plus a short tail). Used for
+ * half-duplex: the client stops sending mic audio while the agent speaks, so the
+ * model never "hears itself" through the speakers and advances on its own.
+ */
+export function isAgentSpeaking() {
+  if (!_playCtx) return false;
+  return _playCtx.currentTime < _nextPlayTime + 0.2;
+}
+
 function getPlayContext() {
   if (!_playCtx) {
     _playCtx = new AudioContext({ sampleRate: OUTPUT_SAMPLE_RATE });
@@ -84,7 +94,10 @@ const CAPTURE_CHUNK_FRAMES = 1600; // 100 ms of 16 kHz audio
  * @param {(base64: string) => void} onFrame
  */
 export async function startMic(onFrame) {
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+  const stream = await navigator.mediaDevices.getUserMedia({
+    audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+    video: false,
+  });
   const captureCtx = new AudioContext();
   if (captureCtx.state === "suspended") await captureCtx.resume();
   const source = captureCtx.createMediaStreamSource(stream);

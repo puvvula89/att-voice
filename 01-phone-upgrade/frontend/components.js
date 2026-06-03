@@ -30,5 +30,19 @@ function receipt(p, root) {
 function heading(t){const h=document.createElement("h2");h.textContent=t;return h;}
 function text(t){const d=document.createElement("p");d.textContent=t;return d;}
 function button(label,fn){const b=document.createElement("button");b.textContent=label;b.onclick=fn;return b;}
-function card(name,img,price,fn){const c=document.createElement("div");c.className="card";c.onclick=fn;
-  c.innerHTML=`<img src="${img}" alt="${name}"/><div>${name}</div><div>${price}</div>`;return c;}
+function card(name, img, price, fn) {
+  // `img` paths (e.g. /img/iphone17.png) aren't shipped — render a placeholder
+  // instead of a broken <img>. Swap to <img src=img> once real assets exist.
+  const c = document.createElement("div");
+  c.className = "card";
+  c.onclick = fn;
+  const thumb = document.createElement("div");
+  thumb.className = "thumb";
+  thumb.textContent = "📱";
+  const nm = document.createElement("div");
+  nm.textContent = name;
+  const pr = document.createElement("div");
+  pr.textContent = price;
+  c.append(thumb, nm, pr);
+  return c;
+}
