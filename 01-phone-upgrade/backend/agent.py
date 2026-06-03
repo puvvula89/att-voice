@@ -1,9 +1,11 @@
+import os
+
 from google.adk.agents import LlmAgent
 from google.adk.tools import FunctionTool
 from backend import tools
 from backend.callbacks import on_render
 
-LIVE_MODEL = "gemini-2.5-flash-native-audio-preview-12-2025"  # Developer API (GOOGLE_API_KEY)
+LIVE_MODEL = os.environ.get("LIVE_MODEL", "gemini-live-2.5-flash-native-audio")
 
 INSTRUCTIONS = """You are a phone-upgrade voice assistant for an authorized account holder.
 
@@ -26,6 +28,7 @@ Rules:
 upgrade_agent = LlmAgent(
     name="upgrade_agent",
     model=LIVE_MODEL,
+    description="Phone-upgrade voice assistant for an authorized account holder.",
     instruction=INSTRUCTIONS,
     tools=[
         FunctionTool(func=tools.get_lines),
