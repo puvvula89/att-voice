@@ -12,9 +12,11 @@ Voice phone-upgrade agent on Google ADK + Gemini Live.
 Shows ADK's built-in dev UI (voice + tool-call trace). Does NOT render the custom phone-upgrade cards.
 ```
 export SSL_CERT_FILE=$(python -m certifi)   # required for voice
-adk web --port 8001
+adk web phone_upgrade --port 8001           # point at the agent folder
 ```
-Open the printed URL, select the `phone_upgrade` agent, click the mic.
+Open the printed URL, select `phone_upgrade`, click the mic.
+
+> Pass the agent folder (`phone_upgrade`) explicitly. Plain `adk web` from the module root lists every subdirectory (`backend`, `frontend`, `tests`) as bogus agents; pointing at the single agent folder shows only `phone_upgrade`.
 
 ## Run — option B: FastAPI relay + custom UI (the full demo)
 ```
