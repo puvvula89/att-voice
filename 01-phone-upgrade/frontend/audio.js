@@ -26,9 +26,7 @@ function getPlayContext() {
  */
 export async function unlockAudio() {
   const ctx = getPlayContext();
-  console.log("[audio] play ctx state before resume:", ctx.state, "rate:", ctx.sampleRate);
   if (ctx.state === "suspended") await ctx.resume();
-  console.log("[audio] play ctx state after resume:", ctx.state);
 }
 
 /**
@@ -41,8 +39,9 @@ export function playFrame(base64Pcm) {
   const ctx = getPlayContext();
   if (ctx.state === "suspended") ctx.resume(); // defensive; real unlock happens on the Start gesture
 
-  // base64 → ArrayBuffer
-  const binaryStr = atob(base64Pcm);
+  // genai serializes audio bytes as base64url (uses - and _); browser atob() needs standard base64.
+  const standardB64 = base64Pcm.replace(/-/g, "+").replace(/_/g, "/");
+  const binaryStr = atob(standardB64);
   const bytes = new Uint8Array(binaryStr.length);
   for (let i = 0; i < binaryStr.length; i++) {
     bytes[i] = binaryStr.charCodeAt(i);
