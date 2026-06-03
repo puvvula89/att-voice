@@ -1,0 +1,18 @@
+# att-voice
+
+Voice-agent reference project on Google ADK + the Gemini Live API. One numbered folder per use case, each independently runnable.
+
+- **Module `01-phone-upgrade`** — voice phone-upgrade agent. Design: `docs/design/phone-upgrade-voice-agent.md`. Plan: `docs/plans/2026-06-03-phone-upgrade-voice-agent.md`.
+
+## Conventions
+
+- **ADK:** `google-adk>=2.0` (2.0 GA). 2.0 has breaking changes vs 1.x — verify import paths against the installed package, not memory.
+- **Live model:** `gemini-2.5-flash-native-audio-preview-12-2025` (Developer API / `GOOGLE_API_KEY`); Vertex equivalent `gemini-live-2.5-flash-native-audio`.
+- **TDD:** test-first for pure-Python code. Streaming/agent/relay/frontend are integration-verified, not unit-tested.
+- **No tooling footprint in committed artifacts:** no co-author trailers, no tool/plugin names in paths, neutral professional naming. Outputs may be shared externally.
+
+## Learnings
+
+> High bar. Only record non-obvious gotchas worth never repeating (a moved 2.0 import, a required RunConfig field, a callback-ordering trap, an audio-format requirement). One concise line each. Not a changelog.
+
+_(none yet — populated during implementation)_
