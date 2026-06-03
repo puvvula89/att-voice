@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "required": ["sessionId", "agentResponse"],
+    "optional": ["reasonCode", "reasonDescription", "handedOff"],
+    "collections": {}
+  },
+  "handedOff": false,
+  "sessionId": "REDACTED_ENGINE_ID",
+  "reasonCode": "200",
+  "reasonDescription": "InProgress",
+  "agentResponse": {
+    "isSalesFlow": true,
+    "components": [
+      {
+        "componentType": "list",
+        "list": {
+          "values": [
+            {
+              "message": [
+                "It looks like the iPhone 15 Pro isn't currently available in our catalogue."
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "componentType": "ChoiceList",
+        "ChoiceList": {
+          "values": [
+            {
+              "type": "optionList",
+              "showAll": false,
+              "list": {
+                "values": [
+                  {
+                    "body": {
+                      "values": [
+                        {
+                          "type": "eyebrow",
+                          "text": "",
+                          "styleIntent": "eyebrow"
+                        },
+                        {
+                          "type": "header",
+                          "text": "iPhone 15",
+                          "styleIntent": "header"
+                        },
+                        {
+                          "type": "priceLockUp",
+                          "prefix": "as low as",
+                          "amount": "17.50",
+                          "currency": "USD",
+                          "suffix": "/mo"
+                        }
+                      ]
+                    },
+                    "submitValue": "iPhone 15"
+                  },
+                  {
+                    "body": {
+                      "values": [
+                        {
+                          "type": "eyebrow",
+                          "text": "",
+                          "styleIntent": "eyebrow"
+                        },
+                        {
+                          "type": "header",
+                          "text": "iPhone 16 Pro",
+                          "styleIntent": "header"
+                        },
+                        {
+                          "type": "priceLockUp",
+                          "prefix": "as low as",
+                          "amount": "25.00",
+                          "currency": "USD",
+                          "suffix": "/mo"
+                        }
+                      ]
+                    },
+                    "submitValue": "iPhone 16 Pro"
+                  },
+                  {
+                    "body": {
+                      "values": [
+                        {
+                          "type": "eyebrow",
+                          "text": "",
+                          "styleIntent": "eyebrow"
+                        },
+                        {
+                          "type": "header",
+                          "text": "iPhone 17 Pro",
+                          "styleIntent": "header"
+                        },
+                        {
+                          "type": "priceLockUp",
+                          "prefix": "as low as",
+                          "amount": "16.67",
+                          "currency": "USD",
+                          "suffix": "/mo"
+                        }
+                      ]
+                    },
+                    "submitValue": "iPhone 17 Pro"
+                  },
+                  {
+                    "body": {
+                      "values": [
+                        {
+                          "type": "eyebrow",
+                          "text": "",
+                          "styleIntent": "eyebrow"
+                        },
+                        {
+                          "type": "header",
+                          "text": "iPhone 16 Pro Max",
+                          "styleIntent": "header"
+                        },
+                        {
+                          "type": "priceLockUp",
+                          "prefix": "as low as",
+                          "amount": "30.56",
+                          "currency": "USD",
+                          "suffix": "/mo"
+                        }
+                      ]
+                    },
+                    "submitValue": "iPhone 16 Pro Max"
+                  }
+                ]
+              },
+              "button": {
+                "values": [{ "type": "toggleList", "labels": "View more" }]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "response": []
+  }
+}
