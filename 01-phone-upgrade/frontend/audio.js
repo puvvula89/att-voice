@@ -26,7 +26,9 @@ function getPlayContext() {
  */
 export async function unlockAudio() {
   const ctx = getPlayContext();
+  console.log("[audio] play ctx state before resume:", ctx.state, "rate:", ctx.sampleRate);
   if (ctx.state === "suspended") await ctx.resume();
+  console.log("[audio] play ctx state after resume:", ctx.state);
 }
 
 /**
