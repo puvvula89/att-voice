@@ -6,9 +6,15 @@
 
 **Architecture:** One streaming `LlmAgent` (`run_live`, BIDI) calls mock data tools and a `render_component(stage_intent)` tool. An `after_tool_callback` runs a deterministic formatter that fills a per-intent JSON template from session state and stashes it for a WebSocket relay to emit as a `ui_event`. Clicks from the browser are injected back as user turns. No second LLM, no orchestration hop.
 
-**Tech Stack:** Python 3.11+, `google-adk`, FastAPI + `uvicorn` (WebSocket relay), `pytest`; lightweight TypeScript/HTML web client with the Web Audio API.
+**Tech Stack:** Python 3.11+, `google-adk>=2.0` (2.0 GA), Gemini Live model `gemini-2.5-flash-native-audio-preview-12-2025`, FastAPI + `uvicorn` (WebSocket relay), `pytest`; lightweight TypeScript/HTML web client with the Web Audio API.
 
 **Reference base:** ADK bidi WebSocket sample — `https://github.com/google/adk-samples/tree/main/python/agents/bidi-demo`. Use it as the canonical pattern for agent/relay/audio-client wiring.
+
+## Implementation rules (every task)
+
+1. **Strict TDD for testable code:** for pure-Python tasks (Phases 1–5) write the failing test first, watch it fail, implement minimally, watch it pass, commit. Never write implementation before its test. Streaming/agent/relay/frontend tasks (Phases 6–9) cannot be meaningfully unit-tested — they are verified by the import smoke checks and the Phase 9 end-to-end run; do not fabricate unit tests for them.
+2. **ADK 2.0 is GA with breaking changes vs 1.x.** Do NOT trust import paths or signatures from memory. After installing, verify each ADK symbol used (`LlmAgent`, `FunctionTool`, `Runner.run_live`, `RunConfig`/`StreamingMode`, `LiveRequestQueue`, `types.Blob`/`types.Content`, `after_tool_callback` signature, `event.actions.state_delta`) against the installed 2.0 package and the `bidi-demo` sample before writing code that uses it. Adjust the plan's code to match reality.
+3. **Maintain the learnings log.** After completing a task, if you hit a genuinely critical, non-obvious gotcha that would otherwise be repeated (e.g. a 2.0 import moved, the native-audio model needs a specific RunConfig, the callback ordering trap, an audio-format requirement), append ONE concise entry to the `## Learnings` section of `/Users/admin/VibeCoding/att-voice/CLAUDE.md`. Bar for inclusion is high — only mistakes worth never repeating. Do not log routine steps.
 
 ---
 
@@ -60,7 +66,7 @@
 - [ ] **Step 1: Create requirements.txt**
 
 ```
-google-adk
+google-adk>=2.0,<3
 fastapi
 uvicorn[standard]
 pytest
@@ -582,7 +588,7 @@ git commit -m "Assert voice/click input parity at tool level"
 **Files:**
 - Create: `01-phone-upgrade/backend/agent.py`
 
-> Confirm the exact Live model id and import paths against the bidi-demo sample before running. `LIVE_MODEL` below is a concrete default for a Gemini Live native-audio model; update it to the current sample's model if it differs.
+> Verify ADK 2.0 import paths against the installed package + bidi-demo sample before running (2.0 has breaking changes vs 1.x). The Live model below is the current Gemini Developer API native-audio model (use with `GOOGLE_API_KEY`); on Vertex use `gemini-live-2.5-flash-native-audio`.
 
 - [ ] **Step 1: Write the agent**
 
@@ -593,7 +599,7 @@ from google.adk.tools import FunctionTool
 from backend import tools
 from backend.callbacks import on_render
 
-LIVE_MODEL = "gemini-2.0-flash-live-001"  # confirm against bidi-demo sample
+LIVE_MODEL = "gemini-2.5-flash-native-audio-preview-12-2025"  # Developer API (GOOGLE_API_KEY)
 
 INSTRUCTIONS = """You are a phone-upgrade voice assistant for an authorized account holder.
 
