@@ -22,8 +22,8 @@ APP_NAME = "phone_upgrade"
 @app.websocket("/ws/{user_id}")
 async def ws_endpoint(websocket: WebSocket, user_id: str):
     await websocket.accept()
-    # create_session is synchronous in ADK 2.x (returns Session, not a coroutine)
-    session = _session_service.create_session(app_name=APP_NAME, user_id=user_id)
+    # create_session is async in ADK 2.x — must be awaited (or use create_session_sync)
+    session = await _session_service.create_session(app_name=APP_NAME, user_id=user_id)
     runner = Runner(
         app_name=APP_NAME,
         agent=upgrade_agent,
