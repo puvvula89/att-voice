@@ -20,6 +20,16 @@ function getPlayContext() {
 }
 
 /**
+ * Resume the playback AudioContext. MUST be called from a user-gesture handler
+ * (click/keypress) — browsers keep an AudioContext "suspended" until then, so
+ * scheduled audio is silent. Without this, model audio never plays.
+ */
+export async function unlockAudio() {
+  const ctx = getPlayContext();
+  if (ctx.state === "suspended") await ctx.resume();
+}
+
+/**
  * Decode a base64-encoded 24 kHz / mono / 16-bit PCM frame and enqueue it
  * for gapless playback.
  *
@@ -27,6 +37,7 @@ function getPlayContext() {
  */
 export function playFrame(base64Pcm) {
   const ctx = getPlayContext();
+  if (ctx.state === "suspended") ctx.resume(); // defensive; real unlock happens on the Start gesture
 
   // base64 → ArrayBuffer
   const binaryStr = atob(base64Pcm);
@@ -74,6 +85,7 @@ const CAPTURE_CHUNK_FRAMES = 1600; // 100 ms of 16 kHz audio
 export async function startMic(onFrame) {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
   const captureCtx = new AudioContext();
+  if (captureCtx.state === "suspended") await captureCtx.resume();
   const source = captureCtx.createMediaStreamSource(stream);
 
   // ScriptProcessorNode buffer size — process in 4096-sample chunks at the
