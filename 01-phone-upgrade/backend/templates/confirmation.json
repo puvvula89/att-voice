@@ -1,0 +1,1 @@
+{ "component": "confirmation", "title": "Confirm your upgrade", "confirm_label": "Confirm", "fields": ["line", "phone", "monthly_price", "terms"] }

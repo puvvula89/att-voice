@@ -1,0 +1,1 @@
+{ "component": "receipt", "title": "Upgrade confirmed", "fields": ["order_id", "line", "phone", "ship_estimate"] }
