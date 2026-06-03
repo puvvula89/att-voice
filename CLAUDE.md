@@ -19,3 +19,5 @@ Voice-agent reference project on Google ADK + the Gemini Live API. One numbered 
 - **`LiveRequestQueue.send_realtime` takes `types.Blob(data=bytes, mime_type=str)`** — pass raw PCM bytes wrapped in a `Blob`; it does not accept bare bytes.
 - **Web Audio `ScriptProcessorNode` must be connected to `AudioContext.destination`** — even for capture-only use; without that connection the `onaudioprocess` callback never fires.
 - **Gemini Live `send_realtime` PCM needs the rate in the mime type** — use `audio/pcm;rate=16000`; bare `audio/pcm` defaults to the wrong sample rate and input audio is garbled/ignored.
+- **Vertex live model id differs from the Developer-API one** — Vertex/ADC: `gemini-live-2.5-flash-native-audio`; AI Studio key: `gemini-2.5-flash-native-audio-preview-12-2025`. Wrong-backend id = model-not-found.
+- **Standalone uvicorn does not auto-load `.env` (adk web does)** — call `load_dotenv()` at the top of server.py BEFORE importing the agent module, or `LIVE_MODEL`/Vertex env vars are missing at agent import time.
