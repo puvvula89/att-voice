@@ -17,3 +17,4 @@ Voice-agent reference project on Google ADK + the Gemini Live API. One numbered 
 
 - **ADK 2.x `InMemorySessionService.create_session` is synchronous** — returns `Session` directly; `await`-ing it raises `TypeError` (draft had `await`).
 - **`LiveRequestQueue.send_realtime` takes `types.Blob(data=bytes, mime_type=str)`** — pass raw PCM bytes wrapped in a `Blob`; it does not accept bare bytes.
+- **Web Audio `ScriptProcessorNode` must be connected to `AudioContext.destination`** — even for capture-only use; without that connection the `onaudioprocess` callback never fires.
