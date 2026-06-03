@@ -6,3 +6,6 @@ __pycache__/
 **/.env
 .adk/
 **/.adk/
+
+# GSD planning/handoff (local only — not part of the deliverable)
+.planning/
