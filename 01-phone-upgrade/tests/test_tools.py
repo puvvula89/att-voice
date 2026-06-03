@@ -26,3 +26,29 @@ def test_render_component_is_thin():
     ctx = StubCtx()
     result = tools.render_component(stage_intent=si.PHONE_OPTIONS, tool_context=ctx)
     assert result == {"status": "requested", "stage_intent": si.PHONE_OPTIONS}
+
+from backend import callbacks
+
+class _Tool:
+    def __init__(self, name): self.name = name
+
+def test_on_render_stashes_payload_and_acks():
+    ctx = StubCtx()
+    ctx.state[si.data_key(si.PHONE_OPTIONS)] = {"phones": [{"phone_id": "iphone_17"}]}
+    out = callbacks.on_render(
+        tool=_Tool("render_component"),
+        args={"stage_intent": si.PHONE_OPTIONS},
+        tool_context=ctx,
+        tool_response={"status": "requested", "stage_intent": si.PHONE_OPTIONS},
+    )
+    assert ctx.state["pending_ui"]["stage_intent"] == si.PHONE_OPTIONS
+    assert ctx.state["pending_ui"]["data"]["phones"][0]["phone_id"] == "iphone_17"
+    assert out == {"status": "shown"}
+
+def test_on_render_passthrough_for_other_tools():
+    ctx = StubCtx()
+    out = callbacks.on_render(
+        tool=_Tool("get_lines"), args={}, tool_context=ctx,
+        tool_response={"count": 3},
+    )
+    assert out is None
