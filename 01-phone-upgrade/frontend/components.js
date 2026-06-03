@@ -8,13 +8,13 @@ export function renderComponent(payload, onSelect) {
 function line_selector(p, root, onSelect) {
   root.append(heading(p.title));
   p.data.lines.forEach(l => root.append(
-    button(`Line ending ${l.last4} — ${l.device}`, () => onSelect(`line ending ${l.last4}`))
+    button(`Line ending ${l.last4} — ${l.device}`, () => onSelect(l.line_id))
   ));
 }
 function phone_options(p, root, onSelect) {
   root.append(heading(p.title));
   p.data.phones.forEach(ph => root.append(
-    card(ph.name, ph.image, `$${ph.monthly_price}/mo`, () => onSelect(ph.name))
+    card(ph.name, ph.image, `$${ph.monthly_price}/mo`, () => onSelect(ph.phone_id))
   ));
 }
 function confirmation(p, root, onSelect) {
