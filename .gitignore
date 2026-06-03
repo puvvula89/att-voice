@@ -1,1 +1,4 @@
 01-phone-upgrade/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
