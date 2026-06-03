@@ -1,10 +1,12 @@
-import { startMic, playFrame } from "./audio.js";
+import { startMic, playFrame, unlockAudio } from "./audio.js";
 import { renderComponent } from "./components.js";
 
 const ws = new WebSocket(`ws://localhost:8000/ws/demo-user`);
 
 function sendAction(selection) {
-  ws.send(JSON.stringify({ type: "user_action", selection }));
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify({ type: "user_action", selection }));
+  }
 }
 
 ws.onmessage = (e) => {
@@ -17,4 +19,16 @@ ws.onmessage = (e) => {
   }
 };
 
-ws.onopen = () => startMic((b64) => ws.send(JSON.stringify({ type: "audio", data: b64 })));
+// Audio playback (and mic) must start from a user gesture, or the browser keeps
+// the AudioContext suspended and no model audio is heard.
+const startBtn = document.getElementById("start");
+startBtn.onclick = async () => {
+  startBtn.disabled = true;
+  await unlockAudio();
+  await startMic((b64) => {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ type: "audio", data: b64 }));
+    }
+  });
+  startBtn.textContent = "Listening…";
+};
