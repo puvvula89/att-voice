@@ -9,8 +9,6 @@ function sendAction(selection) {
   }
 }
 
-let _audioChunks = 0;
-
 ws.onmessage = (e) => {
   const msg = JSON.parse(e.data);
   if (msg.type === "ui_event") { renderComponent(msg.payload, sendAction); return; }
@@ -18,12 +16,10 @@ ws.onmessage = (e) => {
   for (const part of parts) {
     const b64 = part.inlineData?.data;
     if (b64) {
-      _audioChunks++;
-      if (_audioChunks === 1) console.log("[audio] first chunk received from server");
       try {
         playFrame(b64);
       } catch (err) {
-        console.error("[audio] playFrame threw:", err);
+        console.error("[audio] playFrame failed:", err);
       }
     }
   }
