@@ -1,4 +1,4 @@
-import { startMic, playFrame, unlockAudio } from "./audio.js";
+import { startMic, playFrame, unlockAudio, isAgentSpeaking } from "./audio.js";
 import { renderComponent } from "./components.js";
 
 const ws = new WebSocket(`ws://localhost:8000/ws/demo-user`);
@@ -32,7 +32,9 @@ startBtn.onclick = async () => {
   startBtn.disabled = true;
   await unlockAudio();
   await startMic((b64) => {
-    if (ws.readyState === WebSocket.OPEN) {
+    // Half-duplex: don't send mic audio while the agent is speaking, or it hears
+    // itself through the speakers and advances without your input.
+    if (ws.readyState === WebSocket.OPEN && !isAgentSpeaking()) {
       ws.send(JSON.stringify({ type: "audio", data: b64 }));
     }
   });
