@@ -7,7 +7,7 @@ Voice-agent reference project on Google ADK + the Gemini Live API. One numbered 
 ## Conventions
 
 - **ADK:** `google-adk>=2.0` (2.0 GA). 2.0 has breaking changes vs 1.x — verify import paths against the installed package, not memory.
-- **Live model:** `gemini-2.5-flash-native-audio-preview-12-2025` (Developer API / `GOOGLE_API_KEY`); Vertex equivalent `gemini-live-2.5-flash-native-audio`.
+- **Live model:** default is Vertex/ADC `gemini-live-2.5-flash-native-audio`. AI Studio (key) alternative: `gemini-3.1-flash-live-preview` (newest, but AI-Studio-only — not on Vertex yet). Env-driven via `LIVE_MODEL`.
 - **TDD:** test-first for pure-Python code. Streaming/agent/relay/frontend are integration-verified, not unit-tested.
 - **No tooling footprint in committed artifacts:** no co-author trailers, no tool/plugin names in paths, neutral professional naming. Outputs may be shared externally.
 
@@ -21,3 +21,4 @@ Voice-agent reference project on Google ADK + the Gemini Live API. One numbered 
 - **Gemini Live `send_realtime` PCM needs the rate in the mime type** — use `audio/pcm;rate=16000`; bare `audio/pcm` defaults to the wrong sample rate and input audio is garbled/ignored.
 - **Vertex live model id differs from the Developer-API one** — Vertex/ADC: `gemini-live-2.5-flash-native-audio`; AI Studio key: `gemini-2.5-flash-native-audio-preview-12-2025`. Wrong-backend id = model-not-found.
 - **Standalone uvicorn does not auto-load `.env` (adk web does)** — call `load_dotenv()` at the top of server.py BEFORE importing the agent module, or `LIVE_MODEL`/Vertex env vars are missing at agent import time.
+- **`adk web` lists every subdirectory of AGENTS_DIR as an agent** — plain `adk web` from the module root shows `backend`/`frontend`/`tests` as bogus entries. Run `adk web <agent_folder>` (e.g. `adk web phone_upgrade`) pointing at the single agent folder for a clean one-agent list.
