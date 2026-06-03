@@ -9,13 +9,15 @@ def test_get_lines_writes_state_and_returns_summary():
     result = tools.get_lines(tool_context=ctx)
     assert si.data_key(si.LINE_SELECTOR) in ctx.state
     assert ctx.state[si.data_key(si.LINE_SELECTOR)]["lines"][0]["last4"] == "1243"
-    assert result["count"] == 3
+    assert len(result["lines"]) == 3
+    assert result["lines"][0]["line_id"] == "line_1243"
 
 def test_get_eligible_phones_writes_state():
     ctx = StubCtx()
     result = tools.get_eligible_phones(line_id="line_1243", tool_context=ctx)
     assert ctx.state[si.data_key(si.PHONE_OPTIONS)]["phones"][0]["phone_id"] == "iphone_17"
-    assert result["count"] == 3
+    assert len(result["phones"]) == 3
+    assert result["phones"][0]["phone_id"] == "iphone_17"
 
 def test_select_line_records_choice():
     ctx = StubCtx()

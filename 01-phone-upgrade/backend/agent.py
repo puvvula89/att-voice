@@ -20,6 +20,7 @@ Rules:
 - ALWAYS call render_component after fetching data, choosing the stage_intent that matches the step.
 - Keep spoken replies to one short, natural sentence. Never read JSON or IDs aloud.
 - A selection injected as text (e.g. "user selected line ending 1243") is equivalent to speech.
+- get_lines and get_eligible_phones return the available options with their ids. Map the user's reference (spoken like "line ending 1243", or a selection value) to the matching line_id/phone_id and pass that id to select_line/select_phone.
 """
 
 upgrade_agent = LlmAgent(

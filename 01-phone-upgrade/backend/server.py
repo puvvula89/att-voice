@@ -40,7 +40,7 @@ async def ws_endpoint(websocket: WebSocket, user_id: str):
                 msg = json.loads(raw)
                 if msg["type"] == "audio":
                     pcm = base64.b64decode(msg["data"])
-                    queue.send_realtime(types.Blob(data=pcm, mime_type="audio/pcm"))
+                    queue.send_realtime(types.Blob(data=pcm, mime_type="audio/pcm;rate=16000"))
                 elif msg["type"] == "user_action":
                     text = f'user selected {msg["selection"]}'
                     queue.send_content(

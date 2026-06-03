@@ -1,16 +1,16 @@
 from backend import mock_data, stage_intents as si
 
 def get_lines(tool_context) -> dict:
-    """List the account's lines available for upgrade. Returns a count; UI data is in state."""
+    """List the account's lines available for upgrade. Use the returned line_id values when calling select_line."""
     lines = mock_data.get_account_lines()
     tool_context.state[si.data_key(si.LINE_SELECTOR)] = {"lines": lines}
-    return {"count": len(lines)}
+    return {"lines": [{"line_id": l["line_id"], "last4": l["last4"], "device": l["device"]} for l in lines]}
 
 def get_eligible_phones(line_id: str, tool_context) -> dict:
-    """List phones the given line is eligible for. Returns a count; UI data is in state."""
+    """List phones the given line is eligible for. Use the returned phone_id values when calling select_phone."""
     phones = mock_data.get_phones_for_line(line_id)
     tool_context.state[si.data_key(si.PHONE_OPTIONS)] = {"phones": phones}
-    return {"count": len(phones)}
+    return {"phones": [{"phone_id": p["phone_id"], "name": p["name"], "monthly_price": p["monthly_price"]} for p in phones]}
 
 def select_line(line_id: str, tool_context) -> dict:
     """Record the line the user chose."""
