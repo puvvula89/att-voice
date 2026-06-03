@@ -52,3 +52,25 @@ def test_on_render_passthrough_for_other_tools():
         tool_response={"count": 3},
     )
     assert out is None
+
+def test_select_phone_stages_confirmation():
+    ctx = StubCtx()
+    tools.select_line(line_id="line_1243", tool_context=ctx)
+    result = tools.select_phone(phone_id="iphone_17", tool_context=ctx)
+    assert result == {"selected_phone": "iphone_17"}
+    conf = ctx.state[si.data_key(si.CONFIRMATION)]
+    assert conf["line"] == "line_1243"
+    assert conf["phone"] == "iPhone 17"            # resolved to display name
+    assert conf["monthly_price"] == 32.99
+    assert conf["terms"] == "24-month installment"
+
+def test_confirm_upgrade_stages_receipt():
+    ctx = StubCtx()
+    tools.select_line(line_id="line_1243", tool_context=ctx)
+    tools.select_phone(phone_id="iphone_17", tool_context=ctx)
+    result = tools.confirm_upgrade(tool_context=ctx)
+    assert result == {"order_id": "UPG-100423"}
+    receipt = ctx.state[si.data_key(si.RECEIPT)]
+    assert receipt["line"] == "line_1243"
+    assert receipt["phone"] == "iphone_17"
+    assert receipt["ship_estimate"] == "3-5 business days"
