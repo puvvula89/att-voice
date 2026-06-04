@@ -179,9 +179,49 @@ flowchart LR
     A == "MCP tool calls<br/>streamable-HTTP /mcp" ==> M
 ```
 
-The **relay topology toggle** is in `backend/server.py`: with `AGENT_ENGINE_NAME` set it proxies to
+### The four services
+
+`deploy_all.sh` deploys these in order, threading each one's output into the next:
+
+| # | Service | Platform | What it does |
+|---|---|---|---|
+| 1 | **MCP data tools** (`att-mcp-phone-upgrade`) | Cloud Run · FastMCP | Stateless data API at `/mcp` — looks up account lines, phone catalog, pricing, and places the order. The agent's only data source. |
+| 2 | **Voice agent** (`att-phone-upgrade-live`) | Vertex AI Agent Engine | The brain. Gemini Live native-audio agent (bidi) that listens, talks, calls the MCP tools, and emits each `render_component` as a `pending_ui` state delta. Custom `bidi_stream_query` server mode. |
+| 3 | **Relay** (`att-phone-upgrade-relay`) | Cloud Run | The single endpoint the browser connects to. Proxies the browser WebSocket ⇄ the agent's bidi stream; translates events into the browser wire protocol. Kept warm (`--min-instances 1`) to avoid cold-start 503s. |
+| 4 | **UI** (`att-phone-upgrade-ui`) | Cloud Run | Static frontend (mic capture + card rendering). Served over HTTPS so the mic works; the relay URL is injected into `config.js` at deploy time. |
+
+The **relay topology toggle** lives in `backend/server.py`: with `AGENT_ENGINE_NAME` set it proxies to
 Agent Engine (cloud, above); unset, it runs the agent in-process via `run_live` (local dev, option B).
-Same browser wire protocol either way — see the table above. Full deploy reference: [`DEPLOY.md`](DEPLOY.md).
+Same browser wire protocol either way — see the table above.
+
+### Prerequisites
+
+- **APIs enabled:** `aiplatform`, `run`, `cloudbuild`, `artifactregistry`, `storage`.
+- **IAM:** the Cloud Run runtime service account needs Agent Engine access
+  (`roles/aiplatform.user`, or the default compute SA's `roles/editor`) so the relay can reach the agent.
+- **`.env` set** (see below) and **ADC** configured (`gcloud auth application-default login`).
+
+### Config (`.env`)
+
+| Var | Purpose |
+|---|---|
+| `GOOGLE_CLOUD_PROJECT` | **required** — target project |
+| `GOOGLE_CLOUD_LOCATION` | region (default `us-central1`) |
+| `LIVE_MODEL`, `LIVE_VOICE` | Live model id + prebuilt voice |
+| `MCP_SERVICE`, `RELAY_SERVICE`, `UI_SERVICE` | Cloud Run service names |
+| `AGENT_DISPLAY_NAME` | Agent Engine display name |
+| `AE_STAGING_BUCKET` | staging bucket (default `<project>-agent-engine`) |
+| `RELAY_MIN_INSTANCES` | keep a relay warm (default `1`; `0` to save cost) |
+| `MCP_SERVER_URL`, `AGENT_ENGINE_NAME` | produced by the deploy script — don't hand-set |
+
+### What each step runs (for manual/partial deploys)
+
+1. **MCP** — `gcloud run deploy $MCP_SERVICE --source mcp_server …` → captures its URL as `MCP_SERVER_URL`.
+2. **Agent** — `python deploy/deploy_agent_engine.py` packages `backend/` as source, wires `MCP_SERVER_URL`,
+   deploys in EXPERIMENTAL server mode (required for bidi) with `python_version=3.12` (no py3.14 base image).
+   Do **not** set the reserved `GOOGLE_CLOUD_PROJECT` env var on the engine. (Preview; ~10-min/stream limit.)
+3. **Relay** — `gcloud run deploy $RELAY_SERVICE --source . …` with `AGENT_ENGINE_NAME` set → proxy mode.
+4. **UI** — `gcloud run deploy $UI_SERVICE --source frontend …` (HTTPS → mic works), relay URL injected into `config.js` first.
 
 ## Test
 `pytest tests/ -v` (from `01-phone-upgrade/`)
