@@ -80,11 +80,23 @@ gcloud run deploy att-phone-upgrade-relay --source . --region us-central1 \
   `--min-instances 0` to save cost when not demoing.
 - The Cloud Run compute SA reaches Agent Engine via its existing `roles/editor`.
 
+## 4. Frontend → Cloud Run  ✅ deployed
+
+Static UI on Cloud Run (HTTPS → secure context, so mic/getUserMedia works).
+
+```bash
+gcloud run deploy att-phone-upgrade-ui --source frontend \
+  --region us-central1 --port 8080 --allow-unauthenticated
+```
+
+- **UI URL:** https://att-phone-upgrade-ui-REDACTED_PROJECT_NUMBER.us-central1.run.app
+- `frontend/client.js` `RELAY_URL` defaults to the deployed relay wss; for local
+  dev set `window.RELAY_URL = "ws://localhost:8000"`.
+
 ## Fully-hosted round-trip ✅ verified
 
 ```
-Browser ⇄ Relay (Cloud Run) ⇄ Agent Engine ⇄ MCP server (Cloud Run)
+Browser (UI on Cloud Run) ⇄ Relay (Cloud Run) ⇄ Agent Engine ⇄ MCP server (Cloud Run)
 ```
 
-Every hop runs in the cloud. `frontend/` is static and points at the relay via
-`RELAY_URL` (set `window.RELAY_URL = "ws://localhost:8000"` for local dev).
+Every hop runs in the cloud — open the UI URL above and click Start.
