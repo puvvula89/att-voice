@@ -7,3 +7,7 @@ __pycache__/
 .adk/
 **/.adk/
 
+# Agent Engine spike ephemera
+01-phone-upgrade/spike/.engine_name
+.claude/scheduled_tasks.lock
+01-phone-upgrade/deploy/.engine_name
