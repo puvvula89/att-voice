@@ -79,6 +79,45 @@ sequenceDiagram
 | relay → browser | raw ADK event | carries model audio in `content.parts[].inlineData.data` (24 kHz, **base64url**) |
 | relay → browser | `{type:"session_end"}` | agent ended the call; the relay closes the socket |
 
+## The transport model — three hops, not one connection
+
+Voice needs audio flowing **up** (your mic) and **down** (the agent's voice) *at the same time,
+continuously*. A normal HTTP request can't do that — it's one question, one answer, then it hangs up.
+So every hop in this system is a **persistent, two-way channel**. But they are not all the same kind of
+channel, and the connection that actually carries the live voice is one hop deeper than most people expect.
+
+```
+   WebSocket                gRPC bidi stream              WebSocket
+  (we open this)           (the platform's API)        (ADK opens this)
+       │                          │                          │
+┌──────────────┐         ┌──────────────┐          ┌──────────────┐         ┌──────────────┐
+│   BROWSER    │◀───────▶│    RELAY     │◀────────▶│ AGENT ENGINE │◀───────▶│  GEMINI      │
+│  client.js   │  ws://  │  server.py   │   bidi   │  agent_app   │   ws    │  LIVE API    │
+│              │         │              │ _stream  │  run_live    │         │ (the model)  │
+└──────────────┘         └──────────────┘ _query   └──────────────┘         └──────────────┘
+   hop 1                    hop 2                      hop 3
+   browser ⇄ relay          relay ⇄ Agent Engine       Agent Engine ⇄ model
+                                                        ▲
+                              the live voice actually rides on hop 3 —
+                              opened by ADK inside the Agent Engine container
+```
+
+Each hop uses a different transport for a different reason. Read the official docs for each:
+
+| Hop | Connection | What it is | Official docs |
+|---|---|---|---|
+| **1 · browser ⇄ relay** | WebSocket (JSON frames) | We open this — `new WebSocket(...)` in `client.js`, accepted by `ws_endpoint` in `backend/server.py`. The only connection the browser has; it never holds cloud credentials. | [MDN — WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) · [FastAPI — WebSockets](https://fastapi.tiangolo.com/advanced/websockets/) |
+| **2 · relay ⇄ Agent Engine** | gRPC bidirectional stream (*not* a WebSocket) | The platform's API, not our choice. Agent Engine exposes a registered `bidi_stream_query` op; the relay reaches it through the GenAI SDK over gRPC/HTTP/2. | [Agent Engine — Bidirectional streaming](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/bidirectional-streaming) · [gRPC — Bidirectional streaming RPC](https://grpc.io/docs/what-is-grpc/core-concepts/#bidirectional-streaming-rpc) |
+| **3 · Agent Engine ⇄ Gemini Live** | WebSocket (**carries the voice**) | Opened by ADK's `run_live` *inside* the Agent Engine container — this is where the PCM audio actually reaches the model. | [ADK — Bidi-streaming dev guide](https://adk.dev/streaming/dev-guide/part1/) · [Gemini Live API overview](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api) |
+
+**Why a relay in the middle at all (hops 1 + 2):** credentials stay server-side; the relay translates the
+browser's simple JSON ⇄ the Agent Engine stream format; and flipping one env var (`AGENT_ENGINE_NAME`)
+swaps hop 2 for an in-process `run_live`, so the *same* browser connection works in local dev with no
+code change.
+
+> Agent Engine docs were reorganized under "Gemini Enterprise Agent Platform" — older
+> `cloud.google.com/vertex-ai/...` links now redirect to a generic landing page; use the links above.
+
 ## Setup (ADC / Vertex AI)
 1. `python -m venv .venv && source .venv/bin/activate`
 2. `pip install -r requirements.txt`
