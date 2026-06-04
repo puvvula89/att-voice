@@ -43,3 +43,8 @@ def render_component(stage_intent: str, tool_context) -> dict:
     """Render the named UI component. Choose stage_intent based on the user's request.
     Valid values: line_selector, phone_options, confirmation, receipt."""
     return {"status": "requested", "stage_intent": stage_intent}
+
+def end_call(tool_context) -> dict:
+    """End the session after the customer confirms they need nothing else. Call this
+    only after saying the closing line aloud."""
+    return {"status": "ending"}
