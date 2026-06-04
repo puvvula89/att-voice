@@ -1,1 +1,11 @@
-{ "component": "confirmation", "title": "Confirm your upgrade", "confirm_label": "Place the order", "fields": ["line", "phone", "monthly_price", "terms"] }
+{
+  "title": "Review your order",
+  "message": "Here's a summary of your upgrade. Place the order when you're ready.",
+  "summary": [
+    { "label": "Line", "value": "Line ending {{line_last4}}" },
+    { "label": "New phone", "value": "{{phone}}" },
+    { "label": "Monthly", "value": "${{monthly_price}}/mo" },
+    { "label": "Terms", "value": "{{terms}}" }
+  ],
+  "primary": { "label": "Place the order", "submitValue": "yes, confirm" }
+}

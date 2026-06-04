@@ -1,1 +1,12 @@
-{ "component": "phone_options", "title": "Choose your new phone", "selectable": true, "items_key": "phones" }
+{
+  "title": "Choose your new phone",
+  "message": "Here are a few great options for line ending {{line_last4}}.",
+  "options_from": "phones",
+  "option_template": {
+    "eyebrow": "",
+    "header": "{{name}}",
+    "image": "{{image}}",
+    "price": { "prefix": "as low as", "amount": "{{monthly_price}}", "suffix": "/mo" },
+    "submitValue": "{{phone_id}}"
+  }
+}
