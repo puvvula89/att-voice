@@ -58,13 +58,13 @@ function startStatusLoop() {
       pill.textContent = "Idle";
       pill.className = "status idle";
     } else if (isAgentSpeaking()) {
-      pill.textContent = "🔊 AT&T speaking";
+      pill.textContent = "AT&T speaking";
       pill.className = "status agent";
     } else if (performance.now() - lastUserAt < 800) {
-      pill.textContent = "🎙️ You speaking";
+      pill.textContent = "You speaking";
       pill.className = "status user";
     } else {
-      pill.textContent = "🎙️ Listening…";
+      pill.textContent = "Listening";
       pill.className = "status listening";
     }
   }, 150);

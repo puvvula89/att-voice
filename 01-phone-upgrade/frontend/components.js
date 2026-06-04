@@ -84,6 +84,13 @@ function phoneCard(o, onSelect) {
   c.append(name);
 
   if (o.price) c.append(priceLockup(o.price));
+
+  if (o.tradeIn) {
+    const chip = document.createElement("div");
+    chip.className = "trade-chip";
+    chip.textContent = `Up to $${o.tradeIn} trade-in`;
+    c.append(chip);
+  }
   return c;
 }
 

@@ -7,6 +7,7 @@
     "header": "{{name}}",
     "image": "{{image}}",
     "price": { "prefix": "as low as", "amount": "{{monthly_price}}", "suffix": "/mo" },
+    "tradeIn": "{{trade_in}}",
     "submitValue": "{{phone_id}}"
   }
 }
