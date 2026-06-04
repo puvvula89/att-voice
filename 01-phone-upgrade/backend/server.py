@@ -35,6 +35,12 @@ async def ws_endpoint(websocket: WebSocket, user_id: str):
         response_modalities=["AUDIO"],
     )
 
+    # Make the agent speak first: nudge it with a (call_start) signal so it opens
+    # with the welcome greeting (see agent INSTRUCTIONS) before the user says anything.
+    queue.send_content(
+        types.Content(role="user", parts=[types.Part(text="(call_start)")])
+    )
+
     async def upstream():
         """Read browser → agent: audio blobs and user_action clicks."""
         try:
