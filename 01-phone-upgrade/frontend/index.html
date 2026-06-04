@@ -1,17 +1,64 @@
 <!doctype html>
 <html>
-  <head><meta charset="utf-8"><title>Phone Upgrade</title>
+  <head><meta charset="utf-8"><title>AT&T Phone Upgrade</title>
     <style>
+      body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:1000px;margin:24px auto;padding:0 16px;color:#1a1a1a}
+      .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #eee;padding-bottom:10px}
+      .topbar h1{font-size:20px;margin:0}
+      .status{font-size:13px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+      .status.idle{background:#eee;color:#666}
+      .status.listening{background:#e6f4ea;color:#137333}
+      .status.user{background:#e8f0fe;color:#1967d2}
+      .status.agent{background:#fce8e6;color:#c5221f}
+      #start{font-size:16px;padding:8px 16px;margin:16px 0;cursor:pointer;border:1px solid #1967d2;background:#1967d2;color:#fff;border-radius:8px}
+      #start:disabled{opacity:.6;cursor:default}
+
+      /* Two-column layout: left = transcript + raw JSON, right = rendered screen */
+      .layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+      .col-left{display:flex;flex-direction:column;gap:16px}
+      .panel{border:1px solid #eee;border-radius:10px;padding:12px}
+      .panel.screen{min-height:480px}
+      .panel-title{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#888;margin:0 0 10px}
+      @media(max-width:720px){.layout{grid-template-columns:1fr}}
+
       .card{cursor:pointer;border:1px solid #ddd;border-radius:8px;padding:12px;margin:6px;display:inline-block;text-align:center;width:120px}
       .card:hover{border-color:#888}
       .card .thumb{font-size:44px;line-height:1}
-      #start{font-size:16px;padding:8px 16px;margin-bottom:12px}
+
+      .transcript{max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
+      .bubble{max-width:80%;padding:8px 12px;border-radius:14px;font-size:14px;line-height:1.4}
+      .bubble .who{display:block;font-size:11px;opacity:.6;margin-bottom:2px}
+      .bubble.agent{align-self:flex-start;background:#f1f3f4}
+      .bubble.user{align-self:flex-end;background:#1967d2;color:#fff}
+      .bubble.user .who{color:#dbe7fb}
+
+      .raw{margin:0;max-height:260px;overflow:auto;background:#0f172a;color:#d1e0ff;border-radius:8px;
+           padding:12px;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre}
+      .raw:empty::before{content:"// the JSON sent for the rendered component appears here";color:#64748b}
     </style>
   </head>
   <body>
-    <h1>Phone Upgrade</h1>
+    <header class="topbar">
+      <h1>AT&T Phone Upgrade</h1>
+      <div id="status" class="status idle">Idle</div>
+    </header>
     <button id="start">Start call</button>
-    <div id="ui-root"></div>
-    <script type="module" src="./client.js?v=2"></script>
+    <main class="layout">
+      <div class="col-left">
+        <section class="panel">
+          <div class="panel-title">Transcript</div>
+          <div id="transcript" class="transcript"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-title">Component response (JSON)</div>
+          <pre id="raw-json" class="raw"></pre>
+        </section>
+      </div>
+      <section class="panel screen">
+        <div class="panel-title">Screen</div>
+        <div id="ui-root"></div>
+      </section>
+    </main>
+    <script type="module" src="./client.js?v=3"></script>
   </body>
 </html>
