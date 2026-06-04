@@ -15,10 +15,13 @@ instance stays light and imports resolve inside the AE container. The agent
 reaches the MCP data tools via ``MCP_SERVER_URL`` (set as an AE env var).
 
 Client → app message protocol (dicts placed on the request queue):
-    {"user_id": "<id>"}                     first message: set up + greet
+    {"user_id": "<id>", "session_id": "<id|null>"}  first message: resume or create
     {"type": "audio", "data": "<b64 pcm>"}  16 kHz PCM16, base64
     {"type": "user_action", "selection": "<text>"}
     {"type": "end"}                         close the stream
+
+App → client, before the live events, one control message:
+    {"type": "session_info", "session_id", "resumed", "pending_ui"}
 """
 import asyncio
 import base64
@@ -31,10 +34,25 @@ APP_NAME = "phone_upgrade"
 class LiveAgentApp:
     def set_up(self) -> None:
         from google.adk.runners import Runner
-        from google.adk.sessions import InMemorySessionService
+        from google.adk.sessions import VertexAiSessionService
         from backend.agent import upgrade_agent
 
-        self._session_service = InMemorySessionService()
+        # Persisted, resumable sessions backed by the Agent Engine Sessions API.
+        # SESSION_ENGINE_ID is the ONE designated session-backing engine shared
+        # across channels (chat + voice); when unset we fall back to this engine's
+        # own id, which Agent Engine injects as GOOGLE_CLOUD_AGENT_ENGINE_ID.
+        # Passing agent_engine_id explicitly means Runner.app_name is irrelevant
+        # to engine resolution (VertexAiSessionService._get_reasoning_engine_id
+        # returns the explicit id first), so APP_NAME can stay a plain label.
+        engine_id = (
+            os.environ.get("SESSION_ENGINE_ID")
+            or os.environ.get("GOOGLE_CLOUD_AGENT_ENGINE_ID")
+        )
+        self._session_service = VertexAiSessionService(
+            project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
+            location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
+            agent_engine_id=engine_id,
+        )
         self._runner = Runner(
             app_name=APP_NAME,
             agent=upgrade_agent,
@@ -69,13 +87,38 @@ class LiveAgentApp:
 
         first = await request_queue.get()
         user_id = (first or {}).get("user_id", "u1")
-        session = await self._session_service.create_session(
-            app_name=APP_NAME, user_id=user_id
-        )
+        req_sid = (first or {}).get("session_id")
+
+        # Resume the client's session if it still exists; otherwise start fresh.
+        session = None
+        if req_sid:
+            try:
+                session = await self._session_service.get_session(
+                    app_name=APP_NAME, user_id=user_id, session_id=req_sid
+                )
+            except Exception:
+                session = None
+        resumed = session is not None
+        if session is None:
+            session = await self._session_service.create_session(
+                app_name=APP_NAME, user_id=user_id
+            )
+
+        # Tell the client which session it's on (to persist + reconnect) and hand
+        # back the last rendered screen so a resumed client can re-show it.
+        yield {
+            "type": "session_info",
+            "session_id": session.id,
+            "resumed": resumed,
+            "pending_ui": (session.state or {}).get("pending_ui") if resumed else None,
+        }
+
         live_queue = LiveRequestQueue()
-        # Greet first: nudge the agent with (call_start) before the user speaks.
+        # Nudge the agent to start talking: greet on a fresh call, welcome-back on
+        # a resume (the prompt handles both signals; neither is read aloud).
+        nudge = "(call_resume)" if resumed else "(call_start)"
         live_queue.send_content(
-            types.Content(role="user", parts=[types.Part(text="(call_start)")])
+            types.Content(role="user", parts=[types.Part(text=nudge)])
         )
 
         async def pump():

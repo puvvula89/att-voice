@@ -29,6 +29,19 @@ BUCKET = os.environ.get("AE_STAGING_BUCKET") or f"{PROJECT}-agent-engine"
 MCP_URL = os.environ["MCP_SERVER_URL"]
 DISPLAY_NAME = os.environ.get("AGENT_DISPLAY_NAME", "att-phone-upgrade-live")
 
+# Shared session store across channels. Unset → the agent uses its own engine id
+# (Agent Engine auto-injects it as GOOGLE_CLOUD_AGENT_ENGINE_ID).
+SESSION_ENGINE_ID = os.environ.get("SESSION_ENGINE_ID", "").strip()
+
+ENV_VARS = {
+    "GOOGLE_GENAI_USE_VERTEXAI": "TRUE",
+    "MCP_SERVER_URL": MCP_URL,
+    "LIVE_MODEL": os.environ.get("LIVE_MODEL", "gemini-live-2.5-flash-native-audio"),
+    "LIVE_VOICE": os.environ.get("LIVE_VOICE", "Charon"),
+}
+if SESSION_ENGINE_ID:
+    ENV_VARS["SESSION_ENGINE_ID"] = SESSION_ENGINE_ID
+
 client = vertexai.Client(project=PROJECT, location=LOCATION)
 
 print(f"Deploying agent to Agent Engine (project={PROJECT}, region={LOCATION})... builds a container, ~several minutes.")
@@ -49,12 +62,7 @@ engine = client.agent_engines.create(
         python_version="3.12",               # AE has no py3.14 base image
         agent_server_mode=vtypes.AgentServerMode.EXPERIMENTAL,
         # GOOGLE_CLOUD_PROJECT / GOOGLE_CLOUD_LOCATION are reserved (AE auto-provides them).
-        env_vars={
-            "GOOGLE_GENAI_USE_VERTEXAI": "TRUE",
-            "MCP_SERVER_URL": MCP_URL,
-            "LIVE_MODEL": os.environ.get("LIVE_MODEL", "gemini-live-2.5-flash-native-audio"),
-            "LIVE_VOICE": os.environ.get("LIVE_VOICE", "Charon"),
-        },
+        env_vars=ENV_VARS,
     ),
 )
 name = engine.api_resource.name

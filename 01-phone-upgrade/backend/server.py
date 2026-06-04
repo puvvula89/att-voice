@@ -54,7 +54,13 @@ async def _emit_event(websocket: WebSocket, ev: dict):
     return bool(delta.get("call_ended"))
 
 
-async def _serve_local(websocket: WebSocket, user_id: str):
+# Shared across local connections so reconnecting with the same session_id
+# resumes within this process (in-memory only — real persistence is the deployed
+# VertexAiSessionService path; see agent_app.py).
+_local_session_service = None
+
+
+async def _serve_local(websocket: WebSocket, user_id: str, session_id: str | None):
     """Topology A: run the agent in this process via run_live."""
     import base64
     from google.adk.runners import Runner
@@ -64,8 +70,24 @@ async def _serve_local(websocket: WebSocket, user_id: str):
     from google.genai import types
     from backend.agent import upgrade_agent
 
-    session_service = InMemorySessionService()
-    session = await session_service.create_session(app_name=APP_NAME, user_id=user_id)
+    global _local_session_service
+    if _local_session_service is None:
+        _local_session_service = InMemorySessionService()
+    session_service = _local_session_service
+
+    session = None
+    if session_id:
+        session = await session_service.get_session(
+            app_name=APP_NAME, user_id=user_id, session_id=session_id
+        )
+    resumed = session is not None
+    if session is None:
+        session = await session_service.create_session(app_name=APP_NAME, user_id=user_id)
+    await websocket.send_text(json.dumps({
+        "type": "session_info", "session_id": session.id, "resumed": resumed,
+        "pending_ui": (session.state or {}).get("pending_ui") if resumed else None,
+    }))
+
     runner = Runner(app_name=APP_NAME, agent=upgrade_agent, session_service=session_service)
     queue = LiveRequestQueue()
     run_config = RunConfig(
@@ -79,7 +101,8 @@ async def _serve_local(websocket: WebSocket, user_id: str):
         output_audio_transcription=types.AudioTranscriptionConfig(),
         input_audio_transcription=types.AudioTranscriptionConfig(),
     )
-    queue.send_content(types.Content(role="user", parts=[types.Part(text="(call_start)")]))
+    nudge = "(call_resume)" if resumed else "(call_start)"
+    queue.send_content(types.Content(role="user", parts=[types.Part(text=nudge)]))
 
     async def upstream():
         try:
@@ -113,7 +136,7 @@ async def _serve_local(websocket: WebSocket, user_id: str):
     await asyncio.gather(upstream(), downstream())
 
 
-async def _serve_agent_engine(websocket: WebSocket, user_id: str):
+async def _serve_agent_engine(websocket: WebSocket, user_id: str, session_id: str | None):
     """Topology B: proxy browser <-> agent on Vertex AI Agent Engine."""
     vertexai = _vertexai or __import__("vertexai")
 
@@ -125,8 +148,8 @@ async def _serve_agent_engine(websocket: WebSocket, user_id: str):
         agent_engine=AGENT_ENGINE_NAME,
         config={"class_method": "bidi_stream_query", "include_all_fields": True},
     ) as conn:
-        # First message sets up the session + greeting inside the AE app.
-        await conn.send({"user_id": user_id})
+        # First message sets up (resume or create) the session inside the AE app.
+        await conn.send({"user_id": user_id, "session_id": session_id})
 
         async def upstream():
             try:
@@ -153,6 +176,9 @@ async def _serve_agent_engine(websocket: WebSocket, user_id: str):
                 ev = resp.get("bidiStreamOutput", resp) if isinstance(resp, dict) else {}
                 if not isinstance(ev, dict):
                     continue
+                if ev.get("type") == "session_info":
+                    await websocket.send_text(json.dumps(ev))  # forward control msg as-is
+                    continue
                 ended = await _emit_event(websocket, ev)
                 if ended:
                     await websocket.send_text(json.dumps({"type": "session_end"}))
@@ -168,7 +194,16 @@ async def _serve_agent_engine(websocket: WebSocket, user_id: str):
 @app.websocket("/ws/{user_id}")
 async def ws_endpoint(websocket: WebSocket, user_id: str):
     await websocket.accept()
+    # Opening frame carries the session_id to resume (or null for a fresh
+    # session). Tolerate an old client that doesn't send one.
+    session_id = None
+    try:
+        hello = json.loads(await websocket.receive_text())
+        if hello.get("type") == "start":
+            session_id = hello.get("session_id")
+    except Exception:
+        pass
     if AGENT_ENGINE_NAME:
-        await _serve_agent_engine(websocket, user_id)
+        await _serve_agent_engine(websocket, user_id, session_id)
     else:
-        await _serve_local(websocket, user_id)
+        await _serve_local(websocket, user_id, session_id)
