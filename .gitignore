@@ -9,3 +9,7 @@ __pycache__/
 
 # GSD planning/handoff (local only — not part of the deliverable)
 .planning/
+
+# Agent Engine spike ephemera
+01-phone-upgrade/spike/.engine_name
+.claude/scheduled_tasks.lock
