@@ -7,6 +7,13 @@ import { renderComponent } from "./components.js";
 // so it would also be a gesture-less play. Connect on the gesture instead.
 let ws = null;
 
+// Relay endpoint. Defaults to the deployed Cloud Run relay (fully-hosted demo).
+// For local dev, set: window.RELAY_URL = "ws://localhost:8000" (e.g. in the
+// console or a <script> before this module).
+const RELAY_URL =
+  (typeof window !== "undefined" && window.RELAY_URL) ||
+  "wss://att-phone-upgrade-relay-REDACTED_PROJECT_NUMBER.us-central1.run.app";
+
 function sendAction(selection) {
   if (ws && ws.readyState === WebSocket.OPEN) {
     ws.send(JSON.stringify({ type: "user_action", selection }));
@@ -121,7 +128,7 @@ startBtn.onclick = async () => {
   document.getElementById("transcript").innerHTML = "";  // fresh log per call
   document.getElementById("raw-json").textContent = "";  // and a fresh JSON panel
   await unlockAudio();                                   // unlock playback within the gesture
-  ws = new WebSocket(`ws://localhost:8000/ws/demo-user`); // connect → relay greets now
+  ws = new WebSocket(`${RELAY_URL}/ws/demo-user`); // connect → relay greets now
   ws.onmessage = handleMessage;
   await startMic((b64) => {
     // Half-duplex: don't send mic audio while the agent is speaking, or it hears

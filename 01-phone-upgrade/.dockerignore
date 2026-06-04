@@ -1,0 +1,13 @@
+.venv/
+frontend/
+tests/
+scripts/
+spike/
+deploy/
+mcp_server/
+phone_upgrade/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.md

@@ -91,10 +91,14 @@ Open the printed URL, select `phone_upgrade`, click the mic.
 > Pass the agent folder (`phone_upgrade`) explicitly. Plain `adk web` from the module root lists every subdirectory (`backend`, `frontend`, `tests`) as bogus agents; pointing at the single agent folder shows only `phone_upgrade`.
 
 ## Run — option B: FastAPI relay + custom UI (the full demo)
+The data tools are served by a separate MCP server, so start it first:
 ```
-uvicorn backend.server:app --reload        # :8000  (run from 01-phone-upgrade/)
+python -m mcp_server.server                 # MCP data tools, streamable-HTTP on :9000
+uvicorn backend.server:app --reload         # :8000  (run from 01-phone-upgrade/)
 ```
 In another terminal: `cd frontend && python -m http.server 5500`, open http://localhost:5500, grant mic.
+
+> The agent reaches the MCP server via `MCP_SERVER_URL` (default `http://localhost:9000/mcp`). `render_component`/`end_call` stay agent-local; everything else is an MCP call.
 
 > Run adk web and the relay on different ports (adk web on 8001, relay on 8000) — the frontend expects the relay on :8000.
 
