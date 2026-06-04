@@ -43,28 +43,46 @@ in-process via `run_live` instead of proxying — same wire protocol; see the to
                                                                        └──────────────────────────┘
 ```
 
+The numbered turn below traces one request — *"I want to upgrade my phone"* — from mic to rendered
+screen. The two highlighted callback steps are the heart of the design: tool **data is staged first**
+(no UI), and the screen is only **built when the model calls `render_component`** — so the model
+chooses *when* and *which* template, and the formatter does the deterministic rendering.
+
 ```mermaid
 sequenceDiagram
-    participant B as Browser (UI · Cloud Run)
-    participant R as Relay (Cloud Run)
-    participant A as Voice agent (Agent Engine · Gemini Live)
-    participant M as MCP data tools (Cloud Run)
+    autonumber
+    participant B as Browser · client.js
+    participant R as Relay · server.py
+    participant A as Agent Engine · agent_app / run_live / on_tool
+    participant G as Gemini Live · the model
+    participant M as MCP data tools
 
-    Note over B,R: user clicks "Start" → WebSocket opens to the relay
-    R->>A: open bidi_stream_query (include_all_fields)
-    A-->>R: greeting audio + transcript
-    R-->>B: audio event + {type:transcript}
-    B->>R: {type:audio} 16kHz PCM (b64)  %% user speaks
-    R->>A: forward audio over the bidi stream
-    A->>M: get_lines (MCP tool call over /mcp)
-    M-->>A: account lines
-    A->>A: render_component("line_selector") → pending_ui
-    A-->>R: state_delta(pending_ui) + audio
-    R-->>B: {type:ui_event} + audio + {type:transcript}
-    B->>R: {type:user_action, selection}  %% click a card
-    R->>A: forward as a user turn
-    Note over A,B: repeat → phone_options → confirmation → receipt
-    A->>A: end_call (after "anything else?" → "no")
+    Note over B,R: Start clicked → hop-1 WebSocket opens → relay opens bidi_stream_query to AE (hop-2)
+    Note over A,G: first frame {user_id} → session + (call_start) nudge → agent greets (audio+transcript flow back to B)
+
+    Note over B,G: ——— one turn: "I want to upgrade my phone" ———
+    B->>R: {type:audio} 16kHz PCM frames (you speak)
+    R->>A: forward verbatim over hop-2 bidi
+    A->>G: send_realtime(Blob) via LiveRequestQueue (hop-3 ws)
+    Note over G: VAD detects speech-end → start turn
+    G->>A: tool call get_lines
+    A->>M: route get_lines over /mcp
+    M-->>A: {lines:[…]}
+    A->>A: on_tool STAGES state["data:line_selector"] — no UI yet
+    G->>A: tool call render_component("line_selector")
+    A->>A: on_tool → FORMATTER build_payload → state["pending_ui"]
+    G->>A: speak reply → audio + transcription + state_delta(pending_ui)
+    A-->>R: yield events ({"bidiStreamOutput": …})
+    R-->>B: _emit_event fans 1 event → {type:ui_event} + {type:transcript} + raw audio
+    Note over B: handleMessage demuxes → line cards · transcript text · gapless voice
+
+    B->>R: {type:user_action, selection} (pick a line — voice or click)
+    R->>A: forward as a text turn (send_content)
+    Note over A,G: loop → select_line → get_eligible_phones → render_component("phone_options") → next screen
+
+    Note over B,G: ——— closing ———
+    G->>A: end_call (after "anything else?" → "no")
+    A->>A: on_tool sets state["call_ended"] = true
     R-->>B: {type:session_end} → WebSocket closes
 ```
 
