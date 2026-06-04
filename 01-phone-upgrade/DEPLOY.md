@@ -1,102 +1,73 @@
-# Cloud deployment
+# Deployment
 
-Topology target: browser → FastAPI relay (Cloud Run) → agent (Vertex Agent
-Engine) → MCP data-tool server (Cloud Run) → back.
+Deploys to **any** GCP project — all config comes from `.env`, nothing is hardcoded.
 
-Project `REDACTED_PROJECT`, region `us-central1`.
+Target topology (every hop in the cloud):
 
-## 1. MCP data-tool server → Cloud Run  ✅ deployed
+```
+Browser (UI, Cloud Run) ⇄ Relay (Cloud Run) ⇄ Agent (Vertex AI Agent Engine) ⇄ MCP tools (Cloud Run)
+```
 
-Self-contained (`mcp_server/`, only the `mcp` SDK). Stateless streamable-HTTP,
-binds `$PORT`.
+## One-command deploy
 
 ```bash
-gcloud run deploy att-mcp-phone-upgrade \
-  --source mcp_server \
-  --region us-central1 \
-  --project REDACTED_PROJECT \
-  --allow-unauthenticated \
-  --port 8080
+cp .env.example .env        # set GOOGLE_CLOUD_PROJECT (+ region/names if you like)
+gcloud auth application-default login
+deploy/deploy_all.sh        # stands the whole stack up, prints the UI URL
 ```
 
-- **Service URL:** https://att-mcp-phone-upgrade-REDACTED_PROJECT_NUMBER.us-central1.run.app
-- **MCP endpoint (set as `MCP_SERVER_URL`):** `…/mcp`
-- **Auth:** public (`--allow-unauthenticated`) — mock data only. To harden:
-  redeploy `--no-allow-unauthenticated`, grant the caller (Agent Engine SA)
-  `roles/run.invoker`, and pass an identity token via `McpToolset` headers.
+`deploy_all.sh` deploys in order and threads dynamic outputs between steps
+(none are hardcoded): MCP → captures its URL → agent (Agent Engine) with that
+URL → captures the engine id → relay with the engine name → UI, injecting the
+relay URL into `frontend/config.js`. Open the printed **UI URL**, click Start.
 
-Verify the cloud hop from a local agent:
-```bash
-export MCP_SERVER_URL="https://att-mcp-phone-upgrade-REDACTED_PROJECT_NUMBER.us-central1.run.app/mcp"
-export SSL_CERT_FILE=$(python -m certifi)
-python scripts/smoke_mcp.py        # expect RESULT: PASS
-```
-
-## 2. Agent → Vertex AI Agent Engine  ✅ deployed (Topology B)
-
-The Live agent runs on Agent Engine via a hand-rolled bidi op (stock `AdkApp`
-has none). `backend/agent_app.py` (`live_agent`) wraps `run_live` and yields
-events; `deploy/deploy_agent_engine.py` packages `backend/` as source and wires
-`MCP_SERVER_URL` to the Cloud Run MCP.
+Tear it all down:
 
 ```bash
-python deploy/deploy_agent_engine.py
+deploy/destroy_all.sh       # deletes the 3 Cloud Run services, the agent, and the bucket
 ```
 
-- **Resource:** `projects/REDACTED_PROJECT_NUMBER/locations/us-central1/reasoningEngines/REDACTED_ENGINE_ID`
-- **Config:** EXPERIMENTAL server mode (required for bidi), `python_version=3.12`
-  (no py3.14 base image), env `MCP_SERVER_URL` + `LIVE_MODEL`/`LIVE_VOICE` +
-  `GOOGLE_GENAI_USE_VERTEXAI=TRUE` (do NOT set reserved `GOOGLE_CLOUD_PROJECT`).
-- **Verify:** `python deploy/probe_agent_engine.py` → all four screens + audio.
-- **Limits:** Preview; 10-min max per bidi stream.
+## Prerequisites
 
-## 3. Relay (`backend/server.py`) — dual topology
+- APIs enabled: `aiplatform`, `run`, `cloudbuild`, `artifactregistry`, `storage`.
+- The Cloud Run runtime service account needs Agent Engine access (`roles/aiplatform.user`,
+  or the default compute SA's `roles/editor`) so the relay can reach the agent.
+- `.env` set (see `.env.example`). ADC configured (`gcloud auth application-default login`).
 
-The relay serves either topology by env toggle:
-- **`AGENT_ENGINE_NAME` set** → proxies browser WS ⇄ Agent Engine bidi (Topology B).
-  Verified end-to-end: browser → relay → Agent Engine → Cloud Run MCP → back.
-- **unset** → runs the agent in-process via `run_live` (Topology A).
+## Config (`.env`)
+
+| Var | Purpose |
+|---|---|
+| `GOOGLE_CLOUD_PROJECT` | **required** — target project |
+| `GOOGLE_CLOUD_LOCATION` | region (default `us-central1`) |
+| `LIVE_MODEL`, `LIVE_VOICE` | Live model id + prebuilt voice |
+| `MCP_SERVICE`, `RELAY_SERVICE`, `UI_SERVICE` | Cloud Run service names |
+| `AGENT_DISPLAY_NAME` | Agent Engine display name |
+| `AE_STAGING_BUCKET` | staging bucket (default `<project>-agent-engine`) |
+| `RELAY_MIN_INSTANCES` | keep a relay warm (default `1`; `0` to save cost) |
+| `MCP_SERVER_URL`, `AGENT_ENGINE_NAME` | produced by the deploy script (don't hand-set) |
+
+## What each step does (for reference / manual runs)
+
+1. **MCP server** — `gcloud run deploy $MCP_SERVICE --source mcp_server …` (stateless FastMCP, `/mcp`).
+2. **Agent → Agent Engine** — `python deploy/deploy_agent_engine.py` packages `backend/` as source,
+   wires `MCP_SERVER_URL`, deploys EXPERIMENTAL server mode (required for bidi), `python_version=3.12`
+   (no py3.14 base image). Do **not** set the reserved `GOOGLE_CLOUD_PROJECT` env var on the engine.
+   Verify: `python deploy/probe_agent_engine.py` → all four screens + audio. Limits: Preview; 10-min/stream.
+3. **Relay** — `gcloud run deploy $RELAY_SERVICE --source . …` with `AGENT_ENGINE_NAME` set → proxy mode.
+4. **UI** — `gcloud run deploy $UI_SERVICE --source frontend …` (HTTPS → mic works); the relay URL is
+   written into `frontend/config.js` first.
+
+## Relay topology toggle
+
+`backend/server.py` serves either topology:
+- `AGENT_ENGINE_NAME` **set** → proxies browser WS ⇄ Agent Engine bidi (Topology B, what deploy_all uses).
+- **unset** → runs the agent in-process via `run_live` (Topology A, for local dev).
+
+## Local dev (no cloud)
 
 ```bash
-export AGENT_ENGINE_NAME="projects/REDACTED_PROJECT_NUMBER/locations/us-central1/reasoningEngines/REDACTED_ENGINE_ID"
-uvicorn backend.server:app --port 8000
+python -m mcp_server.server                              # MCP on :9000
+uvicorn backend.server:app --port 8000                   # relay, in-process agent
+cd frontend && python -m http.server 5500                # UI (config.js defaults to ws://localhost:8000)
 ```
-
-### Relay → Cloud Run  ✅ deployed (fully-hosted)
-
-`Dockerfile` + `relay-requirements.txt` build the proxy-mode relay; deployed
-public with the AE toggle + Vertex env.
-
-```bash
-gcloud run deploy att-phone-upgrade-relay --source . --region us-central1 \
-  --port 8080 --timeout 3600 --min-instances 1 --allow-unauthenticated \
-  --set-env-vars "^@^AGENT_ENGINE_NAME=<engine>@GOOGLE_CLOUD_PROJECT=REDACTED_PROJECT@GOOGLE_CLOUD_LOCATION=us-central1@GOOGLE_GENAI_USE_VERTEXAI=TRUE"
-```
-
-- **Service URL:** https://att-phone-upgrade-relay-REDACTED_PROJECT_NUMBER.us-central1.run.app
-- **WebSocket:** `wss://…/ws/<user_id>` (the frontend's `RELAY_URL` default).
-- `--min-instances 1` keeps one instance warm (avoids cold-start 503 on first
-  connect); `server.py` also pre-imports `vertexai` at startup. Drop to
-  `--min-instances 0` to save cost when not demoing.
-- The Cloud Run compute SA reaches Agent Engine via its existing `roles/editor`.
-
-## 4. Frontend → Cloud Run  ✅ deployed
-
-Static UI on Cloud Run (HTTPS → secure context, so mic/getUserMedia works).
-
-```bash
-gcloud run deploy att-phone-upgrade-ui --source frontend \
-  --region us-central1 --port 8080 --allow-unauthenticated
-```
-
-- **UI URL:** https://att-phone-upgrade-ui-REDACTED_PROJECT_NUMBER.us-central1.run.app
-- `frontend/client.js` `RELAY_URL` defaults to the deployed relay wss; for local
-  dev set `window.RELAY_URL = "ws://localhost:8000"`.
-
-## Fully-hosted round-trip ✅ verified
-
-```
-Browser (UI on Cloud Run) ⇄ Relay (Cloud Run) ⇄ Agent Engine ⇄ MCP server (Cloud Run)
-```
-
-Every hop runs in the cloud — open the UI URL above and click Start.

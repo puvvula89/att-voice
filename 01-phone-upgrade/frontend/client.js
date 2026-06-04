@@ -7,12 +7,11 @@ import { renderComponent } from "./components.js";
 // so it would also be a gesture-less play. Connect on the gesture instead.
 let ws = null;
 
-// Relay endpoint. Defaults to the deployed Cloud Run relay (fully-hosted demo).
-// For local dev, set: window.RELAY_URL = "ws://localhost:8000" (e.g. in the
-// console or a <script> before this module).
+// Relay endpoint. Set by config.js (loaded before this module). The deploy
+// script writes config.js with the deployed relay's wss URL; the committed
+// default is ws://localhost:8000 for local dev.
 const RELAY_URL =
-  (typeof window !== "undefined" && window.RELAY_URL) ||
-  "wss://att-phone-upgrade-relay-REDACTED_PROJECT_NUMBER.us-central1.run.app";
+  (typeof window !== "undefined" && window.RELAY_URL) || "ws://localhost:8000";
 
 function sendAction(selection) {
   if (ws && ws.readyState === WebSocket.OPEN) {

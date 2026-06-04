@@ -9,17 +9,20 @@ on Agent Engine, calls the Cloud Run MCP tools, and delivers the UI over bidi.
     python deploy/probe_agent_engine.py
 """
 import asyncio
+import os
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+from dotenv import load_dotenv
+load_dotenv(ROOT / ".env")
 import vertexai
 
-PROJECT = "REDACTED_PROJECT"
-LOCATION = "us-central1"
-NAME = (ROOT / "deploy" / ".engine_name").read_text().strip()
+PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]
+LOCATION = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
+NAME = os.environ.get("AGENT_ENGINE_NAME") or (ROOT / "deploy" / ".engine_name").read_text().strip()
 
 TURNS = [
     ("start", "I want to upgrade my phone"),
