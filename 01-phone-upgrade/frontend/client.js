@@ -13,6 +13,11 @@ let ws = null;
 const RELAY_URL =
   (typeof window !== "undefined" && window.RELAY_URL) || "ws://localhost:8000";
 
+// Persisted across reloads/reconnects so an interrupted call resumes where it
+// left off (cleared once a call ends — see endCall). The relay/agent resume this
+// session_id if it still exists, else start fresh and return a new one.
+const SESSION_KEY = "pu_session_id";
+
 function sendAction(selection) {
   if (ws && ws.readyState === WebSocket.OPEN) {
     ws.send(JSON.stringify({ type: "user_action", selection }));
@@ -92,6 +97,7 @@ function endCall() {
   p.textContent = "Call ended. Thank you for contacting AT&T.";
   root.append(p);
   curBubble.user = curBubble.agent = null;
+  localStorage.removeItem(SESSION_KEY); // call finished — next call starts fresh
   const startBtn = document.getElementById("start");
   startBtn.disabled = false;
   startBtn.textContent = "Start call";
@@ -99,6 +105,14 @@ function endCall() {
 
 function handleMessage(e) {
   const msg = JSON.parse(e.data);
+  if (msg.type === "session_info") {
+    localStorage.setItem(SESSION_KEY, msg.session_id);   // persist for reconnect
+    if (msg.resumed && msg.pending_ui) {                 // land back on the last screen
+      showRawComponent(msg.pending_ui);
+      renderComponent(msg.pending_ui, sendAction);
+    }
+    return;
+  }
   if (msg.type === "session_end") { endCall(); return; }
   if (msg.type === "transcript") { appendTranscript(msg.role, msg.text, msg.final); return; }
   if (msg.type === "ui_event") {
@@ -127,7 +141,11 @@ startBtn.onclick = async () => {
   document.getElementById("transcript").innerHTML = "";  // fresh log per call
   document.getElementById("raw-json").textContent = "";  // and a fresh JSON panel
   await unlockAudio();                                   // unlock playback within the gesture
-  ws = new WebSocket(`${RELAY_URL}/ws/demo-user`); // connect → relay greets now
+  ws = new WebSocket(`${RELAY_URL}/ws/demo-user`);
+  // Opening frame: resume the stored session_id (or null → fresh). Must be the
+  // first frame, so send it on open before any mic audio goes out.
+  ws.onopen = () =>
+    ws.send(JSON.stringify({ type: "start", session_id: localStorage.getItem(SESSION_KEY) }));
   ws.onmessage = handleMessage;
   await startMic((b64) => {
     // Half-duplex: don't send mic audio while the agent is speaking, or it hears
