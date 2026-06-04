@@ -32,12 +32,38 @@ export SSL_CERT_FILE=$(python -m certifi)
 python scripts/smoke_mcp.py        # expect RESULT: PASS
 ```
 
-## 2. FastAPI relay → Cloud Run  ⏳ pending
+## 2. Agent → Vertex AI Agent Engine  ✅ deployed (Topology B)
 
-`backend/server.py`. Needs `MCP_SERVER_URL` (above) + Vertex/ADC env. WebSocket
-support (Cloud Run supports WS; set a long request timeout). Frontend points at
-the relay's `wss://…/ws/…`.
+The Live agent runs on Agent Engine via a hand-rolled bidi op (stock `AdkApp`
+has none). `backend/agent_app.py` (`live_agent`) wraps `run_live` and yields
+events; `deploy/deploy_agent_engine.py` packages `backend/` as source and wires
+`MCP_SERVER_URL` to the Cloud Run MCP.
 
-## 3. Agent → Vertex AI Agent Engine  ⏳ pending
+```bash
+python deploy/deploy_agent_engine.py
+```
 
-Package `upgrade_agent` with `MCP_SERVER_URL` set to the deployed MCP URL.
+- **Resource:** `projects/REDACTED_PROJECT_NUMBER/locations/us-central1/reasoningEngines/REDACTED_ENGINE_ID`
+- **Config:** EXPERIMENTAL server mode (required for bidi), `python_version=3.12`
+  (no py3.14 base image), env `MCP_SERVER_URL` + `LIVE_MODEL`/`LIVE_VOICE` +
+  `GOOGLE_GENAI_USE_VERTEXAI=TRUE` (do NOT set reserved `GOOGLE_CLOUD_PROJECT`).
+- **Verify:** `python deploy/probe_agent_engine.py` → all four screens + audio.
+- **Limits:** Preview; 10-min max per bidi stream.
+
+## 3. Relay (`backend/server.py`) — dual topology
+
+The relay serves either topology by env toggle:
+- **`AGENT_ENGINE_NAME` set** → proxies browser WS ⇄ Agent Engine bidi (Topology B).
+  Verified end-to-end: browser → relay → Agent Engine → Cloud Run MCP → back.
+- **unset** → runs the agent in-process via `run_live` (Topology A).
+
+```bash
+export AGENT_ENGINE_NAME="projects/REDACTED_PROJECT_NUMBER/locations/us-central1/reasoningEngines/REDACTED_ENGINE_ID"
+uvicorn backend.server:app --port 8000
+```
+
+### Relay → Cloud Run  ⏳ pending (only needed for a fully-hosted demo)
+
+Containerize `backend/server.py` (WebSocket; set a long Cloud Run request
+timeout), set `AGENT_ENGINE_NAME` + Vertex env, point the frontend at
+`wss://…/ws/…`. Today the relay runs locally and the round-trip is already proven.
