@@ -14,6 +14,14 @@ APP_NAME = "phone_upgrade"
 AGENT_ENGINE_NAME = os.environ.get("AGENT_ENGINE_NAME")
 LIVE_VOICE = os.environ.get("LIVE_VOICE", "Charon")
 
+# Pre-import the Vertex client at module load (proxy mode) so the first
+# WebSocket doesn't stall on a cold import → fewer cold-start 503s. Guarded so
+# Topology A (local run_live) still works without google-cloud-aiplatform.
+try:
+    import vertexai as _vertexai
+except ImportError:
+    _vertexai = None
+
 app = FastAPI()
 
 
@@ -107,7 +115,7 @@ async def _serve_local(websocket: WebSocket, user_id: str):
 
 async def _serve_agent_engine(websocket: WebSocket, user_id: str):
     """Topology B: proxy browser <-> agent on Vertex AI Agent Engine."""
-    import vertexai
+    vertexai = _vertexai or __import__("vertexai")
 
     client = vertexai.Client(
         project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
