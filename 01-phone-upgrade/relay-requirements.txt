@@ -1,0 +1,8 @@
+# Relay in Agent Engine proxy mode (AGENT_ENGINE_NAME set): only needs the web
+# server + the Vertex client. The in-process run_live path (google-adk, mcp) is
+# lazy and unused on this deployment, so it's omitted to keep the image lean.
+fastapi
+uvicorn[standard]
+python-dotenv
+google-cloud-aiplatform
+websockets
