@@ -1,6 +1,78 @@
 # 01 — Phone Upgrade (voice)
 
-Voice phone-upgrade agent on Google ADK + Gemini Live.
+Voice phone-upgrade agent on Google ADK + Gemini Live. Speak naturally; the agent
+talks back **and** drives an on-screen UI (line picker → phone options → confirmation
+→ receipt). You can advance the flow by **voice or by clicking** the cards.
+
+## How it works — end-to-end flow
+
+Three hops: **browser ⇄ FastAPI relay ⇄ Gemini Live**. A deterministic formatter turns
+each `render_component` tool call into the UI JSON the browser renders — the model never
+hand-writes UI.
+
+```
+        ┌──────────────────────────┐                                   ┌──────────────────────────┐
+        │         BROWSER          │      WebSocket  /ws/{user}         │      FastAPI relay       │
+        │                          │ ───────────────────────────────▶  │       (server.py)        │
+        │  client.js   (WS glue)   │   {type:audio}  16kHz PCM b64     │                          │
+        │  audio.js    (mic 16kHz, │   {type:user_action, selection}   │   Runner.run_live (BIDI) │
+        │               play 24kHz)│                                   │   LiveRequestQueue       │
+        │  components.js (cards)    │ ◀─────────────────────────────── │                          │
+        │                          │   {type:ui_event}   component     │                          │
+        │                          │   {type:transcript} you / agent   │                          │
+        │                          │   raw event         24kHz audio   │                          │
+        │                          │   {type:session_end}              │                          │
+        └──────────────────────────┘                                   └────────────┬─────────────┘
+                                                                          run_live   │  audio in/out
+                                                                          tool calls │  + state deltas
+                                                                                     ▼
+                                                                       ┌──────────────────────────┐
+                                                                       │  ADK LlmAgent (agent.py) │
+                                                                       │  Gemini Live native audio│
+                                                                       │  tools + after_tool_cb   │
+                                                                       └────────────┬─────────────┘
+                                                       render_component(stage_intent)│ after_tool_callback
+                                                                                     ▼
+                                                                       ┌──────────────────────────┐
+                                                                       │ formatter + templates +  │
+                                                                       │ mock_data → ui_event JSON│
+                                                                       └──────────────────────────┘
+```
+
+```mermaid
+sequenceDiagram
+    participant B as Browser
+    participant R as FastAPI relay
+    participant A as ADK agent + Gemini Live
+    participant F as formatter + templates + mock_data
+
+    Note over B,R: user clicks "Start call" → WebSocket opens
+    R->>A: (call_start) nudge
+    A-->>R: greeting audio + transcript
+    R-->>B: audio event + {type:transcript}
+    B->>R: {type:audio} 16kHz PCM (b64)  %% user speaks
+    R->>A: LiveRequestQueue.send_realtime(Blob)
+    A->>F: get_lines → render_component("line_selector")
+    F-->>A: UI payload (template + data) → state.pending_ui
+    A-->>R: state_delta(pending_ui) + audio
+    R-->>B: {type:ui_event} + audio + {type:transcript}
+    B->>R: {type:user_action, selection}  %% click a card
+    R->>A: injected text turn
+    Note over A,B: repeat → phone_options → confirmation → receipt
+    A->>A: end_call (after "anything else?" → "no")
+    R-->>B: {type:session_end} → WebSocket closes
+```
+
+**Wire protocol** (JSON text frames over the WebSocket):
+
+| Direction | Message | Meaning |
+|---|---|---|
+| browser → relay | `{type:"audio", data}` | mic frame, 16 kHz mono PCM, base64 (gated half-duplex while the agent speaks) |
+| browser → relay | `{type:"user_action", selection}` | a card click; injected as an equivalent text turn |
+| relay → browser | `{type:"ui_event", stage_intent, payload}` | the component to render (built by the formatter) |
+| relay → browser | `{type:"transcript", role, text, final}` | live STT for both sides (deltas, then a cumulative `final`) |
+| relay → browser | raw ADK event | carries model audio in `content.parts[].inlineData.data` (24 kHz, **base64url**) |
+| relay → browser | `{type:"session_end"}` | agent ended the call; the relay closes the socket |
 
 ## Setup (ADC / Vertex AI)
 1. `python -m venv .venv && source .venv/bin/activate`
