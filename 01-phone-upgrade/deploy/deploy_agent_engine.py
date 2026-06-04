@@ -1,35 +1,43 @@
 """Deploy the phone-upgrade Live agent to Vertex AI Agent Engine (Topology B).
 
-Packages the whole `backend/` package (agent, callbacks, formatter, templates,
-the bidi wrapper) as source, points the agent at the Cloud Run MCP server via
-MCP_SERVER_URL, and deploys in EXPERIMENTAL server mode (required for bidi).
+All config comes from the environment (.env), so this deploys to any project.
+Packages the whole `backend/` package as source, points the agent at the MCP
+server via MCP_SERVER_URL, and deploys in EXPERIMENTAL server mode (bidi).
 
     python deploy/deploy_agent_engine.py
+
+Required env: GOOGLE_CLOUD_PROJECT, MCP_SERVER_URL.
+Optional env: GOOGLE_CLOUD_LOCATION (us-central1), AE_STAGING_BUCKET
+(<project>-agent-engine), AGENT_DISPLAY_NAME, LIVE_MODEL, LIVE_VOICE.
 """
+import os
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from dotenv import load_dotenv
+load_dotenv(ROOT / ".env")
 
 import vertexai
 from vertexai import types as vtypes
 from backend.agent_app import live_agent
 
-PROJECT = "REDACTED_PROJECT"
-LOCATION = "us-central1"
-BUCKET = "gs://REDACTED_PROJECT-agent-engine"
-MCP_URL = "https://att-mcp-phone-upgrade-REDACTED_PROJECT_NUMBER.us-central1.run.app/mcp"
+PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]
+LOCATION = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
+BUCKET = os.environ.get("AE_STAGING_BUCKET") or f"{PROJECT}-agent-engine"
+MCP_URL = os.environ["MCP_SERVER_URL"]
+DISPLAY_NAME = os.environ.get("AGENT_DISPLAY_NAME", "att-phone-upgrade-live")
 
 client = vertexai.Client(project=PROJECT, location=LOCATION)
 
-print("Deploying phone-upgrade Live agent to Agent Engine (EXPERIMENTAL)... builds a container, ~several minutes.")
+print(f"Deploying agent to Agent Engine (project={PROJECT}, region={LOCATION})... builds a container, ~several minutes.")
 engine = client.agent_engines.create(
     agent=live_agent,
     config=vtypes.AgentEngineConfig(
-        display_name="att-phone-upgrade-live",
-        description="Phone-upgrade voice agent (Live/bidi) consuming the Cloud Run MCP data tools.",
-        staging_bucket=BUCKET,
+        display_name=DISPLAY_NAME,
+        description="Phone-upgrade voice agent (Live/bidi) consuming the MCP data tools.",
+        staging_bucket=f"gs://{BUCKET}",
         requirements=[
             "google-cloud-aiplatform[agent_engines]",
             "google-adk>=2.0,<3",
@@ -44,12 +52,12 @@ engine = client.agent_engines.create(
         env_vars={
             "GOOGLE_GENAI_USE_VERTEXAI": "TRUE",
             "MCP_SERVER_URL": MCP_URL,
-            "LIVE_MODEL": "gemini-live-2.5-flash-native-audio",
-            "LIVE_VOICE": "Charon",
+            "LIVE_MODEL": os.environ.get("LIVE_MODEL", "gemini-live-2.5-flash-native-audio"),
+            "LIVE_VOICE": os.environ.get("LIVE_VOICE", "Charon"),
         },
     ),
 )
 name = engine.api_resource.name
 print("DEPLOYED:", name)
-Path(ROOT / "deploy" / ".engine_name").write_text(name)
+(ROOT / "deploy" / ".engine_name").write_text(name)
 print("Wrote deploy/.engine_name")
