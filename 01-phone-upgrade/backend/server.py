@@ -4,6 +4,7 @@ load_dotenv()
 import asyncio
 import base64
 import json
+import os
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from google.adk.runners import Runner
@@ -17,6 +18,8 @@ from backend.agent import upgrade_agent
 app = FastAPI()
 _session_service = InMemorySessionService()
 APP_NAME = "phone_upgrade"
+# Prebuilt Live voice. Override via LIVE_VOICE; "Charon" reads steady and measured.
+LIVE_VOICE = os.environ.get("LIVE_VOICE", "Charon")
 
 
 @app.websocket("/ws/{user_id}")
@@ -33,6 +36,15 @@ async def ws_endpoint(websocket: WebSocket, user_id: str):
     run_config = RunConfig(
         streaming_mode=StreamingMode.BIDI,
         response_modalities=["AUDIO"],
+        # Calmer, steadier voice — helps with the brisk default tempo.
+        speech_config=types.SpeechConfig(
+            voice_config=types.VoiceConfig(
+                prebuilt_voice_config=types.PrebuiltVoiceConfig(voice_name=LIVE_VOICE)
+            )
+        ),
+        # Stream speech-to-text for both sides so the browser can show a transcript.
+        output_audio_transcription=types.AudioTranscriptionConfig(),
+        input_audio_transcription=types.AudioTranscriptionConfig(),
     )
 
     # Make the agent speak first: nudge it with a (call_start) signal so it opens
@@ -81,6 +93,21 @@ async def ws_endpoint(websocket: WebSocket, user_id: str):
                         )
                     )
                 ended = bool(delta.get("call_ended"))
+
+            # Transcripts: deltas arrive with finished=False; a final cumulative
+            # chunk arrives with finished=True. The browser appends deltas and
+            # replaces on final, so it never double-renders.
+            it = getattr(event, "input_transcription", None)
+            if it is not None and it.text:
+                await websocket.send_text(json.dumps(
+                    {"type": "transcript", "role": "user", "text": it.text, "final": bool(it.finished)}
+                ))
+            ot = getattr(event, "output_transcription", None)
+            if ot is not None and ot.text:
+                await websocket.send_text(json.dumps(
+                    {"type": "transcript", "role": "agent", "text": ot.text, "final": bool(ot.finished)}
+                ))
+
             await websocket.send_text(
                 event.model_dump_json(exclude_none=True, by_alias=True)
             )
