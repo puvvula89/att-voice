@@ -66,8 +66,10 @@ async def ws_endpoint(websocket: WebSocket, user_id: str):
             live_request_queue=queue,
             run_config=run_config,
         ):
+            ended = False
             if event.actions and getattr(event.actions, "state_delta", None):
-                pending = event.actions.state_delta.get("pending_ui")
+                delta = event.actions.state_delta
+                pending = delta.get("pending_ui")
                 if pending:
                     await websocket.send_text(
                         json.dumps(
@@ -78,8 +80,19 @@ async def ws_endpoint(websocket: WebSocket, user_id: str):
                             }
                         )
                     )
+                ended = bool(delta.get("call_ended"))
             await websocket.send_text(
                 event.model_dump_json(exclude_none=True, by_alias=True)
             )
+            if ended:
+                # Agent ended the call. The goodbye audio already streamed in earlier
+                # events (buffered for playback); tell the browser, then close.
+                await websocket.send_text(json.dumps({"type": "session_end"}))
+                queue.close()
+                break
+        try:
+            await websocket.close()
+        except Exception:
+            pass
 
     await asyncio.gather(upstream(), downstream())
