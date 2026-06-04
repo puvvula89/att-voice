@@ -6,58 +6,63 @@ talks back **and** drives an on-screen UI (line picker → phone options → con
 
 ## How it works — end-to-end flow
 
-Three hops: **browser ⇄ FastAPI relay ⇄ Gemini Live**. A deterministic formatter turns
-each `render_component` tool call into the UI JSON the browser renders — the model never
-hand-writes UI.
+Four cloud services, one WebSocket. The browser loads the page from the **UI** service, then
+opens a single WebSocket to the **relay**, which proxies a bidi stream to the **voice agent** on
+Agent Engine; the agent calls the **MCP tools** for data and emits each `render_component` as a
+`pending_ui` state delta — the model never hand-writes UI. (Locally the relay runs the agent
+in-process via `run_live` instead of proxying — same wire protocol; see the topology toggle below.)
 
 ```
         ┌──────────────────────────┐                                   ┌──────────────────────────┐
-        │         BROWSER          │      WebSocket  /ws/{user}         │      FastAPI relay       │
-        │                          │ ───────────────────────────────▶  │       (server.py)        │
+        │         BROWSER          │      WebSocket  /ws/{user}        │    Relay (Cloud Run)     │
+        │  (page from UI service)  │ ───────────────────────────────▶  │        server.py         │
         │  client.js   (WS glue)   │   {type:audio}  16kHz PCM b64     │                          │
-        │  audio.js    (mic 16kHz, │   {type:user_action, selection}   │   Runner.run_live (BIDI) │
-        │               play 24kHz)│                                   │   LiveRequestQueue       │
-        │  components.js (cards)    │ ◀─────────────────────────────── │                          │
-        │                          │   {type:ui_event}   component     │                          │
+        │  audio.js    (mic 16kHz, │   {type:user_action, selection}   │  proxy: browser ⇄ AE     │
+        │               play 24kHz)│                                   │  bidi_stream_query       │
+        │  components.js (cards)   │ ◀───────────────────────────────  │  --min-instances 1       │
+        │  config.js   (RELAY_URL) │   {type:ui_event}   component     │                          │
         │                          │   {type:transcript} you / agent   │                          │
         │                          │   raw event         24kHz audio   │                          │
         │                          │   {type:session_end}              │                          │
         └──────────────────────────┘                                   └────────────┬─────────────┘
-                                                                          run_live   │  audio in/out
-                                                                          tool calls │  + state deltas
-                                                                                     ▼
+                                                                          bidi to AE│  audio in/out
+                                                                        (proxy mode)│  + state deltas
+                                                                                    ▼
                                                                        ┌──────────────────────────┐
-                                                                       │  ADK LlmAgent (agent.py) │
-                                                                       │  Gemini Live native audio│
+                                                                       │Voice agent (Agent Engine)│
+                                                                       │ Gemini Live native audio │
                                                                        │  tools + after_tool_cb   │
+                                                                       │  formatter → pending_ui  │
                                                                        └────────────┬─────────────┘
-                                                       render_component(stage_intent)│ after_tool_callback
-                                                                                     ▼
+                                                      get_lines / get_phones / order│ MCP tool calls
+                                                                                    ▼  streamable-HTTP /mcp
                                                                        ┌──────────────────────────┐
-                                                                       │ formatter + templates +  │
-                                                                       │ mock_data → ui_event JSON│
+                                                                       │MCP data tools (Cloud Run)│
+                                                                       │ FastMCP · lines · phones │
+                                                                       │     pricing · order      │
                                                                        └──────────────────────────┘
 ```
 
 ```mermaid
 sequenceDiagram
-    participant B as Browser
-    participant R as FastAPI relay
-    participant A as ADK agent + Gemini Live
-    participant F as formatter + templates + mock_data
+    participant B as Browser (UI · Cloud Run)
+    participant R as Relay (Cloud Run)
+    participant A as Voice agent (Agent Engine · Gemini Live)
+    participant M as MCP data tools (Cloud Run)
 
-    Note over B,R: user clicks "Start call" → WebSocket opens
-    R->>A: (call_start) nudge
+    Note over B,R: user clicks "Start" → WebSocket opens to the relay
+    R->>A: open bidi_stream_query (include_all_fields)
     A-->>R: greeting audio + transcript
     R-->>B: audio event + {type:transcript}
     B->>R: {type:audio} 16kHz PCM (b64)  %% user speaks
-    R->>A: LiveRequestQueue.send_realtime(Blob)
-    A->>F: get_lines → render_component("line_selector")
-    F-->>A: UI payload (template + data) → state.pending_ui
+    R->>A: forward audio over the bidi stream
+    A->>M: get_lines (MCP tool call over /mcp)
+    M-->>A: account lines
+    A->>A: render_component("line_selector") → pending_ui
     A-->>R: state_delta(pending_ui) + audio
     R-->>B: {type:ui_event} + audio + {type:transcript}
     B->>R: {type:user_action, selection}  %% click a card
-    R->>A: injected text turn
+    R->>A: forward as a user turn
     Note over A,B: repeat → phone_options → confirmation → receipt
     A->>A: end_call (after "anything else?" → "no")
     R-->>B: {type:session_end} → WebSocket closes
@@ -130,53 +135,6 @@ deploy/destroy_all.sh
 export SSL_CERT_FILE=$(python -m certifi)
 python deploy/probe_agent_engine.py         # agent + MCP, direct to Agent Engine → 4 screens + audio
 RELAY_WSS=wss://<relay-host> python deploy/probe_relay_ws.py   # browser → relay → AE path → 4 screens + audio
-```
-
-### How it works — cloud end-to-end
-
-Every hop runs in Google Cloud. The browser only ever talks to the **relay** (one WebSocket);
-the relay proxies to the **voice agent** on Agent Engine, which calls the **MCP tools** for data.
-
-```
-   Google Cloud  ·  project = $GOOGLE_CLOUD_PROJECT  ·  region = us-central1
-  ┌──────────┐   HTTPS    ┌──────────────────┐  WSS /ws/{user}   ┌──────────────────┐
-  │   Your   │ ─────────▶ │  UI              │ ────────────────▶ │  Relay           │
-  │ browser  │   load     │  Cloud Run       │  audio + actions  │  Cloud Run       │
-  │ (mic +   │            │  (static front)  │                   │  (proxy mode,    │
-  │  cards)  │ ◀───────── │                  │ ◀──────────────── │   min-instances 1)│
-  └──────────┘  page+JS   └──────────────────┘  ui_event+audio   └────────┬─────────┘
-       ▲                                                  bidi_stream_query │
-       │  one WebSocket carries it all:                  include_all_fields │
-       │  16 kHz mic PCM up · card clicks up                                ▼
-       │  ui_event + 24 kHz audio + transcripts down       ┌──────────────────────┐
-       └──────────────────────────────────────────────────│  Voice agent         │
-                                                           │  Vertex AI Agent     │
-                                                           │  Engine (Gemini Live,│
-                                                           │  native audio, bidi) │
-                                                           └──────────┬───────────┘
-                                              MCP tool calls (streamable-HTTP /mcp) │
-                                                                                    ▼
-                                                           ┌──────────────────────┐
-                                                           │  MCP data tools      │
-                                                           │  Cloud Run (FastMCP) │
-                                                           │  lines · phones ·    │
-                                                           │  pricing · order     │
-                                                           └──────────────────────┘
-```
-
-```mermaid
-flowchart LR
-    B["🧑 Browser<br/>mic + cards"]
-    subgraph GC["Google Cloud · us-central1"]
-        UI["UI<br/>Cloud Run<br/>(static frontend)"]
-        R["Relay<br/>Cloud Run<br/>(proxy, min-inst 1)"]
-        A["Voice agent<br/>Vertex AI Agent Engine<br/>Gemini Live · bidi"]
-        M["MCP data tools<br/>Cloud Run · FastMCP<br/>lines / phones / order"]
-    end
-    B -- "HTTPS: load page" --> UI
-    B == "WSS /ws/{user}<br/>audio + actions ⇅ ui_event + audio" ==> R
-    R == "bidi_stream_query<br/>include_all_fields" ==> A
-    A == "MCP tool calls<br/>streamable-HTTP /mcp" ==> M
 ```
 
 ### The four services
