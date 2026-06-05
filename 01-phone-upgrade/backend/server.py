@@ -195,22 +195,6 @@ async def _serve_agent_engine(websocket: WebSocket, user_id: str, session_id: st
 # Same shared session store as voice (the chat engine is configured with the
 # voice engine's SESSION_ENGINE_ID), so a session started in voice resumes here
 # by user_id alone — and vice versa.
-_chat_agent = None
-
-
-def _get_chat_agent():
-    """Resolve + cache the deployed chat Agent Engine object (lazy)."""
-    global _chat_agent
-    if _chat_agent is None:
-        vertexai = _vertexai or __import__("vertexai")
-        client = vertexai.Client(
-            project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
-            location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
-        )
-        _chat_agent = client.agent_engines.get(name=CHAT_AGENT_ENGINE_NAME)
-    return _chat_agent
-
-
 async def _emit_chat_event(websocket: WebSocket, ev: dict) -> bool:
     """Translate one chat agent event into the browser wire protocol: a ui_event
     for a pending_ui state delta and a transcript for the agent's text reply.
@@ -238,7 +222,17 @@ async def _emit_chat_event(websocket: WebSocket, ev: dict) -> bool:
 
 async def _serve_chat(websocket: WebSocket, user_id: str):
     """Proxy browser <-> chat agent (async_stream_query) one turn at a time."""
-    agent = _get_chat_agent()
+    # Create the client + agent PER CONNECTION and keep both referenced for the
+    # connection's lifetime. The agent's async httpx client is owned by `client`;
+    # if `client` is GC'd (e.g. a cached-agent helper that returns), the next
+    # async_stream_query raises "Cannot send a request, as the client has been
+    # closed". Holding `client` here keeps it alive.
+    vertexai = _vertexai or __import__("vertexai")
+    client = vertexai.Client(
+        project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
+        location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
+    )
+    agent = client.agent_engines.get(name=CHAT_AGENT_ENGINE_NAME)
     sid = {"v": None}
 
     async def run_turn(message: str):
