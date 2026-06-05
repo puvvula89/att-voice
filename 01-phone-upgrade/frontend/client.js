@@ -6,6 +6,18 @@ import { renderComponent } from "./components.js";
 // load would make the agent greet — and the AudioContext is still suspended then,
 // so it would also be a gesture-less play. Connect on the gesture instead.
 let ws = null;
+let micStop = null;   // stop() handle for the active mic capture
+
+// Fully release the previous call: stop the mic and close the socket. Called
+// before starting a new call and when a call ends, so repeated calls in one tab
+// don't leave a stale mic feeding audio into the next session.
+function teardown() {
+  if (micStop) { try { micStop(); } catch (e) {} micStop = null; }
+  if (ws) {
+    try { ws.onmessage = null; ws.onclose = null; ws.close(); } catch (e) {}
+    ws = null;
+  }
+}
 
 // Relay endpoint. Set by config.js (loaded before this module). The deploy
 // script writes config.js with the deployed relay's wss URL; the committed
@@ -125,6 +137,7 @@ function endCall() {
   p.textContent = "Call ended. Thank you for contacting AT&T.";
   root.append(p);
   curBubble.user = curBubble.agent = null;
+  teardown();   // stop mic + close socket so the next call starts clean
   // Keep the user_id in the field so it can be reused or copied to another
   // channel; click Generate for a fresh identity to start a new conversation.
   const startBtn = document.getElementById("start");
@@ -167,20 +180,23 @@ const startBtn = document.getElementById("start");
 startBtn.onclick = async () => {
   let userId = currentUserId();
   if (!userId) { userId = uuid(); setUserId(userId); }   // none chosen → fresh identity
+  teardown();                                            // release any previous call first
   startBtn.disabled = true;
   document.getElementById("transcript").innerHTML = "";  // fresh log per call
   document.getElementById("raw-json").textContent = "";  // and a fresh JSON panel
   await unlockAudio();                                   // unlock playback within the gesture
-  ws = new WebSocket(`${RELAY_URL}/ws/${encodeURIComponent(userId)}`);
+  const socket = new WebSocket(`${RELAY_URL}/ws/${encodeURIComponent(userId)}`);
+  ws = socket;
   // Opening frame must be first (before any mic audio). The session_id is resolved
   // server-side from user_id, so we just signal start.
-  ws.onopen = () => ws.send(JSON.stringify({ type: "start" }));
-  ws.onmessage = handleMessage;
-  await startMic((b64) => {
+  socket.onopen = () => socket.send(JSON.stringify({ type: "start" }));
+  socket.onmessage = handleMessage;
+  micStop = await startMic((b64) => {
     // Half-duplex: don't send mic audio while the agent is speaking, or it hears
-    // itself through the speakers and advances without your input.
-    if (ws && ws.readyState === WebSocket.OPEN && !isAgentSpeaking()) {
-      ws.send(JSON.stringify({ type: "audio", data: b64 }));
+    // itself through the speakers and advances without your input. Guard on the
+    // captured `socket` so a torn-down call's mic can't send to a new one.
+    if (socket.readyState === WebSocket.OPEN && ws === socket && !isAgentSpeaking()) {
+      socket.send(JSON.stringify({ type: "audio", data: b64 }));
     }
   });
   startBtn.textContent = "Listening…";

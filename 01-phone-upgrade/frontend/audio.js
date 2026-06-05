@@ -157,4 +157,15 @@ export async function startMic(onFrame) {
   source.connect(processor);
   // ScriptProcessorNode must be connected to destination to keep running
   processor.connect(captureCtx.destination);
+
+  // Return a stop() so the caller can fully release the mic between calls.
+  // Without this, a second call leaves the first call's mic running and feeding
+  // audio into the new session — which interrupts the agent's greeting.
+  return function stop() {
+    try { processor.onaudioprocess = null; } catch (e) {}
+    try { processor.disconnect(); } catch (e) {}
+    try { source.disconnect(); } catch (e) {}
+    try { stream.getTracks().forEach((t) => t.stop()); } catch (e) {}
+    try { captureCtx.close(); } catch (e) {}
+  };
 }
