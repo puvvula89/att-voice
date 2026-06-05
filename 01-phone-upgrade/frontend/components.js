@@ -28,7 +28,7 @@ function optionList(p, root, onSelect) {
   (p.options || []).forEach((o) => {
     const row = document.createElement("button");
     row.className = "option-row";
-    row.onclick = () => onSelect(o.submitValue);
+    row.onclick = () => onSelect(o.submitValue, o.header);
     const main = document.createElement("div");
     const hd = document.createElement("div");
     hd.className = "opt-header";
@@ -58,7 +58,7 @@ function phoneList(p, root, onSelect) {
 function phoneCard(o, onSelect) {
   const c = document.createElement("div");
   c.className = "phone-card";
-  c.onclick = () => onSelect(o.submitValue);
+  c.onclick = () => onSelect(o.submitValue, o.header);
 
   const thumb = document.createElement("div");
   thumb.className = "phone-thumb";
@@ -124,7 +124,7 @@ function confirmation(p, root, onSelect) {
     const b = document.createElement("button");
     b.className = "primary-btn";
     b.textContent = p.primary.label;
-    b.onclick = () => onSelect(p.primary.submitValue);
+    b.onclick = () => onSelect(p.primary.submitValue, p.primary.label);
     root.append(b);
   }
 }
