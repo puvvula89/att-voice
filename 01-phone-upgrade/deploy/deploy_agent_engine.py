@@ -53,7 +53,15 @@ engine = client.agent_engines.create(
         staging_bucket=f"gs://{BUCKET}",
         requirements=[
             "google-cloud-aiplatform[agent_engines]",
-            "google-adk>=2.0,<3",
+            # PINNED: google-adk 2.2.0 (2026-06-04) regressed Vertex Live session
+            # resume — it pulls google-genai 2.x, whose Live converter sets/forwards
+            # live_connect_config.history_config, which the Vertex (Enterprise Agent
+            # Platform) Live API rejects ("history_config ... only supported in ...
+            # Developer API mode"). 2.1.0 is the last good release; it constrains
+            # genai to <2,>=1.72 (the 1.x line that handles resume correctly). Do NOT
+            # pin genai here — let adk 2.1.0 resolve it (genai==2.x conflicts).
+            # Unpinned adk ranges cause silent drift between deploys — keep this pinned.
+            "google-adk==2.1.0",
             "mcp",
             "cloudpickle==3.1.2",
             "websockets",
