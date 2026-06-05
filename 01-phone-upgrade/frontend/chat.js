@@ -1,4 +1,4 @@
-import { renderComponent } from "./components.js";
+import { renderComponent } from "./components.js?v=2";
 
 // Chat counterpart to client.js. Same identity anchor (user_id) and same Screen
 // components — only the transport (text over WS to the relay's /chat path) and the
@@ -71,10 +71,34 @@ function showRawComponent(payload) {
   if (el) el.textContent = JSON.stringify(payload, null, 2);
 }
 
-function sendAction(selection) {
-  if (ws && ws.readyState === WebSocket.OPEN) {
-    ws.send(JSON.stringify({ type: "user_action", selection }));
-  }
+// A tapped on-screen choice is a turn just like a typed message, so it must (a)
+// show up in the transcript and (b) be one-shot. Unlike voice (where the model
+// transcribes speech), nothing else echoes a click — and the current screen stays
+// clickable until the agent's next render arrives (~1s), so a second tap fires a
+// duplicate turn. Echo the choice, then freeze the screen until the next render.
+let awaitingResponse = false;
+const uiRoot = () => document.getElementById("ui-root");
+
+function lockSelection() {
+  awaitingResponse = true;
+  const r = uiRoot();
+  r.style.opacity = "0.55";          // visual "registered, working…" cue
+  r.style.pointerEvents = "none";    // belt-and-suspenders vs. the flag
+}
+function unlockSelection() {
+  awaitingResponse = false;
+  const r = uiRoot();
+  r.style.opacity = "";
+  r.style.pointerEvents = "";
+}
+
+function sendAction(selection, label) {
+  if (awaitingResponse) return;                          // a choice is already in flight — ignore re-taps
+  if (!ws || ws.readyState !== WebSocket.OPEN) return;
+  appendTranscript("user", label || selection);          // show the tapped choice like a typed message
+  lockSelection();                                       // freeze the screen so it can't be double-submitted
+  setStatus("AT&T is typing…", "agent");
+  ws.send(JSON.stringify({ type: "user_action", selection }));
 }
 
 // ---------------------------------------------------------------------------
@@ -99,17 +123,23 @@ function handleMessage(e) {
   if (msg.type === "session_info") {
     if (msg.resumed && msg.pending_ui) {       // land back on the last screen
       showRawComponent(msg.pending_ui);
+      unlockSelection();                       // resumed screen is interactive
       renderComponent(msg.pending_ui, sendAction);
     }
     return;
   }
   if (msg.type === "session_end") { endChat(); return; }
   if (msg.type === "transcript") {
-    if (msg.text && msg.text.trim()) appendTranscript(msg.role, msg.text);
+    if (msg.text && msg.text.trim()) {
+      appendTranscript(msg.role, msg.text);
+      setStatus("Connected", "listening");     // agent replied → clear the "typing…" cue
+    }
     return;
   }
   if (msg.type === "ui_event") {
     showRawComponent(msg.payload);
+    unlockSelection();                         // next screen rendered → selection re-enabled
+    setStatus("Connected", "listening");
     renderComponent(msg.payload, sendAction);
     return;
   }
