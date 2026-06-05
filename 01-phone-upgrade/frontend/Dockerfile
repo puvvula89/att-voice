@@ -6,4 +6,7 @@ WORKDIR /app
 COPY . /app
 ENV PORT=8080
 EXPOSE 8080
-CMD exec python -m http.server $PORT
+# Custom no-store server (NOT `python -m http.server`): the unversioned entry
+# points (index.html/chat.html/config.js) must never be cached, or a redeploy
+# won't take effect until a hard refresh. See serve.py.
+CMD exec python serve.py
