@@ -1,9 +1,14 @@
-"""Verify shared-session Phase 1: a voice session resumes across reconnects.
+"""Verify shared-session: a voice session resumes across reconnects by user_id.
 
-Drives the deployed Agent Engine bidi app directly (no relay):
-  1. Connect with no session_id -> capture the new session_id from session_info,
-     advance to phone_options, then disconnect mid-flow.
-  2. Reconnect with that session_id -> assert resumed=True, and that the agent
+Drives the deployed Agent Engine bidi app directly (no relay). Mirrors the real
+identity-anchored model: the client carries only a user_id; the server resolves
+the session from it (list_sessions). A fresh uuid user_id per run guarantees the
+user has exactly one session, so "most recent" is unambiguous.
+
+  1. Connect with {user_id} (no session_id) -> capture the new session_id from
+     session_info, advance to phone_options, then disconnect mid-flow.
+  2. Reconnect with ONLY {user_id} (still no session_id) -> assert resumed=True
+     with the SAME session_id (found via list_sessions), and that the agent
      continues to confirmation/receipt WITHOUT re-rendering an already-completed
      screen (line_selector) — i.e. it picked up where it left off.
 
@@ -13,6 +18,7 @@ Drives the deployed Agent Engine bidi app directly (no relay):
 import asyncio
 import os
 import sys
+import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -24,7 +30,7 @@ import vertexai
 PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]
 LOCATION = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
 NAME = os.environ.get("AGENT_ENGINE_NAME") or (ROOT / "deploy" / ".engine_name").read_text().strip()
-USER = "resume-probe"
+USER = f"resume-probe-{uuid.uuid4()}"
 CONNECT_CFG = {"class_method": "bidi_stream_query", "include_all_fields": True}
 
 
@@ -85,9 +91,10 @@ async def main():
     assert (info1 or {}).get("resumed") is False, "fresh session should not be 'resumed'"
     assert seen1[:2] == ["line_selector", "phone_options"], f"leg1 did not reach phone_options: {seen1}"
 
-    # --- Leg 2: reconnect with the same session_id, continue to receipt. ---
+    # --- Leg 2: reconnect with ONLY the user_id (no session_id). The server must
+    # find the user's latest session via list_sessions and resume it. ---
     async with client.aio.live.agent_engines.connect(agent_engine=NAME, config=CONNECT_CFG) as conn:
-        await conn.send({"user_id": USER, "session_id": sid})
+        await conn.send({"user_id": USER})
         seen2, info2 = await _drive(
             conn,
             ["I'll take the iPhone 17", "Yes, place the order"],

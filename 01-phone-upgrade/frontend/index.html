@@ -43,6 +43,12 @@
              box-shadow:0 2px 8px rgba(0,87,184,.3);transition:transform .1s,box-shadow .15s,opacity .15s}
       #start:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,87,184,.36)}
       #start:disabled{opacity:.55;cursor:default;box-shadow:none}
+      .uid{font-size:13px;padding:10px 13px;border:1px solid #cdd8e4;border-radius:999px;min-width:300px;
+           font-family:ui-monospace,Menlo,monospace;outline:none;color:#0a2540}
+      .uid:focus{border-color:var(--att-blue)}
+      #generate{font-size:13px;font-weight:600;padding:10px 16px;cursor:pointer;border:1px solid var(--att-blue);
+           border-radius:999px;background:#fff;color:var(--att-blue);transition:background .12s}
+      #generate:hover{background:#eef5ff}
       .hint{font-size:13px;color:var(--muted)}
 
       /* ---- Layout: left (transcript + json) | right (screen) ---- */
@@ -142,8 +148,10 @@
       </header>
 
       <div class="toolbar">
+        <input id="user-id" class="uid" placeholder="user id — Generate, or paste to resume" autocomplete="off" spellcheck="false" />
+        <button id="generate" type="button">Generate</button>
         <button id="start">Start call</button>
-        <span class="hint">Click to connect, then just talk — or tap the on-screen options.</span>
+        <span class="hint">Generate a new id to start fresh, or paste an id from another channel to resume — then Start.</span>
       </div>
 
       <main class="layout">
@@ -164,6 +172,6 @@
       </main>
     </div>
     <script src="./config.js"></script>
-    <script type="module" src="./client.js?v=4"></script>
+    <script type="module" src="./client.js?v=5"></script>
   </body>
 </html>

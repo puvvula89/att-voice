@@ -85,24 +85,18 @@ class LiveAgentApp:
         from google.adk.agents.live_request_queue import LiveRequestQueue
         from google.genai import types
 
+        from backend.session_resolve import resolve_session
+
         first = await request_queue.get()
         user_id = (first or {}).get("user_id", "u1")
         req_sid = (first or {}).get("session_id")
 
-        # Resume the client's session if it still exists; otherwise start fresh.
-        session = None
-        if req_sid:
-            try:
-                session = await self._session_service.get_session(
-                    app_name=APP_NAME, user_id=user_id, session_id=req_sid
-                )
-            except Exception:
-                session = None
-        resumed = session is not None
-        if session is None:
-            session = await self._session_service.create_session(
-                app_name=APP_NAME, user_id=user_id
-            )
+        # Identity-anchored resume: an explicit session_id (same-tab reconnect)
+        # wins; otherwise land on this user_id's latest session so a conversation
+        # started in another channel (chat) continues here; else start fresh.
+        session, resumed = await resolve_session(
+            self._session_service, APP_NAME, user_id, req_sid
+        )
 
         # Tell the client which session it's on (to persist + reconnect) and hand
         # back the last rendered screen so a resumed client can re-show it.
