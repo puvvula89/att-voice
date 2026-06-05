@@ -1,4 +1,4 @@
-import { startMic, playFrame, unlockAudio, isAgentSpeaking, closePlayback } from "./audio.js?v=3";
+import { startMic, playFrame, unlockAudio, isAgentSpeaking, closePlayback } from "./audio.js?v=4";
 import { renderComponent } from "./components.js?v=2";
 
 // The WebSocket is opened only when the user clicks "Start call" (below). The

@@ -6,6 +6,11 @@ __pycache__/
 **/.env
 .adk/
 **/.adk/
+.DS_Store
+**/.DS_Store
+
+# Diagnostic audio captures (probe_audio_compare.py output — throwaway)
+01-phone-upgrade/deploy/*.wav
 
 # GSD planning/handoff (local only — not part of the deliverable)
 .planning/
