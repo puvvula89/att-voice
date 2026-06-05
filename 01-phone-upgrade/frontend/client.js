@@ -28,9 +28,9 @@ const RELAY_URL =
 // The user_id is the cross-channel anchor: Generate a fresh one to start a new
 // conversation, or paste one from another channel (chat <-> voice) to resume that
 // same session. The session_id is resolved server-side from this user_id — the
-// human only ever carries the id. Persisted so a reload keeps the identity.
-const USER_KEY = "pu_user_id";
-
+// human only ever carries the id. NOT persisted: the field starts empty on every
+// page load so each demo is stateless (a reload yields a blank field — Generate
+// again, or paste an id to resume).
 function uuid() {
   if (crypto.randomUUID) return crypto.randomUUID();
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
@@ -41,20 +41,15 @@ function uuid() {
 const userInput = document.getElementById("user-id");
 
 function setUserId(id) {
-  userInput.value = id || "";
-  if (id) localStorage.setItem(USER_KEY, id);
+  userInput.value = id || "";   // session-only; never persisted across reloads
 }
 
 function currentUserId() {
   return (userInput.value || "").trim();
 }
 
-// Seed the field: ?uid= URL param (handoff link) > saved id > blank.
-(function initUserId() {
-  const fromUrl = new URLSearchParams(location.search).get("uid");
-  setUserId(fromUrl || localStorage.getItem(USER_KEY) || "");
-})();
-
+// Field starts empty every load — no localStorage/URL seeding. Generate mints a
+// fresh id; Paste resumes an existing one.
 userInput.addEventListener("change", () => setUserId(currentUserId()));
 document.getElementById("generate").onclick = () => setUserId(uuid());
 
@@ -203,3 +198,8 @@ startBtn.onclick = async () => {
 };
 
 startStatusLoop();
+
+// Deterministically release the call on navigation/refresh: the browser drops the
+// WS on unload eventually, but pagehide closes it (and stops the mic) immediately,
+// so the relay sees the close right away and the next load starts clean.
+window.addEventListener("pagehide", teardown);

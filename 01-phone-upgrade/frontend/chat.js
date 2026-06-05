@@ -6,14 +6,22 @@ import { renderComponent } from "./components.js";
 // async_stream_query; resume across channels happens server-side by user_id.
 let ws = null;
 
+// Fully release the connection: close the socket. No mic in chat (unlike
+// client.js), so this just tears down the WS. Called on pagehide and endChat so a
+// reload / channel switch leaves no stale socket open on the relay.
+function teardown() {
+  if (ws) {
+    try { ws.onmessage = null; ws.onclose = null; ws.close(); } catch (e) {}
+    ws = null;
+  }
+}
+
 const RELAY_URL =
   (typeof window !== "undefined" && window.RELAY_URL) || "ws://localhost:8000";
 
 // ---------------------------------------------------------------------------
 // Identity (the cross-channel handoff token) — mirrors client.js
 // ---------------------------------------------------------------------------
-const USER_KEY = "pu_user_id";
-
 function uuid() {
   if (crypto.randomUUID) return crypto.randomUUID();
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
@@ -24,16 +32,13 @@ function uuid() {
 const userInput = document.getElementById("user-id");
 
 function setUserId(id) {
-  userInput.value = id || "";
-  if (id) localStorage.setItem(USER_KEY, id);
+  userInput.value = id || "";   // session-only; never persisted across reloads
 }
 function currentUserId() {
   return (userInput.value || "").trim();
 }
-(function initUserId() {
-  const fromUrl = new URLSearchParams(location.search).get("uid");
-  setUserId(fromUrl || localStorage.getItem(USER_KEY) || "");
-})();
+// Field starts empty every load — no localStorage/URL seeding. Generate mints a
+// fresh id; Paste resumes an existing one.
 userInput.addEventListener("change", () => setUserId(currentUserId()));
 document.getElementById("generate").onclick = () => setUserId(uuid());
 
@@ -82,6 +87,7 @@ function endChat() {
   p.textContent = "Chat ended. Thank you for contacting AT&T.";
   root.append(p);
   composerEnabled(false);
+  teardown();   // close the socket so the next chat starts clean
   const startBtn = document.getElementById("start");
   startBtn.disabled = false;
   startBtn.textContent = "Start chat";
@@ -138,6 +144,7 @@ const startBtn = document.getElementById("start");
 startBtn.onclick = () => {
   let userId = currentUserId();
   if (!userId) { userId = uuid(); setUserId(userId); }   // none chosen → fresh identity
+  teardown();                                            // release any previous connection first
   startBtn.disabled = true;
   document.getElementById("transcript").innerHTML = "";
   document.getElementById("raw-json").textContent = "";
@@ -153,3 +160,7 @@ startBtn.onclick = () => {
   ws.onclose = () => { composerEnabled(false); setStatus("Idle", "idle"); };
   ws.onerror = () => setStatus("Idle", "idle");
 };
+
+// Deterministically close the socket on navigation/refresh — same rationale as
+// client.js: the relay sees the close immediately and the next load starts clean.
+window.addEventListener("pagehide", teardown);
