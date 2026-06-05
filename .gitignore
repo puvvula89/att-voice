@@ -14,3 +14,4 @@ __pycache__/
 01-phone-upgrade/spike/.engine_name
 .claude/scheduled_tasks.lock
 01-phone-upgrade/deploy/.engine_name
+01-phone-upgrade/deploy/.chat_engine_name
