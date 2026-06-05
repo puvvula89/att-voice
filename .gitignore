@@ -6,6 +6,11 @@ __pycache__/
 **/.env
 .adk/
 **/.adk/
+.DS_Store
+**/.DS_Store
+
+# Diagnostic audio captures (probe_audio_compare.py output — throwaway)
+01-phone-upgrade/deploy/*.wav
 
 # Agent Engine spike ephemera
 01-phone-upgrade/spike/.engine_name
