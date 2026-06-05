@@ -9,7 +9,14 @@
 
 let _playCtx = null;
 let _nextPlayTime = 0;
-const OUTPUT_SAMPLE_RATE = 24000;
+const OUTPUT_SAMPLE_RATE = 24000;   // Gemini Live native-audio output is 24 kHz, 16-bit PCM, LE — do NOT change this to "slow" audio; it would only lower the pitch and mistime frames.
+
+// Playback tempo. The 24 kHz rate above is correct, so playback is already real-
+// time-accurate — this knob is a deliberate UX slow-down of the model's brisk
+// native-audio delivery (there is no server-side speaking_rate for native audio).
+// 1.0 = as produced; <1 = slower (and slightly lower-pitched, since Web Audio's
+// playbackRate is a tape-speed control). Keep ≥0.85 to avoid an obvious pitch drop.
+const PLAYBACK_RATE = 0.9;
 
 /**
  * True while the agent's audio is still playing (plus a short tail). Used for
@@ -71,11 +78,14 @@ export function playFrame(base64Pcm) {
 
   const source = ctx.createBufferSource();
   source.buffer = buffer;
+  source.playbackRate.value = PLAYBACK_RATE;   // deliberate UX slow-down (see PLAYBACK_RATE)
   source.connect(ctx.destination);
 
   const startAt = Math.max(ctx.currentTime, _nextPlayTime);
   source.start(startAt);
-  _nextPlayTime = startAt + buffer.duration;
+  // Actual on-the-wire duration scales with playbackRate; divide so back-to-back
+  // frames stay gapless and don't overlap (which would sound fast/garbled again).
+  _nextPlayTime = startAt + buffer.duration / PLAYBACK_RATE;
 }
 
 // ---------------------------------------------------------------------------

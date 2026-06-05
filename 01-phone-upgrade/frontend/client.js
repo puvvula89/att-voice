@@ -1,5 +1,5 @@
-import { startMic, playFrame, unlockAudio, isAgentSpeaking } from "./audio.js";
-import { renderComponent } from "./components.js";
+import { startMic, playFrame, unlockAudio, isAgentSpeaking } from "./audio.js?v=2";
+import { renderComponent } from "./components.js?v=2";
 
 // The WebSocket is opened only when the user clicks "Start call" (below). The
 // relay sends a (call_start) greeting trigger on connect, so connecting on page
@@ -53,10 +53,31 @@ function currentUserId() {
 userInput.addEventListener("change", () => setUserId(currentUserId()));
 document.getElementById("generate").onclick = () => setUserId(uuid());
 
-function sendAction(selection) {
-  if (ws && ws.readyState === WebSocket.OPEN) {
-    ws.send(JSON.stringify({ type: "user_action", selection }));
-  }
+// A tapped on-screen choice is a turn, but the model only transcribes *speech* —
+// a click is never spoken, so without this it leaves no trace in the log. And the
+// screen stays clickable for the ~1s until the agent's next render, so a second
+// tap fires a duplicate turn. Echo the choice, then freeze the screen until the
+// next render. (components.js passes the display label as the 2nd arg.)
+let awaitingResponse = false;
+function lockSelection() {
+  awaitingResponse = true;
+  const r = document.getElementById("ui-root");
+  r.style.opacity = "0.55";          // visual "registered, working…" cue
+  r.style.pointerEvents = "none";    // belt-and-suspenders vs. the flag
+}
+function unlockSelection() {
+  awaitingResponse = false;
+  const r = document.getElementById("ui-root");
+  r.style.opacity = "";
+  r.style.pointerEvents = "";
+}
+
+function sendAction(selection, label) {
+  if (awaitingResponse) return;                          // a choice is already in flight — ignore re-taps
+  if (!ws || ws.readyState !== WebSocket.OPEN) return;
+  if (label) appendTranscript("user", label, true);      // show the tapped choice like a spoken turn
+  lockSelection();                                       // freeze the screen so it can't be double-submitted
+  ws.send(JSON.stringify({ type: "user_action", selection }));
 }
 
 // ---------------------------------------------------------------------------
@@ -145,6 +166,7 @@ function handleMessage(e) {
   if (msg.type === "session_info") {
     if (msg.resumed && msg.pending_ui) {                 // land back on the last screen
       showRawComponent(msg.pending_ui);
+      unlockSelection();                                 // resumed screen is interactive
       renderComponent(msg.pending_ui, sendAction);
     }
     return;
@@ -153,6 +175,7 @@ function handleMessage(e) {
   if (msg.type === "transcript") { appendTranscript(msg.role, msg.text, msg.final); return; }
   if (msg.type === "ui_event") {
     showRawComponent(msg.payload);                // raw response the customer can inspect
+    unlockSelection();                            // next screen rendered → selection re-enabled
     renderComponent(msg.payload, sendAction);     // ...and how it renders
     return;
   }
