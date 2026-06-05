@@ -6,7 +6,8 @@ import { renderComponent } from "./components.js?v=2";
 // load would make the agent greet — and the AudioContext is still suspended then,
 // so it would also be a gesture-less play. Connect on the gesture instead.
 let ws = null;
-let micStop = null;   // stop() handle for the active mic capture
+let micStop = null;        // stop() handle for the active mic capture
+let agentStarted = false;  // true once the agent produces its first output this call (see mic gate)
 
 // Fully release the previous call: stop the mic and close the socket. Called
 // before starting a new call and when a call ends, so repeated calls in one tab
@@ -17,7 +18,11 @@ function teardown() {
     try { ws.onmessage = null; ws.onclose = null; ws.close(); } catch (e) {}
     ws = null;
   }
-  closePlayback();   // release the playback context so the next call/visit starts at the device's current rate
+  // Deliberately do NOT close the playback AudioContext here. ctx.close() kills
+  // audio scheduled ahead of real time — that chopped the agent's goodbye on
+  // session_end — and the close()/recreate churn intermittently hit the browser's
+  // AudioContext limit so the next greeting never played. Keep one context per page
+  // (reused, correct pitch); it's released on pagehide.
 }
 
 // Relay endpoint. Set by config.js (loaded before this module). The deploy
@@ -173,8 +178,9 @@ function handleMessage(e) {
     return;
   }
   if (msg.type === "session_end") { endCall(); return; }
-  if (msg.type === "transcript") { appendTranscript(msg.role, msg.text, msg.final); return; }
+  if (msg.type === "transcript") { agentStarted = true; appendTranscript(msg.role, msg.text, msg.final); return; }
   if (msg.type === "ui_event") {
+    agentStarted = true;
     showRawComponent(msg.payload);                // raw response the customer can inspect
     unlockSelection();                            // next screen rendered → selection re-enabled
     renderComponent(msg.payload, sendAction);     // ...and how it renders
@@ -184,6 +190,7 @@ function handleMessage(e) {
   for (const part of parts) {
     const b64 = part.inlineData?.data;
     if (b64) {
+      agentStarted = true;                        // greeting/agent audio has begun → mic may send
       try {
         playFrame(b64);
       } catch (err) {
@@ -204,17 +211,34 @@ startBtn.onclick = async () => {
   document.getElementById("transcript").innerHTML = "";  // fresh log per call
   document.getElementById("raw-json").textContent = "";  // and a fresh JSON panel
   await unlockAudio();                                   // unlock playback within the gesture
+  agentStarted = false;                                  // gate the mic until the greeting starts
   const socket = new WebSocket(`${RELAY_URL}/ws/${encodeURIComponent(userId)}`);
   ws = socket;
   // Opening frame must be first (before any mic audio). The session_id is resolved
   // server-side from user_id, so we just signal start.
   socket.onopen = () => socket.send(JSON.stringify({ type: "start" }));
   socket.onmessage = handleMessage;
+  // Surface an unexpected drop (e.g. the engine erroring out before greeting) so
+  // the user can just click Start again instead of reloading. teardown() nulls this
+  // handler first, so it only fires for genuine failures, not our own closes.
+  socket.onclose = () => {
+    if (ws !== socket) return;
+    ws = null;
+    startBtn.disabled = false;
+    startBtn.textContent = "Start call";
+  };
+  socket.onerror = () => { try { socket.close(); } catch (e) {} };
   micStop = await startMic((b64) => {
-    // Half-duplex: don't send mic audio while the agent is speaking, or it hears
-    // itself through the speakers and advances without your input. Guard on the
+    // Half-duplex + startup gate: never send mic audio (a) before the agent's first
+    // output this call (`agentStarted`) or (b) while the agent is speaking. (a) is
+    // critical: streaming mic during the engine's busy greeting/setup phase overflows
+    // its inbound queue (QueueFull -> 1011 "Reasoning Engine Execution failed", no
+    // greeting). (b) stops the agent hearing itself through the speakers. Guard on the
     // captured `socket` so a torn-down call's mic can't send to a new one.
-    if (socket.readyState === WebSocket.OPEN && ws === socket && !isAgentSpeaking()) {
+    if (
+      socket.readyState === WebSocket.OPEN && ws === socket &&
+      agentStarted && !isAgentSpeaking()
+    ) {
       socket.send(JSON.stringify({ type: "audio", data: b64 }));
     }
   });
@@ -226,4 +250,4 @@ startStatusLoop();
 // Deterministically release the call on navigation/refresh: the browser drops the
 // WS on unload eventually, but pagehide closes it (and stops the mic) immediately,
 // so the relay sees the close right away and the next load starts clean.
-window.addEventListener("pagehide", teardown);
+window.addEventListener("pagehide", () => { teardown(); closePlayback(); });
