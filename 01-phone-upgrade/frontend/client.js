@@ -1,4 +1,4 @@
-import { startMic, playFrame, unlockAudio, isAgentSpeaking } from "./audio.js?v=2";
+import { startMic, playFrame, unlockAudio, isAgentSpeaking, closePlayback } from "./audio.js?v=3";
 import { renderComponent } from "./components.js?v=2";
 
 // The WebSocket is opened only when the user clicks "Start call" (below). The
@@ -17,6 +17,7 @@ function teardown() {
     try { ws.onmessage = null; ws.onclose = null; ws.close(); } catch (e) {}
     ws = null;
   }
+  closePlayback();   // release the playback context so the next call/visit starts at the device's current rate
 }
 
 // Relay endpoint. Set by config.js (loaded before this module). The deploy
