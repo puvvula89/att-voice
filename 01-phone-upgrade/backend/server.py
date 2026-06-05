@@ -75,14 +75,10 @@ async def _serve_local(websocket: WebSocket, user_id: str, session_id: str | Non
         _local_session_service = InMemorySessionService()
     session_service = _local_session_service
 
-    session = None
-    if session_id:
-        session = await session_service.get_session(
-            app_name=APP_NAME, user_id=user_id, session_id=session_id
-        )
-    resumed = session is not None
-    if session is None:
-        session = await session_service.create_session(app_name=APP_NAME, user_id=user_id)
+    from backend.session_resolve import resolve_session
+    # Identity-anchored resume (same as the deployed AE path): explicit session_id
+    # wins, else the user_id's latest session, else fresh.
+    session, resumed = await resolve_session(session_service, APP_NAME, user_id, session_id)
     await websocket.send_text(json.dumps({
         "type": "session_info", "session_id": session.id, "resumed": resumed,
         "pending_ui": (session.state or {}).get("pending_ui") if resumed else None,

@@ -13,10 +13,38 @@ let ws = null;
 const RELAY_URL =
   (typeof window !== "undefined" && window.RELAY_URL) || "ws://localhost:8000";
 
-// Persisted across reloads/reconnects so an interrupted call resumes where it
-// left off (cleared once a call ends — see endCall). The relay/agent resume this
-// session_id if it still exists, else start fresh and return a new one.
-const SESSION_KEY = "pu_session_id";
+// The user_id is the cross-channel anchor: Generate a fresh one to start a new
+// conversation, or paste one from another channel (chat <-> voice) to resume that
+// same session. The session_id is resolved server-side from this user_id — the
+// human only ever carries the id. Persisted so a reload keeps the identity.
+const USER_KEY = "pu_user_id";
+
+function uuid() {
+  if (crypto.randomUUID) return crypto.randomUUID();
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+    (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16),
+  );
+}
+
+const userInput = document.getElementById("user-id");
+
+function setUserId(id) {
+  userInput.value = id || "";
+  if (id) localStorage.setItem(USER_KEY, id);
+}
+
+function currentUserId() {
+  return (userInput.value || "").trim();
+}
+
+// Seed the field: ?uid= URL param (handoff link) > saved id > blank.
+(function initUserId() {
+  const fromUrl = new URLSearchParams(location.search).get("uid");
+  setUserId(fromUrl || localStorage.getItem(USER_KEY) || "");
+})();
+
+userInput.addEventListener("change", () => setUserId(currentUserId()));
+document.getElementById("generate").onclick = () => setUserId(uuid());
 
 function sendAction(selection) {
   if (ws && ws.readyState === WebSocket.OPEN) {
@@ -97,7 +125,8 @@ function endCall() {
   p.textContent = "Call ended. Thank you for contacting AT&T.";
   root.append(p);
   curBubble.user = curBubble.agent = null;
-  localStorage.removeItem(SESSION_KEY); // call finished — next call starts fresh
+  // Keep the user_id in the field so it can be reused or copied to another
+  // channel; click Generate for a fresh identity to start a new conversation.
   const startBtn = document.getElementById("start");
   startBtn.disabled = false;
   startBtn.textContent = "Start call";
@@ -106,7 +135,6 @@ function endCall() {
 function handleMessage(e) {
   const msg = JSON.parse(e.data);
   if (msg.type === "session_info") {
-    localStorage.setItem(SESSION_KEY, msg.session_id);   // persist for reconnect
     if (msg.resumed && msg.pending_ui) {                 // land back on the last screen
       showRawComponent(msg.pending_ui);
       renderComponent(msg.pending_ui, sendAction);
@@ -137,15 +165,16 @@ function handleMessage(e) {
 // the AudioContext suspended and no model audio is heard.
 const startBtn = document.getElementById("start");
 startBtn.onclick = async () => {
+  let userId = currentUserId();
+  if (!userId) { userId = uuid(); setUserId(userId); }   // none chosen → fresh identity
   startBtn.disabled = true;
   document.getElementById("transcript").innerHTML = "";  // fresh log per call
   document.getElementById("raw-json").textContent = "";  // and a fresh JSON panel
   await unlockAudio();                                   // unlock playback within the gesture
-  ws = new WebSocket(`${RELAY_URL}/ws/demo-user`);
-  // Opening frame: resume the stored session_id (or null → fresh). Must be the
-  // first frame, so send it on open before any mic audio goes out.
-  ws.onopen = () =>
-    ws.send(JSON.stringify({ type: "start", session_id: localStorage.getItem(SESSION_KEY) }));
+  ws = new WebSocket(`${RELAY_URL}/ws/${encodeURIComponent(userId)}`);
+  // Opening frame must be first (before any mic audio). The session_id is resolved
+  // server-side from user_id, so we just signal start.
+  ws.onopen = () => ws.send(JSON.stringify({ type: "start" }));
   ws.onmessage = handleMessage;
   await startMic((b64) => {
     // Half-duplex: don't send mic audio while the agent is speaking, or it hears
