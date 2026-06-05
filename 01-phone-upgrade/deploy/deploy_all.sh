@@ -32,24 +32,34 @@ MCP_BASE="$(gcloud run services describe "$MCP_SERVICE" --region "$REGION" --pro
 export MCP_SERVER_URL="${MCP_BASE}/mcp"
 echo "   MCP_SERVER_URL=$MCP_SERVER_URL"
 
-# 2. Agent on Agent Engine (consumes MCP_SERVER_URL).
-echo "▶ [2/4] Agent Engine (staging gs://$AE_STAGING_BUCKET)…"
+# 2. Voice agent on Agent Engine (consumes MCP_SERVER_URL). Deploy with
+#    SESSION_ENGINE_ID unset so it uses its OWN id as the shared session store;
+#    the chat engine then points here for cross-channel handoff.
+echo "▶ [2/5] Voice Agent Engine (staging gs://$AE_STAGING_BUCKET)…"
 gcloud storage buckets create "gs://$AE_STAGING_BUCKET" --location "$REGION" --project "$PROJECT" 2>/dev/null || true
-AE_STAGING_BUCKET="$AE_STAGING_BUCKET" MCP_SERVER_URL="$MCP_SERVER_URL" "$PY" deploy/deploy_agent_engine.py
+AE_STAGING_BUCKET="$AE_STAGING_BUCKET" MCP_SERVER_URL="$MCP_SERVER_URL" SESSION_ENGINE_ID="" "$PY" deploy/deploy_agent_engine.py
 AGENT_ENGINE_NAME="$(cat deploy/.engine_name)"
-echo "   AGENT_ENGINE_NAME=$AGENT_ENGINE_NAME"
+SESSION_ENGINE_ID="${AGENT_ENGINE_NAME##*/}"   # numeric id = shared session store for BOTH channels
+echo "   AGENT_ENGINE_NAME=$AGENT_ENGINE_NAME (session store=$SESSION_ENGINE_ID)"
 
-# 3. Relay (proxies browser <-> Agent Engine).
-echo "▶ [3/4] Relay ($RELAY_SERVICE)…"
+# 3. Chat agent on a SEPARATE Agent Engine, configured with the voice engine's
+#    session store so a conversation started in one channel resumes in the other.
+echo "▶ [3/5] Chat Agent Engine…"
+AE_STAGING_BUCKET="$AE_STAGING_BUCKET" MCP_SERVER_URL="$MCP_SERVER_URL" SESSION_ENGINE_ID="$SESSION_ENGINE_ID" "$PY" deploy/deploy_chat_engine.py
+CHAT_AGENT_ENGINE_NAME="$(cat deploy/.chat_engine_name)"
+echo "   CHAT_AGENT_ENGINE_NAME=$CHAT_AGENT_ENGINE_NAME"
+
+# 4. Relay (proxies browser <-> voice (bidi) and <-> chat (async_stream)).
+echo "▶ [4/5] Relay ($RELAY_SERVICE)…"
 gcloud run deploy "$RELAY_SERVICE" --source . --region "$REGION" --project "$PROJECT" \
   --port 8080 --timeout 3600 --min-instances "$RELAY_MIN_INSTANCES" --allow-unauthenticated --quiet \
-  --set-env-vars "^@^AGENT_ENGINE_NAME=${AGENT_ENGINE_NAME}@GOOGLE_CLOUD_PROJECT=${PROJECT}@GOOGLE_CLOUD_LOCATION=${REGION}@GOOGLE_GENAI_USE_VERTEXAI=TRUE"
+  --set-env-vars "^@^AGENT_ENGINE_NAME=${AGENT_ENGINE_NAME}@CHAT_AGENT_ENGINE_NAME=${CHAT_AGENT_ENGINE_NAME}@GOOGLE_CLOUD_PROJECT=${PROJECT}@GOOGLE_CLOUD_LOCATION=${REGION}@GOOGLE_GENAI_USE_VERTEXAI=TRUE"
 RELAY_BASE="$(gcloud run services describe "$RELAY_SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
 RELAY_WSS="wss://${RELAY_BASE#https://}"
 echo "   RELAY=$RELAY_WSS"
 
-# 4. UI (inject the relay URL into config.js, deploy, then restore the committed default).
-echo "▶ [4/4] UI ($UI_SERVICE)…"
+# 5. UI (inject the relay URL into config.js, deploy, then restore the committed default).
+echo "▶ [5/5] UI ($UI_SERVICE)…"
 printf 'window.RELAY_URL = "%s";\n' "$RELAY_WSS" > frontend/config.js
 gcloud run deploy "$UI_SERVICE" --source frontend --region "$REGION" --project "$PROJECT" \
   --port 8080 --allow-unauthenticated --quiet
@@ -58,9 +68,11 @@ git checkout -- frontend/config.js 2>/dev/null || printf 'window.RELAY_URL = "ws
 
 cat <<EOF
 
-✅ Deployed. Open the UI and click Start:
-   UI:    $UI_URL
-   Relay: $RELAY_WSS
-   MCP:   $MCP_SERVER_URL
-   Agent: $AGENT_ENGINE_NAME
+✅ Deployed. Open a UI and click Start:
+   Voice UI: $UI_URL
+   Chat UI:  $UI_URL/chat.html
+   Relay:    $RELAY_WSS
+   MCP:      $MCP_SERVER_URL
+   Voice:    $AGENT_ENGINE_NAME
+   Chat:     $CHAT_AGENT_ENGINE_NAME  (session store=$SESSION_ENGINE_ID)
 EOF
