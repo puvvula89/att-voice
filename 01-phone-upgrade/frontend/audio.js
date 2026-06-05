@@ -9,7 +9,7 @@
 
 let _playCtx = null;
 let _nextPlayTime = 0;
-const OUTPUT_SAMPLE_RATE = 24000;   // Gemini Live native-audio output is 24 kHz, 16-bit PCM, LE — do NOT change this to "slow" audio; it would only lower the pitch and mistime frames.
+const OUTPUT_SAMPLE_RATE = 24000;   // Gemini Live native-audio output is 24 kHz, 16-bit PCM, LE. This is the BUFFER rate; the context runs at the device default and resamples each buffer. Do NOT force the context to this rate (see getPlayContext) and do NOT change it to "slow" audio.
 
 // Playback tempo. The 24 kHz rate above is correct, so playback is already real-
 // time-accurate — this knob is a deliberate UX slow-down of the model's brisk
@@ -29,11 +29,33 @@ export function isAgentSpeaking() {
 }
 
 function getPlayContext() {
-  if (!_playCtx) {
-    _playCtx = new AudioContext({ sampleRate: OUTPUT_SAMPLE_RATE });
+  // Run the context at the DEVICE default rate (no forced sampleRate). Each frame
+  // is an AudioBuffer tagged at OUTPUT_SAMPLE_RATE (24 kHz), which the browser
+  // resamples to the device rate per-buffer — always correct pitch regardless of
+  // what the hardware runs at. Forcing the context to 24 kHz worked on a first
+  // visit but broke after navigating away and back (chat -> voice): the browser
+  // locks the output device's rate across navigations, so a forced-24k context
+  // would then mismatch the real device rate and play back pitch-shifted ("deep").
+  // A closed context counts as stale → recreate (see closePlayback / teardown).
+  if (!_playCtx || _playCtx.state === "closed") {
+    _playCtx = new AudioContext();
     _nextPlayTime = _playCtx.currentTime;
   }
   return _playCtx;
+}
+
+/**
+ * Fully release the playback context. Called from the client's teardown() (before
+ * each new call and on pagehide), so every call — and every page restored from the
+ * back-forward cache — starts with a fresh context at the current device rate
+ * rather than reusing a stale one.
+ */
+export function closePlayback() {
+  if (_playCtx) {
+    try { _playCtx.close(); } catch (e) {}
+    _playCtx = null;
+    _nextPlayTime = 0;
+  }
 }
 
 /**
