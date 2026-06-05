@@ -12,6 +12,10 @@ APP_NAME = "phone_upgrade"
 # running on Vertex AI Agent Engine (Topology B). Otherwise it runs the agent
 # in-process via run_live (Topology A).
 AGENT_ENGINE_NAME = os.environ.get("AGENT_ENGINE_NAME")
+# Chat (text) engine — a SEPARATE Agent Engine sharing the voice session store.
+# When set, the relay serves the chat UI at /chat/{user_id} by proxying to its
+# async_stream_query op. Independent of the voice topology toggle above.
+CHAT_AGENT_ENGINE_NAME = os.environ.get("CHAT_AGENT_ENGINE_NAME")
 LIVE_VOICE = os.environ.get("LIVE_VOICE", "Charon")
 
 # Pre-import the Vertex client at module load (proxy mode) so the first
@@ -185,6 +189,101 @@ async def _serve_agent_engine(websocket: WebSocket, user_id: str, session_id: st
                 pass
 
         await asyncio.gather(upstream(), downstream())
+
+
+# --- Chat (text) channel ---------------------------------------------------
+# Same shared session store as voice (the chat engine is configured with the
+# voice engine's SESSION_ENGINE_ID), so a session started in voice resumes here
+# by user_id alone — and vice versa.
+_chat_agent = None
+
+
+def _get_chat_agent():
+    """Resolve + cache the deployed chat Agent Engine object (lazy)."""
+    global _chat_agent
+    if _chat_agent is None:
+        vertexai = _vertexai or __import__("vertexai")
+        client = vertexai.Client(
+            project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
+            location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
+        )
+        _chat_agent = client.agent_engines.get(name=CHAT_AGENT_ENGINE_NAME)
+    return _chat_agent
+
+
+async def _emit_chat_event(websocket: WebSocket, ev: dict) -> bool:
+    """Translate one chat agent event into the browser wire protocol: a ui_event
+    for a pending_ui state delta and a transcript for the agent's text reply.
+    Returns True if the agent ended the call."""
+    actions = ev.get("actions") or {}
+    delta = actions.get("stateDelta") or actions.get("state_delta") or {}
+
+    pending = delta.get("pending_ui")
+    if pending:
+        await websocket.send_text(json.dumps(
+            {"type": "ui_event", "stage_intent": pending["stage_intent"], "payload": pending}
+        ))
+
+    # Agent text comes back as model content parts (not transcription, as in voice).
+    # run_async yields complete (non-partial) events, so send each as a final line.
+    content = ev.get("content") or {}
+    if content.get("role") == "model" and not ev.get("partial"):
+        text = "".join(p.get("text", "") for p in (content.get("parts") or []) if p.get("text"))
+        if text.strip():
+            await websocket.send_text(json.dumps(
+                {"type": "transcript", "role": "agent", "text": text, "final": True}
+            ))
+    return bool(delta.get("call_ended"))
+
+
+async def _serve_chat(websocket: WebSocket, user_id: str):
+    """Proxy browser <-> chat agent (async_stream_query) one turn at a time."""
+    agent = _get_chat_agent()
+    sid = {"v": None}
+
+    async def run_turn(message: str):
+        kwargs = {"user_id": user_id, "message": message}
+        if sid["v"]:
+            kwargs["session_id"] = sid["v"]
+        async for ev in agent.async_stream_query(**kwargs):
+            if not isinstance(ev, dict):
+                continue
+            if ev.get("type") == "session_info":
+                if ev.get("session_id"):
+                    sid["v"] = ev["session_id"]
+                await websocket.send_text(json.dumps(ev))  # forward control msg as-is
+                continue
+            if await _emit_chat_event(websocket, ev):
+                await websocket.send_text(json.dumps({"type": "session_end"}))
+
+    # Opening frame from the client, then greet / welcome-back.
+    try:
+        await websocket.receive_text()  # {type:"start"}
+    except Exception:
+        return
+    await run_turn("(call_start)")
+    while True:
+        try:
+            msg = json.loads(await websocket.receive_text())
+        except WebSocketDisconnect:
+            break
+        except Exception:
+            break
+        kind = msg.get("type")
+        if kind == "user_message":
+            await run_turn(msg.get("text", ""))
+        elif kind == "user_action":
+            await run_turn(f'user selected {msg["selection"]}')
+    try:
+        await websocket.close()
+    except Exception:
+        pass
+
+
+@app.websocket("/chat/{user_id}")
+async def chat_endpoint(websocket: WebSocket, user_id: str):
+    await websocket.accept()
+    await _serve_chat(websocket, user_id)
 
 
 @app.websocket("/ws/{user_id}")

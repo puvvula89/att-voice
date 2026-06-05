@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AT&T Phone Upgrade — Chat</title>
+    <style>
+      :root{
+        --att-sky:#00a8e0; --att-blue:#0057b8; --att-navy:#002b5c;
+        --ink:#10202b; --muted:#5b6770; --bg:#eef2f6; --surface:#fff; --line:#e2e8f0;
+        --radius:14px; --shadow:0 1px 3px rgba(16,32,43,.06),0 6px 18px rgba(16,32,43,.04);
+      }
+      *{box-sizing:border-box}
+      body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+           margin:0;background:var(--bg);color:var(--ink);
+           padding:24px 16px 48px;-webkit-font-smoothing:antialiased}
+      .wrap{max-width:1040px;margin:0 auto}
+
+      /* ---- App bar ---- */
+      .appbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+              background:linear-gradient(120deg,var(--att-navy),var(--att-blue) 70%,var(--att-sky));
+              color:#fff;padding:16px 20px;border-radius:var(--radius);box-shadow:var(--shadow)}
+      .brand{display:flex;align-items:center;gap:12px}
+      .brand .globe{flex:0 0 auto}
+      .wordmark{font-size:22px;font-weight:800;letter-spacing:-.5px}
+      .appname{font-size:14px;font-weight:500;opacity:.85;padding-left:12px;margin-left:4px;
+               border-left:1px solid rgba(255,255,255,.35)}
+
+      .status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;
+              padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.16);color:#fff}
+      .status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot,#9bb3c9)}
+      .status.idle{--dot:#9bb3c9}
+      .status.listening{--dot:#27e08a}
+      .status.agent{--dot:#39c2ff}
+      .status.listening::before,.status.agent::before{animation:pulse 1.2s ease-in-out infinite}
+      @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.55);opacity:.55}}
+
+      /* ---- Toolbar ---- */
+      .toolbar{display:flex;align-items:center;gap:14px;margin:18px 2px;flex-wrap:wrap}
+      #start{font-size:15px;font-weight:600;padding:11px 22px;cursor:pointer;border:0;border-radius:999px;
+             color:#fff;background:linear-gradient(120deg,var(--att-blue),var(--att-sky));
+             box-shadow:0 2px 8px rgba(0,87,184,.3);transition:transform .1s,box-shadow .15s,opacity .15s}
+      #start:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,87,184,.36)}
+      #start:disabled{opacity:.55;cursor:default;box-shadow:none}
+      .uid{font-size:13px;padding:10px 13px;border:1px solid #cdd8e4;border-radius:999px;min-width:300px;
+           font-family:ui-monospace,Menlo,monospace;outline:none;color:#0a2540}
+      .uid:focus{border-color:var(--att-blue)}
+      #generate{font-size:13px;font-weight:600;padding:10px 16px;cursor:pointer;border:1px solid var(--att-blue);
+           border-radius:999px;background:#fff;color:var(--att-blue);transition:background .12s}
+      #generate:hover{background:#eef5ff}
+      .hint{font-size:13px;color:var(--muted)}
+
+      /* ---- Layout: left (transcript + composer + json) | right (screen) ---- */
+      .layout{display:grid;grid-template-columns:1fr 1.05fr;gap:18px;align-items:start}
+      .col-left{display:flex;flex-direction:column;gap:18px}
+      .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+             padding:16px;box-shadow:var(--shadow)}
+      .panel.screen{min-height:520px}
+      .panel-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+                   color:#90a0ad;margin:0 0 12px}
+      @media(max-width:760px){.layout{grid-template-columns:1fr}}
+
+      /* ---- Transcript ---- */
+      .transcript{max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}
+      .transcript:empty::before{content:"The conversation will appear here once you start.";
+                                color:#aab4bd;font-size:13px}
+      .bubble{max-width:82%;padding:9px 13px;border-radius:16px;font-size:14px;line-height:1.45;
+              box-shadow:0 1px 2px rgba(16,32,43,.05)}
+      .bubble .who{display:block;font-size:11px;font-weight:600;opacity:.7;margin-bottom:2px}
+      .bubble.agent{align-self:flex-start;background:#f1f4f8;border-bottom-left-radius:5px}
+      .bubble.user{align-self:flex-end;color:#fff;border-bottom-right-radius:5px;
+                   background:linear-gradient(120deg,var(--att-blue),var(--att-sky))}
+      .bubble.user .who{color:#dbeefb;opacity:.9}
+
+      /* ---- Composer ---- */
+      .composer{display:flex;gap:10px;margin-top:12px}
+      #msg{flex:1;font-size:14px;padding:11px 14px;border:1px solid #cdd8e4;border-radius:999px;outline:none}
+      #msg:focus{border-color:var(--att-blue)}
+      #msg:disabled{background:#f4f7fa}
+      #send{font-size:14px;font-weight:600;padding:11px 20px;cursor:pointer;border:0;border-radius:999px;
+            color:#fff;background:linear-gradient(120deg,var(--att-blue),var(--att-sky))}
+      #send:disabled{opacity:.55;cursor:default}
+
+      /* ---- Raw JSON (terminal style) ---- */
+      .raw{margin:0;max-height:200px;overflow:auto;background:#0b1220;color:#cfe3ff;border-radius:10px;
+           padding:14px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre}
+      .raw:empty::before{content:"// the JSON sent for the rendered component appears here";color:#5b6b86}
+
+      /* ---- Screen components ---- */
+      .screen-empty{color:#aab4bd;font-size:14px;text-align:center;padding:60px 12px}
+      .screen-title{font-size:19px;font-weight:700;margin:0 0 4px}
+      .screen-msg{font-size:14px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+
+      .option-list{display:flex;flex-direction:column;gap:10px}
+      .option-row{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;
+                  cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:#fff;
+                  transition:border-color .15s,box-shadow .15s,transform .08s}
+      .option-row:hover{border-color:var(--att-sky);box-shadow:0 2px 10px rgba(0,168,224,.16)}
+      .option-row:active{transform:scale(.99)}
+      .opt-header{font-size:15px;font-weight:650}
+      .opt-eyebrow{font-size:12px;color:var(--muted);margin-top:2px}
+      .chev{font-size:22px;color:var(--att-sky)}
+
+      .phone-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+      .phone-card{cursor:pointer;border:1px solid var(--line);border-radius:16px;padding:16px 12px;text-align:center;
+                  background:#fff;transition:border-color .15s,box-shadow .15s,transform .1s}
+      .phone-card:hover{border-color:var(--att-sky);box-shadow:0 6px 20px rgba(0,168,224,.18);transform:translateY(-2px)}
+      .phone-card:active{transform:translateY(0)}
+      .phone-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:10px;
+                   border-radius:12px;background:linear-gradient(160deg,#f3f8fc,#e7f1f9)}
+      .phone-thumb img{max-height:100px;max-width:100%;object-fit:contain}
+      .card-eyebrow{font-size:11px;font-weight:700;color:var(--att-blue);text-transform:uppercase;
+                    letter-spacing:.04em;min-height:14px}
+      .card-name{font-size:15px;font-weight:700;margin:2px 0 8px}
+      .price{display:flex;flex-direction:column;line-height:1.15;margin-bottom:8px}
+      .price-prefix{font-size:11px;color:var(--muted)}
+      .price-amount{font-size:20px;font-weight:800;color:var(--att-navy)}
+      .price-suffix{font-size:11px;color:var(--muted)}
+      .trade-chip{display:inline-block;font-size:11px;font-weight:600;color:var(--att-blue);
+                  background:#e7f5fc;border-radius:999px;padding:3px 10px}
+
+      .summary{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:18px}
+      .summary-row{display:flex;justify-content:space-between;gap:12px;padding:12px 15px;font-size:14px}
+      .summary-row:nth-child(odd){background:#f7fafc}
+      .summary-label{color:var(--muted)}
+      .summary-value{font-weight:650;text-align:right}
+      .primary-btn{width:100%;font-size:16px;font-weight:700;padding:13px;cursor:pointer;border:0;border-radius:12px;
+                   color:#fff;background:linear-gradient(120deg,var(--att-blue),var(--att-sky));
+                   box-shadow:0 2px 10px rgba(0,87,184,.28);transition:transform .1s,box-shadow .15s}
+      .primary-btn:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,87,184,.34)}
+
+      .receipt-badge{width:62px;height:62px;border-radius:50%;background:#e6f7ef;color:#10a958;
+                     font-size:32px;display:flex;align-items:center;justify-content:center;margin:6px auto 18px;
+                     box-shadow:0 0 0 6px rgba(16,169,88,.08)}
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="appbar">
+        <div class="brand">
+          <svg class="globe" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#39c2ff"/><stop offset="1" stop-color="#0057b8"/>
+              </linearGradient>
+            </defs>
+            <circle cx="17" cy="17" r="16" fill="url(#g)"/>
+            <g fill="none" stroke="#fff" stroke-width="1.6" opacity=".9" stroke-linecap="round">
+              <path d="M5 12 Q17 7 29 12"/><path d="M3.5 17 H30.5"/><path d="M5 22 Q17 27 29 22"/>
+            </g>
+          </svg>
+          <span class="wordmark">AT&amp;T</span>
+          <span class="appname">Phone Upgrade · Chat</span>
+        </div>
+        <div id="status" class="status idle">Idle</div>
+      </header>
+
+      <div class="toolbar">
+        <input id="user-id" class="uid" placeholder="user id — Generate, or paste to resume" autocomplete="off" spellcheck="false" />
+        <button id="generate" type="button">Generate</button>
+        <button id="start">Start chat</button>
+        <span class="hint">Generate a new id to start fresh, or paste an id from the voice channel to resume — then Start.</span>
+      </div>
+
+      <main class="layout">
+        <div class="col-left">
+          <section class="panel">
+            <div class="panel-title">Chat</div>
+            <div id="transcript" class="transcript"></div>
+            <div class="composer">
+              <input id="msg" type="text" placeholder="Type a message…" autocomplete="off" disabled />
+              <button id="send" disabled>Send</button>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-title">Component response (JSON)</div>
+            <pre id="raw-json" class="raw"></pre>
+          </section>
+        </div>
+        <section class="panel screen">
+          <div class="panel-title">Screen</div>
+          <div id="ui-root"><div class="screen-empty">Your upgrade options will appear here.</div></div>
+        </section>
+      </main>
+    </div>
+    <script src="./config.js"></script>
+    <script type="module" src="./chat.js?v=1"></script>
+  </body>
+</html>
