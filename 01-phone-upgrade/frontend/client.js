@@ -229,15 +229,19 @@ startBtn.onclick = async () => {
   };
   socket.onerror = () => { try { socket.close(); } catch (e) {} };
   micStop = await startMic((b64) => {
-    // Half-duplex + startup gate: never send mic audio (a) before the agent's first
-    // output this call (`agentStarted`) or (b) while the agent is speaking. (a) is
-    // critical: streaming mic during the engine's busy greeting/setup phase overflows
-    // its inbound queue (QueueFull -> 1011 "Reasoning Engine Execution failed", no
-    // greeting). (b) stops the agent hearing itself through the speakers. Guard on the
-    // captured `socket` so a torn-down call's mic can't send to a new one.
+    // Send mic audio only when ALL hold:
+    //  - socket is the current open call (a torn-down call's mic can't send to a new one)
+    //  - agentStarted: not before the agent's first output — streaming during the
+    //    engine's busy greeting/setup phase overflows its inbound queue (QueueFull ->
+    //    1011 "Reasoning Engine Execution failed", no greeting)
+    //  - !isAgentSpeaking(): half-duplex, so the agent doesn't hear itself
+    //  - !document.hidden: the voice tab is the foreground tab. Without this, switching
+    //    to the chat tab leaves this mic live; it captures ambient/room audio (e.g. a TV
+    //    ad), which Gemini transcribes as "user input" on the SHARED session and drives
+    //    the voice agent to act (e.g. speak a closing) behind your back.
     if (
       socket.readyState === WebSocket.OPEN && ws === socket &&
-      agentStarted && !isAgentSpeaking()
+      agentStarted && !isAgentSpeaking() && !document.hidden
     ) {
       socket.send(JSON.stringify({ type: "audio", data: b64 }));
     }
