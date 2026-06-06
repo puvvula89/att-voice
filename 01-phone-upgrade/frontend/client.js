@@ -8,6 +8,7 @@ import { renderComponent } from "./components.js?v=2";
 let ws = null;
 let micStop = null;        // stop() handle for the active mic capture
 let agentStarted = false;  // true once the agent produces its first output this call (see mic gate)
+let muted = false;         // user mic toggle (Mute button) — when true, no mic audio is sent
 
 // Fully release the previous call: stop the mic and close the socket. Called
 // before starting a new call and when a call ends, so repeated calls in one tab
@@ -133,6 +134,9 @@ function startStatusLoop() {
     } else if (isAgentSpeaking()) {
       pill.textContent = "AT&T speaking";
       pill.className = "status agent";
+    } else if (muted) {
+      pill.textContent = "Mic muted";
+      pill.className = "status idle";
     } else if (performance.now() - lastUserAt < 800) {
       pill.textContent = "You speaking";
       pill.className = "status user";
@@ -160,6 +164,8 @@ function endCall() {
   root.append(p);
   curBubble.user = curBubble.agent = null;
   teardown();   // stop mic + close socket so the next call starts clean
+  setMuted(false);                 // reset the toggle for the next call
+  document.getElementById("mute").disabled = true;
   // Keep the user_id in the field so it can be reused or copied to another
   // channel; click Generate for a fresh identity to start a new conversation.
   const startBtn = document.getElementById("start");
@@ -200,6 +206,16 @@ function handleMessage(e) {
   }
 }
 
+// Mic mute toggle — lets the user stop sending mic audio without ending the call
+// (e.g. background noise, or stepping away). Enabled only during a call.
+const muteBtn = document.getElementById("mute");
+function setMuted(on) {
+  muted = on;
+  muteBtn.textContent = on ? "Unmute" : "Mute";
+  muteBtn.classList.toggle("muted", on);
+}
+muteBtn.onclick = () => setMuted(!muted);
+
 // Audio playback (and mic) must start from a user gesture, or the browser keeps
 // the AudioContext suspended and no model audio is heard.
 const startBtn = document.getElementById("start");
@@ -231,21 +247,21 @@ startBtn.onclick = async () => {
   micStop = await startMic((b64) => {
     // Send mic audio only when ALL hold:
     //  - socket is the current open call (a torn-down call's mic can't send to a new one)
+    //  - !muted: the user has the mic on (Mute button) — lets them stop the agent from
+    //    hearing the room (e.g. a TV) when they're not actively speaking
     //  - agentStarted: not before the agent's first output — streaming during the
     //    engine's busy greeting/setup phase overflows its inbound queue (QueueFull ->
     //    1011 "Reasoning Engine Execution failed", no greeting)
     //  - !isAgentSpeaking(): half-duplex, so the agent doesn't hear itself
-    //  - !document.hidden: the voice tab is the foreground tab. Without this, switching
-    //    to the chat tab leaves this mic live; it captures ambient/room audio (e.g. a TV
-    //    ad), which Gemini transcribes as "user input" on the SHARED session and drives
-    //    the voice agent to act (e.g. speak a closing) behind your back.
     if (
       socket.readyState === WebSocket.OPEN && ws === socket &&
-      agentStarted && !isAgentSpeaking() && !document.hidden
+      !muted && agentStarted && !isAgentSpeaking()
     ) {
       socket.send(JSON.stringify({ type: "audio", data: b64 }));
     }
   });
+  setMuted(false);                 // start each call with the mic live…
+  muteBtn.disabled = false;        // …and the toggle available
   startBtn.textContent = "Listening…";
 };
 

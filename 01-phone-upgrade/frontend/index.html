@@ -49,6 +49,11 @@
       #generate{font-size:13px;font-weight:600;padding:10px 16px;cursor:pointer;border:1px solid var(--att-blue);
            border-radius:999px;background:#fff;color:var(--att-blue);transition:background .12s}
       #generate:hover{background:#eef5ff}
+      #mute{font-size:13px;font-weight:600;padding:10px 16px;cursor:pointer;border:1px solid var(--att-blue);
+           border-radius:999px;background:#fff;color:var(--att-blue);transition:background .12s}
+      #mute:hover:not(:disabled){background:#eef5ff}
+      #mute:disabled{opacity:.45;cursor:default}
+      #mute.muted{background:#c8102e;border-color:#c8102e;color:#fff}
       .hint{font-size:13px;color:var(--muted)}
 
       /* ---- Layout: left (transcript + json) | right (screen) ---- */
@@ -151,6 +156,7 @@
         <input id="user-id" class="uid" placeholder="user id — Generate, or paste to resume" autocomplete="off" spellcheck="false" />
         <button id="generate" type="button">Generate</button>
         <button id="start">Start call</button>
+        <button id="mute" type="button" disabled>Mute</button>
         <span class="hint">Generate a new id to start fresh, or paste an id from another channel to resume — then Start.</span>
       </div>
 
@@ -172,6 +178,6 @@
       </main>
     </div>
     <script src="./config.js"></script>
-    <script type="module" src="./client.js?v=12"></script>
+    <script type="module" src="./client.js?v=13"></script>
   </body>
 </html>
