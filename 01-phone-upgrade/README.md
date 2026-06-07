@@ -1,16 +1,23 @@
-# 01 — Phone Upgrade (voice)
+# 01 — Phone Upgrade (voice + chat)
 
-Voice phone-upgrade agent on Google ADK + Gemini Live. Speak naturally; the agent
-talks back **and** drives an on-screen UI (line picker → phone options → confirmation
-→ receipt). You can advance the flow by **voice or by clicking** the cards.
+Phone-upgrade agent on Google ADK + Gemini Live, in **two channels**:
 
-## How it works — end-to-end flow
+- **Voice** — speak naturally; the agent talks back (Gemini Live native audio).
+- **Chat** — type; a text model answers.
 
-Four cloud services, one WebSocket. The browser loads the page from the **UI** service, then
-opens a single WebSocket to the **relay**, which proxies a bidi stream to the **voice agent** on
-Agent Engine; the agent calls the **MCP tools** for data and emits each `render_component` as a
-`pending_ui` state delta — the model never hand-writes UI. (Locally the relay runs the agent
-in-process via `run_live` instead of proxying — same wire protocol; see the topology toggle below.)
+Both drive the **same** on-screen UI (line picker → phone options → confirmation → receipt)
+and **share one session**, so you can start in one channel and continue in the other from where
+you left off. Advance the flow by voice, by typing, or by clicking the cards. A **Mute** button on
+the voice UI lets you stop sending mic audio without ending the call.
+
+## How it works — end-to-end flow (voice channel)
+
+This section diagrams the **voice** path; the [chat channel](#the-chat-channel) is a parallel
+text path described below. The browser loads the page from the **UI** service, then opens a single
+WebSocket to the **relay**, which proxies a bidi stream to the **voice agent** on Agent Engine; the
+agent calls the **MCP tools** for data and emits each `render_component` as a `pending_ui` state
+delta — the model never hand-writes UI. (Locally the relay runs the agent in-process via `run_live`
+instead of proxying — same wire protocol; see the topology toggle below.)
 
 ```
         ┌──────────────────────────┐                                   ┌──────────────────────────┐
@@ -136,6 +143,32 @@ code change.
 > Agent Engine docs were reorganized under "Gemini Enterprise Agent Platform" — older
 > `cloud.google.com/vertex-ai/...` links now redirect to a generic landing page; use the links above.
 
+## The chat channel
+
+The chat channel mirrors voice with text, reusing the **same** MCP tools, `render_component`
+callbacks, and `frontend/components.js` — so it drives the identical four screens. Only the
+transport and model differ:
+
+- **Frontend:** `frontend/chat.html` + `chat.js` (a text composer instead of a mic), same `components.js`.
+- **Relay path:** the browser opens `wss://<relay>/chat/{user_id}`; the relay proxies **one turn at a
+  time** to the chat agent's `async_stream_query` op (not a bidi stream — chat is request/response).
+- **Chat agent:** a **separate** Agent Engine running a text model (`CHAT_MODEL`, default
+  `gemini-2.5-flash`) — *not* a Live model, so there is no hop-3 voice WebSocket.
+
+**Shared session = cross-channel handoff.** Both agents point `VertexAiSessionService` at the **same**
+`SESSION_ENGINE_ID` (one designated Agent Engine id used by *both*, not each engine's own). Resume is
+anchored on `user_id`: connect with a `user_id` and the server resumes that user's latest session
+(`backend/session_resolve.py`), so a flow started in voice continues in chat — and vice versa — with
+both the conversation **and** the picked line/phone carried over.
+
+**Chat wire protocol** adds one browser→relay message; everything relay→browser is shared with voice:
+
+| Direction | Message | Meaning |
+|---|---|---|
+| browser → relay | `{type:"user_message", text}` | a typed turn |
+| browser → relay | `{type:"user_action", selection}` | a card click |
+| relay → browser | `{type:"ui_event"}` / `{type:"transcript"}` / `{type:"session_end"}` | same as voice (no audio frames) |
+
 ## Setup (ADC / Vertex AI)
 1. `python -m venv .venv && source .venv/bin/activate`
 2. `pip install -r requirements.txt`
@@ -164,10 +197,15 @@ In another terminal: `cd frontend && python -m http.server 5500`, open http://lo
 
 > Run adk web and the relay on different ports (adk web on 8001, relay on 8000) — the frontend expects the relay on :8000.
 
+> **Chat locally:** the voice channel runs in-process, but chat has no in-process mode — `/chat` always
+> proxies to a deployed chat engine. To exercise `chat.html` locally, deploy a chat engine and set
+> `CHAT_AGENT_ENGINE_NAME` (and `SESSION_ENGINE_ID`) before starting the relay; otherwise use voice locally
+> and both channels in the hosted deploy.
+
 ## Deploy to Google Cloud (fully hosted)
 
 One command stands the **entire** stack up on Google Cloud — UI, relay, voice agent,
-and MCP tools — from a clean project. All config comes from `.env`; nothing is hardcoded.
+**chat agent**, and MCP tools — from a clean project. All config comes from `.env`; nothing is hardcoded.
 
 ```bash
 cp .env.example .env                        # set GOOGLE_CLOUD_PROJECT (+ region/names if you like)
@@ -175,12 +213,13 @@ gcloud auth application-default login       # ADC for the deploy
 deploy/deploy_all.sh                         # builds + deploys everything, prints the UI URL
 ```
 
-`deploy_all.sh` runs the four hops in order and **threads each step's output into the next**
-(no hand-wiring): MCP → captures its URL → agent on Agent Engine (with that URL) → captures the
-engine id → relay (with the engine name) → UI (with the relay URL injected into `config.js`).
-Typical cold build is ~7–8 min. Open the printed **UI URL** and click **Start**.
+`deploy_all.sh` runs the five steps in order and **threads each step's output into the next**
+(no hand-wiring): MCP → captures its URL → **voice** agent on Agent Engine (with that URL) → captures
+its engine id (the shared session store) → **chat** agent on a separate Agent Engine (pointed at that
+same session id) → relay (with both engine names) → UI (with the relay URL injected into `config.js`).
+Typical cold build is ~8–10 min. Open the printed **UI URL** (voice) or **`/chat.html`** (chat) and click **Start**.
 
-Tear it **all** back down (stops billing — deletes the 3 Cloud Run services, the Agent Engine, and the bucket):
+Tear it **all** back down (stops billing — deletes the 3 Cloud Run services, **both** Agent Engines, and the bucket):
 
 ```bash
 deploy/destroy_all.sh
@@ -190,24 +229,28 @@ deploy/destroy_all.sh
 
 ```bash
 export SSL_CERT_FILE=$(python -m certifi)
-python deploy/probe_agent_engine.py         # agent + MCP, direct to Agent Engine → 4 screens + audio
+python deploy/probe_agent_engine.py         # voice agent + MCP, direct to Agent Engine → 4 screens + audio
 RELAY_WSS=wss://<relay-host> python deploy/probe_relay_ws.py   # browser → relay → AE path → 4 screens + audio
+python deploy/probe_resume.py               # resume by user_id across reconnects (no re-greet, no stale screen)
+python deploy/probe_handoff.py              # cross-channel: start in voice → resume in chat on the shared session
 ```
 
-### The four services
+### The five services
 
 `deploy_all.sh` deploys these in order, threading each one's output into the next:
 
 | # | Service | Platform | What it does |
 |---|---|---|---|
-| 1 | **MCP data tools** (`att-mcp-phone-upgrade`) | Cloud Run · FastMCP | Stateless data API at `/mcp` — looks up account lines, phone catalog, pricing, and places the order. The agent's only data source. |
-| 2 | **Voice agent** (`att-phone-upgrade-live`) | Vertex AI Agent Engine | The brain. Gemini Live native-audio agent (bidi) that listens, talks, calls the MCP tools, and emits each `render_component` as a `pending_ui` state delta. Custom `bidi_stream_query` server mode. |
-| 3 | **Relay** (`att-phone-upgrade-relay`) | Cloud Run | The single endpoint the browser connects to. Proxies the browser WebSocket ⇄ the agent's bidi stream; translates events into the browser wire protocol. Kept warm (`--min-instances 1`) to avoid cold-start 503s. |
-| 4 | **UI** (`att-phone-upgrade-ui`) | Cloud Run | Static frontend (mic capture + card rendering). Served over HTTPS so the mic works; the relay URL is injected into `config.js` at deploy time. |
+| 1 | **MCP data tools** (`att-mcp-phone-upgrade`) | Cloud Run · FastMCP | Stateless data API at `/mcp` — looks up account lines, phone catalog, pricing, and places the order. The agents' only data source. |
+| 2 | **Voice agent** (`att-phone-upgrade-live`) | Vertex AI Agent Engine | Gemini Live native-audio agent (bidi) that listens, talks, calls the MCP tools, and emits each `render_component` as a `pending_ui` state delta. Custom `bidi_stream_query` server mode. Its engine id is the **shared session store** for both channels. |
+| 3 | **Chat agent** (`att-phone-upgrade-chat`) | Vertex AI Agent Engine | Text model (`CHAT_MODEL`) on a **separate** engine, same tools + `render_component` for UI parity. Standard `async_stream_query` op (no EXPERIMENTAL mode). Configured with the voice engine's `SESSION_ENGINE_ID` so sessions are shared. |
+| 4 | **Relay** (`att-phone-upgrade-relay`) | Cloud Run | The single endpoint the browser connects to. `/ws/{user}` proxies the voice **bidi** stream; `/chat/{user}` proxies **chat** `async_stream_query`. Translates both into one browser wire protocol. Kept warm (`--min-instances 1`) to avoid cold-start 503s. |
+| 5 | **UI** (`att-phone-upgrade-ui`) | Cloud Run | Static frontend — `index.html` (voice, mic + Mute) and `chat.html` (text composer), shared `components.js`. Served over HTTPS so the mic works; served `no-store` (`serve.py`) so a redeploy is never cached; the relay URL is injected into `config.js` at deploy time. |
 
-The **relay topology toggle** lives in `backend/server.py`: with `AGENT_ENGINE_NAME` set it proxies to
-Agent Engine (cloud, above); unset, it runs the agent in-process via `run_live` (local dev, option B).
-Same browser wire protocol either way — see the table above.
+The **relay topology toggle** lives in `backend/server.py`: with `AGENT_ENGINE_NAME` set the voice path
+proxies to Agent Engine (cloud, above); unset, it runs the voice agent in-process via `run_live` (local
+dev, option B). The chat path (`/chat`) always proxies to the deployed chat engine (`CHAT_AGENT_ENGINE_NAME`).
+Same browser wire protocol either way — see the tables above.
 
 ### Prerequisites
 
@@ -222,21 +265,26 @@ Same browser wire protocol either way — see the table above.
 |---|---|
 | `GOOGLE_CLOUD_PROJECT` | **required** — target project |
 | `GOOGLE_CLOUD_LOCATION` | region (default `us-central1`) |
-| `LIVE_MODEL`, `LIVE_VOICE` | Live model id + prebuilt voice |
+| `LIVE_MODEL`, `LIVE_VOICE` | voice Live model id + prebuilt voice |
+| `CHAT_MODEL` | chat agent text model (default `gemini-2.5-flash`) |
+| `SESSION_ENGINE_ID` | the ONE Agent Engine id both channels use as the shared session store (set automatically by `deploy_all.sh` to the voice engine's id; set it yourself only for partial/manual deploys) |
 | `MCP_SERVICE`, `RELAY_SERVICE`, `UI_SERVICE` | Cloud Run service names |
-| `AGENT_DISPLAY_NAME` | Agent Engine display name |
+| `AGENT_DISPLAY_NAME`, `CHAT_DISPLAY_NAME` | Agent Engine display names (voice / chat) |
 | `AE_STAGING_BUCKET` | staging bucket (default `<project>-agent-engine`) |
 | `RELAY_MIN_INSTANCES` | keep a relay warm (default `1`; `0` to save cost) |
-| `MCP_SERVER_URL`, `AGENT_ENGINE_NAME` | produced by the deploy script — don't hand-set |
+| `MCP_SERVER_URL`, `AGENT_ENGINE_NAME`, `CHAT_AGENT_ENGINE_NAME` | produced by the deploy script — don't hand-set |
 
 ### What each step runs (for manual/partial deploys)
 
 1. **MCP** — `gcloud run deploy $MCP_SERVICE --source mcp_server …` → captures its URL as `MCP_SERVER_URL`.
-2. **Agent** — `python deploy/deploy_agent_engine.py` packages `backend/` as source, wires `MCP_SERVER_URL`,
+2. **Voice agent** — `python deploy/deploy_agent_engine.py` packages `backend/` as source, wires `MCP_SERVER_URL`,
    deploys in EXPERIMENTAL server mode (required for bidi) with `python_version=3.12` (no py3.14 base image).
    Do **not** set the reserved `GOOGLE_CLOUD_PROJECT` env var on the engine. (Preview; ~10-min/stream limit.)
-3. **Relay** — `gcloud run deploy $RELAY_SERVICE --source . …` with `AGENT_ENGINE_NAME` set → proxy mode.
-4. **UI** — `gcloud run deploy $UI_SERVICE --source frontend …` (HTTPS → mic works), relay URL injected into `config.js` first.
+   Its numeric engine id becomes `SESSION_ENGINE_ID` (the shared session store).
+3. **Chat agent** — `python deploy/deploy_chat_engine.py` with `SESSION_ENGINE_ID` set (required) → a separate
+   engine on `CHAT_MODEL`, standard server mode (no EXPERIMENTAL). → captures `CHAT_AGENT_ENGINE_NAME`.
+4. **Relay** — `gcloud run deploy $RELAY_SERVICE --source . …` with `AGENT_ENGINE_NAME` **and** `CHAT_AGENT_ENGINE_NAME` set → proxy mode for both channels.
+5. **UI** — `gcloud run deploy $UI_SERVICE --source frontend …` (HTTPS → mic works), relay URL injected into `config.js` first.
 
 ## Test
 `pytest tests/ -v` (from `01-phone-upgrade/`)
