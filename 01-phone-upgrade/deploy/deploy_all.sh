@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # One-command deploy of the whole stack to ANY GCP project. All config from .env.
-#   MCP (Cloud Run) -> agent (Agent Engine) -> relay (Cloud Run) -> UI (Cloud Run)
-# Dynamic outputs (URLs, engine id) are captured and threaded between steps.
+#   MCP (Cloud Run) -> voice agent (Agent Engine) -> chat agent (Agent Engine)
+#   -> relay (Cloud Run) -> UI (Cloud Run)
+# Dynamic outputs (URLs, engine ids) are captured and threaded between steps.
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -25,7 +26,7 @@ export SSL_CERT_FILE="${SSL_CERT_FILE:-$("$PY" -m certifi 2>/dev/null || echo ""
 echo "▶ Deploying to project=$PROJECT region=$REGION"
 
 # 1. MCP data-tool server.
-echo "▶ [1/4] MCP server ($MCP_SERVICE)…"
+echo "▶ [1/5] MCP server ($MCP_SERVICE)…"
 gcloud run deploy "$MCP_SERVICE" --source mcp_server --region "$REGION" --project "$PROJECT" \
   --port 8080 --allow-unauthenticated --quiet
 MCP_BASE="$(gcloud run services describe "$MCP_SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
