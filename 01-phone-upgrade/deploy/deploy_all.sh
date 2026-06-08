@@ -33,14 +33,19 @@ MCP_BASE="$(gcloud run services describe "$MCP_SERVICE" --region "$REGION" --pro
 export MCP_SERVER_URL="${MCP_BASE}/mcp"
 echo "   MCP_SERVER_URL=$MCP_SERVER_URL"
 
-# 2. Voice agent on Agent Engine (consumes MCP_SERVER_URL). Deploy with
-#    SESSION_ENGINE_ID unset so it uses its OWN id as the shared session store;
-#    the chat engine then points here for cross-channel handoff.
+# 2. Voice agent on Agent Engine (consumes MCP_SERVER_URL). Idempotent: the script
+#    UPDATES the engine in place (same id) if it already exists, else creates it —
+#    so re-deploying a change never makes a duplicate or moves the engine id.
+#    Session store: PINNED to SESSION_ENGINE_ID from .env if set (e.g. a dedicated
+#    session-backing engine); otherwise it falls back to the voice engine's own id,
+#    which is now stable across deploys. Either way the id no longer moves, so chat
+#    keeps resolving the same sessions and live conversations survive an update.
+PINNED_SESSION_ENGINE_ID="${SESSION_ENGINE_ID:-}"
 echo "▶ [2/5] Voice Agent Engine (staging gs://$AE_STAGING_BUCKET)…"
 gcloud storage buckets create "gs://$AE_STAGING_BUCKET" --location "$REGION" --project "$PROJECT" 2>/dev/null || true
-AE_STAGING_BUCKET="$AE_STAGING_BUCKET" MCP_SERVER_URL="$MCP_SERVER_URL" SESSION_ENGINE_ID="" "$PY" deploy/deploy_agent_engine.py
+AE_STAGING_BUCKET="$AE_STAGING_BUCKET" MCP_SERVER_URL="$MCP_SERVER_URL" SESSION_ENGINE_ID="$PINNED_SESSION_ENGINE_ID" "$PY" deploy/deploy_agent_engine.py
 AGENT_ENGINE_NAME="$(cat deploy/.engine_name)"
-SESSION_ENGINE_ID="${AGENT_ENGINE_NAME##*/}"   # numeric id = shared session store for BOTH channels
+SESSION_ENGINE_ID="${PINNED_SESSION_ENGINE_ID:-${AGENT_ENGINE_NAME##*/}}"   # pinned, else the (stable) voice id
 echo "   AGENT_ENGINE_NAME=$AGENT_ENGINE_NAME (session store=$SESSION_ENGINE_ID)"
 
 # 3. Chat agent on a SEPARATE Agent Engine, configured with the voice engine's

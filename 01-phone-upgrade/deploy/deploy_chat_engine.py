@@ -47,11 +47,7 @@ ENV_VARS = {
 
 client = vertexai.Client(project=PROJECT, location=LOCATION)
 
-print(f"Deploying CHAT agent to Agent Engine (project={PROJECT}, region={LOCATION}, "
-      f"session_engine={SESSION_ENGINE_ID})... builds a container, ~several minutes.")
-engine = client.agent_engines.create(
-    agent=chat_agent,
-    config=vtypes.AgentEngineConfig(
+cfg = vtypes.AgentEngineConfig(
         display_name=DISPLAY_NAME,
         description="Phone-upgrade chat (text) agent; shares the voice session store.",
         staging_bucket=f"gs://{BUCKET}",
@@ -68,8 +64,26 @@ engine = client.agent_engines.create(
         # No agent_server_mode=EXPERIMENTAL — async_stream is a standard op.
         # GOOGLE_CLOUD_PROJECT / GOOGLE_CLOUD_LOCATION are reserved (AE auto-provides them).
         env_vars=ENV_VARS,
-    ),
 )
+
+# Idempotent deploy: UPDATE in place if a chat engine with this display name exists,
+# else create. Keeps the chat engine id stable across deploys (see
+# deploy_agent_engine.py); only the first run creates.
+existing = next(
+    (e for e in client.agent_engines.list()
+     if getattr(e.api_resource, "display_name", "") == DISPLAY_NAME),
+    None,
+)
+if existing is not None:
+    name = existing.api_resource.name
+    print(f"Updating existing CHAT Agent Engine {name.split('/')[-1]} in place "
+          f"(session_engine={SESSION_ENGINE_ID})... rebuilds the container, ~several minutes.")
+    engine = client.agent_engines.update(name=name, agent=chat_agent, config=cfg)
+else:
+    print(f"Creating CHAT Agent Engine (project={PROJECT}, region={LOCATION}, "
+          f"session_engine={SESSION_ENGINE_ID})... builds a container, ~several minutes.")
+    engine = client.agent_engines.create(agent=chat_agent, config=cfg)
+
 name = engine.api_resource.name
 print("DEPLOYED:", name)
 (ROOT / "deploy" / ".chat_engine_name").write_text(name)

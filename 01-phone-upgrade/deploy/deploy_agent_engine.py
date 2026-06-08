@@ -44,10 +44,7 @@ if SESSION_ENGINE_ID:
 
 client = vertexai.Client(project=PROJECT, location=LOCATION)
 
-print(f"Deploying agent to Agent Engine (project={PROJECT}, region={LOCATION})... builds a container, ~several minutes.")
-engine = client.agent_engines.create(
-    agent=live_agent,
-    config=vtypes.AgentEngineConfig(
+cfg = vtypes.AgentEngineConfig(
         display_name=DISPLAY_NAME,
         description="Phone-upgrade voice agent (Live/bidi) consuming the MCP data tools.",
         staging_bucket=f"gs://{BUCKET}",
@@ -71,8 +68,27 @@ engine = client.agent_engines.create(
         agent_server_mode=vtypes.AgentServerMode.EXPERIMENTAL,
         # GOOGLE_CLOUD_PROJECT / GOOGLE_CLOUD_LOCATION are reserved (AE auto-provides them).
         env_vars=ENV_VARS,
-    ),
 )
+
+# Idempotent deploy: if an engine with this display name already exists, UPDATE it
+# in place (same resource id) rather than creating a new one. Updating keeps the
+# engine id stable, so SESSION_ENGINE_ID never moves and live sessions survive the
+# deploy — no destroy-and-recreate needed to ship a change. Only the first deploy
+# creates; every later run is an in-place update.
+existing = next(
+    (e for e in client.agent_engines.list()
+     if getattr(e.api_resource, "display_name", "") == DISPLAY_NAME),
+    None,
+)
+if existing is not None:
+    name = existing.api_resource.name
+    print(f"Updating existing Agent Engine {name.split('/')[-1]} in place "
+          f"(project={PROJECT}, region={LOCATION})... rebuilds the container, ~several minutes.")
+    engine = client.agent_engines.update(name=name, agent=live_agent, config=cfg)
+else:
+    print(f"Creating Agent Engine (project={PROJECT}, region={LOCATION})... builds a container, ~several minutes.")
+    engine = client.agent_engines.create(agent=live_agent, config=cfg)
+
 name = engine.api_resource.name
 print("DEPLOYED:", name)
 (ROOT / "deploy" / ".engine_name").write_text(name)
