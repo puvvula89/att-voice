@@ -169,25 +169,45 @@ both the conversation **and** the picked line/phone carried over.
 | browser → relay | `{type:"user_action", selection}` | a card click |
 | relay → browser | `{type:"ui_event"}` / `{type:"transcript"}` / `{type:"session_end"}` | same as voice (no audio frames) |
 
-## Setup (ADC / Vertex AI)
-1. `python -m venv .venv && source .venv/bin/activate`
-2. `pip install -r requirements.txt`
-3. `gcloud auth application-default login`
-4. `cp .env.example .env` and set `GOOGLE_CLOUD_PROJECT` (and region if not us-central1).
+## Running it — three self-contained approaches
+
+Pick one of A, B, or C below. **Each section repeats its full prerequisites**, so you can follow any
+one start-to-finish without jumping around. All three (including the **cloud deploy**) need the local
+Python tooling in a `.venv` — the deploy scripts run *on your machine* to orchestrate the cloud build,
+so the venv is required even when you're only deploying to the cloud. Run everything from `01-phone-upgrade/`.
 
 ## Run — option A: adk web (quick agent/voice test, generic dev UI)
 Shows ADK's built-in dev UI (voice + tool-call trace). Does NOT render the custom phone-upgrade cards.
-```
-export SSL_CERT_FILE=$(python -m certifi)   # required for voice
-adk web phone_upgrade --port 8001           # point at the agent folder
+
+```bash
+# --- prerequisites (one-time) ---
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+gcloud auth application-default login              # ADC for Vertex
+cp .env.example .env                               # then set GOOGLE_CLOUD_PROJECT (+ region if not us-central1)
+
+# --- run ---
+export SSL_CERT_FILE=$(python -m certifi)          # required for voice
+adk web phone_upgrade --port 8001                  # point at the agent folder
 ```
 Open the printed URL, select `phone_upgrade`, click the mic.
 
 > Pass the agent folder (`phone_upgrade`) explicitly. Plain `adk web` from the module root lists every subdirectory (`backend`, `frontend`, `tests`) as bogus agents; pointing at the single agent folder shows only `phone_upgrade`.
 
 ## Run — option B: FastAPI relay + custom UI (the full demo)
-The data tools are served by a separate MCP server, so start it first:
+Runs the voice agent in-process and renders the real phone-upgrade cards.
+
+```bash
+# --- prerequisites (one-time) ---
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+gcloud auth application-default login              # ADC for Vertex
+cp .env.example .env                               # then set GOOGLE_CLOUD_PROJECT (+ region if not us-central1)
+export SSL_CERT_FILE=$(python -m certifi)          # required for voice
 ```
+
+The data tools are served by a separate MCP server, so start it first:
+```bash
 python -m mcp_server.server                 # MCP data tools, streamable-HTTP on :9000
 uvicorn backend.server:app --reload         # :8000  (run from 01-phone-upgrade/)
 ```
@@ -207,10 +227,23 @@ In another terminal: `cd frontend && python -m http.server 5500`, open http://lo
 One command stands the **entire** stack up on Google Cloud — UI, relay, voice agent,
 **chat agent**, and MCP tools — from a clean project. All config comes from `.env`; nothing is hardcoded.
 
+> **The deploy runs on your machine.** `deploy_all.sh` → `deploy/*.py` execute locally using the
+> Vertex SDK to package the agents and trigger the cloud builds — so you need the local `.venv` with
+> `requirements.txt` installed **even though you're deploying to the cloud**. Skipping it fails at
+> `import dotenv` / `import vertexai` on the first Python step (the voice agent).
+
 ```bash
-cp .env.example .env                        # set GOOGLE_CLOUD_PROJECT (+ region/names if you like)
-gcloud auth application-default login       # ADC for the deploy
-deploy/deploy_all.sh                         # builds + deploys everything, prints the UI URL
+# --- prerequisites (one-time) ---
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt                    # local deploy tooling (incl. the Vertex SDK)
+gcloud auth application-default login               # ADC for the deploy
+cp .env.example .env                                # then set GOOGLE_CLOUD_PROJECT (+ region/names if you like)
+# enable the APIs the build uses (once per project):
+gcloud services enable aiplatform.googleapis.com run.googleapis.com \
+  cloudbuild.googleapis.com artifactregistry.googleapis.com storage.googleapis.com
+
+# --- deploy everything (prints the UI URL) ---
+deploy/deploy_all.sh
 ```
 
 `deploy_all.sh` runs the five steps in order and **threads each step's output into the next**

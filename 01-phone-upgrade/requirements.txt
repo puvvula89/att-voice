@@ -1,4 +1,15 @@
-google-adk>=2.0,<3
+# Local tooling + relay (Cloud Run) dependencies. Mirrors the pinned stack baked
+# into the Agent Engines (see deploy/deploy_agent_engine.py / deploy_chat_engine.py)
+# so local == remote: a clean `pip install -r requirements.txt` can both DEPLOY
+# (deploy/*.py + deploy_all.sh) and RUN the relay (backend/server.py).
+#
+# google-cloud-aiplatform provides the `vertexai` module — imported by every deploy
+# script AND by backend/server.py for the Agent Engine proxy + chat. It was missing
+# here, so a clean install failed at `import vertexai` even though it worked in a
+# hand-curated venv. Declare what we import; don't lean on transitive deps.
+google-cloud-aiplatform[agent_engines]
+google-adk==2.1.0        # pinned: adk 2.2.0 regressed Vertex Live resume (pulls genai 2.x); 2.1.0 keeps genai <2,>=1.72
+cloudpickle==3.1.2
 mcp
 fastapi
 uvicorn[standard]
