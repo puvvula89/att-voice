@@ -17,6 +17,7 @@ reaches the MCP data tools via ``MCP_SERVER_URL`` (set as an AE env var).
 Client → app message protocol (dicts placed on the request queue):
     {"user_id": "<id>", "session_id": "<id|null>"}  first message: resume or create
     {"type": "audio", "data": "<b64 pcm>"}  16 kHz PCM16, base64
+    {"type": "user_message", "text": "<text>"}  typed turn (voice channel); reply is audio
     {"type": "user_action", "selection": "<text>"}
     {"type": "end"}                         close the stream
 
@@ -116,7 +117,7 @@ class LiveAgentApp:
         )
 
         async def pump():
-            """Client → agent: audio blobs and user_action selections."""
+            """Client → agent: audio blobs, typed messages, and user_action selections."""
             while True:
                 msg = await request_queue.get()
                 if msg is None:
@@ -126,6 +127,13 @@ class LiveAgentApp:
                     pcm = base64.b64decode(msg["data"])
                     live_queue.send_realtime(
                         types.Blob(data=pcm, mime_type="audio/pcm;rate=16000")
+                    )
+                elif kind == "user_message":
+                    # Typed turn on the voice channel: a free-form text turn into the
+                    # same Live session. Response stays AUDIO (response_modalities),
+                    # so the agent talks back. Client flushes playback for barge-in.
+                    live_queue.send_content(
+                        types.Content(role="user", parts=[types.Part(text=msg["text"])])
                     )
                 elif kind == "user_action":
                     text = f'user selected {msg["selection"]}'

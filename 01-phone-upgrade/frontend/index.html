@@ -78,6 +78,15 @@
                    background:linear-gradient(120deg,var(--att-blue),var(--att-sky))}
       .bubble.user .who{color:#dbeefb;opacity:.9}
 
+      /* ---- Composer (type a turn; agent replies in voice) ---- */
+      .composer{display:flex;gap:10px;margin-top:12px}
+      #msg{flex:1;font-size:14px;padding:11px 14px;border:1px solid #cdd8e4;border-radius:999px;outline:none}
+      #msg:focus{border-color:var(--att-blue)}
+      #msg:disabled{background:#f4f7fa}
+      #send{font-size:14px;font-weight:600;padding:11px 20px;cursor:pointer;border:0;border-radius:999px;
+            color:#fff;background:linear-gradient(120deg,var(--att-blue),var(--att-sky))}
+      #send:disabled{opacity:.55;cursor:default}
+
       /* ---- Raw JSON (terminal style) ---- */
       .raw{margin:0;max-height:260px;overflow:auto;background:#0b1220;color:#cfe3ff;border-radius:10px;
            padding:14px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre}
@@ -165,6 +174,10 @@
           <section class="panel">
             <div class="panel-title">Transcript</div>
             <div id="transcript" class="transcript"></div>
+            <div class="composer">
+              <input id="msg" type="text" placeholder="Type a message (the agent replies in voice)…" autocomplete="off" disabled />
+              <button id="send" type="button" disabled>Send</button>
+            </div>
           </section>
           <section class="panel">
             <div class="panel-title">Component response (JSON)</div>
@@ -178,6 +191,6 @@
       </main>
     </div>
     <script src="./config.js"></script>
-    <script type="module" src="./client.js?v=13"></script>
+    <script type="module" src="./client.js?v=14"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { startMic, playFrame, unlockAudio, isAgentSpeaking, closePlayback } from "./audio.js?v=4";
+import { startMic, playFrame, unlockAudio, isAgentSpeaking, closePlayback, flushPlayback } from "./audio.js?v=5";
 import { renderComponent } from "./components.js?v=2";
 
 // The WebSocket is opened only when the user clicks "Start call" (below). The
@@ -166,6 +166,7 @@ function endCall() {
   teardown();   // stop mic + close socket so the next call starts clean
   setMuted(false);                 // reset the toggle for the next call
   document.getElementById("mute").disabled = true;
+  composerEnabled(false);          // disable typing once the call ends
   // Keep the user_id in the field so it can be reused or copied to another
   // channel; click Generate for a fresh identity to start a new conversation.
   const startBtn = document.getElementById("start");
@@ -216,6 +217,31 @@ function setMuted(on) {
 }
 muteBtn.onclick = () => setMuted(!muted);
 
+// Text composer — a typed turn on the voice channel. The agent always replies in
+// voice (response_modalities=AUDIO), so this is "type instead of speak", not chat.
+// The mic stays live; sending a typed turn barges in (flushes any queued agent
+// audio) so it cuts the agent off mid-sentence like talking over it would.
+const msgInput = document.getElementById("msg");
+const sendBtn = document.getElementById("send");
+function composerEnabled(on) {
+  msgInput.disabled = !on;
+  sendBtn.disabled = !on;
+  if (!on) msgInput.value = "";
+}
+function sendMessage() {
+  const text = (msgInput.value || "").trim();
+  if (!text) return;
+  if (!ws || ws.readyState !== WebSocket.OPEN) return;
+  flushPlayback();                                 // barge-in: cut the agent's current audio
+  appendTranscript("user", text, true);            // echo the typed turn like a spoken one
+  ws.send(JSON.stringify({ type: "user_message", text }));
+  msgInput.value = "";
+}
+sendBtn.onclick = sendMessage;
+msgInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") { e.preventDefault(); sendMessage(); }
+});
+
 // Audio playback (and mic) must start from a user gesture, or the browser keeps
 // the AudioContext suspended and no model audio is heard.
 const startBtn = document.getElementById("start");
@@ -240,6 +266,7 @@ startBtn.onclick = async () => {
   socket.onclose = () => {
     if (ws !== socket) return;
     ws = null;
+    composerEnabled(false);
     startBtn.disabled = false;
     startBtn.textContent = "Start call";
   };
@@ -262,6 +289,7 @@ startBtn.onclick = async () => {
   });
   setMuted(false);                 // start each call with the mic live…
   muteBtn.disabled = false;        // …and the toggle available
+  composerEnabled(true);           // …and let the user type a turn too
   startBtn.textContent = "Listening…";
 };
 
