@@ -9,6 +9,7 @@
 
 let _playCtx = null;
 let _nextPlayTime = 0;
+const _scheduled = new Set();        // live BufferSourceNodes scheduled ahead of real time (for barge-in flush)
 const OUTPUT_SAMPLE_RATE = 24000;   // Gemini Live native-audio output is 24 kHz, 16-bit PCM, LE. This is the BUFFER rate; the context runs at the device default and resamples each buffer. Do NOT force the context to this rate (see getPlayContext).
 
 /**
@@ -44,11 +45,27 @@ function getPlayContext() {
  * rather than reusing a stale one.
  */
 export function closePlayback() {
+  _scheduled.clear();
   if (_playCtx) {
     try { _playCtx.close(); } catch (e) {}
     _playCtx = null;
     _nextPlayTime = 0;
   }
+}
+
+/**
+ * Barge-in: stop everything scheduled ahead of real time and reset the playback
+ * cursor to now, so a new turn (typed or spoken) cuts off the agent mid-sentence
+ * instead of playing over it. Keeps the context alive (unlike closePlayback) — only
+ * the queued buffers are dropped. isAgentSpeaking() goes false immediately after,
+ * which also reopens the half-duplex mic gate.
+ */
+export function flushPlayback() {
+  for (const src of _scheduled) {
+    try { src.onended = null; src.stop(); } catch (e) {}
+  }
+  _scheduled.clear();
+  if (_playCtx) _nextPlayTime = _playCtx.currentTime;
 }
 
 /**
@@ -94,6 +111,11 @@ export function playFrame(base64Pcm) {
   const source = ctx.createBufferSource();
   source.buffer = buffer;
   source.connect(ctx.destination);
+
+  // Track scheduled sources so flushPlayback() can cut them off for barge-in;
+  // drop each from the set once it finishes on its own.
+  _scheduled.add(source);
+  source.onended = () => _scheduled.delete(source);
 
   const startAt = Math.max(ctx.currentTime, _nextPlayTime);
   source.start(startAt);

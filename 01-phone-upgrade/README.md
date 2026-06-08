@@ -2,7 +2,7 @@
 
 Phone-upgrade agent on Google ADK + Gemini Live, in **two channels**:
 
-- **Voice** — speak naturally; the agent talks back (Gemini Live native audio).
+- **Voice** — speak naturally (or type a turn in the composer); the agent always talks back (Gemini Live native audio).
 - **Chat** — type; a text model answers.
 
 Both drive the **same** on-screen UI (line picker → phone options → confirmation → receipt)
@@ -98,6 +98,7 @@ sequenceDiagram
 | Direction | Message | Meaning |
 |---|---|---|
 | browser → relay | `{type:"audio", data}` | mic frame, 16 kHz mono PCM, base64 (gated half-duplex while the agent speaks) |
+| browser → relay | `{type:"user_message", text}` | a typed turn — injected as a text turn into the same Live session; the agent still **replies in voice** (`response_modalities=AUDIO`). The browser flushes queued playback first, so a typed turn barges in mid-sentence. |
 | browser → relay | `{type:"user_action", selection}` | a card click; injected as an equivalent text turn |
 | relay → browser | `{type:"ui_event", stage_intent, payload}` | the component to render (built by the formatter) |
 | relay → browser | `{type:"transcript", role, text, final}` | live STT for both sides (deltas, then a cumulative `final`) |

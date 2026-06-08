@@ -111,6 +111,12 @@ async def _serve_local(websocket: WebSocket, user_id: str, session_id: str | Non
                 if msg["type"] == "audio":
                     pcm = base64.b64decode(msg["data"])
                     queue.send_realtime(types.Blob(data=pcm, mime_type="audio/pcm;rate=16000"))
+                elif msg["type"] == "user_message":
+                    # Typed turn on the voice channel — a text turn into the Live
+                    # session; the reply stays AUDIO (response_modalities), so the
+                    # agent talks back. (Client flushes playback for barge-in.)
+                    queue.send_content(types.Content(
+                        role="user", parts=[types.Part(text=msg["text"])]))
                 elif msg["type"] == "user_action":
                     queue.send_content(types.Content(
                         role="user", parts=[types.Part(text=f'user selected {msg["selection"]}')]))
@@ -157,6 +163,8 @@ async def _serve_agent_engine(websocket: WebSocket, user_id: str, session_id: st
                     msg = json.loads(await websocket.receive_text())
                     if msg["type"] == "audio":
                         await conn.send({"type": "audio", "data": msg["data"]})
+                    elif msg["type"] == "user_message":
+                        await conn.send({"type": "user_message", "text": msg["text"]})
                     elif msg["type"] == "user_action":
                         await conn.send({"type": "user_action", "selection": msg["selection"]})
             except WebSocketDisconnect:
