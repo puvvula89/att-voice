@@ -131,7 +131,8 @@ async def scenario_greeter():
 
 async def scenario_specialist_close():
     print("\n" + "=" * 70)
-    print("SCENARIO 2 — Internet specialist: must NOT end_call before caller answers")
+    print("SCENARIO 2 — Internet specialist: asks 'anything else?', then closes by")
+    print("             speaking the closing line and going quiet (no end tool).")
     print("=" * 70)
     d = Driver(ADK_AGENTS["internet"], InMemorySessionService())
     await d.open(SessionRecord(session_id=None, caller="texttest"))
@@ -140,10 +141,11 @@ async def scenario_specialist_close():
          await d.say("the modem light is off"))
     show("u2", "I unplugged it and it's back online now",
          await d.say("I unplugged it and it's back online now"))  # likely triggers "anything else?"
-    print("\n     ^ if END_CALL FIRED here (before the caller declined), that's the premature bug.")
     show("u3", "no, that's all",
-         await d.say("no, that's all"))                          # expect: closing line + END_CALL
-    print("\nCHECK: end_call should fire ONLY at u3, with the closing line.")
+         await d.say("no, that's all"))                          # expect: closing line, NO tool/end
+    print("\nCHECK: u3 reply should be the closing line; END should NOT fire")
+    print("       (the caller hangs up to end — no end_call tool anymore).")
+    print("ended flag:", d.ended)
     await d.close()
 
 

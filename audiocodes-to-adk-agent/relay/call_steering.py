@@ -90,4 +90,13 @@ async def run_call(gateway, agent_factory, record: SessionRecord) -> None:
     for t in (task_in, task_out):
         t.cancel()
     await asyncio.gather(task_in, task_out, return_exceptions=True)
+    # Close the active backend channel on ANY teardown path. A caller hangup
+    # cancels agent_to_caller mid-stream, before its own agent.close() runs, so
+    # without this the AE/CES/Live connection would leak on every caller-ended call.
+    agent = state.get("agent")
+    if agent is not None:
+        try:
+            await agent.close()
+        except Exception:
+            pass
     await gateway.end()
