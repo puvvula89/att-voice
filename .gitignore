@@ -1,4 +1,4 @@
-01-phone-upgrade/.venv/
+shared-session-voice-and-chat/.venv/
 __pycache__/
 *.pyc
 .pytest_cache/
@@ -10,12 +10,12 @@ __pycache__/
 **/.DS_Store
 
 # Diagnostic audio captures (probe_audio_compare.py output — throwaway)
-01-phone-upgrade/deploy/*.wav
+shared-session-voice-and-chat/deploy/*.wav
 
 # GSD planning/handoff (local only — not part of the deliverable)
 .planning/
 
 # Agent Engine spike ephemera
-01-phone-upgrade/spike/.engine_name
-01-phone-upgrade/deploy/.engine_name
-01-phone-upgrade/deploy/.chat_engine_name
+shared-session-voice-and-chat/spike/.engine_name
+shared-session-voice-and-chat/deploy/.engine_name
+shared-session-voice-and-chat/deploy/.chat_engine_name

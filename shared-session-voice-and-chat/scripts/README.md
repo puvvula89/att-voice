@@ -6,7 +6,7 @@ calls — use them to validate agent/relay changes, which import-only checks mis
 
 ## Prerequisites
 - `.env` configured (ADC / Vertex) — see the module README.
-- Run from the module root (`01-phone-upgrade/`) with the venv active.
+- Run from the module root (`shared-session-voice-and-chat/`) with the venv active.
 - The **MCP server must be running** — the agent's data tools live there:
   ```
   python -m mcp_server.server        # streamable-HTTP on :9000 (MCP_SERVER_URL)

@@ -5,7 +5,7 @@ how to run natural, low-latency voice agents that drive a live web UI on the **s
 no second LLM and no orchestration hop. The repo is organized as one numbered folder per use
 case, each independently runnable. One section per folder below.
 
-## 01-phone-upgrade
+## shared-session-voice-and-chat
 
 A phone-upgrade agent in two channels (**voice** and **chat**) that share one session.
 
@@ -16,4 +16,4 @@ A phone-upgrade agent in two channels (**voice** and **chat**) that share one se
 - **MCP data** — account, lines, phones, pricing, and order data served over MCP.
 - **Local or cloud** — runs locally (relay in-process) or on the cloud (Agent Engine + Cloud Run).
 
-See [`01-phone-upgrade/README.md`](01-phone-upgrade/README.md) for setup, architecture, and deploy.
+See [`shared-session-voice-and-chat/README.md`](shared-session-voice-and-chat/README.md) for setup, architecture, and deploy.

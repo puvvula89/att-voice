@@ -196,7 +196,7 @@ that user's latest session (`backend/session_resolve.py`) — voice ↔ chat, ca
 
 Three self-contained approaches (A, B, deploy) — **each repeats its full prerequisites** so you can
 follow any one start-to-finish. All three need the local `.venv`: the deploy scripts run *on your
-machine*, so the venv is required even for cloud deploys. Run everything from `01-phone-upgrade/`.
+machine*, so the venv is required even for cloud deploys. Run everything from `shared-session-voice-and-chat/`.
 
 ### Option A — adk web (quick voice/agent test)
 
@@ -254,7 +254,7 @@ Data tools live in a separate MCP server, so start it first:
 # MCP data tools — streamable-HTTP on :9000
 python -m mcp_server.server
 
-# relay (in-process agent) on :8000 — run from 01-phone-upgrade/
+# relay (in-process agent) on :8000 — run from shared-session-voice-and-chat/
 uvicorn backend.server:app --reload
 ```
 
@@ -382,6 +382,6 @@ deployed chat engine (`CHAT_AGENT_ENGINE_NAME`). Same wire protocol either way.
 ## Test
 
 ```bash
-# run the test suite from 01-phone-upgrade/
+# run the test suite from shared-session-voice-and-chat/
 pytest tests/ -v
 ```
