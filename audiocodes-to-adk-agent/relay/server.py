@@ -7,9 +7,9 @@ import uuid
 from fastapi import FastAPI, WebSocket
 from google.adk.sessions import InMemorySessionService
 
-from relay.gateways.harness import HarnessGateway
-from relay.agents_runtime.factory import make_factory
-from relay.session_record import SessionRecord
+from relay.gateways import HarnessGateway
+from relay.agents_runtime import make_factory
+from relay.session import SessionRecord
 from relay.steering import run_call
 
 app = FastAPI()

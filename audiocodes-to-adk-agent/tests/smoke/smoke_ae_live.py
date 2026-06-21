@@ -1,12 +1,18 @@
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 from dotenv import load_dotenv
 load_dotenv()
 
 import asyncio
-import os
 import wave
 
-from relay.agents_runtime.ae_live import AeAdkSession
-from relay.session_record import SessionRecord
+from relay.agents_runtime import AeAdkSession
+from relay.session import SessionRecord
+
+WAV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sample_16k.wav")
 
 
 async def main():
@@ -20,7 +26,7 @@ async def main():
     await sess.open(record)
 
     # Stream a 16kHz mono PCM16 WAV (say "my internet is down").
-    with wave.open("scripts/sample_16k.wav", "rb") as w:
+    with wave.open(WAV, "rb") as w:
         assert w.getframerate() == 16000 and w.getsampwidth() == 2
         while True:
             frames = w.readframes(320)

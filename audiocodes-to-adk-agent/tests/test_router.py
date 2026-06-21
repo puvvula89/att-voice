@@ -1,4 +1,4 @@
-from relay.router import route, REGISTRY, DEFAULT_KEY
+from relay.steering import route, REGISTRY, DEFAULT_KEY
 
 
 def test_known_intents_route_to_correct_backend():

@@ -1,4 +1,4 @@
-from relay.session_record import SessionRecord
+from relay.session import SessionRecord
 
 
 def test_add_turn_and_transcript():

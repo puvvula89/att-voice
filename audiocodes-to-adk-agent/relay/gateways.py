@@ -1,3 +1,9 @@
+"""`MediaGateway` implementations — the caller-side media channel.
+
+Phase 1: `HarnessGateway` over a browser WebSocket (mic in 16k, speaker out 24k).
+Phase 2 adds an `AudioCodesGateway` over the VAIC Bot API WS — same port, so the
+relay core is untouched.
+"""
 from __future__ import annotations
 
 import base64
