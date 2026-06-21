@@ -7,10 +7,16 @@ import vertexai
 from vertexai import types as vtypes
 
 from relay.agent_app import SteeringApp
+from deploy.bucket import ensure_staging_bucket
 
 PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]
+PROJECT_NUMBER = os.environ.get("GOOGLE_CLOUD_PROJECT_NUMBER")
 LOCATION = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
-BUCKET = os.environ["STAGING_BUCKET"]
+# Dynamic, globally-unique staging bucket derived from project id + number;
+# created if missing. Never hardcoded. An explicit STAGING_BUCKET env overrides.
+BUCKET = ensure_staging_bucket(
+    PROJECT, PROJECT_NUMBER, LOCATION, os.environ.get("STAGING_BUCKET", "")
+)
 DISPLAY_NAME = "att-steering-adk"
 
 ENV_VARS = {
