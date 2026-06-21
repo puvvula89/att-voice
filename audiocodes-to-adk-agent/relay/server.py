@@ -7,10 +7,10 @@ import uuid
 from fastapi import FastAPI, WebSocket
 from google.adk.sessions import InMemorySessionService
 
-from relay.gateways import HarnessGateway
-from relay.agents_runtime import make_factory
-from relay.session import SessionRecord
-from relay.steering import run_call
+from relay.caller_channels import BrowserGateway
+from relay.agent_channels import make_factory
+from relay.call_session import SessionRecord
+from relay.call_steering import run_call
 
 app = FastAPI()
 
@@ -27,7 +27,7 @@ async def healthz():
 @app.websocket("/ws")
 async def ws(websocket: WebSocket):
     await websocket.accept()
-    gateway = HarnessGateway(websocket)
+    gateway = BrowserGateway(websocket)
     record = SessionRecord(session_id=str(uuid.uuid4()), caller="harness")
     factory = make_factory(
         session_service=_session_service,

@@ -1,4 +1,4 @@
-"""Smoke test for the CES BidiRunSession adapter (relay.agents_runtime.CesBidiSession).
+"""Smoke test for the CES BidiRunSession adapter (relay.agent_channels.CesBidiSession).
 
 Streams a 16kHz mono PCM16 WAV, then continuous SILENCE so CES endpointing can
 detect end-of-speech (in a real call audio flows continuously; a test that stops
@@ -17,8 +17,8 @@ load_dotenv()
 
 import asyncio
 
-from relay.agents_runtime import CesBidiSession
-from relay.session import SessionRecord
+from relay.agent_channels import CesBidiSession
+from relay.call_session import SessionRecord
 
 WAV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sample_16k.wav")
 SILENCE = b"\x00" * 640  # 320 samples * 2 bytes = 20ms @ 16kHz

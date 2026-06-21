@@ -1,6 +1,6 @@
 """`MediaGateway` implementations — the caller-side media channel.
 
-Phase 1: `HarnessGateway` over a browser WebSocket (mic in 16k, speaker out 24k).
+Phase 1: `BrowserGateway` over a browser WebSocket (mic in 16k, speaker out 24k).
 Phase 2 adds an `AudioCodesGateway` over the VAIC Bot API WS — same port, so the
 relay core is untouched.
 """
@@ -9,10 +9,10 @@ from __future__ import annotations
 import base64
 import json
 
-from relay.ports import CallerAudio, CallerEnd
+from relay.channels import CallerAudio, CallerEnd
 
 
-class HarnessGateway:
+class BrowserGateway:
     """MediaGateway over a browser WebSocket (mic in 16k, speaker out 24k)."""
 
     def __init__(self, websocket):

@@ -9,8 +9,8 @@ load_dotenv()
 import asyncio
 import wave
 
-from relay.agents_runtime import AeAdkSession
-from relay.session import SessionRecord
+from relay.agent_channels import AeAdkSession
+from relay.call_session import SessionRecord
 
 WAV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sample_16k.wav")
 

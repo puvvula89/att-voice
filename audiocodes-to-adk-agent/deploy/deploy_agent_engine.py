@@ -6,7 +6,7 @@ import os
 import vertexai
 from vertexai import types as vtypes
 
-from relay.agent_app import SteeringApp
+from relay.agent_engine_app import SteeringApp
 from deploy.bucket import ensure_staging_bucket
 
 PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]

@@ -1,11 +1,11 @@
 import asyncio
 
-from relay.session import SessionRecord
-from relay.ports import (
+from relay.call_session import SessionRecord
+from relay.channels import (
     AgentAudio, AgentTranscript, AgentIntent, AgentEnd,
     CallerAudio, CallerEnd,
 )
-from relay.steering import run_call
+from relay.call_steering import run_call
 
 
 def _run(coro):

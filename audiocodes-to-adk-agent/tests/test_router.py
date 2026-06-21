@@ -1,4 +1,4 @@
-from relay.steering import route, REGISTRY, DEFAULT_KEY
+from relay.call_steering import route, ROUTES, DEFAULT_KEY
 
 
 def test_known_intents_route_to_correct_backend():
@@ -17,4 +17,4 @@ def test_unknown_intent_falls_back_to_default():
 
 
 def test_registry_covers_three_specialists():
-    assert set(REGISTRY) == {"internet", "phone_upgrade", "billing"}
+    assert set(ROUTES) == {"internet", "phone_upgrade", "billing"}

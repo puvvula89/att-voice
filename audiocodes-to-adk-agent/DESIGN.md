@@ -111,7 +111,7 @@ against **two ports** so each side is a drop-in:
 - **Caller side — `MediaGateway` port (WS #1).** End state: AudioCodes VAIC Bot API
   protocol. The relay core never assumes AudioCodes — it talks to a `MediaGateway`
   interface (`recv` caller PCM, `send` agent PCM, `transfer`, `end`). Phase 1 uses
-  a `HarnessGateway`; Phase 2 adds an `AudioCodesGateway`.
+  a `BrowserGateway`; Phase 2 adds an `AudioCodesGateway`.
 - **Agent side — `AgentSession` port (channel #2).** Opened *by the relay*. For ADK
   agents this is `runner.run_live()` (which establishes the Gemini Live connection
   internally); for the billing agent it is a `BidiRunSession` WebSocket to CES.
@@ -126,7 +126,7 @@ work (Phase 2) and the cross-platform agents (Phase 1) each a drop-in.
 |---|---|---|---|
 | `relay` | Run the call lifecycle, steer, keep the session-of-record, resample — port-agnostic on both sides | `MediaGateway` in/out; `AgentSession` out | port impls, session store |
 | `MediaGateway` (interface) | Caller-side media channel | `recv()` → caller PCM/events, `send_pcm(bytes)`, `transfer(uri)`, `end()` | — |
-| `HarnessGateway` | `MediaGateway` for local dev (Phase 1) | implements `MediaGateway` | WAV replay / mic test client |
+| `BrowserGateway` | `MediaGateway` for local dev (Phase 1) | implements `MediaGateway` | WAV replay / mic test client |
 | `AudioCodesGateway` | `MediaGateway` over VAIC Bot API WS (Phase 2) | implements `MediaGateway` | VAIC tenant |
 | `AgentSession` (interface) | One backend voice channel | `open(ctx)`, `send_pcm(bytes)`, `recv()` → audio/transcript/intent events, `close()` | — |
 | `AdkLiveSession` | `AgentSession` over ADK `run_live` | implements `AgentSession` | ADK Runner, Agent Engine, `VertexAiSessionService` |
@@ -146,7 +146,7 @@ Prove the novel part first; add telephony onboarding last.
 
 - **Phase 1 — Relay ↔ agents, seamless (no AudioCodes yet).**
   - Relay core + `MediaGateway`/`AgentSession` ports.
-  - `HarnessGateway`: a local test client (mic web client or WAV replay) that feeds
+  - `BrowserGateway`: a local test client (mic web client or WAV replay) that feeds
     caller audio in and plays agent audio out.
   - `AdkLiveSession` (Internet, Phone-upgrade) and `CesBidiSession` (Billing).
   - Greeter/router + steering + session-of-record + context passing.
@@ -214,7 +214,7 @@ this is a deliberate, validated distinction:
 | Greeter → CES specialist (Billing) | **No shared store** | CES owns its session server-side. Relay **seeds** the greeter transcript/intent via `historical_contexts[]` at connect and **captures** CES turns from `recognition_result` / `session_output`. The same `X` is reused as the CES session id **for correlation only**. |
 
 - **ADK shared session** is the proven pattern from `shared-session-voice-and-chat`
-  (`agent_app.py`, `session_resolve.py`): explicit `agent_engine_id` decouples the
+  (`agent_engine_app.py`, `session_resolve.py`): explicit `agent_engine_id` decouples the
   session store from compute, so any number of ADK agents share one continuous session.
 - **Same id string across platforms** is a *correlation key*, not a data bridge.
   It buys end-to-end tracing (one id across AudioCodes / ADK / CES logs, traces,

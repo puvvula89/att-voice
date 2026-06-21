@@ -3,11 +3,11 @@ from __future__ import annotations
 import asyncio
 from dataclasses import dataclass
 
-from relay.ports import (
+from relay.channels import (
     AgentAudio, AgentTranscript, AgentIntent, AgentEnd,
     CallerAudio, CallerEnd,
 )
-from relay.session import SessionRecord
+from relay.call_session import SessionRecord
 
 
 # --------------------------------------------------------------------------- #
@@ -24,7 +24,7 @@ class AgentSpec:
     display: str
 
 
-REGISTRY: dict[str, AgentSpec] = {
+ROUTES: dict[str, AgentSpec] = {
     "internet": AgentSpec("internet", "adk", "Internet support"),
     "phone_upgrade": AgentSpec("phone_upgrade", "adk", "Phone upgrade"),
     "billing": AgentSpec("billing", "ces", "Billing"),
@@ -34,7 +34,7 @@ REGISTRY: dict[str, AgentSpec] = {
 def route(intent: str) -> AgentSpec:
     """Map a greeter-emitted intent string to a specialist. Unknown -> default."""
     key = (intent or "").strip().lower()
-    return REGISTRY.get(key, REGISTRY[DEFAULT_KEY])
+    return ROUTES.get(key, ROUTES[DEFAULT_KEY])
 
 
 async def run_call(gateway, agent_factory, record: SessionRecord) -> None:

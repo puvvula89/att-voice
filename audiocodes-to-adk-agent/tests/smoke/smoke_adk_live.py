@@ -12,8 +12,8 @@ from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
 from agents.greeter import greeter_agent
-from relay.agents_runtime import AdkLiveSession
-from relay.session import SessionRecord
+from relay.agent_channels import AdkLiveSession
+from relay.call_session import SessionRecord
 
 
 async def main():
