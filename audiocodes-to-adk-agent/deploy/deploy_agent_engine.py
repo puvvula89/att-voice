@@ -57,3 +57,6 @@ else:
     engine = client.agent_engines.create(agent=app, config=cfg)
 
 print("AE_ENGINE_ID:", engine.api_resource.name)
+# Persist for deploy_all.sh (gitignored). The relay reads AE_ENGINE_ID from env.
+import pathlib
+pathlib.Path(__file__).with_name(".engine_name").write_text(engine.api_resource.name)
