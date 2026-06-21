@@ -236,6 +236,19 @@ class AeAdkSession:
 # --------------------------------------------------------------------------- #
 # CES (CX Agent Studio) BidiRunSession                                         #
 # --------------------------------------------------------------------------- #
+def _ces_handoff_nudge(record) -> str:
+    """Text turn that triggers CES's first response at handoff.
+
+    Use the caller's most substantive utterance (longest user turn) so the
+    specialist answers the actual question directly; fall back to an intent-based
+    line if no turns were captured. Avoids picking short confirmations like "yes".
+    """
+    user_turns = [t.text for t in getattr(record, "turns", []) if t.role == "user" and t.text]
+    if user_turns:
+        return max(user_turns, key=len)
+    return f"I need help with {getattr(record, 'intent', None) or 'my account'}."
+
+
 class CesBidiSession:
     """AgentSession over CX Agent Studio (CES) BidiRunSession WebSocket."""
 
@@ -308,6 +321,19 @@ class CesBidiSession:
         # leave CES with no input and time the session out after 30s).
         loop = asyncio.get_running_loop()
         await loop.run_in_executor(None, self._connected.wait, 15)
+        # CES bidi is REACTIVE — after a greeter→specialist handoff it stays
+        # silent until it gets live input (it only speaks after VAD end-of-speech
+        # on audio). historicalContexts is just context, not a trigger. So send a
+        # text turn to make the specialist take the FIRST turn immediately (the
+        # seamless handoff), mirroring the ADK `(handoff)` nudge. CES answers text
+        # input directly (verified) and emits NO recognitionResult for it, so it
+        # doesn't show up as a spurious caller bubble.
+        nudge = _ces_handoff_nudge(record)
+        if nudge and self._ws is not None and self._ws.sock is not None:
+            try:
+                self._ws.send(json.dumps({"realtimeInput": {"text": nudge}}))
+            except Exception:
+                pass
 
     async def send_audio(self, pcm: bytes) -> None:
         ws = self._ws
@@ -328,10 +354,17 @@ class CesBidiSession:
             data = json.loads(message)
             out = data.get("sessionOutput") or {}
             rec = data.get("recognitionResult") or {}
+            # CES sends ONE COMPLETE message per turn, not ADK-style deltas:
+            #   recognitionResult.transcript = the full user utterance (post-VAD)
+            #   sessionOutput.text           = the full agent turn text (one per turnIndex)
+            # `turnCompleted` arrives LATER on a separate audio message, so it must
+            # NOT gate text finality. Emit each as final=True so the UI closes the
+            # bubble per turn; gating on turnCompleted left every turn appended into
+            # one never-closed bubble (user + agent text all mingled).
             if rec.get("transcript"):
-                yield AgentTranscript("user", rec["transcript"], False)
+                yield AgentTranscript("user", rec["transcript"], True)
             if out.get("text"):
-                yield AgentTranscript("agent", out["text"], bool(out.get("turnCompleted")))
+                yield AgentTranscript("agent", out["text"], True)
             if out.get("audio"):
                 yield AgentAudio(base64.b64decode(out["audio"]))
             if data.get("endSession"):

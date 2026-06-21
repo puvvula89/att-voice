@@ -41,6 +41,21 @@ class BrowserGateway:
         # Phase 1 has no telephony; log only. (Phase 2 AudioCodes implements this.)
         await self._ws.send_text(json.dumps({"type": "transfer", "uri": uri}))
 
+    async def transcript(self, role: str, text: str, final: bool) -> None:
+        # Live transcript for the demo UI. Deltas (final=False) then one cumulative
+        # final (final=True) per utterance — the client appends deltas, replaces on
+        # final. Display-only; the relay still records final turns on the record.
+        await self._ws.send_text(json.dumps(
+            {"type": "transcript", "role": role, "text": text, "final": final}
+        ))
+
+    async def agent_state(self, key: str, display: str) -> None:
+        # Which specialist is live now (greeter -> specialist). Drives the UI's
+        # agent-indicator badge. Emitted whenever an agent activates.
+        await self._ws.send_text(json.dumps(
+            {"type": "agent", "key": key, "display": display}
+        ))
+
     async def end(self) -> None:
         try:
             await self._ws.send_text(json.dumps({"type": "session_end"}))

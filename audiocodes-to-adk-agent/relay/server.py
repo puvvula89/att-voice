@@ -2,9 +2,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import os
+import pathlib
 import uuid
 
 from fastapi import FastAPI, WebSocket
+from fastapi.responses import FileResponse
 from google.adk.sessions import InMemorySessionService
 
 from relay.caller_channels import BrowserGateway
@@ -18,10 +20,21 @@ app = FastAPI()
 # specialists) share a session by session_id, so context carries.
 _session_service = InMemorySessionService()
 
+# The demo UI is shipped in the image (harness/client.html) and served from the
+# relay itself, so the deployed service is a single public URL: the page loads
+# and opens a same-origin WebSocket to /ws — no separate static host needed.
+_UI = pathlib.Path(__file__).resolve().parent.parent / "harness" / "client.html"
+
 
 @app.get("/healthz")
 async def healthz():
     return {"ok": True}
+
+
+@app.get("/")
+@app.get("/client.html")
+async def index():
+    return FileResponse(_UI, media_type="text/html", headers={"Cache-Control": "no-store"})
 
 
 @app.websocket("/ws")

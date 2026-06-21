@@ -1,5 +1,5 @@
-# Keep the Cloud Run source upload small. The Dockerfile only needs
-# relay/, agents/, and relay-requirements.txt.
+# Keep the Cloud Run source upload small. The Dockerfile needs
+# relay/, agents/, harness/ (the UI is served by the relay), and relay-requirements.txt.
 .venv/
 __pycache__/
 *.pyc
@@ -10,6 +10,5 @@ __pycache__/
 *.md
 tests/
 scripts/
-harness/
 deploy/
 idea.md
