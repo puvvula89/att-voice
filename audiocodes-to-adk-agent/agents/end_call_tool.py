@@ -2,8 +2,10 @@ from __future__ import annotations
 
 
 def end_call() -> dict:
-    """End the call. Call this AFTER you have spoken the closing line, once the
-    caller has confirmed they need nothing else.
+    """End the call. ONLY call this once the caller has, in a PRIOR turn, explicitly
+    declined further help (said no / nothing else / they're done) AND you have just
+    spoken the closing line. Never call it in the same turn that you ask "is there
+    anything else" — wait for their answer first.
     """
     return {"status": "ended"}
 
