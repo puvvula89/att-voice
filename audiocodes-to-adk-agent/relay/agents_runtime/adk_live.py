@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import base64
 
 from relay.ports import AgentAudio, AgentTranscript, AgentIntent, AgentEnd
 from relay.session_record import SessionRecord
@@ -95,7 +96,6 @@ class AdkLiveSession:
             for part in content.get("parts") or []:
                 inline = part.get("inlineData") or part.get("inline_data")
                 if inline and inline.get("data"):
-                    import base64
                     b64 = inline["data"].replace("-", "+").replace("_", "/")
                     yield AgentAudio(base64.b64decode(b64))
 

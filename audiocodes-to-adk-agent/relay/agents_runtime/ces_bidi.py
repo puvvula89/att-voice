@@ -85,7 +85,7 @@ class CesBidiSession:
             self._ws.send(json.dumps(msg))
 
     async def events(self):
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         while True:
             message = await loop.run_in_executor(None, self._out.get)
             if message is None:

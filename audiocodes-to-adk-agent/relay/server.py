@@ -31,7 +31,7 @@ async def ws(websocket: WebSocket):
     record = SessionRecord(session_id=str(uuid.uuid4()), caller="harness")
     factory = make_factory(
         session_service=_session_service,
-        ces_app=os.environ["CES_APP"],
+        ces_app=os.environ.get("CES_APP", ""),
         ces_location=os.environ.get("CES_LOCATION", "us"),
         ae_engine=os.environ.get("AE_ENGINE_ID", ""),
         project=os.environ.get("GOOGLE_CLOUD_PROJECT", ""),
