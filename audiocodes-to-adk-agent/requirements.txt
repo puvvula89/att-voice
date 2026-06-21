@@ -1,0 +1,10 @@
+google-cloud-aiplatform[agent_engines]
+google-adk==2.1.0
+google-genai
+cloudpickle==3.1.2
+fastapi
+uvicorn[standard]
+websockets
+websocket-client
+python-dotenv
+pytest
