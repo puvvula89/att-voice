@@ -1,6 +1,6 @@
 import asyncio
 
-from relay.session_record import SessionRecord
+from relay.session import SessionRecord
 from relay.ports import (
     AgentAudio, AgentTranscript, AgentIntent, AgentEnd,
     CallerAudio, CallerEnd,

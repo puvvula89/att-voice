@@ -50,7 +50,7 @@ class SteeringApp:
         from google.adk.agents.live_request_queue import LiveRequestQueue
         from google.adk.runners import Runner
         from google.genai import types
-        from relay.session_resolve import resolve_session
+        from relay.session import resolve_session
 
         first = await request_queue.get()
         user_id = (first or {}).get("user_id", "caller")

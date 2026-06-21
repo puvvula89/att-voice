@@ -1,3 +1,8 @@
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -7,8 +12,8 @@ from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
 from agents.greeter import greeter_agent
-from relay.agents_runtime.adk_live import AdkLiveSession
-from relay.session_record import SessionRecord
+from relay.agents_runtime import AdkLiveSession
+from relay.session import SessionRecord
 
 
 async def main():
