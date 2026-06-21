@@ -50,6 +50,7 @@ class AdkLiveSession:
         self._voice = voice
         self._queue = None
         self._session_id = None
+        self._user_id = "caller"
 
     def _run_config(self):
         from google.adk.agents.run_config import RunConfig, StreamingMode
@@ -74,14 +75,14 @@ class AdkLiveSession:
         # Greeter starts a fresh session each call; specialists resume THIS call's
         # session (the id the greeter set on the record) for the seamless handoff.
         # Never resume a prior call's session — replaying its history breaks run_live.
-        user_id = record.caller or "caller"
+        self._user_id = record.caller or "caller"
         if self._agent.name == "greeter":
             session = await self._session_service.create_session(
-                app_name=APP_NAME, user_id=user_id
+                app_name=APP_NAME, user_id=self._user_id
             )
         else:
             session, _ = await resolve_session(
-                self._session_service, APP_NAME, user_id, record.session_id
+                self._session_service, APP_NAME, self._user_id, record.session_id
             )
         self._session_id = session.id
         record.session_id = session.id
@@ -106,7 +107,7 @@ class AdkLiveSession:
             app_name=APP_NAME, agent=self._agent, session_service=self._session_service
         )
         async for event in runner.run_live(
-            user_id="caller",
+            user_id=self._user_id,
             session_id=self._session_id,
             live_request_queue=self._queue,
             run_config=self._run_config(),
