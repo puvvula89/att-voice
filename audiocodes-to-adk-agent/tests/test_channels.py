@@ -1,4 +1,4 @@
-from relay.ports import (
+from relay.channels import (
     AgentAudio, AgentTranscript, AgentIntent, AgentEnd,
     CallerAudio, CallerEnd,
 )

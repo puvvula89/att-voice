@@ -1,6 +1,6 @@
 """`AgentSession` implementations — one per back-end platform — plus the factory.
 
-Each class is a drop-in behind the `AgentSession` port (relay/ports.py); the relay
+Each class is a drop-in behind the `AgentSession` port (relay/channels.py); the relay
 core (steering loop) is identical regardless of which one is active:
 
 - `AdkLiveSession`  — ADK `run_live` in-process (local dev).
@@ -27,8 +27,8 @@ import google.auth
 import google.auth.transport.requests
 import websocket  # websocket-client
 
-from relay.ports import AgentAudio, AgentTranscript, AgentIntent, AgentEnd
-from relay.session import SessionRecord
+from relay.channels import AgentAudio, AgentTranscript, AgentIntent, AgentEnd
+from relay.call_session import SessionRecord
 from agents.registry import ADK_AGENTS
 
 APP_NAME = "att_steering"
@@ -69,7 +69,7 @@ class AdkLiveSession:
     async def open(self, record: SessionRecord) -> None:
         from google.adk.agents.live_request_queue import LiveRequestQueue
         from google.genai import types
-        from relay.session import resolve_session
+        from relay.call_session import resolve_session
 
         session, _ = await resolve_session(
             self._session_service, APP_NAME, record.caller or "caller", record.session_id

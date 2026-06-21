@@ -60,13 +60,13 @@ continuous voice.
    │      BROWSER HARNESS        │  ─────────────────────────▶   │        Relay (Cloud Run)         │
    │    harness/client.html      │   {type:audio} 16k PCM b64    │           relay/server.py        │
    │  mic 16kHz · play 24kHz     │   {type:end}                  │                                  │
-   │                             │  ◀─────────────────────────   │  HarnessGateway  (MediaGateway)  │
+   │                             │  ◀─────────────────────────   │  BrowserGateway  (MediaGateway)  │
    │                             │   {type:audio} 24k PCM b64    │  run_call()      (steering loop) │
    │                             │   {type:session_end}          │  SessionRecord   (of-record)     │
    └────────────────────────────┘                               └─────────────────┬────────────────┘
                                                             agent_factory(key) ──▶ │ AgentSession (channel #2)
                                   ┌──────────────────────────────────────────────┴───────────────────────┐
-                                  │  STEERING LOOP  (relay/steering.py — run_call + intent routing)       │
+                                  │  STEERING LOOP  (relay/call_steering.py — run_call + intent routing)  │
                                   │  1. open Greeter → "Thanks for calling AT&T. How can I help you?"      │
                                   │  2. greeter calls classify_intent → AgentIntent → route(intent)        │
                                   │  3. close greeter channel · open specialist channel (same session)     │
@@ -97,7 +97,7 @@ sequenceDiagram
     participant Gr as Greeter (ADK/Live)
     participant Sp as Specialist (ADK/AE or CES)
 
-    Note over B,R: Start clicked → WebSocket /ws opens → HarnessGateway wraps it
+    Note over B,R: Start clicked → WebSocket /ws opens → BrowserGateway wraps it
     R->>Gr: agent_factory("greeter") → open(record) + (call_start) nudge
     Gr-->>R: AgentAudio "Thanks for calling AT&T. How can I help you today?"
     R-->>B: {type:audio} 24kHz frames (caller hears the greeting)
@@ -158,12 +158,12 @@ and it is the **session-of-record** that makes the greeter→specialist handoff 
 
 ## The two ports
 
-The relay core (`relay/steering.py`) never names AudioCodes, Gemini, or CES — it speaks to two
-`Protocol`s (`relay/ports.py`):
+The relay core (`relay/call_steering.py`) never names AudioCodes, Gemini, or CES — it speaks to two
+`Protocol`s (`relay/channels.py`):
 
 | Port | Role | Phase 1 impl | End-state / other impls |
 |---|---|---|---|
-| **`MediaGateway`** (caller side) | `events()` → `CallerAudio`/`CallerEnd`, `send_audio()`, `transfer()`, `end()` | `HarnessGateway` (browser WS) | `AudioCodesGateway` (VAIC Bot API WS) — Phase 2 |
+| **`MediaGateway`** (caller side) | `events()` → `CallerAudio`/`CallerEnd`, `send_audio()`, `transfer()`, `end()` | `BrowserGateway` (browser WS) | `AudioCodesGateway` (VAIC Bot API WS) — Phase 2 |
 | **`AgentSession`** (agent side) | `open(record)`, `send_audio()`, `events()` → `AgentAudio`/`AgentTranscript`/`AgentIntent`/`AgentEnd`, `close()` | `AdkLiveSession`, `AeAdkSession`, `CesBidiSession` | any future platform = one new impl |
 
 ## Session & context model
@@ -276,7 +276,7 @@ console): `create_app` → `create_agent` (root) → `create_app_version` → `c
 
 | # | Service | Platform | What it does |
 |---|---|---|---|
-| 1 | **ADK multi-agent app** | Agent Engine | greeter + internet + phone_upgrade as one Gemini-Live bidi app (`relay/agent_app.py`), custom `bidi_stream_query` mode. Reached by `AeAdkSession`. |
+| 1 | **ADK multi-agent app** | Agent Engine | greeter + internet + phone_upgrade as one Gemini-Live bidi app (`relay/agent_engine_app.py`), custom `bidi_stream_query` mode. Reached by `AeAdkSession`. |
 | 2 | **CES billing app** | CX Agent Studio (CES) | the billing specialist; published deployment served over `BidiRunSession`. Reached by `CesBidiSession`. |
 | 3 | **Steering relay** | Cloud Run | the single browser endpoint (`/ws`). Owns the caller WebSocket, runs the steering loop, opens the back-end channel, is the session-of-record. WebSocket-capable; 15-min request timeout. |
 
@@ -316,7 +316,7 @@ python tests/smoke/smoke_adk_live.py     # ADK in-process (run_live)
 
 ## Phase 2 — AudioCodes drop-in
 
-Phase 2 replaces `HarnessGateway` with an `AudioCodesGateway` implementing the VAIC Bot API WebSocket
+Phase 2 replaces `BrowserGateway` with an `AudioCodesGateway` implementing the VAIC Bot API WebSocket
 contract (`session.initiate`/`accepted`, `userStream`/`playStream`, `transfer`, `session.resume`),
 onboards a VAIC self-service tenant + US test DID, and points its bot at the relay. A real PSTN call
 then runs the identical Phase-1 flow — the steering loop, agents, and session model are untouched.
