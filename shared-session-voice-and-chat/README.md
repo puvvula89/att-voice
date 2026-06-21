@@ -1,4 +1,4 @@
-# 01 — Phone Upgrade (voice + chat)
+# Shared-Session Voice and Chat
 
 Phone-upgrade agent on Google ADK + Gemini Live, in **two channels**:
 
