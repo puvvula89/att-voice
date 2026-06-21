@@ -5,7 +5,7 @@ import os
 from google.adk.agents import LlmAgent
 from google.adk.tools import FunctionTool
 
-from agents.specialist_tools import classify_intent, end_call, on_specialist_tool
+from agents.end_call_tool import end_call, on_end_call
 
 LIVE_MODEL = os.environ.get("LIVE_MODEL", "gemini-live-2.5-flash-native-audio")
 
@@ -18,12 +18,6 @@ and do NOT re-introduce yourself. Continue the existing conversation as if you w
 the same voice. Open by acknowledging their internet issue and asking one concrete
 troubleshooting question. Keep replies to one or two short sentences. This is a
 connectivity demo; a couple of helpful turns is enough.
-
-If you're the wrong specialist:
-- If the caller says this isn't what they needed, or actually describes wanting a
-  new phone / upgrade, or a billing question, do NOT try to handle it. Call
-  classify_intent with the correct category ("phone_upgrade" or "billing") to hand
-  them to the right specialist. Only re-route to a category OTHER than internet.
 
 Closing the call:
 - When the issue is handled, ask: "Is there anything else I can help you with?"
@@ -40,8 +34,8 @@ def build_internet(model: str) -> LlmAgent:
         model=model,
         description="AT&T internet-support specialist.",
         instruction=INSTRUCTIONS,
-        tools=[FunctionTool(func=classify_intent), FunctionTool(func=end_call)],
-        after_tool_callback=on_specialist_tool,
+        tools=[FunctionTool(func=end_call)],
+        after_tool_callback=on_end_call,
     )
 
 
