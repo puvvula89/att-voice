@@ -71,9 +71,18 @@ class AdkLiveSession:
         from google.genai import types
         from relay.call_session import resolve_session
 
-        session, _ = await resolve_session(
-            self._session_service, APP_NAME, record.caller or "caller", record.session_id
-        )
+        # Greeter starts a fresh session each call; specialists resume THIS call's
+        # session (the id the greeter set on the record) for the seamless handoff.
+        # Never resume a prior call's session — replaying its history breaks run_live.
+        user_id = record.caller or "caller"
+        if self._agent.name == "greeter":
+            session = await self._session_service.create_session(
+                app_name=APP_NAME, user_id=user_id
+            )
+        else:
+            session, _ = await resolve_session(
+                self._session_service, APP_NAME, user_id, record.session_id
+            )
         self._session_id = session.id
         record.session_id = session.id
         self._queue = LiveRequestQueue()

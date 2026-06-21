@@ -58,9 +58,21 @@ class SteeringApp:
         agent_key = (first or {}).get("agent_key", "greeter")
         agent = self._agents.get(agent_key, self._agents["greeter"])
 
-        session, resumed = await resolve_session(
-            self._session_service, APP_NAME, user_id, req_sid
-        )
+        # The greeter starts a BRAND-NEW session every call. Resuming a prior
+        # call's session (resolve_session falls back to the user's latest when the
+        # relay's fresh id isn't found) replays mixed-agent history into run_live
+        # -> "unknown agent" + Server-disconnected -> no greeting. The specialist
+        # (handoff) DOES resume — but THIS call's session, via the id the greeter
+        # establishes below, so the handoff stays seamless without cross-call bloat.
+        if agent_key == "greeter":
+            session = await self._session_service.create_session(
+                app_name=APP_NAME, user_id=user_id
+            )
+            resumed = False
+        else:
+            session, resumed = await resolve_session(
+                self._session_service, APP_NAME, user_id, req_sid
+            )
         yield {"type": "session_info", "session_id": session.id, "resumed": resumed}
 
         live_queue = LiveRequestQueue()
