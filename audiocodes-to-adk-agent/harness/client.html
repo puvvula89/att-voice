@@ -305,13 +305,17 @@
         `<svg viewBox="0 0 ${VB_W} ${VB_H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Call flow diagram">${defs}${groups}${edges}${nodes}</svg>`;
     }
 
-    // ---- Relay endpoint ----
+    // ---- Mode + relay endpoint ----
+    // /audiocodes = observe-only monitor (no mic, no call button, watches a live
+    // call on /observe). Anything else (/browser, /) = caller mode on /ws.
+    const OBSERVE = /\/audiocodes\/?$/.test(location.pathname);
+    const WS_PATH = OBSERVE ? "/observe" : "/ws";
     // ?relay=wss://… overrides. Local dev → relay on :8080. Otherwise the page is
-    // served BY the relay, so connect same-origin to /ws.
+    // served BY the relay, so connect same-origin.
     const RELAY = new URLSearchParams(location.search).get("relay")
       || ((location.hostname === "localhost")
-        ? "ws://localhost:8080/ws"
-        : (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws");
+        ? "ws://localhost:8080" + WS_PATH
+        : (location.protocol === "https:" ? "wss://" : "ws://") + location.host + WS_PATH);
 
     // ---- DOM ----
     const $ = (id) => document.getElementById(id);
@@ -325,6 +329,7 @@
     let ws, actx, playCtx, micStream, proc, playTime = 0;
     let micAnalyser, playAnalyser, rafId;
     let inCall = false, muted = false, agentStarted = false, currentAgent = "";
+    let audioReady = false; // observe mode: playback context resumed after a gesture
     const partials = { user: null, agent: null };
 
     buildGraph();
@@ -477,6 +482,9 @@
     function isAgentSpeaking() { return !!playCtx && playTime > playCtx.currentTime + 0.05; }
 
     function playPcm24(b64data) {
+      // No audible playback until the context is running (observe mode stays
+      // suspended until the user clicks once — browsers block autoplay).
+      if (!playCtx || playCtx.state !== "running") return;
       const std = b64data.replace(/-/g, "+").replace(/_/g, "/");
       const bytes = Uint8Array.from(atob(std), c => c.charCodeAt(0));
       const i16 = new Int16Array(bytes.buffer);
@@ -524,9 +532,94 @@
 
     const b64 = (u8) => { let s = ""; for (const b of u8) s += String.fromCharCode(b); return btoa(s); };
 
-    callBtn.onclick = () => (inCall ? stop() : start());
-    muteBtn.onclick = toggleMute;
-    window.addEventListener("resize", () => { if (inCall) fitCanvas(); });
+    // ---- Observe mode (the /audiocodes monitor) ----
+    function enableAudio() {
+      if (audioReady) return;
+      audioReady = true;
+      try { playCtx && playCtx.resume(); } catch (e) {}
+      document.removeEventListener("pointerdown", enableAudio);
+      if (liveChip.dataset.on !== "true") setStatus("Observing — waiting for a call…");
+      else setStatus("Live call in progress.");
+    }
+
+    function startObserve() {
+      // Build the (suspended) playback context now; it resumes on first click.
+      if (!playCtx) {
+        playCtx = new AudioContext();
+        playTime = playCtx.currentTime;
+        playAnalyser = playCtx.createAnalyser();
+        playAnalyser.fftSize = 256;
+      }
+      fitCanvas();
+      cancelAnimationFrame(rafId);
+      drawViz();
+      connectObserve();
+    }
+
+    function connectObserve() {
+      ws = new WebSocket(RELAY);
+      ws.onmessage = (e) => handleObserveFrame(JSON.parse(e.data));
+      ws.onopen = () => setStatus(audioReady ? "Observing — waiting for a call…" : "Connected — click anywhere to enable audio.");
+      ws.onerror = () => {};
+      ws.onclose = () => {
+        setLive(false, "Offline");
+        setStatus("Disconnected — reconnecting…");
+        // Keep the wall monitor alive across calls / cold starts.
+        setTimeout(() => { if (OBSERVE) connectObserve(); }, 2500);
+      };
+    }
+
+    function handleObserveFrame(m) {
+      if (m.type === "call_active") return observeCallActive();
+      if (m.type === "call_idle") return observeCallIdle();
+      if (m.type === "call_end") return observeCallEnd();
+      if (m.type === "audio") return playPcm24(m.data);
+      if (m.type === "transcript") { observeLive(); return onTranscript(m.role, m.text, m.final); }
+      if (m.type === "agent") { observeLive(); return highlightAgent(m.key); }
+    }
+
+    function observeLive() {
+      if (liveChip.dataset.on === "true") return;
+      setLive(true, "Live");
+      setCallActive(true);
+      vizIdle.style.opacity = "0";
+      setStatus(audioReady ? "Live call in progress." : "Live — click anywhere to enable audio.");
+    }
+    function observeCallActive() {
+      partials.user = partials.agent = null;
+      feed.querySelectorAll(".bubble").forEach(b => b.remove());
+      emptyEl.style.display = "";
+      resetAgents();
+      observeLive();
+    }
+    function observeCallIdle() {
+      setLive(false, "Waiting");
+      setCallActive(false);
+      resetAgents();
+      vizIdle.textContent = "Waiting for a call…";
+      vizIdle.style.opacity = "1";
+      setStatus("Observing — waiting for a call…");
+    }
+    function observeCallEnd() {
+      observeCallIdle();
+      setStatus("Call ended — waiting for the next call…");
+    }
+
+    // ---- Startup (mode-aware) ----
+    if (OBSERVE) {
+      document.querySelector(".controls").style.display = "none";
+      const sub = document.querySelector(".brand span");
+      if (sub) sub.textContent = "Live call monitor";
+      vizIdle.textContent = "Waiting for a call…";
+      setLive(false, "Waiting");
+      setStatus("Connecting…");
+      document.addEventListener("pointerdown", enableAudio);
+      startObserve();
+    } else {
+      callBtn.onclick = () => (inCall ? stop() : start());
+      muteBtn.onclick = toggleMute;
+    }
+    window.addEventListener("resize", () => { if (inCall || OBSERVE) fitCanvas(); });
     window.addEventListener("pagehide", () => { try { playCtx && playCtx.close(); } catch (e) {} });
   </script>
 </body>

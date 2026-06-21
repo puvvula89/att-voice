@@ -13,10 +13,20 @@ from relay.channels import CallerAudio, CallerEnd
 
 
 class BrowserGateway:
-    """MediaGateway over a browser WebSocket (mic in 16k, speaker out 24k)."""
+    """MediaGateway over a browser WebSocket (mic in 16k, speaker out 24k).
 
-    def __init__(self, websocket):
+    If a ``bus`` (CallBus) is given, every outgoing caller frame is also published
+    to it so read-only observers (the /audiocodes monitor) can watch the call.
+    """
+
+    def __init__(self, websocket, bus=None):
         self._ws = websocket
+        self._bus = bus
+
+    async def _emit(self, frame: dict) -> None:
+        await self._ws.send_text(json.dumps(frame))
+        if self._bus is not None:
+            self._bus.publish(frame)
 
     async def events(self):
         from fastapi import WebSocketDisconnect
@@ -33,28 +43,26 @@ class BrowserGateway:
             return
 
     async def send_audio(self, pcm: bytes) -> None:
-        await self._ws.send_text(json.dumps(
+        await self._emit(
             {"type": "audio", "data": base64.b64encode(pcm).decode("ascii")}
-        ))
+        )
 
     async def transfer(self, uri: str) -> None:
         # Phase 1 has no telephony; log only. (Phase 2 AudioCodes implements this.)
-        await self._ws.send_text(json.dumps({"type": "transfer", "uri": uri}))
+        await self._emit({"type": "transfer", "uri": uri})
 
     async def transcript(self, role: str, text: str, final: bool) -> None:
         # Live transcript for the demo UI. Deltas (final=False) then one cumulative
         # final (final=True) per utterance — the client appends deltas, replaces on
         # final. Display-only; the relay still records final turns on the record.
-        await self._ws.send_text(json.dumps(
+        await self._emit(
             {"type": "transcript", "role": role, "text": text, "final": final}
-        ))
+        )
 
     async def agent_state(self, key: str, display: str) -> None:
         # Which specialist is live now (greeter -> specialist). Drives the UI's
         # agent-indicator badge. Emitted whenever an agent activates.
-        await self._ws.send_text(json.dumps(
-            {"type": "agent", "key": key, "display": display}
-        ))
+        await self._emit({"type": "agent", "key": key, "display": display})
 
     async def end(self) -> None:
         try:
