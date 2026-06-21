@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Steering Harness</title></head>
+<body style="font-family:system-ui;max-width:40rem;margin:3rem auto">
+  <h2>AudioCodes Steering Harness</h2>
+  <button id="start">Start call</button>
+  <button id="end" disabled>End</button>
+  <pre id="log"></pre>
+<script>
+const RELAY = (location.hostname === "localhost")
+  ? "ws://localhost:8080/ws"
+  : "wss://" + location.host.replace(/^[^.]*\./, "relay.") + "/ws";
+let ws, actx, playCtx, micStream, proc, playTime = 0;
+const log = m => document.getElementById("log").textContent += m + "\n";
+
+async function start() {
+  document.getElementById("start").disabled = true;
+  document.getElementById("end").disabled = false;
+
+  // Playback context at device default rate; resume on this user gesture.
+  playCtx = new AudioContext();
+  await playCtx.resume();
+  playTime = playCtx.currentTime;
+
+  ws = new WebSocket(RELAY);
+  ws.onmessage = (e) => {
+    const m = JSON.parse(e.data);
+    if (m.type === "audio") playPcm24(m.data);
+    else if (m.type === "session_end") { log("session_end"); stop(); }
+  };
+  ws.onopen = () => log("ws open");
+
+  // Capture at 16 kHz.
+  actx = new AudioContext({ sampleRate: 16000 });
+  micStream = await navigator.mediaDevices.getUserMedia({
+    audio: { channelCount: 1, echoCancellation: true }
+  });
+  const src = actx.createMediaStreamSource(micStream);
+  proc = actx.createScriptProcessor(4096, 1, 1);
+  src.connect(proc);
+  proc.connect(actx.destination); // REQUIRED or onaudioprocess never fires
+  proc.onaudioprocess = (ev) => {
+    if (!ws || ws.readyState !== 1) return;
+    const f32 = ev.inputBuffer.getChannelData(0);
+    const i16 = new Int16Array(f32.length);
+    for (let i = 0; i < f32.length; i++) {
+      const s = Math.max(-1, Math.min(1, f32[i]));
+      i16[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
+    }
+    ws.send(JSON.stringify({ type: "audio", data: b64(new Uint8Array(i16.buffer)) }));
+  };
+}
+
+function playPcm24(b64data) {
+  const std = b64data.replace(/-/g, "+").replace(/_/g, "/");
+  const bytes = Uint8Array.from(atob(std), c => c.charCodeAt(0));
+  const i16 = new Int16Array(bytes.buffer);
+  const buf = playCtx.createBuffer(1, i16.length, 24000); // tag buffer at 24k
+  const ch = buf.getChannelData(0);
+  for (let i = 0; i < i16.length; i++) ch[i] = i16[i] / 0x8000;
+  const node = playCtx.createBufferSource();
+  node.buffer = buf;
+  node.connect(playCtx.destination);
+  const t = Math.max(playTime, playCtx.currentTime);
+  node.start(t);
+  playTime = t + buf.duration;
+}
+
+function stop() {
+  document.getElementById("start").disabled = false;
+  document.getElementById("end").disabled = true;
+  try { ws && ws.send(JSON.stringify({ type: "end" })); } catch (e) {}
+  try { proc && proc.disconnect(); } catch (e) {}
+  try { micStream && micStream.getTracks().forEach(t => t.stop()); } catch (e) {}
+  try { actx && actx.close(); } catch (e) {}
+}
+
+const b64 = (u8) => { let s = ""; for (const b of u8) s += String.fromCharCode(b); return btoa(s); };
+document.getElementById("start").onclick = start;
+document.getElementById("end").onclick = stop;
+</script>
+</body>
+</html>
