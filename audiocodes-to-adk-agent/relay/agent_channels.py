@@ -127,6 +127,11 @@ class AdkLiveSession:
                     b64 = inline["data"].replace("-", "+").replace("_", "/")
                     yield AgentAudio(base64.b64decode(b64))
 
+            # Specialist signalled completion (after speaking its closing line) via
+            # the end_call tool -> stop run_live so the call tears down cleanly.
+            if delta.get("end_call"):
+                break
+
         yield AgentEnd()
 
     async def close(self) -> None:
@@ -206,6 +211,9 @@ class AeAdkSession:
                 if inline and inline.get("data"):
                     b64 = inline["data"].replace("-", "+").replace("_", "/")
                     yield AgentAudio(base64.b64decode(b64))
+            # Specialist signalled completion (after its closing line) via end_call.
+            if delta.get("end_call"):
+                break
         yield AgentEnd()
 
     async def close(self) -> None:
