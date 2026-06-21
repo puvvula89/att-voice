@@ -4,9 +4,9 @@
 
 **Goal:** Build a steering relay that greets a caller, classifies intent on the first utterance, and seamlessly hands the live voice channel to the right specialist agent — across two GCP platforms (ADK + Gemini Live, and CX Agent Studio) — as one linear conversation, driven by a local harness (no AudioCodes yet).
 
-**Architecture:** The relay core is port-agnostic on both sides. A `MediaGateway` port abstracts the caller side (Phase 1 = `HarnessGateway`, a local mic WebSocket; Phase 2 = AudioCodes). An `AgentSession` port abstracts the agent side, with two implementations: `AdkLiveSession` (in-process `run_live` to Gemini Live) and `CesBidiSession` (`BidiRunSession` WebSocket to CX Agent Studio). A steering loop opens a greeter agent, watches for an intent signal, then closes it and opens the routed specialist seeded from a relay-owned session-of-record — with no re-greeting.
+**Architecture:** The relay core is port-agnostic on both sides. A `MediaGateway` port abstracts the caller side (Phase 1 = `HarnessGateway`, a local mic WebSocket; Phase 2 = AudioCodes). An `AgentSession` port abstracts the agent side, with three implementations: `AdkLiveSession` (in-process `run_live`, used for unit smoke + local dev), `AeAdkSession` (bidi connection to the ADK agents **deployed on Agent Engine**), and `CesBidiSession` (`BidiRunSession` WebSocket to CX Agent Studio). The three ADK agents (greeter, internet, phone-upgrade) are hosted in **one multi-agent Agent Engine app** that selects the agent per call by an `agent_key` in the bidi first message — so all three share the engine's session store by `session_id` automatically (no separate `SESSION_ENGINE_ID`). A steering loop opens a greeter agent, watches for an intent signal, then closes it and opens the routed specialist seeded from a relay-owned session-of-record — with no re-greeting. The factory uses `AeAdkSession` when an Agent Engine id is configured, falling back to in-process `AdkLiveSession` otherwise.
 
-**Tech Stack:** Python 3.12, `google-adk==2.1.0`, `google-genai` (1.x via adk), Gemini Live (`gemini-live-2.5-flash-native-audio` on Vertex), CX Agent Studio (`google.cloud.ces.v1` `BidiRunSession`), FastAPI + `uvicorn`, `websocket-client` (CES), `pytest`.
+**Tech Stack:** Python 3.12, `google-adk==2.1.0`, `google-genai` (1.x via adk), Gemini Live (`gemini-live-2.5-flash-native-audio` on Vertex), Vertex AI Agent Engine (custom bidi app, `AgentServerMode.EXPERIMENTAL`), CX Agent Studio (`google.cloud.ces.v1` `BidiRunSession`), FastAPI + `uvicorn`, `websocket-client` (CES), `vertexai` client (AE bidi), `pytest`.
 
 ## Global Constraints
 
@@ -15,6 +15,7 @@
 - **Live model:** `LIVE_MODEL` env, default `gemini-live-2.5-flash-native-audio` (Vertex/ADC). `GOOGLE_GENAI_USE_VERTEXAI=TRUE`.
 - **Audio (Phase 1):** caller side is **16 kHz PCM16 LE** (harness mic), agent output is **24 kHz PCM16 LE**. No 8 kHz telephony resampling in Phase 1 (that is Phase 2 / AudioCodes). Input blobs MUST carry the rate: `mime_type="audio/pcm;rate=16000"`.
 - **One linear conversation:** specialists MUST continue without re-greeting or "welcome back". Greeter goes silent at handoff.
+- **Agent Engine deploy (Phase 1):** ADK agents ship to ONE multi-agent Agent Engine app. Custom bidi app class (`register_operations -> {"bidi_stream": ["bidi_stream_query"]}`), `agent_server_mode=AgentServerMode.EXPERIMENTAL`, `extra_packages` as RELATIVE paths (`["relay", "agents"]`), `python_version="3.12"`, `cloudpickle==3.1.2`. Deploy idempotently (update-or-create by `display_name`). Hold the `vertexai.Client` for the whole connection lifetime (GC closes its httpx client otherwise).
 - **No tooling footprint** in committed artifacts: neutral professional naming, no co-author trailers, no tool/plugin names in paths. Outputs may be shared externally.
 - **Env loading:** call `load_dotenv()` at the very top of any standalone entrypoint BEFORE importing modules that read env (standalone uvicorn does not auto-load `.env`).
 - **TDD scope:** pure-Python units (ports, session record, router, steering loop) are test-first with pytest. Streaming/agent/relay/client are integration-verified via smoke scripts + a manual end-to-end run.
@@ -29,14 +30,17 @@ audiocodes-to-adk-agent/
     __init__.py
     ports.py                 # MediaGateway, AgentSession protocols + event dataclasses
     session_record.py        # SessionRecord: id, caller, intent, turns; context summary
+    session_resolve.py       # resolve_session (copied from proven module)
     router.py                # intent -> AgentSpec registry (backend = adk | ces)
     steering.py              # run_call(): greeter -> intent -> swap to specialist
     server.py                # FastAPI: harness WS endpoint -> steering
+    agent_app.py             # AE multi-agent bidi app (register_operations/bidi_stream_query)
     agents_runtime/
       __init__.py
-      adk_live.py            # AdkLiveSession (AgentSession over run_live)
+      adk_live.py            # AdkLiveSession (in-process run_live; dev + smoke)
+      ae_live.py             # AeAdkSession (bidi to ADK agents on Agent Engine)
       ces_bidi.py            # CesBidiSession (AgentSession over BidiRunSession)
-      factory.py             # make_agent(key, record, deps) -> AgentSession
+      factory.py             # make_factory(...) -> (key, record) -> AgentSession
     gateways/
       __init__.py
       harness.py             # HarnessGateway (MediaGateway over a browser WS)
@@ -46,11 +50,16 @@ audiocodes-to-adk-agent/
     greeter.py               # greeter/router LlmAgent
     internet.py              # internet specialist LlmAgent
     phone_upgrade.py         # phone-upgrade specialist LlmAgent
+    registry.py              # ADK_AGENTS dict {key -> agent} (shared by app + factory)
+  deploy/
+    deploy_agent_engine.py   # idempotent update-or-create of the ADK bidi app
+    destroy.sh               # tear down the engine
   harness/
     client.html              # minimal mic client (capture 16k, play 24k)
     serve.py                 # static server with no-store headers
   scripts/
-    smoke_adk_live.py        # drive AdkLiveSession with a text turn
+    smoke_adk_live.py        # drive AdkLiveSession (in-process) with a text turn
+    smoke_ae_live.py         # drive AeAdkSession against the deployed engine
     smoke_ces_bidi.py        # drive CesBidiSession with a WAV
   tests/
     test_ports.py
@@ -1233,14 +1242,445 @@ git commit -m "feat: CesBidiSession adapter over BidiRunSession"
 
 ---
 
+### Task 9A: ADK agent registry + Agent Engine bidi app
+
+**Files:**
+- Create: `audiocodes-to-adk-agent/agents/registry.py`
+- Create: `audiocodes-to-adk-agent/relay/agent_app.py`
+
+**Interfaces:**
+- Consumes: the three agents (Tasks 6–7); `relay.session_resolve` (Task 8); ADK `Runner`, `LiveRequestQueue`, `RunConfig`, `VertexAiSessionService`.
+- Produces:
+  - `ADK_AGENTS: dict[str, LlmAgent]` keyed `greeter`/`internet`/`phone_upgrade`.
+  - `class SteeringApp` with `set_up()`, `register_operations() -> {"bidi_stream": ["bidi_stream_query"]}`, and `async bidi_stream_query(request_queue)`. First queue item: `{"user_id", "session_id", "agent_key"}`. Yields a `session_info` dict then `run_live` events (`model_dump(by_alias)`).
+
+- [ ] **Step 1: Write the registry**
+
+`agents/registry.py`:
+```python
+from __future__ import annotations
+
+from agents.greeter import greeter_agent
+from agents.internet import internet_agent
+from agents.phone_upgrade import phone_upgrade_agent
+
+# Shared by the Agent Engine app and the local factory.
+ADK_AGENTS = {
+    "greeter": greeter_agent,
+    "internet": internet_agent,
+    "phone_upgrade": phone_upgrade_agent,
+}
+```
+
+- [ ] **Step 2: Write the Agent Engine bidi app**
+
+`relay/agent_app.py`:
+```python
+from __future__ import annotations
+
+import asyncio
+import base64
+import os
+from typing import Any
+
+APP_NAME = "att_steering"
+
+
+class SteeringApp:
+    """One multi-agent Agent Engine app. Selects the agent per call by agent_key;
+    all agents share the engine's session store by session_id (no SESSION_ENGINE_ID)."""
+
+    def set_up(self) -> None:
+        from google.adk.sessions import VertexAiSessionService
+        from agents.registry import ADK_AGENTS
+
+        engine_id = (
+            os.environ.get("SESSION_ENGINE_ID")
+            or os.environ.get("GOOGLE_CLOUD_AGENT_ENGINE_ID")
+        )
+        self._session_service = VertexAiSessionService(
+            project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
+            location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
+            agent_engine_id=engine_id,
+        )
+        self._agents = ADK_AGENTS
+        self._voice = os.environ.get("LIVE_VOICE", "Charon")
+
+    def register_operations(self):
+        return {"bidi_stream": ["bidi_stream_query"]}
+
+    def _run_config(self):
+        from google.adk.agents.run_config import RunConfig, StreamingMode
+        from google.genai import types
+        return RunConfig(
+            streaming_mode=StreamingMode.BIDI,
+            response_modalities=["AUDIO"],
+            speech_config=types.SpeechConfig(
+                voice_config=types.VoiceConfig(
+                    prebuilt_voice_config=types.PrebuiltVoiceConfig(voice_name=self._voice)
+                )
+            ),
+            output_audio_transcription=types.AudioTranscriptionConfig(),
+            input_audio_transcription=types.AudioTranscriptionConfig(),
+        )
+
+    async def bidi_stream_query(self, request_queue: "asyncio.Queue[Any]"):
+        from google.adk.agents.live_request_queue import LiveRequestQueue
+        from google.adk.runners import Runner
+        from google.genai import types
+        from relay.session_resolve import resolve_session
+
+        first = await request_queue.get()
+        user_id = (first or {}).get("user_id", "caller")
+        req_sid = (first or {}).get("session_id")
+        agent_key = (first or {}).get("agent_key", "greeter")
+        agent = self._agents.get(agent_key, self._agents["greeter"])
+
+        session, resumed = await resolve_session(
+            self._session_service, APP_NAME, user_id, req_sid
+        )
+        yield {"type": "session_info", "session_id": session.id, "resumed": resumed}
+
+        live_queue = LiveRequestQueue()
+        nudge = "(call_start)" if agent_key == "greeter" else "(handoff)"
+        live_queue.send_content(
+            types.Content(role="user", parts=[types.Part(text=nudge)])
+        )
+
+        async def pump():
+            while True:
+                msg = await request_queue.get()
+                if msg is None:
+                    continue
+                if msg.get("type") == "audio":
+                    pcm = base64.b64decode(msg["data"])
+                    live_queue.send_realtime(
+                        types.Blob(data=pcm, mime_type="audio/pcm;rate=16000")
+                    )
+                elif msg.get("type") == "end":
+                    live_queue.close()
+                    return
+
+        pump_task = asyncio.create_task(pump())
+        runner = Runner(
+            app_name=APP_NAME, agent=agent, session_service=self._session_service
+        )
+        try:
+            async for event in runner.run_live(
+                user_id=user_id,
+                session_id=session.id,
+                live_request_queue=live_queue,
+                run_config=self._run_config(),
+            ):
+                yield event.model_dump(exclude_none=True, by_alias=True, mode="json")
+        finally:
+            pump_task.cancel()
+            live_queue.close()
+```
+
+- [ ] **Step 3: Smoke-check the imports**
+
+Run: `cd audiocodes-to-adk-agent && python -c "from relay.agent_app import SteeringApp; from agents.registry import ADK_AGENTS; print(sorted(ADK_AGENTS), SteeringApp().register_operations())"`
+Expected: prints `['greeter', 'internet', 'phone_upgrade'] {'bidi_stream': ['bidi_stream_query']}`.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add agents/registry.py relay/agent_app.py
+git commit -m "feat: ADK agent registry and Agent Engine bidi app"
+```
+
+---
+
+### Task 9B: Deploy the ADK app to Agent Engine
+
+**Files:**
+- Create: `audiocodes-to-adk-agent/deploy/deploy_agent_engine.py`
+- Create: `audiocodes-to-adk-agent/deploy/destroy.sh`
+- Modify: `audiocodes-to-adk-agent/.env.example` (add `STAGING_BUCKET`, `AE_ENGINE_ID`)
+
+**Interfaces:**
+- Consumes: `SteeringApp` (Task 9A). Reuses the proven idempotent update-or-create pattern.
+- Produces: a deployed Agent Engine resource (`projects/.../reasoningEngines/{id}`); its full resource name printed and set as `AE_ENGINE_ID`.
+
+- [ ] **Step 1: Add deploy env to `.env.example`**
+
+Append to `.env.example`:
+```
+# Agent Engine (ADK agents)
+STAGING_BUCKET=your-bucket-name
+AE_ENGINE_ID=
+```
+
+- [ ] **Step 2: Write the deploy script**
+
+`deploy/deploy_agent_engine.py`:
+```python
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+
+import vertexai
+from vertexai import types as vtypes
+
+from relay.agent_app import SteeringApp
+
+PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]
+LOCATION = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
+BUCKET = os.environ["STAGING_BUCKET"]
+DISPLAY_NAME = "att-steering-adk"
+
+ENV_VARS = {
+    "GOOGLE_GENAI_USE_VERTEXAI": "TRUE",
+    "LIVE_MODEL": os.environ.get("LIVE_MODEL", "gemini-live-2.5-flash-native-audio"),
+    "LIVE_VOICE": os.environ.get("LIVE_VOICE", "Charon"),
+}
+
+cfg = vtypes.AgentEngineConfig(
+    display_name=DISPLAY_NAME,
+    description="ADK multi-agent steering app (greeter + specialists), Live/bidi.",
+    staging_bucket=f"gs://{BUCKET}",
+    requirements=[
+        "google-cloud-aiplatform[agent_engines]",
+        "google-adk==2.1.0",
+        "cloudpickle==3.1.2",
+        "websockets",
+    ],
+    extra_packages=["relay", "agents"],   # RELATIVE → importable on remote
+    python_version="3.12",
+    agent_server_mode=vtypes.AgentServerMode.EXPERIMENTAL,
+    env_vars=ENV_VARS,
+)
+
+client = vertexai.Client(project=PROJECT, location=LOCATION)
+existing = next(
+    (e for e in client.agent_engines.list()
+     if getattr(e.api_resource, "display_name", "") == DISPLAY_NAME),
+    None,
+)
+app = SteeringApp()
+if existing is not None:
+    name = existing.api_resource.name
+    print(f"Updating {name.split('/')[-1]} in place... (~several minutes)")
+    engine = client.agent_engines.update(name=name, agent=app, config=cfg)
+else:
+    print("Creating Agent Engine... (~several minutes)")
+    engine = client.agent_engines.create(agent=app, config=cfg)
+
+print("AE_ENGINE_ID:", engine.api_resource.name)
+```
+
+- [ ] **Step 3: Write the teardown script**
+
+`deploy/destroy.sh`:
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+: "${GOOGLE_CLOUD_PROJECT:?}"; : "${GOOGLE_CLOUD_LOCATION:=us-central1}"
+python - <<'PY'
+import os, vertexai
+c = vertexai.Client(project=os.environ["GOOGLE_CLOUD_PROJECT"],
+                    location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"))
+for e in c.agent_engines.list():
+    if getattr(e.api_resource, "display_name", "") == "att-steering-adk":
+        print("deleting", e.api_resource.name)
+        c.agent_engines.delete(name=e.api_resource.name, force=True)
+PY
+```
+
+- [ ] **Step 4: Deploy (run from the MODULE ROOT so relative extra_packages resolve)**
+
+Run: `cd audiocodes-to-adk-agent && . .venv/bin/activate && python deploy/deploy_agent_engine.py`
+Expected: prints `AE_ENGINE_ID: projects/.../locations/.../reasoningEngines/<id>` after several minutes. Copy that value into `.env` as `AE_ENGINE_ID`.
+(If it fails with `code 13 INTERNAL`, that's a known per-create platform flake — wait ~15 min and re-run; the script updates in place once an engine exists.)
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add deploy/deploy_agent_engine.py deploy/destroy.sh .env.example
+git commit -m "feat: idempotent Agent Engine deploy for ADK steering app"
+```
+
+---
+
+### Task 9C: AeAdkSession adapter (connect to deployed engine)
+
+**Files:**
+- Create: `audiocodes-to-adk-agent/relay/agents_runtime/ae_live.py`
+- Create: `audiocodes-to-adk-agent/scripts/smoke_ae_live.py`
+
+**Interfaces:**
+- Consumes: events (Task 2); `SessionRecord` (Task 3); the deployed engine (Task 9B); `vertexai` client bidi connect.
+- Produces: `class AeAdkSession` with `__init__(self, engine: str, agent_key: str, project: str, location: str = "us-central1")`, `open(record)`, `send_audio(pcm)`, `events()`, `close()`. On `session_info` it writes the engine's real `session_id` back onto `record` so the next specialist reuses it (shared session in the engine). Holds the `vertexai.Client` for the connection lifetime.
+
+- [ ] **Step 1: Write the adapter**
+
+`relay/agents_runtime/ae_live.py`:
+```python
+from __future__ import annotations
+
+import base64
+
+from relay.ports import AgentAudio, AgentTranscript, AgentIntent, AgentEnd
+from relay.session_record import SessionRecord
+
+
+class AeAdkSession:
+    """AgentSession over an ADK agent deployed on Agent Engine (bidi_stream_query)."""
+
+    def __init__(self, engine: str, agent_key: str, project: str,
+                 location: str = "us-central1"):
+        self._engine = engine
+        self._agent_key = agent_key
+        self._project = project
+        self._location = location
+        self._client = None
+        self._cm = None
+        self._conn = None
+        self._record = None
+
+    async def open(self, record: SessionRecord) -> None:
+        import vertexai
+        self._record = record
+        # Hold the Client for the whole connection (GC closes its httpx client).
+        self._client = vertexai.Client(project=self._project, location=self._location)
+        self._cm = self._client.aio.live.agent_engines.connect(
+            agent_engine=self._engine,
+            config={"class_method": "bidi_stream_query", "include_all_fields": True},
+        )
+        self._conn = await self._cm.__aenter__()
+        await self._conn.send({
+            "user_id": record.caller or "caller",
+            "session_id": record.session_id,
+            "agent_key": self._agent_key,
+        })
+
+    async def send_audio(self, pcm: bytes) -> None:
+        if self._conn is not None:
+            await self._conn.send(
+                {"type": "audio", "data": base64.b64encode(pcm).decode("ascii")}
+            )
+
+    async def events(self):
+        while True:
+            try:
+                resp = await self._conn.receive()
+            except Exception:
+                break
+            if not resp:
+                break
+            ev = resp.get("bidiStreamOutput", resp) if isinstance(resp, dict) else {}
+            if not isinstance(ev, dict):
+                continue
+            if ev.get("type") == "session_info":
+                if ev.get("session_id"):
+                    self._record.session_id = ev["session_id"]  # share across agents
+                continue
+            actions = ev.get("actions") or {}
+            delta = actions.get("stateDelta") or actions.get("state_delta") or {}
+            if delta.get("intent"):
+                yield AgentIntent(delta["intent"])
+            for key, role in (
+                ("inputTranscription", "user"), ("input_transcription", "user"),
+                ("outputTranscription", "agent"), ("output_transcription", "agent"),
+            ):
+                tr = ev.get(key)
+                if tr and tr.get("text"):
+                    yield AgentTranscript(role, tr["text"], bool(tr.get("finished")))
+            content = ev.get("content") or {}
+            for part in content.get("parts") or []:
+                inline = part.get("inlineData") or part.get("inline_data")
+                if inline and inline.get("data"):
+                    b64 = inline["data"].replace("-", "+").replace("_", "/")
+                    yield AgentAudio(base64.b64decode(b64))
+        yield AgentEnd()
+
+    async def close(self) -> None:
+        try:
+            if self._conn is not None:
+                await self._conn.send({"type": "end"})
+        except Exception:
+            pass
+        try:
+            if self._cm is not None:
+                await self._cm.__aexit__(None, None, None)
+        finally:
+            self._cm = None
+            self._conn = None
+            self._client = None
+```
+
+- [ ] **Step 2: Write the smoke script**
+
+`scripts/smoke_ae_live.py`:
+```python
+from dotenv import load_dotenv
+load_dotenv()
+
+import asyncio
+import os
+import wave
+
+from relay.agents_runtime.ae_live import AeAdkSession
+from relay.session_record import SessionRecord
+
+
+async def main():
+    sess = AeAdkSession(
+        engine=os.environ["AE_ENGINE_ID"],
+        agent_key="greeter",
+        project=os.environ["GOOGLE_CLOUD_PROJECT"],
+        location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
+    )
+    record = SessionRecord(session_id=None, caller="+15550000000")
+    await sess.open(record)
+
+    # Stream a 16kHz mono PCM16 WAV (say "my internet is down").
+    with wave.open("scripts/sample_16k.wav", "rb") as w:
+        assert w.getframerate() == 16000 and w.getsampwidth() == 2
+        while True:
+            frames = w.readframes(320)
+            if not frames:
+                break
+            await sess.send_audio(frames)
+            await asyncio.sleep(0.02)
+
+    seen = []
+    async for ev in sess.events():
+        seen.append(type(ev).__name__)
+        if len(seen) > 12:
+            break
+    await sess.close()
+    print("session_id:", record.session_id)
+    print("events:", seen)
+
+
+asyncio.run(main())
+```
+
+- [ ] **Step 3: Run the smoke (requires deployed engine + ADC + sample WAV)**
+
+Run: `cd audiocodes-to-adk-agent && . .venv/bin/activate && python scripts/smoke_ae_live.py`
+Expected: prints a real `session_id` and `events:` including `AgentTranscript` and/or `AgentIntent`. No `RuntimeError: ... client has been closed` (that would mean the `vertexai.Client` wasn't held).
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add relay/agents_runtime/ae_live.py scripts/smoke_ae_live.py
+git commit -m "feat: AeAdkSession adapter for ADK agents on Agent Engine"
+```
+
+---
+
 ### Task 10: Agent factory
 
 **Files:**
 - Create: `audiocodes-to-adk-agent/relay/agents_runtime/factory.py`
 
 **Interfaces:**
-- Consumes: `router.REGISTRY`/`GREETER_KEY` (Task 4); the agents (Tasks 6–7); `AdkLiveSession` (Task 8); `CesBidiSession` (Task 9).
-- Produces: `make_factory(session_service, ces_app, ces_location, voice) -> (key, record) -> AgentSession`. Maps `greeter`/`internet`/`phone_upgrade` → `AdkLiveSession` with the matching agent; `billing` → `CesBidiSession`.
+- Consumes: `ADK_AGENTS` (Task 9A); `AdkLiveSession` (Task 8); `AeAdkSession` (Task 9C); `CesBidiSession` (Task 9).
+- Produces: `make_factory(*, session_service, ces_app, ces_location, ae_engine, project, ae_location, voice) -> (key, record) -> AgentSession`. ADK keys → `AeAdkSession` when `ae_engine` is set, else in-process `AdkLiveSession`; `billing` → `CesBidiSession`.
 
 - [ ] **Step 1: Write the factory**
 
@@ -1249,39 +1689,42 @@ git commit -m "feat: CesBidiSession adapter over BidiRunSession"
 from __future__ import annotations
 
 from relay.agents_runtime.adk_live import AdkLiveSession
+from relay.agents_runtime.ae_live import AeAdkSession
 from relay.agents_runtime.ces_bidi import CesBidiSession
-from relay.router import GREETER_KEY
 
-from agents.greeter import greeter_agent
-from agents.internet import internet_agent
-from agents.phone_upgrade import phone_upgrade_agent
-
-_ADK_AGENTS = {
-    GREETER_KEY: greeter_agent,
-    "internet": internet_agent,
-    "phone_upgrade": phone_upgrade_agent,
-}
+from agents.registry import ADK_AGENTS
 
 
-def make_factory(session_service, ces_app: str, ces_location: str = "us",
-                 voice: str = "Charon"):
-    """Return agent_factory(key, record) -> AgentSession for the steering loop."""
+def make_factory(*, session_service=None, ces_app: str, ces_location: str = "us",
+                 ae_engine: str = "", project: str = "",
+                 ae_location: str = "us-central1", voice: str = "Charon"):
+    """Return agent_factory(key, record) -> AgentSession.
+
+    ADK keys -> AeAdkSession when ae_engine is set (agents deployed on Agent
+    Engine), else in-process AdkLiveSession (local dev). billing -> CesBidiSession.
+    """
 
     def factory(key, record):
-        if key in _ADK_AGENTS:
-            return AdkLiveSession(_ADK_AGENTS[key], session_service, voice=voice)
+        if key in ADK_AGENTS:
+            if ae_engine:
+                return AeAdkSession(engine=ae_engine, agent_key=key,
+                                    project=project, location=ae_location)
+            return AdkLiveSession(ADK_AGENTS[key], session_service, voice=voice)
         if key == "billing":
             return CesBidiSession(app=ces_app, location=ces_location)
         # Unknown key should not happen (router defaults), but fail safe to internet.
-        return AdkLiveSession(_ADK_AGENTS["internet"], session_service, voice=voice)
+        if ae_engine:
+            return AeAdkSession(engine=ae_engine, agent_key="internet",
+                                project=project, location=ae_location)
+        return AdkLiveSession(ADK_AGENTS["internet"], session_service, voice=voice)
 
     return factory
 ```
 
-- [ ] **Step 2: Smoke-check the wiring**
+- [ ] **Step 2: Smoke-check the wiring (AE path)**
 
-Run: `cd audiocodes-to-adk-agent && python -c "from google.adk.sessions import InMemorySessionService as S; from relay.agents_runtime.factory import make_factory; from relay.session_record import SessionRecord; f=make_factory(S(), 'projects/p/locations/us/apps/a'); print(type(f('greeter', SessionRecord('X'))).__name__, type(f('billing', SessionRecord('X'))).__name__)"`
-Expected: prints `AdkLiveSession CesBidiSession`.
+Run: `cd audiocodes-to-adk-agent && python -c "from relay.agents_runtime.factory import make_factory; from relay.session_record import SessionRecord; f=make_factory(ces_app='projects/p/locations/us/apps/a', ae_engine='projects/p/locations/us-central1/reasoningEngines/1', project='p'); print(type(f('greeter', SessionRecord('X'))).__name__, type(f('billing', SessionRecord('X'))).__name__)"`
+Expected: prints `AeAdkSession CesBidiSession`.
 
 - [ ] **Step 3: Commit**
 
@@ -1388,9 +1831,12 @@ async def ws(websocket: WebSocket):
     gateway = HarnessGateway(websocket)
     record = SessionRecord(session_id=str(uuid.uuid4()), caller="harness")
     factory = make_factory(
-        _session_service,
+        session_service=_session_service,
         ces_app=os.environ["CES_APP"],
         ces_location=os.environ.get("CES_LOCATION", "us"),
+        ae_engine=os.environ.get("AE_ENGINE_ID", ""),
+        project=os.environ.get("GOOGLE_CLOUD_PROJECT", ""),
+        ae_location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
         voice=os.environ.get("LIVE_VOICE", "Charon"),
     )
     await run_call(gateway, factory, record)
@@ -1539,6 +1985,8 @@ if __name__ == "__main__":
 
 - [ ] **Step 3: Run the full end-to-end demo**
 
+Precondition: the ADK app is deployed (Task 9B) and `.env` has `AE_ENGINE_ID` set, plus `CES_APP`. With `AE_ENGINE_ID` present, the ADK agents run **on Agent Engine** and billing runs **on CES** — the cross-platform proof. (Unset `AE_ENGINE_ID` to fall back to in-process ADK for quick local checks.)
+
 Terminal A: `cd audiocodes-to-adk-agent && . .venv/bin/activate && uvicorn relay.server:app --port 8080`
 Terminal B: `cd audiocodes-to-adk-agent/harness && python serve.py`
 Browser: open `http://localhost:8000/client.html`, click **Start call**, speak.
@@ -1568,7 +2016,8 @@ git commit -m "feat: mic harness client and end-to-end Phase 1 demo"
 ## Self-Review
 
 **Spec coverage:**
-- Goal 2 (relay → any GCP platform, seamless): Tasks 8 (ADK Live) + 9 (CES bidi) + 5/10 (steering+factory) + 12 (end-to-end). ✓
+- Goal 2 (relay → any GCP platform, seamless): ADK on **Agent Engine** (Tasks 9A/9B/9C) + CES (Task 9) + steering/factory (5/10) + end-to-end (12). ✓
+- ADK agents deployed on Agent Engine (folded into Phase 1): one multi-agent bidi app (9A), idempotent deploy (9B), `AeAdkSession` adapter (9C). ✓
 - One VAIC bot / in-process steering: steering loop never re-routes telephony; swap is in-process (Task 5). ✓
 - 3 specialists (internet, phone_upgrade ADK; billing CES): Tasks 7 + 9. ✓
 - Greeter/router on first turn: Task 6. ✓
@@ -1582,5 +2031,6 @@ git commit -m "feat: mic harness client and end-to-end Phase 1 demo"
 **Type consistency:** `AgentSession` methods (`open/send_audio/events/close`) consistent across `AdkLiveSession`, `CesBidiSession`, and `FakeAgent`. `agent_factory(key, record)` signature matches steering call and `make_factory`. Event types (`AgentAudio/Transcript/Intent/End`, `CallerAudio/End`) consistent across ports, adapters, steering, tests.
 
 **Notes / follow-ons (not blockers):**
-- Phase 1 runs ADK agents in-process via `run_live`. Deploying them to Agent Engine (Topology B) is a small follow-on if you want the ADK agents off-box before Phase 2 — the spec lists Agent Engine hosting, but in-process fully proves the relay↔platform seam for Phase 1.
+- ADK agents are deployed to Agent Engine (Tasks 9A–9C) and driven via `AeAdkSession`; the in-process `AdkLiveSession` (Task 8) is retained for unit smoke + a local fallback (factory uses it only when `AE_ENGINE_ID` is unset).
+- The three ADK agents share one Agent Engine app and therefore one session store — context carries by `session_id` across the greeter→specialist swap with no `SESSION_ENGINE_ID` wiring.
 - A short audible gap at greeter→specialist swap is the main risk to watch (§11). If present, add a one-line bridging clause to the greeter before it classifies.
