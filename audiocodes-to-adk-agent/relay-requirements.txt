@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+google-cloud-aiplatform
+google-adk==2.1.0
+websockets
+websocket-client
