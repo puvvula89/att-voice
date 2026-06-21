@@ -11,6 +11,8 @@ RUN pip install --no-cache-dir -r /app/relay-requirements.txt
 # The relay imports both packages (relay.server -> relay.* -> agents.registry).
 COPY relay /app/relay
 COPY agents /app/agents
+# The demo UI is served by the relay itself (GET / -> harness/client.html).
+COPY harness /app/harness
 
 ENV PORT=8080
 EXPOSE 8080

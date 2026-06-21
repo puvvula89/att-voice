@@ -31,10 +31,41 @@ ROUTES: dict[str, AgentSpec] = {
 }
 
 
+GREETER_DISPLAY = "Greeter"
+
+
 def route(intent: str) -> AgentSpec:
     """Map a greeter-emitted intent string to a specialist. Unknown -> default."""
     key = (intent or "").strip().lower()
     return ROUTES.get(key, ROUTES[DEFAULT_KEY])
+
+
+def display_for(key: str) -> str:
+    """Human label for an agent key (greeter + specialists) — drives the UI badge."""
+    if key == GREETER_KEY:
+        return GREETER_DISPLAY
+    spec = ROUTES.get(key)
+    return spec.display if spec else key
+
+
+async def _emit_agent_state(gateway, key: str) -> None:
+    """Send the agent-indicator frame if the gateway supports it (UI-only)."""
+    fn = getattr(gateway, "agent_state", None)
+    if fn is not None:
+        try:
+            await fn(key, display_for(key))
+        except Exception:
+            pass
+
+
+async def _emit_transcript(gateway, ev: AgentTranscript) -> None:
+    """Send a live-transcript frame if the gateway supports it (UI-only)."""
+    fn = getattr(gateway, "transcript", None)
+    if fn is not None:
+        try:
+            await fn(ev.role, ev.text, ev.final)
+        except Exception:
+            pass
 
 
 async def run_call(gateway, agent_factory, record: SessionRecord) -> None:
@@ -63,11 +94,14 @@ async def run_call(gateway, agent_factory, record: SessionRecord) -> None:
             agent = agent_factory(key, record)
             await agent.open(record)
             state["agent"] = agent
+            # Tell the UI which agent is live now (greeter, then specialist).
+            await _emit_agent_state(gateway, key)
             swap = None
             async for ev in agent.events():
                 if isinstance(ev, AgentAudio):
                     await gateway.send_audio(ev.pcm)
                 elif isinstance(ev, AgentTranscript):
+                    await _emit_transcript(gateway, ev)
                     if ev.final:
                         record.add_turn(ev.role, ev.text)
                 elif isinstance(ev, AgentIntent):
