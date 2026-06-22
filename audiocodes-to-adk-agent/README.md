@@ -187,20 +187,44 @@ The **browser harness** (`/ws`, local dev) speaks a simpler JSON wire (`{type:"a
 
 ## Transport — the back-end channel rides a different hop per platform
 
-Voice needs audio flowing up (mic) and down (agent) continuously, so **every hop is a persistent
-two-way channel**. Hop 1 (browser ⇄ relay) is always the same WebSocket. Hop 2 — the back-end voice
-channel the relay opens — differs by which `AgentSession` is active:
+Voice needs audio flowing up and down continuously, so **every hop is a persistent two-way channel**.
+The caller side is always one WebSocket (AudioCodes VoiceAI Connect → relay). The back-end channel the
+relay opens differs by which `AgentSession` is active — and the relay is the **only** place audio is
+resampled, between the caller's coder and the agents' fixed **16 kHz in / 24 kHz out**:
 
 ```
-  hop 1: WebSocket            hop 2: back-end voice channel (opened BY the relay)
-  (browser ⇄ relay)
-                        ┌───────────────────────────────────────────────────────────────┐
-                        │  ADK on Agent Engine  →  gRPC bidi_stream_query  →  (hop 3)     │
- ┌─────────┐   ws://    │                            AgentEngine ⇄ Gemini Live (ws)       │
- │ BROWSER │◀─────────▶ │  ADK in-process (local) →  relay ⇄ Gemini Live (ws, run_live)   │
- │ harness │   RELAY    │                                                                 │
- └─────────┘            │  CES billing          →  relay ⇄ CES BidiRunSession (ws)        │
-                        └───────────────────────────────────────────────────────────────┘
+    ┌──────────────────────────────────────────────┐
+    │ PSTN caller  (phone)                         │
+    └──────────────────────────────────────────────┘
+          │
+          │   telephony  ·  PSTN / SIP
+          ▼
+    ┌──────────────────────────────────────────────┐
+    │ AudioCodes VoiceAI Connect  ·  Live Hub      │
+    └──────────────────────────────────────────────┘
+          │
+          │   WebSocket  ·  Bot API (streaming audio)
+          ▼
+    ┌──────────────────────────────────────────────────────────────┐
+    │ Relay   ·   AudioCodesGateway                                │
+    │                                                              │
+    │ resample  (only when caller coder is not 16k / 24k):         │
+    │    in : caller coder -> 16 kHz PCM   (8k->16k  UPSAMPLE)     │
+    │    out: 24 kHz PCM -> caller coder   (24k->8k  DOWNSAMPLE)   │
+    └──────────────────────────────────────────────────────────────┘
+          │
+          │   relay opens ONE back-end channel per call
+          │   (always 16 kHz PCM in  /  24 kHz PCM out)
+          ▼
+    ┌────────────────────────┐  ┌────────────────────────┐  ┌────────────────────────┐
+    │ gRPC                   │  │ WebSocket              │  │ WebSocket              │
+    │                        │  │                        │  │                        │
+    │ ADK on Agent Engine    │  │ ADK in-process (dev)   │  │ CES billing            │
+    │ bidi_stream_query      │  │ run_live               │  │ BidiRunSession         │
+    │ -> WS to Gemini Live   │  │ direct WS to Gemini    │  │ WS ces.googleapis.com  │
+    └────────────────────────┘  └────────────────────────┘  └────────────────────────┘
+
+  HTTP is used only once — Live Hub's bot-URL validation probe — never for call media.
 ```
 
 | Channel | `AgentSession` impl | Hop-2 transport | Notes |
