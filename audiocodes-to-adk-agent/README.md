@@ -385,8 +385,7 @@ schema before calling; resource ids must match `[a-zA-Z0-9][a-zA-Z0-9-_]{4,35}` 
 7. Re-run `bash deploy/deploy_all.sh` — it redeploys the relay with `CES_APP` wired in.
 
 (No Claude session? The same calls work over the CES REST API — `POST https://ces.googleapis.com/v1/...`
-with an ADC bearer — so this can be scripted into a helper if you want it fully hands-off.) Full working
-notes: `deploy/NEXT-CES-BUILD.md`.
+with an ADC bearer — so this can be scripted into a helper if you want it fully hands-off.)
 
 ### The services
 
