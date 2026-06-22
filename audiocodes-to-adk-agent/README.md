@@ -58,40 +58,62 @@ on the first turn; the relay closes the greeter channel and opens the specialist
 session** — the caller hears one continuous voice.
 
 ```
-  ☎ PSTN CALLER                                                  ┌──────────────────────────────────────┐
-  dials the bound DID                                            │            Relay (Cloud Run)           │
-        │   voice                                                │               relay/server.py          │
-        ▼                                                        │                                        │
-  ┌──────────────────────────┐   WebSocket  /audiocodes-ws       │  AudioCodesGateway  (MediaGateway)     │
-  │  AudioCodes VoiceAI       │   Bearer AUDIOCODES_TOKEN         │   · handshake → session.accepted       │
-  │  Connect / Live Hub       │ ───────────────────────────────▶ │   · coders negotiated: 16 kHz in /      │
-  │  (Bot API, streaming)     │   session.initiate               │     24 kHz out (agent-native, no resam.)│
-  │                           │   userStream.start/.chunk/.stop ▶│   · userStream → decode → 16k PCM       │
-  │  telephony ⇄ bot          │ ◀── playStream.start/.chunk/.stop│   · agent 24k PCM → encode → playStream │
-  │  caller audio (μ-law,     │   activities (start/dtmf/hangup)  │   · turn ends → playStream.stop         │
-  │  8/16/24 k — negotiated)  │                                  │     (releases floor → caller mic flows) │
-  └──────────────────────────┘                                  │   run_call()    (steering loop)        │
-        ▲   voice                  also: /observe monitor  ◀─────│   SessionRecord (session-of-record)    │
-        │                          mirrors a live call (UI)      └───────────────────┬────────────────────┘
-        └─ caller hangs up → session.end → relay tears down       agent_factory(key)─▶│ AgentSession (channel #2)
-                                  ┌──────────────────────────────────────────────────┴───────────────────┐
-                                  │  STEERING LOOP  (relay/call_steering.py — run_call + intent routing)  │
-                                  │  1. open Greeter → "Thanks for calling AT&T. How can I help you?"      │
-                                  │  2. greeter calls classify_intent → AgentIntent → route(intent)        │
-                                  │  3. close greeter channel · open specialist channel (same session)     │
-                                  │  4. pump audio both ways; each agent turn_complete → playStream.stop   │
-                                  └───────┬───────────────────────────┬───────────────────────────────────┘
-                                          │ key ∈ {internet,           │ key == billing
-                                          │        phone_upgrade}      │
-                                          ▼ adk                        ▼ ces
-              ┌───────────────────────────────────────────┐   ┌──────────────────────────────────┐
-              │  ADK + Gemini Live specialist             │   │  CES billing specialist           │
-              │  AeAdkSession   (Agent Engine bidi)  ⟵┐   │   │  CesBidiSession                   │
-              │  AdkLiveSession (in-process run_live) ⟵┘   │   │  CES BidiRunSession WebSocket     │
-              │  greeter · internet · phone_upgrade        │   │  ASR + LLM + TTS, server-managed  │
-              └───────────────────────────────────────────┘   └──────────────────────────────────┘
-                         AE_ENGINE_ID set → Agent Engine                seeded via historicalContexts
-                         AE_ENGINE_ID unset → in-process
+   PSTN caller  — dials the bound DID
+         |
+         |  voice
+         v
+   ┌──────────────────────────────────────────────────┐
+   │ AudioCodes VoiceAI Connect   ·   Live Hub        │
+   │ Bot API  ·  streaming (raw audio)                │
+   │                                                  │
+   │ telephony  <->  bot                              │
+   │ caller audio  —  mu-law / 8 / 16 / 24 kHz        │
+   └──────────────────────────────────────────────────┘
+         |
+         |   WebSocket   wss://<host>/audiocodes-ws   (Bearer AUDIOCODES_TOKEN)
+         |
+         |      bot  <--  session.initiate    ·   userStream.start / .chunk / .stop
+         |      bot  -->  session.accepted    ·   playStream.start / .chunk / .stop
+         v
+   ┌──────────────────────────────────────────────────────────────────────┐
+   │ RELAY    ·    Cloud Run    ·    relay/server.py                      │
+   │                                                                      │
+   │ AudioCodesGateway   (MediaGateway)                                   │
+   │     handshake        ->  session.accepted                            │
+   │     coders:  16 kHz in   /   24 kHz out   (agent-native)             │
+   │     userStream       ->  decode  ->  16 kHz PCM                      │
+   │     agent 24 kHz PCM  ->  encode  ->  playStream                     │
+   │     turn ends         ->  playStream.stop   (releases the floor)     │
+   │                                                                      │
+   │ run_call()        —  the steering loop                               │
+   │ SessionRecord     —  the session of record                           │
+   │ /observe monitor  —  mirrors the live call to the demo UI            │
+   └──────────────────────────────────────────────────────────────────────┘
+         |
+         |   agent_factory(key)  ->  opens one back-end voice channel
+         v
+   ┌──────────────────────────────────────────────────────────────────────┐
+   │ STEERING LOOP    ·    relay/call_steering.py                         │
+   │                                                                      │
+   │   1.  open Greeter      ->  "Thanks for calling AT&T ..."            │
+   │   2.  classify_intent   ->  AgentIntent  ->  route(intent)           │
+   │   3.  close greeter       ·   open specialist   (SAME session)       │
+   │   4.  pump audio both ways    ·    turn_complete -> playStream.stop  │
+   └──────────────────────────────────────────────────────────────────────┘
+         |                                              |
+  internet / phone_upgrade  (adk)                billing  (ces)
+         |                                              |
+         v                                              v
+   ┌────────────────────────────────────────┐     ┌────────────────────────────────────────┐
+   │ ADK  +  Gemini Live                    │     │ CES  billing                           │
+   │                                        │     │                                        │
+   │ AeAdkSession    —  Agent Engine        │     │ CesBidiSession                         │
+   │ AdkLiveSession  —  in-process          │     │ CES BidiRunSession  (ws)               │
+   │                                        │     │                                        │
+   │ greeter · internet · phone_upgrade     │     │ ASR + LLM + TTS  ·  server-side        │
+   └────────────────────────────────────────┘     └────────────────────────────────────────┘
+        AE_ENGINE_ID set    ->  Agent Engine        seeded via historicalContexts
+        AE_ENGINE_ID unset  ->  in-process
 ```
 
 > **Floor control (the telephony-specific bit).** A Bot API `playStream` is *one bot utterance*: while
@@ -139,7 +161,7 @@ sequenceDiagram
     Sp-->>R: AgentAudio "…let's take a look" (continues, NO re-greet)
     R-->>V: playStream chunks
     V-->>C: audio
-    Note over C,Sp: each agent turn ends → playStream.stop; the next turn opens a fresh playStream
+    Note over C,Sp: each agent turn ends → playStream.stop, then a fresh playStream for the next turn
 
     Note over C,Sp: ——— closing ———
     Sp-->>R: closing line, then goes quiet
