@@ -248,14 +248,36 @@ this is a deliberate, validated distinction:
 - **Hangup / end:** relay tears down channel #2, sends `hangup`, closes on
   `session.end`. Mic/socket lifecycle hygiene from the existing module applies.
 
-## 9. AudioCodes onboarding path
+## 9. AudioCodes integration (built)
 
-VAIC has a **self-service edition (Live Hub)** with wizard onboarding, pay-as-you-go,
-and US numbers (BYOC or purchased) — a real test DID + Bot API without enterprise
-sales. AT&T's existing AudioCodes relationship is a faster alternative for a lab
-tenant. We build against the documented Bot API contract immediately and point a
-real tenant at the relay when provisioned — this is the real integration, not a
-simulation.
+`AudioCodesGateway` (`relay/caller_channels.py`) speaks the VAIC **WebSocket-mode**
+Bot API and plugs into the same `MediaGateway` port as `BrowserGateway`, so the
+steering loop, agents, session model, and `/observe` monitor are untouched.
+
+- **Route:** `wss://<host>/audiocodes-ws`; auth = `Bearer AUDIOCODES_TOKEN` on the
+  WS upgrade. VAIC dials one WS per call.
+- **Handshake:** `session.initiate` → negotiate coders → `session.accepted`. Run in
+  the server route *before* `run_call`, so the play coder is known by the first
+  agent audio. `session.resume` (reconnect) is re-accepted on the same coder.
+- **Caller-in:** `userStream.start`→`userStream.started`; `userStream.chunk` decoded
+  + resampled to 16 kHz PCM16 → `CallerAudio`; `userStream.stop`→`userStream.stopped`;
+  `session.end`/disconnect → `CallerEnd`.
+- **Play-out:** agent 24 kHz PCM16 → one lazily-opened `playStream` (`.start` then
+  `.chunk`s, transcoded to the play coder); `.stop`+`hangup` activity on teardown.
+  *Single continuous play stream per call* (no per-turn segmentation/barge-in
+  hypotheses yet — the Live model self-manages turns; refine later if needed).
+- **Coder negotiation** (`relay/audio_transcode.py`): prefer 16 kHz linear for
+  caller-in and 24 kHz linear for play-out (agent-native, zero resample); else
+  transcode 8 kHz / mu-law (G.711) — hand-rolled, since py3.13+ dropped `audioop`.
+- **Transfer:** the agent swap is relay-internal — the phone call stays on the
+  relay, so `transfer()` is a no-op to VAIC (surfaced to observers only). The
+  caller hangs up to end. (PSTN transfer to a human is a future escalation hook.)
+- **Onboarding:** VAIC **self-service edition (Live Hub)** gives wizard onboarding,
+  pay-as-you-go, and US DIDs without enterprise sales. Configure a provider of type
+  `ac-api` (botUrl=the route, `acBotApiType=streaming`, `directSTT=true`,
+  `directTTS=true`, `token=AUDIOCODES_TOKEN`), bind a DID, and call it.
+- **Verify without a tenant:** `tests/smoke/smoke_audiocodes.py` impersonates VAIC
+  against a running relay (handshake, streams a WAV, collects the agent reply).
 
 ## 10. Reuse from `shared-session-voice-and-chat`
 

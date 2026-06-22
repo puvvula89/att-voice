@@ -27,7 +27,9 @@ import google.auth
 import google.auth.transport.requests
 import websocket  # websocket-client
 
-from relay.channels import AgentAudio, AgentTranscript, AgentIntent, AgentEnd
+from relay.channels import (
+    AgentAudio, AgentTranscript, AgentIntent, AgentEnd, AgentTurnComplete,
+)
 from relay.call_session import SessionRecord
 from agents.registry import ADK_AGENTS
 
@@ -137,6 +139,10 @@ class AdkLiveSession:
                     b64 = inline["data"].replace("-", "+").replace("_", "/")
                     yield AgentAudio(base64.b64decode(b64))
 
+            # End of the agent's spoken turn -> release the caller's media floor.
+            if ev.get("turnComplete") or ev.get("turn_complete"):
+                yield AgentTurnComplete()
+
         yield AgentEnd()
 
     async def close(self) -> None:
@@ -216,6 +222,9 @@ class AeAdkSession:
                 if inline and inline.get("data"):
                     b64 = inline["data"].replace("-", "+").replace("_", "/")
                     yield AgentAudio(base64.b64decode(b64))
+            # End of the agent's spoken turn -> release the caller's media floor.
+            if ev.get("turnComplete") or ev.get("turn_complete"):
+                yield AgentTurnComplete()
         yield AgentEnd()
 
     async def close(self) -> None:
@@ -347,6 +356,13 @@ class CesBidiSession:
 
     async def events(self):
         loop = asyncio.get_running_loop()
+        # CES streams the user recognition as the WHOLE cumulative utterance, and
+        # may send it MORE THAN ONCE (an interim, then a corrected/extended final —
+        # e.g. "…signed up for it." then "…signed up for it. Thank you."). Emitting
+        # each as final=True makes the UI finalize TWO bubbles for one utterance. So
+        # buffer the latest user recognition and flush it ONCE (as final) right
+        # before the agent's reply (or at session end) — one bubble per utterance.
+        pending_user = None
         while True:
             message = await loop.run_in_executor(None, self._out.get)
             if message is None:
@@ -354,21 +370,25 @@ class CesBidiSession:
             data = json.loads(message)
             out = data.get("sessionOutput") or {}
             rec = data.get("recognitionResult") or {}
-            # CES sends ONE COMPLETE message per turn, not ADK-style deltas:
-            #   recognitionResult.transcript = the full user utterance (post-VAD)
+            #   recognitionResult.transcript = the (cumulative) user utterance
             #   sessionOutput.text           = the full agent turn text (one per turnIndex)
-            # `turnCompleted` arrives LATER on a separate audio message, so it must
-            # NOT gate text finality. Emit each as final=True so the UI closes the
-            # bubble per turn; gating on turnCompleted left every turn appended into
-            # one never-closed bubble (user + agent text all mingled).
             if rec.get("transcript"):
-                yield AgentTranscript("user", rec["transcript"], True)
+                pending_user = rec["transcript"]  # keep latest; don't emit yet
             if out.get("text"):
+                if pending_user is not None:
+                    yield AgentTranscript("user", pending_user, True)
+                    pending_user = None
                 yield AgentTranscript("agent", out["text"], True)
             if out.get("audio"):
                 yield AgentAudio(base64.b64decode(out["audio"]))
+            # CES marks end-of-agent-turn on a (later) audio message — release the
+            # caller's media floor so AudioCodes resumes forwarding userStream.
+            if out.get("turnCompleted"):
+                yield AgentTurnComplete()
             if data.get("endSession"):
                 break
+        if pending_user is not None:  # flush a trailing user utterance with no reply
+            yield AgentTranscript("user", pending_user, True)
         yield AgentEnd()
 
     async def close(self) -> None:

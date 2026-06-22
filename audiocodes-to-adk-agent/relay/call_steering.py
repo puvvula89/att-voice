@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import asyncio
+import logging
 from dataclasses import dataclass
 
+log = logging.getLogger("audiocodes")  # shares the handler configured in server.py
+
 from relay.channels import (
-    AgentAudio, AgentTranscript, AgentIntent, AgentEnd,
+    AgentAudio, AgentTranscript, AgentIntent, AgentEnd, AgentTurnComplete,
     CallerAudio, CallerEnd,
 )
 from relay.call_session import SessionRecord
@@ -58,6 +61,17 @@ async def _emit_agent_state(gateway, key: str) -> None:
             pass
 
 
+async def _emit_turn_complete(gateway) -> None:
+    """Tell the gateway the agent finished its turn, so it releases the media floor
+    (AudioCodes playStream.stop). Best-effort: gateways without end_turn skip it."""
+    fn = getattr(gateway, "end_turn", None)
+    if fn is not None:
+        try:
+            await fn()
+        except Exception:
+            pass
+
+
 async def _emit_transcript(gateway, ev: AgentTranscript) -> None:
     """Send a live-transcript frame if the gateway supports it (UI-only)."""
     fn = getattr(gateway, "transcript", None)
@@ -103,7 +117,12 @@ async def run_call(gateway, agent_factory, record: SessionRecord) -> None:
                 elif isinstance(ev, AgentTranscript):
                     await _emit_transcript(gateway, ev)
                     if ev.final:
+                        log.info("[steer] %s/%s transcript final: %r",
+                                 key, ev.role, (ev.text or "")[:160])
                         record.add_turn(ev.role, ev.text)
+                elif isinstance(ev, AgentTurnComplete):
+                    log.info("[steer] %s turn complete -> release floor", key)
+                    await _emit_turn_complete(gateway)
                 elif isinstance(ev, AgentIntent):
                     record.set_intent(ev.intent)
                     swap = route(ev.intent).key

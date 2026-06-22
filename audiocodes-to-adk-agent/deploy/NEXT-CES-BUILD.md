@@ -52,6 +52,10 @@ MCP write tools, if needed.)
    - "Help with billing: explain charges/fees, due dates, payment options, autopay,
      paperless. Keep replies short and conversational for speech."
    - "If prior context is provided, acknowledge it and pick up the thread."
+   - Closing (match the ADK specialists): "When you've helped, ask 'Is there anything
+     else I can help you with?' and wait. If they decline, say EXACTLY 'Thank you for
+     contacting AT&T. Have a great day.' then stop — the caller hangs up to end the
+     call." (No end tool; teardown is caller-initiated end-to-end, same as the ADK agents.)
    - Set a voice (match the demo's `Charon` tone if a voice field exists).
 5. `create_deployment` — publish so BidiRunSession can run the app.
 6. Capture the app resource name → set in `.env`:
