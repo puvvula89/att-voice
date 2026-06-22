@@ -117,6 +117,7 @@
     .node.active[data-key="internet"] .disc { fill: var(--att-blue); }
     .node.active[data-key="phone_upgrade"] .disc { fill: #0d8f6f; }
     .node.active[data-key="billing"] .disc { fill: var(--cxas); }
+    .node.active.infra .disc { fill: var(--att-blue); }
 
     /* ---- Transcript ---- */
     .transcript { display: flex; flex-direction: column; min-height: 0; }
@@ -271,7 +272,7 @@
     // Platform grouping: Agent Engine wraps the ADK agents; CXAS wraps billing.
     const GROUPS = [
       { cls: "adk",  x: 410, y: 40,  w: 470, h: 222, label: "Agent Engine · ADK",     tw: 172 },
-      { cls: "cxas", x: 686, y: 300, w: 194, h: 86,  label: "CX Agent Studio · CXAS", tw: 188 },
+      { cls: "cxas", x: 686, y: 300, w: 194, h: 86,  label: "CX Agent Studio", tw: 132 },
     ];
     const byKey = Object.fromEntries(NODES.map(n => [n.key, n]));
 
@@ -359,7 +360,12 @@
       currentAgent = "";
       graphEl.querySelectorAll(".node.active").forEach(n => n.classList.remove("active"));
     }
-    function setCallActive(active) { graphEl.querySelector("svg").classList.toggle("live", active); }
+    function setCallActive(active) {
+      graphEl.querySelector("svg").classList.toggle("live", active);
+      // Infra nodes (AudioCodes, Relay) are always in the path, so they light for
+      // the whole call — not per routing like the agent nodes.
+      graphEl.querySelectorAll(".node.infra").forEach(n => n.classList.toggle("active", active));
+    }
 
     // ---- Transcript (append deltas, replace on cumulative final) ----
     function onTranscript(role, text, final) {

@@ -6,9 +6,11 @@ utterance, and the relay swaps the live audio to the right **specialist** — in
 (ADK + Gemini Live on Agent Engine) or billing (CX Agent Studio / CES) — while the caller hears one
 continuous conversation. The routing decision is invisible.
 
-Phase 1 uses a **browser mic harness** in place of an AudioCodes Media Gateway, so the full relay +
-steering stack runs and is verifiable without any telephony infrastructure. Phase 2 swaps in a real
-AudioCodes connection behind the same port — no change to the steering loop or the agents.
+A real PSTN call enters through **AudioCodes VoiceAI Connect** (Live Hub self-service), which streams
+the call to the relay over the Bot API WebSocket — the greeter plus all three specialist routes
+(internet / phone_upgrade / billing) answer a live phone call today. The same relay also accepts a
+**browser mic harness** behind the identical `MediaGateway` port, so the full steering stack is also
+runnable for local development with no telephony infrastructure.
 
 ## What it is
 
@@ -20,11 +22,10 @@ A reference **steering relay** that proves two things:
    same regardless of back-end; only the per-agent `AgentSession` implementation differs. That
    sameness *is* the cross-platform proof.
 2. **AudioCodes works as the media path over WebSockets** — the relay's caller side is written
-   against a `MediaGateway` port whose end-state is the AudioCodes VoiceAI Connect (VAIC) Bot API.
-   Phase 1 implements that port with a browser harness; Phase 2 implements it with AudioCodes.
+   against a `MediaGateway` port, implemented by `AudioCodesGateway` over the AudioCodes VoiceAI
+   Connect (VAIC) Bot API. A browser harness implements the same port for local development.
 
-The novel part (relay ↔ cross-platform agents, seamless) is built and verified first; telephony
-onboarding is the last step. See `DESIGN.md` for the full spec and `PLAN-phase1.md` for the build plan.
+See `DESIGN.md` for the full spec.
 
 ## Features
 
@@ -44,33 +45,41 @@ onboarding is the last step. See `DESIGN.md` for the full spec and `PLAN-phase1.
   **in-process** `run_live` (local dev) and **Agent Engine** `bidi_stream_query` (hosted).
 - **One-command deploy** — `deploy/deploy_all.sh` stands up the Agent Engine app + Cloud Run relay
   (idempotent, update-in-place); `deploy/destroy.sh` tears it down.
-- **Smoke probes** — `scripts/smoke_*.py` verify each back-end channel end-to-end (CES bidi, ADK
-  in-process, Agent Engine bidi) without the browser.
+- **Smoke probes** — `tests/smoke/smoke_*.py` verify each back-end channel end-to-end (CES bidi, ADK
+  in-process, Agent Engine bidi) and the AudioCodes Bot API protocol, without a live phone.
 
 ## How it works — voice flow
 
-The browser harness opens **one WebSocket** to the **relay**. The relay owns that connection
-(`MediaGateway`), runs the **steering loop**, and opens a **back-end voice channel** (`AgentSession`)
-to whichever agent is active. The greeter classifies intent on the first turn; the relay closes the
-greeter channel and opens the specialist channel **on the same session** — the caller hears one
-continuous voice.
+A caller dials the bound DID. **AudioCodes VoiceAI Connect** (Live Hub) answers the PSTN leg and opens
+**one WebSocket** to the relay (`/audiocodes-ws`), speaking the Bot API streaming protocol. The relay
+owns that connection (`AudioCodesGateway`, a `MediaGateway`), runs the **steering loop**, and opens a
+**back-end voice channel** (`AgentSession`) to whichever agent is active. The greeter classifies intent
+on the first turn; the relay closes the greeter channel and opens the specialist channel **on the same
+session** — the caller hears one continuous voice.
 
 ```
-   ┌────────────────────────────┐        WebSocket  /ws         ┌──────────────────────────────────┐
-   │      BROWSER HARNESS        │  ─────────────────────────▶   │        Relay (Cloud Run)         │
-   │    harness/client.html      │   {type:audio} 16k PCM b64    │           relay/server.py        │
-   │  mic 16kHz · play 24kHz     │   {type:end}                  │                                  │
-   │                             │  ◀─────────────────────────   │  BrowserGateway  (MediaGateway)  │
-   │                             │   {type:audio} 24k PCM b64    │  run_call()      (steering loop) │
-   │                             │   {type:session_end}          │  SessionRecord   (of-record)     │
-   └────────────────────────────┘                               └─────────────────┬────────────────┘
-                                                            agent_factory(key) ──▶ │ AgentSession (channel #2)
-                                  ┌──────────────────────────────────────────────┴───────────────────────┐
+  ☎ PSTN CALLER                                                  ┌──────────────────────────────────────┐
+  dials the bound DID                                            │            Relay (Cloud Run)           │
+        │   voice                                                │               relay/server.py          │
+        ▼                                                        │                                        │
+  ┌──────────────────────────┐   WebSocket  /audiocodes-ws       │  AudioCodesGateway  (MediaGateway)     │
+  │  AudioCodes VoiceAI       │   Bearer AUDIOCODES_TOKEN         │   · handshake → session.accepted       │
+  │  Connect / Live Hub       │ ───────────────────────────────▶ │   · coders negotiated: 16 kHz in /      │
+  │  (Bot API, streaming)     │   session.initiate               │     24 kHz out (agent-native, no resam.)│
+  │                           │   userStream.start/.chunk/.stop ▶│   · userStream → decode → 16k PCM       │
+  │  telephony ⇄ bot          │ ◀── playStream.start/.chunk/.stop│   · agent 24k PCM → encode → playStream │
+  │  caller audio (μ-law,     │   activities (start/dtmf/hangup)  │   · turn ends → playStream.stop         │
+  │  8/16/24 k — negotiated)  │                                  │     (releases floor → caller mic flows) │
+  └──────────────────────────┘                                  │   run_call()    (steering loop)        │
+        ▲   voice                  also: /observe monitor  ◀─────│   SessionRecord (session-of-record)    │
+        │                          mirrors a live call (UI)      └───────────────────┬────────────────────┘
+        └─ caller hangs up → session.end → relay tears down       agent_factory(key)─▶│ AgentSession (channel #2)
+                                  ┌──────────────────────────────────────────────────┴───────────────────┐
                                   │  STEERING LOOP  (relay/call_steering.py — run_call + intent routing)  │
                                   │  1. open Greeter → "Thanks for calling AT&T. How can I help you?"      │
                                   │  2. greeter calls classify_intent → AgentIntent → route(intent)        │
                                   │  3. close greeter channel · open specialist channel (same session)     │
-                                  │  4. relay pumps PCM both ways for the rest of the call                 │
+                                  │  4. pump audio both ways; each agent turn_complete → playStream.stop   │
                                   └───────┬───────────────────────────┬───────────────────────────────────┘
                                           │ key ∈ {internet,           │ key == billing
                                           │        phone_upgrade}      │
@@ -85,48 +94,73 @@ continuous voice.
                          AE_ENGINE_ID unset → in-process
 ```
 
-One call — *"my internet is down"* — from greeting to seamless specialist. The highlighted step is
-the heart of the design: **the greeter channel is closed and the specialist channel opened on the
-same `SessionRecord`**, so the specialist continues mid-conversation without re-greeting.
+> **Floor control (the telephony-specific bit).** A Bot API `playStream` is *one bot utterance*: while
+> it is open, VoiceAI Connect treats the bot as still speaking and **withholds the caller's mic**. So
+> when the agent finishes a turn (`run_live` `turn_complete`, or CES `turnCompleted`) the relay sends
+> `playStream.stop` to release the floor; the next turn opens a fresh `playStream`. The browser harness
+> has no such floor concept — this is handled in `AudioCodesGateway` only.
+
+**Local-dev alternative — browser harness.** The same relay also serves a mic page at `/browser`
+(`harness/client.html`) that connects to `/ws` and drives the *identical* steering loop via
+`BrowserGateway` (`{type:audio}` 16 kHz up / 24 kHz down). Swapping AudioCodes for the browser is a
+`MediaGateway` port swap — the steering loop and agents are untouched.
+
+One call — *"my internet is down"* — from greeting to seamless specialist. The heart of the design:
+**the greeter channel is closed and the specialist channel opened on the same `SessionRecord`**, so
+the specialist continues mid-conversation without re-greeting.
 
 ```mermaid
 sequenceDiagram
     autonumber
-    participant B as Browser · client.html
+    participant C as ☎ Caller (PSTN)
+    participant V as VoiceAI Connect
     participant R as Relay · run_call
     participant Gr as Greeter (ADK/Live)
     participant Sp as Specialist (ADK/AE or CES)
 
-    Note over B,R: Start clicked → WebSocket /ws opens → BrowserGateway wraps it
-    R->>Gr: agent_factory("greeter") → open(record) + (call_start) nudge
+    C->>V: dials the bound DID
+    V->>R: WebSocket /audiocodes-ws + session.initiate (coders offered)
+    R-->>V: session.accepted (16 kHz in / 24 kHz out negotiated)
+    R->>Gr: agent_factory("greeter") → open(record) + (call_start)
     Gr-->>R: AgentAudio "Thanks for calling AT&T. How can I help you today?"
-    R-->>B: {type:audio} 24kHz frames (caller hears the greeting)
+    R-->>V: playStream.start/.chunk (greeting, 24 kHz → coder)
+    Gr-->>R: turn_complete
+    R-->>V: playStream.stop (release floor → caller mic flows)
+    V-->>C: greeting audio
 
-    Note over B,Sp: ——— one turn: "my internet is down" ———
-    B->>R: {type:audio} 16kHz PCM frames (caller speaks)
+    Note over C,Sp: ——— one turn: "my internet is down" ———
+    C->>V: caller speaks
+    V->>R: userStream.start/.chunk/.stop (caller audio, negotiated coder)
     R->>Gr: gateway.events() → CallerAudio → agent.send_audio(pcm)
-    Gr->>Gr: model calls classify_intent("internet") → on_intent callback
+    Gr->>Gr: model calls classify_intent("internet")
     Gr-->>R: AgentIntent("internet")
-    R->>R: record.set_intent · route("internet") → specialist key · close greeter channel
+    R->>R: record.set_intent · route("internet") · close greeter channel
     R->>Sp: agent_factory("internet") → open(SAME record) — ADK shares session / CES seeded
     Sp-->>R: AgentAudio "…let's take a look" (continues, NO re-greet)
-    R-->>B: {type:audio} 24kHz frames
-    Note over B,Sp: relay pumps PCM both ways for the rest of the call
+    R-->>V: playStream.* → V-->>C: audio
+    Note over C,Sp: each agent turn ends → playStream.stop; the next turn opens a fresh playStream
 
-    Note over B,Sp: ——— closing ———
-    Sp-->>R: AgentEnd  (or caller {type:end})
-    R-->>B: {type:session_end} → WebSocket closes
+    Note over C,Sp: ——— closing ———
+    Sp-->>R: closing line, then goes quiet
+    C->>V: caller hangs up
+    V->>R: session.end → relay tears down
 ```
 
-**Wire protocol** (Phase 1 harness — JSON text frames over the `/ws` WebSocket):
+**Wire protocol** — AudioCodes Bot API, JSON frames over the `/audiocodes-ws` WebSocket (`Bearer
+AUDIOCODES_TOKEN` on the upgrade). Audio is base64 in the negotiated coder:
 
 | Direction | Message | Meaning |
 |---|---|---|
-| browser → relay | `{type:"audio", data}` | mic frame, 16 kHz mono PCM16, base64 |
-| browser → relay | `{type:"end"}` | caller hung up |
-| relay → browser | `{type:"audio", data}` | agent audio, 24 kHz mono PCM16, base64 |
-| relay → browser | `{type:"transfer", uri}` | human-escalation transfer (Phase 1: logged only; Phase 2: AudioCodes SIP `transfer`) |
-| relay → browser | `{type:"session_end"}` | the call ended; the relay closes the socket |
+| VAIC → relay | `session.initiate` / `session.resume` | start (or reconnect) a call; carries `conversationId`, `caller`, `supportedMediaFormats` |
+| VAIC → relay | `userStream.start` / `.chunk` / `.stop` | caller audio (VAIC's VAD brackets each utterance) |
+| VAIC → relay | `activities` (start / dtmf), `session.end` | call lifecycle / caller hangup |
+| relay → VAIC | `session.accepted` `{mediaFormat}` | coders negotiated (16 kHz in / 24 kHz out when offered) |
+| relay → VAIC | `userStream.started` / `.stopped` | acks for the caller stream |
+| relay → VAIC | `playStream.start` / `.chunk` / `.stop` | agent audio; **`.stop` ends the turn and releases the floor** |
+| relay → VAIC | `activities` (hangup) | bot-initiated end (unused — the caller hangs up) |
+
+The **browser harness** (`/ws`, local dev) speaks a simpler JSON wire (`{type:"audio"}` 16 kHz up /
+24 kHz down, `{type:"end"}`, `{type:"session_end"}`) through `BrowserGateway` — same steering loop.
 
 ## Transport — the back-end channel rides a different hop per platform
 
@@ -161,15 +195,15 @@ and it is the **session-of-record** that makes the greeter→specialist handoff 
 The relay core (`relay/call_steering.py`) never names AudioCodes, Gemini, or CES — it speaks to two
 `Protocol`s (`relay/channels.py`):
 
-| Port | Role | Phase 1 impl | End-state / other impls |
-|---|---|---|---|
-| **`MediaGateway`** (caller side) | `events()` → `CallerAudio`/`CallerEnd`, `send_audio()`, `transfer()`, `end()` | `BrowserGateway` (browser WS) | `AudioCodesGateway` (VAIC Bot API WS) — Phase 2 |
-| **`AgentSession`** (agent side) | `open(record)`, `send_audio()`, `events()` → `AgentAudio`/`AgentTranscript`/`AgentIntent`/`AgentEnd`, `close()` | `AdkLiveSession`, `AeAdkSession`, `CesBidiSession` | any future platform = one new impl |
+| Port | Role | Implementations |
+|---|---|---|
+| **`MediaGateway`** (caller side) | `events()` → `CallerAudio`/`CallerEnd`, `send_audio()`, `end_turn()`, `transfer()`, `end()` | `AudioCodesGateway` (VAIC Bot API WS) · `BrowserGateway` (browser WS, local dev) |
+| **`AgentSession`** (agent side) | `open(record)`, `send_audio()`, `events()` → `AgentAudio`/`AgentTranscript`/`AgentIntent`/`AgentTurnComplete`/`AgentEnd`, `close()` | `AdkLiveSession`, `AeAdkSession`, `CesBidiSession` (any new platform = one new impl) |
 
 ## Session & context model
 
-The relay is the **session-of-record**: one `SessionRecord` per call (keyed by `session_id`; a UUID
-in the harness, derived from the AudioCodes `conversationId` in Phase 2). Continuity is delivered
+The relay is the **session-of-record**: one `SessionRecord` per call (keyed by `session_id` — the
+AudioCodes `conversationId` on a phone call, a UUID in the browser harness). Continuity is delivered
 differently per boundary — a deliberate, validated distinction:
 
 | Boundary | Shared store? | Context mechanism |
@@ -292,6 +326,7 @@ console): `create_app` → `create_agent` (root) → `create_app_version` → `c
 | `CES_APP` | CES billing app resource name (`projects/.../apps/{app}`); empty → billing route inactive |
 | `CES_LOCATION` | CES location (default `us`) |
 | `STAGING_BUCKET` | override the auto-derived `{project}-{project_number}-agent-engine` bucket |
+| `AUDIOCODES_TOKEN` | Bearer token the VAIC bot provider sends on `/audiocodes-ws`; empty → auth open (dev only) |
 
 `.env` is gitignored — never hardcode environment values in tracked source (this prototype ships to a
 customer). `.env.example` documents the keys with placeholders.
@@ -306,6 +341,10 @@ pytest tests/ -v
 python tests/smoke/smoke_ces_bidi.py     # CES BidiRunSession: ASR → billing reply → TTS audio
 python tests/smoke/smoke_ae_live.py      # ADK on Agent Engine (bidi_stream_query)
 python tests/smoke/smoke_adk_live.py     # ADK in-process (run_live)
+
+# AudioCodes Bot API protocol smoke — impersonates VAIC against a running relay
+# (no live tenant): handshake, streams a WAV as userStream, collects the agent reply
+python tests/smoke/smoke_audiocodes.py --url ws://localhost:8080/audiocodes-ws
 ```
 
 `tests/smoke/make_sample_wav.py` regenerates `tests/smoke/sample_16k.wav` (the smoke fixture) via Cloud TTS.
@@ -314,12 +353,39 @@ python tests/smoke/smoke_adk_live.py     # ADK in-process (run_live)
 > **continuous audio** — a client that stops sending stalls and the session times out after 30s. The
 > smoke streams trailing silence after the clip; a real call streams audio continuously.
 
-## Phase 2 — AudioCodes drop-in
+## AudioCodes connection
 
-Phase 2 replaces `BrowserGateway` with an `AudioCodesGateway` implementing the VAIC Bot API WebSocket
-contract (`session.initiate`/`accepted`, `userStream`/`playStream`, `transfer`, `session.resume`),
-onboards a VAIC self-service tenant + US test DID, and points its bot at the relay. A real PSTN call
-then runs the identical Phase-1 flow — the steering loop, agents, and session model are untouched.
-See `DESIGN.md` §4a and §9.
-</content>
-</invoke>
+`AudioCodesGateway` (`relay/caller_channels.py`) implements the `MediaGateway` port over the
+AudioCodes **VoiceAI Connect (VAIC) Bot API** WebSocket, so a real PSTN call runs the identical
+flow — steering loop, agents, session model, and the `/observe` monitor are untouched.
+
+**Route:** `wss://<relay-host>/audiocodes-ws` (the deploy script prints it). Auth = `Bearer`
+`AUDIOCODES_TOKEN` on the WS upgrade.
+
+**Protocol** — AudioCodes Bot API **WebSocket (streaming/voice) mode**. Reference docs:
+- [WebSocket mode — protocol + Connectivity check](https://techdocs.audiocodes.com/voice-ai-connect/Content/Bot-API/ac-bot-api-mode-websocket.htm) (`session.*`, `userStream.*`, `playStream.*`, and the `connection.validate` handshake)
+- [Live Hub — create an AudioCodes Bot API connection](https://techdocs.audiocodes.com/livehub/Content/LiveHub/AudioCodesAPI-framework.htm) (the self-service wizard)
+
+Call flow: VAIC → bot `session.initiate`/`session.resume`, `userStream.start`/`.chunk`/`.stop`,
+`activities` (start/dtmf), `session.end`; bot → VAIC `session.accepted`, `userStream.started`/`.stopped`,
+`playStream.start`/`.chunk`/`.stop`, `activities` (hangup). Coders are negotiated from
+`supportedMediaFormats` — the gateway picks 16 kHz linear for caller-in and 24 kHz linear for
+play-out when offered (the agents' native rates) and otherwise transcodes (mu-law / 8 kHz) via the
+pure `relay/audio_transcode.py`. The agent swap stays relay-internal (no PSTN transfer); the caller
+hangs up to end the call.
+
+**Connectivity check (validation gate).** Before any call, Live Hub's *"Validate bot connection
+configuration"* button probes the bot URL — it must succeed or the call is never placed:
+- HTTP `GET`/`POST` on the bot URL (wss→https) → the relay returns `200 {"type":"ac-bot-api","success":true}`.
+- A WebSocket that sends `{"type":"connection.validate"}` → the relay replies `{"type":"connection.validated","success":true}` (the `success` field is required). This is a validation-only socket (no `session.initiate`); the relay handles it without starting a call.
+
+**Configure (AudioCodes Live Hub self-service):** Bot connections → *Add new voice bot connection* →
+**AudioCodes Bot API** → API type **WebSocket mode**, Bot URL `wss://<relay-host>/audiocodes-ws`,
+token `<AUDIOCODES_TOKEN>` (Permanent token). Click **Validate bot connection configuration** (expect
+✓). On the Settings step, check **Enable voice streaming** (streams raw audio to/from the bot — keeps
+the native Gemini voice; without it Live Hub does its own STT/TTS and sends text). Create, add routing,
+bind a DID, and call. (Equivalent VoiceAI Connect Enterprise provider: type `ac-api`,
+`acBotApiType=streaming`, `directSTT=true`, `directTTS=true`.)
+
+See `DESIGN.md` §9.
+

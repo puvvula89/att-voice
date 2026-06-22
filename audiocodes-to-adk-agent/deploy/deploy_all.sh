@@ -59,18 +59,26 @@ echo "▶ [3/3] Relay ($RELAY_SERVICE)…"
 gcloud run deploy "$RELAY_SERVICE" --source . --region "$REGION" --project "$PROJECT" \
   --port 8080 --timeout "$RELAY_TIMEOUT" --min-instances "$RELAY_MIN_INSTANCES" \
   --allow-unauthenticated --quiet \
-  --set-env-vars "^@^GOOGLE_GENAI_USE_VERTEXAI=TRUE@GOOGLE_CLOUD_PROJECT=${PROJECT}@GOOGLE_CLOUD_LOCATION=${REGION}@AE_ENGINE_ID=${AE_ENGINE_ID}@CES_APP=${CES_APP:-}@CES_LOCATION=${CES_LOCATION:-us}@LIVE_MODEL=${LIVE_MODEL:-gemini-live-2.5-flash-native-audio}@LIVE_VOICE=${LIVE_VOICE:-Charon}"
+  --set-env-vars "^@^GOOGLE_GENAI_USE_VERTEXAI=TRUE@GOOGLE_CLOUD_PROJECT=${PROJECT}@GOOGLE_CLOUD_LOCATION=${REGION}@AE_ENGINE_ID=${AE_ENGINE_ID}@CES_APP=${CES_APP:-}@CES_LOCATION=${CES_LOCATION:-us}@LIVE_MODEL=${LIVE_MODEL:-gemini-live-2.5-flash-native-audio}@LIVE_VOICE=${LIVE_VOICE:-Charon}@AUDIOCODES_TOKEN=${AUDIOCODES_TOKEN:-}"
 RELAY_BASE="$(gcloud run services describe "$RELAY_SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
-RELAY_WSS="wss://${RELAY_BASE#https://}/ws"
+RELAY_HOST="${RELAY_BASE#https://}"
+RELAY_WSS="wss://${RELAY_HOST}/ws"
+AUDIOCODES_WSS="wss://${RELAY_HOST}/audiocodes-ws"
 echo "   RELAY=$RELAY_WSS"
+echo "   AUDIOCODES botUrl=$AUDIOCODES_WSS"
 
 cat <<EOF
 
 ✅ Deployed.
-   Agent Engine: $AE_ENGINE_ID
-   Relay WS:     $RELAY_WSS
-   CES billing:  ${CES_APP:-<unset — build in CX Agent Studio, set CES_APP, re-run>}
+   Agent Engine:   $AE_ENGINE_ID
+   Relay WS:       $RELAY_WSS
+   AudioCodes URL: $AUDIOCODES_WSS  (VAIC bot provider botUrl)
+   CES billing:    ${CES_APP:-<unset — build in CX Agent Studio, set CES_APP, re-run>}
 
 Next: point the mic harness at \$RELAY (or run a local test) and verify the
 4 routes (greeter -> internet / phone_upgrade / billing), seamless, no re-greet.
+
+AudioCodes (Phase 2): in VoiceAI Connect Enterprise create a provider of type
+'ac-api' with botUrl=$AUDIOCODES_WSS, acBotApiType=streaming, directSTT=true,
+directTTS=true, and token=\$AUDIOCODES_TOKEN. Place a call to the bound DID.
 EOF

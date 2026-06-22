@@ -4,3 +4,10 @@ __pycache__/
 .pytest_cache/
 .env
 deploy/.engine_name
+
+# Throwaway smoke / diagnostic audio captures
+tests/smoke/*.wav
+
+# Local working notes & handoff — not part of the deliverable
+NEXT-SESSION.md
+idea.md
