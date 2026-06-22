@@ -112,7 +112,7 @@ the specialist continues mid-conversation without re-greeting.
 ```mermaid
 sequenceDiagram
     autonumber
-    participant C as ☎ Caller (PSTN)
+    participant C as Caller (PSTN)
     participant V as VoiceAI Connect
     participant R as Relay · run_call
     participant Gr as Greeter (ADK/Live)
@@ -137,7 +137,8 @@ sequenceDiagram
     R->>R: record.set_intent · route("internet") · close greeter channel
     R->>Sp: agent_factory("internet") → open(SAME record) — ADK shares session / CES seeded
     Sp-->>R: AgentAudio "…let's take a look" (continues, NO re-greet)
-    R-->>V: playStream.* → V-->>C: audio
+    R-->>V: playStream chunks
+    V-->>C: audio
     Note over C,Sp: each agent turn ends → playStream.stop; the next turn opens a fresh playStream
 
     Note over C,Sp: ——— closing ———
