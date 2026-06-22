@@ -302,9 +302,44 @@ from project id+number and created if missing), persisting the engine id to `.en
 bash deploy/destroy.sh
 ```
 
-The **CES billing app** is provisioned once via the CX Agent Studio API (`ces-mcp` MCP tools, or the
-console): `create_app` → `create_agent` (root) → `create_app_version` → `create_deployment`, then set
-`CES_APP=projects/{project}/locations/{loc}/apps/{app}` in `.env`. See `deploy/NEXT-CES-BUILD.md`.
+### Create the CES billing app
+
+The billing specialist lives in CX Agent Studio (CES), which `deploy_all.sh` does **not** create (its
+API needs an interactive session, not a shell step). Build it once, then set `CES_APP` and re-run the
+deploy. Until then the other three routes work; the billing route is just inactive.
+
+Easiest path — the **`ces-mcp` MCP** tools from a Claude Code session. Register the MCP (ADC bearer;
+`x-goog-user-project` must be your project):
+
+```bash
+claude mcp add --transport http --scope local ces-mcp https://ces.googleapis.com/mcp \
+  -H "Authorization: Bearer $(gcloud auth application-default print-access-token)" \
+  -H "x-goog-user-project: $GOOGLE_CLOUD_PROJECT"
+```
+
+Then build the app (idempotent — `list_apps` first and reuse if one exists). Read each tool's input
+schema before calling; resource ids must match `[a-zA-Z0-9][a-zA-Z0-9-_]{4,35}` (min 5 chars):
+
+1. **`create_app`** — display name e.g. "ATT Billing", location `us`. *(Long-running — poll
+   `get_operation` ~50 s until done.)*
+2. **`create_agent`** in that app — the billing specialist, with these instructions (no greeting; it's
+   reached mid-call; closing line matches the ADK specialists so teardown stays caller-initiated):
+   > You are AT&T's billing specialist on a phone call. The caller was already greeted and routed to
+   > you MID-CALL — do NOT greet, welcome, or re-introduce. Continue the conversation naturally.
+   > Help with billing: explain charges/fees, due dates, payment options, autopay, paperless. Keep
+   > replies short and conversational for speech. If prior context is provided, acknowledge it and
+   > pick up the thread. When you've helped, ask "Is there anything else I can help you with?" and
+   > wait; if they decline, say EXACTLY "Thank you for contacting AT&T. Have a great day." then stop.
+3. **`update_app`** (updateMask `rootAgent`) — point the app's root agent at the agent from step 2.
+4. **`create_app_version`** — snapshot a concrete version (the draft sentinel `.../versions/-` is
+   rejected by deployment).
+5. **`create_deployment`** — publish that version so `BidiRunSession` can run it.
+6. Set `CES_APP=projects/$GOOGLE_CLOUD_PROJECT/locations/us/apps/{app-id}` in `.env` (gitignored).
+7. Re-run `bash deploy/deploy_all.sh` — it redeploys the relay with `CES_APP` wired in.
+
+(No Claude session? The same calls work over the CES REST API — `POST https://ces.googleapis.com/v1/...`
+with an ADC bearer — so this can be scripted into a helper if you want it fully hands-off.) Full working
+notes: `deploy/NEXT-CES-BUILD.md`.
 
 ### The services
 
