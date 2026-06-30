@@ -1,0 +1,7 @@
+# Versions match the shared-session-voice-and-chat deploy exactly, so the deploy
+# host pickles the agent with the same google-auth / google-genai / cloudpickle
+# stack the container runs. google-adk==2.1.0 holds google-genai on <2,>=1.72.
+google-cloud-aiplatform[agent_engines]
+google-adk==2.1.0
+cloudpickle==3.1.2
+requests
