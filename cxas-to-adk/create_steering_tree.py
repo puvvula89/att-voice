@@ -1,0 +1,247 @@
+"""Author the CXAS steering tree that matches the corrected architecture:
+
+    Global Concierge Steering (root)
+      └─ Consumer Steering
+           ├─ Telephony Sales Master ──sales-adapter toolset──▶ ADK root
+           └─ Care Agents (stub)
+
+CXAS always enters ADK at its ROOT via the `sales-adapter` OpenAPI toolset;
+ADK owns its own internal routing (Internet / Wireless). CXAS never calls an
+ADK sub-agent directly.
+
+Reuses the existing app `att-ivr-steering` and its `sales-adapter` toolset.
+Repurposes the existing `telephony-steering` agent as the Telephony Sales Master
+leaf. Idempotent-ish: create calls tolerate ALREADY_EXISTS.
+
+Config from env: CXAS_PROJECT (REDACTED_PROJECT), CXAS_LOCATION (us), CXAS_MODEL.
+"""
+import os
+
+from cxas_scrapi.core import agents as agents_mod
+from cxas_scrapi.core.apps import Apps
+from cxas_scrapi.core.agents import Agents
+from cxas_scrapi.core.variables import Variables, VariableType
+
+types = agents_mod.types
+AgentToolset = types.Agent.AgentToolset
+
+PROJECT = os.environ.get("CXAS_PROJECT", "REDACTED_PROJECT")
+LOCATION = os.environ.get("CXAS_LOCATION", "us")
+MODEL = os.environ.get("CXAS_MODEL", "gemini-2.5-flash-001")
+
+APP_ID = "att-ivr-steering"
+APP = f"projects/{PROJECT}/locations/{LOCATION}/apps/{APP_ID}"
+
+# Session variable that identifies the caller. The Sales Master passes this as the
+# tool's customer_id, which the adapter maps verbatim to the ADK user_id (the
+# cross-channel session anchor). Default "wilson" so the telephony path (no
+# override) resolves to wilson; override per session via Sessions.run(variables=
+# {"customer_id": "..."}) or a session parameter in the UI to swap users.
+CUSTOMER_ID_VAR = "customer_id"
+CUSTOMER_ID_DEFAULT = os.environ.get("CXAS_CUSTOMER_ID_DEFAULT", "wilson")
+
+# Agent ids.
+CONCIERGE = "global-concierge"
+CONSUMER = "consumer-steering"
+SALES = "telephony-steering"        # reused as Telephony Sales Master
+CARE = "care-agents"
+
+def agent_name(aid):
+    return f"{APP}/agents/{aid}"
+
+TOOLSET = f"{APP}/toolsets/sales-adapter"
+END_SESSION = f"{APP}/tools/end_session"
+
+# --- Instructions -----------------------------------------------------------
+
+CONCIERGE_INSTRUCTION = """<role>
+You are the AT&T Global Concierge — the single voice entry point for every caller.
+Greet the caller ONCE, then hand the call to the Consumer Steering agent to route
+them. You never answer sales or care questions yourself.
+</role>
+<persona>Warm, brief, natural to listen to. Short spoken replies — no lists,
+no markdown.</persona>
+<taskflow>
+  <subtask name="greeting">
+    <trigger>The call starts</trigger>
+    <step>Say EXACTLY this one line and nothing else: "Thank you for calling AT&T!
+    How can I help you today?"</step>
+    <step>Say it only ONCE. Do NOT repeat any part of it. Do NOT introduce yourself,
+    do NOT say the word "concierge", and do NOT name any AT&T team or agent. After
+    saying the line, stop talking and wait for the caller.</step>
+  </subtask>
+  <subtask name="steer">
+    <trigger>The caller states what they need</trigger>
+    <step>SILENTLY transfer the call to {@AGENT: Consumer Steering} so it can route
+    to the right specialist. Do NOT greet again, do NOT re-ask how you can help, do
+    NOT acknowledge or restate their request, and do NOT try to answer it yourself —
+    just transfer.</step>
+  </subtask>
+</taskflow>
+"""
+
+CONSUMER_INSTRUCTION = """<role>
+You are the AT&T Consumer Steering agent. You decide which specialist handles the
+caller and transfer them there. You do not answer the request yourself.
+</role>
+<persona>Warm, brief, natural. Short spoken replies.</persona>
+<taskflow>
+  <subtask name="sales">
+    <trigger>The caller wants to upgrade a device, buy a phone, or asks about
+    sales, plans, or trade-in</trigger>
+    <step>Transfer the call to {@AGENT: Telephony Sales Master}.</step>
+  </subtask>
+  <subtask name="care">
+    <trigger>The caller wants billing, technical support, or account help</trigger>
+    <step>Transfer the call to {@AGENT: Care Agents}.</step>
+  </subtask>
+</taskflow>
+"""
+
+SALES_INSTRUCTION = """<role>
+You are the AT&T Telephony Sales Master. You handle device upgrades, new phones,
+plans, and trade-in by delegating to the ADK sales specialist through your tool.
+</role>
+<persona>Warm, brief, natural to listen to. Short spoken replies — no lists,
+no markdown. Do NOT greet the caller — they have already been greeted; respond
+directly to what they need.</persona>
+<taskflow>
+  <subtask name="sales_or_upgrade">
+    <trigger>You receive the call, OR the caller says anything about a device,
+    upgrade, phone, plan, line, or order while the sales conversation is in
+    progress</trigger>
+    <step>Call {@TOOL: sales_adapter_call_sales_specialist} with the caller's request
+    as the utterance and customer_id "{customer_id}" (ALWAYS this exact value — the
+    session's customer identity; never invent or change it).</step>
+    <step>Say the returned reply to the caller, verbatim and naturally. Do NOT add a
+    greeting, acknowledgment, or any words of your own before or after it.</step>
+  </subtask>
+  <subtask name="closing">
+    <trigger>The caller indicates they are finished (e.g. "no", "that's all",
+    "that's it", "I'm good", "nothing else", "goodbye")</trigger>
+    <step>Say EXACTLY this one line and nothing else: "Thank you for contacting AT&T.
+    Have a great day!" Say it only ONCE — do NOT repeat any part of it and do NOT add
+    any other words.</step>
+    <step>Then call {@TOOL: end_session} to end the call.</step>
+  </subtask>
+</taskflow>
+"""
+
+CARE_INSTRUCTION = """<role>
+You are the AT&T Care Agents front door (a stub in this POC). You handle billing,
+technical support, and account help.
+</role>
+<persona>Warm, brief, natural. Short spoken replies.</persona>
+<taskflow>
+  <subtask name="care">
+    <trigger>The caller needs billing, support, or account help</trigger>
+    <step>Tell the caller you will connect them to customer care. (Care routing is
+    a stub in this POC.)</step>
+    <step>If they are done, call {@TOOL: end_session}.</step>
+  </subtask>
+</taskflow>
+"""
+
+
+def _existing(fn, *a, **k):
+    """Create-if-missing guard. Tolerates ALREADY_EXISTS; also tolerates the 500
+    the server returns when creating a duplicate agent (the following update_agent
+    is the real write, and will surface a genuine 404 on a fresh deploy)."""
+    try:
+        return fn(*a, **k)
+    except Exception as e:
+        msg = str(e).lower()
+        if "exist" in msg or "already_exists" in msg or "internal error" in msg or "500" in msg:
+            print(f"  (create skipped: {type(e).__name__}) — will update in place")
+            return None
+        raise
+
+
+def main():
+    print(f"Project={PROJECT} location={LOCATION} model={MODEL}\napp={APP}")
+    apps = Apps(project_id=PROJECT, location=LOCATION)
+    ag = Agents(app_name=APP)
+
+    # 0) Declare the customer_id session variable (default identity). Idempotent:
+    #    create_variable no-ops if it already exists.
+    print(f"\n[0] Session variable {CUSTOMER_ID_VAR} (default '{CUSTOMER_ID_DEFAULT}')")
+    Variables(app_name=APP).create_variable(
+        variable_name=CUSTOMER_ID_VAR,
+        variable_type=VariableType.STRING,
+        variable_value=CUSTOMER_ID_DEFAULT,
+    )
+
+    # 1) Telephony Sales Master: create if missing (fresh app), then set the
+    #    sales-only instruction and attach the sales-adapter toolset. The toolset
+    #    must already exist (create_cxas_app.py ran first).
+    print("\n[1] Telephony Sales Master")
+    _existing(ag.create_agent, agent_id=SALES, display_name="Telephony Sales Master",
+              instruction=SALES_INSTRUCTION, model=MODEL, tools=[END_SESSION])
+    ag.update_agent(
+        agent_name=agent_name(SALES),
+        display_name="Telephony Sales Master",
+        instruction=SALES_INSTRUCTION,
+        toolsets=[AgentToolset(toolset=TOOLSET, tool_ids=["call_sales_specialist"])],
+        tools=[END_SESSION],
+    )
+    print("   ready:", agent_name(SALES))
+
+    # Routing is INSTRUCTION-driven: child_agents declares the reachable children;
+    # each parent's instruction transfers by direct {@AGENT: Display Name} reference
+    # based on intent. We deliberately set NO transfer_rules (handoff rules) — those
+    # are an OPTIONAL deterministic overlay (condition/Python based). Leaving them
+    # empty just showed a confusing blank "Handoff rules (1)" in the console, so we
+    # clear them (transfer_rules=[]) and rely on the instructions.
+
+    # 2) Care Agents leaf.
+    print("\n[2] Care Agents")
+    _existing(ag.create_agent, agent_id=CARE, display_name="Care Agents",
+              instruction=CARE_INSTRUCTION, model=MODEL, tools=[END_SESSION])
+    ag.update_agent(agent_name=agent_name(CARE), instruction=CARE_INSTRUCTION)
+    print("   ->", agent_name(CARE))
+
+    # 3) Consumer Steering — parent of Sales Master + Care (child_agents only).
+    print("\n[3] Consumer Steering")
+    _existing(
+        ag.create_agent, agent_id=CONSUMER, display_name="Consumer Steering",
+        instruction=CONSUMER_INSTRUCTION, model=MODEL,
+        child_agents=[agent_name(SALES), agent_name(CARE)],
+    )
+    ag.update_agent(
+        agent_name=agent_name(CONSUMER),
+        instruction=CONSUMER_INSTRUCTION,
+        child_agents=[agent_name(SALES), agent_name(CARE)],
+        transfer_rules=[],   # clear any empty handoff rules
+    )
+    print("   ->", agent_name(CONSUMER))
+
+    # 4) Global Concierge — root, parent of Consumer Steering (child_agents only).
+    print("\n[4] Global Concierge Steering")
+    _existing(
+        ag.create_agent, agent_id=CONCIERGE,
+        display_name="Global Concierge Steering",
+        instruction=CONCIERGE_INSTRUCTION, model=MODEL,
+        child_agents=[agent_name(CONSUMER)],
+    )
+    ag.update_agent(
+        agent_name=agent_name(CONCIERGE),
+        instruction=CONCIERGE_INSTRUCTION,
+        child_agents=[agent_name(CONSUMER)],
+        transfer_rules=[],   # clear any empty handoff rules
+    )
+    print("   ->", agent_name(CONCIERGE))
+
+    # 5) Point the app root at the Global Concierge.
+    print("\n[5] Set app root -> Global Concierge")
+    apps.update_app(app_name=APP, root_agent=agent_name(CONCIERGE))
+    print("   root set")
+
+    print("\nDONE. Tree:")
+    print("  Global Concierge Steering (root)")
+    print("    └─ Consumer Steering")
+    print("         ├─ Telephony Sales Master ──sales-adapter──▶ ADK root")
+    print("         └─ Care Agents (stub)")
+
+
+if __name__ == "__main__":
+    main()
