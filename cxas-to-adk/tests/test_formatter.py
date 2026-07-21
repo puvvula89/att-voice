@@ -50,3 +50,32 @@ def test_missing_state_raises():
 def test_unknown_intent_raises():
     with pytest.raises(ValueError):
         formatter.build_payload("bogus", {})
+
+
+# --- resume_pending_ui: cross-channel screen reconstruction -----------------
+
+def test_resume_prefers_stored_pending_ui():
+    # A web-origin session already rendered a screen — return it untouched.
+    stored = {"stage_intent": "phone_options", "options": []}
+    state = {"pending_ui": stored, si.data_key(si.LINE_SELECTOR): {"lines": []}}
+    assert formatter.resume_pending_ui(state) is stored
+
+
+def test_resume_reconstructs_furthest_stage_when_no_pending_ui():
+    # IVR-origin session: data staged by the tools, but pending_ui never written.
+    # Rebuild the furthest-progressed screen (phone_options here, not line_selector).
+    state = {
+        si.data_key(si.LINE_SELECTOR): {"lines": [
+            {"line_id": "line_1243", "last4": "1243", "device": "iPhone 12"}]},
+        si.data_key(si.PHONE_OPTIONS): {"line_last4": "1243", "phones": [
+            {"phone_id": "iphone_17", "name": "iPhone 17",
+             "image": "data:image/png;base64,AAA", "monthly_price": 32.99}]},
+    }
+    p = formatter.resume_pending_ui(state)
+    assert p["stage_intent"] == "phone_options"
+    assert p["options"][0]["submitValue"] == "iphone_17"
+
+
+def test_resume_none_when_nothing_staged():
+    assert formatter.resume_pending_ui({}) is None
+    assert formatter.resume_pending_ui(None) is None
