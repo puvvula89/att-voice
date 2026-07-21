@@ -311,6 +311,65 @@ Safe to re-run — missing resources are skipped.
 
 ---
 
+## Redeploy a single service
+
+`deploy_all.sh` rebuilds everything. After changing just one service, redeploy only that
+one. Run these from the bundle folder; the preamble loads `.env` and the engine ids the
+full deploy already wrote to `deploy/.engine_name` / `deploy/.chat_engine_name`.
+
+```bash
+cd cxas-to-adk-a2a
+set -a; source .env; set +a
+PROJECT="$GOOGLE_CLOUD_PROJECT"; REGION="${GOOGLE_CLOUD_LOCATION:-us-central1}"
+```
+
+| Changed files | Redeploy |
+|---|---|
+| `mcp_server/` | MCP server |
+| root `Dockerfile`, `backend/server.py` | Relay |
+| `frontend/` | UI |
+| `backend/` (agent, tools, callbacks, formatter, `*_app.py`) | Voice + Chat engines — see caveat |
+
+**MCP server**
+```bash
+gcloud run deploy "${MCP_SERVICE:-att-mcp-phone-upgrade-a2a}" --source mcp_server \
+  --region "$REGION" --project "$PROJECT" --port 8080 \
+  --min-instances "${MCP_MIN_INSTANCES:-1}" --allow-unauthenticated --quiet
+```
+
+**Relay** (reads the current engine ids the full deploy wrote)
+```bash
+gcloud run deploy "${RELAY_SERVICE:-att-phone-upgrade-relay-a2a}" --source . \
+  --region "$REGION" --project "$PROJECT" --port 8080 --timeout 3600 \
+  --min-instances "${RELAY_MIN_INSTANCES:-1}" --allow-unauthenticated --quiet \
+  --set-env-vars "^@^AGENT_ENGINE_NAME=$(cat deploy/.engine_name)@CHAT_AGENT_ENGINE_NAME=$(cat deploy/.chat_engine_name)@GOOGLE_CLOUD_PROJECT=$PROJECT@GOOGLE_CLOUD_LOCATION=$REGION@GOOGLE_GENAI_USE_VERTEXAI=TRUE"
+```
+
+**UI** (injects the live relay URL, deploys, restores the file)
+```bash
+RELAY_BASE="$(gcloud run services describe "${RELAY_SERVICE:-att-phone-upgrade-relay-a2a}" \
+  --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
+printf 'window.RELAY_URL = "wss://%s";\n' "${RELAY_BASE#https://}" > frontend/config.js
+gcloud run deploy "${UI_SERVICE:-att-phone-upgrade-ui-a2a}" --source frontend \
+  --region "$REGION" --project "$PROJECT" --port 8080 --allow-unauthenticated --quiet
+git checkout -- frontend/config.js 2>/dev/null || true
+```
+
+A Cloud Run redeploy creates a new revision in place — no teardown, and the service URL is
+unchanged.
+
+> **Agent Engines (`backend/` changes).** The engine deploys **update in place** (matched
+> by display name), so the engine id stays **stable** across re-runs — the relay reference,
+> the chat engine's `/a2a` endpoint URL, and the CXAS RemoteAgentTool all remain valid, and
+> live sessions survive. **Do not tear down first** (deleting an engine forces the next
+> deploy to create a new id, which would move the `/a2a` URL). Simplest way to ship a
+> `backend/` change: re-run `bash deploy/deploy_all.sh` — it updates both engines in place
+> and redeploys the relay. To redeploy only the engines, run `deploy/deploy_agent_engine.py`
+> then `deploy/deploy_chat_engine.py` (the latter needs `SESSION_ENGINE_ID=<voice engine
+> id>`), then the Relay command above.
+
+---
+
 ## Tests
 
 ```bash
