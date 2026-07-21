@@ -87,8 +87,15 @@ async def resolve_session(
         if latest_id:
             candidate = await _safe_get(session_service, app_name, user_id, latest_id)
 
-    # Resume only if the candidate is still warm (within the TTL window).
-    if candidate is not None and (now - _session_epoch(candidate)) <= ttl:
+    # Resume only if the candidate is still warm (within the TTL window) AND the
+    # prior conversation was not gracefully ended. end_call sets state["call_ended"];
+    # a completed call must not be rejoined by a new one — the new caller gets a fresh
+    # session. A dropped / incomplete session (no call_ended) still resumes normally.
+    if (
+        candidate is not None
+        and (now - _session_epoch(candidate)) <= ttl
+        and not (candidate.state or {}).get("call_ended")
+    ):
         return candidate, True
 
     session = await session_service.create_session(app_name=app_name, user_id=user_id)
