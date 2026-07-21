@@ -52,3 +52,28 @@ def build_payload(stage_intent: str, state: dict) -> dict:
         payload["primary"] = _subst(template["primary"], ctx)
 
     return payload
+
+
+def resume_pending_ui(state: dict) -> dict | None:
+    """The screen to re-show when a session resumes.
+
+    Prefer the last explicitly rendered screen (``state['pending_ui']``). If none
+    was ever set — e.g. the session ran over IVR, where ``render_component`` is
+    suppressed so no ``pending_ui`` is written — reconstruct the furthest-progressed
+    screen from the data the tools already staged. The data tools (``get_lines`` …
+    ``confirm_upgrade``) run on every channel, so ``state['data:<stage>']`` is present
+    even for an IVR-origin session; rebuilding from it lands a cross-channel handoff
+    (IVR → web, or either → web) on the correct UI. Returns the same payload
+    ``render_component`` would have produced, so web-origin sessions are unaffected.
+    """
+    state = state or {}
+    stored = state.get("pending_ui")
+    if stored:
+        return stored
+    for stage in (si.RECEIPT, si.CONFIRMATION, si.PHONE_OPTIONS, si.LINE_SELECTOR):
+        if si.data_key(stage) in state:
+            try:
+                return build_payload(stage, state)
+            except (KeyError, ValueError):
+                continue
+    return None

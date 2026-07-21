@@ -80,12 +80,13 @@ async def _serve_local(websocket: WebSocket, user_id: str, session_id: str | Non
     session_service = _local_session_service
 
     from backend.session_resolve import resolve_session
+    from backend import formatter
     # Identity-anchored resume (same as the deployed AE path): explicit session_id
     # wins, else the user_id's latest session, else fresh.
     session, resumed = await resolve_session(session_service, APP_NAME, user_id, session_id)
     await websocket.send_text(json.dumps({
         "type": "session_info", "session_id": session.id, "resumed": resumed,
-        "pending_ui": (session.state or {}).get("pending_ui") if resumed else None,
+        "pending_ui": formatter.resume_pending_ui(session.state) if resumed else None,
     }))
 
     runner = Runner(app_name=APP_NAME, agent=upgrade_agent, session_service=session_service)

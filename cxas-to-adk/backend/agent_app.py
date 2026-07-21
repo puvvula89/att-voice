@@ -87,6 +87,7 @@ class LiveAgentApp:
         from google.genai import types
 
         from backend.session_resolve import resolve_session
+        from backend import formatter
 
         first = await request_queue.get()
         user_id = (first or {}).get("user_id", "u1")
@@ -105,7 +106,7 @@ class LiveAgentApp:
             "type": "session_info",
             "session_id": session.id,
             "resumed": resumed,
-            "pending_ui": (session.state or {}).get("pending_ui") if resumed else None,
+            "pending_ui": formatter.resume_pending_ui(session.state) if resumed else None,
         }
 
         live_queue = LiveRequestQueue()
