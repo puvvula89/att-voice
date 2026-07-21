@@ -257,6 +257,44 @@ When it finishes, the script prints the live URLs, identifiers, and the A2A endp
 
 ---
 
+## Cross-channel resume
+
+A conversation started on one channel can continue on another. All channels share **one
+session store** (the voice Agent Engine, referenced by `SESSION_ENGINE_ID`), and a session
+is anchored by a single identity: the ADK **`user_id`**.
+
+- On the **browser** side (voice or chat), `user_id` is the value in the **user id field**.
+  Leave it blank and the UI mints a fresh random id (a brand-new conversation).
+- On the **CXAS** side, `user_id` is the caller's `customer_id` — the CXAS session
+  variable, whose default is `CXAS_CUSTOMER_ID_DEFAULT` (ships as **`demo-customer`**).
+
+**To resume, present the same identity on both sides:**
+
+1. Start a conversation in one channel — e.g. the browser chat with **`demo-customer`** in
+   the user id field.
+2. Open another channel (browser voice at `<UI_URL>`, or chat at `<UI_URL>/chat.html`),
+   type the **same** id, and connect.
+3. You land in the same session — recent history and sub-agent routing are preserved.
+
+**Conditions:**
+
+- **Same `user_id` string** on every channel (here, `demo-customer`). A different value —
+  or a blank field that auto-generates one — starts a separate conversation.
+- **Within the resume window.** Resume only happens if the last activity was within
+  `SESSION_RESUME_TTL_SECONDS` (default **600s / 10 min**). After that, the same `user_id`
+  gets a *fresh* session — no automatic replay of the earlier thread.
+- You don't pass a `session_id` — it's resolved server-side from the `user_id`.
+
+> **The CXAS ↔ browser leg needs the A2A tool.** Browser voice ↔ chat resume works as soon
+> as the bundle is deployed. Resuming a **CXAS** call in the browser (or vice versa) only
+> applies once the Sales Master actually delegates to the chat engine — i.e. with
+> `SALES_TOOL_ENABLED=true` and the RemoteAgentTool created (see **The A2A tool**). The tool
+> forwards the caller's `customer_id` as the ADK `user_id`, which is what ties the two
+> together. In production this identity is reconciled automatically (IVR caller ID / auth ↔
+> the browser's signed-in customer key); in this demo you supply the matching id by hand.
+
+---
+
 ## Teardown
 
 ```bash
