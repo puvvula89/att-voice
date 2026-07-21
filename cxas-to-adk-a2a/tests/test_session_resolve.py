@@ -145,3 +145,40 @@ def test_ttl_from_env(monkeypatch):
         assert resumed is False
 
     _run(go())
+
+
+def test_ended_session_not_resumed_starts_fresh():
+    """A gracefully ended call (end_call set call_ended) must not be rejoined by a
+    new call within the TTL — the new caller gets a fresh session. The ended session
+    is kept (not deleted)."""
+    async def go():
+        svc = InMemorySessionService()
+        ended = await svc.create_session(
+            app_name=APP, user_id="mia", state={"call_ended": True}
+        )
+        session, resumed = await resolve_session(
+            svc, APP, "mia", ttl_seconds=600, now=_ts(ended) + 60
+        )
+        assert resumed is False
+        assert session.id != ended.id
+        listed = await svc.list_sessions(app_name=APP, user_id="mia")
+        ids = {s.id for s in getattr(listed, "sessions", listed)}
+        assert ended.id in ids  # ended session preserved, just not resumed
+
+    _run(go())
+
+
+def test_incomplete_session_still_resumes():
+    """A dropped/incomplete session (no call_ended) still resumes within the window."""
+    async def go():
+        svc = InMemorySessionService()
+        existing = await svc.create_session(
+            app_name=APP, user_id="noah", state={"data:line_selector": {"lines": []}}
+        )
+        session, resumed = await resolve_session(
+            svc, APP, "noah", ttl_seconds=600, now=_ts(existing) + 60
+        )
+        assert resumed is True
+        assert session.id == existing.id
+
+    _run(go())
