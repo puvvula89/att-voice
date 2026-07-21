@@ -231,6 +231,42 @@ When it finishes, the script prints the live URLs and identifiers:
 
 ---
 
+## Cross-channel resume
+
+A conversation started on one channel can continue on another — CXAS → browser voice →
+browser chat, in any order. All three channels share **one session store** (the voice
+Agent Engine, referenced by `SESSION_ENGINE_ID`), and a session is anchored by a single
+identity: the ADK **`user_id`**.
+
+- On the **CXAS** side, `user_id` is the caller's `customer_id` — the CXAS session
+  variable, whose default is `CXAS_CUSTOMER_ID_DEFAULT` (ships as **`demo-customer`**).
+- On the **browser** side (voice or chat), `user_id` is the value in the **user id field**.
+  Leave it blank and the UI mints a fresh random id (a brand-new conversation).
+
+**To resume, present the same identity on both sides:**
+
+1. Start a conversation in the CXAS Simulator (runs as `user_id = demo-customer` unless the
+   session overrides `customer_id`).
+2. Open the browser UI (`<UI_URL>` for voice, `<UI_URL>/chat.html` for chat), type
+   **`demo-customer`** into the user id field, and connect.
+3. You land in the same session — recent history and sub-agent routing are preserved. It
+   works in either direction (browser → CXAS too).
+
+**Conditions:**
+
+- **Same `user_id` string** on both channels (here, `demo-customer`). A different value —
+  or a blank field that auto-generates one — starts a separate conversation.
+- **Within the resume window.** Resume only happens if the last activity was within
+  `SESSION_RESUME_TTL_SECONDS` (default **600s / 10 min**). After that, the same `user_id`
+  gets a *fresh* session — no automatic replay of the earlier thread.
+- You don't pass a `session_id` — it's resolved server-side from the `user_id`.
+
+> In production, this identity is reconciled automatically (IVR caller ID / auth ↔ the
+> browser's signed-in customer key), so continuity is seamless. In this demo you supply the
+> matching id by hand via the user id field.
+
+---
+
 ## Teardown
 
 ```bash
