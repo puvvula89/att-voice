@@ -17,7 +17,10 @@ shared-session-voice-and-chat/deploy/*.wav
 # GSD planning/handoff (local only — not part of the deliverable)
 .planning/
 
-# Agent Engine spike ephemera
-shared-session-voice-and-chat/spike/.engine_name
-shared-session-voice-and-chat/deploy/.engine_name
-shared-session-voice-and-chat/deploy/.chat_engine_name
+# Agent Engine ephemera (deploy writes resolved engine resource names here)
+**/.engine_name
+**/.chat_engine_name
+
+# Stray deploy/build logs
+log.txt
+*.log

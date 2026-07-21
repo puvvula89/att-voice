@@ -13,7 +13,7 @@ Reuses the existing app `att-ivr-steering` and its `sales-adapter` toolset.
 Repurposes the existing `telephony-steering` agent as the Telephony Sales Master
 leaf. Idempotent-ish: create calls tolerate ALREADY_EXISTS.
 
-Config from env: CXAS_PROJECT (REDACTED_PROJECT), CXAS_LOCATION (us), CXAS_MODEL.
+Config from env: CXAS_PROJECT, CXAS_LOCATION, CXAS_APP_ID, CXAS_MODEL.
 """
 import os
 
@@ -25,20 +25,20 @@ from cxas_scrapi.core.variables import Variables, VariableType
 types = agents_mod.types
 AgentToolset = types.Agent.AgentToolset
 
-PROJECT = os.environ.get("CXAS_PROJECT", "REDACTED_PROJECT")
+PROJECT = os.environ.get("CXAS_PROJECT") or os.environ["GOOGLE_CLOUD_PROJECT"]
 LOCATION = os.environ.get("CXAS_LOCATION", "us")
 MODEL = os.environ.get("CXAS_MODEL", "gemini-2.5-flash-001")
 
-APP_ID = "att-ivr-steering"
+APP_ID = os.environ.get("CXAS_APP_ID", "att-ivr-steering")
 APP = f"projects/{PROJECT}/locations/{LOCATION}/apps/{APP_ID}"
 
 # Session variable that identifies the caller. The Sales Master passes this as the
 # tool's customer_id, which the adapter maps verbatim to the ADK user_id (the
-# cross-channel session anchor). Default "wilson" so the telephony path (no
-# override) resolves to wilson; override per session via Sessions.run(variables=
-# {"customer_id": "..."}) or a session parameter in the UI to swap users.
+# cross-channel session anchor). The telephony path (no override) resolves to this
+# default; override per session via Sessions.run(variables={"customer_id": "..."})
+# or a session parameter in the UI to swap users.
 CUSTOMER_ID_VAR = "customer_id"
-CUSTOMER_ID_DEFAULT = os.environ.get("CXAS_CUSTOMER_ID_DEFAULT", "wilson")
+CUSTOMER_ID_DEFAULT = os.environ.get("CXAS_CUSTOMER_ID_DEFAULT", "demo-customer")
 
 # Agent ids.
 CONCIERGE = "global-concierge"

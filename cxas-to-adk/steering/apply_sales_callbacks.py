@@ -17,7 +17,7 @@ script clears any before_model callback to keep the agent matching the live desi
 Idempotent: updates in place if a callback of that type exists, else creates; trims
 extras so exactly one of each remains.
 
-Config from env: CXAS_PROJECT (REDACTED_PROJECT), CXAS_LOCATION (us).
+Config from env: CXAS_PROJECT, CXAS_LOCATION, CXAS_APP_ID.
 """
 import os
 
@@ -29,9 +29,9 @@ from session_thread_callbacks import (
     AFTER_TOOL_CALLBACK_CODE,
 )
 
-PROJECT = os.environ.get("CXAS_PROJECT", "REDACTED_PROJECT")
+PROJECT = os.environ.get("CXAS_PROJECT") or os.environ["GOOGLE_CLOUD_PROJECT"]
 LOCATION = os.environ.get("CXAS_LOCATION", "us")
-APP_ID = "att-ivr-steering"
+APP_ID = os.environ.get("CXAS_APP_ID", "att-ivr-steering")
 APP = f"projects/{PROJECT}/locations/{LOCATION}/apps/{APP_ID}"
 SALES = f"{APP}/agents/telephony-steering"  # Telephony Sales Master leaf
 
