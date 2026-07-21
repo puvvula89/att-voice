@@ -1,0 +1,9 @@
+{
+  "title": "You're all set!",
+  "message": "Your upgrade is confirmed. A confirmation has been sent to your account.",
+  "summary": [
+    { "label": "Order number", "value": "{{order_id}}" },
+    { "label": "New phone", "value": "{{phone}}" },
+    { "label": "Ships in", "value": "{{ship_estimate}}" }
+  ]
+}

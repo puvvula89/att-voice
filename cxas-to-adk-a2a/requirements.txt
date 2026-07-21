@@ -1,0 +1,21 @@
+# Local tooling venv for the whole self-contained bundle. With this installed you
+# can: deploy the Agent Engines (deploy/deploy_*_engine.py), author the CXAS
+# steering app + callbacks (create_steering_tree.py / apply_sales_callbacks.py,
+# needs cxas-scrapi), run the relay/adapter locally, and run the test suite.
+#
+# The Cloud Run images do NOT use this file — each service ships a lean set
+# (root Dockerfile -> relay-requirements.txt; adapter/Dockerfile ->
+# adapter/adapter-requirements.txt; mcp_server ships its own). The Agent Engines
+# bake their pinned deps inside deploy/deploy_agent_engine.py / deploy_chat_engine.py.
+google-cloud-aiplatform[agent_engines]
+google-adk==2.1.0        # pinned: 2.2.0 regressed Vertex Live resume; 2.1.0 keeps genai <2,>=1.72
+cloudpickle==3.1.2
+mcp
+google-genai
+cxas-scrapi
+fastapi
+uvicorn[standard]
+websockets
+python-dotenv
+pytest
+httpx

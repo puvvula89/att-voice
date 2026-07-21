@@ -1,4 +1,6 @@
 shared-session-voice-and-chat/.venv/
+.venv/
+**/.venv/
 __pycache__/
 *.pyc
 .pytest_cache/
