@@ -11,7 +11,7 @@ The OpenAPI schema mirrors the adapter's POST /cxas/turn contract (operation
 use repoint_toolset.py instead.
 
 Usage: python create_cxas_app.py <ADAPTER_BASE_URL>
-Config from env: CXAS_PROJECT (REDACTED_PROJECT), CXAS_LOCATION (us).
+Config from env: CXAS_PROJECT, CXAS_LOCATION, CXAS_APP_ID.
 """
 import json
 import os
@@ -21,9 +21,9 @@ import google.cloud.ces_v1beta.types as T
 from cxas_scrapi.core.apps import Apps
 from cxas_scrapi.core.agents import Agents
 
-PROJECT = os.environ.get("CXAS_PROJECT", "REDACTED_PROJECT")
+PROJECT = os.environ.get("CXAS_PROJECT") or os.environ["GOOGLE_CLOUD_PROJECT"]
 LOCATION = os.environ.get("CXAS_LOCATION", "us")
-APP_ID = "att-ivr-steering"
+APP_ID = os.environ.get("CXAS_APP_ID", "att-ivr-steering")
 APP = f"projects/{PROJECT}/locations/{LOCATION}/apps/{APP_ID}"
 TOOLSET_ID = "sales-adapter"
 TOOLSET = f"{APP}/toolsets/{TOOLSET_ID}"

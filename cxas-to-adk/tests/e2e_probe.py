@@ -2,10 +2,13 @@
 one session with delays between turns to stay under the run_session rate limit.
 Greeting (Concierge) -> upgrade (transfer to Sales Master) -> follow-up (ADK reply).
 """
-import sys, time
+import os, sys, time
 from cxas_scrapi.core.sessions import Sessions
 
-APP = "projects/REDACTED_PROJECT/locations/us/apps/att-ivr-steering"
+PROJECT = os.environ.get("CXAS_PROJECT") or os.environ["GOOGLE_CLOUD_PROJECT"]
+LOCATION = os.environ.get("CXAS_LOCATION", "us")
+APP_ID = os.environ.get("CXAS_APP_ID", "att-ivr-steering")
+APP = f"projects/{PROJECT}/locations/{LOCATION}/apps/{APP_ID}"
 
 def main():
     print("cooldown 180s for CES quota...", flush=True)

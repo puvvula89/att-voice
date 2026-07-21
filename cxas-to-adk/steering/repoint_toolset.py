@@ -12,12 +12,16 @@ the same id (`sales-adapter`) so the agent's AgentToolset ref stays valid:
 Usage: python repoint_toolset.py <ADAPTER_BASE_URL>
 """
 import json
+import os
 import sys
 
 import google.cloud.ces_v1beta.types as T
 from cxas_scrapi.core.agents import Agents
 
-APP = "projects/REDACTED_PROJECT/locations/us/apps/att-ivr-steering"
+PROJECT = os.environ.get("CXAS_PROJECT") or os.environ["GOOGLE_CLOUD_PROJECT"]
+LOCATION = os.environ.get("CXAS_LOCATION", "us")
+APP_ID = os.environ.get("CXAS_APP_ID", "att-ivr-steering")
+APP = f"projects/{PROJECT}/locations/{LOCATION}/apps/{APP_ID}"
 TOOLSET_ID = "sales-adapter"
 TOOLSET = f"{APP}/toolsets/{TOOLSET_ID}"
 SALES_AGENT = f"{APP}/agents/telephony-steering"  # Telephony Sales Master

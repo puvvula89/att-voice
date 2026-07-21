@@ -27,7 +27,7 @@ def _ctx(**state):
 
 def test_before_injects_cached_session_id():
     cb = _load(BEFORE_TOOL_CALLBACK_CODE, "before_tool_callback")
-    inp = {"customer_id": "wilson", "utterance": "upgrade"}
+    inp = {"customer_id": "demo-customer", "utterance": "upgrade"}
     out = cb(_tool(), inp, _ctx(adk_session_id="sess-123"))
     assert out is None                       # tool runs with mutated input
     assert inp["session_id"] == "sess-123"
@@ -35,7 +35,7 @@ def test_before_injects_cached_session_id():
 
 def test_before_no_session_id_on_first_turn():
     cb = _load(BEFORE_TOOL_CALLBACK_CODE, "before_tool_callback")
-    inp = {"customer_id": "wilson", "utterance": "upgrade"}
+    inp = {"customer_id": "demo-customer", "utterance": "upgrade"}
     cb(_tool(), inp, _ctx())                  # var unset
     assert "session_id" not in inp           # engine will resolve by user_id
 
@@ -78,6 +78,6 @@ def test_round_trip_capture_then_inject():
     before = _load(BEFORE_TOOL_CALLBACK_CODE, "before_tool_callback")
     ctx = _ctx()
     after(_tool(), {"utterance": "turn1"}, ctx, {"session_id": "sess-abc"})
-    inp = {"customer_id": "wilson", "utterance": "turn2"}
+    inp = {"customer_id": "demo-customer", "utterance": "turn2"}
     before(_tool(), inp, ctx)
     assert inp["session_id"] == "sess-abc"

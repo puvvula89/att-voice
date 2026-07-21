@@ -33,11 +33,11 @@ APP = f"projects/{PROJECT}/locations/{LOCATION}/apps/{APP_ID}"
 
 # Session variable that identifies the caller. The Sales Master passes this as the
 # tool's customer_id, which the adapter maps verbatim to the ADK user_id (the
-# cross-channel session anchor). Default "wilson" so the telephony path (no
-# override) resolves to wilson; override per session via Sessions.run(variables=
-# {"customer_id": "..."}) or a session parameter in the UI to swap users.
+# cross-channel session anchor). The telephony path (no override) resolves to this
+# default; override per session via Sessions.run(variables={"customer_id": "..."})
+# or a session parameter in the UI to swap users.
 CUSTOMER_ID_VAR = "customer_id"
-CUSTOMER_ID_DEFAULT = os.environ.get("CXAS_CUSTOMER_ID_DEFAULT", "wilson")
+CUSTOMER_ID_DEFAULT = os.environ.get("CXAS_CUSTOMER_ID_DEFAULT", "demo-customer")
 
 # Agent ids.
 CONCIERGE = "global-concierge"
