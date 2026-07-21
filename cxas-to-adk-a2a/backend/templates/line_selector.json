@@ -1,0 +1,10 @@
+{
+  "title": "Which line would you like to upgrade?",
+  "message": "Here are the lines on your account — pick the one you'd like to upgrade.",
+  "options_from": "lines",
+  "option_template": {
+    "eyebrow": "Current device · {{device}}",
+    "header": "Line ending {{last4}}",
+    "submitValue": "{{line_id}}"
+  }
+}

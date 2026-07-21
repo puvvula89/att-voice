@@ -1,0 +1,7 @@
+# Runtime deps for the CXAS→ADK adapter (Cloud Run). Request/response only —
+# just the web server + the Vertex client used to reach the chat Agent Engine.
+fastapi
+uvicorn[standard]
+python-dotenv
+google-cloud-aiplatform
+google-genai
