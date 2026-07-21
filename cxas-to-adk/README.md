@@ -127,56 +127,83 @@ OIDC token minted by the CES service agent.
 
 ## Prerequisites
 
-- **gcloud CLI**, authenticated for both API and application-default credentials:
-  ```bash
-  gcloud auth login
-  gcloud auth application-default login
-  ```
-- **Vertex AI** enabled on the target project.
-- **CX Agent Studio** access in the project (location `us`).
-- A **Python virtual environment** for this bundle:
-  ```bash
-  cd cxas-to-adk
-  python -m venv .venv
-  source .venv/bin/activate
-  pip install -r requirements.txt
-  ```
+- A **GCP project** with billing enabled, and an account with (at least) these roles on
+  it: `roles/run.admin`, `roles/aiplatform.user`, `roles/storage.admin`,
+  `roles/iam.serviceAccountUser`, and permission to bind IAM on a Cloud Run service
+  (`roles/run.admin` covers it). Owner/Editor also works.
+- **CX Agent Studio (Conversational Agents)** access in the project.
+- Local tools: **`gcloud` CLI** and **Python 3.10+**.
 
 ---
 
-## Configure
+## Setup & deploy
 
-Copy the template and edit **only** `.env`:
+Six steps, start to finish. Run them from this bundle's folder.
+
+### 1. Authenticate
+
+```bash
+gcloud auth login                       # user credentials (gcloud API calls)
+gcloud auth application-default login    # ADC (Vertex AI / Agent Engine SDK)
+gcloud config set project YOUR_PROJECT_ID
+```
+
+### 2. Enable the required APIs (once per project)
+
+```bash
+gcloud services enable \
+  run.googleapis.com \
+  cloudbuild.googleapis.com \
+  aiplatform.googleapis.com \
+  storage.googleapis.com \
+  --project YOUR_PROJECT_ID
+```
+
+CX Agent Studio must also be enabled — open **CX Agent Studio** in the Cloud console once
+for the project so its service (the CES service agent) is provisioned.
+
+### 3. Create a virtual environment and install dependencies
+
+```bash
+cd cxas-to-adk
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 4. Configure `.env`
+
+Copy the template and edit **only** `.env` (nothing is hardcoded in the source):
 
 ```bash
 cp .env.example .env
 ```
 
-Fill in the values you must set; leave the rest at their defaults.
+The values you set:
 
 | Set this | What it is |
 |---|---|
 | `GOOGLE_CLOUD_PROJECT` | Target project ID |
 | `GOOGLE_CLOUD_LOCATION` | Region for Cloud Run + Agent Engines (default `us-central1`) |
 | `CXAS_PROJECT` / `CXAS_LOCATION` | Steering app project and location (`us`) |
-| `AE_STAGING_BUCKET` | Staging bucket for Agent Engine builds (leave blank to auto-name) |
+| `CXAS_APP_ID` | Steering app id (default `ivr-steering`) |
+| `AE_STAGING_BUCKET` | Agent Engine staging bucket (leave blank → `PROJECT-agent-engine`) |
 
 Leave blank for the deploy to fill in: `AGENT_ENGINE_NAME`, `CHAT_AGENT_ENGINE_NAME`,
 `SESSION_ENGINE_ID`, `CES_SERVICE_AGENT`.
 
-Two warm-instance knobs keep the first turn fast:
-`RELAY_MIN_INSTANCES=1` and `ADAPTER_MIN_INSTANCES=1` (a cold first CXAS turn ran ~56s,
-past the tool-call timeout). Set to `0` to save cost at the risk of a cold-start timeout.
+Two warm-instance knobs keep the first turn fast: `RELAY_MIN_INSTANCES=1` and
+`ADAPTER_MIN_INSTANCES=1` (a cold first CXAS turn ran ~56s, past the tool-call timeout).
+Set to `0` to save cost at the risk of a cold-start timeout.
 
----
-
-## Deploy
+### 5. Deploy
 
 ```bash
 bash deploy/deploy_all.sh
 ```
 
-Nine steps, in order:
+One command, nine steps. **Expect ~20–30 minutes** — most of it is Cloud Build compiling
+container images and Vertex building the two Agent Engines.
 
 | Step | Action |
 |---|---|
@@ -190,11 +217,17 @@ Nine steps, in order:
 | 8 | Create the CXAS app + sales-adapter toolset |
 | 9 | Build the steering tree + Sales Master callbacks |
 
-> **Run it yourself.** Step 7 binds an IAM policy (`run.invoker`). Run the script as a
-> human with sufficient permissions; an unattended/automated shell may be blocked from
-> the IAM binding.
+> **Run it yourself, interactively.** Step 7 binds an IAM policy (`run.invoker`). Run the
+> script as a human with the permissions above; an unattended/automated shell may be
+> blocked from the IAM binding.
 
-When it finishes, the script prints the UI URL and the created engine/app identifiers.
+### 6. Use it
+
+When it finishes, the script prints the live URLs and identifiers:
+
+- **Voice UI** — `<UI_URL>` · **Chat UI** — `<UI_URL>/chat.html`
+- **CXAS path** — open the CXAS app (`ivr-steering`) in the Conversational Agents console
+  and test in the **Simulator**.
 
 ---
 
@@ -205,6 +238,12 @@ bash deploy/destroy_all.sh
 ```
 
 Deletes the Cloud Run services, both Agent Engines, the CXAS app, and the staging bucket.
+Safe to re-run — missing resources are skipped.
+
+> **Note on the staging bucket.** Teardown also removes `AE_STAGING_BUCKET`
+> (default `PROJECT-agent-engine`). That name is project-generic, so if you share it with
+> other Agent Engine work, set `AE_STAGING_BUCKET` to a bundle-specific bucket before
+> deploying — or skip the bucket line if you want to keep it.
 
 ---
 

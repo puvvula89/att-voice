@@ -128,26 +128,53 @@ auth; the deploy grants it `roles/aiplatform.user`. No adapter, no OIDC token ex
 
 ## Prerequisites
 
-- **gcloud CLI**, authenticated for both API and application-default credentials:
-  ```bash
-  gcloud auth login
-  gcloud auth application-default login
-  ```
-- **Vertex AI** enabled on the target project.
-- **CX Agent Studio** access in the project (location `us`).
-- A **Python virtual environment** for this bundle:
-  ```bash
-  cd cxas-to-adk-a2a
-  python -m venv .venv
-  source .venv/bin/activate
-  pip install -r requirements.txt
-  ```
+- A **GCP project** with billing enabled, and an account with (at least) these roles on
+  it: `roles/run.admin`, `roles/aiplatform.user`, `roles/storage.admin`,
+  `roles/iam.serviceAccountUser`, and permission to set **project-level** IAM
+  (`roles/resourcemanager.projectIamAdmin`). Owner also works.
+- **CX Agent Studio (Conversational Agents)** access in the project.
+- Local tools: **`gcloud` CLI** and **Python 3.10+**.
 
 ---
 
-## Configure
+## Setup & deploy
 
-Copy the template and edit **only** `.env`:
+Four setup steps, then one deploy command. Run them from this bundle's folder.
+
+### 1. Authenticate
+
+```bash
+gcloud auth login                       # user credentials (gcloud API calls)
+gcloud auth application-default login    # ADC (Vertex AI / Agent Engine SDK)
+gcloud config set project YOUR_PROJECT_ID
+```
+
+### 2. Enable the required APIs (once per project)
+
+```bash
+gcloud services enable \
+  run.googleapis.com \
+  cloudbuild.googleapis.com \
+  aiplatform.googleapis.com \
+  storage.googleapis.com \
+  --project YOUR_PROJECT_ID
+```
+
+CX Agent Studio must also be enabled — open **CX Agent Studio** in the Cloud console once
+for the project so its service (the CES P4SA) is provisioned.
+
+### 3. Create a virtual environment and install dependencies
+
+```bash
+cd cxas-to-adk-a2a
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 4. Configure `.env`
+
+Copy the template and edit **only** `.env` (nothing is hardcoded in the source):
 
 ```bash
 cp .env.example .env
@@ -159,11 +186,13 @@ cp .env.example .env
 | `GOOGLE_CLOUD_LOCATION` | Region for Cloud Run + Agent Engines (default `us-central1`) |
 | `CXAS_PROJECT` / `CXAS_LOCATION` | Steering app project and location (`us`) |
 | `CXAS_APP_ID` | Steering app id (default `att-ivr-steering-a2a`) |
-| `AE_STAGING_BUCKET` | Staging bucket for Agent Engine builds (leave blank to auto-name) |
-| `SALES_TOOL_ENABLED` | See **A2A tool** below — set `false` until the tool exists |
+| `AE_STAGING_BUCKET` | Agent Engine staging bucket (leave blank → `PROJECT-agent-engine`) |
+| `SALES_TOOL_ENABLED` | Leave `false` unless the A2A tool is allowlisted — see **The A2A tool** below |
 
 Leave blank for the deploy to fill in: `AGENT_ENGINE_NAME`, `CHAT_AGENT_ENGINE_NAME`,
 `SESSION_ENGINE_ID`, `CES_SERVICE_AGENT`. `RELAY_MIN_INSTANCES=1` keeps the first turn warm.
+
+Then read **The A2A tool** section next, then run **Deploy** (step 5) below.
 
 ---
 
@@ -192,13 +221,14 @@ console until your project is allowlisted. The bundle handles both states with o
 
 ---
 
-## Deploy
+## Deploy (step 5)
 
 ```bash
 bash deploy/deploy_all.sh
 ```
 
-Eight steps, in order:
+One command, eight steps. **Expect ~20–30 minutes** — most of it is Cloud Build compiling
+container images and Vertex building the two Agent Engines.
 
 | Step | Action |
 |---|---|
@@ -208,15 +238,22 @@ Eight steps, in order:
 | 4 | Relay → Cloud Run |
 | 5 | UI → Cloud Run |
 | 6 | Resolve and print the chat engine's A2A endpoint URL |
-| 7 | Grant `roles/aiplatform.user` to the CES P4SA |
+| 7 | Grant `roles/aiplatform.user` to the CES P4SA (project-level) |
 | 8 | Create the CXAS app + A2A tool (if enabled) + steering tree + callbacks |
 
-> **Run it yourself.** Step 7 binds a project-level IAM policy
-> (`gcloud projects add-iam-policy-binding`). Run the script as a human with sufficient
-> permissions; an unattended/automated shell may be blocked from the IAM binding.
+> **Run it yourself, interactively.** Step 7 binds a **project-level** IAM policy
+> (`gcloud projects add-iam-policy-binding`), which needs `projectIamAdmin`/Owner. Run the
+> script as a human with the permissions above; an unattended/automated shell may be
+> blocked from the IAM binding.
 
-When it finishes, the script prints the UI URL, the engine/app identifiers, and the A2A
-endpoint URL.
+### Use it (step 6)
+
+When it finishes, the script prints the live URLs, identifiers, and the A2A endpoint URL:
+
+- **Voice UI** — `<UI_URL>` · **Chat UI** — `<UI_URL>/chat.html`
+- **CXAS path** — open the CXAS app (`att-ivr-steering-a2a`) in the Conversational Agents
+  console and test in the **Simulator**. (With `SALES_TOOL_ENABLED=false` the Sales Master
+  has no ADK delegation yet — see **The A2A tool** for enabling it once allowlisted.)
 
 ---
 
@@ -227,6 +264,12 @@ bash deploy/destroy_all.sh
 ```
 
 Deletes the Cloud Run services, both Agent Engines, the CXAS app, and the staging bucket.
+Safe to re-run — missing resources are skipped.
+
+> **Note on the staging bucket.** Teardown also removes `AE_STAGING_BUCKET`
+> (default `PROJECT-agent-engine`). That name is project-generic, so if you share it with
+> other Agent Engine work, set `AE_STAGING_BUCKET` to a bundle-specific bucket before
+> deploying — or skip the bucket line if you want to keep it.
 
 ---
 
