@@ -1,10 +1,13 @@
+import functools
 import os
 
 from google.adk.agents import LlmAgent
 from google.adk.agents.callback_context import CallbackContext
-from google.adk.models import LlmRequest
+from google.adk.models import Gemini, LlmRequest
 from google.adk.tools import FunctionTool
 from google.adk.tools.mcp_tool import McpToolset, StreamableHTTPConnectionParams
+from google.genai import Client as _GenaiClient
+from google.genai import types as _genai_types
 from backend import tools
 from backend.callbacks import on_tool
 
@@ -161,7 +164,48 @@ Rules:
 """
 
 
-def build_upgrade_agent(model: str, instruction: str = INSTRUCTIONS) -> LlmAgent:
+class _GlobalEndpointGemini(Gemini):
+    """A Gemini model whose API calls target the Vertex ``global`` endpoint.
+
+    The Gemini 3.x models (e.g. gemini-3.6-flash) are only served on ``global`` —
+    they 404 in us-central1 and every other regional endpoint. But the chat Agent
+    Engine, and the ``VertexAiSessionService`` shared session store it points at,
+    must stay in us-central1. Overriding only ``api_client`` (the documented ADK
+    seam) routes the model's generate_content calls to ``global`` while leaving the
+    engine and session store regional — so cross-channel resume is unaffected.
+    """
+
+    @functools.cached_property
+    def api_client(self) -> _GenaiClient:
+        base_url, api_version = self._base_url_and_api_version
+        http_kwargs = {
+            "headers": self._tracking_headers(),
+            "retry_options": self.retry_options,
+            "base_url": base_url,
+        }
+        if api_version:
+            http_kwargs["api_version"] = api_version
+        return _GenaiClient(
+            vertexai=True,
+            project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
+            location="global",
+            http_options=_genai_types.HttpOptions(**http_kwargs),
+        )
+
+
+def resolve_chat_model(name: str):
+    """Return the model spec for the CHAT channel.
+
+    Gemini 3.x is global-only, so wrap it to hit the ``global`` endpoint; 2.x
+    models resolve regionally (from GOOGLE_CLOUD_LOCATION) and stay plain strings.
+    Voice (Live native-audio) never calls this — it must remain regional.
+    """
+    if name.startswith("gemini-3"):
+        return _GlobalEndpointGemini(model=name)
+    return name
+
+
+def build_upgrade_agent(model, instruction: str = INSTRUCTIONS) -> LlmAgent:
     """Construct the phone-upgrade agent for a given model + instruction.
 
     Both the voice (Live model) and chat (text model) channels share the SAME
