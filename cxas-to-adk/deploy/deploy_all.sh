@@ -39,7 +39,7 @@ echo "▶ Deploying bundle to project=$PROJECT region=$REGION"
 #    doesn't pay a cold start (~4s otherwise). Override via MCP_MIN_INSTANCES.
 echo "▶ [1/9] MCP server ($MCP_SERVICE, min-instances=${MCP_MIN_INSTANCES:-1})…"
 gcloud run deploy "$MCP_SERVICE" --source mcp_server --region "$REGION" --project "$PROJECT" \
-  --port 8080 --min-instances "${MCP_MIN_INSTANCES:-1}" --allow-unauthenticated --quiet
+  --port 8080 --min-instances "${MCP_MIN_INSTANCES:-1}" --cpu-boost --allow-unauthenticated --quiet
 MCP_BASE="$(gcloud run services describe "$MCP_SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
 export MCP_SERVER_URL="${MCP_BASE}/mcp"
 echo "   MCP_SERVER_URL=$MCP_SERVER_URL"
@@ -62,7 +62,7 @@ echo "   CHAT_AGENT_ENGINE_NAME=$CHAT_AGENT_ENGINE_NAME"
 # 4. Relay (browser <-> voice bidi and <-> chat async_stream). Built from root Dockerfile.
 echo "▶ [4/9] Relay ($RELAY_SERVICE)…"
 gcloud run deploy "$RELAY_SERVICE" --source . --region "$REGION" --project "$PROJECT" \
-  --port 8080 --timeout 3600 --min-instances "$RELAY_MIN_INSTANCES" --allow-unauthenticated --quiet \
+  --port 8080 --timeout 3600 --min-instances "$RELAY_MIN_INSTANCES" --cpu-boost --allow-unauthenticated --quiet \
   --set-env-vars "^@^AGENT_ENGINE_NAME=${AGENT_ENGINE_NAME}@CHAT_AGENT_ENGINE_NAME=${CHAT_AGENT_ENGINE_NAME}@GOOGLE_CLOUD_PROJECT=${PROJECT}@GOOGLE_CLOUD_LOCATION=${REGION}@GOOGLE_GENAI_USE_VERTEXAI=TRUE"
 RELAY_BASE="$(gcloud run services describe "$RELAY_SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
 RELAY_WSS="wss://${RELAY_BASE#https://}"
@@ -72,14 +72,14 @@ echo "   RELAY=$RELAY_WSS"
 echo "▶ [5/9] UI ($UI_SERVICE)…"
 printf 'window.RELAY_URL = "%s";\n' "$RELAY_WSS" > frontend/config.js
 gcloud run deploy "$UI_SERVICE" --source frontend --region "$REGION" --project "$PROJECT" \
-  --port 8080 --allow-unauthenticated --quiet
+  --port 8080 --cpu-boost --allow-unauthenticated --quiet
 UI_URL="$(gcloud run services describe "$UI_SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
 git checkout -- frontend/config.js 2>/dev/null || printf 'window.RELAY_URL = "ws://localhost:8000";\n' > frontend/config.js
 
 # 6. CXAS adapter (private + warm). Built from adapter/ context.
 echo "▶ [6/9] CXAS adapter ($ADAPTER_SERVICE, private, min-instances=$ADAPTER_MIN_INSTANCES)…"
 gcloud run deploy "$ADAPTER_SERVICE" --source adapter --region "$REGION" --project "$PROJECT" \
-  --port 8080 --timeout 120 --min-instances "$ADAPTER_MIN_INSTANCES" --no-allow-unauthenticated --quiet \
+  --port 8080 --timeout 120 --min-instances "$ADAPTER_MIN_INSTANCES" --cpu-boost --no-allow-unauthenticated --quiet \
   --set-env-vars "^@^GOOGLE_CLOUD_PROJECT=${PROJECT}@GOOGLE_CLOUD_LOCATION=${REGION}@CHAT_AGENT_ENGINE_NAME=${CHAT_AGENT_ENGINE_NAME}@GOOGLE_GENAI_USE_VERTEXAI=TRUE"
 ADAPTER_URL="$(gcloud run services describe "$ADAPTER_SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
 echo "   ADAPTER_URL=$ADAPTER_URL"
