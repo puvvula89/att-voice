@@ -29,7 +29,7 @@ class ChatAgentApp:
     def set_up(self) -> None:
         from google.adk.runners import Runner
         from google.adk.sessions import VertexAiSessionService
-        from backend.agent import build_upgrade_agent, CHAT_INSTRUCTIONS
+        from backend.agent import build_upgrade_agent, resolve_chat_model, CHAT_INSTRUCTIONS
 
         # Shared session store across channels — MUST match the voice app's
         # SESSION_ENGINE_ID so list_sessions/get_session see the other channel's
@@ -46,7 +46,7 @@ class ChatAgentApp:
         chat_model = os.environ.get("CHAT_MODEL", "gemini-2.5-flash")
         self._runner = Runner(
             app_name=APP_NAME,
-            agent=build_upgrade_agent(chat_model, CHAT_INSTRUCTIONS),
+            agent=build_upgrade_agent(resolve_chat_model(chat_model), CHAT_INSTRUCTIONS),
             session_service=self._session_service,
         )
 
