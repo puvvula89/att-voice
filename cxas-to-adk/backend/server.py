@@ -4,6 +4,7 @@ load_dotenv()
 import asyncio
 import json
 import os
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 
@@ -26,7 +27,51 @@ try:
 except ImportError:
     _vertexai = None
 
-app = FastAPI()
+
+# One Vertex client + one chat-agent handle for the whole process, reused across
+# every WebSocket connection. Building the client sets up an httpx pool, and
+# agent_engines.get() is a network round-trip — doing either per connection added
+# latency to each new voice/chat session. Held at module level so the httpx client
+# is never GC'd between connections (the failure the per-connection code guarded
+# against); the adapter service uses the same pattern.
+_vertex_client = None
+_chat_agent = None
+
+
+def _get_vertex_client():
+    global _vertex_client
+    if _vertex_client is None:
+        vertexai = _vertexai or __import__("vertexai")
+        _vertex_client = vertexai.Client(
+            project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
+            location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
+        )
+    return _vertex_client
+
+
+def _get_chat_agent():
+    global _chat_agent
+    if _chat_agent is None:
+        _chat_agent = _get_vertex_client().agent_engines.get(name=CHAT_AGENT_ENGINE_NAME)
+    return _chat_agent
+
+
+@asynccontextmanager
+async def _lifespan(_app: FastAPI):
+    """Warm the shared client (and chat-agent handle) during container startup —
+    with startup CPU boost — so the first WebSocket doesn't pay for building them.
+    Warm-up failure is non-fatal: the lazy getters still build on first use."""
+    try:
+        if AGENT_ENGINE_NAME or CHAT_AGENT_ENGINE_NAME:
+            _get_vertex_client()
+        if CHAT_AGENT_ENGINE_NAME:
+            _get_chat_agent()
+    except Exception:
+        pass
+    yield
+
+
+app = FastAPI(lifespan=_lifespan)
 
 
 async def _emit_event(websocket: WebSocket, ev: dict):
@@ -145,12 +190,7 @@ async def _serve_local(websocket: WebSocket, user_id: str, session_id: str | Non
 
 async def _serve_agent_engine(websocket: WebSocket, user_id: str, session_id: str | None):
     """Topology B: proxy browser <-> agent on Vertex AI Agent Engine."""
-    vertexai = _vertexai or __import__("vertexai")
-
-    client = vertexai.Client(
-        project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
-        location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
-    )
+    client = _get_vertex_client()
     async with client.aio.live.agent_engines.connect(
         agent_engine=AGENT_ENGINE_NAME,
         config={"class_method": "bidi_stream_query", "include_all_fields": True},
@@ -231,17 +271,11 @@ async def _emit_chat_event(websocket: WebSocket, ev: dict) -> bool:
 
 async def _serve_chat(websocket: WebSocket, user_id: str):
     """Proxy browser <-> chat agent (async_stream_query) one turn at a time."""
-    # Create the client + agent PER CONNECTION and keep both referenced for the
-    # connection's lifetime. The agent's async httpx client is owned by `client`;
-    # if `client` is GC'd (e.g. a cached-agent helper that returns), the next
-    # async_stream_query raises "Cannot send a request, as the client has been
-    # closed". Holding `client` here keeps it alive.
-    vertexai = _vertexai or __import__("vertexai")
-    client = vertexai.Client(
-        project=os.environ.get("GOOGLE_CLOUD_PROJECT"),
-        location=os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1"),
-    )
-    agent = client.agent_engines.get(name=CHAT_AGENT_ENGINE_NAME)
+    # Reuse the process-wide client + chat-agent handle (see module top). The
+    # module-level references keep the client's httpx pool alive for the process
+    # lifetime, so async_stream_query never hits "client has been closed" and each
+    # new chat connection skips rebuilding the client and re-fetching the agent.
+    agent = _get_chat_agent()
     sid = {"v": None}
 
     async def run_turn(message: str):
