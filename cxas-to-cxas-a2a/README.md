@@ -145,6 +145,7 @@ CES sandbox: no model hop, no egress, no added latency.
 ## Deploy everything (one command)
 
 ```bash
+cd cxas-to-cxas-a2a       # all commands in this README run from here
 cp .env.example .env      # fill in project + models
 bash deploy_all.sh
 ```
@@ -178,6 +179,7 @@ console so the CES service agent exists.
 ## Destroy everything (one command)
 
 ```bash
+cd cxas-to-cxas-a2a
 bash destroy_all.sh              # the three Cloud Run services
 bash destroy_all.sh --all        # also both CX Agent Studio apps
 bash destroy_all.sh --all --yes  # no confirmation prompt
@@ -301,6 +303,7 @@ audio on the same socket — `SessionInput.text` for a typed turn,
 `SessionInput.audio` for mic frames — against one `session` that never changes.
 
 ```bash
+cd cxas-to-cxas-a2a
 gcloud auth application-default login   # once — the relay uses ADC
 .venv/bin/pip install -r relay-requirements.txt
 bash run_local.sh                       # relay :8000 + UI :8080
@@ -425,5 +428,6 @@ The hydration callback itself needs nothing telephony-specific: it gates on
 ## Tests
 
 ```bash
+cd cxas-to-cxas-a2a
 .venv/bin/python -m pytest tests/
 ```
