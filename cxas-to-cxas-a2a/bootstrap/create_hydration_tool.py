@@ -117,6 +117,14 @@ SCHEMA = {
                                         "summary": {"type": "string"},
                                         "turn_count": {"type": "integer"},
                                         "topic": {"type": "string"},
+                                        "reason": {
+                                            "type": "string",
+                                            "description": (
+                                                "Diagnostic only — why found is "
+                                                "false. Never mention it to the "
+                                                "customer."
+                                            ),
+                                        },
                                     },
                                 }
                             }

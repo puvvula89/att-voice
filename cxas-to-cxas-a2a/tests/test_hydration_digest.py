@@ -103,4 +103,26 @@ def test_meaningfulness_filter():
 
 
 def test_empty_conversation_is_not_found():
-    assert _condense({"turns": []}).found is False
+    out = _condense({"turns": []})
+    assert out.found is False
+    assert out.reason == "empty"
+
+
+# --- reason: why found=false, so a broken deploy cannot masquerade as no data --
+
+def test_successful_digest_is_reasoned_ok():
+    assert _condense(REAL_CONVERSATION).reason == "ok"
+
+
+def test_reason_distinguishes_the_failure_modes():
+    """The whole point: 'no history' and 'cannot read history' must not look alike."""
+    from server import HydrateResponse
+
+    no_id = HydrateResponse(found=False, summary="", reason="no_conversation_id")
+    denied = HydrateResponse(found=False, summary="", reason="permission_denied")
+    missing = HydrateResponse(found=False, summary="", reason="not_found")
+
+    # All three degrade identically for the AGENT — the call must still go through.
+    assert no_id.found is missing.found is denied.found is False
+    # …but are individually diagnosable for a human.
+    assert len({no_id.reason, denied.reason, missing.reason}) == 3
