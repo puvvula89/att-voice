@@ -172,9 +172,46 @@ two CX Agent Studio apps are the exception — creating an app registers its age
 and assigns their IDs, so re-creating one would overwrite agents you may have
 edited since. The script skips an app that already exists.
 
-Prerequisites: `gcloud` CLI and Python 3.10+; a project with `run.googleapis.com`
-and `cloudbuild.googleapis.com` enabled; CX Agent Studio opened once in the
-console so the CES service agent exists.
+### Prerequisites
+
+- **`gcloud` CLI**, authenticated twice — user credentials for the `gcloud`
+  calls, and ADC for the Python SDKs and the relay:
+
+  ```bash
+  gcloud auth login
+  gcloud auth application-default login
+  gcloud config set project YOUR_PROJECT_ID
+  ```
+
+- **Python 3.10+**. Nothing else needs installing by hand: `deploy_all.sh`
+  creates `.venv` and installs `requirements.txt` on first run.
+
+- **APIs enabled** in the project, and CX Agent Studio opened once in the console
+  so the CES service agent (`service-<PROJECT_NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`)
+  is provisioned — the hydration service's IAM binding targets it:
+
+  ```bash
+  gcloud services enable run.googleapis.com cloudbuild.googleapis.com \
+    ces.googleapis.com --project YOUR_PROJECT_ID
+  ```
+
+### Installing the dependencies by hand
+
+Only needed if you want to run the `bootstrap/` scripts or the `cxas` CLI without
+going through `deploy_all.sh`:
+
+```bash
+cd cxas-to-cxas-a2a
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt      # cxas-scrapi, google-cloud-ces, python-dotenv
+```
+
+`cxas-scrapi` is on public PyPI — no private index or extra credentials — so
+`pip install cxas-scrapi` works standalone if you only want the SDK. Installing it
+also puts a `cxas` CLI on the venv's `bin/`. Built against **1.7.0**.
+
+Use the venv's interpreter explicitly (`.venv/bin/python …`) rather than
+activating, so the scripts never pick up a different Python.
 
 ## Destroy everything (one command)
 
