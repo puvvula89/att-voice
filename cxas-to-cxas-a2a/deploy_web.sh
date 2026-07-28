@@ -30,6 +30,34 @@ UI_SERVICE="${UI_SERVICE:-cxas-web-ui}"
 APP_ID="${VOICE_APP_ID:-cxas-voice-and-chat}"
 CXAS_LOC="${CXAS_LOCATION:-us}"
 
+# The relay authenticates to CXAS as its Cloud Run runtime service account — the
+# project's default compute SA, since we set none explicitly. Opening a bidi
+# session needs ces.sessions.bidiRunSession, which lives in roles/ces.client and
+# in NO dialogflow.* role.
+#
+# Why this grant is not optional: projects created recently do not auto-grant
+# Editor to the default compute SA (org policy
+# iam.automaticIamGrantsForDefaultServiceAccounts), so on a clean project that
+# account starts with no roles. The deploy then succeeds, the page loads, and
+# pressing Start does nothing — the CXAS socket is refused and the browser socket
+# closes with no visible error. Older projects hide the problem because their
+# default SA still carries Editor.
+echo "▶ [0/3] Grant roles/ces.client to the relay's runtime service account"
+PROJECT_NUMBER="$(gcloud projects describe "$PROJECT" --format='value(projectNumber)')"
+RELAY_SA="${RELAY_SERVICE_ACCOUNT:-${PROJECT_NUMBER}-compute@developer.gserviceaccount.com}"
+if gcloud projects add-iam-policy-binding "$PROJECT" \
+     --member "serviceAccount:${RELAY_SA}" \
+     --role roles/ces.client --condition=None --quiet >/dev/null 2>&1; then
+  echo "   granted to ${RELAY_SA}"
+else
+  echo "   ⚠ COULD NOT BIND roles/ces.client to ${RELAY_SA}."
+  echo "     You need roles/resourcemanager.projectIamAdmin (or Owner) to do this."
+  echo "     Without it the relay cannot open a CXAS session and Start will appear"
+  echo "     to do nothing. Grant it by hand, then re-run:"
+  echo "       gcloud projects add-iam-policy-binding $PROJECT \\"
+  echo "         --member serviceAccount:${RELAY_SA} --role roles/ces.client"
+fi
+
 echo "▶ [1/3] Deploy relay → Cloud Run (public, warm, long-lived sockets)"
 gcloud run deploy "$RELAY_SERVICE" \
   --source . \
