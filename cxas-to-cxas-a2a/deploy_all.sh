@@ -134,6 +134,27 @@ HYDRATION_URL="$(gcloud run services describe "$HYDRATION_SERVICE" \
   --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
 echo "   url: $HYDRATION_URL"
 
+# The service reads prior conversations with get_conversation, which needs
+# ces.conversations.get — that lives in roles/ces.viewer, NOT in roles/ces.client
+# (which is sessions and tool execution only). Both are needed, on the same
+# default compute SA, for different reasons.
+#
+# Miss this one and the failure is SILENT: the service catches the error and
+# degrades to found=false, which is indistinguishable from "this customer has no
+# history". The agent greets normally and nothing looks broken.
+HYDRATION_SA="${HYDRATION_SERVICE_ACCOUNT:-${PROJECT_NUMBER}-compute@developer.gserviceaccount.com}"
+echo "   granting roles/ces.viewer to $HYDRATION_SA"
+if gcloud projects add-iam-policy-binding "$PROJECT" \
+     --member "serviceAccount:${HYDRATION_SA}" \
+     --role roles/ces.viewer --condition=None --quiet >/dev/null 2>&1; then
+  echo "   granted"
+else
+  echo "   ⚠ COULD NOT BIND roles/ces.viewer to ${HYDRATION_SA}."
+  echo "     Without it hydration always returns found=false — silently."
+  echo "       gcloud projects add-iam-policy-binding $PROJECT \\"
+  echo "         --member serviceAccount:${HYDRATION_SA} --role roles/ces.viewer"
+fi
+
 # The CES service agent mints the OIDC token CXAS uses to call the private service.
 CES_SERVICE_AGENT="${CES_SERVICE_AGENT:-service-${PROJECT_NUMBER}@gcp-sa-ces.iam.gserviceaccount.com}"
 echo "   granting run.invoker to $CES_SERVICE_AGENT"

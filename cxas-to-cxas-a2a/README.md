@@ -170,9 +170,17 @@ CES sandbox: no model hop, no egress, no added latency.
   binding.
 
 - **Permission to bind IAM** — `roles/resourcemanager.projectIamAdmin`, or Owner.
-  The deploy makes two bindings: `run.invoker` on the hydration service for the
-  CES service agent, and `roles/ces.client` for the relay's runtime service
-  account (see below).
+  The deploy makes three bindings, and each fixes a different silent failure:
+
+  | Binding | On | Without it |
+  |---|---|---|
+  | `run.invoker` | hydration service, for the CES service agent | CXAS cannot call the tool |
+  | `roles/ces.client` | relay's runtime SA | pressing **Start** does nothing |
+  | `roles/ces.viewer` | hydration service's runtime SA | hydration always returns `found=false` |
+
+  `ces.client` and `ces.viewer` are **not** interchangeable: `ces.client` carries
+  `ces.sessions.*` only, and reading a prior conversation needs
+  `ces.conversations.get`, which lives in `ces.viewer`.
 
 - **`.env`** — copy the template and fill in the project and models:
 
@@ -452,6 +460,29 @@ The UUID is the session id from an earlier conversation — conversation id and
 session id are the same value. Then start a **new** session: these are app-level
 variable defaults, so they seed new sessions only. Disarm with `--clear`.
 
+### Hydration returns found=false — why?
+
+Every failure degrades to `found=false` so the call still goes through, which
+means a broken deployment looks exactly like a customer with no history. The
+`reason` field on the response, and the service log, say which it is:
+
+| `reason` | Meaning |
+|---|---|
+| `ok` | found and digested |
+| `no_conversation_id` | `resume_conversation_id` was empty |
+| `not_found` | no such conversation **under this app** — an id from a different app or project does not resolve |
+| `permission_denied` | the service's runtime SA lacks `ces.conversations.get` (`roles/ces.viewer`) |
+| `empty` | the conversation exists but yielded no text |
+
+```bash
+gcloud run services logs read cxas-hydration --region us-central1 \
+  --project YOUR_PROJECT --limit 20
+```
+
+A `PERMISSION DENIED` line names the exact grant to apply. Note `not_found` is
+the common one when reusing a UUID across projects: the service only ever looks
+under its own `VOICE_APP_ID`.
+
 ### Why a callback and not an instruction
 
 Asking the model to "call this tool once, before greeting" fails in both
@@ -511,5 +542,6 @@ The hydration callback itself needs nothing telephony-specific: it gates on
 
 ```bash
 cd cxas-to-cxas-a2a
+.venv/bin/pip install -r hydration/requirements.txt   # tests import the service module
 .venv/bin/python -m pytest tests/
 ```

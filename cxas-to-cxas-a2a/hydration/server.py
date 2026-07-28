@@ -73,6 +73,13 @@ class HydrateResponse(BaseModel):
     summary: str
     turn_count: int = 0
     topic: str = ""
+    # WHY found=false, for humans reading logs or curling the service. The agent
+    # ignores this; it exists because every failure mode used to look identical
+    # from the outside — "no history" and "the service cannot read history" both
+    # returned a bare found=false, so a misconfigured deployment looked like a
+    # customer with nothing to resume.
+    #   ok | no_conversation_id | not_found | permission_denied | empty | error
+    reason: str = ""
 
 
 # Where a chunk's words can live. `transcript` is the one that matters and the one
@@ -129,7 +136,7 @@ def _condense(conv: Dict[str, Any]) -> HydrateResponse:
             exchanges.append(f"{who}: {text}")
 
     if not exchanges:
-        return HydrateResponse(found=False, summary="", turn_count=0)
+        return HydrateResponse(found=False, summary="", turn_count=0, reason="empty")
 
     recent = exchanges[-RECENT_TURNS:]
     # First customer utterance is the best one-line topic proxy — but only if it
@@ -155,6 +162,7 @@ def _condense(conv: Dict[str, Any]) -> HydrateResponse:
         summary=summary,
         turn_count=int(conv.get("turn_count") or len(exchanges)),
         topic=topic[:160],
+        reason="ok",
     )
 
 
@@ -168,7 +176,8 @@ def hydrate(req: HydrateRequest) -> HydrateResponse:
     """
     cid = (req.conversation_id or "").strip()
     if not cid:
-        return HydrateResponse(found=False, summary="", turn_count=0)
+        return HydrateResponse(found=False, summary="", turn_count=0,
+                               reason="no_conversation_id")
 
     name = cid if cid.startswith("projects/") else f"{APP}/conversations/{cid}"
     try:
@@ -176,15 +185,37 @@ def hydrate(req: HydrateRequest) -> HydrateResponse:
         from google.cloud.ces_v1beta.types import Conversation
         data = Conversation.to_dict(conv)
         out = _condense(data)
-        _log.info("hydrate ok conversation=%s turns=%s found=%s",
-                  cid, out.turn_count, out.found)
+        _log.info("hydrate ok conversation=%s turns=%s found=%s reason=%s",
+                  cid, out.turn_count, out.found, out.reason)
         return out
     except Exception as e:
-        # Not found / no history is an expected outcome, not a failure the agent
-        # should surface — degrade to "no prior context" so the call continues.
-        _log.warning("hydrate miss conversation=%s: %s: %s",
-                     cid, type(e).__name__, str(e)[:200])
-        return HydrateResponse(found=False, summary="", turn_count=0)
+        # Every failure degrades to "no prior context" so the call still goes
+        # through — but they are NOT the same problem, and reporting them
+        # identically hides a broken deployment behind a plausible-looking
+        # "this customer has no history".
+        from google.api_core import exceptions as gexc
+
+        if isinstance(e, (gexc.PermissionDenied, gexc.Forbidden, gexc.Unauthenticated)):
+            # Configuration fault, not a data outcome. Loud, and named.
+            _log.error(
+                "hydrate PERMISSION DENIED reading conversation=%s as this service's "
+                "runtime service account. get_conversation needs ces.conversations.get, "
+                "which is in roles/ces.viewer (NOT roles/ces.client). Grant it: "
+                "gcloud projects add-iam-policy-binding %s --member "
+                "serviceAccount:<runtime-sa> --role roles/ces.viewer. Detail: %s",
+                cid, PROJECT, str(e)[:200])
+            reason = "permission_denied"
+        elif isinstance(e, gexc.NotFound):
+            # Normal: unknown id, or an id from a DIFFERENT app or project. This
+            # service only ever looks under APP.
+            _log.warning("hydrate miss conversation=%s not found under %s", cid, APP)
+            reason = "not_found"
+        else:
+            _log.warning("hydrate error conversation=%s: %s: %s",
+                         cid, type(e).__name__, str(e)[:200])
+            reason = "error"
+
+        return HydrateResponse(found=False, summary="", turn_count=0, reason=reason)
 
 
 @app.get("/healthz")
