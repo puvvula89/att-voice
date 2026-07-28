@@ -240,7 +240,7 @@ nothing — the CXAS socket is refused and the browser socket closes with no
 visible error. Older projects mask this because their default SA still has
 Editor.
 
-`deploy_web.sh` now makes this grant automatically. To apply it by hand:
+`deploy_all.sh` now makes this grant automatically. To apply it by hand:
 
 ```bash
 PNUM=$(gcloud projects describe YOUR_PROJECT --format='value(projectNumber)')
@@ -316,14 +316,8 @@ the troubleshooting hop, or omit it (the wrapper then carries only `end_session`
 $PY bootstrap/create_voice_app.py "${CHAT_A2A_URL:-}"
 ```
 
-**3 · Hydration service** → Cloud Run, private, plus the IAM binding and the
-OpenAPI toolset. The wrapper script does all three:
-
-```bash
-bash hydration/deploy_hydration.sh
-```
-
-Or the container alone, when only `hydration/server.py` changed:
+**3 · Hydration service** → Cloud Run, private. Redeploy the container when
+`hydration/server.py` changed (the IAM binding and toolset already exist):
 
 ```bash
 gcloud run deploy "${HYDRATION_SERVICE:-cxas-hydration}" --source hydration \
@@ -340,14 +334,8 @@ greeting instruction. Re-run after any change to the callback or instruction:
 $PY bootstrap/attach_hydration.py
 ```
 
-**5 · Relay and UI** → Cloud Run, public. The wrapper deploys the relay, points
-the UI at it, deploys the UI, then restores `config.js` for local use:
-
-```bash
-bash deploy_web.sh
-```
-
-Or each on its own:
+**5 · Relay and UI** → Cloud Run, public. The UI must be told where the relay
+is, so deploy the relay first, then point `config.js` at it:
 
 ```bash
 # relay (root Dockerfile; needs backend/ + relay-requirements.txt)

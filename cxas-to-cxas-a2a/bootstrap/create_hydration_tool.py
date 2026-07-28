@@ -1,6 +1,6 @@
 """Wire the hydration service into CXAS: session variable + OpenAPI toolset.
 
-Run by hydration/deploy_hydration.sh (step 3), or standalone:
+Run by deploy_all.sh (step 3), or standalone:
 
     python bootstrap/create_hydration_tool.py https://cxas-hydration-xxxx.run.app
 
