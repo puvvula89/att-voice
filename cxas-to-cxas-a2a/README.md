@@ -169,6 +169,11 @@ CES sandbox: no model hop, no egress, no added latency.
   hydration service's IAM binding targets. Skip it and the deploy fails at that
   binding.
 
+- **Permission to bind IAM** — `roles/resourcemanager.projectIamAdmin`, or Owner.
+  The deploy makes two bindings: `run.invoker` on the hydration service for the
+  CES service agent, and `roles/ces.client` for the relay's runtime service
+  account (see below).
+
 - **`.env`** — copy the template and fill in the project and models:
 
   ```bash
@@ -218,8 +223,42 @@ container images.
 | 5 | Relay + UI → Cloud Run (public) |
 | 6 | Print URLs and the arm-a-test command |
 
-> **Run it yourself, interactively.** Step 3 binds an IAM policy (`run.invoker`
-> for the CES service agent). An unattended shell may be refused the binding.
+> **Run it yourself, interactively.** The deploy binds IAM policies, and an
+> unattended shell may be refused them.
+
+### Pressing Start does nothing? Check this first
+
+The relay talks to CXAS as its Cloud Run runtime service account — the project's
+default compute SA. Opening a session needs **`ces.sessions.bidiRunSession`**,
+which lives in **`roles/ces.client`** and in **no** `dialogflow.*` role.
+
+Projects created recently do not auto-grant Editor to the default compute SA
+(org policy `iam.automaticIamGrantsForDefaultServiceAccounts`), so on a clean
+project that account starts with no roles at all. The symptom is specific and
+misleading: everything deploys, the page loads, and pressing **Start** does
+nothing — the CXAS socket is refused and the browser socket closes with no
+visible error. Older projects mask this because their default SA still has
+Editor.
+
+`deploy_web.sh` now makes this grant automatically. To apply it by hand:
+
+```bash
+PNUM=$(gcloud projects describe YOUR_PROJECT --format='value(projectNumber)')
+gcloud projects add-iam-policy-binding YOUR_PROJECT \
+  --member="serviceAccount:${PNUM}-compute@developer.gserviceaccount.com" \
+  --role=roles/ces.client
+```
+
+No redeploy needed — the permission is checked per connection. Allow a minute
+for IAM to propagate. To confirm the diagnosis before or after:
+
+```bash
+gcloud run services logs read cxas-web-relay --region us-central1 \
+  --project YOUR_PROJECT --limit 30
+```
+
+A `PermissionDenied` on `ces.sessions.bidiRunSession` after `browser connected`
+is this problem; `resource_exhausted` is quota and unrelated.
 
 It is safe to re-run. Cloud Run deploys create a new revision in place and URLs
 stay stable; the toolset, callback, and instruction are rewritten each time. The
