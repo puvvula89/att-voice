@@ -1,0 +1,16 @@
+# Keep the relay's build context small — the root context is the whole bundle.
+.git
+.gitignore
+__pycache__/
+**/__pycache__/
+*.pyc
+.venv/
+.env
+tests/
+bootstrap/
+steering/
+hydration/
+frontend/
+CXAS_Voice_and_Chat/
+CXAS_Chat/
+*.md

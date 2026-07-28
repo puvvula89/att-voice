@@ -1,0 +1,16 @@
+{
+  "name": "cxas-chat",
+  "displayName": "CXAS Chat",
+  "rootAgent": "Chat_Concierge",
+  "loggingSettings": {
+    "conversationLoggingSettings": {
+      "retentionWindow": "31536000s"
+    }
+  },
+  "modelSettings": {
+    "model": "gemini-3.5-flash"
+  },
+  "timeZoneSettings": {
+    "timeZone": "America/Los_Angeles"
+  }
+}
