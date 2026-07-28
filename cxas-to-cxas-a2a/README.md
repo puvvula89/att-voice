@@ -142,17 +142,72 @@ CES sandbox: no model hop, no egress, no added latency.
 
 ---
 
+## Prerequisites
+
+- **`gcloud` CLI**, authenticated twice — user credentials for the `gcloud`
+  calls, and ADC for the Python SDKs and the relay:
+
+  ```bash
+  gcloud auth login
+  gcloud auth application-default login
+  gcloud config set project YOUR_PROJECT_ID
+  ```
+
+- **Python 3.10+**. Nothing else needs installing by hand: `deploy_all.sh`
+  creates `.venv` and installs `requirements.txt` on first run.
+
+- **APIs enabled** in the project:
+
+  ```bash
+  gcloud services enable run.googleapis.com cloudbuild.googleapis.com \
+    ces.googleapis.com --project YOUR_PROJECT_ID
+  ```
+
+- **CX Agent Studio opened once in the console** for the project. That is what
+  provisions the CES service agent
+  (`service-<PROJECT_NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`), which the
+  hydration service's IAM binding targets. Skip it and the deploy fails at that
+  binding.
+
+- **`.env`** — copy the template and fill in the project and models:
+
+  ```bash
+  cd cxas-to-cxas-a2a       # all commands in this README run from here
+  cp .env.example .env
+  ```
+
+  `GOOGLE_CLOUD_LOCATION` is the **Cloud Run region** (e.g. `us-central1`) and is
+  not the same as `CXAS_LOCATION` (e.g. `us`).
+
+### Installing the dependencies by hand
+
+Only needed to run the `bootstrap/` scripts or the `cxas` CLI without going
+through `deploy_all.sh`:
+
+```bash
+cd cxas-to-cxas-a2a
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt      # cxas-scrapi, google-cloud-ces, python-dotenv
+```
+
+`cxas-scrapi` is on public PyPI — no private index or extra credentials — so
+`pip install cxas-scrapi` works standalone if you only want the SDK. Installing it
+also puts a `cxas` CLI on the venv's `bin/`. Built against **1.7.0**.
+
+Use the venv's interpreter explicitly (`.venv/bin/python …`) rather than
+activating, so the scripts never pick up a different Python.
+
+---
+
 ## Deploy everything (one command)
 
 ```bash
-cd cxas-to-cxas-a2a       # all commands in this README run from here
-cp .env.example .env      # fill in project + models
+cd cxas-to-cxas-a2a
 bash deploy_all.sh
 ```
 
 Expect **~10–15 minutes**, nearly all of it Cloud Build compiling the three
-container images. The script creates a local `.venv` and installs requirements on
-first run, so nothing else is needed up front.
+container images.
 
 | Step | Action |
 |---|---|
@@ -172,46 +227,7 @@ two CX Agent Studio apps are the exception — creating an app registers its age
 and assigns their IDs, so re-creating one would overwrite agents you may have
 edited since. The script skips an app that already exists.
 
-### Prerequisites
-
-- **`gcloud` CLI**, authenticated twice — user credentials for the `gcloud`
-  calls, and ADC for the Python SDKs and the relay:
-
-  ```bash
-  gcloud auth login
-  gcloud auth application-default login
-  gcloud config set project YOUR_PROJECT_ID
-  ```
-
-- **Python 3.10+**. Nothing else needs installing by hand: `deploy_all.sh`
-  creates `.venv` and installs `requirements.txt` on first run.
-
-- **APIs enabled** in the project, and CX Agent Studio opened once in the console
-  so the CES service agent (`service-<PROJECT_NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`)
-  is provisioned — the hydration service's IAM binding targets it:
-
-  ```bash
-  gcloud services enable run.googleapis.com cloudbuild.googleapis.com \
-    ces.googleapis.com --project YOUR_PROJECT_ID
-  ```
-
-### Installing the dependencies by hand
-
-Only needed if you want to run the `bootstrap/` scripts or the `cxas` CLI without
-going through `deploy_all.sh`:
-
-```bash
-cd cxas-to-cxas-a2a
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt      # cxas-scrapi, google-cloud-ces, python-dotenv
-```
-
-`cxas-scrapi` is on public PyPI — no private index or extra credentials — so
-`pip install cxas-scrapi` works standalone if you only want the SDK. Installing it
-also puts a `cxas` CLI on the venv's `bin/`. Built against **1.7.0**.
-
-Use the venv's interpreter explicitly (`.venv/bin/python …`) rather than
-activating, so the scripts never pick up a different Python.
+---
 
 ## Destroy everything (one command)
 
@@ -232,6 +248,8 @@ agents, its toolsets, and its **conversation history** — the history hydration
 reads. That is rarely what you want between test runs, so it takes an explicit
 `--all`. It prompts before deleting either way, and is safe to re-run: anything
 already gone is skipped.
+
+---
 
 ## Deploy one component at a time
 
@@ -420,7 +438,7 @@ Returning an `LlmResponse` from a `before_model` callback *replaces* that model
 step, and a `FunctionCall` in it is executed like any model-emitted call — so the
 tool runs, the result returns, and the model then greets with it in context.
 
-### Notes
+### Digest and callback gotchas
 
 - **`_text_of` must read `transcript`, not just `text`.** Spoken turns — caller ASR
   and agent TTS alike — arrive as `chunk["transcript"]`; only typed turns use
