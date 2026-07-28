@@ -1,0 +1,11 @@
+{
+  "name": "troubleshooting",
+  "displayName": "Troubleshooting",
+  "modelSettings": {
+    "model": "gemini-3.5-flash"
+  },
+  "instruction": "agents/Troubleshooting/instruction.txt",
+  "tools": ["end_session"],
+  "llmAgent": {
+  }
+}

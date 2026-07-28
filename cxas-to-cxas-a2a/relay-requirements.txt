@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+websockets
+# The [requests] extra is REQUIRED, not cosmetic: relay.py imports
+# google.auth.transport.requests to refresh the ADC token, and that module raises
+# ImportError at import time unless the `requests` package is present. Plain
+# `google-auth` does not pull it in. This is invisible locally, where the shared
+# venv already has requests via cxas-scrapi — it only surfaces in the slim
+# container, as a "container failed to start and listen on PORT" deploy failure.
+google-auth[requests]
+python-dotenv

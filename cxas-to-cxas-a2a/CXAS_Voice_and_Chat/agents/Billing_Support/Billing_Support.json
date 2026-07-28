@@ -1,0 +1,11 @@
+{
+  "name": "billing",
+  "displayName": "Billing Support",
+  "modelSettings": {
+    "model": "gemini-3.1-flash-live"
+  },
+  "instruction": "agents/Billing_Support/instruction.txt",
+  "tools": ["end_session"],
+  "llmAgent": {
+  }
+}

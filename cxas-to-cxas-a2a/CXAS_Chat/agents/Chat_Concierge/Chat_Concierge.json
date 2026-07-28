@@ -1,0 +1,12 @@
+{
+  "name": "chat-root",
+  "displayName": "Chat Concierge",
+  "modelSettings": {
+    "model": "gemini-3.5-flash"
+  },
+  "instruction": "agents/Chat_Concierge/instruction.txt",
+  "tools": ["end_session"],
+  "childAgents": ["Troubleshooting"],
+  "llmAgent": {
+  }
+}

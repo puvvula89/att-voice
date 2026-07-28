@@ -1,0 +1,11 @@
+{
+  "name": "internet",
+  "displayName": "Internet Support",
+  "modelSettings": {
+    "model": "gemini-3.1-flash-live"
+  },
+  "instruction": "agents/Internet_Support/instruction.txt",
+  "tools": ["end_session"],
+  "llmAgent": {
+  }
+}
