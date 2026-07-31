@@ -116,7 +116,7 @@ gcloud run deploy "$HYDRATION_SERVICE" \
   --cpu-boost \
   --no-cpu-throttling \
   --no-allow-unauthenticated \
-  --set-env-vars "^@^CXAS_PROJECT=${PROJECT}@CXAS_LOCATION=${CXAS_LOC}@VOICE_APP_ID=${VOICE_APP}" \
+  --set-env-vars "^@^CXAS_PROJECT=${PROJECT}@CXAS_LOCATION=${CXAS_LOC}@VOICE_APP_ID=${VOICE_APP}@HYDRATION_MAX_AGE_MINUTES=${HYDRATION_MAX_AGE_MINUTES:-10}" \
   --quiet
 
 HYDRATION_URL="$(gcloud run services describe "$HYDRATION_SERVICE" \

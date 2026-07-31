@@ -490,6 +490,23 @@ The UUID is the session id from an earlier conversation — conversation id and
 session id are the same value. Then start a **new** session: these are app-level
 variable defaults, so they seed new sessions only. Disarm with `--clear`.
 
+### The staleness window
+
+A prior conversation is only offered for continuation while it is recent. Age is
+measured from the conversation's `end_time` — CES stamps it when the session's
+stream closes, so it means "when the customer walked away" (a browser refresh
+counts). A conversation still in progress has no `end_time`, so `start_time` is
+used instead.
+
+| `HYDRATION_MAX_AGE_MINUTES` | behaviour |
+|---|---|
+| `10` (default) | older than ten minutes → `found=false`, `reason="too_old"` |
+| `0` or less | no age check at all |
+
+> **Ten minutes is tight for web → IVR.** A customer who gives up online, finds
+> the number and works through a menu can easily exceed it, and every minute over
+> the line is a handoff that silently does not happen. Tune it per deployment.
+
 ### Hydration returns found=false — why?
 
 Every failure degrades to `found=false` so the call still goes through, which
@@ -503,6 +520,7 @@ means a broken deployment looks exactly like a customer with no history. The
 | `not_found` | no such conversation **under this app** — an id from a different app or project does not resolve |
 | `permission_denied` | the service's runtime SA lacks `ces.conversations.get` (`roles/ces.viewer`) |
 | `empty` | the conversation exists but yielded no text |
+| `too_old` | the conversation is older than `HYDRATION_MAX_AGE_MINUTES` (see above) |
 
 ```bash
 gcloud run services logs read ivr-and-app-hydration --region us-central1 \

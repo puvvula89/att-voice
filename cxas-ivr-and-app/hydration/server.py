@@ -23,6 +23,7 @@ Runs on Cloud Run, private, invoked by the CES service agent over OIDC.
 """
 import logging
 import os
+from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI
@@ -39,6 +40,10 @@ APP = f"projects/{PROJECT}/locations/{LOCATION}/apps/{APP_ID}"
 # How many recent exchanges to quote back verbatim.
 RECENT_TURNS = int(os.environ.get("HYDRATION_RECENT_TURNS", "6"))
 MAX_CHARS = int(os.environ.get("HYDRATION_MAX_CHARS", "1200"))
+
+# Staleness window: how long after a conversation ends it is still worth offering
+# to continue. Set to 0 or less to hydrate regardless of age.
+MAX_AGE_MINUTES = float(os.environ.get("HYDRATION_MAX_AGE_MINUTES", "10"))
 
 app = FastAPI()
 
@@ -78,7 +83,8 @@ class HydrateResponse(BaseModel):
     # from the outside — "no history" and "the service cannot read history" both
     # returned a bare found=false, so a misconfigured deployment looked like a
     # customer with nothing to resume.
-    #   ok | no_conversation_id | not_found | permission_denied | empty | error
+    #   ok | no_conversation_id | not_found | permission_denied | empty
+    #   | too_old | error
     reason: str = ""
 
 
@@ -123,8 +129,43 @@ def _is_meaningful(text: str) -> bool:
     return len(cleaned.split()) >= 3
 
 
+def _age_minutes(conv: Dict[str, Any]) -> Optional[float]:
+    """Minutes since the prior conversation last had activity, or None if unknown.
+
+    `end_time` is stamped when the session's stream closes — verified against a
+    conversation abandoned by simply dropping the socket, which is what a browser
+    refresh does. So it means "when the customer walked away", which is exactly
+    what the staleness gate wants. A conversation still in progress has no
+    end_time, so fall back to start_time.
+    """
+    stamp = conv.get("end_time") or conv.get("start_time")
+    if not stamp:
+        return None
+    if isinstance(stamp, str):
+        stamp = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+    if stamp.tzinfo is None:
+        stamp = stamp.replace(tzinfo=timezone.utc)
+    return (datetime.now(timezone.utc) - stamp).total_seconds() / 60.0
+
+
 def _condense(conv: Dict[str, Any]) -> HydrateResponse:
     """Turn a Conversation into a short digest the agent can speak from."""
+    # Staleness gate. Continuing "your internet issue from earlier" is helpful
+    # minutes later and baffling days later, so a conversation older than the
+    # window is treated as no history at all. MAX_AGE_MINUTES <= 0 disables it.
+    #
+    # The default is deliberately tight, and worth tuning per deployment: a
+    # customer who gives up on the web, finds the number and works through an IVR
+    # menu can easily exceed ten minutes, and every minute over the line is a
+    # handoff that silently does not happen.
+    if MAX_AGE_MINUTES > 0:
+        age = _age_minutes(conv)
+        if age is not None and age > MAX_AGE_MINUTES:
+            _log.info("hydrate stale: %.1f min old, window is %s min",
+                      age, MAX_AGE_MINUTES)
+            return HydrateResponse(found=False, summary="", turn_count=0,
+                                   reason="too_old")
+
     exchanges: List[str] = []
     for turn in conv.get("turns") or []:
         for m in turn.get("messages") or []:
