@@ -1,0 +1,16 @@
+{
+  "name": "ivr-and-app-voice",
+  "displayName": "IVR and App — Voice",
+  "rootAgent": "Voice_Concierge",
+  "loggingSettings": {
+    "conversationLoggingSettings": {
+      "retentionWindow": "31536000s"
+    }
+  },
+  "modelSettings": {
+    "model": "gemini-3.1-flash-live"
+  },
+  "timeZoneSettings": {
+    "timeZone": "America/Los_Angeles"
+  }
+}

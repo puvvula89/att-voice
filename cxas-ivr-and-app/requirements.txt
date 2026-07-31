@@ -1,0 +1,3 @@
+cxas-scrapi
+google-cloud-ces
+python-dotenv

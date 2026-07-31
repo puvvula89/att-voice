@@ -1,0 +1,12 @@
+{
+  "name": "voice-root",
+  "displayName": "Voice Concierge",
+  "modelSettings": {
+    "model": "gemini-3.1-flash-live"
+  },
+  "instruction": "agents/Voice_Concierge/instruction.txt",
+  "tools": ["end_session"],
+  "childAgents": ["Billing Support", "Internet Support", "Troubleshooting Specialist"],
+  "llmAgent": {
+  }
+}

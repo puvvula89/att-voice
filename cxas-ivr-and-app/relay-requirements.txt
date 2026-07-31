@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+# Serves the BROWSER leg's WebSocket (uvicorn needs a websocket implementation).
+# The CXAS leg no longer uses it — that is gRPC now.
+websockets
+# The CXAS leg: SessionServiceAsyncClient.bidi_run_session over gRPC. Brings its
+# own credentials handling, which is why relay.py no longer mints bearer tokens.
+google-cloud-ces
+python-dotenv
