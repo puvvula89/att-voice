@@ -659,6 +659,43 @@ tbody tr:hover td { background: #f8f9fa; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
+/* The averaged turn, drawn as one band. Read left to right: each segment is a leg
+   of the journey, sized by its real share, so the model's time is the picture
+   rather than a figure in a table. */
+.journey { display: flex; align-items: stretch; gap: 3px; margin-top: 4px; }
+/* The floor keeps a one-percent leg readable; without it the bridge's segments
+   collapse to a few pixels and their own labels are clipped away. */
+.journey-seg {
+  min-width: 96px; padding: 14px 10px; border-radius: 6px;
+  background: var(--agent-2); color: #fff; overflow: hidden;
+}
+.journey-model { background: var(--caller-2); padding-block: 22px; }
+.journey-owner { font-size: 11px; letter-spacing: .04em; text-transform: uppercase;
+  opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.journey-time { font-size: 20px; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.journey-model .journey-time { font-size: 34px; }
+.journey-share { font-size: 11px; opacity: .8; margin-top: 1px; }
+/* No timestamps exist for this leg, so it is hatched and fixed-width: sizing it
+   against the others would be inventing a duration we never measured. */
+.journey-unmeasured {
+  background: transparent; color: var(--ink-muted);
+  border: 1px dashed var(--line, #cfd4d9);
+}
+.journey-unmeasured .journey-time { font-size: 12px; font-style: italic; }
+.journey-marks { display: flex; gap: 3px; margin-top: 6px; }
+.journey-marks .journey-mark {
+  min-width: 96px; font-size: 11px; color: var(--ink-muted);
+  text-align: left; line-height: 1.3; padding-left: 2px;
+}
+/* Closes the sequence at the right edge rather than opening another segment. */
+.journey-marks .last { flex: 0 0 auto; min-width: 0; text-align: right; }
+@media (max-width: 720px) {
+  .journey { flex-direction: column; }
+  .journey-seg { padding-block: 10px; }
+  .journey-model .journey-time { font-size: 24px; }
+  .journey-marks { display: none; }
+}
+
 /* Speech is not a delay: it is shown for context and set back so it never reads
    as part of the system's time. An unanswered turn is marked rather than hidden. */
 tr.row-muted td, td.muted { color: var(--ink-muted); }

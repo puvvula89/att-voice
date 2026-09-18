@@ -4,9 +4,10 @@
    difference from the previous stamp. Hue identifies the direction, lightness the
    stage — the same encoding the live console uses.
 
-   The page leads with the model's own speed, measured from the END of speech. The
-   onset-based total is the number a caller experiences, but it carries however long
-   the speaker talked, so on its own it ranks a long sentence as a slow model. */
+   The page leads with one averaged turn drawn as a journey, because the question it
+   is opened to answer is how long Live Translate takes to put its first translated
+   token on the wire. That is the leg from audio leaving the bridge to the first
+   token coming back; the bridge's own legs sit either side of it for scale. */
 
 const HOPS = [
   { key: "send_ms", label: "Send buffer", note: "Audio waiting for a full 100 ms chunk" },
@@ -86,7 +87,6 @@ const COMPONENT_COLOR = { speech: "var(--ink-faint)", model: "var(--caller-2)",
 
 function tiles(data) {
   const s = data.summary || {};
-  const model = (s.components || []).find((c) => c.key === "model") || {};
   const box = el("div", "tiles");
 
   const tile = (label, value, unit, note) => {
@@ -99,27 +99,87 @@ function tiles(data) {
   };
 
   const sec = (v) => (v == null ? "—" : (v / 1000).toFixed(2));
-  const after = s.model_after_speech;
+  const m = s.model;
+  const sim = s.simultaneous;
 
-  // The model's own speed leads, because it is the only figure here that is about
-  // the model rather than about the speaker's pace.
+  // The model's own leg leads and everything else is context for it: this page is
+  // shown to answer "how fast is Live Translate", not "how slow is the call".
   box.append(
-    tile("Model responds in", after ? sec(after.median_ms) : "—", after ? "s" : "",
-      "Measured from the moment the speaker stops talking — this is the model's own speed"),
-    tile("Slowest 1 in 20", after ? sec(after.p95_ms) : "—", after ? "s" : "",
-      "p95, not the maximum: one outlier should not set the number you quote"),
-    tile("Caller waits", sec(s.median_ms), s.median_ms == null ? "" : "s",
-      "Start of speech to translation going out — includes how long they spoke"),
-    tile("Turns answered", `${(s.turns ?? 0) - (s.unanswered ?? 0)}`, `/${s.turns ?? 0}`,
+    tile("Model, first token", m ? sec(m.mean_ms) : "—", m ? "s" : "",
+      "Average from audio leaving the bridge to the first translated token coming back"),
+    tile("Slowest 1 in 20", m ? sec(m.p95_ms) : "—", m ? "s" : "",
+      "p95, not the maximum — one outlier should not set the number you quote"),
+    tile("Everything else", sec((s.mean_ms ?? 0) - (m ? m.mean_ms : 0)),
+      s.mean_ms == null ? "" : "s",
+      "Every stage the bridge owns, added together"),
+    tile("Turns measured", `${s.measured ?? 0}`, `/${s.turns ?? 0}`,
       s.unanswered ? `${s.unanswered} spoken turn(s) drew no translation at all`
                    : "Every spoken turn drew a translation"),
   );
-  if (after && after.overlapped) {
+  if (sim && sim.n) {
     box.append(el("p", "section-note",
-      `On ${after.overlapped} of ${after.n} turns the model began translating before the `
-      + "speaker finished — simultaneous, not delayed."));
+      `On ${sim.n} of ${sim.of} turns the first translated token was already on the wire `
+      + "before the speaker had finished — simultaneous, not delayed."));
   }
   return box;
+}
+
+/* The averaged utterance, drawn as the journey one turn makes. Proportional, so
+   the model's leg is the picture. The phone-network leg carries no timestamps, so
+   it is drawn as a gap and labelled -- sizing it would be inventing a number. */
+function journey(data) {
+  const s = data.summary || {};
+  const body = el("div", "card-body");
+  const legs = (s.legs || []).filter((l) => l.mean_ms != null || l.unmeasured);
+  if (!legs.length) {
+    body.append(el("p", "section-note", "No turn on this call was measured end to end."));
+    return body;
+  }
+
+  // The bridge's legs are ~1% of the total, so pure proportional sizing crushes
+  // them to a few pixels and their labels become unreadable. Each segment keeps a
+  // floor wide enough to read; the model still takes every pixel that is left, so
+  // it stays unmistakably the picture.
+  const flexOf = (leg) => (leg.unmeasured ? "0 0 112px" : `${Math.max(leg.mean_ms, 1)} 0 0`);
+
+  const track = el("div", "journey");
+  legs.forEach((leg) => {
+    const seg = el("div", leg.unmeasured ? "journey-seg journey-unmeasured"
+                                         : "journey-seg");
+    seg.style.flex = flexOf(leg);
+    if (leg.model) seg.classList.add("journey-model");
+    seg.append(el("div", "journey-owner", leg.owner),
+               el("div", "journey-time", leg.unmeasured ? "not measured"
+                                                        : secs(leg.mean_ms)));
+    if (!leg.unmeasured && leg.share != null) {
+      seg.append(el("div", "journey-share", `${Math.round(leg.share * 100)}%`));
+    }
+    seg.title = `${leg.start} → ${leg.end}`;
+    track.append(seg);
+  });
+
+  // Each boundary label sits under the left edge of the segment it opens, so the
+  // marks track the picture instead of being spaced evenly against it.
+  const marks = el("div", "journey-marks");
+  legs.forEach((leg) => {
+    const mk = el("div", "journey-mark", leg.start);
+    mk.style.flex = flexOf(leg);
+    marks.append(mk);
+  });
+  const last = el("div", "journey-mark last", legs[legs.length - 1].end);
+  marks.append(last);
+
+  track.setAttribute("role", "img");
+  track.setAttribute("aria-label", legs.map((l) =>
+    `${l.owner}: ${l.unmeasured ? "not measured" : secs(l.mean_ms)}`).join(", "));
+
+  body.append(track, marks);
+  body.append(el("p", "section-note",
+    `Average of ${s.measured ?? 0} measured turn(s) across both directions, end to end `
+    + `${secs(s.mean_ms)} from the bridge hearing speech to translated audio leaving it. `
+    + "The phone-network leg between the speaker and the bridge carries no timestamps, "
+    + "so it is shown but not sized."));
+  return body;
 }
 
 /* One bar. Speech is shown alongside the delays but is never counted as one:
@@ -380,8 +440,8 @@ function render(data) {
   const report = el("div");
 
   report.append(tiles(data));
-  report.append(card("Where the delay comes from",
-    "Median across every measured turn in both directions.", split(data)));
+  report.append(card("One turn, start to finish",
+    "Averaged across every measured turn in both directions.", journey(data)));
 
   // Detail sits below the headline, collapsed, for whoever wants to dig in.
   const detail = el("details", "detail");

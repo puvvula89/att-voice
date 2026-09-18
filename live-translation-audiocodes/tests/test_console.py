@@ -116,7 +116,12 @@ def test_close_utterances_merge_into_one_turn(client):
     assert turns[1]["source"] == "Yes please."
 
 
-def test_summary_splits_model_from_bridge(client):
+def test_summary_measures_the_model_from_when_audio_left_the_bridge(client):
+    """The model's leg is `ttfa - send`, not the whole span since speech onset.
+
+    Charging the model for everything since onset would hand it the bridge's own
+    send buffer as well.
+    """
     c, root = client
     write_events(root, "conv5", [
         {"event": "speech_onset", "ts": 10.0, "direction": "d", "utterance": 1},
@@ -124,18 +129,35 @@ def test_summary_splits_model_from_bridge(client):
          "send_ms": 60, "ttfa_ms": 2060, "first_send_ms": 2070},
     ])
     summary = c.get("/api/calls/conv5").json()["summary"]
+    legs = {leg["key"]: leg for leg in summary["legs"]}
 
-    model = next(c for c in summary["components"] if c["key"] == "model")
-    bridge = next(c for c in summary["components"] if c["key"] == "bridge")
-    # No `speech_end` in this call: it predates that stamp. The model figure falls
-    # back to the onset-based one and is flagged, because it is not comparable with
-    # the after-speech figure a current call reports.
-    assert summary["speech_unmeasured"] is True
-    assert model["median_ms"] == 2000   # ttfa minus the send buffer
-    assert bridge["median_ms"] == 70    # 60 ms buffering in + 10 ms handing out
-    assert summary["median_ms"] == 2070
-    assert model["share"] > 0.95
-    assert not any(c["key"] == "speech" for c in summary["components"])
+    assert summary["model"]["mean_ms"] == 2000      # 2060 back, minus the 60 ms buffer
+    assert legs["buffer"]["mean_ms"] == 60
+    assert legs["model"]["mean_ms"] == 2000
+    assert legs["forward"]["mean_ms"] == 10         # 2070 out, minus 2060 back
+    assert summary["mean_ms"] == 2070
+    assert legs["model"]["share"] > 0.95
+    # Nothing timestamps the leg between the speaker and the bridge, so it is
+    # carried as an explicitly unmeasured leg rather than folded into the model's.
+    assert legs["pstn_in"]["unmeasured"] is True
+    assert "mean_ms" not in legs["pstn_in"]
+
+
+def test_summary_counts_turns_translated_before_the_speaker_stopped(client):
+    """Simultaneity is the clearest evidence of speed, so it is counted explicitly."""
+    c, root = client
+    write_events(root, "conv5b", [
+        e for n, speech, ttfa in ((1, 4000, 2500), (2, 1000, 2400))
+        for e in (
+            {"event": "speech_onset", "ts": n * 60.0, "direction": "d", "utterance": n},
+            {"event": "utterance", "ts": n * 60.0 + 9, "direction": "d", "utterance": n,
+             "speech_ms": speech, "send_ms": 50, "ttfa_ms": ttfa,
+             "first_send_ms": ttfa + 10},
+        )
+    ])
+    summary = c.get("/api/calls/conv5b").json()["summary"]
+    # Turn 1 only: its first token was on the wire 1.5 s before the speaker stopped.
+    assert summary["simultaneous"] == {"n": 1, "of": 2}
 
 
 def test_stale_burst_is_not_charged_to_an_old_utterance(tmp_path):

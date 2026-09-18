@@ -228,77 +228,70 @@ def _stats(utterances: list[dict]) -> dict:
 
 
 # --- API ---------------------------------------------------------------------
+# One averaged utterance, told as the journey a single turn makes. Each leg is
+# (key, label, the moment it ends). The first leg carries no timing: nothing in
+# the audio path between the speaker's mouth and the bridge timestamps anything,
+# so it is drawn as a gap rather than silently folded into the model's number.
+LEGS = [
+    ("pstn_in", "Phone network", "Speaking starts", "Audio reaches the bridge"),
+    ("buffer", "Bridge", "Audio reaches the bridge", "Sent to the model"),
+    ("model", "Live Translate", "Sent to the model", "First translated token back"),
+    ("forward", "Bridge", "First translated token back", "Onto the listener's leg"),
+]
+
+
 def _summary(directions: dict) -> dict:
-    """One view of the whole call: how much of the delay is the model, and how much
-    is everything we control. This is the headline the dashboard leads with."""
+    """One averaged utterance, leg by leg, so the model's own time is plain.
+
+    The question this page exists to answer is how long Gemini Live Translate takes
+    to put its first translated token on the wire. That is `ttfa - send`: from the
+    moment audio actually left for the model to the moment the first token came
+    back. Everything else is shown beside it for scale.
+    """
     turns = [t for d in directions.values() for t in d["utterances"]]
-    durations = [_hop_durations(t) for t in turns]
-    complete = [d for d in durations if len(d) == len(HOPS)]
-
-    def median(vals):
-        return round(statistics.median(vals)) if vals else None
-
-    # Spoken, but the model never sent anything back -- a cough, a half word, or
-    # speech it chose not to translate. Counting them keeps the medians honest:
-    # they are computed over answered turns only, so a call that drops turns would
-    # otherwise look faster than one that answers them all.
     unanswered = sum(1 for t in turns if t.get("first_send_ms") is None)
-    after_speech = [t["model_ms"] for t in turns if t.get("model_ms") is not None]
+    # A turn only counts once all three stamps exist; a partial one would understate
+    # whichever leg is missing rather than be visibly absent.
+    full = [t for t in turns if all(t.get(k) is not None for k, *_ in HOPS)]
 
-    # Attribution is built from the model's AFTER-SPEECH latency, not from the
-    # onset-based `ttfa_ms`. Charging the model for the onset-based figure was the
-    # bug this page was rebuilt to remove: it reported the speaker's own talking
-    # time as though the model had spent it.
-    attributable = [t for t in turns
-                    if t.get("model_ms") is not None and t.get("first_send_ms") is not None]
-    # Calls recorded before `speech_end` existed carry no speech timing at all. They
-    # still get a model figure -- the onset-based one -- but it silently contains the
-    # speaker's talking time, so the flag travels with it and the page says so rather
-    # than showing a number that means something different from the same number on a
-    # newer call.
-    speech_unmeasured = not attributable and bool(complete)
-    if speech_unmeasured:
-        model = median([d["ttfa_ms"] for d in complete])
-        bridge = median([d["send_ms"] + d["first_send_ms"] for d in complete])
-        speech = None
-    else:
-        model = median([max(0, t["model_ms"]) for t in attributable])
-        bridge = median([_hop_durations(t).get("send_ms", 0)
-                         + _hop_durations(t).get("first_send_ms", 0) for t in attributable])
-        speech = median([t["speech_ms"] for t in attributable
-                         if t.get("speech_ms") is not None])
-    total = median([sum(d.values()) for d in complete])
+    def avg(vals):
+        return round(statistics.fmean(vals)) if vals else None
 
-    # Only the system's own stages carry a share of the delay. Speech is shown
-    # beside them for scale and is explicitly not part of that denominator.
-    delay = (model or 0) + (bridge or 0)
-    components = []
-    for key, label, note, value, speaker in (
-        ("speech", "Speaker talking", "Not a delay — how long the turn took to say",
-         speech, True),
-        ("model", "Gemini Live Translate",
-         "Speech onset to translated audio — includes the speaker's own talking time"
-         if speech_unmeasured else "From the speaker stopping to translated audio",
-         model, False),
-        ("bridge", "Bridge", "Buffering audio in and handing it back out", bridge, False),
-    ):
-        entry = {"key": key, "label": label, "note": note, "median_ms": value,
-                 "speaker": speaker}
-        if value is not None and delay and not speaker:
-            entry["share"] = round(value / delay, 4)
-        components.append(entry)
+    measured = {
+        "buffer": [t["send_ms"] for t in full],
+        "model": [t["ttfa_ms"] - t["send_ms"] for t in full],
+        "forward": [t["first_send_ms"] - t["ttfa_ms"] for t in full],
+    }
+    total = avg([t["first_send_ms"] for t in full])
 
-    out = {"median_ms": total, "measured": len(complete), "turns": len(turns),
-           "unanswered": unanswered, "speech_unmeasured": speech_unmeasured,
-           "components": [c for c in components if c["median_ms"] is not None]}
-    if after_speech:
-        # The headline the page exists to deliver: once you stop talking, how long
-        # until the translation starts.
-        out["model_after_speech"] = {
-            "median_ms": median(after_speech),
-            "p95_ms": _percentile(after_speech, 95),
-            "overlapped": sum(1 for v in after_speech if v < 0),
-            "n": len(after_speech)}
+    legs = []
+    for key, owner, start, end in LEGS:
+        vals = measured.get(key)
+        leg = {"key": key, "owner": owner, "start": start, "end": end,
+               "model": key == "model", "n": len(vals) if vals else 0}
+        if vals:
+            leg["mean_ms"] = avg(vals)
+            leg["p95_ms"] = _percentile(vals, 95)
+            leg["share"] = round(leg["mean_ms"] / total, 4) if total else None
+        else:
+            # Named, sized at nothing, and labelled -- leadership should see that
+            # this leg exists and that we cannot yet put a number on it.
+            leg["unmeasured"] = True
+        legs.append(leg)
+
+    out = {"mean_ms": total, "measured": len(full), "turns": len(turns),
+           "unanswered": unanswered, "legs": legs}
+    if measured["model"]:
+        vals = measured["model"]
+        out["model"] = {"mean_ms": avg(vals), "p95_ms": _percentile(vals, 95),
+                        "min_ms": min(vals), "max_ms": max(vals), "n": len(vals)}
+    # The strongest evidence of speed is not a duration at all: on these turns the
+    # first translated token was already on the wire before the speaker had stopped.
+    simultaneous = [t for t in full
+                    if t.get("speech_ms") is not None and t["ttfa_ms"] < t["speech_ms"]]
+    if any(t.get("speech_ms") is not None for t in full):
+        out["simultaneous"] = {"n": len(simultaneous),
+                               "of": sum(1 for t in full if t.get("speech_ms") is not None)}
     return out
 
 
