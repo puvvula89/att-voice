@@ -65,6 +65,11 @@ This is a proof of concept. It deliberately does not:
 - Authenticate the caller. Identity is assumed established before the agent is reached (§10, A1).
 - Transfer to a human agent, or model what that handoff carries.
 - Cover Troubleshooting, Add Feature, Plan Change, or Store Finder. Each gets its own PRD.
+- Serve web chat, or any channel other than voice. This is an IVR agent on a voice-optimized
+  model. A text channel is not a smaller version of this agent: a voice agent is instructed to
+  speak in short unformatted sentences, which is precisely wrong for chat, where a caller expects
+  an itemized bill and a tappable link. Adding chat later is a deliberate design exercise, not a
+  configuration change.
 
 ## 5. Requirements
 
@@ -168,8 +173,9 @@ These apply to every requirement and are what the evaluation suite actually gate
 
 ## 6. Experience
 
-The agent is reached two ways from a single conversation service: by phone into the Care IVR, and by
-web chat. A conversation can start on one and continue on the other with context intact.
+The agent is reached one way: by phone, into the Care IVR. It is a voice agent on a
+voice-optimized model, and every design decision below follows from that — turn length, number
+formatting, interruption, and how the call ends.
 
 **What the caller experiences on the phone:**
 
@@ -193,8 +199,8 @@ just described:
    the card on file expires before the next AutoPay draft and offers to update it. *It noticed
    something the caller did not call about.*
 
-A fourth beat, if time allows: hang up mid-conversation, open the web chat, and the agent resumes
-with context.
+A fourth beat, if time allows: the caller hangs up mid-conversation and calls straight back, and the
+agent resumes with context rather than restarting the interrogation.
 
 ## 7. Scenario coverage
 
@@ -293,13 +299,18 @@ Each milestone is independently demonstrable — a POC that only works at the en
 | Milestone | Delivers | Done when |
 |---|---|---|
 | M0 | Account model and the six customer profiles | Every profile reconciles; every requirement has a profile that exercises it |
-| M1 | All six requirements working in web chat | Each requirement completes end to end against every relevant profile |
+| M1 | All six requirements working in the platform's test console | Each requirement completes end to end against every relevant profile |
 | M2 | The same flows on a live phone call | A multi-turn call completes a payment and a bill explanation |
 | M3 | Measured quality | Full graded suite runs; hard gates at 100% |
 | M4 | Demo readiness | The three demo calls run clean, back to back, three times consecutively |
 
 M0 carries the most risk. The bill-explanation logic is where the demo's credibility lives, and no
 amount of conversational tuning rescues an explanation that does not add up.
+
+M1 is typed only because typing into the test console is the fastest way to exercise reasoning and
+tool calls — it is a development surface, not a delivered channel. The agent is never tuned for
+reading. Anything that only reads well, and would not survive being spoken aloud, is a defect
+caught at M2.
 
 ---
 
