@@ -197,12 +197,27 @@ function toTurns(list) {
   return turns;
 }
 
+/* Follow the call, but only while the reader is already at the bottom. Scrolling up
+   to re-read an earlier turn pauses it; coming back to the bottom resumes. */
+const STICK_MARGIN_PX = 140;
+
+function atBottom() {
+  const doc = document.documentElement;
+  return doc.scrollHeight - (window.scrollY + doc.clientHeight) <= STICK_MARGIN_PX;
+}
+
 function render() {
   const ordered = [...utterances.values()].sort(
     (a, b) => (a.onset_ts || 0) - (b.onset_ts || 0) || a.order - b.order);
   const list = toTurns(ordered);
 
+  const stick = atBottom();
   els.rows.replaceChildren(...list.map(row));
+  if (stick && list.length) {
+    // Jumped, not smoothed: transcript fragments arrive several times a second and
+    // queued smooth scrolls would never settle.
+    window.scrollTo(0, document.documentElement.scrollHeight);
+  }
   els.empty.hidden = list.length > 0;
   els.lanes.hidden = list.length === 0;
   els.count.textContent = String(list.length);
