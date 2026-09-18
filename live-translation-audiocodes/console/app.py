@@ -289,14 +289,20 @@ async def live():
 
 
 # --- pages -------------------------------------------------------------------
+# The console is redeployed far more often than it is read, and a stale cached
+# console.js silently reverts the UI to an older build. Nothing here is heavy
+# enough for caching to be worth that.
+NO_CACHE = {"Cache-Control": "no-store, must-revalidate"}
+
+
 @app.get("/")
 def index():
-    return FileResponse(os.path.join(STATIC, "console.html"))
+    return FileResponse(os.path.join(STATIC, "console.html"), headers=NO_CACHE)
 
 
 @app.get("/dashboard")
 def dashboard():
-    return FileResponse(os.path.join(STATIC, "dashboard.html"))
+    return FileResponse(os.path.join(STATIC, "dashboard.html"), headers=NO_CACHE)
 
 
 @app.get("/static/{name}")
@@ -304,4 +310,4 @@ def static(name: str):
     path = os.path.join(STATIC, os.path.basename(name))
     if not os.path.exists(path):
         raise HTTPException(404, "Not found")
-    return FileResponse(path)
+    return FileResponse(path, headers=NO_CACHE)

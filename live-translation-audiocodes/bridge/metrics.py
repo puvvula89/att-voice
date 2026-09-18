@@ -159,6 +159,10 @@ class CallMetrics:
         u = self._audio_burst
         if u and u["first_send_ms"] is None:
             self._stamp(u, "first_send_ms", self._clock())
+            # Emitted as it happens: without this the hand-off latency would reach
+            # the console only in the end-of-call `utterance` rows, so a live call
+            # would show every turn as still in flight.
+            self._emit("forwarded", utterance=u["n"], first_send_ms=u["first_send_ms"])
 
     def on_transcript(self, kind: str, text: str, language: str) -> None:
         # Tag each transcript with an utterance so the console can pair what was
@@ -180,7 +184,7 @@ class CallMetrics:
     def summary(self) -> dict:
         for u in self._utterances:
             # Keyed `utterance` like every other event, so consumers can group on
-            # one field. This row carries `first_send_ms`, which nothing else emits.
+            # one field. Every hop in one row, including hops never reached.
             self._emit("utterance", utterance=u["n"],
                        **{k: v for k, v in u.items() if k not in ("onset", "n")})
         out = {"utterances": len(self._utterances)}

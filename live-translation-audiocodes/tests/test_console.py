@@ -194,6 +194,40 @@ def test_pages_and_static_served(client):
     assert c.get("/static/console.css").status_code == 200
 
 
+def test_live_call_exposes_latency_before_it_ends(client):
+    """A call still in progress must show its hand-off delay.
+
+    The end-of-call `utterance` row carries every hop, so a replayed recording
+    looks fine even when nothing is emitted during the call. This drives the
+    bridge through one turn and stops short of `summary()`, which is the only
+    way the missing live emit shows up.
+    """
+    c, root = client
+    now = [0.0]
+    m = CallMetrics("conv-inflight", "caller-to-agent", record_dir=root,
+                    clock=lambda: now[0])
+    loud = b"\x40\x40" * 1600
+    m.on_inbound(loud)
+    now[0] = 0.1
+    m.on_model_send()
+    now[0] = 2.0
+    m.on_model_audio(loud)
+    now[0] = 2.01
+    m.on_forwarded()
+    # No summary(): the call is still up.
+
+    u = c.get("/api/calls/conv-inflight").json()["directions"]["caller-to-agent"]["utterances"][0]
+    assert u["first_send_ms"] == 2010
+    assert u["total_ms"] == 2010
+
+
+def test_static_assets_are_not_cached(client):
+    """A stale cached console.js silently reverts the UI to an older deploy."""
+    c, _ = client
+    for path in ("/", "/dashboard", "/static/console.js"):
+        assert "no-store" in c.get(path).headers.get("cache-control", "")
+
+
 def test_metrics_writes_events_file_the_console_can_read(tmp_path):
     """The bridge's writer and the console's reader agree on the file format."""
     m = CallMetrics("conv-live", "caller-to-agent", record_dir=str(tmp_path),
