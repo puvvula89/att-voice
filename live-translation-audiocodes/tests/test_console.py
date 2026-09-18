@@ -127,10 +127,15 @@ def test_summary_splits_model_from_bridge(client):
 
     model = next(c for c in summary["components"] if c["key"] == "model")
     bridge = next(c for c in summary["components"] if c["key"] == "bridge")
+    # No `speech_end` in this call: it predates that stamp. The model figure falls
+    # back to the onset-based one and is flagged, because it is not comparable with
+    # the after-speech figure a current call reports.
+    assert summary["speech_unmeasured"] is True
     assert model["median_ms"] == 2000   # ttfa minus the send buffer
     assert bridge["median_ms"] == 70    # 60 ms buffering in + 10 ms handing out
     assert summary["median_ms"] == 2070
     assert model["share"] > 0.95
+    assert not any(c["key"] == "speech" for c in summary["components"])
 
 
 def test_stale_burst_is_not_charged_to_an_old_utterance(tmp_path):
@@ -244,3 +249,55 @@ def test_metrics_writes_events_file_the_console_can_read(tmp_path):
     kinds = [e["event"] for e in events]
     assert "speech_onset" in kinds and "model_send" in kinds and "summary" in kinds
     assert all("ts" in e and e["conv"] == "conv-live" for e in events)
+
+
+def _turn(n, ts, *, speech_ms, ttfa_ms, send_ms=60, first_send=None, direction="d"):
+    first_send = ttfa_ms + 10 if first_send is None else first_send
+    return [
+        {"event": "speech_onset", "ts": ts, "direction": direction, "utterance": n},
+        {"event": "speech_end", "ts": ts + speech_ms / 1000, "direction": direction,
+         "utterance": n, "speech_ms": speech_ms},
+        {"event": "utterance", "ts": ts + 9, "direction": direction, "utterance": n,
+         "speech_ms": speech_ms, "send_ms": send_ms, "ttfa_ms": ttfa_ms,
+         "ttft_ms": ttfa_ms - 40, "first_send_ms": first_send},
+    ]
+
+
+def test_model_latency_is_measured_from_the_end_of_speech(client):
+    """A long sentence must not read as a slow model: the onset-based number holds
+    the speaker's own pace, and the model leg is what is left after it."""
+    c, root = client
+    write_events(root, "conv-speed", [
+        *_turn(1, 100.0, speech_ms=4000, ttfa_ms=4300),   # long sentence, quick model
+        *_turn(2, 130.0, speech_ms=400, ttfa_ms=1900),    # short word, slow model
+    ])
+    us = c.get("/api/calls/conv-speed").json()["directions"]["d"]["utterances"]
+    assert [u["speech_ms"] for u in us] == [4000, 400]
+    assert [u["model_ms"] for u in us] == [300, 1500]
+    # The onset-based totals would have ranked these the other way round.
+    assert us[0]["total_ms"] > us[1]["total_ms"]
+
+
+def test_model_that_starts_before_the_speaker_stops_is_reported_as_overlap(client):
+    c, root = client
+    write_events(root, "conv-overlap", _turn(1, 100.0, speech_ms=3000, ttfa_ms=2200))
+    u = c.get("/api/calls/conv-overlap").json()["directions"]["d"]["utterances"][0]
+    assert u["model_ms"] == -800 and u["overlapped"] is True
+
+
+def test_stats_report_p95_and_unanswered_turns(client):
+    c, root = client
+    events = []
+    for i in range(1, 21):
+        events += _turn(i, 100.0 + i * 30, speech_ms=500, ttfa_ms=1000 + i * 10)
+    # Two turns the model never answered: spoken, but no translation ever came back.
+    events += [
+        {"event": "speech_onset", "ts": 900.0, "direction": "d", "utterance": 21},
+        {"event": "utterance", "ts": 909.0, "direction": "d", "utterance": 21},
+    ]
+    write_events(root, "conv-p95", events)
+    body = c.get("/api/calls/conv-p95").json()
+    stats = body["directions"]["d"]["stats"]
+    assert stats["model_ms"]["p95"] >= stats["model_ms"]["median"]
+    assert body["summary"]["unanswered"] == 1
+    assert body["summary"]["turns"] == 21

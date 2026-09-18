@@ -2,7 +2,11 @@
 
    Hops are cumulative stamps from speech onset, so each bar segment is the
    difference from the previous stamp. Hue identifies the direction, lightness the
-   stage — the same encoding the live console uses. */
+   stage — the same encoding the live console uses.
+
+   The page leads with the model's own speed, measured from the END of speech. The
+   onset-based total is the number a caller experiences, but it carries however long
+   the speaker talked, so on its own it ranks a long sentence as a slow model. */
 
 const HOPS = [
   { key: "send_ms", label: "Send buffer", note: "Audio waiting for a full 100 ms chunk" },
@@ -39,15 +43,31 @@ const el = (tag, cls, text) => {
   return n;
 };
 
+/* A turn, in the order it actually happened: the speaker talking, then the model,
+   then the bridge handing audio back. Speech leads because it comes first in time
+   and because seeing it is the point — the stages after it are what the system
+   owns. Falls back to the raw hops when a call predates end-of-speech timing. */
 function segments(u) {
-  const out = [];
+  const hops = [];
   let prev = 0;
   for (const hop of HOPS) {
-    if (u[hop.key] == null) return out;
-    out.push({ ...hop, ms: Math.max(0, u[hop.key] - prev) });
+    if (u[hop.key] == null) return [];
+    hops.push({ ...hop, ms: Math.max(0, u[hop.key] - prev) });
     prev = u[hop.key];
   }
-  return out;
+  if (u.speech_ms == null || u.model_ms == null) return hops;
+
+  const bridge = hops[0].ms + hops[2].ms;   // send buffer in, forwarding out
+  return [
+    { key: "speech_ms", label: "Speaker talking", speaker: true, ms: u.speech_ms,
+      note: "Not a delay — how long the turn took to say" },
+    { key: "model_ms", label: "Model", ms: Math.max(0, u.model_ms),
+      note: u.overlapped
+        ? "Began before the speaker finished"
+        : "From the speaker stopping to translated audio" },
+    { key: "bridge_ms", label: "Bridge", ms: bridge,
+      note: "Buffering audio in and handing it back out" },
+  ];
 }
 
 function showError(message) {
@@ -61,7 +81,8 @@ function showError(message) {
 /* The dashboard answers one question first: of the delay a caller hears, how much
    is the model and how much is ours. Detail comes after, for whoever wants it. */
 
-const COMPONENT_COLOR = { model: "var(--caller-2)", bridge: "var(--agent-2)" };
+const COMPONENT_COLOR = { speech: "var(--ink-faint)", model: "var(--caller-2)",
+                          bridge: "var(--agent-2)" };
 
 function tiles(data) {
   const s = data.summary || {};
@@ -78,18 +99,32 @@ function tiles(data) {
   };
 
   const sec = (v) => (v == null ? "—" : (v / 1000).toFixed(2));
+  const after = s.model_after_speech;
+
+  // The model's own speed leads, because it is the only figure here that is about
+  // the model rather than about the speaker's pace.
   box.append(
-    tile("Typical delay", sec(s.median_ms), s.median_ms == null ? "" : "s",
-      "What a caller waits between speaking and the translation going out"),
-    tile("Model's share", model.share == null ? "—" : Math.round(model.share * 100),
-      model.share == null ? "" : "%", "The rest is everything we control"),
-    tile("Turns measured", `${s.measured ?? 0}`, `/${s.turns ?? 0}`,
-      "Turns with a complete end-to-end timing"),
+    tile("Model responds in", after ? sec(after.median_ms) : "—", after ? "s" : "",
+      "Measured from the moment the speaker stops talking — this is the model's own speed"),
+    tile("Slowest 1 in 20", after ? sec(after.p95_ms) : "—", after ? "s" : "",
+      "p95, not the maximum: one outlier should not set the number you quote"),
+    tile("Caller waits", sec(s.median_ms), s.median_ms == null ? "" : "s",
+      "Start of speech to translation going out — includes how long they spoke"),
+    tile("Turns answered", `${(s.turns ?? 0) - (s.unanswered ?? 0)}`, `/${s.turns ?? 0}`,
+      s.unanswered ? `${s.unanswered} spoken turn(s) drew no translation at all`
+                   : "Every spoken turn drew a translation"),
   );
+  if (after && after.overlapped) {
+    box.append(el("p", "section-note",
+      `On ${after.overlapped} of ${after.n} turns the model began translating before the `
+      + "speaker finished — simultaneous, not delayed."));
+  }
   return box;
 }
 
-/* One bar, two parts. This is the whole executive story. */
+/* One bar. Speech is shown alongside the delays but is never counted as one:
+   it is the speaker's own time, and folding it into the model's number is the
+   single mistake this page exists to prevent. */
 function split(data) {
   const s = data.summary || {};
   const parts = (s.components || []).filter((c) => c.median_ms != null);
@@ -100,13 +135,17 @@ function split(data) {
     return body;
   }
 
-  const total = parts.reduce((a, c) => a + c.median_ms, 0) || 1;
+  // Speech sizes the bar so the system's stages are seen against it, but it is
+  // never part of the delay the shares are computed from.
+  const delay = parts.filter((c) => !c.speaker)
+    .reduce((a, c) => a + c.median_ms, 0) || 1;
   const bar = el("div", "split");
   parts.forEach((c) => {
     const seg = el("div", "split-seg");
     seg.style.flex = `${c.median_ms} 0 0`;
-    seg.style.background = COMPONENT_COLOR[c.key] || "var(--ink-faint)";
+    seg.style.backgroundColor = COMPONENT_COLOR[c.key] || "var(--ink-faint)";
     seg.title = `${c.label}: ${c.median_ms} ms`;
+    if (c.speaker) seg.classList.add("split-seg-speaker");
     bar.append(seg);
   });
   bar.setAttribute("role", "img");
@@ -117,27 +156,39 @@ function split(data) {
   parts.forEach((c) => {
     const item = el("div", "split-key");
     const sw = el("span", "legend-swatch");
-    sw.style.background = COMPONENT_COLOR[c.key] || "var(--ink-faint)";
+    sw.style.backgroundColor = COMPONENT_COLOR[c.key] || "var(--ink-faint)";
     const head = el("div", "split-key-head");
     head.append(sw, el("b", null, c.label));
     item.append(head,
       el("div", "split-key-value", `${(c.median_ms / 1000).toFixed(2)}s`),
-      el("div", "split-key-note",
-        `${Math.round((c.median_ms / total) * 100)}% of the delay — ${c.note}`));
+      el("div", "split-key-note", c.speaker
+        ? c.note
+        : `${Math.round((c.median_ms / delay) * 100)}% of the delay — ${c.note}`));
     keys.append(item);
   });
 
   body.append(bar, keys);
+  if (s.speech_unmeasured) {
+    body.append(el("p", "section-note",
+      "This call was recorded before end-of-speech timing existed, so the model figure "
+      + "runs from the start of speech and still carries however long the speaker "
+      + "talked. It is not comparable with a newer call's model figure."));
+  }
+  body.append(el("p", "section-note",
+    "Each figure is that stage's own median, so they describe a typical turn rather "
+    + "than adding up to one. A turn where the model answered before the speaker "
+    + "finished is counted as nought, not as negative time."));
   return body;
 }
 
-function legend(direction) {
+function legend(direction, sample) {
   const box = el("div", "legend");
   const shades = SHADES[direction] || SHADES["caller-to-agent"];
-  HOPS.forEach((hop, i) => {
+  (sample && sample.length ? sample : HOPS).forEach((hop, i) => {
     const item = el("div", "legend-item");
     const sw = el("span", "legend-swatch");
-    sw.style.background = `var(${shades[i]})`;
+    sw.style.backgroundColor = `var(${shades[i]})`;
+    if (hop.speaker) sw.classList.add("split-seg-speaker");
     item.append(sw, document.createTextNode(`${hop.label} — ${hop.note}`));
     box.appendChild(item);
   });
@@ -145,7 +196,7 @@ function legend(direction) {
 }
 
 function chart(direction, utterances) {
-  const measured = utterances.filter((u) => segments(u).length === HOPS.length);
+  const measured = utterances.filter((u) => segments(u).length);
   if (!measured.length) return el("p", "section-note", "No fully measured utterances.");
 
   const max = Math.max(...measured.map((u) => u.total_ms));
@@ -162,7 +213,8 @@ function chart(direction, utterances) {
     segments(u).forEach((s, i) => {
       const seg = el("span");
       seg.style.flex = `${s.ms} 0 0`;
-      seg.style.background = `var(${shades[i]})`;
+      seg.style.backgroundColor = `var(${shades[i]})`;
+      if (s.speaker) seg.classList.add("split-seg-speaker");
       seg.title = `${s.label}: ${s.ms} ms`;
       stack.appendChild(seg);
     });
@@ -179,11 +231,12 @@ function chart(direction, utterances) {
 function statsTable(stats) {
   const table = el("table");
   const head = el("tr");
-  ["Hop", "Measured", "Min", "Median", "Max"].forEach((h) => head.appendChild(el("th", null, h)));
+  ["Stage", "Measured", "Min", "Median", "p95", "Max"].forEach((h) =>
+    head.appendChild(el("th", null, h)));
   table.appendChild(el("thead")).appendChild(head);
 
   const body = el("tbody");
-  [...HOPS.map((h) => h.key), "total"].forEach((key) => {
+  ["speech_ms", "model_ms", ...HOPS.map((h) => h.key), "total"].forEach((key) => {
     const s = stats[key];
     if (!s) return;
     const tr = el("tr");
@@ -192,8 +245,10 @@ function statsTable(stats) {
       el("td", null, String(s.n)),
       el("td", null, ms(s.min)),
       el("td", null, ms(s.median)),
+      el("td", null, ms(s.p95)),
       el("td", null, ms(s.max)),
     );
+    if (key === "speech_ms") tr.classList.add("row-muted");   // not a delay
     body.appendChild(tr);
   });
   table.appendChild(body);
@@ -203,7 +258,7 @@ function statsTable(stats) {
 function transcriptTable(utterances) {
   const table = el("table");
   const head = el("tr");
-  ["#", "Spoken", "Translated", "Delay"].forEach((h, i) =>
+  ["#", "Spoken", "Translated", "Spoke for", "Model", "Caller waited"].forEach((h, i) =>
     head.appendChild(el("th", i === 1 || i === 2 ? "text" : null, h)));
   table.appendChild(el("thead")).appendChild(head);
 
@@ -214,8 +269,11 @@ function transcriptTable(utterances) {
       el("td", null, `#${u.n}`),
       el("td", "text", u.source || "—"),
       el("td", "text", u.translation || "—"),
+      el("td", "muted", secs(u.speech_ms)),
+      el("td", null, u.overlapped ? `overlap ${secs(Math.abs(u.model_ms))}` : secs(u.model_ms)),
       el("td", null, secs(u.total_ms)),
     );
+    if (u.total_ms == null) tr.classList.add("row-unanswered");
     body.appendChild(tr);
   });
   table.appendChild(body);
@@ -268,7 +326,8 @@ function renderDirection(name, d) {
   const panels = {
     breakdown: (() => {
       const body = el("div", "card-body");
-      body.append(legend(name), chart(name, d.utterances));
+      const sample = (d.utterances.map(segments).find((x) => x.length)) || [];
+      body.append(legend(name, sample), chart(name, d.utterances));
       return body;
     })(),
     hops: (() => {

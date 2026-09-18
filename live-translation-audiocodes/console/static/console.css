@@ -658,3 +658,13 @@ tbody tr:hover td { background: #f8f9fa; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Speech is not a delay: it is shown for context and set back so it never reads
+   as part of the system's time. An unanswered turn is marked rather than hidden. */
+tr.row-muted td, td.muted { color: var(--ink-muted); }
+tr.row-unanswered td { background: color-mix(in srgb, var(--warn, #b26a00) 7%, transparent); }
+/* The speaker's own time is shown for scale, hatched so it never reads as delay. */
+.split-seg-speaker {
+  background-image: repeating-linear-gradient(135deg, transparent 0 5px,
+    rgba(255, 255, 255, .55) 5px 10px);
+}

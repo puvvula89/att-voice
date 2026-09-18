@@ -6,10 +6,15 @@ grouped into bursts (a burst starts after `burst_gap_ms` without output) and eac
 burst start is attributed to the earliest utterance still waiting for output.
 
 Per utterance, relative to its speech onset:
+  speech_ms      last chunk that still carried voice -- when the speaker stopped
   send_ms        first audio chunk containing this utterance handed to Gemini
   ttfa_ms        first translated audio chunk received from Gemini
   ttft_ms        first output transcription text received from Gemini
   first_send_ms  first translated chunk forwarded to the telephony side
+`speech_ms` is what separates the model's own speed from the speaker's pace: every
+other stamp runs from speech onset, so without it a four-second sentence and a slow
+model are the same number. The model leg is `ttfa_ms - speech_ms`, and it is
+negative when the model began translating before the speaker finished.
 `send_ms` isolates the 100 ms send buffer in `translator.py`, which would otherwise
 be charged to the model. The legs before the bridge (mic -> PSTN -> VAIC) and after
 it (VAIC -> PSTN -> earpiece) carry no timestamps and are not observable here.
@@ -34,6 +39,9 @@ log = logging.getLogger("bridge.metrics")
 IN_RATE = 16000
 OUT_RATE = 24000
 _KEYS = ("send_ms", "ttfa_ms", "ttft_ms", "first_send_ms")
+# Stamped by the silence detector rather than by an arriving burst, so it takes
+# no part in burst attribution and is summarised separately.
+_SPEECH_KEY = "speech_ms"
 
 
 def rms(pcm: bytes) -> float:
@@ -58,6 +66,7 @@ class CallMetrics:
         self._utterances: list[dict] = []
         self._speaking = False
         self._quiet_s = 0.0
+        self._voice_end: float | None = None
         self._last = {"audio": None, "text": None}
         self._audio_burst: dict | None = None
         self._text_burst: dict | None = None
@@ -98,9 +107,11 @@ class CallMetrics:
             self._in_wav.writeframes(pcm)
         if rms(pcm) >= self._threshold:
             self._quiet_s = 0.0
+            self._voice_end = self._clock()
             if not self._speaking:
                 self._speaking = True
-                u = {"n": len(self._utterances) + 1, "onset": self._clock(), **{k: None for k in _KEYS}}
+                u = {"n": len(self._utterances) + 1, "onset": self._voice_end,
+                     _SPEECH_KEY: None, **{k: None for k in _KEYS}}
                 self._utterances.append(u)
                 self._emit("speech_onset", utterance=u["n"])
         elif self._speaking:
@@ -108,6 +119,26 @@ class CallMetrics:
             if self._quiet_s >= self._silence_s:
                 self._speaking = False
                 self._quiet_s = 0.0
+                self._close_speech()
+
+    def _close_speech(self, *, only_if_spanned: bool = False) -> None:
+        """Stamp when the speaker stopped -- the last chunk that carried voice, not
+        the point the silence window closed, which would add `silence_ms` of quiet
+        to every utterance as though it were still being spoken.
+
+        `only_if_spanned` is for closing out a call rather than an utterance: the
+        speaker may be mid-word, and a turn whose voice never spanned more than a
+        single chunk would be stamped at nought and reported as `spoke for 0.00s`.
+        Leaving it unstamped says "not measured", which is what actually happened.
+        """
+        if not self._utterances or self._voice_end is None:
+            return
+        u = self._utterances[-1]
+        if only_if_spanned and self._voice_end <= u["onset"]:
+            return
+        if u[_SPEECH_KEY] is None:
+            u[_SPEECH_KEY] = max(0, round((self._voice_end - u["onset"]) * 1000))
+            self._emit("speech_end", utterance=u["n"], speech_ms=u[_SPEECH_KEY])
 
     # --- outbound -----------------------------------------------------------
     def _burst_start(self, kind: str, now: float) -> bool:
@@ -182,13 +213,18 @@ class CallMetrics:
 
     # --- end ----------------------------------------------------------------
     def summary(self) -> dict:
+        # A call that ends while the last turn is still inside the silence window
+        # never reaches the silence branch, so that turn would carry no `speech_ms`
+        # and drop out of the model figure -- on a one-turn call, taking the whole
+        # call back to the onset-based number this stamp exists to replace.
+        self._close_speech(only_if_spanned=True)
         for u in self._utterances:
             # Keyed `utterance` like every other event, so consumers can group on
             # one field. Every hop in one row, including hops never reached.
             self._emit("utterance", utterance=u["n"],
                        **{k: v for k, v in u.items() if k not in ("onset", "n")})
         out = {"utterances": len(self._utterances)}
-        for key in _KEYS:
+        for key in (_SPEECH_KEY, *_KEYS):
             vals = [u[key] for u in self._utterances if u[key] is not None]
             if vals:
                 out[key] = {"min": min(vals), "median": round(statistics.median(vals)), "max": max(vals),
