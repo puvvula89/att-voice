@@ -11,7 +11,10 @@ next call, never the one in progress.
 from __future__ import annotations
 
 import json
+import logging
 import os
+
+log = logging.getLogger("bridge")
 
 DEFAULT_CALLER_LANGUAGE = "hi"
 
@@ -123,9 +126,28 @@ def save(values: dict) -> dict:
     return current
 
 
+def normalize(code: str) -> str:
+    """Map a language code onto one the model accepts.
+
+    The model takes a bare code for most languages ("hi", not "hi-IN") and rejects
+    anything else outright -- the session fails to open, which drops the call the
+    moment the two legs are crossed. A regional variant of a supported language is
+    accepted here and narrowed to its base; anything still unknown falls back to the
+    default rather than taking the call down.
+    """
+    supported = {lang["code"] for lang in LANGUAGES}
+    if code in supported:
+        return code
+    base = code.partition("-")[0]
+    if base in supported:
+        log.warning("language %r is not a Live Translate code; using %r", code, base)
+        return base
+    log.warning("language %r is not supported; falling back to %r", code, DEFAULT_CALLER_LANGUAGE)
+    return DEFAULT_CALLER_LANGUAGE
+
+
 def caller_language() -> str:
     """The saved choice, else CALLER_LANGUAGE from the environment, else Hindi."""
     saved = load().get("caller_language")
-    if saved:
-        return saved
-    return os.environ.get("CALLER_LANGUAGE") or DEFAULT_CALLER_LANGUAGE
+    chosen = saved or os.environ.get("CALLER_LANGUAGE") or DEFAULT_CALLER_LANGUAGE
+    return normalize(chosen)

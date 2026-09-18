@@ -402,3 +402,20 @@ def test_stats_report_p95_and_unanswered_turns(client):
     assert stats["model_ms"]["p95"] >= stats["model_ms"]["median"]
     assert body["summary"]["unanswered"] == 1
     assert body["summary"]["turns"] == 21
+
+
+def test_regional_language_codes_are_narrowed_to_what_the_model_accepts(monkeypatch, tmp_path):
+    """A code like hi-IN is rejected by the model and drops the call, so narrow it."""
+    from bridge import settings as bridge_settings
+    monkeypatch.setenv("SETTINGS_PATH", str(tmp_path / "settings.json"))
+
+    monkeypatch.setenv("CALLER_LANGUAGE", "hi-IN")
+    assert bridge_settings.caller_language() == "hi"
+
+    # Codes the model does spell out regionally are left alone.
+    monkeypatch.setenv("CALLER_LANGUAGE", "pt-BR")
+    assert bridge_settings.caller_language() == "pt-BR"
+
+    # Anything unrecognised falls back rather than taking the call down.
+    monkeypatch.setenv("CALLER_LANGUAGE", "klingon")
+    assert bridge_settings.caller_language() == bridge_settings.DEFAULT_CALLER_LANGUAGE

@@ -152,7 +152,12 @@ async def run_pair(caller_events, caller_gateway, agent_events, agent_gateway,
     a = asyncio.create_task(run_direction(caller_events, translator_to_agent, agent_gateway, metrics_to_agent))
     b = asyncio.create_task(run_direction(agent_events, translator_to_caller, caller_gateway, metrics_to_caller))
     try:
-        await asyncio.wait({a, b}, return_when=asyncio.FIRST_COMPLETED)
+        done, _ = await asyncio.wait({a, b}, return_when=asyncio.FIRST_COMPLETED)
+        # A direction that fails takes the whole call down, so say why. Without this
+        # a rejected translation session looks like the two legs simply hanging up.
+        for t in done:
+            if not t.cancelled() and t.exception():
+                log.error("call ended on a failed direction: %r", t.exception())
     finally:
         for t in (a, b):
             t.cancel()
