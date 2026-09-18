@@ -66,9 +66,35 @@ up)
   fi
   # Re-applied every deploy: harmless when already bound, and it repairs a project
   # where the binding was removed without the account being deleted.
-  gcloud projects add-iam-policy-binding "$PROJECT" \
-    --member "serviceAccount:$SA" --role roles/aiplatform.user \
-    --condition=None >/dev/null
+  #
+  # Retried because a freshly created service account is not immediately visible to
+  # the IAM policy API -- binding it straight away fails with "does not exist" even
+  # though the create succeeded. It settles within a few seconds.
+  echo "==> granting roles/aiplatform.user to $SA_NAME"
+  for attempt in 1 2 3 4 5 6; do
+    if gcloud projects add-iam-policy-binding "$PROJECT" \
+         --member "serviceAccount:$SA" --role roles/aiplatform.user \
+         --condition=None >/dev/null 2>&1; then
+      break
+    fi
+    if [ "$attempt" = 6 ]; then
+      echo "Could not grant roles/aiplatform.user to $SA after several tries." >&2
+      echo "Wait a moment and re-run; the service account exists already." >&2
+      exit 1
+    fi
+    sleep 5
+  done
+
+  # Created up front because `run deploy --source` otherwise stops to ask whether it
+  # may create it, which hangs anything running unattended. Same name and region the
+  # prompt would have used, so teardown still finds it.
+  if ! gcloud artifacts repositories describe cloud-run-source-deploy \
+       --project "$PROJECT" --location "$REGION" >/dev/null 2>&1; then
+    echo "==> creating Artifact Registry repo cloud-run-source-deploy"
+    gcloud artifacts repositories create cloud-run-source-deploy \
+      --project "$PROJECT" --location "$REGION" --repository-format docker \
+      --description "Containers built by cloudrun.sh" >/dev/null
+  fi
 
   echo "==> deploying $SERVICE to $REGION"
   # --no-cpu-throttling keeps the event loop running between requests, which a
