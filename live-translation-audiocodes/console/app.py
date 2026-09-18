@@ -157,10 +157,24 @@ def _turns(utterances: list[dict], gap_s: float = TURN_GAP_S) -> list[dict]:
             text = "".join(u.get(key) or "" for u in group).strip()
             if text:
                 turn[key] = text
-        for key in ("speech_ms", "send_ms", "ttfa_ms", "ttft_ms", "first_send_ms", "total_ms"):
+        # Latency stamps take the first one actually measured inside the turn: they
+        # are all relative to this turn's onset, so a later fragment's copy would be
+        # measuring from the wrong zero.
+        for key in ("send_ms", "ttfa_ms", "ttft_ms", "first_send_ms", "total_ms"):
             measured = next((u[key] for u in group if u.get(key) is not None), None)
             if measured is not None:
                 turn[key] = measured
+        # Speech is the exception, and taking the first fragment here was wrong.
+        # Onsets are detected by energy, so one sentence breaks into a fragment per
+        # natural pause; the first fragment's length is not how long the speaker
+        # talked. The turn runs from its first onset to the end of the last fragment
+        # that still carried voice -- which is when they actually stopped.
+        spoken = [u for u in group
+                  if u.get("speech_ms") is not None and u.get("onset_ts") is not None]
+        if spoken and head.get("onset_ts") is not None:
+            last = spoken[-1]
+            turn["speech_ms"] = max(0, round(
+                (last["onset_ts"] + last["speech_ms"] / 1000 - head["onset_ts"]) * 1000))
         _derive_model(turn)
         arrival = next((u["arrival_ts"] for u in group if u.get("arrival_ts")), None)
         if arrival:

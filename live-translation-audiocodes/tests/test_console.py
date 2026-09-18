@@ -143,6 +143,39 @@ def test_summary_measures_the_model_from_when_audio_left_the_bridge(client):
     assert "mean_ms" not in legs["pstn_in"]
 
 
+def test_speech_spans_the_whole_turn_not_just_its_first_fragment(client):
+    """One sentence breaks into a fragment per pause; the turn must span them all.
+
+    Reporting the first fragment's length as the turn's speaking time made long
+    turns look short, and so made the translation look late when it was in fact
+    already playing while the speaker was still talking.
+    """
+    c, root = client
+    write_events(root, "conv6", [
+        # One sentence, spoken across two energy onsets 2 s apart.
+        {"event": "speech_onset", "ts": 100.0, "direction": "d", "utterance": 1},
+        {"event": "speech_end", "ts": 100.04, "direction": "d", "utterance": 1,
+         "speech_ms": 40},
+        {"event": "utterance", "ts": 108.0, "direction": "d", "utterance": 1,
+         "speech_ms": 40, "send_ms": 50, "ttfa_ms": 2600, "first_send_ms": 2601},
+        {"event": "speech_onset", "ts": 102.0, "direction": "d", "utterance": 2},
+        {"event": "speech_end", "ts": 105.9, "direction": "d", "utterance": 2,
+         "speech_ms": 3900},
+        {"event": "utterance", "ts": 108.0, "direction": "d", "utterance": 2,
+         "speech_ms": 3900},
+    ])
+    turn = c.get("/api/calls/conv6").json()["directions"]["d"]["utterances"][0]
+
+    assert turn["parts"] == [1, 2]
+    # Onset at 100.0, last voice at 102.0 + 3.9 = 105.9 -> the speaker talked 5.9 s,
+    # not the 40 ms the first fragment happened to last.
+    assert turn["speech_ms"] == 5900
+    # The latency stamp still comes from the fragment that measured it.
+    assert turn["ttfa_ms"] == 2600
+    # And so the translation is correctly seen to start while they were still talking.
+    assert turn["ttfa_ms"] < turn["speech_ms"]
+
+
 def test_model_leg_splits_into_first_token_then_voicing_it(client):
     """Time to first token is the text stamp; first audio is that token voiced."""
     c, root = client
