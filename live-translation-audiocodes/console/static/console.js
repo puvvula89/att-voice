@@ -225,7 +225,8 @@ async function languagePicker() {
     select.replaceChildren(...languages.map((l) => {
       const o = document.createElement("option");
       o.value = l.code;
-      o.textContent = l.name;
+      // Code first, so typing it in the open list jumps straight to that language.
+      o.textContent = `${l.code} - ${l.name}`;
       o.selected = l.code === current;
       return o;
     }));
