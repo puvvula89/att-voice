@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latency dashboard — Translation Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/console.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><b>Live Translation</b> <span>Console</span></div>
+  <div class="picker">Conversation <b id="conv">none loaded</b></div>
+</header>
+
+<nav class="rail" aria-label="Sections">
+  <div class="rail-group">Monitoring</div>
+  <a href="./">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-4 4.9V19h-2v-3.1A5 5 0 0 1 7 11h2a3 3 0 0 0 6 0h2Z"/>
+    </svg>
+    Live call
+  </a>
+  <a href="dashboard" aria-current="page">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M4 19h16v2H4zM6 9h3v8H6zm5-5h3v13h-3zm5 8h3v5h-3z"/>
+    </svg>
+    Latency dashboard
+  </a>
+</nav>
+
+<div class="content">
+  <div class="page-head">
+    <h1>Latency dashboard</h1>
+    <p class="page-sub">How much of the delay on a finished call is the model, and how much is ours.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Select a call</h2></div>
+    <div class="card-body">
+      <form class="lookup" id="lookup">
+        <label>
+          <span>Conversation ID</span>
+          <input id="conv-input" name="conv" autocomplete="off" spellcheck="false"
+                 placeholder="Paste the ID shown on the live call page">
+        </label>
+        <button class="btn primary" type="submit">Load call</button>
+      </form>
+      <p class="recent" id="recent"></p>
+    </div>
+  </div>
+
+  <div id="error" hidden></div>
+  <div id="report"></div>
+</div>
+
+<script src="static/dashboard.js"></script>
+</body>
+</html>

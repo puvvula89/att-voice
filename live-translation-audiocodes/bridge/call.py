@@ -76,6 +76,8 @@ async def wait_for_start(gateway, events, greeting: bytes | None) -> CallStart |
 
 async def run_direction(events, translator, out_gateway, metrics=None) -> None:
     """Pump one direction until the inbound leg ends or the translator stops."""
+    if metrics and hasattr(translator, "set_on_send"):
+        translator.set_on_send(metrics.on_model_send)
     await translator.open()
     idle: asyncio.TimerHandle | None = None
     loop = asyncio.get_running_loop()

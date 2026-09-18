@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+recordings/
+tests/
+docs/
+deploy/
+.env
+.git/
+*.md

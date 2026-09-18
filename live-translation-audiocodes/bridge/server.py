@@ -27,6 +27,7 @@ from bridge.dialout import DialoutClient
 from bridge.echo import EchoTranslator
 from bridge.metrics import CallMetrics
 from bridge.pairing import CallRegistry
+from bridge import settings
 from bridge.translator import GeminiTranslator
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
@@ -36,6 +37,16 @@ app = FastAPI()
 registry = CallRegistry()
 AGENT_JOIN_TIMEOUT_S = 60
 DIALIN_WAIT_S = 180
+
+# Serve the console from this process when SERVE_CONSOLE is set, so a deployed
+# bridge can be watched live. It reads the event files this process writes, which is
+# only possible from inside the same container. Off by default: run it as its own
+# process locally, where nothing it does can touch the audio loop.
+if os.environ.get("SERVE_CONSOLE", "").lower() in ("1", "true", "yes"):
+    from console.app import app as console_app
+
+    app.mount("/console", console_app)
+    log.info("console mounted at /console")
 
 
 def _translator(target_language: str, echo_target_language: bool):
@@ -49,19 +60,26 @@ def _translator(target_language: str, echo_target_language: bool):
             model=os.environ["LIVE_TRANSLATE_MODEL"],
             target_language=target_language,
             echo_target_language=echo_target_language,
-            voice=os.environ.get("LIVE_VOICE", ""),
         )
     raise ValueError(f"Unknown TRANSLATOR={mode!r}")
 
 
-# PRD §7.2: Session A (caller -> agent) is fixed to English with echo on, so English
-# the caller speaks still reaches the agent. Session B targets the caller's language.
+# PRD §7.2: Session A (caller -> agent) is fixed to English; Session B targets the
+# caller's language.
+#
+# Echo makes the model reproduce speech that is already in the target language, so
+# English the caller speaks still reaches the agent. It also makes the model rebroadcast
+# any English it picks up -- the agent's own voice bleeding into the caller's handset,
+# for instance -- which adds output this direction does not need and which the session
+# then queues behind. Google's guidance is to leave it off for interpreter setups.
 def _to_agent():
-    return _translator("en", True)
+    echo = os.environ.get("ECHO_TO_AGENT", "false").lower() in ("1", "true", "yes")
+    return _translator("en", echo)
 
 
 def _to_caller():
-    return _translator(os.environ["CALLER_LANGUAGE"], False)
+    # Read per call, so the language picked in the console applies from the next call.
+    return _translator(settings.caller_language(), False)
 
 
 def _authorized(websocket: WebSocket) -> bool:

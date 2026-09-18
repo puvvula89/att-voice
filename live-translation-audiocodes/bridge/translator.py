@@ -20,7 +20,7 @@ CHUNK_BYTES = 3200  # 100 ms of 16 kHz PCM16, per Google's latency guidance
 
 class GeminiTranslator:
     def __init__(self, *, project: str, location: str, model: str,
-                 target_language: str, echo_target_language: bool, voice: str = ""):
+                 target_language: str, echo_target_language: bool, on_send=None):
         self._client = genai.Client(vertexai=True, project=project, location=location)
         self._model = model
         self._config = types.LiveConnectConfig(
@@ -32,18 +32,18 @@ class GeminiTranslator:
                 echo_target_language=echo_target_language,
             ),
         )
-        if voice:
-            # Prebuilt voice instead of the model's voice replication (experimental
-            # for Live Translate: accepted by the API, effect verified by listening).
-            self._config.speech_config = types.SpeechConfig(
-                voice_config=types.VoiceConfig(
-                    prebuilt_voice_config=types.PrebuiltVoiceConfig(voice_name=voice)
-                )
-            )
+        # The model replicates the speaker's voice and offers no voice selection:
+        # speech_config is discarded server-side (an invalid voice name connects
+        # without error), so there is nothing to configure here.
         self._cm = None
         self._session = None
         self._pending = bytearray()
         self._closed = False
+        self._on_send = on_send
+
+    def set_on_send(self, on_send) -> None:
+        """Called after each buffered chunk reaches the model, for the send-buffer leg."""
+        self._on_send = on_send
 
     async def open(self) -> None:
         self._cm = self._client.aio.live.connect(model=self._model, config=self._config)
@@ -61,6 +61,8 @@ class GeminiTranslator:
             await self._session.send_realtime_input(
                 audio=types.Blob(data=chunk, mime_type="audio/pcm;rate=16000")
             )
+            if self._on_send:
+                self._on_send()
 
     async def events(self):
         # receive() ends after each turn_complete; loop to keep the session streaming.
