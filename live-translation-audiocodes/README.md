@@ -14,37 +14,25 @@ Scope and milestones: `live-translation-poc-prd.md`.
 
 ## Architecture
 
-Two independent one-way paths, each running left to right. They share the same
-infrastructure but never touch: separate phone calls, separate translation sessions,
-separate timings.
+Audio flows left to right and back again. Each speaker's words go out to the model and
+return in the other person's language.
 
 ```
-  CALLER PATH   ·   the caller speaks Hindi, the agent hears English
+      PHONES                  TELEPHONY                 BRIDGE                    MODEL
 
-  ┌───────────┐   ┌────────────┐   ┌───────────┐   ┌────────────┐   ┌────────────┐   ┌───────────┐
-  │  Caller   │──►│ AudioCodes │──►│  Bridge   │──►│   Gemini   │──►│ AudioCodes │──►│   Agent   │
-  │  speaks   │   │  Live Hub  │   │ session A │   │ translate  │   │  Live Hub  │   │   hears   │
-  │  Hindi    │   │            │   │           │   │   to en    │   │            │   │  English  │
-  └───────────┘   └────────────┘   └───────────┘   └────────────┘   └────────────┘   └───────────┘
-
-
-  AGENT PATH   ·   the agent speaks English, the caller hears their own language
-
-  ┌───────────┐   ┌────────────┐   ┌───────────┐   ┌────────────┐   ┌────────────┐   ┌───────────┐
-  │   Agent   │──►│ AudioCodes │──►│  Bridge   │──►│   Gemini   │──►│ AudioCodes │──►│  Caller   │
-  │  speaks   │   │  Live Hub  │   │ session B │   │ translate  │   │  Live Hub  │   │   hears   │
-  │  English  │   │            │   │           │   │ to caller  │   │            │   │   Hindi   │
-  └───────────┘   └────────────┘   └───────────┘   └────────────┘   └────────────┘   └───────────┘
-
-
-  Both paths run at once, on one Cloud Run service, which also serves the console:
-
-                    ┌───────────────────────────────────────────────┐
-                    │  Bridge · Cloud Run                           │
-                    │    session A  caller → agent                  │
-                    │    session B  agent → caller                  │
-                    │    /console/  live transcript and latency     │
-                    └───────────────────────────────────────────────┘
+  ┌──────────────┐        ┌──────────────┐        ┌──────────────┐        ┌──────────────┐
+  │    Caller    │───────►│              │───────►│              │───────►│   Gemini     │
+  │    Hindi     │◄───────│  AudioCodes  │◄───────│  Cloud Run   │◄───────│    Live      │
+  ├──────────────┤        │   Live Hub   │        │              │        │  Translate   │
+  │    Agent     │───────►│              │───────►│              │───────►│              │
+  │   English    │◄───────│              │◄───────│              │◄───────│              │
+  └──────────────┘        └──────────────┘        └──────────────┘        └──────────────┘
+                                                         │
+                                                         ▼
+                                                  ┌──────────────┐
+                                                  │   Console    │
+                                                  │  /console/   │
+                                                  └──────────────┘
 ```
 
 | Component | What it does |
