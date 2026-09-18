@@ -5,9 +5,9 @@
    stage — the same encoding the live console uses.
 
    The page leads with one averaged turn drawn as a journey, because the question it
-   is opened to answer is how long Live Translate takes to put its first translated
-   token on the wire. That is the leg from audio leaving the bridge to the first
-   token coming back; the bridge's own legs sit either side of it for scale. */
+   is opened to answer is how long Live Translate takes to put translated speech on
+   the wire. That is the leg from audio leaving the bridge to the first translated
+   audio coming back; the bridge's own legs sit either side of it for scale. */
 
 const HOPS = [
   { key: "send_ms", label: "Send buffer", note: "Audio waiting for a full 100 ms chunk" },
@@ -104,14 +104,15 @@ function tiles(data) {
   const sim = s.simultaneous;
 
   // The model's own leg leads and everything else is context for it: this page is
-  // shown to answer "how fast is Live Translate", not "how slow is the call".
+  // shown to answer "how fast is Live Translate", not "how slow is the call". The
+  // audio leg is that leg -- the one end-to-end measurement of the model, and the
+  // only one the listener experiences. The transcript stamp sits behind it as a
+  // hint, never in front of it.
   box.append(
-    tile("Model, first token", ft ? sec(ft.mean_ms) : (m ? sec(m.mean_ms) : "—"),
-      ft || m ? "s" : "",
-      ft ? "Audio leaving the bridge to the first translated token coming back"
-         : "Audio leaving the bridge to the first translated audio coming back"),
-    tile("First audio out", m ? sec(m.mean_ms) : "—", m ? "s" : "",
-      "The same token voiced — this is what the listener actually hears"),
+    tile("Model, first audio", m ? sec(m.mean_ms) : "—", m ? "s" : "",
+      "Audio leaving the bridge to the first translated audio coming back"),
+    tile("Model, to transcript", ft ? sec(ft.mean_ms) : "—", ft ? "s" : "",
+      "When the model's caption of that translation arrived"),
     tile("Everything else", sec((s.mean_ms ?? 0) - (m ? m.mean_ms : 0)),
       s.mean_ms == null ? "" : "s",
       "Every stage the bridge owns, added together"),
@@ -121,7 +122,7 @@ function tiles(data) {
   );
   if (sim && sim.n) {
     box.append(el("p", "section-note",
-      `On ${sim.n} of ${sim.of} turns the first translated token was already on the wire `
+      `On ${sim.n} of ${sim.of} turns the first translated audio was already on the wire `
       + "before the speaker had finished — simultaneous, not delayed."));
   }
   return box;
@@ -157,8 +158,8 @@ function journey(data) {
     if (!leg.unmeasured && leg.share != null) {
       seg.append(el("div", "journey-share", `${Math.round(leg.share * 100)}%`));
     }
-    // The model's leg splits again: reaching the first translated token, then
-    // voicing it. Nested inside its own bar so it reads as a breakdown of that
+    // The model's leg splits again, against the caption it emits alongside the
+    // translated audio. Nested inside its own bar so it reads as a hint about that
     // time rather than as two more stages of the call.
     if (leg.parts && leg.parts.length) {
       const inner = el("div", "journey-split");

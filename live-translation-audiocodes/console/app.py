@@ -253,23 +253,25 @@ LEGS = [
     ("forward", "Bridge", "First translated audio back", "Onto the listener's leg"),
 ]
 
-# The model's leg splits in two, and the split is the difference between "how fast
-# did it translate" and "how fast did the caller hear it". `ttft` is the first
-# translated text token; `ttfa` is the first audio. The gap between them is the
-# model turning that token into speech.
+# The model's leg splits in two, against the transcript it emits alongside the
+# translated audio. `output_audio_transcription` is a caption on that audio, not a
+# stage that produces it -- the model is audio-to-audio and generates no text in the
+# path being timed. The split says when the model had committed to wording relative
+# to when the speech arrived, which is a useful hint about where the time inside the
+# model goes, and not a measurement of two pipeline stages.
 MODEL_PARTS = [
-    ("ttft", "To first token", "Understanding the speech and translating it"),
-    ("vocalize", "To first audio", "Turning that first token into speech"),
+    ("ttft", "To transcript", "The model's caption of the translation arrives"),
+    ("vocalize", "Transcript to audio", "How far the translated speech trails its own caption"),
 ]
 
 
 def _text_timed(turns: list[dict]) -> list[dict]:
-    """Turns whose first-text stamp can be trusted against their first-audio stamp.
+    """Turns whose transcript stamp sits between the send and the first audio.
 
-    Text and audio are attributed by separate burst detectors, and on a noisy leg
-    they can disagree -- a turn reporting its first text *after* its first audio,
-    or text with no audio at all. Those orderings are impossible, so rather than
-    chart a negative synthesis time the turn is left out of the split.
+    The caption rides alongside the audio rather than ahead of it, so it can arrive
+    after the speech it describes -- and text and audio are attributed by separate
+    burst detectors, which adds its own disagreement. Neither makes a turn faulty,
+    but a split cannot be drawn across a negative gap, so those turns sit out.
     """
     return [t for t in turns
             if t.get("ttft_ms") is not None and t.get("ttfa_ms") is not None
@@ -278,7 +280,7 @@ def _text_timed(turns: list[dict]) -> list[dict]:
 
 
 def _model_parts(turns: list[dict], model_mean: int | None) -> list[dict]:
-    """Split the model's leg into reaching the first token, then voicing it."""
+    """Split the model's leg against the transcript, for a hint at where time goes."""
     usable = _text_timed(turns)
     if not usable or not model_mean:
         return []
@@ -298,8 +300,8 @@ def _summary(directions: dict) -> dict:
     """One averaged utterance, leg by leg, so the model's own time is plain.
 
     The question this page exists to answer is how long Gemini Live Translate takes
-    to put its first translated token on the wire. That is `ttfa - send`: from the
-    moment audio actually left for the model to the moment the first token came
+    to put translated speech on the wire. That is `ttfa - send`: from the moment
+    audio actually left for the model to the moment the first translated audio came
     back. Everything else is shown beside it for scale.
     """
     turns = [t for d in directions.values() for t in d["utterances"]]
@@ -346,7 +348,7 @@ def _summary(directions: dict) -> dict:
             out["first_token"] = {"mean_ms": avg(ttft), "p95_ms": _percentile(ttft, 95),
                                   "n": len(ttft)}
     # The strongest evidence of speed is not a duration at all: on these turns the
-    # first translated token was already on the wire before the speaker had stopped.
+    # first translated audio was already on the wire before the speaker had stopped.
     simultaneous = [t for t in full
                     if t.get("speech_ms") is not None and t["ttfa_ms"] < t["speech_ms"]]
     if any(t.get("speech_ms") is not None for t in full):
