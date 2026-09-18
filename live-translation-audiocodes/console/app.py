@@ -235,9 +235,49 @@ def _stats(utterances: list[dict]) -> dict:
 LEGS = [
     ("pstn_in", "Phone network", "Speaking starts", "Audio reaches the bridge"),
     ("buffer", "Bridge", "Audio reaches the bridge", "Sent to the model"),
-    ("model", "Live Translate", "Sent to the model", "First translated token back"),
-    ("forward", "Bridge", "First translated token back", "Onto the listener's leg"),
+    ("model", "Live Translate", "Sent to the model", "First translated audio back"),
+    ("forward", "Bridge", "First translated audio back", "Onto the listener's leg"),
 ]
+
+# The model's leg splits in two, and the split is the difference between "how fast
+# did it translate" and "how fast did the caller hear it". `ttft` is the first
+# translated text token; `ttfa` is the first audio. The gap between them is the
+# model turning that token into speech.
+MODEL_PARTS = [
+    ("ttft", "To first token", "Understanding the speech and translating it"),
+    ("vocalize", "To first audio", "Turning that first token into speech"),
+]
+
+
+def _text_timed(turns: list[dict]) -> list[dict]:
+    """Turns whose first-text stamp can be trusted against their first-audio stamp.
+
+    Text and audio are attributed by separate burst detectors, and on a noisy leg
+    they can disagree -- a turn reporting its first text *after* its first audio,
+    or text with no audio at all. Those orderings are impossible, so rather than
+    chart a negative synthesis time the turn is left out of the split.
+    """
+    return [t for t in turns
+            if t.get("ttft_ms") is not None and t.get("ttfa_ms") is not None
+            and t.get("send_ms") is not None
+            and t["send_ms"] <= t["ttft_ms"] <= t["ttfa_ms"]]
+
+
+def _model_parts(turns: list[dict], model_mean: int | None) -> list[dict]:
+    """Split the model's leg into reaching the first token, then voicing it."""
+    usable = _text_timed(turns)
+    if not usable or not model_mean:
+        return []
+    to_token = round(statistics.fmean(t["ttft_ms"] - t["send_ms"] for t in usable))
+    to_audio = round(statistics.fmean(t["ttfa_ms"] - t["ttft_ms"] for t in usable))
+    span = to_token + to_audio
+    parts = []
+    for key, label, note in MODEL_PARTS:
+        value = to_token if key == "ttft" else to_audio
+        parts.append({"key": key, "label": label, "note": note, "mean_ms": value,
+                      "n": len(usable),
+                      "share": round(value / span, 4) if span else None})
+    return parts
 
 
 def _summary(directions: dict) -> dict:
@@ -277,6 +317,8 @@ def _summary(directions: dict) -> dict:
             # Named, sized at nothing, and labelled -- leadership should see that
             # this leg exists and that we cannot yet put a number on it.
             leg["unmeasured"] = True
+        if key == "model":
+            leg["parts"] = _model_parts(full, leg.get("mean_ms"))
         legs.append(leg)
 
     out = {"mean_ms": total, "measured": len(full), "turns": len(turns),
@@ -285,6 +327,10 @@ def _summary(directions: dict) -> dict:
         vals = measured["model"]
         out["model"] = {"mean_ms": avg(vals), "p95_ms": _percentile(vals, 95),
                         "min_ms": min(vals), "max_ms": max(vals), "n": len(vals)}
+        ttft = [t["ttft_ms"] - t["send_ms"] for t in _text_timed(full)]
+        if ttft:
+            out["first_token"] = {"mean_ms": avg(ttft), "p95_ms": _percentile(ttft, 95),
+                                  "n": len(ttft)}
     # The strongest evidence of speed is not a duration at all: on these turns the
     # first translated token was already on the wire before the speaker had stopped.
     simultaneous = [t for t in full

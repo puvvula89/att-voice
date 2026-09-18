@@ -143,6 +143,52 @@ def test_summary_measures_the_model_from_when_audio_left_the_bridge(client):
     assert "mean_ms" not in legs["pstn_in"]
 
 
+def test_model_leg_splits_into_first_token_then_voicing_it(client):
+    """Time to first token is the text stamp; first audio is that token voiced."""
+    c, root = client
+    write_events(root, "conv5c", [
+        {"event": "speech_onset", "ts": 10.0, "direction": "d", "utterance": 1},
+        {"event": "utterance", "ts": 20.0, "direction": "d", "utterance": 1,
+         "send_ms": 50, "ttft_ms": 2250, "ttfa_ms": 3050, "first_send_ms": 3051},
+    ])
+    summary = c.get("/api/calls/conv5c").json()["summary"]
+    parts = {p["key"]: p for p in
+             next(l for l in summary["legs"] if l["key"] == "model")["parts"]}
+
+    assert summary["first_token"]["mean_ms"] == 2200   # 2250 text, less the 50 ms buffer
+    assert summary["model"]["mean_ms"] == 3000         # 3050 audio, less the same buffer
+    assert parts["ttft"]["mean_ms"] == 2200
+    assert parts["vocalize"]["mean_ms"] == 800         # 3050 - 2250, voicing the token
+    assert parts["ttft"]["mean_ms"] + parts["vocalize"]["mean_ms"] \
+        == summary["model"]["mean_ms"]
+
+
+def test_impossible_text_ordering_is_left_out_of_the_split(client):
+    """Text and audio are attributed by separate burst detectors and can disagree.
+
+    A turn reporting its first text *after* its first audio would give a negative
+    voicing time, so it is excluded rather than charted.
+    """
+    c, root = client
+    write_events(root, "conv5d", [
+        e for n, ttft, ttfa in ((1, 2250, 3050), (2, 6092, 2965))  # turn 2 is impossible
+        for e in (
+            {"event": "speech_onset", "ts": n * 60.0, "direction": "d", "utterance": n},
+            {"event": "utterance", "ts": n * 60.0 + 9, "direction": "d", "utterance": n,
+             "send_ms": 50, "ttft_ms": ttft, "ttfa_ms": ttfa, "first_send_ms": ttfa + 1},
+        )
+    ])
+    summary = c.get("/api/calls/conv5d").json()["summary"]
+    parts = {p["key"]: p for p in
+             next(l for l in summary["legs"] if l["key"] == "model")["parts"]}
+
+    # Only the sane turn informs the split, so voicing never comes out negative.
+    assert summary["first_token"]["n"] == 1
+    assert parts["vocalize"]["mean_ms"] == 800
+    # Both turns still count toward the model leg itself, which needs no text stamp.
+    assert summary["model"]["n"] == 2
+
+
 def test_summary_counts_turns_translated_before_the_speaker_stopped(client):
     """Simultaneity is the clearest evidence of speed, so it is counted explicitly."""
     c, root = client

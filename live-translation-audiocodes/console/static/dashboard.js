@@ -100,15 +100,18 @@ function tiles(data) {
 
   const sec = (v) => (v == null ? "—" : (v / 1000).toFixed(2));
   const m = s.model;
+  const ft = s.first_token;
   const sim = s.simultaneous;
 
   // The model's own leg leads and everything else is context for it: this page is
   // shown to answer "how fast is Live Translate", not "how slow is the call".
   box.append(
-    tile("Model, first token", m ? sec(m.mean_ms) : "—", m ? "s" : "",
-      "Average from audio leaving the bridge to the first translated token coming back"),
-    tile("Slowest 1 in 20", m ? sec(m.p95_ms) : "—", m ? "s" : "",
-      "p95, not the maximum — one outlier should not set the number you quote"),
+    tile("Model, first token", ft ? sec(ft.mean_ms) : (m ? sec(m.mean_ms) : "—"),
+      ft || m ? "s" : "",
+      ft ? "Audio leaving the bridge to the first translated token coming back"
+         : "Audio leaving the bridge to the first translated audio coming back"),
+    tile("First audio out", m ? sec(m.mean_ms) : "—", m ? "s" : "",
+      "The same token voiced — this is what the listener actually hears"),
     tile("Everything else", sec((s.mean_ms ?? 0) - (m ? m.mean_ms : 0)),
       s.mean_ms == null ? "" : "s",
       "Every stage the bridge owns, added together"),
@@ -153,6 +156,21 @@ function journey(data) {
                                                         : secs(leg.mean_ms)));
     if (!leg.unmeasured && leg.share != null) {
       seg.append(el("div", "journey-share", `${Math.round(leg.share * 100)}%`));
+    }
+    // The model's leg splits again: reaching the first translated token, then
+    // voicing it. Nested inside its own bar so it reads as a breakdown of that
+    // time rather than as two more stages of the call.
+    if (leg.parts && leg.parts.length) {
+      const inner = el("div", "journey-split");
+      leg.parts.forEach((p) => {
+        const part = el("div", `journey-part journey-part-${p.key}`);
+        part.style.flex = `${Math.max(p.mean_ms, 1)} 0 0`;
+        part.append(el("div", "journey-part-label", p.label),
+                    el("div", "journey-part-time", secs(p.mean_ms)));
+        part.title = `${p.label} — ${p.note}`;
+        inner.append(part);
+      });
+      seg.append(inner);
     }
     seg.title = `${leg.start} → ${leg.end}`;
     track.append(seg);
