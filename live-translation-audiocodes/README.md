@@ -73,9 +73,10 @@ round trip acoustically.
 | `bridge/audio_transcode.py` | Coder negotiation and PCM/μ-law conversion |
 | `bridge/metrics.py` | Utterance detection, per-hop timings, event log, recordings |
 | `bridge/settings.py` | Caller language, shared between the console and the bridge |
-| `bridge/echo.py` / `bridge/dialout.py` / `bridge/pairing.py` | M0 echo, outbound dial, leg pairing |
+| `bridge/echo.py` / `bridge/pairing.py` | M0 echo, leg pairing |
 | `console/` | Live transcript and latency dashboard |
-| `deploy/cloudrun.sh` | Deploy, pull logs, tear down |
+| `deploy/cloudrun.sh` | Deploy and pull logs |
+| `deploy/teardown.sh` | Remove every billable resource this POC created |
 | `tests/` | Unit tests and a fake VoiceAI Connect client (`tests/smoke/`) |
 
 ---
@@ -99,25 +100,13 @@ gcloud auth application-default login
 gcloud config set project YOUR_PROJECT_ID
 ```
 
-### 2. Enable the required APIs (once per project)
+### 2. APIs and build permissions
 
-```bash
-gcloud services enable aiplatform.googleapis.com run.googleapis.com \
-  cloudbuild.googleapis.com artifactregistry.googleapis.com
-```
-
-Cloud Build runs as the default compute service account, which needs build
-permissions on a new project:
-
-```bash
-NUM=$(gcloud projects describe YOUR_PROJECT_ID --format='value(projectNumber)')
-for ROLE in cloudbuild.builds.builder logging.logWriter \
-            artifactregistry.writer storage.objectAdmin; do
-  gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
-    --member "serviceAccount:${NUM}-compute@developer.gserviceaccount.com" \
-    --role "roles/${ROLE}"
-done
-```
+Nothing to do: `deploy/cloudrun.sh up` enables `run`, `cloudbuild`,
+`artifactregistry` and `aiplatform` on the project, and grants the Compute Engine
+default service account the builder role that `--source` deploys need. Both steps
+are idempotent, so they cost a few seconds on a project that already has them and
+save a confusing first-deploy failure on one that does not.
 
 ### 3. Create a virtual environment and install dependencies
 
@@ -132,15 +121,19 @@ python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
 cp .env.example .env
 ```
 
+Only four values are required — `GOOGLE_CLOUD_PROJECT`, `AUDIOCODES_TOKEN`,
+`CALLER_LANGUAGE` and `AGENT_MODE`. Everything else has a working default.
+
 | Variable | Notes |
 |---|---|
-| `AUDIOCODES_TOKEN` | Any secret; the same value goes on the Live Hub bot connection |
-| `GOOGLE_CLOUD_PROJECT` | Your project |
+| `AUDIOCODES_TOKEN` | Any secret; the same value goes on the Live Hub bot connection. Generate one with `python3 -c "import secrets; print(secrets.token_urlsafe(32))"` |
+| `GOOGLE_CLOUD_PROJECT` | Your project. The deploy script enables the APIs it needs and creates its own service account here |
 | `GOOGLE_CLOUD_LOCATION` | `global` — Live Translate is served from the global endpoint |
 | `LIVE_TRANSLATE_MODEL` | `gemini-3.5-live-translate-preview` |
 | `CALLER_LANGUAGE` | Starting language for the caller leg; the console can change it |
-| `AGENT_MODE` | `dialin` (two inbound calls) \| `dialout` \| `loopback` |
+| `AGENT_MODE` | `dialin` (two inbound calls) \| `loopback` (one phone, hears itself) |
 | `ECHO_TO_AGENT` | Leave `false` — see *Echo and crosstalk* below |
+| `REGION` / `SERVICE` | Cloud Run placement and service name; both default sensibly |
 
 `.env` is gitignored. Rotate `AUDIOCODES_TOKEN` if it has ever been pasted anywhere,
 and move it to Secret Manager before this leaves the lab.
@@ -151,15 +144,21 @@ and move it to Secret Manager before this leaves the lab.
 ./deploy/cloudrun.sh up
 ```
 
-It creates a dedicated service account with `roles/aiplatform.user`, builds the
-container, and deploys with startup CPU boost, CPU always allocated, and
-`min-instances=1`. It prints:
+One command, on any project. It checks `.env` is present and that the four required
+values are set, verifies you are signed in and can see the project, enables the APIs,
+grants build permissions, creates a dedicated service account with
+`roles/aiplatform.user`, builds the container, and deploys with startup CPU boost,
+CPU always allocated, and `min-instances=1`. It prints:
 
 ```
 Bot URL:   wss://<service>.run.app/audiocodes-ws
 Live call: https://<service>.run.app/console/
 Dashboard: https://<service>.run.app/console/dashboard
 ```
+
+Re-run it to redeploy; every step is idempotent. Nothing about the project is baked
+into the repo, so a different project needs only a different `GOOGLE_CLOUD_PROJECT`
+in `.env`.
 
 `max-instances` is pinned to 1 on purpose: the two call legs are paired **in process**,
 so a second instance would never see the first leg.
@@ -260,25 +259,31 @@ translated audio and it appears in the transcript. Use headphones or separate ro
 
 ## Teardown
 
+`min-instances=1` bills while idle, so tear it down as soon as you are finished.
+
 ```bash
-./deploy/cloudrun.sh down
+./deploy/teardown.sh          # show what exists, delete nothing
+./deploy/teardown.sh --yes    # delete it
 ```
 
-Deletes the Cloud Run service, removes the `roles/aiplatform.user` binding, and deletes
-the service account. `min-instances=1` bills while idle, so tear it down when you are
-finished.
+Without `--yes` it only lists what it found, so you can see what is about to go.
+With `--yes` it removes every billable thing this POC created, then re-checks and
+tells you if anything survived:
+
+| Removed | Why it matters |
+|---|---|
+| Cloud Run service | The `min-instances=1` instance, which bills while idle |
+| Artifact Registry repo `cloud-run-source-deploy` | One container image per deploy, billed for storage after the service is gone |
+| Build staging objects in `gs://<project>_cloudbuild` | Source tarballs left by `--source` deploys |
+| Service account and its `roles/aiplatform.user` binding | Leaves no identity behind |
+
+Enabled APIs are deliberately left alone: they cost nothing on their own, and other
+work in the project may depend on them.
 
 Stop the local processes too:
 
 ```bash
 pkill -f "bridge.server:app"; pkill -f "console.app:app"; pkill ngrok
-```
-
-Container images stay in Artifact Registry. Remove them if you want a clean project:
-
-```bash
-gcloud artifacts repositories delete cloud-run-source-deploy \
-  --location YOUR_REGION --project YOUR_PROJECT_ID
 ```
 
 The Live Hub bot connection and routing rule are deleted in the AudioCodes console.

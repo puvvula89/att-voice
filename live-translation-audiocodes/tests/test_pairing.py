@@ -22,14 +22,12 @@ def test_dialin_pairs_next_call_with_oldest_waiting_caller():
     asyncio.run(run())
 
 
-def test_failed_dialout_releases_waiting_caller():
+def test_second_agent_cannot_take_an_already_paired_caller():
     async def run():
         reg = CallRegistry()
-        pair = reg.create("caller-1")
-        pair.agent_conversation_id = "agent-conv"
-        reg.fail_dialout("unrelated")
-        assert not pair.dialout_failed.is_set()
-        reg.fail_dialout("agent-conv")
-        assert pair.dialout_failed.is_set()
+        reg.create("caller-1")
+        assert reg.join("caller-1", object(), object()) is not None
+        # A third call arriving must not hijack a pair that already has its agent.
+        assert reg.join("caller-1", object(), object()) is None
 
     asyncio.run(run())

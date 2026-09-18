@@ -1,11 +1,9 @@
 """Translation bridge — AudioCodes Bot API WebSocket endpoint.
 
-AGENT_MODE=dialout: an inbound call is the caller leg. The bridge
-dials the agent through the dialout API, pairs the agent leg by the caller's
-conversation ID, and crosses two Live Translate sessions between the legs.
-
-AGENT_MODE=dialin: the agent calls the same number; the next inbound call after a
-waiting caller becomes the agent leg (lab pairing by arrival order).
+AGENT_MODE=dialin: two inbound calls. The first is the caller leg; the agent calls
+the same number and the next inbound call after a waiting caller becomes the agent
+leg (lab pairing by arrival order). Two Live Translate sessions are crossed between
+the legs, one per direction.
 
 AGENT_MODE=loopback: one leg hears its own translation, for
 single-phone testing.
@@ -23,7 +21,6 @@ from fastapi import FastAPI, WebSocket
 from bridge.audiocodes_gateway import AudioCodesGateway
 from bridge.call import EventPump, run_direction, run_pair, wait_for_start
 from bridge.channels import InboundEnd
-from bridge.dialout import DialoutClient
 from bridge.echo import EchoTranslator
 from bridge.metrics import CallMetrics
 from bridge.pairing import CallRegistry
@@ -35,7 +32,6 @@ log = logging.getLogger("bridge")
 
 app = FastAPI()
 registry = CallRegistry()
-AGENT_JOIN_TIMEOUT_S = 60
 DIALIN_WAIT_S = 180
 
 # Serve the console from this process when SERVE_CONSOLE is set, so a deployed
@@ -113,17 +109,14 @@ async def audiocodes_ws(websocket: WebSocket):
     try:
         start = await wait_for_start(gateway, events, _greeting())
         if start is None:
-            registry.fail_dialout(gateway.conversation_id)
             return
         mode = os.environ.get("AGENT_MODE", "loopback")
-        caller_conv = (start.parameters.get("dialoutMetadata") or {}).get("callerConversationId")
-        if mode == "dialin" and caller_conv is None:
-            # Dial-in: the next inbound call after a waiting caller is the agent.
-            caller_conv = registry.waiting_caller()
+        # The next inbound call after a waiting caller is the agent leg.
+        caller_conv = registry.waiting_caller() if mode == "dialin" else None
         if caller_conv:
             await _agent_leg(gateway, events, caller_conv)
-        elif mode in ("dialout", "dialin"):
-            await _caller_leg(gateway, events, dial=(mode == "dialout"))
+        elif mode == "dialin":
+            await _caller_leg(gateway, events)
         else:
             metrics = CallMetrics(gateway.conversation_id, "loopback")
             await run_direction(events, _to_agent(), gateway, metrics)
@@ -132,40 +125,23 @@ async def audiocodes_ws(websocket: WebSocket):
         await gateway.end()
 
 
-async def _caller_leg(gateway, events, dial: bool) -> None:
+async def _caller_leg(gateway, events) -> None:
     conv = gateway.conversation_id
     pair = registry.create(conv)
     try:
-        if dial:
-            dialout = DialoutClient(
-                api_url=os.environ.get("LIVEHUB_API_URL", "https://livehub.audiocodes.io"),
-                client_id=os.environ["LIVEHUB_CLIENT_ID"],
-                client_secret=os.environ["LIVEHUB_CLIENT_SECRET"],
-            )
-            pair.agent_conversation_id = await dialout.dial(
-                bot=os.environ.get("LIVEHUB_BOT_NAME") or gateway.bot_name,
-                target=os.environ["AGENT_NUMBER"],
-                caller=os.environ["LIVEHUB_CALLER_ID"],
-                metadata={"callerConversationId": conv},
-            )
-        else:
-            log.info("caller waiting for agent to dial in conv=%s", conv)
+        log.info("caller waiting for agent to dial in conv=%s", conv)
         # Caller audio before the agent answers has nowhere to go; drop it.
         events.discard_audio = True
         joined = asyncio.create_task(pair.agent_joined.wait())
-        failed = asyncio.create_task(pair.dialout_failed.wait())
         hung_up = asyncio.create_task(_next_end(events))
-        timeout = AGENT_JOIN_TIMEOUT_S if dial else DIALIN_WAIT_S
-        await asyncio.wait({joined, failed, hung_up}, timeout=timeout,
+        await asyncio.wait({joined, hung_up}, timeout=DIALIN_WAIT_S,
                            return_when=asyncio.FIRST_COMPLETED)
         joined.cancel()
-        failed.cancel()
         if hung_up.done():
             return  # caller hung up before the agent answered
         hung_up.cancel()
         if not pair.agent_joined.is_set():
-            log.warning("agent leg not connected conv=%s (dialout %s)", conv,
-                        "failed" if pair.dialout_failed.is_set() else "timed out")
+            log.warning("agent leg not connected conv=%s (timed out)", conv)
             return
         events.discard_audio = False
         log.info("paired caller=%s agent=%s", conv, pair.agent_gateway.conversation_id)

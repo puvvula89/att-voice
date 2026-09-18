@@ -11,7 +11,24 @@
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
+
+if [ ! -f ./.env ]; then
+  echo "No .env here. Copy the template and fill in the four required values:" >&2
+  echo "    cp .env.example .env" >&2
+  exit 1
+fi
 set -a; . ./.env; set +a
+
+# Checked explicitly rather than left to `set -u`, which would fail later with an
+# unbound-variable trace that says nothing about what to do.
+missing=""
+for var in GOOGLE_CLOUD_PROJECT AUDIOCODES_TOKEN CALLER_LANGUAGE; do
+  [ -n "${!var:-}" ] || missing="$missing $var"
+done
+if [ -n "$missing" ]; then
+  echo "Set these in .env before deploying:$missing" >&2
+  exit 1
+fi
 
 SERVICE=${SERVICE:-live-translation-bridge}
 REGION=${REGION:-us-east4}
@@ -21,13 +38,37 @@ SA="${SA_NAME}@${PROJECT}.iam.gserviceaccount.com"
 
 case "${1:-}" in
 up)
+  command -v gcloud >/dev/null || { echo "gcloud is not installed." >&2; exit 1; }
+  gcloud auth list --filter=status:ACTIVE --format='value(account)' | grep -q . \
+    || { echo "Not signed in. Run: gcloud auth login" >&2; exit 1; }
+  gcloud projects describe "$PROJECT" >/dev/null 2>&1 \
+    || { echo "Cannot see project '$PROJECT'. Check the ID and your access." >&2; exit 1; }
+
+  # Enabling is idempotent and takes seconds on a project that already has them.
+  echo "==> enabling required APIs on $PROJECT"
+  gcloud services enable run.googleapis.com cloudbuild.googleapis.com \
+    artifactregistry.googleapis.com aiplatform.googleapis.com --project "$PROJECT"
+
+  # `run deploy --source` builds through Cloud Build, which runs as the Compute
+  # Engine default service account. On a project where that account has never built
+  # anything the build fails on storage/logging permissions, so grant the builder
+  # role up front rather than leaving a first deploy to fail confusingly.
+  PROJECT_NUMBER=$(gcloud projects describe "$PROJECT" --format='value(projectNumber)')
+  BUILD_SA="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
+  gcloud projects add-iam-policy-binding "$PROJECT" \
+    --member "serviceAccount:$BUILD_SA" --role roles/cloudbuild.builds.builder \
+    --condition=None >/dev/null 2>&1 || true
+
   if ! gcloud iam service-accounts describe "$SA" --project "$PROJECT" >/dev/null 2>&1; then
     echo "==> creating service account $SA"
     gcloud iam service-accounts create "$SA_NAME" --project "$PROJECT" \
       --display-name "Live translation bridge"
-    gcloud projects add-iam-policy-binding "$PROJECT" \
-      --member "serviceAccount:$SA" --role roles/aiplatform.user >/dev/null
   fi
+  # Re-applied every deploy: harmless when already bound, and it repairs a project
+  # where the binding was removed without the account being deleted.
+  gcloud projects add-iam-policy-binding "$PROJECT" \
+    --member "serviceAccount:$SA" --role roles/aiplatform.user \
+    --condition=None >/dev/null
 
   echo "==> deploying $SERVICE to $REGION"
   # --no-cpu-throttling keeps the event loop running between requests, which a
@@ -47,7 +88,7 @@ up)
     --max-instances 1 \
     --concurrency 20 \
     --timeout 3600 \
-    --set-env-vars "^|^TRANSLATOR=${TRANSLATOR:-gemini}|GOOGLE_CLOUD_PROJECT=${PROJECT}|GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION:-global}|LIVE_TRANSLATE_MODEL=${LIVE_TRANSLATE_MODEL}|ANSWER_PROMPT=${ANSWER_PROMPT:-silence}|CALLER_LANGUAGE=${CALLER_LANGUAGE}|AGENT_MODE=${AGENT_MODE:-dialin}|ECHO_TO_AGENT=${ECHO_TO_AGENT:-false}|SERVE_CONSOLE=true|AUDIOCODES_TOKEN=${AUDIOCODES_TOKEN}"
+    --set-env-vars "^|^TRANSLATOR=${TRANSLATOR:-gemini}|GOOGLE_CLOUD_PROJECT=${PROJECT}|GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION:-global}|LIVE_TRANSLATE_MODEL=${LIVE_TRANSLATE_MODEL:-gemini-3.5-live-translate-preview}|ANSWER_PROMPT=${ANSWER_PROMPT:-silence}|CALLER_LANGUAGE=${CALLER_LANGUAGE}|AGENT_MODE=${AGENT_MODE:-dialin}|ECHO_TO_AGENT=${ECHO_TO_AGENT:-false}|SERVE_CONSOLE=true|AUDIOCODES_TOKEN=${AUDIOCODES_TOKEN}"
 
   URL=$(gcloud run services describe "$SERVICE" --project "$PROJECT" --region "$REGION" \
         --format 'value(status.url)')

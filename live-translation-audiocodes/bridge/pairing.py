@@ -1,8 +1,8 @@
-"""Pairs the caller leg with the agent leg the bridge dialed out for it.
+"""Pairs the caller leg with the agent leg.
 
-The dialout request carries the caller's conversation ID as metadata; the agent
-leg's `start` activity returns it in `dialoutMetadata`. In-memory: one bridge
-process owns both legs of a call (POC scope).
+Both legs dial in to the same number: the first inbound call waits, and the next
+one to arrive becomes its agent leg. In-memory: one bridge process owns both legs
+of a call (POC scope).
 """
 from __future__ import annotations
 
@@ -15,9 +15,7 @@ class CallPair:
     caller_conversation_id: str
     agent_gateway: object | None = None
     agent_events: object | None = None
-    agent_conversation_id: str = ""
     agent_joined: asyncio.Event = field(default_factory=asyncio.Event)
-    dialout_failed: asyncio.Event = field(default_factory=asyncio.Event)
     finished: asyncio.Event = field(default_factory=asyncio.Event)
 
 
@@ -42,12 +40,6 @@ class CallRegistry:
     def waiting_caller(self) -> str | None:
         """Oldest caller still waiting for an agent (dial-in pairing)."""
         return next((cid for cid, p in self._pairs.items() if p.agent_gateway is None), None)
-
-    def fail_dialout(self, agent_conversation_id: str) -> None:
-        """The dialed leg ended before answering: release the waiting caller."""
-        for pair in self._pairs.values():
-            if pair.agent_conversation_id == agent_conversation_id:
-                pair.dialout_failed.set()
 
     def remove(self, caller_conversation_id: str) -> None:
         self._pairs.pop(caller_conversation_id, None)
