@@ -14,69 +14,55 @@ Scope and milestones: `live-translation-poc-prd.md`.
 
 ## Architecture
 
-One Cloud Run service. Audio arrives over the AudioCodes Bot API WebSocket, is
-transcoded, and is streamed into a Live Translate session per direction. Translated
-audio goes back out on the other leg. The console is served by the same service so a
-call can be watched live; it reads the event files the bridge writes.
+Audio flows left to right and back again. Each speaker's words go out to the model and
+return in the other person's language.
 
 ```
-   CALLER  ·  speaks Hindi                                    AGENT  ·  speaks English
-   ═══════════════════════                                    ══════════════════════════
+      PHONES                  TELEPHONY                 BRIDGE                    MODEL
 
-  ┌────────────────────────────┐                            ┌────────────────────────────┐
-  │  Phone                     │                            │  Phone                     │
-  └────────────────────────────┘                            └────────────────────────────┘
-                │      ▲                                                │      ▲
-         speech │      │ translated                             speech  │      │ translated
-                ▼      │                                                ▼      │
-  ╔═══════════════════════════════════════════════════════════════════════════════════════╗
-  ║  PSTN   →   AudioCodes Live Hub / VoiceAI Connect                                     ║
-  ║                                                                                       ║
-  ║  Two inbound calls, paired by arrival order: first = caller, second = agent            ║
-  ║  (AGENT_MODE=dialin). Not a conference — two independent legs.                         ║
-  ╚═══════════════════════════════════════════════════════════════════════════════════════╝
-                │      ▲                                                │      ▲
-                │      │        Bot API WebSocket  ·  userStream in / playStream out
-                ▼      │                                                ▼      │
-  ┌───────────────────────────────────────────────────────────────────────────────────────┐
-  │  BRIDGE   ·   Cloud Run: live-translation-bridge                                      │
-  │                                                                                       │
-  │   /audiocodes-ws   handshake · μ-law/PCM transcode · utterance detection · timing      │
-  │   /console/        live transcript and latency dashboard (SERVE_CONSOLE=true)          │
-  │                                                                                       │
-  │   caller audio ──► session A  target = en        ──► played to the agent               │
-  │   agent  audio ──► session B  target = <caller>  ──► played to the caller              │
-  └───────────────────────────────────────────────────────────────────────────────────────┘
-                │      ▲                                                │      ▲
-                ▼      │                                                ▼      │
-  ┌───────────────────────────────────────────────────────────────────────────────────────┐
-  │  VERTEX AI   ·   gemini-3.5-live-translate-preview   (location: global)                │
-  │                                                                                        │
-  │  Bidirectional streaming. Auto-detects the source language. Returns translated audio   │
-  │  plus input and output transcriptions. Replicates the speaker's voice — not optional.  │
-  └───────────────────────────────────────────────────────────────────────────────────────┘
+  ┌──────────────┐        ┌──────────────┐        ┌──────────────┐        ┌──────────────┐
+  │    Caller    │───────►│              │───────►│              │───────►│   Gemini     │
+  │    Hindi     │◄───────│  AudioCodes  │◄───────│  Cloud Run   │◄───────│    Live      │
+  ├──────────────┤        │   Live Hub   │        │              │        │  Translate   │
+  │    Agent     │───────►│              │───────►│              │───────►│              │
+  │   English    │◄───────│              │◄───────│              │◄───────│              │
+  └──────────────┘        └──────────────┘        └──────────────┘        └──────────────┘
+                                                         │
+                                                         ▼
+                                                  ┌──────────────┐
+                                                  │   Console    │
+                                                  │  /console/   │
+                                                  └──────────────┘
 ```
 
-### What is measured, and what cannot be
+| Component | What it does |
+|---|---|
+| **Phones** | Two ordinary phone calls. Each person speaks their own language and hears the other in theirs. |
+| **AudioCodes Live Hub** | Answers the calls off the public phone network and streams the audio to the bridge. Pairs the two calls: first in is the caller, second is the agent. |
+| **Bridge** (Cloud Run) | Runs one translation session per direction, sends each speaker's audio to the model, plays the result to the other person, and times every step. |
+| **Gemini Live Translate** | Speech in, translated speech out, in one step. Detects the source language itself and keeps the speaker's voice. |
+| **Console** | A web page showing the call as it happens and the latency breakdown afterwards. Served by the bridge. |
 
-Timings are stamped inside the bridge and are cumulative from speech onset.
+### What the timings cover
+
+The bridge can only time the part it can see. The phone network carries no clock it
+can read, so the first and last legs are estimated separately.
 
 ```
-   speech ──► [ mic → PSTN → VAIC ] ──► bridge ──► [ send buffer ] ──► model ──► bridge ──► [ VAIC → PSTN → ear ]
-              └──── not observable ────┘           └──────── measured ────────┘           └── not observable ──┘
+   speaks ──►  telephony  ──►  BRIDGE  ──►  MODEL  ──►  BRIDGE  ──►  telephony  ──► hears
+               (not timed)     └──────────  measured  ──────────┘    (not timed)
 ```
 
 | Hop | Meaning |
 |---|---|
-| Send buffer | Audio waiting for a full 100 ms chunk before it goes to the model |
+| Send buffer | Audio waiting for a full chunk before it goes to the model |
 | Model | Gemini producing the first translated audio |
-| Forward | Handing that audio to AudioCodes |
+| Forward | Handing that audio back to AudioCodes |
 
-VoiceAI Connect sends audio chunks with no timestamp, so the two telephony legs carry
-no clock the bridge can read. Measure them together by placing a call with
-`TRANSLATOR=echo` and timing the round trip acoustically.
+To measure the two untimed legs, place a call with `TRANSLATOR=echo` and time the
+round trip acoustically.
 
-### Components
+### Code layout
 
 | Path | Purpose |
 |---|---|
