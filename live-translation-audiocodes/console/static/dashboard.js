@@ -100,7 +100,8 @@ function tiles(data) {
 
   const sec = (v) => (v == null ? "—" : (v / 1000).toFixed(2));
   const m = s.model;
-  const ft = s.first_token;
+  const perDir = s.per_direction || [];
+  const slowest = perDir.slice().sort((a, b) => b.mean_ms - a.mean_ms)[0];
   const sim = s.simultaneous;
 
   // The model's own leg leads and everything else is context for it: this page is
@@ -111,8 +112,9 @@ function tiles(data) {
   box.append(
     tile("Model, first audio", m ? sec(m.mean_ms) : "—", m ? "s" : "",
       "Audio leaving the bridge to the first translated audio coming back"),
-    tile("Model, to transcript", ft ? sec(ft.mean_ms) : "—", ft ? "s" : "",
-      "When the model's caption of that translation arrived"),
+    tile("Slowest direction", slowest ? sec(slowest.mean_ms) : "—", slowest ? "s" : "",
+      slowest ? `${DIRECTION_NAMES[slowest.key] || slowest.key}, bridge in to bridge out`
+              : "Only one direction was measured"),
     tile("Everything else", sec((s.mean_ms ?? 0) - (m ? m.mean_ms : 0)),
       s.mean_ms == null ? "" : "s",
       "Every stage the bridge owns, added together"),
@@ -158,21 +160,6 @@ function journey(data) {
     if (!leg.unmeasured && leg.share != null) {
       seg.append(el("div", "journey-share", `${Math.round(leg.share * 100)}%`));
     }
-    // The model's leg splits again, against the caption it emits alongside the
-    // translated audio. Nested inside its own bar so it reads as a hint about that
-    // time rather than as two more stages of the call.
-    if (leg.parts && leg.parts.length) {
-      const inner = el("div", "journey-split");
-      leg.parts.forEach((p) => {
-        const part = el("div", `journey-part journey-part-${p.key}`);
-        part.style.flex = `${Math.max(p.mean_ms, 1)} 0 0`;
-        part.append(el("div", "journey-part-label", p.label),
-                    el("div", "journey-part-time", secs(p.mean_ms)));
-        part.title = `${p.label} — ${p.note}`;
-        inner.append(part);
-      });
-      seg.append(inner);
-    }
     seg.title = `${leg.start} → ${leg.end}`;
     track.append(seg);
   });
@@ -193,6 +180,31 @@ function journey(data) {
     `${l.owner}: ${l.unmeasured ? "not measured" : secs(l.mean_ms)}`).join(", "));
 
   body.append(track, marks);
+
+  // The same measurement, split by who was speaking. Each direction runs its own
+  // session into its own target language, so they are not interchangeable -- and an
+  // average across both hides which one a listener is actually waiting on.
+  const perDir = s.per_direction || [];
+  if (perDir.length > 1) {
+    const widest = Math.max(...perDir.map((d) => d.mean_ms));
+    const box = el("div", "dirbars");
+    perDir.forEach((d) => {
+      const row = el("div", "dirbar-row");
+      const shades = SHADES[d.key] || SHADES["caller-to-agent"];
+      row.append(el("div", "dirbar-label", DIRECTION_NAMES[d.key] || d.key));
+      const track2 = el("div", "dirbar-track");
+      const fill = el("div", "dirbar-fill");
+      fill.style.width = `${(d.mean_ms / widest) * 100}%`;
+      fill.style.background = `var(${shades[1]})`;
+      track2.append(fill);
+      row.append(track2, el("div", "dirbar-time", secs(d.mean_ms)));
+      row.title = `${d.n} turn(s), p95 ${secs(d.p95_ms)}`;
+      box.append(row);
+    });
+    body.append(el("p", "section-note dirbars-head",
+      "Bridge in to bridge out, by who was speaking:"), box);
+  }
+
   body.append(el("p", "section-note",
     `Average of ${s.measured ?? 0} measured turn(s) across both directions, end to end `
     + `${secs(s.mean_ms)} from the bridge hearing speech to translated audio leaving it. `
@@ -307,27 +319,105 @@ function chart(direction, utterances) {
   return box;
 }
 
+/* Speech against the translated audio answering it, both anchored to the same zero
+   (speech onset), which is what makes them comparable: every stamp in `metrics.py`
+   is measured from that instant. The picture is the overlap -- a turn where the
+   translation starts before the speech bar ends was being interpreted live, not
+   after the fact. Colour carries it; the numbers are in the other tabs.
+
+   The translated audio's end is not timestamped anywhere, so its bar fades out
+   instead of drawing a finish line the data does not have. */
+function overlapChart(direction, utterances) {
+  const usable = utterances.filter((u) => u.speech_ms != null && u.ttfa_ms != null);
+  if (!usable.length) return null;
+
+  const max = Math.max(...usable.map((u) => Math.max(u.speech_ms, u.ttfa_ms * 1.35)));
+  const shades = SHADES[direction] || SHADES["caller-to-agent"];
+  const box = el("div");
+
+  const key = el("div", "overlap-legend");
+  [[shades[0], "Speech reaching the bridge"],
+   [shades[2], "Translated audio coming back"]].forEach(([shade, label]) => {
+    const item = el("div");
+    const sw = el("span", "key");
+    sw.style.background = `var(${shade})`;
+    item.append(sw, document.createTextNode(label));
+    key.append(item);
+  });
+  box.append(key);
+
+  usable.forEach((u) => {
+    const row = el("div", "overlap-row");
+    row.append(el("div", "n", `#${u.n}`));
+
+    const track = el("div", "overlap-track");
+    const pct = (ms) => `${(ms / max) * 100}%`;
+
+    const speech = el("div", "overlap-bar");
+    const spoken = el("span", "fill");
+    spoken.style.width = pct(u.speech_ms);
+    spoken.style.background = `var(${shades[0]})`;
+    speech.append(spoken);
+
+    const audio = el("div", "overlap-bar");
+    const gap = el("span", "pad");
+    gap.style.width = pct(u.ttfa_ms);
+    const heard = el("span", "fill open");
+    heard.style.width = pct(Math.max(max - u.ttfa_ms, max * 0.04));
+    heard.style.background = `var(${shades[2]})`;
+    audio.append(gap, heard);
+
+    const overlap = u.speech_ms - u.ttfa_ms;
+    const caption = overlap > 0
+      ? `Translation began ${secs(overlap)} before the speaker finished`
+      : `Translation began ${secs(-overlap)} after the speaker finished`;
+    track.append(speech, audio);
+    track.title = `Spoke for ${secs(u.speech_ms)}; translated audio back at `
+                + `${secs(u.ttfa_ms)}. ${caption}.`;
+    track.setAttribute("role", "img");
+    track.setAttribute("aria-label", track.title);
+
+    row.append(track, el("div", "total", overlap > 0 ? secs(overlap) : "—"));
+    box.appendChild(row);
+  });
+  return box;
+}
+
+/* Every stage, with what it means beside it -- the table is read by people who did
+   not build the bridge, and a bare row label does not tell them whose time it is.
+
+   Every row is a positive duration. The turns where translation began before the
+   speaker finished and the turns where it did not are separate rows, because one
+   signed number cannot be read down a min/median/max column -- there the smallest
+   figure is the largest head start. Rows with nothing measured are dropped: an empty
+   row invites the reader to wonder what broke. */
 function statsTable(stats) {
   const table = el("table");
   const head = el("tr");
-  ["Stage", "Measured", "Min", "Median", "p95", "Max"].forEach((h) =>
-    head.appendChild(el("th", null, h)));
+  ["Stage", "Measured", "Min", "Median", "p95", "Max"].forEach((h, i) =>
+    head.appendChild(el("th", i === 0 ? "text" : null, h)));
   table.appendChild(el("thead")).appendChild(head);
 
   const body = el("tbody");
-  ["speech_ms", "model_ms", ...HOPS.map((h) => h.key), "total"].forEach((key) => {
+  ["speech_ms", "head_start_ms", "late_ms", ...HOPS.map((h) => h.key), "total"]
+      .forEach((key) => {
     const s = stats[key];
-    if (!s) return;
+    if (!s || !s.n) return;                 // nothing measured; do not print a blank row
+    const fmt = ms;
     const tr = el("tr");
+    const label = el("td", "text");
+    label.append(el("div", "stage-name", s.label));
+    if (s.description) label.append(el("div", "stage-note", s.description));
     tr.append(
-      el("td", null, s.label),
+      label,
       el("td", null, String(s.n)),
-      el("td", null, ms(s.min)),
-      el("td", null, ms(s.median)),
-      el("td", null, ms(s.p95)),
-      el("td", null, ms(s.max)),
+      el("td", null, fmt(s.min)),
+      el("td", null, fmt(s.median)),
+      el("td", null, fmt(s.p95)),
+      el("td", null, fmt(s.max)),
     );
     if (key === "speech_ms") tr.classList.add("row-muted");   // not a delay
+    if (key === "head_start_ms") tr.classList.add("row-good");
     body.appendChild(tr);
   });
   table.appendChild(body);
@@ -409,6 +499,14 @@ function renderDirection(name, d) {
       body.append(legend(name, sample), chart(name, d.utterances));
       return body;
     })(),
+    overlap: (() => {
+      const body = el("div", "card-body");
+      const chartEl = overlapChart(name, d.utterances);
+      body.append(chartEl || el("p", "section-note",
+        "This call carries no end-of-speech timing, so speech and translation "
+        + "cannot be placed on one axis."));
+      return body;
+    })(),
     hops: (() => {
       const body = el("div", "card-body flush");
       body.append(statsTable(d.stats));
@@ -423,7 +521,8 @@ function renderDirection(name, d) {
 
   const wrap = el("div");
   const tabs = el("div", "tabs");
-  const labels = { breakdown: "Per utterance", hops: "Per hop", transcript: "Transcript" };
+  const labels = { breakdown: "Per utterance", overlap: "Speech vs translation",
+                   hops: "Per stage", transcript: "Transcript" };
   const buttons = {};
 
   const select = (key) => {
@@ -459,7 +558,7 @@ function render(data) {
   const report = el("div");
 
   report.append(tiles(data));
-  report.append(card("One turn, start to finish",
+  report.append(card("Where an average turn's time goes",
     "Averaged across every measured turn in both directions.", journey(data)));
 
   // Detail sits below the headline, collapsed, for whoever wants to dig in.

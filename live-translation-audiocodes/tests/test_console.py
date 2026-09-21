@@ -176,8 +176,14 @@ def test_speech_spans_the_whole_turn_not_just_its_first_fragment(client):
     assert turn["ttfa_ms"] < turn["speech_ms"]
 
 
-def test_model_leg_splits_into_first_token_then_voicing_it(client):
-    """Time to first token is the text stamp; first audio is that token voiced."""
+def test_model_leg_is_not_split_against_the_transcript(client):
+    """The transcript stamp measured this code, not the model, so it is not charted.
+
+    `translator.events()` yields a message's transcript before its audio, so the gap
+    can never go negative, and `ttfa` waits for a chunk loud enough to pass
+    SILENT_RMS while the transcript does not. What is left quantises to the arrival
+    period of a server message rather than to anything the model did.
+    """
     c, root = client
     write_events(root, "conv5c", [
         {"event": "speech_onset", "ts": 10.0, "direction": "d", "utterance": 1},
@@ -185,41 +191,31 @@ def test_model_leg_splits_into_first_token_then_voicing_it(client):
          "send_ms": 50, "ttft_ms": 2250, "ttfa_ms": 3050, "first_send_ms": 3051},
     ])
     summary = c.get("/api/calls/conv5c").json()["summary"]
-    parts = {p["key"]: p for p in
-             next(l for l in summary["legs"] if l["key"] == "model")["parts"]}
+    model = next(l for l in summary["legs"] if l["key"] == "model")
 
-    assert summary["first_token"]["mean_ms"] == 2200   # 2250 text, less the 50 ms buffer
-    assert summary["model"]["mean_ms"] == 3000         # 3050 audio, less the same buffer
-    assert parts["ttft"]["mean_ms"] == 2200
-    assert parts["vocalize"]["mean_ms"] == 800         # 3050 - 2250, voicing the token
-    assert parts["ttft"]["mean_ms"] + parts["vocalize"]["mean_ms"] \
-        == summary["model"]["mean_ms"]
+    assert "parts" not in model
+    assert "first_token" not in summary
+    assert summary["model"]["mean_ms"] == 3000   # 3050 audio, less the 50 ms buffer
 
 
-def test_impossible_text_ordering_is_left_out_of_the_split(client):
-    """Text and audio are attributed by separate burst detectors and can disagree.
-
-    A turn reporting its first text *after* its first audio would give a negative
-    voicing time, so it is excluded rather than charted.
-    """
+def test_each_direction_is_averaged_bridge_in_to_bridge_out(client):
+    """The two directions run separate sessions, so an average across both hides
+    which one a listener is waiting on."""
     c, root = client
     write_events(root, "conv5d", [
-        e for n, ttft, ttfa in ((1, 2250, 3050), (2, 6092, 2965))  # turn 2 is impossible
+        e for direction, n, sent in (("caller-to-agent", 1, 3000), ("caller-to-agent", 2, 5000),
+                                     ("agent-to-caller", 1, 2000))
         for e in (
-            {"event": "speech_onset", "ts": n * 60.0, "direction": "d", "utterance": n},
-            {"event": "utterance", "ts": n * 60.0 + 9, "direction": "d", "utterance": n,
-             "send_ms": 50, "ttft_ms": ttft, "ttfa_ms": ttfa, "first_send_ms": ttfa + 1},
+            {"event": "speech_onset", "ts": n * 60.0, "direction": direction, "utterance": n},
+            {"event": "utterance", "ts": n * 60.0 + 20, "direction": direction, "utterance": n,
+             "send_ms": 50, "ttfa_ms": sent - 1, "first_send_ms": sent},
         )
     ])
-    summary = c.get("/api/calls/conv5d").json()["summary"]
-    parts = {p["key"]: p for p in
-             next(l for l in summary["legs"] if l["key"] == "model")["parts"]}
+    per = {d["key"]: d for d in c.get("/api/calls/conv5d").json()["summary"]["per_direction"]}
 
-    # Only the sane turn informs the split, so voicing never comes out negative.
-    assert summary["first_token"]["n"] == 1
-    assert parts["vocalize"]["mean_ms"] == 800
-    # Both turns still count toward the model leg itself, which needs no text stamp.
-    assert summary["model"]["n"] == 2
+    assert per["caller-to-agent"]["mean_ms"] == 4000   # (3000 + 5000) / 2
+    assert per["caller-to-agent"]["n"] == 2
+    assert per["agent-to-caller"]["mean_ms"] == 2000
 
 
 def test_summary_counts_turns_translated_before_the_speaker_stopped(client):
@@ -399,7 +395,11 @@ def test_stats_report_p95_and_unanswered_turns(client):
     write_events(root, "conv-p95", events)
     body = c.get("/api/calls/conv-p95").json()
     stats = body["directions"]["d"]["stats"]
-    assert stats["model_ms"]["p95"] >= stats["model_ms"]["median"]
+    # Every turn here was answered after the speaker stopped, so they land in the
+    # late row and the head-start row stays empty.
+    assert stats["late_ms"]["p95"] >= stats["late_ms"]["median"]
+    assert stats["late_ms"]["n"] == 20
+    assert stats["head_start_ms"]["n"] == 0
     assert body["summary"]["unanswered"] == 1
     assert body["summary"]["turns"] == 21
 
@@ -419,3 +419,21 @@ def test_regional_language_codes_are_narrowed_to_what_the_model_accepts(monkeypa
     # Anything unrecognised falls back rather than taking the call down.
     monkeypatch.setenv("CALLER_LANGUAGE", "klingon")
     assert bridge_settings.caller_language() == bridge_settings.DEFAULT_CALLER_LANGUAGE
+
+
+def test_turns_translated_before_the_speaker_stopped_are_reported_as_head_start(client):
+    """A signed number cannot be read down a min/median/max column, so the two cases
+    are separate rows and both are positive durations."""
+    c, root = client
+    # #1 and #2 were answered while still talking; #3 only after the speaker stopped.
+    events = (_turn(1, 100.0, speech_ms=9000, ttfa_ms=2500)
+              + _turn(2, 200.0, speech_ms=6000, ttfa_ms=2000)
+              + _turn(3, 300.0, speech_ms=1500, ttfa_ms=2300))
+    write_events(root, "conv-head", events)
+    stats = c.get("/api/calls/conv-head").json()["directions"]["d"]["stats"]
+
+    assert stats["head_start_ms"]["n"] == 2
+    assert stats["head_start_ms"]["min"] == 4000     # 6000 - 2000
+    assert stats["head_start_ms"]["max"] == 6500     # 9000 - 2500
+    assert stats["late_ms"]["n"] == 1
+    assert stats["late_ms"]["max"] == 800            # 2300 - 1500

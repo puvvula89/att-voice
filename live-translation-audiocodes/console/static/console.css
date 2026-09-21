@@ -717,3 +717,44 @@ tr.row-unanswered td { background: color-mix(in srgb, var(--warn, #b26a00) 7%, t
   background-image: repeating-linear-gradient(135deg, transparent 0 5px,
     rgba(255, 255, 255, .55) 5px 10px);
 }
+
+/* Speech and the translated audio answering it, on one shared time axis, so the
+   overlap between them is the picture: the listener hears the translation while
+   the speaker is still talking. Two rows per turn, aligned to the same zero. */
+.overlap-row { display: grid; grid-template-columns: 34px minmax(0, 1fr) 72px;
+               gap: 12px; align-items: center; margin-bottom: 10px; }
+.overlap-row .n { font-size: 12px; color: var(--ink-faint); }
+.overlap-row .total { font-size: 13.5px; font-weight: 500; text-align: right; }
+.overlap-track { display: flex; flex-direction: column; gap: 3px; }
+.overlap-bar { height: 13px; display: flex; }
+.overlap-bar .pad { background: none; }
+.overlap-bar .fill { border-radius: 2px; min-width: 2px; }
+/* The translated audio's end is not timestamped, so its bar fades out rather than
+   claiming a finish line. */
+.overlap-bar .fill.open { border-radius: 2px 0 0 2px;
+                          -webkit-mask-image: linear-gradient(to right, #000 55%, transparent);
+                          mask-image: linear-gradient(to right, #000 55%, transparent); }
+.overlap-legend { display: flex; gap: 18px; align-items: center; margin-bottom: 14px;
+                  font-size: 12.5px; color: var(--ink-soft); }
+.overlap-legend span.key { display: inline-block; width: 11px; height: 11px;
+                           border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+/* The headline measurement, split by who was speaking. Each direction is its own
+   session into its own target language, so the two are worth seeing apart. */
+.dirbars-head { margin-bottom: 8px; }
+.dirbars { margin-bottom: 18px; }
+.dirbar-row { display: grid; grid-template-columns: 130px minmax(0, 1fr) 64px;
+              gap: 12px; align-items: center; margin-bottom: 7px; }
+.dirbar-label { font-size: 13px; color: var(--ink-soft); }
+.dirbar-track { height: 14px; }
+.dirbar-fill { height: 100%; border-radius: 2px; min-width: 2px; }
+.dirbar-time { font-size: 13.5px; font-weight: 500; text-align: right; }
+
+/* The stage table explains itself: the name leads, the description sits under it in
+   the same cell so the two never drift apart as the table scrolls. */
+.stage-name { font-weight: 500; }
+.stage-note { font-size: 12px; color: var(--ink-faint); margin-top: 2px;
+              max-width: 46ch; line-height: 1.45; }
+/* The head-start row is the one good-news row in the table; give it a quiet tint
+   so it is not read as another latency. */
+.row-good { background: var(--good-wash, #f2f8f4); }

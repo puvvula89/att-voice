@@ -29,15 +29,33 @@ TURN_GAP_S = float(os.environ.get("TURN_GAP_S", "6"))
 # speaker talked -- but every other stamp runs from speech onset, so it has to be
 # subtracted before the model's own speed is visible. Reporting it explicitly is
 # what keeps a four-second sentence from reading as a four-second model.
-SPEECH = ("speech_ms", "Speech", "Speech onset to the last chunk carrying voice")
-MODEL = ("model_ms", "Model", "End of speech to the first translated audio back")
+SPEECH = ("speech_ms", "How long they spoke",
+          "How long the speaker talked. Not a delay \u2014 it is here so the rows "
+          "below can be read against it.")
+
+# `model_ms` is signed: negative when the model started translating before the speaker
+# stopped. A signed value cannot be read in a min/median/max table -- the smallest
+# number is the biggest head start -- so the two cases are reported as separate rows,
+# each a plain positive duration, each with the count of turns behind it.
+HEAD_START = ("head_start_ms", "Head start",
+              "The translation was already playing for this long before the speaker "
+              "finished their sentence. Bigger is better.")
+LATE = ("late_ms", "Arrived after they finished",
+        "On these turns the translation did not start until after the speaker had "
+        "stopped. This is the wait before the listener heard anything.")
 
 # Hops the dashboard charts, in the order audio travels. `send_ms` is the bridge's
 # own 100 ms send buffer; splitting it out keeps it from being charged to the model.
 HOPS = [
-    ("send_ms", "Send buffer", "Speech onset to the chunk leaving for the model"),
-    ("ttfa_ms", "Model", "Chunk sent to first translated audio back"),
-    ("first_send_ms", "Forward", "First translated audio to the telephony leg"),
+    ("send_ms", "We buffer the audio",
+     "We collect 100 ms of speech before sending it on, so the model is not fed "
+     "one tiny fragment at a time. Our time."),
+    ("ttfa_ms", "The model translates",
+     "From our audio going out to the first translated audio coming back. "
+     "The model's time, and nothing else."),
+    ("first_send_ms", "We pass it to the phone",
+     "Handing that translated audio to AudioCodes, which puts it on the call. "
+     "Our time."),
 ]
 app = FastAPI(title="Live translation console")
 
@@ -231,13 +249,19 @@ def _stats(utterances: list[dict]) -> dict:
     for key, label, description in HOPS:
         stats[key] = _measure(key, label, description,
                               [d[key] for d in durations if key in d])
-    for key, label, description in (SPEECH, MODEL):
-        stats[key] = _measure(key, label, description,
-                              [u[key] for u in utterances if u.get(key) is not None])
+    stats[SPEECH[0]] = _measure(SPEECH[0], SPEECH[1], SPEECH[2],
+                                [u[SPEECH[0]] for u in utterances
+                                 if u.get(SPEECH[0]) is not None])
+    # Split on the sign, and report each side as the positive duration it is.
+    timed = [u["model_ms"] for u in utterances if u.get("model_ms") is not None]
+    stats[HEAD_START[0]] = _measure(HEAD_START[0], HEAD_START[1], HEAD_START[2],
+                                    [-v for v in timed if v < 0])
+    stats[LATE[0]] = _measure(LATE[0], LATE[1], LATE[2], [v for v in timed if v >= 0])
     totals = [u["total_ms"] for u in utterances if u.get("total_ms") is not None]
     if totals:
-        stats["total"] = _measure("total", "Onset to hand-off",
-                                  "Everything the bridge can see, end to end", totals)
+        stats["total"] = _measure("total", "All of it, end to end",
+                                  "Every row above added together: from speech reaching "
+                                  "us to translated audio leaving us.", totals)
     return stats
 
 
@@ -253,47 +277,14 @@ LEGS = [
     ("forward", "Bridge", "First translated audio back", "Onto the listener's leg"),
 ]
 
-# The model's leg splits in two, against the transcript it emits alongside the
-# translated audio. `output_audio_transcription` is a caption on that audio, not a
-# stage that produces it -- the model is audio-to-audio and generates no text in the
-# path being timed. The split says when the model had committed to wording relative
-# to when the speech arrived, which is a useful hint about where the time inside the
-# model goes, and not a measurement of two pipeline stages.
-MODEL_PARTS = [
-    ("ttft", "To transcript", "The model's caption of the translation arrives"),
-    ("vocalize", "Transcript to audio", "How far the translated speech trails its own caption"),
-]
-
-
-def _text_timed(turns: list[dict]) -> list[dict]:
-    """Turns whose transcript stamp sits between the send and the first audio.
-
-    The caption rides alongside the audio rather than ahead of it, so it can arrive
-    after the speech it describes -- and text and audio are attributed by separate
-    burst detectors, which adds its own disagreement. Neither makes a turn faulty,
-    but a split cannot be drawn across a negative gap, so those turns sit out.
-    """
-    return [t for t in turns
-            if t.get("ttft_ms") is not None and t.get("ttfa_ms") is not None
-            and t.get("send_ms") is not None
-            and t["send_ms"] <= t["ttft_ms"] <= t["ttfa_ms"]]
-
-
-def _model_parts(turns: list[dict], model_mean: int | None) -> list[dict]:
-    """Split the model's leg against the transcript, for a hint at where time goes."""
-    usable = _text_timed(turns)
-    if not usable or not model_mean:
-        return []
-    to_token = round(statistics.fmean(t["ttft_ms"] - t["send_ms"] for t in usable))
-    to_audio = round(statistics.fmean(t["ttfa_ms"] - t["ttft_ms"] for t in usable))
-    span = to_token + to_audio
-    parts = []
-    for key, label, note in MODEL_PARTS:
-        value = to_token if key == "ttft" else to_audio
-        parts.append({"key": key, "label": label, "note": note, "mean_ms": value,
-                      "n": len(usable),
-                      "share": round(value / span, 4) if span else None})
-    return parts
+# The model's leg is shown whole. It was once split against the transcript the model
+# emits alongside its audio, but that split measured this code rather than the model:
+# `translator.events()` yields a message's transcript before its audio, flooring the
+# gap at zero, and `ttfa` is stamped on the first chunk loud enough to pass
+# `SILENT_RMS` while the transcript has no such gate. The result quantised to the
+# arrival period of a server message -- every turn on every recorded call landed
+# within 15 ms of a 250 ms multiple -- which is the signature of a sampling grid, not
+# of a model taking time to speak.
 
 
 def _summary(directions: dict) -> dict:
@@ -333,20 +324,26 @@ def _summary(directions: dict) -> dict:
             # Named, sized at nothing, and labelled -- leadership should see that
             # this leg exists and that we cannot yet put a number on it.
             leg["unmeasured"] = True
-        if key == "model":
-            leg["parts"] = _model_parts(full, leg.get("mean_ms"))
         legs.append(leg)
 
+    # Each direction on its own. `first_send_ms` runs from the bridge registering
+    # speech to the bridge handing translated audio back, so it is the whole of what
+    # this system owns for one speaker -- and the two directions differ, because they
+    # run separate sessions into different target languages.
+    per_direction = []
+    for name, d in directions.items():
+        vals = [t["first_send_ms"] for t in d["utterances"]
+                if t.get("first_send_ms") is not None]
+        if vals:
+            per_direction.append({"key": name, "mean_ms": avg(vals),
+                                  "p95_ms": _percentile(vals, 95), "n": len(vals)})
+
     out = {"mean_ms": total, "measured": len(full), "turns": len(turns),
-           "unanswered": unanswered, "legs": legs}
+           "unanswered": unanswered, "legs": legs, "per_direction": per_direction}
     if measured["model"]:
         vals = measured["model"]
         out["model"] = {"mean_ms": avg(vals), "p95_ms": _percentile(vals, 95),
                         "min_ms": min(vals), "max_ms": max(vals), "n": len(vals)}
-        ttft = [t["ttft_ms"] - t["send_ms"] for t in _text_timed(full)]
-        if ttft:
-            out["first_token"] = {"mean_ms": avg(ttft), "p95_ms": _percentile(ttft, 95),
-                                  "n": len(ttft)}
     # The strongest evidence of speed is not a duration at all: on these turns the
     # first translated audio was already on the wire before the speaker had stopped.
     simultaneous = [t for t in full
