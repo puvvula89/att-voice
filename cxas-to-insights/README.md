@@ -1,55 +1,71 @@
 # CES conversations into CX Insights
 
-A reproducible setup for getting conversations from a CES agent app (CX Agent
-Studio) into Customer Experience Insights, plus the scripts used to prove each
-step.
+How to confirm whether a CES agent app (CX Agent Studio) is sending conversations
+to Customer Experience Insights, what to change if it is not, and a test that
+proves it end to end.
 
-**Status: verified end to end** on 2026-10-05 against `ces.googleapis.com/v1beta`
-and `contactcenterinsights.googleapis.com/v1`. A CES conversation was observed in
-Insights with its full transcript, turn count, labels and analysis.
+Verified against `ces.googleapis.com/v1beta` and
+`contactcenterinsights.googleapis.com/v1` on 2026-10-05, including a full
+cold-start run from disabled APIs.
 
----
-
-## The short answer
-
-**Ingestion is native and on by default.** CES and CX Insights share Google-managed
-storage — per the CX Agent Studio
+**Read this first:** ingestion is **native and on by default**. CES and CX
+Insights share Google-managed storage — per the CX Agent Studio
 [Conversation history](https://docs.cloud.google.com/gemini-enterprise-cx/cx-agent-studio/conversation-history)
 docs, Spanner is *"used by CX Agent Studio **and CX Insights** to surface
-conversation history"*. There is no export job to build, no pipeline to turn on,
-and no ingestion setting to flip. That is why the CES API has no export method
-for conversations.
+conversation history"*. There is no export job, no pipeline and no ingestion
+setting. The Insights API is also a hard dependency of the CES API, so it
+cannot be switched off on a project running agents.
 
-So the question is never "how do I enable it". It is **"which of these is hiding
-it"**:
+So when conversations are missing, you are not looking for a feature to enable.
+You are looking for one of five things suppressing or hiding them:
 
-| # | Cause | How it looks |
+| # | Cause | Symptom |
 |---|---|---|
-| 1 | Conversation is from the **simulator** | Nothing in Insights, ever, regardless of config |
-| 2 | Wrong **location / endpoint** when querying | Everything works; list looks empty |
-| 3 | Browser signed into the **wrong Google account** | Console shows "Access Denied" |
-| 4 | **`disableConversationLogging: true`** on the app | Nothing in Insights or the Monitor dashboard |
-| 5 | Required **APIs** not all enabled | Nothing in Insights |
+| 1 | `disableConversationLogging: true` on the app | Nothing in Insights, CES history *or* the Monitor dashboard |
+| 2 | Traffic is from the **simulator** | Nothing in Insights, ever, regardless of config |
+| 3 | Caller lacks the **Insights IAM role** | `403`, or "Access Denied" in the console |
+| 4 | Browser on the **wrong Google account** | "Access Denied" that looks exactly like cause 3 |
+| 5 | Wrong **location / endpoint** | Everything works; the list just looks empty |
 
-Causes 1–3 accounted for every false alarm while building this. Cause 4 is the
-only actual off-switch, and it is off by default.
+Work through Part 1 before changing anything.
 
 ---
 
-## Triage an existing app
+# Part 1 — Check what you have today
 
-Start here when agents are already running and conversations are not showing up.
-Two commands tell you which of the five causes it is — run them before changing
-anything. The rest of this document is for standing an app up from scratch.
-
-Set these once:
+Four checks against the live project. None of them change anything.
 
 ```bash
 PROJECT=ATT_PROJECT; LOC=us; APP=THEIR_APP_ID
 TOKEN=$(gcloud auth print-access-token)
 ```
 
-**Check 1 — is the app allowed to log at all?**
+`LOC` is the CES app location — `us`, `eu` or `global`. It is not a GCP region.
+
+### 1.1 Are the APIs enabled?
+
+```bash
+gcloud services list --enabled --project=$PROJECT \
+  | grep -E "ces\.|contactcenterinsights|dialogflow|speech|dlp"
+```
+
+`contactcenterinsights.googleapis.com` is a **dependency of** `ces.googleapis.com`,
+so if agents are running it is already enabled. Verified both directions:
+
+```
+$ gcloud services enable ces.googleapis.com        # on an empty project
+$ gcloud services list --enabled
+ces.googleapis.com
+contactcenterinsights.googleapis.com               <-- pulled in automatically
+
+$ gcloud services disable contactcenterinsights.googleapis.com
+FAILED_PRECONDITION: ... is depended on by the following active service(s):
+ces.googleapis.com
+```
+
+This is almost never the cause. Confirm and move on.
+
+### 1.2 Is the app allowed to log? *(the one real off-switch)*
 
 ```bash
 curl -s -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
@@ -57,99 +73,87 @@ curl -s -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
   | python3 -m json.tool | grep -A6 loggingSettings
 ```
 
-The field is **opt-out**, so absent means logging is ON:
+The field is **opt-out** — absent means logging is ON. A healthy app returns:
+
+```json
+"loggingSettings": {
+  "conversationLoggingSettings": { "retentionWindow": "31536000s" }
+}
+```
 
 | Result | Meaning |
 |---|---|
-| no `disableConversationLogging`, or `false` | Logging ON — go to check 2 |
-| `"disableConversationLogging": true` | **This is the cause.** Nothing is retained, so nothing reaches Insights, CES history or the Monitor dashboard |
-| no `loggingSettings` at all | All defaults — logging ON, go to check 2 |
+| No `disableConversationLogging`, or `false` | Logging ON — continue to 1.3 |
+| `"disableConversationLogging": true` | **This is the cause.** Nothing is retained |
+| No `loggingSettings` at all | All defaults — logging ON |
 
-If it is `true`, that is a deliberate opt-out someone configured — ask why before
-reversing it, as it is often a privacy or data-residency decision. It is also
-**not retroactive**: turning it back on does not recover past conversations,
-because they were never stored. BigQuery export is the exception that keeps
-working while this is off, so check `bigqueryExportSettings` for a surviving
-record.
+Three things to know if it is `true`:
 
-**Check 2 — is anything actually in Insights?**
+- It is a **deliberate opt-out** someone configured. Ask why before reversing it —
+  it is often a privacy or data-residency decision.
+- It is **not retroactive.** Past conversations were never stored and cannot be
+  recovered.
+- **BigQuery export keeps working while it is set** — per the docs it disables
+  *"all types of long-term conversational data except BigQuery data"*. Check
+  `bigqueryExportSettings` for a surviving record.
+
+While you are here, read `metricAnalysisSettings.llmMetricsOptedOut` too. If
+`true`, conversations still arrive but sentiment, topics and outcomes are empty —
+which a business user will report as "Insights isn't working".
+
+**Run this against every app, not one.** A mix of settings explains the confusing
+case where some agents' conversations appear and others' do not:
+
+```bash
+for APP in $(curl -s -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
+  "https://ces.googleapis.com/v1beta/projects/$PROJECT/locations/$LOC/apps" \
+  | python3 -c "import sys,json;[print(a['name'].split('/')[-1]) for a in json.load(sys.stdin).get('apps',[])]"); do
+  echo -n "$APP: "
+  curl -s -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
+    "https://ces.googleapis.com/v1beta/projects/$PROJECT/locations/$LOC/apps/$APP" \
+  | python3 -c "import sys,json;d=json.load(sys.stdin).get('loggingSettings',{}).get('conversationLoggingSettings',{});print('DISABLED' if d.get('disableConversationLogging') else 'logging ON')"
+done
+```
+
+### 1.3 Is anything actually in Insights?
+
+This is the check that separates "it works, you just cannot see it" from "data is
+not arriving".
 
 ```bash
 curl -s -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
   "https://$LOC-contactcenterinsights.googleapis.com/v1/projects/$PROJECT/locations/$LOC/conversations?pageSize=5"
 ```
 
-| Result | Cause | Fix |
+| Result | Cause | Go to |
 |---|---|---|
-| Conversations returned | Ingestion works. It is an **access** problem | Grant the Insights role; check which Google account the browser is on; check the console's region |
-| `{}` / zero | Data is not arriving | Confirm they send `LIVE` traffic, not simulator; re-check check 1 |
-| `403` | Caller lacks the Insights role | Grant `roles/contactcenterinsights.viewer` |
-| `400 Location Mismatch` | Wrong endpoint for the location | Use the regional host matching `$LOC` |
+| Conversations returned | Ingestion works — it is an **access** problem | 2.2, 2.3 |
+| `{}` / zero | Data is not arriving | 1.2, then 2.4 |
+| `403` | Caller lacks the Insights role | 2.2 |
+| `400 Location Mismatch` | Wrong endpoint host for the location | 2.5 |
 
-Also worth reading while you are in check 1: `metricAnalysisSettings.llmMetricsOptedOut`.
-If `true`, conversations still arrive but sentiment, topics and outcomes are
-empty — which a business user will report as "Insights isn't working".
+### 1.4 Who actually holds the Insights role?
 
-Run check 1 against **every** app, not one. A mix of settings explains the
-confusing case where some agents' conversations appear and others' do not.
+```bash
+gcloud projects get-iam-policy $PROJECT \
+  --flatten="bindings[].members" \
+  --filter="bindings.role:contactcenterinsights" \
+  --format="value(bindings.role,bindings.members)"
+```
+
+Project Owner does **not** imply Insights access. An empty result here, combined
+with conversations returned in 1.3, is the most common real-world answer: the
+data has been flowing all along and nobody was granted the role.
 
 ---
 
-## Where conversations live when nobody is using Insights
+# Part 2 — Enable and configure
 
-CES keeps its own conversation history regardless of whether anyone looks at
-Insights. Nothing is lost while Insights goes unused — the two read the same
-Google-managed store.
+Only do the steps Part 1 flagged.
 
-**Retained by Google, on by default:**
+### 2.1 Enable the APIs
 
-| Where | How to review it |
-|---|---|
-| CES conversation history | CX Agent Studio → open the agent → agent preview → the conversation history button |
-| Monitor dashboard (aggregates) | CX Agent Studio → **Monitor**: total sessions, escalation rate, turns/session, E2E latency, tool failure rate |
-| CES API | `GET .../apps/{app}/conversations` and `.../conversations/{id}` |
-| CX Insights | The same conversations, with transcript search, sentiment, topics and QA |
-
-Retention follows `conversationLoggingSettings.retentionWindow` — **365 days by
-default, 2 years maximum**.
-
-**Customer-owned sinks — these are genuinely off until configured:**
-
-| Sink | Field |
-|---|---|
-| BigQuery export | `loggingSettings.bigqueryExportSettings` `{enabled, project, dataset}` (plus an `unredacted` variant) |
-| Cloud Logging | `loggingSettings.cloudLoggingSettings.enableCloudLogging` |
-| Audio recordings in Cloud Storage | `loggingSettings.audioRecordingConfig.gcsBucket` |
-
-Cross-project BigQuery or Cloud Storage needs the CES service agent
-`service-<PROJECT_NUMBER>@gcp-sa-ces.iam.gserviceaccount.com` granted
-`roles/bigquery.admin` or `storage.objects.create` respectively.
-
-These sinks are a **parallel** path for your own analytics. They are not how
-Insights gets its data, and turning them on is not required for Insights.
-
----
-
-## Order of steps
-
-### 1. Enable the APIs
-
-**If a CES app is already running, the Insights API is already enabled.**
-`contactcenterinsights.googleapis.com` is a dependency of `ces.googleapis.com`.
-Verified on a project with nothing enabled:
-
-```
-$ gcloud services enable ces.googleapis.com     # CES only
-$ gcloud services list --enabled
-ces.googleapis.com
-contactcenterinsights.googleapis.com            <-- pulled in automatically
-storage.googleapis.com
-bigquerystorage.googleapis.com
-```
-
-So "Insights isn't enabled" is almost never the real cause on a project with
-live agents. Enable the full set anyway — it is idempotent and covers the
-optional features:
+Idempotent — safe to run even if already enabled.
 
 ```bash
 gcloud services enable \
@@ -159,130 +163,75 @@ gcloud services enable \
   speech.googleapis.com \
   storage.googleapis.com \
   dlp.googleapis.com \
-  --project=PROJECT_ID
+  --project=$PROJECT
 ```
 
 | API | Needed for |
 |---|---|
-| `ces` | The agent app itself. Pulls in `contactcenterinsights` + `storage` |
+| `ces` | The agent app. Pulls in `contactcenterinsights` + `storage` |
 | `contactcenterinsights` | CX Insights. Auto-enabled above |
-| `dialogflow` | Dialogflow runtime integration and topic modeling |
+| `dialogflow` | Dialogflow runtime integration, topic modeling |
 | `speech` | Transcribing audio conversations |
 | `dlp` | Redaction of transcripts and audio |
 
-A text-only conversation reached Insights in testing without `dialogflow`,
-`speech` or `dlp` being enabled at the time of the call — they serve the
-features listed, not base chat ingestion.
+A text conversation reached Insights in testing without `dialogflow`, `speech`
+or `dlp` enabled at call time — they serve the features listed, not base chat
+ingestion.
 
-### 2. Grant the Insights IAM role
-
-**Project Owner is not sufficient** — the console denies a project Owner who has
-no explicit Insights role.
+### 2.2 Grant the Insights IAM role
 
 ```bash
-gcloud projects add-iam-policy-binding PROJECT_ID \
+gcloud projects add-iam-policy-binding $PROJECT \
   --member=user:SOMEONE@example.com \
   --role=roles/contactcenterinsights.editor
 ```
 
-`roles/contactcenterinsights.viewer` is enough for read-only access.
-
-Confirm it took effect rather than trusting the console. List the roles actually
-bound to the account:
-
-```bash
-gcloud projects get-iam-policy PROJECT_ID \
-  --flatten="bindings[].members" \
-  --filter="bindings.members:user:SOMEONE@example.com" \
-  --format="value(bindings.role)"
-```
-
-Or check the effective permissions directly — note this is a REST call, there is
-no `gcloud projects test-iam-permissions` subcommand:
+`roles/contactcenterinsights.viewer` is enough for read-only access. Confirm it
+took effect rather than trusting the console — note there is no
+`gcloud projects test-iam-permissions` subcommand, it is a REST call:
 
 ```bash
 curl -s -X POST \
-  -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  -H "Content-Type: application/json" \
-  "https://cloudresourcemanager.googleapis.com/v1/projects/PROJECT_ID:testIamPermissions" \
+  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  "https://cloudresourcemanager.googleapis.com/v1/projects/$PROJECT:testIamPermissions" \
   -d '{"permissions":["contactcenterinsights.conversations.list","contactcenterinsights.conversations.get"]}'
 ```
 
 IAM bindings survive an API being disabled and re-enabled — verified.
 
-### 3. Sign in as the right Google account
+### 2.3 Sign in as the right Google account
 
-If the permissions above are held and the console still says
-**"Access Denied — The caller does not have permission"**, the browser is
-authenticated as a *different* Google account. This is the single most
-time-wasting failure mode, because it is indistinguishable from a real
-permissions problem.
+If the permissions above are held and the console still says **"Access Denied —
+The caller does not have permission"**, the browser is authenticated as a
+*different* Google account. This is indistinguishable from a real permissions
+problem and wastes the most time of anything here.
 
-- The `authuser=N` index is positional and not stable — bumping it is guesswork.
-- The reliable fix is a browser profile (or incognito window) signed in **only**
-  as the account holding the role.
+- `authuser=N` is positional and not stable — bumping it is guesswork.
+- Use a browser profile or incognito window signed in **only** as the account
+  holding the role.
 - Google is migrating the console to `console.cloud.google` / `auth.cloud.google`
-  (no `.com`). Those are genuine Google domains — verified by a Google Trust
-  Services certificate for `*.cloud.google` — even though the published
+  (no `.com`). Those are genuine — verified by a Google Trust Services
+  certificate for `*.cloud.google` — even though the published
   [required-domains list](https://docs.cloud.google.com/docs/get-started/required-domains)
   still shows only the `.com` forms.
 
-### 4. Confirm the app's logging gates
+### 2.4 Re-enable conversation logging
 
-Both gates are **opt-out** — absent means enabled. A freshly created app already
-has conversation logging on.
-
-```bash
-curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  -H "x-goog-user-project: PROJECT_ID" \
-  "https://ces.googleapis.com/v1beta/projects/PROJECT_ID/locations/us/apps/APP_ID" \
-  | python3 -m json.tool | grep -A4 loggingSettings
-```
-
-A default app returns:
-
-```json
-"loggingSettings": {
-  "conversationLoggingSettings": { "retentionWindow": "31536000s" }
-}
-```
-
-| Field | Meaning | Required value |
-|---|---|---|
-| `conversationLoggingSettings.disableConversationLogging` | Console: **"Log your customer conversations"**. Docs: *"applies to both CX Agent Studio and CX Insights"* | `false` / absent |
-| `metricAnalysisSettings.llmMetricsOptedOut` | Collection for LLM analysis metrics (sentiment, topics, outcomes) | `false` / absent |
-
-To re-enable if someone turned it off:
+Only if 1.2 found `disableConversationLogging: true`, and only after confirming
+why it was set.
 
 ```bash
-curl -X PATCH -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  -H "Content-Type: application/json" -H "x-goog-user-project: PROJECT_ID" \
-  "https://ces.googleapis.com/v1beta/projects/PROJECT_ID/locations/us/apps/APP_ID?updateMask=loggingSettings.conversationLoggingSettings.disableConversationLogging" \
+curl -X PATCH -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" -H "x-goog-user-project: $PROJECT" \
+  "https://ces.googleapis.com/v1beta/projects/$PROJECT/locations/$LOC/apps/$APP?updateMask=loggingSettings.conversationLoggingSettings.disableConversationLogging" \
   -d '{"loggingSettings":{"conversationLoggingSettings":{"disableConversationLogging":false}}}'
 ```
 
-### 5. Send real traffic, not simulator traffic
+Or untick **"Log your customer conversations"** in the console.
 
-Every conversation carries a `source`: `LIVE`, `SIMULATOR`, `EVAL` or
-`AGENT_TOOL`. **Insights reports on `LIVE` only.** A conversation started from
-the CX Agent Studio simulator is recorded as `SIMULATOR` and will never appear,
-however the app is configured.
+### 2.5 Use the right location and endpoint
 
-Verified: driving the app through `SessionService.RunSession` over the API yields
-`source: LIVE`. Use a deployed channel, a real client, or the API — not the
-simulator preview pane.
-
-**A deployment is not required for ingestion.** One verified conversation ran
-against the draft app with no deployment at all and still reached Insights. Cut a
-deployment because production needs a channel, not to make Insights work.
-
----
-
-## Verify it worked
-
-### Locations and endpoints — the part that looks broken but isn't
-
-Two rules, and breaking either returns an empty list or a 400 that reads like a
+Two rules. Breaking either returns an empty list or a `400` that reads like a
 permissions problem:
 
 1. **A CES app in `us` maps to Insights location `us`** — the multiregion, the
@@ -297,107 +246,142 @@ permissions problem:
 | `eu` | `eu` | `https://eu-contactcenterinsights.googleapis.com` |
 | `global` | `global` | `https://contactcenterinsights.googleapis.com` |
 
-Getting this wrong gives:
-
 ```
 400  Location Mismatch: Server location `global` and
      resource location `us` do not match
 ```
 
-That error is about the **host**, not the path — the fix is the regional
-endpoint, not the IAM policy.
+That error is about the **host**, not the path.
 
-### Confirm by API
+### 2.6 Send LIVE traffic, not simulator traffic
 
-```bash
-curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  -H "x-goog-user-project: PROJECT_ID" \
-  "https://us-contactcenterinsights.googleapis.com/v1/projects/PROJECT_ID/locations/us/conversations?pageSize=25"
-```
+Every conversation carries a `source`: `LIVE`, `SIMULATOR`, `EVAL` or
+`AGENT_TOOL`. **Insights reports on `LIVE` only.** A conversation started from
+the CX Agent Studio simulator is recorded as `SIMULATOR` and will never appear,
+however the app is configured. This is the single most common false alarm.
 
-A CES conversation appears under the **same id as the CES session**. Observed:
-
-```
-dep-b6faf4d340   medium=CHAT  turnCount=3  agentId=insights-demo
-  labels: agentRoleType=AUTOMATED_ONLY, sessionContained=true,
-          sessionEscalated=false, lastTransferSubAgentNames=Concierge
-  transcript: 4 segments (END_USER / AUTOMATED_AGENT), latestAnalysis present
-```
-
-Add `?view=FULL` on a single conversation to get the transcript segments.
-
-### Confirm in the console
-
-- `https://ccai.cloud.google.com/insights/projects/PROJECT_ID`
-- or CX Agent Studio → your app → **Monitor** → **View Conversations**
-
-Set the console's region selector to the **US multiregion** to match.
-
-### Allow time
-
-A conversation is written only once the **session ends**, and took about **90
-seconds** to appear.
+A deployed channel, a real client or a direct API call all produce `LIVE`.
+**A deployment is not required for ingestion** — a verified conversation ran
+against the draft app with no deployment and still reached Insights.
 
 ---
 
-## Reproducing on another account
+# Part 3 — Run the test
+
+Proves the whole path on a project you control, using a throwaway demo app.
 
 ```bash
 cp .env.example .env     # set GOOGLE_CLOUD_PROJECT, CXAS_LOCATION, INSIGHTS_LOCATION
-pip install python-dotenv
 gcloud auth login        # as the account holding the Insights role
 
-python bootstrap/deploy_app.py        # app -> agent -> version -> deployment
+python bootstrap/deploy_app.py        # app -> agent -> version -> deployment (~10 min)
 python verify/run_conversation.py     # 3-turn LIVE conversation, waits for history
 python verify/check_insights.py       # all gates + the conversation in Insights
 ```
 
 `ces_client.py` holds the shared REST helper and derives the regional Insights
 endpoint from `INSIGHTS_LOCATION`. Everything uses `gcloud` for the token and
-`urllib` for the call — no SDK pinning to get wrong on another machine.
+`urllib` for the calls — no SDK pinning to get wrong on another machine, and
+`python-dotenv` is optional.
+
+**What success looks like:**
+
+```
+2. CES conversation history
+   verify-20c8d4d69296  source=LIVE  turns=2  deployment=deploy-0001
+
+3. Insights conversations (us-contactcenterinsights.googleapis.com, location=us)
+   verify-20c8d4d69296  medium=CHAT  turns=2  agentId=insights-demo
+   verify-20c8d4d69296: FOUND in Insights
+```
+
+Then confirm the same thing in the console:
+
+- `https://ccai.cloud.google.com/insights/projects/PROJECT_ID`
+- or CX Agent Studio → the app → **Monitor** → **View Conversations**
+
+Set the console's region selector to the **US multiregion** to match.
+
+**Allow time.** A conversation is written only once the **session ends**, and
+took about **90 seconds** to appear.
+
+### Tearing down
+
+```bash
+curl -X DELETE -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
+  "https://ces.googleapis.com/v1beta/projects/$PROJECT/locations/$LOC/apps/insights-demo?force=true"
+```
 
 ---
 
-## Gotchas hit while building this
+# Reference
 
-None of these are clearly documented:
+## Where conversations live when nobody uses Insights
+
+CES keeps its own history regardless. Nothing is lost while Insights goes unused.
+
+| Where | How to review it |
+|---|---|
+| CES conversation history | CX Agent Studio → the agent → agent preview → conversation history button |
+| Monitor dashboard | CX Agent Studio → **Monitor**: total sessions, escalation rate, turns/session, E2E latency, tool failure rate |
+| CES API | `GET .../apps/{app}/conversations` and `/conversations/{id}` |
+| CX Insights | The same conversations, plus transcript search, sentiment, topics, QA |
+
+Retention follows `conversationLoggingSettings.retentionWindow` — **365 days by
+default, 2 years maximum**.
+
+Customer-owned sinks, genuinely off until configured. These are a **parallel**
+path for your own analytics, not how Insights gets its data:
+
+| Sink | Field |
+|---|---|
+| BigQuery export | `loggingSettings.bigqueryExportSettings` `{enabled, project, dataset}` (plus an `unredacted` variant) |
+| Cloud Logging | `loggingSettings.cloudLoggingSettings.enableCloudLogging` |
+| Audio in Cloud Storage | `loggingSettings.audioRecordingConfig.gcsBucket` |
+
+Cross-project BigQuery or Storage needs the CES service agent
+`service-<PROJECT_NUMBER>@gcp-sa-ces.iam.gserviceaccount.com` granted
+`roles/bigquery.admin` or `storage.objects.create`.
+
+`App.dashboardSettings.defaultDashboard` only embeds an existing Insights
+dashboard into the Monitoring view. It does **not** control ingestion.
+
+The Dialogflow runtime-integration toggles ("Send data to Insights" in Agent
+Assist, "Enable Conversation History" in Dialogflow CX) apply to
+Dialogflow/Agent Assist virtual agents, **not** to CES apps.
+
+## Gotchas
 
 | Symptom | Cause |
 |---|---|
 | `CreateApp` fails with bare *"an internal error has occurred"* | `modelSettings.model` is effectively required; `displayName` alone is not enough |
 | `The model gemini-2.5-flash is not available in us` | Model must exist in the CES location. `gemini-3.5-flash` works in `us` |
-| `User-specified resource ID 'root' must match '[a-zA-Z0-9][a-zA-Z0-9-_]{4,35}'` | All resource IDs must be 5–36 chars. `root` is too short; `concierge` is fine |
-| `CreateDeployment` rejects resource ID `'-'` | The documented draft alias `versions/-` is **not** accepted. Cut a real app version and deploy that |
-| Sessions fail with no root agent | Creating the agent does not wire it up — `PATCH` the app's `rootAgent` field |
-| Create calls appear to hang | App/agent/version/deployment creation are LROs. Agent, version and deployment each took **over 200s** in a cold-start run while still succeeding. Re-read the resource; a poll timeout is not a failure. Budget ~10 min for a full `deploy_app.py` |
-| `gcloud projects test-iam-permissions` not found | No such subcommand. Use `get-iam-policy`, or the `:testIamPermissions` REST endpoint |
-| `429 RESOURCE_EXHAUSTED` mid-conversation | Default model quota is low on a fresh project. The scripts retry with backoff |
+| `User-specified resource ID 'root' must match '[a-zA-Z0-9][a-zA-Z0-9-_]{4,35}'` | IDs must be 5–36 chars. `root` is too short; `concierge` is fine |
+| `CreateDeployment` rejects resource ID `'-'` | The documented draft alias `versions/-` is **not** accepted. Cut a real app version |
+| Sessions fail with no root agent | Creating the agent does not wire it up — `PATCH` the app's `rootAgent` |
+| Create calls appear to hang | LROs. Agent, version and deployment each took **over 200s** in a cold-start run while still succeeding. A poll timeout is not a failure |
+| `429 RESOURCE_EXHAUSTED` mid-conversation | Low default model quota on a fresh project. The scripts retry with backoff |
 | Conversation missing right after the call | Only written when the **session ends**; ~90s lag |
-| `400 Location Mismatch` from Insights | Wrong endpoint host for the location — use the regional prefix |
-| Insights list empty at `us-central1` | A CES app in `us` maps to the `us` multiregion, not a region |
-| Console "Access Denied" with permissions held | Browser signed into a different Google account |
-
----
+| `400 Location Mismatch` | Wrong endpoint host for the location |
+| Insights empty at `us-central1` | A CES app in `us` maps to the `us` multiregion |
+| Console "Access Denied" with permissions held | Browser on a different Google account |
+| `gcloud projects test-iam-permissions` not found | No such subcommand. Use `get-iam-policy` or the REST endpoint |
 
 ## What was verified
 
-Validated twice: once incrementally, then once as a **full cold start** — all
-CES and Insights APIs disabled (`403 SERVICE_DISABLED` on both), every app and
-conversation deleted, then this README followed from step 1.
+Validated twice: incrementally, then as a **full cold start** — all CES and
+Insights APIs disabled (`403 SERVICE_DISABLED` on both), every app and
+conversation deleted, then this document followed from the top.
 
-| Step | Result |
+| Claim | Result |
 |---|---|
-| Insights API is a dependency of CES | Yes — enabling `ces` alone pulls in `contactcenterinsights`; disabling `contactcenterinsights` is refused while `ces` is active |
+| Insights API is a dependency of CES | Yes — both directions |
 | APIs enable from a fully disabled state | Yes |
 | IAM bindings survive API disable/re-enable | Yes |
-| app → agent → version → deployment | Yes — rebuilt from scratch by `deploy_app.py` |
-| Conversation logging ON by default | Yes — on a freshly created app, both runs |
+| app → agent → version → deployment | Rebuilt from scratch by `deploy_app.py` |
+| Conversation logging ON by default | Yes — on a fresh app, both runs |
 | API traffic yields `source: LIVE` | Yes — simulator yields `SIMULATOR` |
 | Conversation lands in CES history | Yes — ~90s after session end |
-| Conversation reaches Insights | **Yes** — cold-start run `verify-20c8d4d69296`, found via the regional endpoint |
+| Conversation reaches Insights | Yes — `verify-20c8d4d69296` via the regional endpoint |
 | Visible in the CX Insights console | Yes — US multiregion |
-| Works without a deployment | Yes — an earlier draft-app conversation had none |
-
-Cold-start evidence: `verify-20c8d4d69296`, `source=LIVE`, `turns=2`,
-`deployment=deploy-0001`, present in Insights as `medium=CHAT`,
-`agentId=insights-demo`.
+| Works without a deployment | Yes |
