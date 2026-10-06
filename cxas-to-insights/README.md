@@ -36,6 +36,65 @@ only actual off-switch, and it is off by default.
 
 ---
 
+## Triage an existing app
+
+Start here when agents are already running and conversations are not showing up.
+Two commands tell you which of the five causes it is — run them before changing
+anything. The rest of this document is for standing an app up from scratch.
+
+Set these once:
+
+```bash
+PROJECT=ATT_PROJECT; LOC=us; APP=THEIR_APP_ID
+TOKEN=$(gcloud auth print-access-token)
+```
+
+**Check 1 — is the app allowed to log at all?**
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
+  "https://ces.googleapis.com/v1beta/projects/$PROJECT/locations/$LOC/apps/$APP" \
+  | python3 -m json.tool | grep -A6 loggingSettings
+```
+
+The field is **opt-out**, so absent means logging is ON:
+
+| Result | Meaning |
+|---|---|
+| no `disableConversationLogging`, or `false` | Logging ON — go to check 2 |
+| `"disableConversationLogging": true` | **This is the cause.** Nothing is retained, so nothing reaches Insights, CES history or the Monitor dashboard |
+| no `loggingSettings` at all | All defaults — logging ON, go to check 2 |
+
+If it is `true`, that is a deliberate opt-out someone configured — ask why before
+reversing it, as it is often a privacy or data-residency decision. It is also
+**not retroactive**: turning it back on does not recover past conversations,
+because they were never stored. BigQuery export is the exception that keeps
+working while this is off, so check `bigqueryExportSettings` for a surviving
+record.
+
+**Check 2 — is anything actually in Insights?**
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
+  "https://$LOC-contactcenterinsights.googleapis.com/v1/projects/$PROJECT/locations/$LOC/conversations?pageSize=5"
+```
+
+| Result | Cause | Fix |
+|---|---|---|
+| Conversations returned | Ingestion works. It is an **access** problem | Grant the Insights role; check which Google account the browser is on; check the console's region |
+| `{}` / zero | Data is not arriving | Confirm they send `LIVE` traffic, not simulator; re-check check 1 |
+| `403` | Caller lacks the Insights role | Grant `roles/contactcenterinsights.viewer` |
+| `400 Location Mismatch` | Wrong endpoint for the location | Use the regional host matching `$LOC` |
+
+Also worth reading while you are in check 1: `metricAnalysisSettings.llmMetricsOptedOut`.
+If `true`, conversations still arrive but sentiment, topics and outcomes are
+empty — which a business user will report as "Insights isn't working".
+
+Run check 1 against **every** app, not one. A mix of settings explains the
+confusing case where some agents' conversations appear and others' do not.
+
+---
+
 ## Where conversations live when nobody is using Insights
 
 CES keeps its own conversation history regardless of whether anyone looks at
