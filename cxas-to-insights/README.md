@@ -1,14 +1,29 @@
 # CES conversations into CX Insights
 
-CES and CX Insights share the same storage, so ingestion is native and on by
-default. There is no export job and no ingestion setting. You only need the APIs
-and the right permission.
+## How ingestion works
 
-```bash
-PROJECT=your-project     # GCP project
-LOC=us                   # CES app location: us, eu or global
-TOKEN=$(gcloud auth print-access-token)
 ```
+   caller / client
+         |
+         v
+  +----------------+
+  |    CES app     |   conversation runs, source = LIVE
+  +----------------+
+         |
+         |  logged automatically
+         |  (off only if disableConversationLogging = true)
+         v
+  +--------------------------+
+  | Google-managed storage   |   shared - no export, no pipeline
+  +--------------------------+
+         |                  |
+         v                  v
+  CX Agent Studio       CX Insights
+  conversation          console
+  history
+```
+
+Nothing to turn on. Enable the APIs, grant the role, look in the right region.
 
 ## 1. Enable the APIs
 
@@ -20,55 +35,57 @@ gcloud services enable \
   speech.googleapis.com \
   storage.googleapis.com \
   dlp.googleapis.com \
-  --project=$PROJECT
+  --project=PROJECT_ID
 ```
 
-`contactcenterinsights` is a dependency of `ces`, so it is already enabled on any
-project running agents. `dialogflow` is for runtime integration, `speech` for
-audio transcription, `dlp` for redaction.
-
-## 2. Grant permission
-
-Project Owner is **not** enough — the role must be granted explicitly.
+## 2. Grant access
 
 ```bash
-gcloud projects add-iam-policy-binding $PROJECT \
+gcloud projects add-iam-policy-binding PROJECT_ID \
   --member=user:someone@example.com \
   --role=roles/contactcenterinsights.viewer
 ```
 
-Use `roles/contactcenterinsights.editor` for write access.
+Project Owner is not enough.
 
-## 3. View the conversations
-
-Console — set the region selector to the **US multiregion**:
+## 3. View
 
 ```
 https://ccai.cloud.google.com/insights/projects/PROJECT_ID
 ```
 
-Or CX Agent Studio → your app → **Monitor** → **View Conversations**.
+Set the region selector to the **US multiregion**.
 
-By API — the endpoint host prefix must match the location:
+---
+
+## Test in a new project
 
 ```bash
-curl -s -H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" \
-  "https://$LOC-contactcenterinsights.googleapis.com/v1/projects/$PROJECT/locations/$LOC/conversations?pageSize=5"
+cp .env.example .env          # set GOOGLE_CLOUD_PROJECT
+gcloud auth login
+python bootstrap/deploy_app.py        # builds the app   (~10 min)
+python verify/run_conversation.py     # runs a LIVE conversation
+python verify/check_insights.py       # confirms it reached Insights
 ```
 
-| CES location | Endpoint |
-|---|---|
-| `us` | `https://us-contactcenterinsights.googleapis.com` |
-| `eu` | `https://eu-contactcenterinsights.googleapis.com` |
-| `global` | `https://contactcenterinsights.googleapis.com` |
+Success looks like:
+
+```
+verify-20c8d4d69296  source=LIVE  turns=2
+verify-20c8d4d69296: FOUND in Insights
+```
+
+Tear down:
+
+```bash
+curl -X DELETE -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+  -H "x-goog-user-project: PROJECT_ID" \
+  "https://ces.googleapis.com/v1beta/projects/PROJECT_ID/locations/us/apps/insights-demo?force=true"
+```
 
 ## If nothing appears
 
-- **Simulator traffic never appears.** Only `source: LIVE` is reported on.
-- **Check the opt-out**: `disableConversationLogging: true` on the app stops all
-  logging. Absent means it is on.
-- **"Access Denied" with the role granted** means the browser is signed in as a
-  different Google account.
-- Conversations are written when the session **ends**, after roughly 90 seconds.
-
-`python verify/check_insights.py` reports all of the above for one app.
+- Simulator conversations never reach Insights. Only `source: LIVE` does.
+- `disableConversationLogging: true` on the app stops all logging.
+- "Access Denied" with the role granted means the browser is on a different Google account.
+- Conversations are written when the session ends, after ~90 seconds.
