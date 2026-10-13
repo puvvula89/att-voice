@@ -39,3 +39,8 @@ def test_get_returns_single_path_for_procedure(cat):
 def test_get_unknown_device_raises(cat):
     with pytest.raises(KeyError):
         cat.get("pixel-9", "anything")
+
+
+def test_intro_does_not_repeat_the_title(cat):
+    t = cat.get("iphone-13", "feature_network_reset-resetting-your-iphone-s-settings-and-network-settings")
+    assert not t.intro.startswith(t.title)

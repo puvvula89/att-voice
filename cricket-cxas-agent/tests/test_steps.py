@@ -34,3 +34,11 @@ def test_article_heading_split():
 def test_short_procedure_step_has_no_heading():
     s = normalize_step(mk("From within Settings, tap General."), "x")
     assert s["heading"] == ""
+
+
+def test_menu_prompt_step_takes_flags_from_its_option_notes():
+    # "From this screen…:" lists the options as notes; tapping Reset Network Settings ends the call.
+    s = normalize_step(mk("From this screen, you can perform a variety of actions:",
+                          notes=["Reset Network Settings - resets just your network settings.",
+                                 "Erase All Content and Settings - returns the device to factory settings."]), "x")
+    assert s["call_ending"] and s["destructive"]

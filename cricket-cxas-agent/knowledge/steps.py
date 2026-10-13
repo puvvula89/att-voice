@@ -32,7 +32,12 @@ def _split_heading(text: str) -> tuple[str, str]:
 def normalize_step(raw: dict, tutorial_title: str) -> dict:
     heading, body = _split_heading(raw["text"])
     instr = body if heading else raw["text"]
-    warning = next((n for n in raw.get("notes", []) if DESTRUCTIVE_MENTION.search(n)), None)
+    notes = raw.get("notes", [])
+    warning = next((n for n in notes if DESTRUCTIVE_MENTION.search(n)), None)
+    # A menu prompt ("From this screen, you can…:") lists its options as notes; the
+    # action the caller takes is in those notes, so they count toward the flags.
+    if instr.rstrip().endswith(":"):
+        instr = instr + "\n" + "\n".join(notes)
     return {
         "n": raw["n"],
         "heading": heading,
