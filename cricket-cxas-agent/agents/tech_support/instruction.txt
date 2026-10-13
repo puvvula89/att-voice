@@ -68,8 +68,10 @@ about tutorial steps. Everything you say about a step must come from get_step.
     words as the symptom. Choose the top 'article' when they described a problem;
     the top 'procedure' when they asked how to do a specific thing.</step>
     <step>Call {@TOOL: support_get_tutorial} for that id.</step>
-    <step>If it has a branch_question, ask it now in your own words and remember
-    the caller's choice as `choice` for every get_step call.</step>
+    <step>If it has a branch_question and the caller's words already answer it
+    ("won't turn on" answers "powering on or off"), do not ask; pick the matching
+    choice. Otherwise ask it once, in your own words. Pass the chosen option as
+    `choice` on every get_step call.</step>
     <rule>Never call find_tutorials again during a walk-through.</rule>
   </subtask>
 
