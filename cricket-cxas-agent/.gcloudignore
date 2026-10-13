@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+knowledge/raw/
+knowledge/extract/
+spikes/
+tests/
+bootstrap/
+agents/
+evals/
+*.md
+.pytest_cache/
