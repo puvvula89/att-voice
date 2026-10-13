@@ -104,7 +104,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/aa320c3f74fc1eb6cd4e04fbabf5bb9d1aa3860ca6c74fcbfb6f621f9e7acbdb.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -232,7 +232,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/f8d1c5334d1db0b078c4c579294044b1e3a86d188c356141ff9bc2627cd3a7f0.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -308,7 +308,7 @@
        "options": [],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6f3d48ed3601a87180586e06cdd51cd29deffeaf0e4e1b9851528fef40af764f.png",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -427,7 +427,7 @@
        "options": [],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6f3d48ed3601a87180586e06cdd51cd29deffeaf0e4e1b9851528fef40af764f.png",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -578,7 +578,7 @@
         "Reset Wi-Fi and Bluetooth Settings"
        ],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/a90af6af45db96d2f185a2f8419cb9cf80e6d14da25902b450db862fa6403559.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -687,7 +687,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/e1d1d6fed72b6066c5de255b12cf43034071e49b69e773746bfdc5b50110a06d.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -1019,7 +1019,7 @@
        "options": [],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6f3d48ed3601a87180586e06cdd51cd29deffeaf0e4e1b9851528fef40af764f.png",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -1076,7 +1076,7 @@
        "options": [],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6f3d48ed3601a87180586e06cdd51cd29deffeaf0e4e1b9851528fef40af764f.png",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -1145,7 +1145,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6f3d48ed3601a87180586e06cdd51cd29deffeaf0e4e1b9851528fef40af764f.png",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -1256,7 +1256,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6f3d48ed3601a87180586e06cdd51cd29deffeaf0e4e1b9851528fef40af764f.png",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },

@@ -4,6 +4,8 @@ Stateless streamable HTTP so Cloud Run may route each request anywhere. The
 account store is per-process; with min-instances=1 and max-instances=1 that is
 one consistent demo state, which is all a POC needs.
 """
+import os
+
 from mcp.server.mcpserver import MCPServer
 
 from support_mcp import tools_account as A
@@ -97,6 +99,27 @@ def open_ticket(customer_id: str, line_id: str, summary: str) -> dict:
 # replies tools/list returned 200 but no tools were declared to the agent.
 app = mcp.streamable_http_app(stateless_http=True, json_response=True, host="0.0.0.0")
 
+from starlette.requests import Request  # noqa: E402
+from starlette.responses import JSONResponse  # noqa: E402
+from starlette.routing import Route  # noqa: E402
+
+from support_mcp import account_store  # noqa: E402
 from support_mcp.wire_log import install as _install_wire_log  # noqa: E402
 
+
+async def admin_reset(request: Request) -> JSONResponse:
+    """Developer control, never exposed to the agent: reseed the demo account.
+
+    POST /admin/reset?profile=P1 — behind Cloud Run IAM like everything else.
+    """
+    profile = request.query_params.get("profile", "")
+    if profile not in account_store.profiles():
+        return JSONResponse({"error": f"unknown profile '{profile}'", "profiles": account_store.profiles()}, 400)
+    acct = account_store.reset_profile(os.environ.get("DEMO_CUSTOMER_ID", "cust_2001"), profile)
+    return JSONResponse({"profile": profile, "customer_id": acct["customer_id"],
+                         "lines": {k: v["status"] for k, v in acct["lines"].items()},
+                         "outage": bool(acct.get("outage"))})
+
+
+app.routes.append(Route("/admin/reset", admin_reset, methods=["POST"]))
 app = _install_wire_log(app)

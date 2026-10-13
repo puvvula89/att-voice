@@ -42,3 +42,10 @@ def test_menu_prompt_step_takes_flags_from_its_option_notes():
                           notes=["Reset Network Settings - resets just your network settings.",
                                  "Erase All Content and Settings - returns the device to factory settings."]), "x")
     assert s["call_ending"] and s["destructive"]
+
+
+def test_article_overview_step_is_never_flagged():
+    # The first step of an article lists what the guide covers; it is not an instruction.
+    s = normalize_step(mk("If you're unable to make calls, there are a few steps you can take.\n"
+                          "Within this guide, you'll learn how to:\nRestart your iPhone\nReset your network settings"), "x")
+    assert not s["call_ending"] and not s["destructive"]

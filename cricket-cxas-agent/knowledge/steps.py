@@ -17,6 +17,7 @@ DESTRUCTIVE = re.compile(
     r"erase (your|the|this) (phone|iphone|device)|wipe)\b",
     re.I,
 )
+OVERVIEW = re.compile(r"within this guide|you'll learn how to|in this guide", re.I)
 DESTRUCTIVE_MENTION = re.compile(
     r"(erase all content|factory (data )?reset|reset all settings|delete all esims?|wipe)", re.I
 )
@@ -38,6 +39,9 @@ def normalize_step(raw: dict, tutorial_title: str) -> dict:
     # action the caller takes is in those notes, so they count toward the flags.
     if instr.rstrip().endswith(":"):
         instr = instr + "\n" + "\n".join(notes)
+    # An article's overview step lists what the guide covers; it instructs nothing.
+    if OVERVIEW.search(instr):
+        instr = ""
     return {
         "n": raw["n"],
         "heading": heading,

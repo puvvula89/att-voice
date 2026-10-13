@@ -153,7 +153,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/22cbe9700ab64d1cff1503e124d02d5cc70c75eeb84a2ad297994f5e7fdab7cc.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -296,7 +296,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/22cbe9700ab64d1cff1503e124d02d5cc70c75eeb84a2ad297994f5e7fdab7cc.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -456,7 +456,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/22cbe9700ab64d1cff1503e124d02d5cc70c75eeb84a2ad297994f5e7fdab7cc.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -584,7 +584,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/22cbe9700ab64d1cff1503e124d02d5cc70c75eeb84a2ad297994f5e7fdab7cc.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -714,7 +714,7 @@
        ],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/375e143fa4bf3d884d5cee8e742342badb6d68cafe2eb7ab74403b323c87b5f8.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -842,7 +842,7 @@
        "options": [],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/22cbe9700ab64d1cff1503e124d02d5cc70c75eeb84a2ad297994f5e7fdab7cc.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
@@ -916,7 +916,7 @@
        "options": [],
        "substeps": [],
        "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/22cbe9700ab64d1cff1503e124d02d5cc70c75eeb84a2ad297994f5e7fdab7cc.jpeg",
-       "call_ending": true,
+       "call_ending": false,
        "destructive": false,
        "warning": null
       },
