@@ -1,0 +1,33 @@
+{
+ "_base": {
+  "customer_id": "cust_2001",
+  "name": "Jordan Reyes",
+  "zip_code": "30301",
+  "lines": {
+   "L1": {
+    "line_id": "L1", "phone_last4": "4471", "sms_number": "",
+    "device": "iphone-13", "device_label": "iPhone 13", "os": "27.0.0",
+    "is_calling_line": true, "status": "ACTIVE", "since": "2025-11-02", "reason": null,
+    "used_gb": 6.2, "allowance_gb": 25, "throttled": false, "cycle_ends": "2026-10-28",
+    "sim_type": "eSIM", "activated": "2025-11-02", "changed_days_ago": 340, "provisioned": true,
+    "last_refresh": null
+   },
+   "L2": {
+    "line_id": "L2", "phone_last4": "8820", "sms_number": "",
+    "device": "galaxy-a15-5g", "device_label": "Galaxy A15 5G", "os": "16.0.0",
+    "is_calling_line": false, "status": "ACTIVE", "since": "2026-03-14", "reason": null,
+    "used_gb": 11.9, "allowance_gb": 25, "throttled": false, "cycle_ends": "2026-10-28",
+    "sim_type": "physical", "activated": "2026-03-14", "changed_days_ago": 212, "provisioned": true,
+    "last_refresh": null
+   }
+  },
+  "outage": null
+ },
+ "P1": {"lines": {"L1": {"status": "SUSPENDED_NONPAY", "since": "2026-10-13T00:00:00", "reason": "Payment past due"}}},
+ "P2": {"outage": {"zip_code": "30301", "started": "2026-10-13T07:10:00", "eta": "2026-10-13T11:00:00", "services": ["voice", "data"]}},
+ "P3": {},
+ "P4": {},
+ "P5": {},
+ "P6": {},
+ "P7": {"lines": {"L1": {"used_gb": 25.0, "throttled": true}}}
+}
