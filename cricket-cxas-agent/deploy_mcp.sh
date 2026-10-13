@@ -20,7 +20,7 @@ echo "[1] deploying $SERVICE to $REGION in $PROJECT (profile $PROFILE)"
 gcloud run deploy "$SERVICE" \
   --source . --region "$REGION" --project "$PROJECT" \
   --no-allow-unauthenticated --min-instances 1 --max-instances 1 \
-  --set-env-vars "DEMO_PROFILE=${PROFILE}" \
+  --set-env-vars "DEMO_PROFILE=${PROFILE},MCP_WIRE_LOG=${MCP_WIRE_LOG:-0}" \
   --quiet >/dev/null
 
 URL=$(gcloud run services describe "$SERVICE" --region "$REGION" \

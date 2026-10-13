@@ -19,6 +19,13 @@ from common import APP, SUPPORT_TOOLSET_ID, TECH_ID, agent_name
 
 TOOLSET = f"{APP}/toolsets/{SUPPORT_TOOLSET_ID}"
 
+# AgentToolset.tool_ids selects which of the toolset's tools the agent receives.
+# Left empty, the agent gets NONE: discovery succeeds, the model sees no tools,
+# and every call it attempts is rejected as an "unexpected function call".
+TOOL_IDS = ["find_tutorials", "get_tutorial", "get_step", "get_lines", "get_line_status",
+            "check_outage", "get_data_usage", "get_sim_status", "refresh_network",
+            "send_guide_link", "open_ticket"]
+
 
 def main():
     if len(sys.argv) < 2:
@@ -53,9 +60,10 @@ def main():
 
     print(f"[2] Attach to {TECH_ID}")
     agents.update_agent(agent_name=agent_name(TECH_ID),
-                        toolsets=[T.Agent.AgentToolset(toolset=TOOLSET)])
+                        toolsets=[T.Agent.AgentToolset(toolset=TOOLSET, tool_ids=TOOL_IDS)])
     tech = agents.get_agent(agent_name(TECH_ID))
-    print(f"   toolsets on agent: {[ts.toolset.rsplit('/', 1)[-1] for ts in tech.toolsets]}")
+    print(f"   toolsets on agent: {[(ts.toolset.rsplit('/', 1)[-1], len(ts.tool_ids)) for ts in tech.toolsets]}")
+    print("   qualified names in instructions: support_<tool>, e.g. support_get_step")
     print("\nOpen the app in the console simulator and type: \"my wifi is really slow\"")
     print("PASS: the trace shows support_get_lines, then outage/usage checks, then find_tutorials.")
 

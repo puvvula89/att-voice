@@ -93,4 +93,10 @@ def open_ticket(customer_id: str, line_id: str, summary: str) -> dict:
     return O.open_ticket(customer_id, line_id, summary)
 
 
-app = mcp.streamable_http_app(stateless_http=True, host="0.0.0.0")
+# json_response: the platform's tool discovery reads plain JSON replies. With SSE
+# replies tools/list returned 200 but no tools were declared to the agent.
+app = mcp.streamable_http_app(stateless_http=True, json_response=True, host="0.0.0.0")
+
+from support_mcp.wire_log import install as _install_wire_log  # noqa: E402
+
+app = _install_wire_log(app)
