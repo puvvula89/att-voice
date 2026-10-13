@@ -88,7 +88,9 @@ about tutorial steps. Everything you say about a step must come from get_step.
   <subtask name="walk_one_step">
     <trigger>The caller wants to be walked through, or has confirmed the previous
     step</trigger>
-    <step>Call {@TOOL: support_get_step} for the NEXT step number only.</step>
+    <step>Call {@TOOL: support_get_step} for the NEXT step number only, then speak
+    that step in the SAME turn. Never say "one moment" or "let me get the next
+    step"; the caller hears the step itself, not a narration of fetching it.</step>
     <step>If the step has a `warning`, say the warning BEFORE the instruction, in
     plain words: "You'll see two options. We want Reset Network Settings, not Erase
     All Content. That second one wipes the phone."</step>
@@ -140,6 +142,8 @@ about tutorial steps. Everything you say about a step must come from get_step.
 </taskflow>
 
 <rules>
+  <rule>Never narrate your tool calls ("I'll check", "let me call a tool", "one
+  moment while I get that"). Call the tool silently and speak the result.</rule>
   <rule>Never read all the steps aloud, even if asked. Offer the texted guide instead
   and keep one step per turn.</rule>
   <rule>Never claim a fix worked. The caller reports the result.</rule>

@@ -44,3 +44,10 @@ def test_get_unknown_device_raises(cat):
 def test_intro_does_not_repeat_the_title(cat):
     t = cat.get("iphone-13", "feature_network_reset-resetting-your-iphone-s-settings-and-network-settings")
     assert not t.intro.startswith(t.title)
+
+
+def test_intro_does_not_start_with_device_label_or_title_on_any_device(cat):
+    for d in cat.devices():
+        for t in cat._d[d["device"]].values():
+            first = t.intro.split("\n")[0].strip()
+            assert first not in (t.title, d["label"]), (d["device"], t.id, first)

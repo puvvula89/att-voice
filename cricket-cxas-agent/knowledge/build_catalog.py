@@ -28,9 +28,12 @@ def build(device: str) -> dict:
         if not rec["steps"]:
             continue  # landing pages such as "Getting to know your device"
         paths = rec.get("paths") or [{"choices": [], "steps": rec["steps"]}]
-        intro = rec["intro"].strip()
-        if intro.startswith(rec["title"]):
-            intro = intro[len(rec["title"]):].strip()
+        # Vendor intros repeat the device label and the title as leading lines.
+        label = LABELS.get(device, device)
+        lines = [l.strip() for l in rec["intro"].strip().split("\n")]
+        while lines and lines[0] in ("", rec["title"], label):
+            lines.pop(0)
+        intro = "\n".join(lines).strip()
         tutorials.append({
             "id": rec["id"], "kind": rec["kind"], "title": rec["title"], "intro": intro,
             "url": rec["url"], "category": rec.get("category", ""),
