@@ -15,12 +15,18 @@ PROJECT="${CXAS_PROJECT:-$GOOGLE_CLOUD_PROJECT}"
 REGION="${GOOGLE_CLOUD_LOCATION:-us-central1}"
 SERVICE="${SUPPORT_MCP_SERVICE:-cricket-support-mcp}"
 PROFILE="${DEMO_PROFILE:-P3}"
+# Forward Twilio credentials only when all three are set; the server treats a
+# partial set as "not configured".
+TWILIO_ENV=""
+if [ -n "${TWILIO_ACCOUNT_SID:-}" ] && [ -n "${TWILIO_AUTH_TOKEN:-}" ] && [ -n "${TWILIO_FROM:-}" ]; then
+  TWILIO_ENV="|TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID}|TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}|TWILIO_FROM=${TWILIO_FROM}"
+fi
 
 echo "[1] deploying $SERVICE to $REGION in $PROJECT (profile $PROFILE)"
 gcloud run deploy "$SERVICE" \
   --source . --region "$REGION" --project "$PROJECT" \
   --no-allow-unauthenticated --min-instances 1 --max-instances 1 \
-  --set-env-vars "DEMO_PROFILE=${PROFILE},MCP_WIRE_LOG=${MCP_WIRE_LOG:-0}" \
+  --set-env-vars "^|^DEMO_PROFILE=${PROFILE}|MCP_WIRE_LOG=${MCP_WIRE_LOG:-0}${TWILIO_ENV}" \
   --quiet >/dev/null
 
 URL=$(gcloud run services describe "$SERVICE" --region "$REGION" \

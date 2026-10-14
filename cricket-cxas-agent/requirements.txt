@@ -1,0 +1,8 @@
+# Tooling for the bootstrap scripts, the scenario runner, and the tests.
+# The MCP server image has its own, smaller list in support_mcp/requirements.txt.
+cxas-scrapi>=1.9,<2
+google-cloud-ces>=0.7
+python-dotenv>=1.0
+mcp>=2.2,<3
+uvicorn>=0.30
+pytest>=8
