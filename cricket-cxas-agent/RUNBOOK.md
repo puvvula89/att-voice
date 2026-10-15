@@ -2,125 +2,177 @@
 
 Everything project-specific lives in `.env`. Pointing the bundle at another Google Cloud
 project is a config change plus the commands below. Budget about 45 minutes the first time.
+Run every command from the `cricket-cxas-agent/` folder.
 
 ## 0. What you need
 
 | Item | Notes |
 |---|---|
-| A Google Cloud project with billing enabled | Owner or Editor on it. CES quotas there should be above the 1000 tokens/min default (check in step 1). |
-| `gcloud` CLI, authenticated as a user on that project | `gcloud auth login` then `gcloud auth application-default login` so the Python SDK picks up the same identity. |
-| Python 3.12+ | The MCP server image pins its own runtime in the `Dockerfile`. |
-| This folder (`cricket-cxas-agent/`) checked out | Including `knowledge/catalog/*.json`, which the server bakes into the image. |
+| A Google Cloud project with billing enabled | Owner, or these roles: Customer Engagement Suite admin, Cloud Run admin, Cloud Build editor, Service Usage admin, Project IAM admin. |
+| `gcloud` CLI | Logged in as a user on that project (step 1 does the login). |
+| Python 3.10 or newer | Check with `python3 --version`. The server image uses its own Python. |
+| This repository | `git clone https://github.com/puvvula89/att-voice.git && cd att-voice/cricket-cxas-agent` |
 
-## 1. Enable APIs and confirm quota
+## 1. Log in, enable APIs, confirm quota
 
 ```bash
 PROJECT=<your-project-id>
+gcloud auth login
+gcloud auth application-default login
 gcloud config set project "$PROJECT"
+gcloud auth application-default set-quota-project "$PROJECT"
 gcloud services enable ces.googleapis.com run.googleapis.com cloudbuild.googleapis.com \
-  artifactregistry.googleapis.com cloudquotas.googleapis.com
+  artifactregistry.googleapis.com
 ```
 
-Console → IAM & Admin → Quotas & System Limits → filter service **Gemini Enterprise for Customer
-Experience API** → quota **RunSession LLM tokens per minute per project per region per base model**
-→ row region `us-central1`, base model `gemini-3.1-flash-live`. Anything from 10,000 up is
-comfortable for one call at a time. If it reads 1000, request an increase before step 5.
+The two logins are both needed. `gcloud` commands use the first; the Python scripts use the
+second (application default credentials).
 
-## 2. Configure
+**Check the quota before going further.** Console → IAM & Admin → Quotas & System Limits. In the
+filter, search for the service by its display name, **Gemini Enterprise for Customer Experience
+API** (searching `ces.googleapis.com` finds nothing). Find **RunSession LLM tokens per minute per
+project per region per base model**, row region `us-central1`, base model `gemini-3.1-flash-live`.
+
+| Value | What to expect |
+|---|---|
+| 10,000 or more | Comfortable for one conversation at a time. |
+| 1,000 (the default) | Most turns get rate-limited. Everything still works but the suite takes 20+ minutes. Request an increase. |
+
+## 2. Configure and test locally
 
 ```bash
 cp .env.example .env
 ```
 
-Set at least:
+Edit `.env`:
 
 | Key | Value |
 |---|---|
-| `GOOGLE_CLOUD_PROJECT`, `CXAS_PROJECT` | your project id |
-| `CXAS_LOCATION` | `us` (the agent platform region) |
-| `GOOGLE_CLOUD_LOCATION` | `us-central1` (the Cloud Run region) |
-| `CARE_APP_ID` | `cricket-care` |
-| `CARE_LIVE_MODEL` | `gemini-3.1-flash-live` |
-| `DEMO_CUSTOMER_ID` | `cust_2001` |
-| `DEMO_PROFILE` | `P3` (clean account, the default demo) |
-| `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM` | optional; without them the agent says it could not text and reads the link |
+| `GOOGLE_CLOUD_PROJECT` | your project id (required) |
+| `CXAS_PROJECT` | leave commented out unless the agent app lives in a different project |
+| `CXAS_LOCATION` | `us` (the agent platform region; keep as is) |
+| `GOOGLE_CLOUD_LOCATION` | `us-central1` (the Cloud Run region; keep as is) |
+| `CARE_APP_ID`, `CARE_LIVE_MODEL`, `DEMO_CUSTOMER_ID`, `SUPPORT_MCP_SERVICE`, `DEMO_PROFILE` | keep the example values |
+| `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM`, `DEMO_SMS_NUMBER` | optional. Fill all four to have the agent text the guide link to `DEMO_SMS_NUMBER` (a Twilio trial only sends to numbers verified in Twilio). Leave empty and the agent says it could not text and reads the link instead. |
 
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-.venv/bin/pytest -q          # expect 38 passed; proves the catalogs and tools load
+.venv/bin/pytest -q
 ```
 
-## 3. Deploy the support MCP server
+Expect `38 passed`. A warning about ffmpeg is harmless.
+
+## 3. Create the app
+
+```bash
+.venv/bin/python bootstrap/create_app.py
+```
+
+Creates app `cricket-care` with the live model, the Care Concierge root agent, and the Tech
+Support child agent. Safe to rerun; it updates in place. This comes before the server deploy
+because creating the first app also creates the platform's service agent, which step 4 grants
+access to.
+
+## 4. Deploy the support MCP server
 
 ```bash
 ./deploy_mcp.sh
 ```
 
-This builds from the bundle root, deploys a private Cloud Run service `cricket-support-mcp` with
-one always-warm instance, and grants `roles/run.invoker` to the platform's service agent
-(`service-<project-number>@gcp-sa-ces.iam.gserviceaccount.com`). The last line prints the MCP
-endpoint; copy it. If the service agent does not exist yet, create it once with
+Builds the server image from this folder, deploys a private Cloud Run service
+`cricket-support-mcp` with one always-warm instance, and lets the platform's service agent
+(`service-<project-number>@gcp-sa-ces.iam.gserviceaccount.com`) call it. Takes 3 to 5 minutes.
+The last lines print the endpoint, for example:
 
-```bash
-gcloud beta services identity create --service=ces.googleapis.com --project="$PROJECT"
+```
+MCP endpoint: https://cricket-support-mcp-abc123-uc.a.run.app/mcp
 ```
 
-and rerun the deploy.
+Copy that URL, including `/mcp`, for the next step.
 
-## 4. Create the app and attach the toolset
+## 5. Attach the toolset
 
 ```bash
-.venv/bin/python bootstrap/create_app.py
-.venv/bin/python bootstrap/attach_support_toolset.py https://<service-url>/mcp
+.venv/bin/python bootstrap/attach_support_toolset.py https://<the-url-from-step-4>/mcp
 ```
 
-The first command creates app `cricket-care` with the live model, the Care Concierge root agent,
-and the Tech Support child. The second creates the `support` toolset over the MCP endpoint and
-binds all eleven tools to Tech Support by id. The output should show
-`toolsets on agent: [('support', 11)]`. Both scripts are idempotent.
+Creates the `support` toolset over the endpoint and binds its eleven tools to Tech Support.
+Success looks like:
 
-## 5. Run the typed suite and capture the evidence
+```
+   toolsets on agent: [('support', 11)]
+```
+
+If the count is 0 or the line is missing, stop and fix that first; the agent will otherwise
+answer without any tools.
+
+## 6. Run the typed suite and share the results
 
 ```bash
-.venv/bin/python bootstrap/run_suite.py            # all seven profiles
+.venv/bin/python bootstrap/run_suite.py            # all seven scenarios
 .venv/bin/python bootstrap/run_suite.py P3 P4      # or a subset
 ```
 
-Each run writes `runs/<UTC timestamp>/`:
+Before each scenario the runner resets the demo account to that scenario's profile, then plays
+the scripted caller turns and records what the agent said and which tools it called. Each run
+creates `runs/<UTC timestamp>/`:
 
 | File | Contents |
 |---|---|
-| `summary.md` | One table, PASS or FAIL per scenario on expected and forbidden tools, then every transcript |
-| `P1.json` … `P7.json` | Full turn-by-turn record: caller text, agent text, tool spans, raw platform response, session id |
+| `summary.md` | PASS or FAIL per scenario, then every transcript. Read this first. |
+| `P1.json` … `P7.json` | Full record per scenario: caller and agent text, tool calls, raw platform response, session id. |
 
-To share a run, zip that folder or commit it on the branch. The session ids inside let anyone
-with console access open the matching conversation and trace.
+A FAIL means an expected tool was not called or a forbidden one was. It points at the agent's
+behaviour, not at the deployment, as long as step 5 showed 11 tools.
 
-Scripts and pass criteria are in `bootstrap/suite_a.json`; edit the turns there, not the runner.
-To switch the demo account state between manual tests: `.venv/bin/python bootstrap/demo_reset.py P4`.
+To share a run, commit and push the folder:
 
-## 6. Voice (M2)
+```bash
+git add runs/<timestamp> && git commit -m "Add suite run <timestamp>" && git push
+```
 
-1. Console → the `cricket-care` app → Deploy → create a version and a deployment.
-2. Integrations → Telephony → bind a phone number to that deployment.
-3. Call it. Say "my wifi is really slow" and follow the steps. The P3 profile is seeded by default.
-4. For the record, note the conversation id from the console; it can be fetched later with the
-   platform's conversation API and added to the run folder.
+The scripts and pass criteria live in `bootstrap/suite_a.json`. To put the demo account in a
+given state for manual testing: `.venv/bin/python bootstrap/demo_reset.py P4`.
+
+## 7. Voice
+
+1. Console → Customer Engagement Suite → the `cricket-care` app.
+2. Create a version, then a deployment from it.
+3. In the telephony settings, bind a phone number to that deployment.
+4. Call it and say "my wifi is really slow". The account starts in profile P3 (clean account,
+   iPhone on the calling line). Run `demo_reset.py` with another profile to try the others.
+5. Note the conversation id shown in the console for each call, and anything that sounded
+   wrong (reading long lists, talking over you, long silences).
+
+Console menu names may differ slightly from the above; the order of the steps does not.
+
+## Troubleshooting
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| `create_app.py` fails with permission denied | The application-default login is a different user, or lacks the platform admin role | Rerun `gcloud auth application-default login` as the project user |
+| Any API error mentioning a quota project | Quota project not set for application default credentials | `gcloud auth application-default set-quota-project "$PROJECT"` |
+| `deploy_mcp.sh` fails at the build | Cloud Build service account lacks permissions, common in managed orgs | Ask the org admin for the default Cloud Build setup, or grant the build service account Cloud Run and Artifact Registry roles |
+| `deploy_mcp.sh` fails granting the invoker role on `gcp-sa-ces` | The service agent does not exist yet, or an org policy limits which identities can be granted roles | Make sure step 3 ran first. If it still fails, ask the org admin to allow Google-managed service agents |
+| Turns print `(429 quota; retry in …)` | Token quota at the default | Wait for it, or raise the quota (step 1) |
+| Agent replies but step 5 printed 0 tools | Toolset bound without tool ids | Rerun step 5; do not edit the toolset by hand in the console |
 
 ## Known behaviour
 
-- A turn costs about 4,000 tokens. At the default 1000 tokens/min quota most turns return 429; the
-  runner retries four times with growing waits, so a seven-scenario run can take 20 minutes.
-- Without `tool_ids` on the agent toolset binding the agent silently has no tools. The attach
-  script sets them; do not rebind the toolset by hand in the console.
-- `create_app.py` updates instructions and direct tools only. It never touches the toolset binding.
-- `MCP_WIRE_LOG=1` in `.env` makes the server log every MCP request body. Useful once; noisy after.
+- One turn uses about 4,000 tokens. The runner retries rate-limited turns four times with growing
+  waits.
+- `create_app.py` updates instructions only. It never touches the toolset binding, so you do not
+  need to rerun step 5 after editing instructions.
+- Set `MCP_WIRE_LOG=1` in `.env` and redeploy to log every request to the server. Useful for
+  debugging tool calls; noisy otherwise.
 
 ## Tear down
 
 ```bash
 gcloud run services delete cricket-support-mcp --region us-central1 --project "$PROJECT" --quiet
+gcloud artifacts repositories delete cloud-run-source-deploy --location us-central1 --project "$PROJECT" --quiet
 ```
 
-Delete the app from the console (or with the platform API). Nothing else is created.
+Delete the `cricket-care` app from the console. Skip the second command if other Cloud Run
+services in the project were also deployed from source; they share that image repository.
