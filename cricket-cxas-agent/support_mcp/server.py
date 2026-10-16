@@ -25,18 +25,33 @@ def find_tutorials(device: str, symptom: str) -> dict:
 
 
 @mcp.tool()
-def get_tutorial(device: str, tutorial_id: str) -> dict:
-    """Get the summary, step count, branch question and safety flags for a tutorial.
-    Call this right after find_tutorials, before offering the caller the summary."""
-    return P.get_tutorial(device, tutorial_id)
+def get_tutorial(device: str, tutorial_id: str, choice: str = "", from_step: int = 1) -> dict:
+    """Load a tutorial's summary and its steps for this caller's branch, once. Call this right after
+    find_tutorials, and again only when the caller's answer changes the branch (pass `choice`) or
+    when next_from is set (pass from_step=next_from). Steps marked gated are withheld: call
+    checkpoint before speaking one."""
+    return P.get_tutorial(device, tutorial_id, choice, from_step)
 
 
 @mcp.tool()
 def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
-    """Get ONE step of a tutorial. Call this for each step as the caller confirms the
-    previous one; never ask for more than one step ahead. Pass `choice` with the
-    caller's answer when the tutorial has a branch question."""
+    """Get one ungated step again. Use this only to resume after a callback or when the loaded
+    tutorial is no longer in view; during a walk speak steps from get_tutorial."""
     return P.get_step(device, tutorial_id, n, choice)
+
+
+@mcp.tool()
+def checkpoint(customer_id: str, device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
+    """Release a gated step (one that ends the call or erases data) and save the caller's place.
+    Call this before speaking any step marked gated. Say `say_first` before the instruction."""
+    return P.checkpoint(customer_id, device, tutorial_id, n, choice)
+
+
+@mcp.tool()
+def get_progress(customer_id: str) -> dict:
+    """Where this caller left off in a tutorial on a recent call, if anywhere. Call this at the
+    start of every troubleshooting call, before identifying the device."""
+    return P.get_progress(customer_id)
 
 
 @mcp.tool()

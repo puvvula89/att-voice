@@ -4,6 +4,7 @@ get_step is the only thing the agent calls during a walk-through. It returns one
 step, its warning, its image, and whether it ends the call, so the agent never
 has to hold the whole tutorial in context and can never invent a step.
 """
+import datetime as dt
 import logging
 import os
 import re
@@ -12,6 +13,7 @@ from google.api_core.exceptions import GoogleAPIError
 
 from knowledge.catalog import Catalog
 from knowledge.content_store import CatalogCache, make_source
+from support_mcp import progress_store
 
 log = logging.getLogger(__name__)
 CONTENT_ERROR = {"error": "Tutorial content is unavailable right now. Offer to text the guide link or open a ticket."}
@@ -178,3 +180,46 @@ def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
         "is_last": idx == len(steps) - 1,
         "next_options": [o for o in s["options"] if not o.startswith("Next")],
     }
+
+
+SAY_CALL_ENDING = ("This next step will disconnect us. When your phone is back, call again and I'll pick up "
+                   "right where we left off.")
+SAY_DESTRUCTIVE = ("This step will erase data on the phone and it can't be undone. Say exactly what it erases "
+                   "and get a clear yes before giving the instruction.")
+
+
+def checkpoint(customer_id: str, device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
+    cat = _catalog_or_none()
+    if cat is None:
+        return CONTENT_ERROR
+    try:
+        t = cat.get(device, tutorial_id)
+    except KeyError:
+        return {"error": f"No tutorial '{tutorial_id}' for device '{device}'."}
+    steps, complete, err = steps_for(t, choice)
+    if err:
+        return err
+    s = next((x for x in steps if x["n"] == n), None)
+    if s is None:
+        return {"error": f"Step {n} is not in the loaded steps; valid steps are {[x['n'] for x in steps]}."}
+    if not is_gated(s):
+        return {"error": f"Step {n} is not a checkpoint step; speak it from the tutorial you already have."}
+    progress_store.save(customer_id, {"device": device, "tutorial_id": tutorial_id, "title": t.title,
+                                      "choice": choice or None, "step_n": n,
+                                      "updated_at": dt.datetime.now(dt.timezone.utc)})
+    say = [m for m, on in ((SAY_DESTRUCTIVE, s["destructive"]), (SAY_CALL_ENDING, s["call_ending"])) if on]
+    return {"n": n, "of": len(steps) if complete else None, "heading": s["heading"], "text": s["text"],
+            "notes": s["notes"], "warning": s["warning"], "image_url": s["image_url"],
+            "call_ending": s["call_ending"], "destructive": s["destructive"], "say_first": " ".join(say)}
+
+
+def get_progress(customer_id: str) -> dict:
+    rec = progress_store.load(customer_id)
+    if not rec:
+        return {"progress": None}
+    window = dt.timedelta(minutes=float(os.environ.get("RESUME_WINDOW_MINUTES", "30")))
+    age = dt.datetime.now(dt.timezone.utc) - rec["updated_at"]
+    if age > window:
+        return {"progress": None}
+    return {"progress": {**{k: rec[k] for k in ("device", "tutorial_id", "title", "choice", "step_n")},
+                         "resume_at": rec["step_n"] + 1, "minutes_ago": int(age.total_seconds() // 60)}}
