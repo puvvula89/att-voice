@@ -59,6 +59,42 @@ def _branch_question(t) -> str | None:
     return None
 
 
+WINDOW = 15   # steps returned per get_tutorial call; 13 of 815 paths are longer
+
+
+def is_gated(s: dict) -> bool:
+    return bool(s["call_ending"] or s["destructive"])
+
+
+def _shared_prefix(t) -> list[dict]:
+    """Steps every branch shares, from the start up to the first difference."""
+    out = []
+    for group in zip(*(p.steps for p in t.paths)):
+        if len({s["text"] for s in group}) > 1:
+            break
+        out.append(group[0])
+    return out
+
+
+def steps_for(t, choice: str):
+    """(steps, complete, error). Without a choice a branching tutorial yields only the shared steps."""
+    if len(t.paths) > 1 and not choice:
+        return _shared_prefix(t), False, None
+    p, err = _path(t, choice)
+    if err:
+        return None, False, err
+    return p.steps, True, None
+
+
+def _public_step(s: dict, titles: dict[str, str]) -> dict:
+    if is_gated(s):
+        return {"n": s["n"], "gated": True, "call_ending": s["call_ending"], "destructive": s["destructive"]}
+    return {"n": s["n"], "gated": False, "heading": s["heading"], "text": s["text"], "notes": s["notes"],
+            "warning": s["warning"], "image_url": s["image_url"],
+            "linked_procedures": [{"id": titles[l], "title": l} for l in s["links"] if l in titles],
+            "next_options": [o for o in s["options"] if not o.startswith("Next")]}
+
+
 def _path(t, choice: str):
     if len(t.paths) == 1:
         return t.paths[0], None
@@ -88,7 +124,7 @@ def find_tutorials(device: str, symptom: str) -> dict:
     return {"device": device, "results": results}
 
 
-def get_tutorial(device: str, tutorial_id: str) -> dict:
+def get_tutorial(device: str, tutorial_id: str, choice: str = "", from_step: int = 1) -> dict:
     cat = _catalog_or_none()
     if cat is None:
         return CONTENT_ERROR
@@ -96,13 +132,21 @@ def get_tutorial(device: str, tutorial_id: str) -> dict:
         t = cat.get(device, tutorial_id)
     except KeyError:
         return {"error": f"No tutorial '{tutorial_id}' for device '{device}'."}
-    steps0 = t.paths[0].steps
+    steps, complete, err = steps_for(t, choice)
+    if err:
+        return err
+    window = [s for s in steps if s["n"] >= from_step][:WINDOW]
+    more = complete and bool(window) and window[-1]["n"] < steps[-1]["n"]
+    titles = _title_index(cat, device)
     return {
-        "id": t.id, "kind": t.kind, "title": t.title, "summary": _summary(t),
-        "step_count": t.step_count, "url": t.url, "branch_question": _branch_question(t),
-        "choices": _branch_choices(t),
-        "call_ending_steps": [s["n"] for s in steps0 if s["call_ending"]],
-        "destructive_steps": [s["n"] for s in steps0 if s["destructive"]],
+        "id": t.id, "kind": t.kind, "title": t.title, "summary": t.summary or _summary(t), "url": t.url,
+        "step_count": len(steps) if complete else t.step_count,
+        "steps": [_public_step(s, titles) for s in window],
+        "path_complete": complete, "choice": choice or None,
+        "branch_question": None if complete else _branch_question(t),
+        "choices": [] if complete else _branch_choices(t),
+        "next_from": window[-1]["n"] + 1 if more else None,
+        "last_step": steps[-1]["n"] if complete and steps else None,
     }
 
 
@@ -122,6 +166,9 @@ def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
     if idx is None:
         return {"error": f"Step {n} does not exist; this tutorial has {len(steps)} steps."}
     s = steps[idx]
+    if is_gated(s):
+        return {"n": s["n"], "gated": True,
+                "error": "This step ends the call or erases data; call checkpoint for it instead."}
     titles = _title_index(cat, device)
     return {
         "n": s["n"], "of": len(steps), "heading": s["heading"], "text": s["text"], "notes": s["notes"],
