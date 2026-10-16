@@ -52,13 +52,14 @@ F.append(frame(1620, 150, 260, 570, "Cricket", "list", "cricket"))
 
 B.append(box(40, 330, 170, 100, "person", "Customer"))
 B.append(box(245, 320, 185, 120, "headset-grey", "Cricket IVR", "VAIL", cls="third"))
+B.append(box(245, 490, 185, 120, "chat", "Chat UI", "Demo web app + relay", cls="third"))
 
 B.append(f'<div class="panel-head" style="left:540px;top:206px">'
          f'<img src="{icon("contact-center-ai")}" alt="">'
          f'<div><span class="title">Gemini Enterprise for CX</span>'
          f'<span class="sub">CX Agent Studio app</span></div></div>')
 B.append(box(540, 290, 460, 90, "agents", "Care Concierge", "Root agent"))
-B.append(box(540, 440, 220, 100, "agents", "Billing", "Sub-agent · next", cls="planned"))
+B.append(box(540, 440, 220, 100, "agents", "Billing", "Sub-agent", cls="planned"))
 B.append(box(780, 440, 220, 100, "agents", "Tech Support", "Sub-agent", cls="focus"))
 B.append(box(540, 590, 460, 80, "gemini", "Gemini Live", "Native-audio model", cls="model"))
 
@@ -69,9 +70,13 @@ B.append(box(1340, 470, 220, 110, "databases", "Tutorial store", "Firestore"))
 
 B.append(box(1640, 200, 220, 140, "integration-services", "Cricket APIs", "Account · Network · Tickets"))
 B.append(box(1640, 380, 220, 100, "chat", "SMS API"))
+B.append(box(1640, 540, 220, 120, "cloud", "Image CDN", "Ozmo · step screenshots"))
 
-A.append(path([(210, 380), (245, 380)], "live", both=True))
-A.append(path([(430, 380), (540, 380)], "live", both=True))
+A.append(path([(210, 350), (245, 350)], "live", both=True))
+A.append(path([(430, 350), (540, 350)], "live", both=True))
+A.append(path([(125, 430), (125, 550), (245, 550)], "live", both=True))
+A.append(path([(430, 550), (475, 550), (475, 368), (540, 368)], "live", both=True))
+A.append(path([(1640, 600), (1600, 600), (1600, 745), (337, 745), (337, 610)], "image"))
 A.append(path([(890, 380), (890, 440)], "live"))
 A.append(path([(650, 380), (650, 440)], "planned"))
 A.append(path([(1000, 465), (1050, 465), (1050, 300), (1100, 300)], "live"))
@@ -81,11 +86,12 @@ A.append(path([(1450, 410), (1450, 470)], "live"))
 A.append(path([(1560, 270), (1640, 270)], "live"))
 A.append(path([(1560, 380), (1600, 380), (1600, 430), (1640, 430)], "live"))
 
-L.append(label(476, 346, "Bidi-SAC", "pill"))
+L.append(label(482, 316, "Bidi-SAC", "pill"))
 L.append(label(1075, 280, "MCP", "small"))
 L.append(label(1050, 548, "data store tool", "small"))
 L.append(label(1210, 432, "find", "small"))
-L.append(label(1450, 432, "walk", "small"))
+L.append(label(1450, 432, "walk · progress", "small"))
+L.append(label(900, 733, "step images, loaded by the chat UI", "small"))
 L.append(label(1600, 248, "REST", "small"))
 
 # ---- Content pipeline: offline, along the bottom -------------------------------------------------
@@ -104,14 +110,14 @@ for x1, x2 in [(300, 360), (585, 605), (830, 850), (1075, 1095), (1320, 1380)]:
 A.append(path([(1490, Y), (1490, 580)], "content"))
 A.append(path([(1420, Y), (1420, 795), (1230, 795), (1230, 580)], "content"))
 
-L.append(label(1230, 735, "import", "small"))
-L.append(label(1490, 735, "upsert", "small"))
+L.append(label(1230, 650, "import", "small"))
+L.append(label(1490, 650, "upsert", "small"))
 
 LEGEND = (
     '<div class="legend" style="left:1180px;top:58px">'
     '<span><svg width="44" height="10"><path d="M2,5 L42,5" class="live"/></svg>Live call</span>'
     '<span><svg width="44" height="10"><path d="M2,5 L42,5" class="content"/></svg>Content pipeline</span>'
-    '<span><svg width="44" height="10"><path d="M2,5 L42,5" class="planned"/></svg>Next use case</span>'
+    '<span><svg width="44" height="10"><path d="M2,5 L42,5" class="image"/></svg>Step images</span>'
     '</div>'
 )
 
@@ -143,18 +149,19 @@ CSS = """
   --third-fill: #f6f6f7;
   --planned: #9aa3b2;
   --content: #188038;
+  --image: #e37400;
   --font-display: "Google Sans", "Product Sans", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-body: Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #0f131a; --stage: #161b24; --ink: #e6e9ef; --muted: #a3acbb; --line: #2c3442;
   --blue: #8ab4f8; --blue-soft: #1d2a40; --gcp-fill: #1a2029; --cricket-fill: #19211a; --cricket-line: #3f5a35;
-  --pipe-fill: #16211b; --pipe-line: #2f5a3d; --third-fill: #1d2129; --planned: #6b7484; --content: #81c995;
+  --pipe-fill: #16211b; --pipe-line: #2f5a3d; --third-fill: #1d2129; --planned: #6b7484; --content: #81c995; --image: #fcad70;
   color-scheme: dark; } }
 :root[data-theme="dark"] {
   --bg: #0f131a; --stage: #161b24; --ink: #e6e9ef; --muted: #a3acbb; --line: #2c3442;
   --blue: #8ab4f8; --blue-soft: #1d2a40; --gcp-fill: #1a2029; --cricket-fill: #19211a; --cricket-line: #3f5a35;
-  --pipe-fill: #16211b; --pipe-line: #2f5a3d; --third-fill: #1d2129; --planned: #6b7484; --content: #81c995;
+  --pipe-fill: #16211b; --pipe-line: #2f5a3d; --third-fill: #1d2129; --planned: #6b7484; --content: #81c995; --image: #fcad70;
   color-scheme: dark; }
 body { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
 .wrap { padding-block: 24px; padding-inline: 16px; overflow-x: hidden; }
@@ -198,6 +205,7 @@ h1 { position: absolute; left: 40px; top: 44px; margin: 0; font: 500 40px/1.15 v
 .wires .live, .legend .live { stroke: var(--blue); }
 .wires .content, .legend .content { stroke: var(--content); stroke-dasharray: 7 6; }
 .wires .planned, .legend .planned { stroke: var(--planned); stroke-dasharray: 3 5; }
+.wires .image, .legend .image { stroke: var(--image); stroke-dasharray: 2 5; stroke-linecap: round; }
 .legend path { fill: none; stroke-width: 2.25; }
 .label { transform: translateX(-50%); white-space: nowrap; font: 400 14px/1.2 var(--font-body); color: var(--muted);
   background: var(--stage); padding: 2px 6px; border-radius: 4px; }
