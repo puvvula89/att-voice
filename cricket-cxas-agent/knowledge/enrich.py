@@ -24,6 +24,7 @@ log = logging.getLogger(__name__)
 OUT = Path(__file__).parent / "enrichment"
 FLAGS = ("call_ending",)
 RETRIES = 6   # rate-limited (429) calls back off 5, 10, 20, 40, 60 s
+TIMEOUT_MS = 120_000   # a call with no timeout once hung a whole run
 
 PROMPT = """You label phone troubleshooting steps for a voice agent that guides a caller ON THE PHONE BEING FIXED.
 For each numbered step decide:
@@ -96,7 +97,8 @@ def gemini_generate(model: str):
     from google import genai
     from google.genai import types
     client = genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"],
-                          location=os.environ.get("GEMINI_LOCATION", "us-central1"))
+                          location=os.environ.get("GEMINI_LOCATION", "us-central1"),
+                          http_options=types.HttpOptions(timeout=TIMEOUT_MS))
     cfg = types.GenerateContentConfig(response_mime_type="application/json", response_schema=SCHEMA, temperature=0)
 
     def generate(prompt: str) -> dict:
@@ -105,6 +107,7 @@ def gemini_generate(model: str):
 
 
 def enrich_device(device: str, records: list[dict], enricher: Enricher, workers: int) -> dict:
+    import httpx
     from google.genai import errors
     path = OUT / f"{device}.json"
     cache = json.loads(path.read_text()) if path.exists() else {}
@@ -119,6 +122,9 @@ def enrich_device(device: str, records: list[dict], enricher: Enricher, workers:
                     log.warning("enrich failed for %s/%s: %s", device, rec["id"], e)
                     return rec, None
                 time.sleep(min(60, 5 * 2 ** attempt))
+            except httpx.TimeoutException:
+                log.warning("enrich timed out for %s/%s", device, rec["id"])
+                return rec, None
             except json.JSONDecodeError as e:
                 log.warning("enrich returned bad JSON for %s/%s: %s", device, rec["id"], e)
                 return rec, None
