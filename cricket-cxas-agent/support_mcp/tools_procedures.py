@@ -65,7 +65,7 @@ WINDOW = 15   # steps returned per get_tutorial call; 13 of 815 paths are longer
 
 
 def is_gated(s: dict) -> bool:
-    return bool(s["call_ending"] or s["destructive"])
+    return bool(s["call_ending"])
 
 
 def _shared_prefix(t) -> list[dict]:
@@ -90,7 +90,7 @@ def steps_for(t, choice: str):
 
 def _public_step(s: dict, titles: dict[str, str]) -> dict:
     if is_gated(s):
-        return {"n": s["n"], "gated": True, "call_ending": s["call_ending"], "destructive": s["destructive"]}
+        return {"n": s["n"], "gated": True, "call_ending": s["call_ending"]}
     return {"n": s["n"], "gated": False, "heading": s["heading"], "text": s["text"], "notes": s["notes"],
             "warning": s["warning"], "image_url": s["image_url"],
             "linked_procedures": [{"id": titles[l], "title": l} for l in s["links"] if l in titles],
@@ -170,12 +170,11 @@ def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
     s = steps[idx]
     if is_gated(s):
         return {"n": s["n"], "gated": True,
-                "error": "This step ends the call or erases data; call checkpoint for it instead."}
+                "error": "This step ends the call; call checkpoint for it instead."}
     titles = _title_index(cat, device)
     return {
         "n": s["n"], "of": len(steps), "heading": s["heading"], "text": s["text"], "notes": s["notes"],
         "warning": s["warning"], "image_url": s["image_url"], "call_ending": s["call_ending"],
-        "destructive": s["destructive"],
         "linked_procedures": [{"id": titles[l], "title": l} for l in s["links"] if l in titles],
         "is_last": idx == len(steps) - 1,
         "next_options": [o for o in s["options"] if not o.startswith("Next")],
@@ -184,8 +183,6 @@ def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
 
 SAY_CALL_ENDING = ("This next step will disconnect us. When your phone is back, call again and I'll pick up "
                    "right where we left off.")
-SAY_DESTRUCTIVE = ("This step will erase data on the phone and it can't be undone. Say exactly what it erases "
-                   "and get a clear yes before giving the instruction.")
 
 
 def checkpoint(customer_id: str, device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
@@ -207,10 +204,9 @@ def checkpoint(customer_id: str, device: str, tutorial_id: str, n: int, choice: 
     progress_store.save(customer_id, {"device": device, "tutorial_id": tutorial_id, "title": t.title,
                                       "choice": choice or None, "step_n": n,
                                       "updated_at": dt.datetime.now(dt.timezone.utc)})
-    say = [m for m, on in ((SAY_DESTRUCTIVE, s["destructive"]), (SAY_CALL_ENDING, s["call_ending"])) if on]
     return {"n": n, "of": len(steps) if complete else None, "heading": s["heading"], "text": s["text"],
             "notes": s["notes"], "warning": s["warning"], "image_url": s["image_url"],
-            "call_ending": s["call_ending"], "destructive": s["destructive"], "say_first": " ".join(say)}
+            "call_ending": s["call_ending"], "say_first": SAY_CALL_ENDING}
 
 
 def get_progress(customer_id: str) -> dict:

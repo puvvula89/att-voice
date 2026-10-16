@@ -2,16 +2,16 @@ from knowledge.enrich import Enricher, apply, unique_steps
 
 REC = {"id": "t", "title": "Restart", "intro": "", "paths": [
     {"choices": ["A"], "steps": [
-        {"n": 1, "text": "Hold the Side button to launch Gemini.", "call_ending": True, "destructive": False},
-        {"n": 2, "text": "Turn your phone off.", "call_ending": True, "destructive": False}]},
+        {"n": 1, "text": "Hold the Side button to launch Gemini.", "call_ending": True},
+        {"n": 2, "text": "Turn your phone off.", "call_ending": True}]},
     {"choices": ["B"], "steps": [
-        {"n": 1, "text": "Hold the Side button to launch Gemini.", "call_ending": True, "destructive": False},
-        {"n": 2, "text": "Erase all content and settings.", "call_ending": False, "destructive": True}]}]}
+        {"n": 1, "text": "Hold the Side button to launch Gemini.", "call_ending": True},
+        {"n": 2, "text": "Erase all content and settings.", "call_ending": False}]}]}
 
 RESULT = {"summary": "Restart the phone.", "symptoms": ["phone frozen"], "steps": [
-    {"n": 1, "call_ending": False, "destructive": False, "reason": "launches an app"},
-    {"n": 2, "call_ending": True, "destructive": False, "reason": "powers off"},
-    {"n": 3, "call_ending": True, "destructive": True, "reason": "erases and restarts"}]}
+    {"n": 1, "call_ending": False, "reason": "launches an app"},
+    {"n": 2, "call_ending": True, "reason": "powers off"},
+    {"n": 3, "call_ending": True, "reason": "erases and restarts"}]}
 
 
 def test_unique_steps_dedupes_across_branches_in_order():
@@ -28,7 +28,7 @@ def test_apply_overrides_flags_everywhere_and_reports_disagreements():
 
 def test_apply_keeps_rule_flags_for_steps_gemini_skipped():
     rec, _ = apply(REC, {"summary": "", "symptoms": [], "steps": []})
-    assert rec["paths"][1]["steps"][1]["destructive"] is True
+    assert rec["paths"][1]["steps"][1]["call_ending"] is False
 
 
 def test_enricher_sends_numbered_unique_steps():

@@ -1,4 +1,4 @@
-"""Ask Gemini to label each tutorial: per-step safety flags, symptom phrases, a one-line summary.
+"""Ask Gemini to label each tutorial: a per-step call-ending flag, symptom phrases, a one-line summary.
 
     python -m knowledge.enrich                      # all devices, cached results reused
     python -m knowledge.enrich iphone-13 --workers 8
@@ -22,15 +22,14 @@ from knowledge.load_firestore import content_hash
 
 log = logging.getLogger(__name__)
 OUT = Path(__file__).parent / "enrichment"
-FLAGS = ("call_ending", "destructive")
+FLAGS = ("call_ending",)
 RETRIES = 6   # rate-limited (429) calls back off 5, 10, 20, 40, 60 s
 
 PROMPT = """You label phone troubleshooting steps for a voice agent that guides a caller ON THE PHONE BEING FIXED.
 For each numbered step decide:
-- call_ending: doing this step drops or interrupts a phone call on this device (restart, power off,
-  airplane mode, reset network settings, removing the SIM, force restart).
-- destructive: doing this step erases user data or settings that cannot be restored by undoing it
-  (erase all content, factory reset, reset all settings, reset network settings, delete an eSIM).
+- call_ending: doing this step drops or interrupts a phone call on this device: it restarts the phone,
+  powers it off or cuts its cellular service (restart, force restart, power off, airplane mode, reset
+  network settings, reset all settings, erase all content, factory reset, removing the SIM, deleting an eSIM).
 Judge only the action the step tells the user to do. A note saying NOT to do something does not count.
 A step that only describes what the guide covers, or turns the phone ON, is neither.
 Also give a one-sentence summary of what the tutorial fixes and 3-8 short phrases a caller might say.
@@ -45,8 +44,8 @@ SCHEMA = {"type": "OBJECT", "properties": {
     "symptoms": {"type": "ARRAY", "items": {"type": "STRING"}},
     "steps": {"type": "ARRAY", "items": {"type": "OBJECT", "properties": {
         "n": {"type": "INTEGER"}, "call_ending": {"type": "BOOLEAN"},
-        "destructive": {"type": "BOOLEAN"}, "reason": {"type": "STRING"}},
-        "required": ["n", "call_ending", "destructive"]}}},
+        "reason": {"type": "STRING"}},
+        "required": ["n", "call_ending"]}}},
     "required": ["summary", "symptoms", "steps"]}
 
 

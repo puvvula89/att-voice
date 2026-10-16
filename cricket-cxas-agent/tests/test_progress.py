@@ -16,8 +16,8 @@ def clean():
 
 def test_checkpoint_releases_the_gated_step_and_says_what_to_say_first():
     r = checkpoint(CUST, "iphone-13", RESET, 4)
-    assert r["text"] and r["call_ending"] and r["destructive"]
-    assert "disconnect" in r["say_first"].lower() and "erase" in r["say_first"].lower()
+    assert r["text"] and r["call_ending"] and "destructive" not in r
+    assert "disconnect" in r["say_first"].lower()
 
 
 def test_checkpoint_refuses_an_ungated_step():
