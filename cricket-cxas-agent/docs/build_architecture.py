@@ -65,18 +65,17 @@ B.append(box(540, 590, 460, 80, "gemini", "Gemini Live", "Native-audio model", c
 
 B.append(box(1100, 200, 460, 210, "cloud-run", "MCP server", "Cloud Run · stateless",
              tags("Tutorial tools · checkpoint", "Account and network tools", "SMS and ticket tools")))
-B.append(box(1100, 470, 220, 110, "vertex-ai", "Search", "Vertex AI Search"))
+B.append(box(1100, 470, 220, 110, "vertex-ai", "Agent Search", "Data store"))
 B.append(box(1340, 470, 220, 110, "databases", "Tutorial store", "Firestore"))
 
 B.append(box(1640, 200, 220, 140, "integration-services", "Cricket APIs", "Account · Network · Tickets"))
 B.append(box(1640, 380, 220, 100, "chat", "SMS API"))
-B.append(box(1640, 540, 220, 120, "cloud", "Image CDN", "Ozmo · step screenshots"))
 
 A.append(path([(210, 350), (245, 350)], "live", both=True))
 A.append(path([(430, 350), (540, 350)], "live", both=True))
 A.append(path([(125, 430), (125, 550), (245, 550)], "live", both=True))
 A.append(path([(430, 550), (475, 550), (475, 368), (540, 368)], "live", both=True))
-A.append(path([(1640, 600), (1600, 600), (1600, 745), (337, 745), (337, 610)], "image"))
+A.append(path([(1470, 975), (1470, 1018), (322, 1018), (322, 610)], "image"))
 A.append(path([(890, 380), (890, 440)], "live"))
 A.append(path([(650, 380), (650, 440)], "planned"))
 A.append(path([(1000, 465), (1050, 465), (1050, 300), (1100, 300)], "live"))
@@ -91,7 +90,7 @@ L.append(label(1075, 280, "MCP", "small"))
 L.append(label(1050, 548, "data store tool", "small"))
 L.append(label(1210, 432, "find", "small"))
 L.append(label(1450, 432, "walk · progress", "small"))
-L.append(label(900, 733, "step images, loaded by the chat UI", "small"))
+L.append(label(900, 1006, "step images, served to the chat UI by the relay", "small"))
 L.append(label(1600, 248, "REST", "small"))
 
 # ---- Content pipeline: offline, along the bottom -------------------------------------------------
@@ -99,11 +98,11 @@ F.append(frame(40, 770, 1840, 270, "Content pipeline · offline", "code", "pipel
 F.append(frame(340, 815, 1000, 185, "Pipeline job · Cloud Run · weekly via Cloud Scheduler", "cloud-run", "job"))
 Y, H = 845, 130
 B.append(box(80, Y, 220, H, "list", "Cricket support site", "or Ozmo content feed"))
-B.append(box(360, Y, 225, H, "code", "Fetch", "Headless browser"))
+B.append(box(360, Y, 225, H, "code", "Fetch", "Headless browser · text + images"))
 B.append(box(605, Y, 225, H, "code", "Extract", "Tutorial data · step graph"))
 B.append(box(850, Y, 225, H, "check", "Validate", "Schema · branches"))
 B.append(box(1095, Y, 225, H, "gemini", "Enrich", "Gemini · safety flags"))
-B.append(box(1380, Y, 180, H, "cloud-storage", "Cloud Storage", "Raw + normalized"))
+B.append(box(1380, Y, 180, H, "cloud-storage", "Cloud Storage", "Content + step images"))
 
 for x1, x2 in [(300, 360), (585, 605), (830, 850), (1075, 1095), (1320, 1380)]:
     A.append(path([(x1, Y + H // 2), (x2, Y + H // 2)], "content"))
