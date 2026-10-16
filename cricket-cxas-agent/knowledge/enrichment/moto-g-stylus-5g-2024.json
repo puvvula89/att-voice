@@ -1,0 +1,8301 @@
+{
+ "155949-battery-draining-quickly": {
+  "hash": "fa0e4de6ec52c2e1a90bc3c539f3c65b01c565da9643621f717359af11ea87c0",
+  "result": {
+   "summary": "This tutorial provides steps to address a quickly draining battery on the device.",
+   "symptoms": [
+    "My battery dies too fast.",
+    "My phone battery isn't lasting.",
+    "The battery drains quickly.",
+    "I have to charge my phone all the time.",
+    "My battery life is terrible."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "155952-can-t-connect-to-wi-fi-or-internet": {
+  "hash": "65bd06cae8174d5ab714b2f18f7627bb4d689b3c9ee4e237a610c71a9506ab27",
+  "result": {
+   "summary": "This tutorial helps users troubleshoot and fix issues with connecting to Wi-Fi or experiencing slow internet speeds on their device.",
+   "symptoms": [
+    "Can't connect to Wi-Fi",
+    "Internet not working",
+    "Wi-Fi is slow",
+    "Hotspot not connecting",
+    "No internet connection",
+    "Wi-Fi keeps dropping"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "This step describes the problem and outlines the guide's content."
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Toggling Airplane Mode on and off will temporarily cut cellular service, which would end an active call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step involves checking network settings, which does not interrupt a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Forgetting and reconnecting to Wi-Fi does not affect cellular service or restart the device."
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the phone will interrupt and end any active call."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "Restarting the Wi-Fi router or modem does not affect the phone's cellular service or restart the device."
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Resetting network settings will clear cellular connection information and interrupt any active call."
+    }
+   ]
+  }
+ },
+ "155950-can-t-install-an-app": {
+  "hash": "230ac491fbc4a9b57c0874df45d748cd68e0b4819054029fb3b5cfb02b78f016",
+  "result": {
+   "summary": "This tutorial provides solutions for when you are unable to install an app on your device.",
+   "symptoms": [
+    "Can't download apps",
+    "Apps won't install",
+    "App store not working",
+    "App download stuck",
+    "Play Store not downloading",
+    "Can't get new apps"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Restarting your phone clears frozen background download queues and flushes corrupted temporary system memory that causes downloads to stall on 'Pending.'"
+    }
+   ]
+  }
+ },
+ "156118-can-t-make-or-receive-calls": {
+  "hash": "4a2bc67ee7ba8b30acd081eacc27f23bb1661f38d07c3765451791f0d1599658",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for when you cannot make or receive calls on your device.",
+   "symptoms": [
+    "My calls aren't going through",
+    "I can't call anyone",
+    "People can't call me",
+    "My phone isn't ringing",
+    "I have no service for calls",
+    "Calls are failing"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true
+    },
+    {
+     "n": 4,
+     "call_ending": true
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": true
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "156171-can-t-pair-with-bluetooth-device": {
+  "hash": "105ddf67c7f282bbcbcc36d1273a721647fa37018e00c6bfa0209f56c95471d7",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot issues with pairing a moto-g-stylus-5g-2024 with a Bluetooth device.",
+   "symptoms": [
+    "My Bluetooth isn't connecting",
+    "I can't pair my headphones",
+    "My phone won't find my Bluetooth speaker",
+    "Bluetooth isn't working",
+    "I can't connect to my car's Bluetooth",
+    "My device won't pair"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the device will interrupt or end the phone call."
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Resetting Wi-Fi and Bluetooth settings can temporarily interrupt cellular service, thus ending the call."
+    }
+   ]
+  }
+ },
+ "155948-can-t-send-or-receive-email": {
+  "hash": "b3fc63d8764910c55b2ddca833f2cc7f503eab79c9e50e24ea71e42b7e28b89d",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot and resolve issues with sending or receiving email messages on your device.",
+   "symptoms": [
+    "Can't send email",
+    "Can't receive email",
+    "Email not working",
+    "My emails aren't coming through",
+    "I can't send messages",
+    "Email app is stuck",
+    "Email connection issues"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Introduction and list of topics, no action performed on the phone."
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Toggling Airplane Mode interrupts cellular service."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Checking signal status does not end a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Force stopping an app or clearing its cache does not end a call."
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the device ends the call."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "Checking account settings does not end a call."
+    },
+    {
+     "n": 7,
+     "call_ending": false,
+     "reason": "Removing and re-adding an email account does not end a call."
+    }
+   ]
+  }
+ },
+ "156123-can-t-send-or-receive-texts": {
+  "hash": "23c0d862a6070aa58e5efa8a80f00a6483c8c878eab56ddbed95b2a97879b937",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot issues with sending or receiving text messages on the device.",
+   "symptoms": [
+    "My texts aren't sending",
+    "I'm not getting text messages",
+    "Texts won't go through",
+    "Can't receive SMS",
+    "My phone won't send messages",
+    "Text messages are delayed"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "156122-can-t-turn-device-on-or-off": {
+  "hash": "95ab2daebce846507aeb0e812fd0ef3d18ddf0deb41adba4526d7aba64c0c3dd",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot issues with powering a phone on or off, including methods to power off, force restart, and power on the device.",
+   "symptoms": [
+    "My phone won't turn on",
+    "I can't power off my phone",
+    "My phone is frozen",
+    "My phone is unresponsive",
+    "My phone screen is black",
+    "I need to restart my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Powering off the phone."
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Force restarting the phone."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "156121-mobile-hotspot-isn-t-working": {
+  "hash": "e6da78ce8bf2b33c6402bf196df96edd6cf35c62a6818f5a50a75be7f65fdd51",
+  "result": {
+   "summary": "This guide helps troubleshoot and resolve issues with the Mobile Hotspot feature on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My hotspot isn't working",
+    "Can't connect to my hotspot",
+    "Hotspot keeps disconnecting",
+    "No internet on my hotspot",
+    "Devices can't see my hotspot",
+    "Hotspot is slow"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Restarting the phone"
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Switching phone to Airplane Mode"
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Resetting network settings"
+    }
+   ]
+  }
+ },
+ "156120-wi-fi-calling-isn-t-working": {
+  "hash": "cc67697282689932bc65f3a3e6ecf669a1978e7567e4ca471ab5eb03a58c275f",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot and fix issues with Wi-Fi Calling not working on a moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "Wi-Fi calling isn't working",
+    "Can't make calls over Wi-Fi",
+    "My phone won't use Wi-Fi for calls",
+    "Wi-Fi calling is off",
+    "Emergency address needs updating",
+    "Calls drop on Wi-Fi"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Turning on Airplane Mode cuts cellular service."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Powering off the device interrupts any ongoing call."
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": true,
+     "reason": "Powering off the device and removing the SIM card interrupts any ongoing call and cellular service."
+    },
+    {
+     "n": 9,
+     "call_ending": true,
+     "reason": "Resetting network settings will disconnect Wi-Fi and cellular, interrupting a call."
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_network-accessing-mobile-network-settings": {
+  "hash": "7963150d0bf66ec1253ee4b4380bf87017555a59c0c279c07ead90f343063ef4",
+  "result": {
+   "summary": "This tutorial guides the user on how to access and adjust mobile network settings on their device.",
+   "symptoms": [
+    "My mobile data isn't working",
+    "I can't connect to the network",
+    "I need to change network settings",
+    "My SIM card isn't recognized",
+    "I have no signal",
+    "I want to check my carrier settings"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_access-accessing-settings": {
+  "hash": "93377950f6413c7746029ac1af3be7b55b851cfbbb2898b86a7e1f1df324aec3",
+  "result": {
+   "summary": "This guide explains how to access the settings menu on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I get to settings?",
+    "Where is the settings menu?",
+    "I need to open settings.",
+    "Can you help me find settings?",
+    "I can't access my phone settings."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_access-accessing-your-settings?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "bcf5ccc96da63bb05a7844b0620f1e6c712b22e299b506eba780e91dd07ba588",
+  "result": {
+   "summary": "This guide shows how to access the settings menu within the YouTube app on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I change YouTube settings?",
+    "Where are the settings in YouTube?",
+    "I need to find YouTube app settings.",
+    "Can't find YouTube options.",
+    "How to adjust YouTube app preferences?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_wifi-activating-wi-fi-calling": {
+  "hash": "7fba9dd0ff5a220781ae387af045afe6a44107db0b383747f68b61c44399d552",
+  "result": {
+   "summary": "This tutorial provides instructions on how to activate Wi-Fi Calling on the Moto G Stylus 5G (2024).",
+   "symptoms": [
+    "My calls are dropping at home",
+    "I have bad cell signal indoors",
+    "How do I enable Wi-Fi calling?",
+    "I want to use Wi-Fi for phone calls",
+    "My phone isn't using Wi-Fi for calls"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_add-adding-a-facebook-account?topicSource=app-facebook-android-smartphone&topicVersion=582.0.0": {
+  "hash": "7d55b09b90b016283f2b4a13bc0bf81741ff44bd10162983b0f23c9094793511",
+  "result": {
+   "summary": "This tutorial explains how to log into an existing Facebook account on the moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "How do I log into Facebook?",
+    "I can't access my Facebook account.",
+    "Need help signing into Facebook.",
+    "Facebook login issues.",
+    "Logging into my Facebook app."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_add-adding-a-contact": {
+  "hash": "117775ae8d6c9af8510c1525855a99596e333ac77e0e74ac7e11199974367e02",
+  "result": {
+   "summary": "This tutorial guides you through the process of adding a new contact to your phone.",
+   "symptoms": [
+    "How do I add a new contact?",
+    "I want to save a number.",
+    "Can I put someone in my contacts?",
+    "Where do I save a new person?",
+    "Add a contact.",
+    "Save a contact."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_payment_method-adding-a-payment-method-to-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "4327c5037596b981c33cdbbec9a316d022e6a084daf938aac7a4aab4f4f397f8",
+  "result": {
+   "summary": "This tutorial guides users on how to add a credit or debit card as a payment method to Google Play on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "Can't add payment method to Google Play",
+    "Need to add a credit card to Play Store",
+    "Google Play payment not working",
+    "How to add debit card to my phone",
+    "Want to buy an app but no payment option"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_add-adding-an-account": {
+  "hash": "9c66b275ca7e726178fae757aa92a36c21f1a0cf24853746ee36d8dcbbf647f4",
+  "result": {
+   "summary": "This guide explains how to add a new account, such as an email account, to the moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "How do I add an email account?",
+    "I need to set up a new account on my phone.",
+    "My email isn't showing up on my device.",
+    "How to add a Google account?",
+    "I want to add my work email.",
+    "Set up a new account."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_add-adding-and-deleting-home-screens": {
+  "hash": "55df107e24fffe9c1b82abe0e9993a4a35089024f9e8fd63d0cd5e105475a04a",
+  "result": {
+   "summary": "This tutorial guides users on how to add new Home screens and remove existing ones on a moto-g-stylus-5g-2024 by moving app icons.",
+   "symptoms": [
+    "How do I add a new home screen?",
+    "I want to delete a home screen.",
+    "My home screen is full.",
+    "How do I organize my apps better?",
+    "I need more space for apps.",
+    "Can I remove an empty home screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_favorite-adding-and-removing-contacts-from-favorites": {
+  "hash": "5695a8aef7edd29e8e921baed8b5c468993b40ed2e211585a5828b2d0ce5ca34",
+  "result": {
+   "summary": "This guide explains how to add and remove contacts from the Favorites list on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How to favorite a contact",
+    "Add contact to favorites",
+    "Remove contact from favorites",
+    "Manage favorite contacts",
+    "My important contacts aren't in favorites",
+    "I accidentally favorited someone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_widget_add-adding-apps-and-widgets-to-the-home-screen": {
+  "hash": "a6b6ad3f57a674508ee6c24e65eca84f29556c6205f138c702734ff49ddba51d",
+  "result": {
+   "summary": "This tutorial explains how to add widgets to the Home screen on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "Can't add widgets",
+    "How to customize home screen",
+    "Want to put a clock on my screen",
+    "Need to add a weather widget",
+    "Home screen is empty",
+    "Where are my widgets?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_emergency-adding-emergency-information-to-your-lock-screen": {
+  "hash": "882485a84f1b72846573bf249c9bc05771fbce7e8eeaaa35b43d4c9b84e80031",
+  "result": {
+   "summary": "This tutorial guides you on how to add emergency and medical information to your phone's lock screen.",
+   "symptoms": [
+    "How to add emergency contacts?",
+    "Put medical info on lock screen",
+    "Set up emergency details",
+    "Add emergency information to my phone",
+    "Emergency contact setup",
+    "Medical ID on lock screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playlist_watchlater-adding-videos-to-your-watch-later-playlist?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "09b7be9974e8450b3438045451e8ceb22b01c758388797524ac3309ccbf8096b",
+  "result": {
+   "summary": "This tutorial guides the user on how to add a video to their 'Watch later' playlist within the YouTube application.",
+   "symptoms": [
+    "How do I save a video for later?",
+    "I want to watch this YouTube video later.",
+    "Where is the watch later option?",
+    "How to add to watch later playlist?",
+    "Can I save YouTube videos?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_rcs_chat-adjusting-rcs-chat-settings": {
+  "hash": "f230552ea502cc9b2ca55d218b36f69e3aa757563c6a74ce2ad439f60ea2bcf0",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust and enable RCS chat settings within the Messages app.",
+   "symptoms": [
+    "My RCS chats aren't working",
+    "I want to turn on RCS messaging",
+    "How do I change my chat settings?",
+    "RCS messages aren't sending",
+    "I need to configure RCS features",
+    "My messages aren't showing read receipts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_rtt_tty_calling-adjusting-rtt-tty-calling-settings": {
+  "hash": "07f1cbfdbaa74ee7f30a359e9296bf893711f054b914209b9afd2153b3ca5cb4",
+  "result": {
+   "summary": "This tutorial guides users on how to enable or disable Real Time Text (RTT) calling settings on their device.",
+   "symptoms": [
+    "I can't make RTT calls",
+    "How do I turn on RTT?",
+    "My RTT calls aren't working",
+    "I need to adjust TTY settings",
+    "Where are the accessibility call options?",
+    "Enable real time text"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating menus."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Tapping an option."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Changing a setting."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Completion message."
+    }
+   ]
+  }
+ },
+ "feature_widget_adjust-adjusting-apps-and-widgets-on-the-home-screen": {
+  "hash": "5b163df55df1c622d41970602376f8a90d50cb4dcc48b3f8e209b39203a7db01",
+  "result": {
+   "summary": "This tutorial guides users on how to move and resize widgets on their phone's Home screen.",
+   "symptoms": [
+    "How do I move a widget?",
+    "I want to resize a widget.",
+    "Can I rearrange my home screen?",
+    "My widgets are in the wrong place.",
+    "How do I customize my home screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_timeout-adjusting-the-screen-timeout-and-brightness": {
+  "hash": "c518bb352a22265fe4a12f89c97d820379d69c7d38b07c1177a47c1cf4d75555",
+  "result": {
+   "summary": "This guide provides instructions on how to adjust the screen timeout and brightness settings on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My screen turns off too quickly",
+    "My phone screen is too dark",
+    "I want to change screen brightness",
+    "How do I adjust screen timeout?",
+    "My screen is too bright"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_vibration-adjusting-vibration-settings": {
+  "hash": "c42db438f1cdb30421a5a4aedd6725657e8b8e8c8554e7de8c57b2de4b715377",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust the vibration settings on their moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My phone vibrates too much",
+    "How do I change vibration?",
+    "I want to turn off vibration",
+    "Vibration is too weak",
+    "Adjust haptic feedback",
+    "Change notification vibration"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_accessibility-adjusting-your-accessibility-options?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "fa99aad903eaabf7ae94573ffc64ca4bde95a37882a4d315c7b3f05d8d0e223e",
+  "result": {
+   "summary": "This tutorial guides users on how to enable accessibility options within the YouTube app settings.",
+   "symptoms": [
+    "I need to change YouTube's accessibility settings",
+    "How do I turn on accessibility features in YouTube?",
+    "YouTube accessibility isn't working",
+    "I want to adjust how YouTube displays things for accessibility",
+    "Can I make YouTube easier to use with accessibility options?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_notifications-changing-your-notification-settings?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "e1a989357893d75bac4a2206028910f15a7eb2f5a999b4a810ee8f052502097a",
+  "result": {
+   "summary": "This tutorial guides users on how to enable or adjust accessibility options within the YouTube app on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "YouTube accessibility settings",
+    "Can't find accessibility in YouTube",
+    "How to turn on YouTube accessibility",
+    "Adjust YouTube player settings"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_display_size-adjusting-your-display-size": {
+  "hash": "411df5b7a454c596f9c4d83ed38dc29c32306c3ab9be8f03fe512a6c95ca6862",
+  "result": {
+   "summary": "This guide shows how to adjust the display size on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My screen is too small",
+    "I can't see the text",
+    "How do I make the display bigger?",
+    "My display is too big",
+    "I need to change display size"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_font_size-adjusting-your-font-size": {
+  "hash": "93546f5f697158f40af549ef6e1e787c77ac727e78ea37aeb47ea66b4bbdc9c7",
+  "result": {
+   "summary": "This tutorial guides the user on how to adjust the font size on their moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "My text is too small",
+    "I can't read the screen",
+    "How do I make the font bigger?",
+    "My font is too big",
+    "Change font size"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_ringtone-assigning-a-ringtone-to-a-contact": {
+  "hash": "e0333029ab5121f8956febfc16b9d8cae512198a136661f0ab56989b2a1e22c8",
+  "result": {
+   "summary": "This tutorial guides you on how to assign a specific ringtone to an individual contact on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I set a custom ringtone for a contact?",
+    "I want a special ringtone for my friend.",
+    "Can I change the ringtone for one person?",
+    "My phone rings the same for everyone.",
+    "How to assign a unique ringtone to a contact?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_attach-attaching-a-file-to-a-text": {
+  "hash": "05be3cf7d7394605c24e9c92f2b0a5a5ee5df66dc47b7a1172862b3258562aaf",
+  "result": {
+   "summary": "This tutorial guides the user on how to attach an image file to a text message on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I send a picture?",
+    "Can't attach a photo to a text.",
+    "Need to send an image in a message.",
+    "Where's the attach button?",
+    "My pictures aren't sending."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_during_setup_auto_esim_install-automatically-activating-a-carrier-assigned-esim-during-initial-setup": {
+  "hash": "e8691230ee7392893fb5c4f24e9c3da8a1626f1dac524896dc3b5973ed46b32d",
+  "result": {
+   "summary": "This tutorial guides users through the process of automatically activating a carrier-assigned eSIM during the initial setup of a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My new phone isn't set up",
+    "How do I activate my eSIM?",
+    "I need to connect to Wi-Fi during setup",
+    "My phone isn't connecting to the network",
+    "I'm trying to set up my new Moto G Stylus",
+    "eSIM activation failed"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_automatic_archive_apps-automatically-archive-apps-to-save-space-on-your-device": {
+  "hash": "f2e70ac74a0c9b5af6718ec3b8ec26c65d0b65cc859ada69382617177b7f452d",
+  "result": {
+   "summary": "This tutorial guides users on how to enable the automatic archiving of apps to save storage space on a Moto G Stylus 5G (2024) device.",
+   "symptoms": [
+    "My phone is running out of space",
+    "I need to free up storage",
+    "How do I archive apps?",
+    "My phone is full",
+    "Apps are taking up too much space",
+    "I want to save storage"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_backup-backing-up-and-restoring-your-phone": {
+  "hash": "68a016e829559fffd3180b0b0e09132243efbb61cbedc178505df0e9f979b282",
+  "result": {
+   "summary": "This tutorial guides users on how to back up and manage their phone's data.",
+   "symptoms": [
+    "I need to back up my phone.",
+    "How do I save my data?",
+    "I want to manage my backups.",
+    "Where are my phone backups stored?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_block-blocking-and-unblocking-a-contact": {
+  "hash": "e05d53113cd4e703e61a0b1aca9ad1434771c7086b8075acd61ea75ca7ca3462",
+  "result": {
+   "summary": "This tutorial guides you through blocking and unblocking a contact's number on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I block a number?",
+    "I want to stop calls from someone",
+    "Unblock a contact",
+    "Someone is harassing me",
+    "Block unwanted calls",
+    "How to manage blocked numbers"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_web_bookmark-bookmarking-a-website?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "7d01d421baad07c8909644dd7ea418779b020a60f1f0673519553b61803e4473",
+  "result": {
+   "summary": "This tutorial explains how to bookmark a website and access saved bookmarks on the device.",
+   "symptoms": [
+    "How do I save a website?",
+    "I want to bookmark a page.",
+    "Where are my saved websites?",
+    "How do I find my bookmarks?",
+    "I want to save this page for later."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_contact-calling-a-contact": {
+  "hash": "c1cf7cbe4f43e9230632fdfbc0df55cb25f9ca0a60b91baa1a33d5fa01e72ae5",
+  "result": {
+   "summary": "This guide explains how to call a contact from your phone's contact list.",
+   "symptoms": [
+    "How do I call someone?",
+    "I can't make a call to a contact.",
+    "Where are my contacts?",
+    "How do I dial a number from my contacts?",
+    "My phone won't call a saved number."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_new-calling-a-new-number": {
+  "hash": "a6559c1651626aad83e1b99b7c33a45f9eba4704ef7ea191110638299cfc2792",
+  "result": {
+   "summary": "This guide shows how to dial a new phone number on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I make a call?",
+    "I can't dial a number.",
+    "Where is the phone app?",
+    "How to call someone new?",
+    "I need to dial a number manually."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_voicemail_inbox-calling-your-voicemail-inbox": {
+  "hash": "5ee846fd686b4eb0da57c91a56cc394530903d6c76d4067fb1e0e6885513af19",
+  "result": {
+   "summary": "This tutorial guides the user on how to access their voicemail inbox on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I check my voicemail?",
+    "I want to listen to my messages.",
+    "Where is my voicemail?",
+    "How do I call voicemail?",
+    "I need to access my inbox."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_subscription_cancel-cancelling-and-requesting-a-refund-for-a-subscription-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "68b8943ce8b5f9ffd6f7e4dc0209671f8a9848640bac3750e8a8c4c9e620f361",
+  "result": {
+   "summary": "This guide explains how to cancel a subscription and request a refund through the Google Play Store app.",
+   "symptoms": [
+    "How do I cancel a subscription?",
+    "I want to stop a recurring payment.",
+    "Can I get my money back for an app?",
+    "My subscription renewed automatically.",
+    "I need to manage my Google Play subscriptions.",
+    "How to cancel Google Play subscription?",
+    "Refund for app purchase."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_screenshot-capturing-and-viewing-screenshots": {
+  "hash": "58e4af5f96f3f38a694c437a011d529f1879c66ccb1ced056f3845551d41e96f",
+  "result": {
+   "summary": "This tutorial guides users on how to capture, edit, and save screenshots on their device.",
+   "symptoms": [
+    "How do I take a screenshot?",
+    "My phone won't take a picture of the screen.",
+    "Where are my screenshots saved?",
+    "I want to edit a screenshot.",
+    "How do I capture what's on my screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_screenshot-capturing-and-viewing-screenshots?topicSource=app-photos-android-smartphone&topicVersion=7.70": {
+  "hash": "20f2b8900688e5f5b1fcb2b3112e9d0612a0e2b49b5525d8d26b8dbc0f18ef13",
+  "result": {
+   "summary": "This guide provides instructions on how to capture and view screenshots on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I take a screenshot?",
+    "I want to save what's on my screen.",
+    "Where are my screenshots saved?",
+    "My phone won't take a picture of the screen.",
+    "How to capture screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_check-change-permissions-for-apps-on-your-device": {
+  "hash": "6f449bd2a8f0fef296640cf25980a9018f48aa0bc78707bc85cf5a80eabba5a8",
+  "result": {
+   "summary": "This tutorial guides the user on how to change permissions for individual applications on their device.",
+   "symptoms": [
+    "My app can't access my camera",
+    "I need to change an app's permissions",
+    "An app is asking for too many permissions",
+    "How do I manage app permissions?",
+    "I want to stop an app from using my location",
+    "An app isn't working right because of permissions"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_change_default_wallet_app-change-your-default-wallet-app": {
+  "hash": "47b73d9f558df698718a515b7b2af9a05401817ffd7bb64038bef81f24669998",
+  "result": {
+   "summary": "This tutorial guides you through changing the default wallet application on your moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "My wallet app isn't the one I want",
+    "How do I change my default payment app?",
+    "I want to use a different wallet",
+    "My phone keeps opening the wrong wallet",
+    "Can I set a new default for payments?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_default-change-your-device-s-default-apps": {
+  "hash": "745c79bad8567ee0e3dc3a2d222f602b8527433c8dfc2a68ebf1d8822ee479fb",
+  "result": {
+   "summary": "This guide shows how to change the default applications for various categories on a Moto G Stylus 5G (2024) device.",
+   "symptoms": [
+    "How do I change my default browser?",
+    "My links open in the wrong app",
+    "I want to use a different messaging app",
+    "How to set default apps?",
+    "Change default email app",
+    "My phone keeps opening the wrong app"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_application_language-changing-a-language-for-an-application": {
+  "hash": "a797666a90dbc8e56c7ea80ecf04d18caa603d908b8a0fe6a07f426e70cf6b01",
+  "result": {
+   "summary": "This guide explains how to change the display language for a specific application on a Moto G Stylus 5G (2024) device.",
+   "symptoms": [
+    "My app is in the wrong language",
+    "How do I change an app's language?",
+    "I need to set a different language for one app",
+    "Can I change the language for just one application?",
+    "My app's language isn't what I want"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_change-changing-account-settings": {
+  "hash": "9d10bbd98d591ab8c01fbbdb63afbc9eae2bd36d4d1bf5ed49d6fc1ca284d2da",
+  "result": {
+   "summary": "This tutorial guides users on how to change account settings and sync preferences on their device.",
+   "symptoms": [
+    "I need to change my account settings",
+    "How do I manage my accounts?",
+    "I want to sync my account",
+    "Where are account preferences?",
+    "My account isn't syncing",
+    "I need to update my email account"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_settings-changing-call-settings": {
+  "hash": "9748d9464d97b4303a48fcd914e87e6f20739f5c0b0febd8371cb9fef5cb7b45",
+  "result": {
+   "summary": "This guide explains how to access and modify call settings on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I change call settings?",
+    "I want to adjust call sounds.",
+    "Where are the call options?",
+    "Can I change my ringtone?",
+    "I need to modify call vibration."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_settings-changing-message-settings": {
+  "hash": "ee8ddb5e8f4600e63ad73973f3f53643d23f2ab7f5992e953e4735dcb28743cc",
+  "result": {
+   "summary": "This tutorial guides the user through changing various settings within the Messages application on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "I want to change my text message settings",
+    "How do I customize my messaging app?",
+    "My message notifications are wrong",
+    "I need to adjust advanced message options",
+    "Where are the message preferences?",
+    "I want to change how messages are displayed"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_roaming-changing-roaming-settings-for-a-trip": {
+  "hash": "57d6c3f9c55db3f4aa390d3dc6ed24833fe79bf439b6b2edec4f06cc038c7687",
+  "result": {
+   "summary": "This guide explains how to enable international data roaming on a Moto G Stylus 5G (2024) to use cellular data while traveling abroad.",
+   "symptoms": [
+    "My phone isn't getting data abroad",
+    "I can't use my phone overseas",
+    "How do I turn on roaming?",
+    "Data isn't working when I travel",
+    "I need to enable international data"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_size-changing-the-file-size-of-pictures-and-videos": {
+  "hash": "6eb6e898f4b5417ec048af5eba81b2ccf997f29bb2db7a2f4569046cadafdc19",
+  "result": {
+   "summary": "This tutorial guides users on how to change the file size and resolution of pictures and videos taken with the camera on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My photos are too large",
+    "How to change video quality?",
+    "I want smaller picture files",
+    "Adjust camera resolution",
+    "My phone storage is full from media",
+    "How to make video files smaller?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_ringtone-changing-the-ringtone": {
+  "hash": "87d1b7a7fae16ffe83165dc82a86d0a18da5928f429e08941687e0aac090a02c",
+  "result": {
+   "summary": "This guide explains how to change the default ringtone on a moto g stylus 5G (2024) device.",
+   "symptoms": [
+    "My ringtone is boring",
+    "How do I change my ringtone?",
+    "I want a new ringtone",
+    "Can I customize my ringtone?",
+    "My phone rings with a sound I don't like"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_wallpaper_change-changing-the-wallpaper": {
+  "hash": "ec0e9f3b41111154b25db764ec82e178af3c4e54caddfdd409fa8ce709e63911",
+  "result": {
+   "summary": "This tutorial guides the user through the process of changing the wallpaper on their device.",
+   "symptoms": [
+    "I want to change my background",
+    "How do I set a new wallpaper?",
+    "My wallpaper is boring",
+    "Can I customize my home screen?",
+    "I want a different picture on my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_settings-changing-web-content-settings?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "29c30c22bde370ed908f53157eb0ded559d92d24f5fa08b56c8d70e8e4885180",
+  "result": {
+   "summary": "This tutorial guides the user on how to adjust various web content settings within the Chrome browser on their device.",
+   "symptoms": [
+    "How do I block pop-ups?",
+    "I want to manage website permissions.",
+    "My browser keeps asking for location.",
+    "How do I change cookie settings?",
+    "I need to adjust site settings in Chrome.",
+    "Websites aren't displaying correctly."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_name-changing-your-device-s-name": {
+  "hash": "c7157d1af4997159c42893aecba58acd2ae6620b9cf5ccf78362347a3bcad2ee",
+  "result": {
+   "summary": "This tutorial guides you through changing the name of your moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "How do I change my phone's name?",
+    "My phone has the wrong name.",
+    "I want to rename my device.",
+    "Can I customize my phone's name?",
+    "Change device name."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_displaymode-changing-your-display-mode": {
+  "hash": "37e26244ab5e11ded2dcfa7400df27f768b76898a27765663199452c90cc6395",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable high contrast text on their device to improve readability.",
+   "symptoms": [
+    "I can't see the text clearly",
+    "I need higher contrast on my screen",
+    "How do I make the text stand out more?",
+    "My screen is hard to read",
+    "I want to change the display settings",
+    "Enable high contrast"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_language_change-changing-your-phone-s-default-language-or-region": {
+  "hash": "402e6b145b36bb112cdff51e9288647712b0a3be6c5dd5c42fd006aec758963c",
+  "result": {
+   "summary": "This guide explains how to change the default language or region settings on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My phone is in the wrong language",
+    "I need to change my phone's language",
+    "How do I set a new default language?",
+    "My phone's region is incorrect",
+    "I want to add a language to my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_panel_customize-customizing-your-notification-panel": {
+  "hash": "9bb472dd6608f9311074f5d9ce84db88e8e436fbd8333f96494b211a0bc32a25",
+  "result": {
+   "summary": "This tutorial guides users on how to change the default language or region settings on a Moto G Stylus 5G (2024) device.",
+   "symptoms": [
+    "My phone is in the wrong language.",
+    "I want to change the language on my phone.",
+    "How do I set a different language?",
+    "My phone's region is wrong.",
+    "I need to change my phone's default language."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_tapduration-changing-your-tap-duration": {
+  "hash": "0b064a2ff8ef06049122f3275bbc1ff4727b59f55409b2c63927b41434d1d8b8",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust the touch and hold delay settings on a Moto G Stylus 5G 2024.",
+   "symptoms": [
+    "My phone taps too fast",
+    "I want to change tap speed",
+    "Touch and hold delay settings",
+    "Accessibility tap duration",
+    "My screen is too sensitive",
+    "I can't long press properly"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_typingpreference-changing-your-typing-preference-for-talkback": {
+  "hash": "9d796a922aa529dc9b981db1717f80a1b8b03b8524b66c6b6706297e5a319cc7",
+  "result": {
+   "summary": "This guide explains how to change the typing preference settings for TalkBack on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I change TalkBack typing?",
+    "My TalkBack typing preference is wrong.",
+    "I want to adjust TalkBack keyboard settings.",
+    "TalkBack typing isn't working right.",
+    "Can I change how TalkBack types?",
+    "TalkBack typing options"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_charge-charging-your-phone": {
+  "hash": "53ae0eae5c7378f8b7f8c3c4a998e27a3f9a4135a97d1a489e09e6b6de2ee9f6",
+  "result": {
+   "summary": "This tutorial provides instructions on how to charge the moto-g-stylus-5g-2024 phone.",
+   "symptoms": [
+    "My phone won't charge",
+    "How do I charge my phone?",
+    "Where is the charging port?",
+    "My battery is dead"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_google_play_system_check-checking-for-and-installing-google-play-system-updates": {
+  "hash": "3dc04f6ed3116b5e7fc7a46e3e7b06b128a1d51dc9d22564952835e14b29203c",
+  "result": {
+   "summary": "This tutorial guides the user through checking for and installing Google Play System updates on their device.",
+   "symptoms": [
+    "My apps are crashing",
+    "My phone isn't secure",
+    "I have performance issues",
+    "My phone is acting weird",
+    "I need to update my system",
+    "Google Play isn't working right"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_update-checking-for-and-installing-system-updates": {
+  "hash": "b6ad0dcbf1efd3ee8aff8db63e7ede9ea562dc0909f20bd6a40befebb38f9032",
+  "result": {
+   "summary": "This tutorial guides the user on how to check for and install system updates on their moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "My phone is not working right",
+    "I need to update my software",
+    "My apps are crashing",
+    "I want the latest features",
+    "My phone is slow",
+    "I have a bug"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked": {
+  "hash": "187b3c5a4f377ea3388d81804cf7a7c6c5f38e473f289bb19fec50fe498d2538",
+  "result": {
+   "summary": "This tutorial guides the user on how to check if their moto-g-stylus-5g-2024 phone is carrier locked by navigating through the settings.",
+   "symptoms": [
+    "Is my phone locked?",
+    "Can I use a different SIM card?",
+    "How to check carrier lock status?",
+    "Bought a used phone, is it locked?",
+    "OEM unlocking status"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_refund_status-checking-the-status-of-a-google-play-refund?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "905eda711934c1e179b0686644b6f3940f511668bd7cc2bcdbd6549c8ade471d",
+  "result": {
+   "summary": "This tutorial guides the user through checking the status of a Google Play refund using the Play Store app on their device.",
+   "symptoms": [
+    "How do I check my Google Play refund status?",
+    "Where can I see my refund history?",
+    "Did my app refund process?",
+    "I need to find my Play Store refunds."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_points_weekly-claiming-the-weekly-google-play-points-bonus?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "9a3d0742e9b1e1c5276311f5fce3eeafd243476de13ef554c17f9980c727b12a",
+  "result": {
+   "summary": "This guide explains how to claim your weekly Google Play points bonus within the Play Store app.",
+   "symptoms": [
+    "How to claim Play Points bonus",
+    "Get my weekly Play Store bonus",
+    "Where are my Google Play points?",
+    "Claim Play Points perk",
+    "Find Play Points bonus"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_clear-clearing-browsing-data?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "22b3beea396f55ab1fd5a8eee496aa501b9fe31cb95924a573513bb7db31693a",
+  "result": {
+   "summary": "This tutorial guides the user on how to clear browsing data from the Chrome app on their device.",
+   "symptoms": [
+    "My browser is slow",
+    "Websites aren't loading right",
+    "I need to clear my history",
+    "My phone is acting weird online"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_clear-clearing-browsing-data": {
+  "hash": "ee9722f0ac1a83246e4bce54aec940156670fc47549213676ab785aaa2ab381f",
+  "result": {
+   "summary": "This tutorial guides the user through clearing browsing data within the Chrome app on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My browser is slow",
+    "Websites aren't loading right",
+    "I want to clear my history",
+    "Privacy concerns with my browsing",
+    "Chrome is acting up",
+    "Need to delete cookies"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_clear_app_cache-clearing-the-cache-and-data-for-an-individual-app": {
+  "hash": "edf0d7eecfde01bc16c0829e4418af2c7ef05bc63d1af9245351022e3fa9f294",
+  "result": {
+   "summary": "This guide explains how to clear the cache and data for a specific application on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My app is crashing",
+    "An app isn't working right",
+    "App is slow or frozen",
+    "I need to reset an app's data",
+    "App has errors",
+    "App takes up too much storage"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_location-configuring-location-settings": {
+  "hash": "c13ef86a11ff2dcb4784a8b1057dfcb36078672fc558248e8c70eb819c86d84b",
+  "result": {
+   "summary": "This tutorial guides users on how to configure location settings and manage app location permissions on their device.",
+   "symptoms": [
+    "My GPS isn't working",
+    "Apps can't find my location",
+    "I want to turn off location services",
+    "How do I change location permissions for an app?",
+    "My map app isn't showing where I am",
+    "Location services are off"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_wifi_connect-connecting-to-a-wi-fi-network": {
+  "hash": "261c3a451f2bd04356219f12573337c2087f15f5722db0a04cde5ac40d9be090",
+  "result": {
+   "summary": "This tutorial guides you through the process of connecting your moto-g-stylus-5g-2024 to a Wi-Fi network.",
+   "symptoms": [
+    "Can't connect to Wi-Fi",
+    "My Wi-Fi isn't working",
+    "How do I join a Wi-Fi network?",
+    "Need to turn on Wi-Fi",
+    "My internet isn't working on my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playlist_create-creating-a-playlist?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "ee4837fd479968349a9ab4f87ab04b16c9cb22398a1a5c6462fa762437470f24",
+  "result": {
+   "summary": "This tutorial guides you through creating a new playlist on YouTube on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I make a playlist?",
+    "I want to save videos to a list",
+    "Can I organize my YouTube videos?",
+    "Create a new YouTube playlist",
+    "Where's the playlist option?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_delete_all_esims-deleting-all-esims-from-your-device": {
+  "hash": "0d2a1aa0c7c80595a5a27e94d922a148330936bd5b70c8cbbfc85c67100ac6b1",
+  "result": {
+   "summary": "This tutorial guides the user through deleting all eSIMs from their moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "How do I remove an eSIM?",
+    "I need to delete my eSIM profile.",
+    "My eSIM isn't working, I want to clear it.",
+    "I'm selling my phone and want to erase eSIMs.",
+    "I want to switch to a new eSIM."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Deleting an eSIM will interrupt cellular service on the device."
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Confirming the erasure of eSIMs will interrupt cellular service on the device."
+    }
+   ]
+  }
+ },
+ "feature_text_delete-deleting-conversations": {
+  "hash": "dd0430639aad4ca46b5cc0c079f6aa3d0f6fe8677a6e68023d011b6b8a7ab3d2",
+  "result": {
+   "summary": "This guide explains how to delete conversations from the Messaging app on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I delete a text message?",
+    "I want to remove a conversation.",
+    "Clear my messages.",
+    "Delete old chats.",
+    "Get rid of a message thread."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_family_delete-deleting-your-family-group-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "c75b54126f6f657d6e0a1e1d12face29723c06c3dd63e787c53c02cd0072653f",
+  "result": {
+   "summary": "This tutorial provides instructions on how to delete a family group within Google Play on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I delete my Google Play family group?",
+    "I want to remove a family group from Play Store.",
+    "Need to get rid of a family group.",
+    "Can't delete family on Google Play.",
+    "How to manage family groups in Play Store?",
+    "Delete family link group."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_app_download-downloading-an-app-from-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "e327cc2c31e60b595c2ee740673fb9676b885f096eba1e5ea6fba57303289197",
+  "result": {
+   "summary": "This tutorial guides the user through downloading an app from the Google Play Store on their device.",
+   "symptoms": [
+    "How do I get new apps?",
+    "I want to download an app.",
+    "Can you help me install an app?",
+    "Where do I find apps?",
+    "I need to get an app on my phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Tapping search in an app does not affect call status."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Typing in a search field does not affect call status."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Tapping a keyboard key does not affect call status."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Selecting an app does not affect call status."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Tapping install does not affect call status."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "Tapping open does not affect call status."
+    }
+   ]
+  }
+ },
+ "feature_nearby_share-enabling-nearby-share": {
+  "hash": "d417956a8456463fefd5ffce7d7a906fd39ee8fa6df0ca8450be94049f24863d",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable Nearby Share (also known as Quick Share) on a moto-g-stylus-5g-2024 device, making it visible to nearby devices for file sharing.",
+   "symptoms": [
+    "Nearby Share not working",
+    "Can't share files with other phones",
+    "How to turn on Quick Share",
+    "My phone isn't visible for sharing",
+    "Enable Nearby Share on my Moto G Stylus"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_enable_offline_device_lock-enabling-offline-device-lock": {
+  "hash": "96e8b060164ca5d2679b00b1191c713a7986023e2bbc64557fe769317b9f252e",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable the Offline Device Lock feature on their moto-g-stylus-5g-2024 for enhanced theft protection.",
+   "symptoms": [
+    "How to turn on offline lock",
+    "Enable theft protection",
+    "Secure my phone if it's off",
+    "Offline device security settings",
+    "Protect stolen phone",
+    "Turn on device lock"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_enable_remote_lock-enabling-remote-lock": {
+  "hash": "47f6bd92aa3e8338cba498519b3e88f7d335ac3448a5ebc82ccadfacca9aa187",
+  "result": {
+   "summary": "This tutorial explains how to enable the Remote Lock feature on the moto-g-stylus-5g-2024 to secure a lost or stolen device.",
+   "symptoms": [
+    "How do I turn on remote lock?",
+    "I need to enable remote locking for my phone.",
+    "Where is the remote lock setting?",
+    "I want to secure my phone if it gets lost."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_enable_theft_detection_lock-enabling-theft-detection-lock": {
+  "hash": "7ebb9511fc0a96e176ce7c6b13d7aaac49fb2e0b65b92c18012e5cadfa1b2452",
+  "result": {
+   "summary": "This guide explains how to enable the Theft Detection Lock feature on the moto-g-stylus-5g-2024 to protect the device from unauthorized access if stolen.",
+   "symptoms": [
+    "How to turn on theft protection?",
+    "I want to secure my phone",
+    "Where is theft detection lock?",
+    "Protect my device from theft",
+    "Enable anti-theft feature"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_debugging-enabling-usb-debugging": {
+  "hash": "ed391c253159f5d01989efd18d658e362c6c81e94e8072c965ee5aaa53913b5f",
+  "result": {
+   "summary": "This tutorial guides you through enabling USB debugging on your moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I turn on USB debugging?",
+    "I need to enable developer options.",
+    "My computer isn't recognizing my phone for development.",
+    "Where is the USB debugging setting?",
+    "I can't find developer options.",
+    "I need to connect my phone for app development."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_enable_autoupdate_all-enabling-auto-updates-for-all-android-apps?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "e063f12acb0f7d8a415f6370234ddc33f2be59c8482ad6804d9dae16473af96d",
+  "result": {
+   "summary": "This guide explains how to enable automatic updates for all Android applications on the device.",
+   "symptoms": [
+    "My apps aren't updating automatically",
+    "How do I turn on automatic app updates?",
+    "Apps aren't updating in the background",
+    "I want my apps to update by themselves",
+    "Need to enable auto app updates",
+    "My apps are outdated"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_enable_autoupdate_single-enabling-auto-updates-for-individual-apps?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "59423ecdfda03bc2a087e31d124722491e4890b52bb52ccb73af1c2b5a4e4928",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable automatic updates for individual applications on their device.",
+   "symptoms": [
+    "My apps aren't updating automatically",
+    "How do I turn on auto-updates for an app?",
+    "I want my apps to update by themselves",
+    "Can I set specific apps to auto-update?",
+    "My app is outdated"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_explore-exploring-new-videos?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "923bf58302008b1213b4db7a26322cb31c14a0d3c0f3fb2bbca1204ef9067311",
+  "result": {
+   "summary": "This tutorial guides users on how to explore and watch new videos within the YouTube app.",
+   "symptoms": [
+    "How do I find new videos on YouTube?",
+    "Where is the explore section in YouTube?",
+    "I want to browse trending videos.",
+    "Show me how to use YouTube's explore feature.",
+    "How do I discover different video categories?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_library_explore-exploring-your-library?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "463fb8402b563bca3d6c649c29c695ae28d03309d581d40051bb0dff6278a7f0",
+  "result": {
+   "summary": "This tutorial guides the user on how to navigate and explore their video library within the YouTube app.",
+   "symptoms": [
+    "How do I find my saved videos?",
+    "Where is my watch later list?",
+    "I can't find my YouTube library.",
+    "Show me my videos on YouTube."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_phone-finding-a-family-member-s-device": {
+  "hash": "c12e4d3b4aa340f686fb5073ff40cddfdfa2f0d4cc0f566a4e07eced01885fbc",
+  "result": {
+   "summary": "This tutorial guides users on how to find a family member's device using the Google Family Link app.",
+   "symptoms": [
+    "I can't find my child's phone",
+    "Where is my family member's device?",
+    "How do I locate a lost phone?",
+    "Need to track a family phone",
+    "My kid lost their phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Tapping in an app does not end a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Tapping in an app does not end a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Tapping in an app does not end a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "This step is a completion message, not an action."
+    }
+   ]
+  }
+ },
+ "feature_find_iccid-finding-your-iccid": {
+  "hash": "7a2d2aea623445ef9cca83db9f47127a86fc2eb6b124285fc0d6897f49f5b494",
+  "result": {
+   "summary": "This tutorial guides the user on how to locate the ICCID (Integrated Circuit Card Identifier) on their moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "Where can I find my SIM card number?",
+    "I need my ICCID.",
+    "How do I check my SIM details?",
+    "What's the serial number of my SIM?",
+    "I need to provide my ICCID to my carrier."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_imei-finding-your-device-s-imei-number": {
+  "hash": "34244d84aed3bb444d34ee8fc7abf82f6a6fcd3894aa494b34a706f72ae93db0",
+  "result": {
+   "summary": "This tutorial guides you through finding the IMEI number on a moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "Where is my IMEI number?",
+    "How to find IMEI on Moto G Stylus?",
+    "Need my phone's serial number",
+    "IMEI location",
+    "Check IMEI on my device"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_voicemail_number-finding-your-voicemail-number": {
+  "hash": "dbb1b0371cc1ccf722cf6cf7c556d9ed6abcd294dc9fae48b276bbaa01243e9e",
+  "result": {
+   "summary": "This tutorial guides the user on how to locate their voicemail number on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "I need my voicemail number",
+    "Where is my voicemail number?",
+    "How do I find my voicemail settings?",
+    "What's my voicemail access number?",
+    "I forgot my voicemail number"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_force_restart-force-restarting-your-device": {
+  "hash": "ef9698ccc6b325ae64c138720d122cca067625d277bdfc4e4fcba0ee208d46bf",
+  "result": {
+   "summary": "This tutorial guides the user through force restarting their device to resolve unresponsiveness or minor software glitches.",
+   "symptoms": [
+    "My phone is frozen",
+    "My screen is unresponsive",
+    "My phone won't turn off",
+    "My apps are crashing",
+    "My phone is stuck",
+    "It's not responding"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": true,
+     "reason": "Force restarting the device will power it off and restart it, interrupting any active calls."
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_forward-forwarding-a-text": {
+  "hash": "3a9dc7c6509a2402bb1b0e01ac2aff9d0652491b91cfeaeac1857c44bc6e27b2",
+  "result": {
+   "summary": "This tutorial explains how to forward a text message on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I forward a text?",
+    "I want to send a text to someone else.",
+    "Can I forward this message?",
+    "How do I share a text message?",
+    "Forwarding texts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_play_points-getting-to-know-google-play-points?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "8aff1d0663a9f87264717e982fc5c36ed073e962b1a6ef8715ad352c763afb55",
+  "result": {
+   "summary": "This tutorial guides the user on how to access and view their Google Play Points within the Google Play Store app on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I check my Play Points?",
+    "Where can I find my Google Play Points?",
+    "I want to see my Play Points balance.",
+    "Show me my Play Points.",
+    "How to use Google Play Points?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_live-going-live-on-facebook?topicSource=app-facebook-android-smartphone&topicVersion=582.0.0": {
+  "hash": "d3bf5a1c23e69855d5300d1d74419a8d41a8be10c028a6c7e892c4836b02be8c",
+  "result": {
+   "summary": "This tutorial guides the user on how to start and finish a live video broadcast using the Facebook app on their device.",
+   "symptoms": [
+    "How do I go live on Facebook?",
+    "I want to start a live video on Facebook.",
+    "Can you help me broadcast live?",
+    "How to use Facebook Live feature?",
+    "Starting a live stream on Facebook."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "This step involves navigating within the Facebook app and does not interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "This step involves interacting within the Facebook app and does not interrupt a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step initiates a live stream within the Facebook app and does not interrupt a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "This step ends a live session within the Facebook app and does not interrupt a call."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "This step confirms an action within the Facebook app and does not interrupt a call."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "This step is a concluding statement and does not involve any action that would interrupt a call."
+    }
+   ]
+  }
+ },
+ "feature_live_go-going-live?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "8900fdc083d588cf76347af5fd0170bf9fc17a6ad9d3d8a98ce24f2233523594",
+  "result": {
+   "summary": "This guide explains how to initiate a live broadcast on YouTube using the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How to go live on YouTube?",
+    "Start a live stream",
+    "Broadcast live video",
+    "YouTube live setup",
+    "Can't find live option"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_payments_profile-how-to-change-your-google-play-country?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "23f0ec53e4db491990486c94e48fcbfd8bfd349101112deb1c175c7f5ad037c3",
+  "result": {
+   "summary": "This tutorial guides the user on how to change their Google Play Store country settings.",
+   "symptoms": [
+    "Can't download apps from my region",
+    "Play Store shows wrong country",
+    "Moved to a new country",
+    "Need to update my Google Play location",
+    "Apps not available in my current country"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating an app."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Navigating an app."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Navigating an app."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Navigating an app."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Navigating an app."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "Navigating an app."
+    },
+    {
+     "n": 7,
+     "call_ending": false,
+     "reason": "Adding a payment method."
+    },
+    {
+     "n": 8,
+     "call_ending": false,
+     "reason": "Concluding statement."
+    }
+   ]
+  }
+ },
+ "feature_playstore_gift_book-how-to-send-a-book-as-a-gift-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "9b24adae9f89e5038c90cb29d631de94c50dfbf69754c463d672a71e2b15a641",
+  "result": {
+   "summary": "This tutorial explains how to send a book as a gift using the Google Play app on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I gift a book on Google Play?",
+    "I want to send a book to someone.",
+    "Can I gift a book through Google Play?",
+    "Where is the gift option in Google Play Books?",
+    "How to buy a book for a friend?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_family_setup-how-to-set-up-a-family-library-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "ddd2df92ed0605eff38f643b8279d56637d7ee6f4386c4e41651f6cd5afef1bb",
+  "result": {
+   "summary": "This tutorial guides the user on how to set up a Family Library in Google Play.",
+   "symptoms": [
+    "How to set up Family Library",
+    "Share apps with family",
+    "Google Play family sharing",
+    "Can't create family group",
+    "Add family members to Play Store"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_submit_feedback-how-to-submit-feedback-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "1f563bbc6e8dbcd91dd8c2ae875e085bc2836b14e989ac0d4a75a90a53ba26e3",
+  "result": {
+   "summary": "This tutorial guides users on how to submit feedback within the Google Play Store application on their device.",
+   "symptoms": [
+    "How do I send feedback in the Play Store?",
+    "I want to report an issue with an app.",
+    "Where can I leave comments for Google Play?",
+    "I need to submit a bug report for the Play Store.",
+    "How do I give feedback about the Play Store app itself?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_import-importing-and-exporting-contacts": {
+  "hash": "18882f46fbda4edddb60878f94f155efc960d6236c53fbcb87b53e4cd4a5043a",
+  "result": {
+   "summary": "This tutorial guides users on how to import and export contacts on their device.",
+   "symptoms": [
+    "How do I get my contacts on this phone?",
+    "I need to move my contacts to a new phone.",
+    "Can I save my contacts to a file?",
+    "My contacts aren't showing up.",
+    "I want to transfer contacts.",
+    "How do I backup my contacts?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_sync-syncing-account-contacts": {
+  "hash": "54696d7e1111f337366ac1697565cc393a26e80116ba9bc6a0cc5e02f71cdd3c",
+  "result": {
+   "summary": "This tutorial explains how to import contacts on a Moto G Stylus 5G (2024) device.",
+   "symptoms": [
+    "How do I import contacts?",
+    "My contacts are missing",
+    "Need to transfer contacts to this phone",
+    "Where is the import option for contacts?",
+    "Can't find my old contacts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_sd-inserting-and-removing-a-microsd-card": {
+  "hash": "b540ba81f2c915e1ab188920833adf92ae15dc3b9cd5c2329de5d4a150b46ad3",
+  "result": {
+   "summary": "This tutorial guides the user through the process of inserting or removing a microSD card from their moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "How do I put in an SD card?",
+    "Need to take out my memory card.",
+    "Where does the SD card go?",
+    "My phone storage is full.",
+    "Want to add more storage."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Sliding out the combined nano SIM / SD card tray will temporarily cut cellular service if a SIM card is present."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_sim-inserting-and-removing-the-nano-sim-card": {
+  "hash": "b5fb595112feb4c8026de84575193140ec2ae3ec86fe36075b1d1599d57ad534",
+  "result": {
+   "summary": "This tutorial explains how to insert or remove the nano SIM card from a moto g stylus 5G (2024) device.",
+   "symptoms": [
+    "My phone isn't connecting to the network.",
+    "I need to put my new SIM card in.",
+    "My SIM card isn't working.",
+    "How do I take out my SIM card?",
+    "I can't make calls.",
+    "My phone says 'No SIM card'."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Removing the SIM card interrupts cellular service."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_logout-logging-out-of-facebook?topicSource=app-facebook-android-smartphone&topicVersion=582.0.0": {
+  "hash": "4aebb05d227cb25fac7947004bb9ec65e380ebe0ddc7c134e6799ed3cde69eaf",
+  "result": {
+   "summary": "This tutorial guides the user on how to log out of the Facebook application on their device.",
+   "symptoms": [
+    "How do I log out of Facebook?",
+    "I want to sign out of my Facebook account.",
+    "Need to log off Facebook.",
+    "Can't find the logout option for Facebook.",
+    "How to sign out of the Facebook app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_call-making-a-video-call": {
+  "hash": "1a758bf6b763cedb017c988540bd0f8f3838226c2ec838f686d077810d5559f5",
+  "result": {
+   "summary": "This guide demonstrates how to initiate a video call using the Phone app on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How to make a video call?",
+    "I want to video chat someone",
+    "Can I video call from my phone?",
+    "Where is the video call button?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_app_purchase-making-an-in-app-purchase?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "9c3beafd754360a8e7e78aa3a2ea9209c96a94c64d86e1466a8c51c492a52005",
+  "result": {
+   "summary": "This tutorial guides the user through the process of making an in-app purchase on their device.",
+   "symptoms": [
+    "How do I buy something in an app?",
+    "I can't make an in-app purchase.",
+    "My in-app purchase isn't working.",
+    "I need to buy an item in a game.",
+    "How do I use my Google account for purchases?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_apps-managing-app-power-usage-and-force-closing-apps": {
+  "hash": "534197cd7aced56879e3db4ae7f0f0aa1b337ef664cf7b84a82a21ac1fa62f9c",
+  "result": {
+   "summary": "This tutorial guides users on how to manage an app's power usage and force close a misbehaving application on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My battery is draining fast",
+    "An app is frozen",
+    "An app is not responding",
+    "My phone is running slow",
+    "How do I stop an app?",
+    "I need to close an app completely"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_usage-managing-data-usage": {
+  "hash": "931c6be393d713ac10701adcd4ae8cef4853e807ee367e2dcadf752f8e3c4ff3",
+  "result": {
+   "summary": "This tutorial guides you through setting data usage warnings and limits on your device to help manage mobile data consumption.",
+   "symptoms": [
+    "My data bill is too high",
+    "I want to avoid overage charges",
+    "How do I track my data usage?",
+    "I need to set a data limit",
+    "My phone uses too much data",
+    "I want a warning before I hit my data cap",
+    "How do I control my mobile data?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_family_manage-managing-family-members-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "bfa4ddff3c0d552a96ac08b58df4ff4354db890316c6fb31cb703c923f5b808c",
+  "result": {
+   "summary": "This tutorial guides users on how to manage family members' settings and access within the Google Play Store.",
+   "symptoms": [
+    "Manage family members",
+    "Change family settings",
+    "Add family to Play Store",
+    "Remove family from Play Store",
+    "Parental controls",
+    "Family Link settings",
+    "Google Play family group"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_battery-managing-the-battery": {
+  "hash": "bc64e887f5f9d270a689aebe8d146139b3085867d9bd977fce00fd835488729f",
+  "result": {
+   "summary": "This guide explains how to manage battery settings and enable Battery Saver on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My battery is draining fast",
+    "How do I save battery?",
+    "My phone dies too quickly",
+    "I need to extend my battery life",
+    "Battery saver isn't on",
+    "How do I turn on battery saver?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_memory-managing-the-device-memory": {
+  "hash": "b0fd12d364320c1d5607ba46bd9d3e641b4c73a224d477bee513ab7bad6737ae",
+  "result": {
+   "summary": "This tutorial guides users on how to manage device memory by accessing app storage settings.",
+   "symptoms": [
+    "My phone is slow",
+    "I'm running out of space",
+    "Apps are crashing",
+    "I can't download new apps",
+    "My storage is full",
+    "How do I free up space?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_close-multitasking-between-apps": {
+  "hash": "e5ad66642a42aba6379bbd2c7d67770e57c105a0d18fb0a0fb238b558a0a1d78",
+  "result": {
+   "summary": "This tutorial guides users on how to multitask between applications, including switching between recent apps, copying content from one app, and pasting it into another on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I switch between apps?",
+    "I want to copy text from one app to another.",
+    "How do I paste something?",
+    "My apps are open, how do I see them?",
+    "How do I close an app?",
+    "Can I use multiple apps at once?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screens_navigate-navigating-multiple-home-screens": {
+  "hash": "af5b0c9d623b2ef2cf0d80656a50ccc31ea8258634afda6b99d02f8b596355c5",
+  "result": {
+   "summary": "This guide explains how to navigate between multiple home screens and access the Google feed on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I switch home screens?",
+    "Can't find my apps on other screens.",
+    "Where is the Google feed?",
+    "How do I get back to the main screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_web_navigate-navigating-to-a-website?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "1bd1377d5c1131ea99068af9a124607a9d822cfa8e643a5d4cc83dce05c009ae",
+  "result": {
+   "summary": "This tutorial guides the user on how to open a web browser and navigate to a specific website or perform a search.",
+   "symptoms": [
+    "How do I go to a website?",
+    "I can't open a webpage.",
+    "Where do I type a web address?",
+    "How do I use the internet browser?",
+    "I need to visit a site.",
+    "How do I search online?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_web_navigate-navigating-to-a-website": {
+  "hash": "dd1a5135472d72db4be0c7768aa12c1cb4f455c13d06e80a49fb70b6fe61187c",
+  "result": {
+   "summary": "This guide explains how to navigate to a website using the Chrome app on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How to go to a website",
+    "Can't open a webpage",
+    "Where to type a URL",
+    "How to use Chrome browser",
+    "Search for something online"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_cellular_settings_access-navigating-to-your-cellular-settings": {
+  "hash": "8aecfc8defba1ab197b727ab4c9056feee3e62dddfaa7b8ad5877a9f29c58924",
+  "result": {
+   "summary": "This guide explains how to access the cellular settings on a moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "I need to find my cellular settings",
+    "Where are my mobile network options?",
+    "How do I get to SIM card settings?",
+    "I want to manage my network preferences",
+    "Show me my cellular data options"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_folders_add-organizing-apps-into-home-screen-folders": {
+  "hash": "257fd43e1258f7c3ae0999e68c09738c206370729b63d7d55743ccaa279a5ca5",
+  "result": {
+   "summary": "This tutorial guides the user on how to create and name folders for apps on the Home screen of their moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I group my apps?",
+    "I want to make folders for my apps.",
+    "My home screen is messy.",
+    "Can I organize my apps better?",
+    "How do I create an app folder?",
+    "I need to put apps into folders."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_bluetooth_pair-pairing-with-a-bluetooth-device": {
+  "hash": "d23cf594f56cfbc0d8a0a8ced4d44e9b2ff681aa3ff503214a7239273ec5c975",
+  "result": {
+   "summary": "This tutorial guides the user through the process of pairing their moto g stylus 5G (2024) with a Bluetooth device.",
+   "symptoms": [
+    "My headphones won't connect",
+    "How do I pair my speaker?",
+    "Bluetooth isn't working",
+    "I can't connect my car",
+    "Need to pair a new device"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_partial_screen_recording-partial-screen-recording-individual-apps": {
+  "hash": "1813042d131ede913710cd96cad5c74c8e10b75b051286186b7155cbd19f4ae9",
+  "result": {
+   "summary": "This guide explains how to record the screen of a single app on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I record my screen?",
+    "I want to record just one app.",
+    "Can I record a specific application?",
+    "How to do partial screen recording?",
+    "Screen recording for one app.",
+    "Record app screen."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_reset-performing-a-factory-reset": {
+  "hash": "3156fd3ab85afdaba7cf05b4f5ba2dab20c68fad9d53bdde7a7c303b92bdbbf3",
+  "result": {
+   "summary": "This guide explains how to perform a factory reset on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My phone is frozen",
+    "My phone is very slow",
+    "I want to wipe my data",
+    "My apps keep crashing",
+    "I forgot my lock screen password",
+    "My phone has a virus",
+    "I'm selling my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Initiates a factory reset which will restart the phone and end the call."
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Confirms the factory reset which will restart the phone and end the call."
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_post-posting-status-updates-and-photos-to-facebook?topicSource=app-facebook-android-smartphone&topicVersion=582.0.0": {
+  "hash": "9ba7a329caf7e77844892c86c6769df9b6387932aeeab654d8f2a1db60e6eb70",
+  "result": {
+   "summary": "This tutorial guides the user on how to post status updates and photos to Facebook using the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I post on Facebook?",
+    "Can't share a photo on Facebook",
+    "Facebook status update",
+    "Upload picture to Facebook",
+    "Post a video to Facebook",
+    "Share content on Facebook"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_network-preventing-google-play-from-downloading-apps-over-a-cellular-connection?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "e570b3a570d0f5b463f3c7b13b02f64f07fcf06b498b6ce51e34dd06a9e1c2f7",
+  "result": {
+   "summary": "This guide explains how to prevent Google Play from downloading apps using cellular data.",
+   "symptoms": [
+    "My phone is using too much data",
+    "Apps are downloading on cellular",
+    "How do I stop Google Play from using data?",
+    "I want to download apps only on Wi-Fi",
+    "Google Play is draining my data plan"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_record-recording-a-video": {
+  "hash": "2dbe77c76c710f23b01cbae439d53e30a7c2c083e365d5cb72aeb1379e00b5e6",
+  "result": {
+   "summary": "This guide explains how to record a video using the camera application on the device.",
+   "symptoms": [
+    "How do I record a video?",
+    "My camera won't record video.",
+    "I want to make a video.",
+    "Where is the video recording option?",
+    "Can't find video mode."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_points_redeem-redeeming-google-play-points?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "559a0f3050f7ae2abfdb1ccc3de348f7841942d1f5d97d87eb10b8f6cff9a051",
+  "result": {
+   "summary": "This tutorial guides the user on how to redeem Google Play points for items in the Play Store.",
+   "symptoms": [
+    "How do I use my Play Points?",
+    "I want to redeem my Google Play points.",
+    "Where can I spend my Play Points?",
+    "How do I get something with Play Points?",
+    "I have Play Points, what do I do?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_redeem-redeeming-a-google-play-gift-card?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "4ffa8b13b57d148636cdc2fce4e0b4d86d0544994a4aad8380ad1ed96eceb783",
+  "result": {
+   "summary": "This tutorial guides users on how to redeem a Google Play gift card using the Play Store app.",
+   "symptoms": [
+    "How do I use a gift card?",
+    "I have a Google Play gift card.",
+    "Need to redeem a code.",
+    "Where do I enter my gift card code?",
+    "Can't add my gift card."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_restrict-reducing-data-usage-by-turning-on-data-saver": {
+  "hash": "49d5b6ef7d42a421ecb021b2fbca123a76bb4647103250c204f55add08c6afe4",
+  "result": {
+   "summary": "This guide explains how to reduce mobile data usage by enabling Data Saver on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My data bill is too high",
+    "I'm using too much data",
+    "How do I save data?",
+    "My data runs out fast",
+    "I want to limit background data"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_application_notification-reducing-or-limiting-app-notifications": {
+  "hash": "0cb9503ae3ead772c07303089a344d57b9b898aaa4abce8e6593f9b0fd3a1ea4",
+  "result": {
+   "summary": "This guide explains how to reduce or limit app notifications on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "Too many notifications",
+    "Apps keep bothering me",
+    "How to turn off app alerts",
+    "Disable notifications for an app",
+    "Stop app pop-ups",
+    "Manage app alerts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_reinstall_apps-reinstalling-a-previously-downloaded-app?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "9f514d5be9e77275a1368675ce073777e1475191db05e9b35676f0a61b8b5c22",
+  "result": {
+   "summary": "This guide explains how to reinstall an app that was previously downloaded on your device.",
+   "symptoms": [
+    "I accidentally deleted an app",
+    "My app is gone",
+    "I need to get an old app back",
+    "How do I reinstall an app?",
+    "I can't find my app",
+    "I want to redownload an app"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_remove-removing-an-account": {
+  "hash": "0ad517672de0d75e3ae40a3a4e443dbe7845d890b02e65a4644f48dbfdf03347",
+  "result": {
+   "summary": "This guide explains how to remove an account from your device's settings.",
+   "symptoms": [
+    "How do I delete an account?",
+    "I want to remove an old account.",
+    "Need to take off an account.",
+    "Can't figure out how to delete an account."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_widget_remove-removing-apps-and-widgets-from-the-home-screen": {
+  "hash": "7addcd3f483a71ce8ef9d13bcb9aa10b12844150de6e3d587ca36b95bbffcab6",
+  "result": {
+   "summary": "This tutorial guides the user on how to remove unwanted apps and widgets from the Home screen of their device.",
+   "symptoms": [
+    "How do I remove an app icon?",
+    "My home screen is too cluttered.",
+    "I want to delete a widget.",
+    "Can I customize my home screen layout?",
+    "Get rid of this shortcut.",
+    "Remove app from home screen."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Touching and holding a widget does not interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Dragging a widget does not interrupt a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step is a completion message, not an action."
+    }
+   ]
+  }
+ },
+ "feature_text_reply-replying-to-a-text": {
+  "hash": "e4847a199b98000645169ca7f93c1c0689f6764527636c0f6ed29d26c58cceab",
+  "result": {
+   "summary": "This tutorial explains how to reply to a text message on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I text back?",
+    "I can't reply to a message.",
+    "Where do I type my response?",
+    "How do I send a reply?",
+    "I got a text, how do I answer it?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_developer_report-reporting-a-third-party-developer-issue-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "890ff5a0e2f6494c559d6fad63c4fab09e66a8b1c7c022d96996a001005dd74c",
+  "result": {
+   "summary": "This tutorial guides the user on how to report an issue with a third-party app developer through Google Play.",
+   "symptoms": [
+    "I need to report an app problem",
+    "How do I contact app support?",
+    "My app is not working",
+    "I want to give feedback on an app",
+    "Where is the developer contact?",
+    "There's a bug in this app"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_content_report-reporting-inappropriate-or-infringing-content-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "330ac645292146df7780a43ea221898d51df4249e4c9ee36176001553cdb0550",
+  "result": {
+   "summary": "This tutorial guides users on how to report inappropriate or infringing content within the Google Play Store.",
+   "symptoms": [
+    "How do I report an app?",
+    "I found a bad app on Google Play.",
+    "There's inappropriate content in an app.",
+    "How do I flag an app?",
+    "I need to report a game.",
+    "This app is offensive."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_refund_request-requesting-a-refund-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "ff9141d9ae43aabdbabd2381b9b17583bdc6a7a9aa09f481853cc0efc7cc725b",
+  "result": {
+   "summary": "This tutorial guides the user on how to request a refund for a purchase made in the Google Play Store.",
+   "symptoms": [
+    "I want a refund for an app",
+    "How do I get my money back from Google Play?",
+    "I bought something by accident",
+    "Can I return an in-app purchase?",
+    "I need to dispute a Google Play charge"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_all-resetting-all-settings": {
+  "hash": "652995967c56601a81dbdd5f73cb96cc881c2f132b379dcbbe81c0a7fe91fe93",
+  "result": {
+   "summary": "This tutorial guides the user through resetting app preferences on a Moto G Stylus 5G (2024) to resolve issues with applications.",
+   "symptoms": [
+    "Apps crashing",
+    "Apps not working correctly",
+    "My apps are acting strange",
+    "Can't open certain apps",
+    "App settings are messed up",
+    "Apps are slow"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_network_reset-resetting-network-settings": {
+  "hash": "d2d96ed7fd55f350bde768096cf4277115967086332d0ccabd8fa347c1602c5b",
+  "result": {
+   "summary": "This tutorial guides you through resetting the network settings on a moto-g-stylus-5g-2024 to resolve connectivity issues.",
+   "symptoms": [
+    "Can't connect to Wi-Fi",
+    "Mobile data not working",
+    "Calls dropping",
+    "Texts not sending",
+    "Bluetooth not connecting",
+    "Slow internet",
+    "No signal"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating menus."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Navigating menus."
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Resetting network settings interrupts cellular service."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Concluding statement."
+    }
+   ]
+  }
+ },
+ "feature_tbs_reset_network-resetting-network-settings": {
+  "hash": "6bb8c9f4a551db33adbc6e22c3e4825dcfcc0988e34cfd79bf77b0903775b7a8",
+  "result": {
+   "summary": "This guide explains how to reset the network settings on a moto-g-stylus-5g-2024 to resolve connectivity issues.",
+   "symptoms": [
+    "My Wi-Fi isn't working",
+    "I can't connect to mobile data",
+    "Bluetooth won't pair",
+    "My phone can't make calls",
+    "Internet connection keeps dropping",
+    "Can't send texts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Resetting Wi-Fi, mobile, and Bluetooth settings will temporarily disconnect the phone from cellular service."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_password_reset-resetting-your-google-account-password": {
+  "hash": "5cf395edc4e6b256cc43e3215de64751dd3a7cb0806178c98e0cfbfe3c3809e4",
+  "result": {
+   "summary": "This tutorial guides the user through resetting their Google Account password on the device.",
+   "symptoms": [
+    "Forgot Google password",
+    "Can't log into Google account",
+    "Need to change Google password",
+    "My Google account is locked",
+    "How do I reset my Gmail password?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "User interacts with the screen to enter an email address."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "User taps an option on the screen."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "User taps an option on the screen."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "User taps an option on the screen."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "User enters a verification code and taps next."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "User taps an option on the screen."
+    },
+    {
+     "n": 7,
+     "call_ending": false,
+     "reason": "User enters a new password and taps save."
+    },
+    {
+     "n": 8,
+     "call_ending": false,
+     "reason": "User taps an option on the screen."
+    },
+    {
+     "n": 9,
+     "call_ending": false,
+     "reason": "User taps an option on the screen."
+    },
+    {
+     "n": 10,
+     "call_ending": false,
+     "reason": "User taps an option on the screen."
+    },
+    {
+     "n": 11,
+     "call_ending": false,
+     "reason": "This step is a concluding statement, not an action that affects the call."
+    }
+   ]
+  }
+ },
+ "feature_home_restart-restarting-your-phone": {
+  "hash": "636d490dd321d6e9db5823c566b900f6957bdfda3d59895cbc50f8e20b79b390",
+  "result": {
+   "summary": "This guide explains how to restart the moto-g-stylus-5g-2024 phone.",
+   "symptoms": [
+    "My phone is frozen",
+    "My apps are crashing",
+    "My phone is slow",
+    "I can't make calls",
+    "My internet isn't working",
+    "My screen is unresponsive",
+    "My phone is acting weird"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Restarting the phone will end the call."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_return-returning-to-a-call": {
+  "hash": "4fa0e94fc97847694ad14e8d4887fb6ed6b31a8f5000c7e80823f8ccb6dd0fd5",
+  "result": {
+   "summary": "This guide explains how to return to an active phone call after navigating away from the call screen on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I get back to my call?",
+    "I left the call screen",
+    "My call disappeared",
+    "Can't find my active call",
+    "Where is my phone call?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_transaction_history-reviewing-your-google-play-transaction-history?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "d444f754d9569f814f64e1fca4f5c34e46e85ace954ac88346d8eb58a534d73e",
+  "result": {
+   "summary": "This tutorial guides you on how to review your Google Play transaction history on your device.",
+   "symptoms": [
+    "How do I see my past purchases?",
+    "Where can I find my Google Play history?",
+    "I want to check my app purchases.",
+    "Show me my transaction log.",
+    "How do I review my subscriptions?",
+    "I need to see my payment history."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_save_app_pairs-saving-split-screen-app-layouts": {
+  "hash": "8b638a2c6e95b8aa4bf72dd15f87ae830b6d1a215938e8f9506544ff09ff8b00",
+  "result": {
+   "summary": "This tutorial guides users on how to save a pair of apps to quickly launch them in split-screen mode on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I save my split screen apps?",
+    "I want to quickly open two apps together.",
+    "Can I make a shortcut for split screen?",
+    "How to save app pairs?",
+    "Split screen layout saving."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_search-searching-locally?topicSource=app-maps-android-smartphone&topicVersion=26.31.02": {
+  "hash": "e9245b06e415d5d89f54f3c798592629a603068bb20e1a62cf235413ffe39e15",
+  "result": {
+   "summary": "This tutorial guides the user on how to search for local places and get directions using Google Maps on their device.",
+   "symptoms": [
+    "How do I find places near me?",
+    "I need directions to a restaurant.",
+    "Can you help me search on Google Maps?",
+    "I don't know how to use the search feature in Maps.",
+    "Where's the nearest gas station?",
+    "How do I get directions?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_search-searching-locally": {
+  "hash": "67d6b9da75200e020c09ec3ad483d29c7e29125c9238b27ddf2606fc9e3690c6",
+  "result": {
+   "summary": "This tutorial guides the user on how to search for local places and get directions using Google Maps on their device.",
+   "symptoms": [
+    "How do I find a restaurant nearby?",
+    "I need to search for a gas station.",
+    "Can you help me find directions to a place?",
+    "I want to search for something on Google Maps.",
+    "How do I use Google Maps to find local businesses?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_group-sending-a-text-to-a-group": {
+  "hash": "788644aa0dd4cc2b404ea641fb60075cbc484589cb54a89d13d93521cc127ac7",
+  "result": {
+   "summary": "This guide explains how to send a text message to a group on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I text multiple people?",
+    "I want to send a group message.",
+    "Can't send a text to a group.",
+    "Group chat not working.",
+    "How to create a group text?",
+    "Need to text a group."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_send-sending-a-text-with-an-attachment": {
+  "hash": "58bc22d700a8c5284ebbcf95f66b6d8f6bebe44f8dfa7d5ca02592475dd86e2a",
+  "result": {
+   "summary": "This tutorial guides you through sending a text message on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I send a text message?",
+    "I want to send an SMS.",
+    "Where is the messages app?",
+    "How to compose a new message?",
+    "Sending a text."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_voice-sending-an-audio-message": {
+  "hash": "6c6d12df96c5b444671973b9aea2be55ee4fdb1efbf915a7b2bfcecf1985b937",
+  "result": {
+   "summary": "This tutorial guides the user on how to send an audio message using the Messages app on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I send a voice message?",
+    "I want to send an audio clip.",
+    "Can I record a message and send it?",
+    "Voice message not sending.",
+    "Where is the microphone icon in messages?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_wellbeing_timer-setting-an-app-timer": {
+  "hash": "c6897a7cd1c82dba3fad772e99e560a42bf240252e529ef3f0f0cd0124a22003",
+  "result": {
+   "summary": "This tutorial guides the user on how to set a timer for an application on their device.",
+   "symptoms": [
+    "How do I limit my screen time?",
+    "I want to set a timer for an app.",
+    "Can I put a time limit on an app?",
+    "How to control app usage?",
+    "Need to set a daily limit for an app."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_content_restriction-setting-app-limits-for-family-members": {
+  "hash": "0ac0fd14ef8392dd84775cecaa02ece9e717315dec22bf28f1889cd0f85423e8",
+  "result": {
+   "summary": "This tutorial guides users on how to set or modify app usage limits for family members using the Google Family Link app.",
+   "symptoms": [
+    "How do I limit my kid's screen time?",
+    "I want to block an app for my child.",
+    "Can I control what apps my family uses?",
+    "My child is spending too much time on a game.",
+    "Need to change app permissions for my kid."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_security-setting-screen-security": {
+  "hash": "bfdf78fd6918e69883a47b5225212cc90923f4c2f4976edf8bc6337c2797e0ca",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a PIN for screen security on their device.",
+   "symptoms": [
+    "I want to set a screen lock",
+    "How do I add a PIN",
+    "My phone isn't secure",
+    "I need to protect my phone",
+    "Set up a lock screen",
+    "Change my screen lock"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_silent-setting-the-phone-to-silent": {
+  "hash": "84d569a2a9392846beafb7f2ed6aa5f29662454a60618a69509575e4115009c3",
+  "result": {
+   "summary": "This tutorial guides the user on how to set their phone to silent mode using the Do Not Disturb feature.",
+   "symptoms": [
+    "How do I silence my phone?",
+    "My phone is making too much noise.",
+    "I need to put my phone on silent.",
+    "How do I turn off all sounds?",
+    "I want to mute my phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_forwarding-setting-up-call-forwarding": {
+  "hash": "9cc4b11838d0cf2b78d55cb97d57c7fe1d01e95eec9740d1af2bf070e30bd6ec",
+  "result": {
+   "summary": "This tutorial guides the user through the process of setting up call forwarding on a moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "I want to forward my calls",
+    "How do I set up call forwarding?",
+    "I need to divert my calls",
+    "Can I send my calls to another phone?",
+    "How do I change where my calls go?",
+    "My calls aren't going to the right number"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_assistant_setup-setting-up-google-assistant": {
+  "hash": "18964a218982eb36dfa56b3db46bbd1b603440cf3c30d05cf3889e1b6e81826f",
+  "result": {
+   "summary": "This tutorial guides the user through the initial setup process for Google Assistant on their device.",
+   "symptoms": [
+    "I want to set up Google Assistant",
+    "How do I enable Google Assistant?",
+    "Google Assistant isn't working",
+    "I need help with Google Assistant setup",
+    "My voice commands aren't recognized"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_moto_actions-setting-up-moto-actions": {
+  "hash": "67ec6da1b85481947bcbbfd6043041720d3d6d174723a5e2c648682df03190e7",
+  "result": {
+   "summary": "This tutorial guides the user through enabling the 'Pick up to silence' Moto Action on their device.",
+   "symptoms": [
+    "How to silence calls by picking up phone",
+    "Enable pick up to silence",
+    "Set up Moto Actions gestures",
+    "My phone doesn't silence when I pick it up",
+    "Configure call gestures"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_parent-setting-up-screen-time-as-a-parent": {
+  "hash": "525c0df04d095ab78e13f2b192bf793e90b16472a7f965ff747fdb07b44465bd",
+  "result": {
+   "summary": "This tutorial guides a parent on how to set up and manage screen time limits for a child's device using the Google Family Link app.",
+   "symptoms": [
+    "How do I set screen time for my kid?",
+    "I want to limit my child's phone usage.",
+    "Need to set a weekly schedule for my child's device.",
+    "How to manage screen time on my child's phone?",
+    "My child is spending too much time on their device."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_initial_setup-setting-up-a-new-phone-manually": {
+  "hash": "63a75a4d2c235f35decf0f64561755d5214b7fcb7d6d7a171ddc3a3bcf375bcf",
+  "result": {
+   "summary": "This guide provides instructions for manually setting up a new moto-g-stylus-5g-2024 phone, including connecting to Wi-Fi, signing into a Google account, and setting a screen lock PIN.",
+   "symptoms": [
+    "How do I set up my new phone?",
+    "I just got a new phone",
+    "My phone is asking for a Google account",
+    "I need to connect to Wi-Fi",
+    "How do I set a PIN on my new phone?",
+    "My phone is stuck on the setup screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    },
+    {
+     "n": 17,
+     "call_ending": false
+    },
+    {
+     "n": 18,
+     "call_ending": false
+    },
+    {
+     "n": 19,
+     "call_ending": false
+    },
+    {
+     "n": 20,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_qr_code-setting-up-an-esim-using-a-qr-code-or-activation-code": {
+  "hash": "422533e2f9f5d36d0a872ef18c63c08c718e0e28b3c78caf67dbbbbb2aa6712d",
+  "result": {
+   "summary": "This tutorial provides instructions on how to set up an eSIM on a Moto G Stylus 5G (2024) using either a QR code or an activation code.",
+   "symptoms": [
+    "How do I set up my eSIM?",
+    "I need to activate my new eSIM.",
+    "My eSIM isn't working.",
+    "Where do I scan the eSIM QR code?",
+    "I have an activation code for my eSIM."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_push_notification-setting-up-an-esim-with-a-push-notification-after-device-setup": {
+  "hash": "a7d3fbae1abb36517d8f32d90e92d24bd0c63f2b3a269999735082d53fc8db12",
+  "result": {
+   "summary": "This tutorial guides users on how to set up an eSIM on a moto-g-stylus-5g-2024 using a push notification after the initial device setup.",
+   "symptoms": [
+    "How do I activate my eSIM?",
+    "My eSIM isn't working.",
+    "I got a notification to set up my carrier eSIM.",
+    "I need to switch to my carrier eSIM.",
+    "eSIM setup problem."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_flashnotification-setting-up-camera-flash-or-screen-flash-notifications": {
+  "hash": "c6e5c462f61c44bd1d6ac180c0ae1c8000b8f674c589b737daf87cd5f11672e7",
+  "result": {
+   "summary": "This guide explains how to enable and configure camera flash or screen flash notifications on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My phone doesn't flash for notifications",
+    "How do I turn on flash alerts?",
+    "I want my screen to flash when I get a call",
+    "Can I use the camera flash for notifications?",
+    "Flash notifications aren't working",
+    "Set up visual alerts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_hotspot_on-setting-up-mobile-hotspot": {
+  "hash": "e68e245b1894601f85e48e5e7aa632c9643604fda6c9e5927f8671e8e15f4127",
+  "result": {
+   "summary": "This tutorial guides the user on how to set up and configure a mobile hotspot on their device.",
+   "symptoms": [
+    "How do I share my internet?",
+    "I need to turn on my hotspot.",
+    "My laptop can't connect to the internet.",
+    "I want to use my phone as a Wi-Fi source.",
+    "How do I change my hotspot password?",
+    "My hotspot isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_android_parent-setting-up-parental-controls": {
+  "hash": "4e6e3c2ade4757198777f22fa04d27a7d5180c1a7e2c48d090a44550c7b0c849",
+  "result": {
+   "summary": "This tutorial guides you through setting up parental controls on the device.",
+   "symptoms": [
+    "How do I set up parental controls?",
+    "I want to restrict my child's phone usage.",
+    "Need to manage my kid's screen time.",
+    "Where are the parental settings?",
+    "How to block apps for my child?",
+    "Set up family link."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_email_personal-setting-up-personal-email": {
+  "hash": "a654f4facae36d141c78fee8e90bddce159db3cfb4269ebe7441619d744e6fe4",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a personal email account on their device using the Gmail app.",
+   "symptoms": [
+    "How do I add my email?",
+    "I need to set up my Gmail.",
+    "My email isn't on my phone.",
+    "Can you help me put my email on this phone?",
+    "I want to check my email.",
+    "How do I get my personal email on my phone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_setup-setting-up-your-esim": {
+  "hash": "b9b06c7150bdede2d3a1f8c0a587d31fb711eb818a31d243b474168969acbbd8",
+  "result": {
+   "summary": "This guide provides instructions on how to set up an eSIM on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "I need to activate my eSIM",
+    "How do I get my eSIM working?",
+    "My new phone needs an eSIM",
+    "I can't find my eSIM settings",
+    "Help me set up my digital SIM"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_esim-setting-up-your-second-cellular-plan-with-an-esim": {
+  "hash": "bb679db1230c9659ebca24f95cea65bb08bfd0702f378b7bd34b9ea8271818bb",
+  "result": {
+   "summary": "This tutorial guides the user through the process of setting up a second cellular plan using an eSIM on their device.",
+   "symptoms": [
+    "I need to add an eSIM",
+    "How do I set up my second line?",
+    "My eSIM isn't working",
+    "I want to use dual SIM",
+    "Can I activate another plan?",
+    "How do I get my second number on this phone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_volume-setting-your-volume-levels-with-the-volume-panel": {
+  "hash": "f5229c9ef62cc752d456368468956105b33a88cfa9f577bbb417285e03839ad2",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust the volume levels on their moto g stylus 5G (2024) using the volume panel.",
+   "symptoms": [
+    "My phone is too loud",
+    "My phone is too quiet",
+    "I can't hear my calls",
+    "Notifications are too loud",
+    "How do I change the volume?",
+    "Where are the volume settings?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_share-sharing-photos?topicSource=app-photos-android-smartphone&topicVersion=7.70": {
+  "hash": "2098f986295777fd95dd9a583a84ca1ae5b1dea8446fc16ee089d8a8031c2cbc",
+  "result": {
+   "summary": "This guide explains how to share photos from your moto-g-stylus-5g-2024 using Bluetooth.",
+   "symptoms": [
+    "How do I share a picture?",
+    "I want to send a photo to another device.",
+    "Can I use Bluetooth to send photos?",
+    "My photos aren't sharing.",
+    "Need to transfer an image."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_share-sharing-photos": {
+  "hash": "e706eb17563c3fc85e6e9c1661d11d589b4bc79ae29f2ba9a861656429545bef",
+  "result": {
+   "summary": "This guide demonstrates how to share photos from your Moto G Stylus 5G (2024) using Bluetooth.",
+   "symptoms": [
+    "Can't share pictures",
+    "How to send photos via Bluetooth",
+    "Need to transfer images",
+    "Bluetooth photo sharing not working",
+    "Share media files",
+    "Send photo to another device"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_channel_subscribe-subscribing-to-your-favorite-channels?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "9b66c54e3a97fe08ca644a3559477de39d8bf0e63bbf432046f0fa7bcb35504b",
+  "result": {
+   "summary": "This tutorial guides users on how to subscribe to a YouTube channel from a video.",
+   "symptoms": [
+    "How do I subscribe on YouTube?",
+    "I want to follow a channel.",
+    "Can you help me subscribe?",
+    "Where is the subscribe button?",
+    "How to subscribe to a YouTube channel?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_switch-switching-between-calls": {
+  "hash": "91e2014d1ca9ca77c1caf4bcfad4dae23fa8a18aac0e06e017d103c948bdbf12",
+  "result": {
+   "summary": "This guide explains how to manage and switch between multiple active phone calls on your device.",
+   "symptoms": [
+    "How do I switch between calls?",
+    "I'm on two calls, how do I go back to the first one?",
+    "Can I put a call on hold and answer another?",
+    "How do I swap between active calls?",
+    "I need to manage multiple incoming calls."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Tapping the End icon on the current call will hang up that call."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_take-taking-a-picture": {
+  "hash": "fa3446ea25dc3edc5dd733441e922ebbf037697b4e7108f6a0b64b7012ade4af",
+  "result": {
+   "summary": "This guide explains how to take a picture on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I take a picture?",
+    "I want to take a photo.",
+    "Where is the camera button?",
+    "How do I use the camera app?",
+    "Can you help me take a photo?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_number_transfer-transferring-your-esim-and-phone-number-after-device-setup": {
+  "hash": "d3ba5a209d22da9a35d36d88650b78a33f013c2154705375c414fadd621e58ef",
+  "result": {
+   "summary": "This tutorial guides the user through transferring an eSIM and phone number to a new device after initial setup.",
+   "symptoms": [
+    "Transfer eSIM",
+    "Move my number",
+    "New phone eSIM",
+    "eSIM transfer help",
+    "Can't transfer number",
+    "eSIM setup"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_during_setup_number_transfer-transferring-your-esim-and-phone-number-during-initial-setup": {
+  "hash": "7e8cdf34d295fc306185a3446acac10b6b06352dc272c58a4738699588be12bc",
+  "result": {
+   "summary": "This tutorial guides the user through transferring their eSIM and phone number from another Android device to a new moto-g-stylus-5g-2024 during its initial setup.",
+   "symptoms": [
+    "How do I move my phone number to my new phone?",
+    "I need to transfer my eSIM to this new device.",
+    "Setting up my new phone, how do I get my old number?",
+    "eSIM transfer during initial setup.",
+    "Moving my service to a new device.",
+    "How to activate my eSIM on a new phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_airplane-turning-airplane-mode-on-and-off": {
+  "hash": "a77457c3f343a22e548a5302ec98f25c1adb089d854359176cb8c7feffe56168",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable and disable Airplane Mode on their device.",
+   "symptoms": [
+    "No network connection",
+    "Can't make calls",
+    "Phone not connecting to cellular",
+    "Airplane mode stuck on",
+    "Need to turn off airplane mode",
+    "How to enable airplane mode"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating menus does not interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Turning Airplane mode ON cuts cellular service, which would end an active call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step is a completion message, not an action."
+    }
+   ]
+  }
+ },
+ "feature_do_not_disturb-turning-do-not-disturb-on-or-off": {
+  "hash": "c3af3fa3741e7575f63f9ef071a34ff106305414f6662f8def75c38abb1f1373",
+  "result": {
+   "summary": "This tutorial explains how to enable or disable the Do Not Disturb feature on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "Turn off Do Not Disturb",
+    "My phone is silent",
+    "Enable Do Not Disturb",
+    "Notifications are muted",
+    "How to turn on DND",
+    "Disable DND"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_autoplay-turning-autoplay-off?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "db7b6b26aeb3ce6e87470f1111a6190c7a83a663b2a46234668a9e6af6f01571",
+  "result": {
+   "summary": "This tutorial guides the user on how to disable the autoplay feature for the next video in the YouTube app.",
+   "symptoms": [
+    "YouTube keeps playing automatically",
+    "How do I stop autoplay on YouTube?",
+    "I want to turn off next video autoplay",
+    "YouTube plays videos without me choosing",
+    "Disable YouTube autoplay"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_removeanimations-turning-off-animations-on-your-device": {
+  "hash": "38280d3a1fb346010bc3ee47d7329846a7e93de15b6bdecddc42804e37457e42",
+  "result": {
+   "summary": "This guide explains how to disable animations on your device to potentially improve performance or reduce visual distractions.",
+   "symptoms": [
+    "My phone feels slow",
+    "I want to speed up my phone",
+    "How do I turn off animations?",
+    "Animations are distracting",
+    "I want to disable visual effects"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_rcs_activate-turning-on-next-gen-messaging": {
+  "hash": "07cd6a5e10ece5113dcbfd1a6a494a4d4c15901aaa2db281f07860acc5b659b4",
+  "result": {
+   "summary": "This tutorial explains how to enable Next-Gen messaging (RCS chats) on the device.",
+   "symptoms": [
+    "I want to use advanced messaging features",
+    "How do I turn on RCS?",
+    "My messages look old",
+    "I can't send high-quality photos in messages",
+    "Enable modern chat features"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_spokenassistance-turning-on-spoken-assistance-accessibility-options": {
+  "hash": "36c2a525f3cd402abbe69a20d13b918b754e112d84bfbcb2b0aa1d484ae70387",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable and use the \"Select to Speak\" accessibility feature on their device.",
+   "symptoms": [
+    "My phone won't read text aloud.",
+    "How do I turn on spoken assistance?",
+    "I need help with accessibility features.",
+    "Can my phone read what's on the screen?",
+    "I want to enable text-to-speech."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_universalswitch-turning-on-universal-switch": {
+  "hash": "a0fcb71d4c5e68a5ea8760c93c485ffd05b446c70e34ecc0f84bbf3bd3b8d181",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable the Universal switch (Switch Access) accessibility feature on their device.",
+   "symptoms": [
+    "How do I turn on Switch Access?",
+    "I need to enable Universal switch.",
+    "Where is the Universal switch setting?",
+    "I want to use a switch device."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating menus"
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Navigating menus"
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Navigating menus"
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Enabling an accessibility feature"
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Confirming a setting"
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "Concluding statement"
+    }
+   ]
+  }
+ },
+ "feature_accessibility_coloradjustment-turning-on-and-changing-color-adjustment-settings": {
+  "hash": "96e62fc04bc1d0ea107ea2fbb6ced1b51f0259169138bef6a974f8a06c71e646",
+  "result": {
+   "summary": "This guide explains how to enable and adjust color correction settings on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "My screen colors look weird",
+    "I need to change color correction",
+    "How do I adjust display colors?",
+    "My phone screen looks off",
+    "Colors are not right on my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_livecaption-turning-on-and-changing-live-caption-settings": {
+  "hash": "c6b16ad195f61604a110b82d61cbe39923eac446c19de8db63573a21ca1c37c2",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and customize Live Caption settings on their moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "I can't see captions on my phone.",
+    "How do I turn on Live Caption?",
+    "My captions aren't working.",
+    "I want to change caption settings.",
+    "Where are the caption options?",
+    "Live Caption isn't showing up."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_assistantmenu-turning-on-and-changing-your-accessibility-menu": {
+  "hash": "bb5d7dc724982f0ff0d7993a2100e16e20fd854c67b76aa7a4c94aa3734e149a",
+  "result": {
+   "summary": "This tutorial guides you on how to enable and access the Accessibility Menu on your device.",
+   "symptoms": [
+    "How do I turn on the accessibility menu?",
+    "I can't find the accessibility menu.",
+    "Where is the accessibility shortcut?",
+    "I need to enable accessibility features.",
+    "Show me how to use the accessibility menu."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_captions-turning-on-captions?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "84a0bc9e0cb91c4d744f8a68a6da6ba37ad562618378f3253d5b6894e934b7bf",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable captions within the YouTube application on their device.",
+   "symptoms": [
+    "How do I turn on captions?",
+    "I can't see subtitles on YouTube.",
+    "Where are the caption settings?",
+    "YouTube captions aren't working.",
+    "I need to enable closed captions."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_authentication-turning-on-purchase-authentication-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "5f253d15fff79a79a2d1af9ad9b2cec0d6dbb219ce80e7afb379ba0bc75acef7",
+  "result": {
+   "summary": "This tutorial explains how to enable or adjust purchase authentication settings within the Google Play Store to prevent unauthorized purchases.",
+   "symptoms": [
+    "My kids keep buying apps",
+    "I want to approve purchases",
+    "How do I stop accidental purchases?",
+    "I need to set up a password for app buys",
+    "Google Play is letting anyone buy things",
+    "I want to control app purchases"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_power_on-turning-your-phone-on-and-off": {
+  "hash": "c89ae4e5a931a3b409f1355553a4609a99846f0b5144ab3756b28f9eba693002",
+  "result": {
+   "summary": "This tutorial explains how to turn the moto g stylus 5G (2024) phone on and off.",
+   "symptoms": [
+    "Phone won't turn on",
+    "Phone won't turn off",
+    "How to power on my phone",
+    "How to power off my phone",
+    "My phone is off and I want to turn it on"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Tapping 'Power off' will shut down the phone, ending any active call."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_app_uninstall-uninstalling-an-app-from-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "34d5693329634732c28080d0fd359337244ea5e28062a99933b63bf5e840ec50",
+  "result": {
+   "summary": "This tutorial guides the user through uninstalling an application from their device using the Google Play Store.",
+   "symptoms": [
+    "How do I remove an app?",
+    "I want to delete an app",
+    "This app is taking up space",
+    "I don't need this app anymore",
+    "Uninstall an application",
+    "How to get rid of an app"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_unlock-unlocking-the-screen": {
+  "hash": "90dd5cfbf860746d229c888915e63bfa980a8d8efa3d20060bde0248a1119589",
+  "result": {
+   "summary": "This guide explains how to unlock the screen of a moto-g-stylus-5g-2024 using a PIN.",
+   "symptoms": [
+    "My phone is locked",
+    "I can't get past the lock screen",
+    "How do I unlock my moto g stylus?",
+    "I need to enter my PIN"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_account_update-updating-account-information-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "1594172a014077806001a6ec2ab4c8ca0b81821151068fc6aa8bb12b403cf4bc",
+  "result": {
+   "summary": "This guide shows how to access account and device preferences within the Google Play Store app.",
+   "symptoms": [
+    "I need to change my Google Play account details",
+    "How do I update my payment info in Play Store?",
+    "My Google Play account is wrong",
+    "Can't update my apps, need to check account",
+    "Where are my Play Store settings?",
+    "I want to change my country in Google Play"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_app_update-updating-an-app-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "8ea3fd134b85a0b676bc4b33f0a12f03d3b7f64097a69174351ab5e7fb50f54e",
+  "result": {
+   "summary": "This tutorial guides the user through the process of updating an application using the Google Play Store on their device.",
+   "symptoms": [
+    "How do I update an app?",
+    "My app is outdated.",
+    "I need to get the latest version of an app.",
+    "An app isn't working, maybe it needs an update.",
+    "I want to update my applications.",
+    "How do I check for app updates?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_update_playstore-updating-the-google-play-store?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "13a70a7ddec59cd29b8fb770bef27069c354a835d9185147687ec6039a71562a",
+  "result": {
+   "summary": "This tutorial guides the user through updating the Google Play Store application on their device.",
+   "symptoms": [
+    "My apps aren't updating",
+    "Play Store isn't working",
+    "I can't download apps",
+    "Play Store is slow",
+    "I need to update Play Store",
+    "My Play Store is outdated"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Tapping an icon does not interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Tapping an icon does not interrupt a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Tapping an icon does not interrupt a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Tapping an icon to initiate an app update does not interrupt a call."
+    }
+   ]
+  }
+ },
+ "feature_playstore_family_payment-updating-your-family-payment-method-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "384c674164f5bf747b6d090f78653813d8eb96818233a9fe73c8340283fa3bdc",
+  "result": {
+   "summary": "This guide explains how to update the family payment method within the Google Play Store app on a moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "Can't update family payment method",
+    "Need to change Google Play family payment",
+    "My family payment method is incorrect",
+    "How to update payment for family in Play Store",
+    "Google Play family payment update issue"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_multi_window-using-dual-window": {
+  "hash": "7681f82a633484f8b541012ce5abf243884080cb5088430a40f86760b11a7aa7",
+  "result": {
+   "summary": "This tutorial guides users on how to activate and use the Dual Window (Split Screen) feature on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How to use split screen",
+    "Open two apps at once",
+    "Dual window feature",
+    "Multitasking on my phone",
+    "How to exit split screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_picture-using-picture-in-picture": {
+  "hash": "d2059aa6693c0af30f20a27a79709f8bd4bfe2ac378b5b651070e0b396adbab9",
+  "result": {
+   "summary": "This tutorial explains how to use and manage the Picture-in-Picture feature on the moto-g-stylus-5g-2024, specifically with the Maps application.",
+   "symptoms": [
+    "How do I use picture-in-picture?",
+    "My map is in a small window.",
+    "I want to move the small map.",
+    "How do I get out of picture-in-picture?",
+    "PiP isn't working.",
+    "I can't find the PiP controls."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_talkback_use-using-talkback": {
+  "hash": "0279bd892aca0721499ed0c9b3b40c026f5615fb2dec94130386e6f359aae62c",
+  "result": {
+   "summary": "This tutorial guides you through enabling and configuring the TalkBack accessibility feature on your device.",
+   "symptoms": [
+    "I need screen reader",
+    "How do I turn on TalkBack?",
+    "My phone isn't speaking",
+    "I can't see the screen",
+    "Help with accessibility features",
+    "Enable voice guidance",
+    "TalkBack settings"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_voice-using-handsfree-calling": {
+  "hash": "ee3b4d043ce232b9701dec2a2999cbb0e39641e4bb97bd00aa6a4f9b3ba7f0fa",
+  "result": {
+   "summary": "This guide explains how to initiate hands-free calls using Google Assistant on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How to make a call hands-free?",
+    "Voice dial a contact",
+    "Call using Google Assistant",
+    "Hands-free calling setup",
+    "Speak to call"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_emergency_mode-using-power-saving-mode": {
+  "hash": "eaff7d1056df4178df8a2f65c362fe6409391835f0079b772e3ae3d2d7849212",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable and configure the power saving mode (Battery Saver) on their device.",
+   "symptoms": [
+    "My battery is draining fast",
+    "How do I save battery?",
+    "I need to turn on battery saver",
+    "My phone dies too quickly",
+    "Where is power saving mode?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_magnify-using-screen-magnification": {
+  "hash": "12362a989fd3ff16c5569fdec4d2b7d13162e2e6f737e2ca9f9b5a8a80e9bc51",
+  "result": {
+   "summary": "This tutorial explains how to enable and use the screen magnification feature on the moto-g-stylus-5g-2024 device.",
+   "symptoms": [
+    "My screen is too small",
+    "I can't see the text",
+    "How do I zoom in?",
+    "Need to magnify my screen",
+    "Accessibility options for vision",
+    "Make text bigger"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_speakerphone-using-speakerphone": {
+  "hash": "587f9135f4d35ea3e57d5c7e44dd5a8e13057cd949dcb222769ac0b61f0ae946",
+  "result": {
+   "summary": "This tutorial explains how to activate and deactivate the speakerphone feature during a phone call.",
+   "symptoms": [
+    "How do I put my call on speaker?",
+    "I want to use speakerphone.",
+    "Can I use speaker during a call?",
+    "How to turn off speakerphone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notification_clear-using-the-notification-panel": {
+  "hash": "698a1bada649966863934705366a7878322798dd5225975d80f742d7548f8ea1",
+  "result": {
+   "summary": "This tutorial explains how to access and manage notifications using the notification panel on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I see my notifications?",
+    "My notifications are piling up.",
+    "I don't know how to clear notifications.",
+    "Where is the notification panel?",
+    "How do I get rid of these alerts?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_navigation-using-turn-by-turn-navigation?topicSource=app-maps-android-smartphone&topicVersion=26.31.02": {
+  "hash": "177cf37c724a739b2f1e309a9d201d4cb9cf974fa3386287c806897895095a24",
+  "result": {
+   "summary": "This guide explains how to initiate turn-by-turn navigation using Google Maps on the moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I get directions on my phone?",
+    "I need help with Google Maps navigation.",
+    "How do I start turn-by-turn directions?",
+    "I want to find a route.",
+    "How do I use the navigation feature?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_navigation-using-turn-by-turn-navigation": {
+  "hash": "39889327496670d4704f2e69d54ff3067c4ebd95774d10498a6e47a576f1db9c",
+  "result": {
+   "summary": "This tutorial guides the user on how to use turn-by-turn navigation with Google Maps on their moto-g-stylus-5g-2024.",
+   "symptoms": [
+    "How do I get directions?",
+    "I need navigation help.",
+    "My map isn't showing turns.",
+    "How do I use Google Maps for driving?",
+    "I can't find my destination."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_google_voice-using-voice-actions": {
+  "hash": "654228fa6c833b07e96da18419938dcb5afc977dd9f146a2ab8a36cf10a72f84",
+  "result": {
+   "summary": "This tutorial guides the user on how to initiate and use voice actions on the moto-g-stylus-5g-2024 by tapping the microphone icon and speaking a command.",
+   "symptoms": [
+    "Voice commands not working",
+    "How to use Google Assistant",
+    "Can't find microphone icon",
+    "Voice search not responding",
+    "Need help with voice actions",
+    "Google voice commands"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_web_switch-using-web-browser-windows?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "e06c96a146474d3dca683755f5b4638c0a4c23ce42cbf4b244a7236f961d05ab",
+  "result": {
+   "summary": "This tutorial explains how to open and close web browser tabs within the Chrome app on the device.",
+   "symptoms": [
+    "How do I open a new tab?",
+    "I have too many tabs open in Chrome.",
+    "How do I close a web page?",
+    "I want to manage my browser tabs.",
+    "Can I have multiple websites open at once?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_certification_status-verifying-your-device-s-certification-status?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "1362efe448f5dbc2fcd98e0c6b02362c65ffee3dadb392fbfdfb5b977176e6b5",
+  "result": {
+   "summary": "This tutorial guides the user on how to verify their device's Play Protect certification status through the Google Play Store settings.",
+   "symptoms": [
+    "Is my phone certified?",
+    "Play Store isn't working right",
+    "Apps are crashing",
+    "I need to check device certification",
+    "Google services are acting up"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_view_blocked_list-viewing-a-list-of-your-blocked-numbers": {
+  "hash": "4c84a989f2f4ab419166a03ddbb0081dc44dce10b14fb99b3bf78bb4802427d7",
+  "result": {
+   "summary": "This tutorial guides you through viewing the list of numbers you have blocked on your Moto G Stylus 5G (2024) phone.",
+   "symptoms": [
+    "How do I see my blocked numbers?",
+    "Where is my blocked list?",
+    "I want to check who I've blocked.",
+    "Show me my blocked calls."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_layers-viewing-current-traffic?topicSource=app-maps-android-smartphone&topicVersion=26.31.02": {
+  "hash": "765c585ba1e25ac5d657bc7dc6b4033f57eadcafe2f0db06455492d6307e0514",
+  "result": {
+   "summary": "This tutorial explains how to view current traffic conditions on Google Maps.",
+   "symptoms": [
+    "How do I see traffic?",
+    "Show me traffic on the map.",
+    "I want to check traffic.",
+    "Where's the traffic layer?",
+    "Google Maps traffic."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_usage_view-viewing-your-app-usage?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "f5341148615aa6cee7771148cfdb9134c23fb6bb05a07452c74d52b9afe2e083",
+  "result": {
+   "summary": "This tutorial guides users on how to set a 'Remind me to take a break' feature within the YouTube app to manage their viewing time.",
+   "symptoms": [
+    "I want to limit my YouTube time",
+    "How do I set a break reminder on YouTube?",
+    "I spend too much time on YouTube",
+    "Can I get a notification to stop watching YouTube?",
+    "Need to manage my screen time for YouTube",
+    "How to set a reminder to take a break?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_history_view-viewing-your-history?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "e3e48fea599f1473b880f31f4c7efb5025a3c699f68dcc4b5223a550cdc5dd9e",
+  "result": {
+   "summary": "This tutorial guides the user on how to view and delete their YouTube watch history on the device.",
+   "symptoms": [
+    "How do I delete my YouTube history?",
+    "I want to clear my watch history.",
+    "My YouTube recommendations are bad.",
+    "Can I see what I watched on YouTube?",
+    "Where is my YouTube history?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notifications_view-viewing-your-notifications?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "cdf085969d3d83bfb363f3cdcd0cb086cf0162d72860e56ccecb02373b3eb645",
+  "result": {
+   "summary": "This guide explains how to view notifications within the YouTube app on your device.",
+   "symptoms": [
+    "How do I see my YouTube notifications?",
+    "Where are my notifications in YouTube?",
+    "I can't find my YouTube alerts.",
+    "Show me my YouTube messages."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_watch-watching-a-video?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "057e8dce6806cc4c8ca3067b37444d55dd194a91e1b265722a43347d252742ae",
+  "result": {
+   "summary": "This tutorial guides the user on how to find and watch a video using the YouTube app on their device.",
+   "symptoms": [
+    "I can't watch videos",
+    "How do I use YouTube?",
+    "Where do I find videos?",
+    "I want to watch something"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_android_version_check-checking-which-android-version-your-device-is-on": {
+  "hash": "2c1ea2c112826cae2c7e54f290ce075deedc2e9f6aeccbf0b511138ccf7f70d6",
+  "result": {
+   "summary": "This tutorial guides the user on how to find the Android version installed on their device.",
+   "symptoms": [
+    "How do I find my Android version?",
+    "Where can I see what Android version I have?",
+    "I need to know my phone's software version.",
+    "What version of Android is this phone running?",
+    "Check Android version."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ }
+}

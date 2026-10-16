@@ -22,7 +22,7 @@ def test_branching_tutorial_without_choice_stops_at_the_fork():
 def test_branching_tutorial_with_choice_returns_that_branch():
     t = get_tutorial("galaxy-a15-5g", CALLS_GALAXY, choice=ONE_SIM)
     assert t["path_complete"] and t["last_step"] == 7
-    assert [s["n"] for s in t["steps"] if s["gated"]] == [3, 6]
+    assert [s["n"] for s in t["steps"] if s["gated"]] == [3, 4, 6]   # 4 is a restart
 
 
 def test_invalid_choice_lists_valid_ones():

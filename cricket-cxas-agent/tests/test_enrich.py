@@ -84,3 +84,12 @@ def test_enrich_device_retries_rate_limits(tmp_path, monkeypatch):
 
     cache = enrich.enrich_device("d", [REC], Enricher(flaky), workers=1)
     assert REC["id"] in cache and calls["n"] == 3
+
+
+def test_enricher_sends_the_options_of_a_menu_prompt_step():
+    seen = {}
+    rec = {"id": "m", "title": "Reset", "intro": "", "paths": [{"choices": [], "steps": [
+        {"n": 1, "text": "From this screen, you can perform a variety of actions:",
+         "notes": ["Reset Network Settings - resets just your network settings."], "call_ending": True}]}]}
+    Enricher(lambda p: seen.setdefault("p", p) and RESULT).label("iphone-13", rec)
+    assert "actions: Reset Network Settings" in seen["p"]

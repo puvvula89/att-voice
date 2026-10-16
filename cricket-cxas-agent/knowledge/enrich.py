@@ -32,6 +32,7 @@ For each numbered step decide:
   powers it off or cuts its cellular service (restart, force restart, power off, airplane mode, reset
   network settings, reset all settings, erase all content, factory reset, removing the SIM, deleting an eSIM).
 Judge only the action the step tells the user to do. A note saying NOT to do something does not count.
+A step that shows a screen of options for the caller to pick from is call_ending if any listed option is.
 A step that only describes what the guide covers, or turns the phone ON, is neither.
 Also give a one-sentence summary of what the tutorial fixes and 3-8 short phrases a caller might say.
 
@@ -58,6 +59,17 @@ def unique_steps(rec: dict) -> list[dict]:
                 seen.add(s["text"])
                 out.append(s)
     return out
+
+
+def is_menu_prompt(s: dict) -> bool:
+    return s["text"].rstrip().endswith(":") and bool(s.get("notes"))
+
+
+def step_text(s: dict) -> str:
+    """A menu prompt ("From this screen, you can…:") lists the caller's options as notes; send them too."""
+    if is_menu_prompt(s):
+        return s["text"] + " " + " | ".join(s["notes"])
+    return s["text"]
 
 
 def apply(rec: dict, result: dict) -> tuple[dict, list[dict]]:
@@ -89,7 +101,7 @@ class Enricher:
         self.generate = generate
 
     def label(self, device: str, rec: dict) -> dict:
-        body = "\n".join(f"{i + 1}. {s['text'][:800]}" for i, s in enumerate(unique_steps(rec)))
+        body = "\n".join(f"{i + 1}. {step_text(s)[:800]}" for i, s in enumerate(unique_steps(rec)))
         return self.generate(PROMPT.format(device=device, title=rec["title"], steps=body))
 
 
