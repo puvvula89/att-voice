@@ -8,6 +8,7 @@ browser.
 import json
 from pathlib import Path
 
+from knowledge import enrich
 from knowledge.steps import normalize_step
 
 RAW = Path(__file__).parent / "raw"
@@ -20,7 +21,7 @@ LABELS = {
 }
 
 
-def build(device: str) -> dict:
+def build_unlabelled(device: str) -> dict:
     raw = json.loads((RAW / f"{device}.json").read_text())
     tutorials, os_version = [], None
     for rec in raw.values():
@@ -47,9 +48,29 @@ def build(device: str) -> dict:
     return {"device": device, "os": os_version, "label": LABELS.get(device, device), "tutorials": tutorials}
 
 
+def build(device: str) -> dict:
+    """The unlabelled catalog with cached Gemini labels applied where the record is unchanged."""
+    doc = build_unlabelled(device)
+    cache_path = enrich.OUT / f"{device}.json"
+    cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
+    out, diffs = [], []
+    for rec in doc["tutorials"]:
+        hit = cache.get(rec["id"])
+        if hit and hit["hash"] == enrich.content_hash(rec):
+            rec, d = enrich.apply(rec, hit["result"])
+            diffs += [{**x, "device": device} for x in d]
+        out.append(rec)
+    return {**doc, "tutorials": out, "_review": diffs}
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
+    review = []
     for f in sorted(RAW.glob("*.json")):
         doc = build(f.stem)
+        review += doc.pop("_review")
         (OUT / f.name).write_text(json.dumps(doc, indent=1, ensure_ascii=False))
         print(f.stem, len(doc["tutorials"]), "tutorials")
+    enrich.OUT.mkdir(exist_ok=True)
+    (enrich.OUT / "review.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in review))
+    print(len(review), "flag disagreements written to", enrich.OUT / "review.jsonl")

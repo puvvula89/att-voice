@@ -85,6 +85,7 @@ class Catalog:
     @staticmethod
     def _bag(t: Tutorial) -> dict[str, int]:
         words = tokens(t.title) * 3 + tokens(t.intro)
+        words += tokens(" ".join(t.symptoms)) * 2
         for p in t.paths:
             for s in p.steps:
                 words += tokens(s["text"].split("\n")[0])
