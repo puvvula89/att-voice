@@ -4,21 +4,33 @@ get_step is the only thing the agent calls during a walk-through. It returns one
 step, its warning, its image, and whether it ends the call, so the agent never
 has to hold the whole tutorial in context and can never invent a step.
 """
+import logging
 import os
 import re
-from pathlib import Path
+
+from google.api_core.exceptions import GoogleAPIError
 
 from knowledge.catalog import Catalog
+from knowledge.content_store import CatalogCache, make_source
 
-CATALOG_DIR = Path(os.environ.get("CATALOG_DIR", Path(__file__).parent.parent / "knowledge" / "catalog"))
-_cat: Catalog | None = None
+log = logging.getLogger(__name__)
+CONTENT_ERROR = {"error": "Tutorial content is unavailable right now. Offer to text the guide link or open a ticket."}
+_cache: CatalogCache | None = None
 
 
 def catalog() -> Catalog:
-    global _cat
-    if _cat is None:
-        _cat = Catalog.load(CATALOG_DIR)
-    return _cat
+    global _cache
+    if _cache is None:
+        _cache = CatalogCache(make_source(), float(os.environ.get("CONTENT_CHECK_SECONDS", "60")))
+    return _cache.get()
+
+
+def _catalog_or_none() -> Catalog | None:
+    try:
+        return catalog()
+    except (RuntimeError, GoogleAPIError):
+        log.exception("tutorial content unavailable")
+        return None
 
 
 def _summary(t) -> str:
@@ -60,22 +72,28 @@ def _path(t, choice: str):
     }
 
 
-def _title_index(device: str) -> dict[str, str]:
-    return {t.title: t.id for t in catalog()._d[device].values()}
+def _title_index(cat: Catalog, device: str) -> dict[str, str]:
+    return {t.title: t.id for t in cat._d[device].values()}
 
 
 def find_tutorials(device: str, symptom: str) -> dict:
+    cat = _catalog_or_none()
+    if cat is None:
+        return CONTENT_ERROR
     try:
-        results = catalog().search(device, symptom)
+        results = cat.search(device, symptom)
     except KeyError:
-        known = [d["device"] for d in catalog().devices()]
+        known = [d["device"] for d in cat.devices()]
         return {"device": device, "results": [], "note": f"Unknown device '{device}'. Known devices: {known}"}
     return {"device": device, "results": results}
 
 
 def get_tutorial(device: str, tutorial_id: str) -> dict:
+    cat = _catalog_or_none()
+    if cat is None:
+        return CONTENT_ERROR
     try:
-        t = catalog().get(device, tutorial_id)
+        t = cat.get(device, tutorial_id)
     except KeyError:
         return {"error": f"No tutorial '{tutorial_id}' for device '{device}'."}
     steps0 = t.paths[0].steps
@@ -89,8 +107,11 @@ def get_tutorial(device: str, tutorial_id: str) -> dict:
 
 
 def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
+    cat = _catalog_or_none()
+    if cat is None:
+        return CONTENT_ERROR
     try:
-        t = catalog().get(device, tutorial_id)
+        t = cat.get(device, tutorial_id)
     except KeyError:
         return {"error": f"No tutorial '{tutorial_id}' for device '{device}'."}
     p, err = _path(t, choice)
@@ -101,7 +122,7 @@ def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
     if idx is None:
         return {"error": f"Step {n} does not exist; this tutorial has {len(steps)} steps."}
     s = steps[idx]
-    titles = _title_index(device)
+    titles = _title_index(cat, device)
     return {
         "n": s["n"], "of": len(steps), "heading": s["heading"], "text": s["text"], "notes": s["notes"],
         "warning": s["warning"], "image_url": s["image_url"], "call_ending": s["call_ending"],

@@ -41,6 +41,15 @@ def tokens(s: str) -> list[str]:
     return _tok.findall(s.lower())
 
 
+def read_catalog_dir(directory: Path | str) -> tuple[list[dict], list[dict]]:
+    devices, tutorials = [], []
+    for f in sorted(Path(directory).glob("*.json")):
+        doc = json.loads(f.read_text())
+        devices.append({"device": doc["device"], "os": doc["os"], "label": doc["label"]})
+        tutorials += [{**rec, "device": doc["device"]} for rec in doc["tutorials"]]
+    return devices, tutorials
+
+
 @dataclass
 class Path_:
     choices: list[str]
@@ -58,6 +67,8 @@ class Tutorial:
     url: str
     category: str
     paths: list[Path_] = field(default_factory=list)
+    summary: str = ""
+    symptoms: list[str] = field(default_factory=list)
 
     @property
     def step_count(self) -> int:
@@ -83,20 +94,23 @@ class Catalog:
         return bag
 
     @classmethod
-    def load(cls, directory: Path | str) -> "Catalog":
-        data, meta = {}, {}
-        for f in sorted(Path(directory).glob("*.json")):
-            doc = json.loads(f.read_text())
-            dev = doc["device"]
-            meta[dev] = {"device": dev, "os": doc["os"], "label": doc["label"]}
-            data[dev] = {}
-            for rec in doc["tutorials"]:
-                data[dev][rec["id"]] = Tutorial(
-                    id=rec["id"], kind=rec["kind"], device=dev, os=doc["os"], title=rec["title"],
-                    intro=rec["intro"], url=rec["url"], category=rec["category"],
-                    paths=[Path_(choices=p["choices"], steps=p["steps"]) for p in rec["paths"]],
-                )
+    def from_records(cls, devices: list[dict], tutorials: list[dict]) -> "Catalog":
+        """devices: [{device, os, label}]; tutorials: catalog records, each carrying its `device`."""
+        meta = {d["device"]: {"device": d["device"], "os": d["os"], "label": d["label"]} for d in devices}
+        data: dict[str, dict[str, Tutorial]] = {d: {} for d in meta}
+        for rec in tutorials:
+            dev = rec["device"]
+            data[dev][rec["id"]] = Tutorial(
+                id=rec["id"], kind=rec["kind"], device=dev, os=meta[dev]["os"], title=rec["title"],
+                intro=rec["intro"], url=rec["url"], category=rec.get("category", ""),
+                paths=[Path_(choices=p["choices"], steps=p["steps"]) for p in rec["paths"]],
+                summary=rec.get("summary", ""), symptoms=list(rec.get("symptoms", [])),
+            )
         return cls(data, meta)
+
+    @classmethod
+    def load(cls, directory: Path | str) -> "Catalog":
+        return cls.from_records(*read_catalog_dir(directory))
 
     def devices(self) -> list[dict]:
         return [self._meta[d] for d in sorted(self._meta)]

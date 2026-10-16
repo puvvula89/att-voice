@@ -11,7 +11,7 @@ import urllib.parse
 import urllib.request
 
 from support_mcp import account_store as store
-from support_mcp.tools_procedures import catalog
+from support_mcp.tools_procedures import _catalog_or_none
 
 _tickets = itertools.count(1001)
 _TWILIO_KEYS = ("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM")
@@ -31,8 +31,11 @@ def send_guide_link(customer_id: str, line_id: str, device: str, tutorial_id: st
     line = (a or {}).get("lines", {}).get(line_id)
     if not line:
         return {"sent": False, "message": f"No line '{line_id}' on this account."}
+    cat = _catalog_or_none()
+    if cat is None:
+        return {"sent": False, "message": "The guide is unavailable right now; offer to open a ticket."}
     try:
-        t = catalog().get(device, tutorial_id)
+        t = cat.get(device, tutorial_id)
     except KeyError:
         return {"sent": False, "message": f"No tutorial '{tutorial_id}' for '{device}'."}
     url, last4 = t.url, line["phone_last4"]
