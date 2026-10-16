@@ -93,9 +93,9 @@ F.append(frame(40, 770, 1840, 270, "Content pipeline · offline", "code", "pipel
 F.append(frame(340, 815, 1000, 185, "Pipeline job · Cloud Run · weekly via Cloud Scheduler", "cloud-run", "job"))
 Y, H = 845, 130
 B.append(box(80, Y, 220, H, "list", "Cricket support site", "or Ozmo content feed"))
-B.append(box(360, Y, 225, H, "code", "Render", "Headless browser"))
-B.append(box(605, Y, 225, H, "gemini", "Extract", "Gemini · fixed schema"))
-B.append(box(850, Y, 225, H, "check", "Validate", "Verbatim step check"))
+B.append(box(360, Y, 225, H, "code", "Fetch", "Headless browser"))
+B.append(box(605, Y, 225, H, "code", "Extract", "Tutorial data · step graph"))
+B.append(box(850, Y, 225, H, "check", "Validate", "Schema · branches"))
 B.append(box(1095, Y, 225, H, "gemini", "Enrich", "Gemini · safety flags"))
 B.append(box(1380, Y, 180, H, "cloud-storage", "Cloud Storage", "Raw + normalized"))
 
