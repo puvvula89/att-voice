@@ -1,0 +1,382 @@
+{
+ "iphone-13": {
+  "feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working": [
+   {
+    "n": 4,
+    "risk": "may_drop",
+    "why": "Forgetting Wi-Fi drops the call only if it is on Wi-Fi Calling",
+    "text": "Re-enter your Wi-Fi password / Forget and rejoin the Wi-Fi network:\nA bad connection can silently block Wi-Fi calling even if Wi-Fi appears connected."
+   }
+  ],
+  "155869-personal-hotspot-isn-t-working": [
+   {
+    "n": 5,
+    "risk": "may_drop",
+    "why": "Airplane Mode only if issues remain",
+    "text": "It's possible that devices can connect to your Personal Hotspot, but you have a weak or problematic cellular connection that's affecting your devices' performance.\nTry turning off your Personal Hotspot temporarily and use your iPhone as you normally would. Make sure you're not connected to a Wi-Fi network and try placing a call or loading a webpage.\nIf you're encountering issues, try switching your phone to Airplane Mode, waiting 15 seconds, and turning it off. Otherwise, try moving to a location with a stronger or more consistent cellular signal and testing Personal Hotspot again to see if the issue is with your iPhone's connection or the hotspot."
+   }
+  ],
+  "155842-wi-fi-calling-isn-t-working": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Airplane Mode is an optional test",
+    "text": "Take a moment to check that Wi-Fi calling is enabled on your device. You'll also want to confirm that your carrier and service plan includes Wi-Fi Calling.\nWhen you enable Wi-Fi Calling, you'll likely be prompted to enter your permanent address. If you can't do this within your iPhone's interface, check to see if you need to do this within your carrier's account settings (on its website or mobile app).\nTo test if Wi-Fi calling works, simply enable Airplane Mode on your iPhone and attempt to make a phone call while connected to a Wi-Fi network."
+   }
+  ],
+  "feature_satellite_send-using-satellite-when-cellular-or-wi-fi-is-unavailable": [
+   {
+    "n": 5,
+    "risk": "may_drop",
+    "why": "Only one of two demo options disables calling",
+    "text": "From this screen, you can choose from two demos to test network functionality via satellite:"
+   }
+  ],
+  "156125-battery-draining-too-quickly": [
+   {
+    "n": 7,
+    "risk": "safe",
+    "why": "Advice to book a repair; the restart is only mentioned",
+    "text": "If you're still encountering issues with your battery, and that hasn't been resolved by any of the previous steps, restarting your iPhone, or using different cables to charge your device, you may need to set up a service appointment at an Apple Genius Bar or other Authorized Service Provider.\nSimilarly, if your iPhone is reporting an issue with your Battery Health, or your iPhone is recommending service for your battery, you'll want to consider replacing your battery to restore your device's performance and total capacity."
+   }
+  ],
+  "feature_home_control-using-control-center": [
+   {
+    "n": 2,
+    "risk": "safe",
+    "why": "Describes Control Center; nothing to do",
+    "text": "Your Control Center allows you to perform a variety of actions all in one place:"
+   }
+  ],
+  "feature_settings_reset-performing-a-factory-reset": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Erase All Content and Settings."
+   }
+  ],
+  "feature_delete_esim-removing-esims-from-your-phone": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Delete eSIM again."
+   }
+  ],
+  "feature_recovery_mode-using-recovery-mode": [
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "The phone already restarted at the step before",
+    "text": "Continue to hold the Side button and connect the device to your computer."
+   }
+  ],
+  "feature_device_views_sim-inserting-and-removing-the-nano-sim-card": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Releasing the SIM tray can cut service",
+    "text": "Insert either the SIM card ejection tool or a paperclip straight into the pinhole of the SIM card tray and push until the tray releases."
+   },
+   {
+    "n": 3,
+    "risk": "drops",
+    "why": "Sliding the SIM tray out cuts service",
+    "text": "Slide the nano SIM card tray out of its slot."
+   },
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "The call already dropped when the SIM tray came out",
+    "text": "Insert or remove the nano SIM card into or from the tray."
+   }
+  ]
+ },
+ "galaxy-a15-5g": {
+  "155864-can-t-connect-to-wi-fi-or-internet": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Mainly a check that Airplane Mode is off; toggling it is only suggested",
+    "text": "Turning off Airplane Mode re-enables your phone's Wi-Fi, cellular data, and Bluetooth radios to restore your device's connection to the internet.\nToggling it on and off also forces the phone to drop stale connection states and re-establish a fresh, clean link with local cell towers and network routers."
+   }
+  ],
+  "155860-can-t-send-or-receive-email": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Mainly a check that Airplane Mode is off; toggling it is only suggested",
+    "text": "Turning off Airplane Mode re-enables your phone's Wi-Fi, cellular data, and Bluetooth radios to restore your device's connection to the internet, which may be a reason why you can't send or receive email.\nToggling it on and off also forces the phone to drop stale connection states and re-establish a fresh, clean link with local cell towers and network routers."
+   }
+  ],
+  "155886-mobile-hotspot-isn-t-working": [
+   {
+    "n": 5,
+    "risk": "may_drop",
+    "why": "Airplane Mode only if issues remain",
+    "text": "It's possible that devices can connect to your Mobile Hotspot, but you have a weak or problematic cellular connection that's affecting your devices' performance.\nTry turning off your Mobile Hotspot temporarily and use your phone as you normally would. Make sure you're not connected to a Wi-Fi network and try placing a call or loading a webpage.\nIf you're encountering issues, try switching your phone to Airplane Mode, waiting 15 seconds, and turning it off. Otherwise, try moving to a location with a stronger or more consistent cellular signal and testing Mobile Hotspot again to see if the issue is with your phone's connection or the hotspot."
+   }
+  ],
+  "feature_phone_switch-switching-between-calls": [
+   {
+    "n": 3,
+    "risk": "may_drop",
+    "why": "The call being ended may be this one",
+    "text": "Tap the End Call icon to end the current call."
+   }
+  ],
+  "156158-can-t-pair-with-bluetooth-device": [
+   {
+    "n": 6,
+    "risk": "may_drop",
+    "why": "Samsung's Wi-Fi and Bluetooth reset keeps mobile service; drops only on Wi-Fi Calling",
+    "text": "Resetting Wi-Fi and Bluetooth settings completely clears out all your saved wireless passwords, network configurations, and paired accessories, forcing your phone's wireless system back to its factory-fresh starting state."
+   }
+  ],
+  "feature_network_reset-resetting-network-settings": [
+   {
+    "n": 5,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Reset mobile network settings."
+   }
+  ],
+  "feature_android_recovery-using-recovery-mode-to-reset-your-device-to-factory-settings": [
+   {
+    "n": 2,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Power off."
+   }
+  ],
+  "feature_device_views_sd-inserting-and-removing-a-microsd-card": [
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "The call already dropped when the SIM tray came out",
+    "text": "Insert or remove the microSD card into or from the device with the gold contacts facing the back of the phone."
+   },
+   {
+    "n": 5,
+    "risk": "safe",
+    "why": "The call already dropped when the SIM tray came out",
+    "text": "Press the combined nano SIM / SD card tray back into its slot until it clicks, making sure it's secure."
+   },
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Releasing the combined SIM tray can cut service",
+    "text": "Press the card insertion/removal tool into the combined nano SIM / SD card tray pinhole and push in until the tray releases."
+   }
+  ],
+  "feature_initial_setup-setting-up-a-new-phone-manually": [
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "The call already dropped when the SIM tray came out",
+    "text": "Insert or remove the microSD card into or from the device with the gold contacts facing the back of the phone."
+   },
+   {
+    "n": 5,
+    "risk": "safe",
+    "why": "The call already dropped when the SIM tray came out",
+    "text": "Press the combined nano SIM / SD card tray back into its slot until it clicks, making sure it's secure."
+   },
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Releasing the combined SIM tray can cut service",
+    "text": "Press the card insertion/removal tool into the combined nano SIM / SD card tray pinhole and push in until the tray releases."
+   }
+  ],
+  "feature_device_views_sim-inserting-and-removing-the-nano-sim-card": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Releasing the SIM tray can cut service",
+    "text": "Press the card insertion/removal tool into the combined nano SIM / microSD card tray pinhole and push in until the tray releases."
+   },
+   {
+    "n": 3,
+    "risk": "drops",
+    "why": "Sliding the SIM tray out cuts service",
+    "text": "Slide the combined nano SIM / microSD card tray out of its slot."
+   },
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "The call already dropped when the SIM tray came out",
+    "text": "Insert or remove the nano SIM card into or from the tray with the gold contacts facing the front of the phone."
+   }
+  ]
+ },
+ "moto-g-2025": {
+  "155952-can-t-connect-to-wi-fi-or-internet": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Mainly a check that Airplane Mode is off; toggling it is only suggested",
+    "text": "Turning off Airplane Mode re-enables your phone's Wi-Fi, cellular data, and Bluetooth radios to restore your device's connection to the internet.\nToggling it on and off also forces the phone to drop stale connection states and re-establish a fresh, clean link with local cell towers and network routers."
+   }
+  ],
+  "155948-can-t-send-or-receive-email": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Mainly a check that Airplane Mode is off; toggling it is only suggested",
+    "text": "Turning off Airplane Mode re-enables your phone's Wi-Fi, cellular data, and Bluetooth radios to restore your device's connection to the internet, which may be a reason why you can't send or receive email.\nToggling it on and off also forces the phone to drop stale connection states and re-establish a fresh, clean link with local cell towers and network routers."
+   }
+  ],
+  "156121-mobile-hotspot-isn-t-working": [
+   {
+    "n": 5,
+    "risk": "may_drop",
+    "why": "Airplane Mode only if issues remain",
+    "text": "It's possible that devices can connect to your Mobile Hotspot, but you have a weak or problematic cellular connection that's affecting your devices' performance.\nTry turning off your Mobile Hotspot temporarily and use your phone as you normally would. Make sure you're not connected to a Wi-Fi network and try placing a call or loading a webpage.\nIf you're encountering issues, try switching your phone to Airplane Mode, waiting 15 seconds, and turning it off. Otherwise, try moving to a location with a stronger or more consistent cellular signal and testing Mobile Hotspot again to see if the issue is with your phone's connection or the hotspot."
+   }
+  ],
+  "feature_settings_reset-performing-a-factory-reset": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Erase all data (factory reset)."
+   },
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Erase all data."
+   }
+  ],
+  "feature_delete_all_esims-deleting-all-esims-from-your-device": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Erase eSIMs."
+   }
+  ],
+  "feature_power_on-turning-your-phone-on-and-off": [
+   {
+    "n": 2,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "To turn the phone off, press and hold the Power button."
+   }
+  ],
+  "feature_device_views_sim-inserting-and-removing-the-nano-sim-card": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Releasing the SIM tray can cut service",
+    "text": "Press the card insertion/removal tool into the nano SIM card tray pinhole and push in until the tray releases."
+   },
+   {
+    "n": 3,
+    "risk": "drops",
+    "why": "Sliding the SIM tray out cuts service",
+    "text": "Slide the nano SIM card tray out of its slot."
+   },
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "The call already dropped when the SIM tray came out",
+    "text": "Insert or remove the nano SIM card into or from the tray with the gold contacts facing the back of the phone."
+   }
+  ]
+ },
+ "moto-g-stylus-5g-2024": {
+  "155952-can-t-connect-to-wi-fi-or-internet": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Mainly a check that Airplane Mode is off; toggling it is only suggested",
+    "text": "Turning off Airplane Mode re-enables your phone's Wi-Fi, cellular data, and Bluetooth radios to restore your device's connection to the internet.\nToggling it on and off also forces the phone to drop stale connection states and re-establish a fresh, clean link with local cell towers and network routers."
+   }
+  ],
+  "155948-can-t-send-or-receive-email": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Mainly a check that Airplane Mode is off; toggling it is only suggested",
+    "text": "Turning off Airplane Mode re-enables your phone's Wi-Fi, cellular data, and Bluetooth radios to restore your device's connection to the internet, which may be a reason why you can't send or receive email.\nToggling it on and off also forces the phone to drop stale connection states and re-establish a fresh, clean link with local cell towers and network routers."
+   }
+  ],
+  "156121-mobile-hotspot-isn-t-working": [
+   {
+    "n": 5,
+    "risk": "may_drop",
+    "why": "Airplane Mode only if issues remain",
+    "text": "It's possible that devices can connect to your Mobile Hotspot, but you have a weak or problematic cellular connection that's affecting your devices' performance.\nTry turning off your Mobile Hotspot temporarily and use your phone as you normally would. Make sure you're not connected to a Wi-Fi network and try placing a call or loading a webpage.\nIf you're encountering issues, try switching your phone to Airplane Mode, waiting 15 seconds, and turning it off. Otherwise, try moving to a location with a stronger or more consistent cellular signal and testing Mobile Hotspot again to see if the issue is with your phone's connection or the hotspot."
+   }
+  ],
+  "feature_phone_switch-switching-between-calls": [
+   {
+    "n": 3,
+    "risk": "may_drop",
+    "why": "The call being ended may be this one",
+    "text": "Tap the End icon on your current call to hang up and return to the other call."
+   }
+  ],
+  "feature_settings_reset-performing-a-factory-reset": [
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Erase all data."
+   }
+  ],
+  "feature_delete_all_esims-deleting-all-esims-from-your-device": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Erase eSIMs."
+   }
+  ],
+  "feature_tbs_reset_network-resetting-network-settings": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the final tap drops the call",
+    "text": "Tap Reset Wi-Fi, mobile & Bluetooth."
+   },
+   {
+    "n": 5,
+    "risk": "drops",
+    "why": "Final confirm of the network reset",
+    "text": "Tap Reset settings again."
+   }
+  ],
+  "feature_device_views_sd-inserting-and-removing-a-microsd-card": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Releasing the combined SIM tray can cut service",
+    "text": "Press the card insertion/removal tool into the combined nano SIM / SD card tray pinhole and push in until the tray releases."
+   }
+  ],
+  "feature_device_views_sim-inserting-and-removing-the-nano-sim-card": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Releasing the SIM tray can cut service",
+    "text": "Press the card insertion/removal tool into the nano SIM card tray pinhole and push in until the tray releases."
+   },
+   {
+    "n": 3,
+    "risk": "drops",
+    "why": "Sliding the SIM tray out cuts service",
+    "text": "Slide the nano SIM card tray out of its slot."
+   },
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "The call already dropped when the SIM tray came out",
+    "text": "Insert or remove the nano SIM card into or from the tray with the gold contacts facing the back of the phone."
+   }
+  ]
+ }
+}

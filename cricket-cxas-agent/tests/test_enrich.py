@@ -93,3 +93,18 @@ def test_enricher_sends_the_options_of_a_menu_prompt_step():
          "notes": ["Reset Network Settings - resets just your network settings."], "call_ending": True}]}]}
     Enricher(lambda p: seen.setdefault("p", p) and RESULT).label("iphone-13", rec)
     assert "actions: Reset Network Settings" in seen["p"]
+
+
+def test_review_sets_risk_per_step_and_reports_stale_entries():
+    from knowledge.build_catalog import apply_review
+    rec = {"id": "t", "paths": [{"choices": [], "steps": [
+        {"n": 1, "text": "Tap Delete eSIM again.", "call_ending": True, "may_drop": False},
+        {"n": 2, "text": "Tap Delete eSIM again.", "call_ending": True, "may_drop": False},
+        {"n": 3, "text": "Forget and rejoin Wi-Fi.", "call_ending": True, "may_drop": False}]}]}
+    out, stale = apply_review(rec, [
+        {"n": 1, "text": "Tap Delete eSIM again.", "risk": "safe"},
+        {"n": 3, "text": "Forget and rejoin Wi-Fi.", "risk": "may_drop"},
+        {"n": 4, "text": "Gone.", "risk": "drops"}])
+    assert [(s["call_ending"], s["may_drop"]) for s in out["paths"][0]["steps"]] == [
+        (False, False), (True, False), (False, True)]
+    assert [e["n"] for e in stale] == [4]
