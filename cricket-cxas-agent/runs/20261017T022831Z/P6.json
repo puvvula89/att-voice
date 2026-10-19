@@ -1,0 +1,485 @@
+{
+ "id": "P6",
+ "title": "Caller names a device not on the account",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-17T02:34:41.773772+00:00",
+ "turns": [
+  {
+   "user": "my pixel 9 screen is frozen",
+   "agent": "Your screen is frozen, I understand. Which phone is that, the iPhone or the Galaxy?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "customer_id": "cust_2001",
+         "lines": [
+          {
+           "device_label": "iPhone 13",
+           "is_calling_line": true,
+           "device": "iphone-13",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "os": "27.0.0"
+          },
+          {
+           "device_label": "Galaxy A15 5G",
+           "is_calling_line": false,
+           "device": "galaxy-a15-5g",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "os": "16.0.0"
+          }
+         ],
+         "name": "Jordan Reyes",
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Your screen is frozen, I understand. Which phone is that, the iPhone or the Galaxy?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "current_date": "2026-10-16[America/Los_Angeles]",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:14.917Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my pixel 9 screen is frozen"
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:14.917Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:15.479Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-f7a0b172-7f70-46b7-8853-758c15bf115a",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:16.341Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-f7a0b172-7f70-46b7-8853-758c15bf115a",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:16.532Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-b8bd15b1-a9c1-4ce5-a639-5bcc7acb9b68",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:17.172Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-b8bd15b1-a9c1-4ce5-a639-5bcc7acb9b68",
+            "response": {
+             "text_output": [
+              {
+               "customer_id": "cust_2001",
+               "lines": [
+                {
+                 "device_label": "iPhone 13",
+                 "is_calling_line": true,
+                 "device": "iphone-13",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "os": "27.0.0"
+                },
+                {
+                 "device_label": "Galaxy A15 5G",
+                 "is_calling_line": false,
+                 "device": "galaxy-a15-5g",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "os": "16.0.0"
+                }
+               ],
+               "name": "Jordan Reyes",
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:17.303Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Your screen is frozen, I understand. Which phone is that, the iPhone or the Galaxy?"
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:17.923Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-17T02:36:14.869734Z",
+        "endTime": "2026-10-17T02:36:17.994925Z",
+        "attributes": {
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 48.0,
+         "perceived latency (ms)": 3125.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:14.917885Z",
+          "endTime": "2026-10-17T02:36:15.478513Z",
+          "attributes": {
+           "time to first chunk (ms)": 560.0,
+           "[debug] prefill time (ms)": 193.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "input token count": 1344.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "[debug] decode queue time (ms)": 14.0
+          },
+          "duration": "0.560628s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:15.479Z",
+          "endTime": "2026-10-17T02:36:15.479Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:15.665372Z",
+          "endTime": "2026-10-17T02:36:16.340447Z",
+          "attributes": {
+           "time to first chunk (ms)": 674.0,
+           "[debug] prefill time (ms)": 223.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5191.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "[debug] decode queue time (ms)": 15.0
+          },
+          "duration": "0.675075s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:16.341687Z",
+          "endTime": "2026-10-17T02:36:16.532552Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_progress",
+           "tool call id": "adk-f7a0b172-7f70-46b7-8853-758c15bf115a"
+          },
+          "duration": "0.190865s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:16.533447Z",
+          "endTime": "2026-10-17T02:36:17.171357Z",
+          "attributes": {
+           "time to first chunk (ms)": 637.0,
+           "[debug] prefill time (ms)": 221.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5233.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "[debug] decode queue time (ms)": 18.0
+          },
+          "duration": "0.637910s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:17.172492Z",
+          "endTime": "2026-10-17T02:36:17.303762Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "customer_id": "cust_2001",
+              "lines": [
+               {
+                "device_label": "iPhone 13",
+                "is_calling_line": true,
+                "device": "iphone-13",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "os": "27.0.0"
+               },
+               {
+                "device_label": "Galaxy A15 5G",
+                "is_calling_line": false,
+                "device": "galaxy-a15-5g",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "os": "16.0.0"
+               }
+              ],
+              "name": "Jordan Reyes",
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_lines",
+           "tool call id": "adk-b8bd15b1-a9c1-4ce5-a639-5bcc7acb9b68"
+          },
+          "duration": "0.131270s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:17.304684Z",
+          "endTime": "2026-10-17T02:36:17.921747Z",
+          "attributes": {
+           "time to first chunk (ms)": 615.0,
+           "[debug] prefill time (ms)": 223.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5433.0,
+           "[debug] decode time to first token (ms)": 65.0,
+           "[debug] decode queue time (ms)": 19.0
+          },
+          "duration": "0.617063s"
+         }
+        ],
+        "duration": "3.125191s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "I'm sure it's a pixel",
+   "agent": "Sorry. You'll need to read me the model from Settings before we can switch. For now, let's check the lines I see here. Is it your iPhone or the Galaxy?",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Sorry. You'll need to read me the model from Settings before we can switch. For now, let's check the lines I see here. Is it your iPhone or the Galaxy?",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "I'm sure it's a pixel"
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:18.112Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Sorry. You'll need to read me the model from Settings before we can switch. For now, let's check the lines I see here. Is it your iPhone or the Galaxy?"
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:18.921Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-17T02:36:18.064367Z",
+        "endTime": "2026-10-17T02:36:18.999579Z",
+        "attributes": {
+         "connection index": 2.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 48.0,
+         "perceived latency (ms)": 935.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:18.114654Z",
+          "endTime": "2026-10-17T02:36:18.919447Z",
+          "attributes": {
+           "time to first chunk (ms)": 803.0,
+           "[debug] prefill time (ms)": 224.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "output token count": 39.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5471.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "[debug] decode queue time (ms)": 18.0
+          },
+          "duration": "0.804793s"
+         }
+        ],
+        "duration": "0.935212s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P6\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"ACTIVE\", \"L2\": \"ACTIVE\"}, \"outage\": false}",
+ "session_id": "43a07768-a54b-40d8-9c5e-a3cbb9ae4000",
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

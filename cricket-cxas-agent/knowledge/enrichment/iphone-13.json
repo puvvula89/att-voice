@@ -1,0 +1,7505 @@
+{
+ "156125-battery-draining-too-quickly": {
+  "hash": "2f5874351a0525f3b6786b52b16c9bab133a184caa313e7dedb555dcc6cc0e18",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot and improve battery life on an iPhone 13 that is draining too quickly.",
+   "symptoms": [
+    "My battery dies too fast",
+    "My phone's battery is draining quickly",
+    "Battery life is terrible",
+    "My iPhone isn't holding a charge",
+    "Battery percentage drops fast",
+    "Need to charge my phone constantly"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "restarting your iPhone"
+    }
+   ]
+  }
+ },
+ "154674-can-t-make-or-receive-calls": {
+  "hash": "e90d7e4bb25690b247608e402a40d14d72696b5d33636aec93e9306aed8bb500",
+  "result": {
+   "summary": "This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.",
+   "symptoms": [
+    "Can't make calls",
+    "Can't receive calls",
+    "My phone calls aren't working",
+    "Having trouble with calls",
+    "Calls not connecting",
+    "No signal for calls"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Enabling Airplane Mode cuts cellular service."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the iPhone ends the call."
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Resetting network settings temporarily disconnects the phone from the network and may involve a restart."
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "155986-can-t-send-or-receive-messages": {
+  "hash": "421e85bd2ffe207a152d0dad718495a961f4bbc42a5f429a2eb276f69c8fb603",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for an iPhone 13 that is unable to send or receive messages.",
+   "symptoms": [
+    "Can't send messages",
+    "Can't receive messages",
+    "Messages not working",
+    "Texts not sending",
+    "iMessage not working",
+    "Green bubbles not sending",
+    "Red exclamation point on messages"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Turning on Airplane Mode cuts cellular service."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Restarting the iPhone ends any ongoing call."
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Resetting network settings typically involves a restart or temporary loss of network connection."
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "155869-personal-hotspot-isn-t-working": {
+  "hash": "bfb97c37544c0b92a3581a9e6443c7247fcc66e2dcbcbe0f31e95d954506da39",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for when the Personal Hotspot feature on an iPhone is not working correctly or is experiencing connectivity issues.",
+   "symptoms": [
+    "My hotspot isn't working",
+    "Can't connect to my iPhone's hotspot",
+    "Personal Hotspot won't turn on",
+    "Hotspot keeps disconnecting",
+    "Other devices can't use my iPhone's internet",
+    "My internet is slow when using hotspot",
+    "Can't find my iPhone's hotspot",
+    "Personal Hotspot feature is missing"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "restarting your iPhone"
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "switching your phone to Airplane Mode"
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "resetting your network settings and rebooting your device"
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "enabling Airplane Mode"
+    }
+   ]
+  }
+ },
+ "155842-wi-fi-calling-isn-t-working": {
+  "hash": "362919249df071892a3f4837662f4dcaf21c0d9229d6523d5af79fabd02ded9d",
+  "result": {
+   "summary": "This guide provides troubleshooting steps for when Wi-Fi Calling is not working on an iPhone.",
+   "symptoms": [
+    "Wi-Fi Calling isn't working",
+    "Can't make calls over Wi-Fi",
+    "My phone won't use Wi-Fi for calls",
+    "Wi-Fi calls are failing",
+    "Can't enable Wi-Fi Calling"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "This step describes the guide's content and does not involve an action that would interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "The step instructs the user to enable Airplane Mode, which cuts cellular service and would interrupt an ongoing call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Turning off Wi-Fi Assist does not interrupt an ongoing call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "This step involves checking for updates, not performing an update or an action that would interrupt a call."
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the iPhone interrupts any ongoing call and powers off/on the device."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "Switching Wi-Fi networks, toggling a feature, or turning off a VPN does not restart the phone, power it off, or cut its cellular service."
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Resetting network settings and rebooting the device will interrupt any ongoing call and restart the phone."
+    }
+   ]
+  }
+ },
+ "156126-wi-fi-connection-issues-or-slowdowns": {
+  "hash": "f787a3408464329abaf064433c7fd4e009d0d4a0f409021c9f673fe226b2697d",
+  "result": {
+   "summary": "This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.",
+   "symptoms": [
+    "My Wi-Fi isn't connecting",
+    "My internet is slow on my phone",
+    "I can't get Wi-Fi to work",
+    "My phone keeps losing Wi-Fi",
+    "Wi-Fi is not working",
+    "I have no internet connection on Wi-Fi"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Manually restarting your iPhone"
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "restart your iPhone"
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "reboot your device"
+    }
+   ]
+  }
+ },
+ "155889-iphone-won-t-power-on-or-off": {
+  "hash": "07bf5fce292be457008863358cbd86309324ceac8aabdabaeaf6428eb84be1c8",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for an iPhone that is unable to power on or off normally.",
+   "symptoms": [
+    "My iPhone won't turn on",
+    "My iPhone won't turn off",
+    "My phone is frozen",
+    "My screen is black",
+    "I can't restart my iPhone",
+    "My iPhone is unresponsive"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Instructs the user to power off the iPhone."
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Instructs the user to force-restart the iPhone."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Instructs the user to force-restart the iPhone."
+    }
+   ]
+  }
+ },
+ "feature_settings_access-accessing-your-settings?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "a794bacd1bf6505cb50584215a59d64abb279ad77e5ec9cee758d1c274777de3",
+  "result": {
+   "summary": "This tutorial guides you on how to access the settings menu within the YouTube application on your device.",
+   "symptoms": [
+    "How do I change YouTube settings?",
+    "I need to find YouTube settings.",
+    "Where are the settings in YouTube?",
+    "Can you help me get to YouTube settings?",
+    "I want to adjust YouTube app settings."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_wifi-activating-wi-fi-calling": {
+  "hash": "b010b049dc175491721a92fddf3fc8a9e83274bb8b26a832121e62a9adbc1f2a",
+  "result": {
+   "summary": "This tutorial guides the user through activating Wi-Fi calling on their iPhone 13.",
+   "symptoms": [
+    "I want to turn on Wi-Fi calling",
+    "How do I enable Wi-Fi calling?",
+    "Wi-Fi calling isn't working",
+    "I can't make calls over Wi-Fi",
+    "My calls are dropping when I'm on Wi-Fi",
+    "Activate Wi-Fi calling"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_add-adding-a-facebook-account?topicSource=app-facebook-ios-smartphone&topicVersion=582.0.0": {
+  "hash": "768b7fb3d9fd740960129fe890ae6c7f9eb9c379be9e6125a790f48a6e14e1f1",
+  "result": {
+   "summary": "This guide explains how to log into your Facebook account using the Facebook app.",
+   "symptoms": [
+    "I can't log into Facebook",
+    "How do I add my Facebook account?",
+    "I need to sign in to Facebook",
+    "My Facebook isn't working",
+    "I want to use Facebook on my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_lock_add-adding-a-new-lock-screen": {
+  "hash": "860b94b9417eddf8046f557208cff3ff927adca45a63eea0f36791c534972451",
+  "result": {
+   "summary": "This guide explains how to add and customize a new Lock Screen on an iPhone 13.",
+   "symptoms": [
+    "How do I change my lock screen?",
+    "I want a new wallpaper.",
+    "Can I customize my lock screen?",
+    "My lock screen is boring.",
+    "Need to add widgets to lock screen."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_add-adding-a-contact": {
+  "hash": "5e3a43610eff61aff062390102581d415e4b5a4859d931312b93d29de9ecd20e",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a new contact to their iPhone 13.",
+   "symptoms": [
+    "How do I add a new contact?",
+    "I need to save a phone number.",
+    "Where do I put a new person's info?",
+    "Can you help me add someone to my contacts?",
+    "I want to create a new contact."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_focus_modes-adding-a-new-lock-screen-for-different-focus-modes": {
+  "hash": "5d9a858f367a9d187eef74c0640b87c23fecb929369a4f250006b5f2cdd5022b",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a new Lock Screen that can be linked to different Focus Modes on an iPhone 13.",
+   "symptoms": [
+    "How do I set a custom lock screen for a focus mode?",
+    "I want a different wallpaper when Do Not Disturb is on.",
+    "Can I link my lock screen to a focus?",
+    "How to create a new lock screen for focus modes?",
+    "My lock screen isn't changing with my focus."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_email_personal-adding-an-email-account": {
+  "hash": "abc0d560a241765948b7606e6328409444babf81cdf13d1a9c3ae71c351e2409",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a new email account to their iPhone 13.",
+   "symptoms": [
+    "I need to add my work email",
+    "How do I set up a new email?",
+    "My email isn't on my phone",
+    "I got a new email address",
+    "Can you help me put my email on here?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_customize-adding-and-customizing-a-widget": {
+  "hash": "7dbe9d13cded0933b3e3f5f719484dda1f597aab8e866ee0b840dbafc6168c0c",
+  "result": {
+   "summary": "This guide explains how to change the size and style of app icons on the iPhone 13 Home Screen.",
+   "symptoms": [
+    "My app icons are too small",
+    "How do I change icon size?",
+    "I want different app icon styles",
+    "Can I customize my home screen icons?",
+    "My icons look weird"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playlist_watchlater-adding-videos-to-your-watch-later-playlist?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "9a0355f363e20f52d1e1e3e74443eef2caa526dad516a2899ca8b2d2485a8b3d",
+  "result": {
+   "summary": "This tutorial guides the user on how to add a YouTube video to their 'Watch later' playlist.",
+   "symptoms": [
+    "How do I save a video for later?",
+    "I want to add a video to my watch later list.",
+    "Where is the watch later option?",
+    "How do I save YouTube videos?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_contact-assigning-your-preferred-sim-to-use-with-a-contact": {
+  "hash": "e0c09fb687a6be4eea909e50e57572ed529b8ea1a657cb63697c7bc7d2091d31",
+  "result": {
+   "summary": "This tutorial guides the user on how to assign a specific SIM card to be used for calls or messages with a particular contact on their iPhone 13.",
+   "symptoms": [
+    "How do I set a default SIM for a contact?",
+    "I want to use a specific line for this person.",
+    "Can I assign a SIM to a contact?",
+    "My phone keeps using the wrong SIM for this contact.",
+    "How to choose which SIM to call someone with?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device": {
+  "hash": "b3c507c4c836e2f79da1e4f08991dbcd2d2f4acd614525c3c409945d1b4d4dd1",
+  "result": {
+   "summary": "This tutorial guides the user through activating a pre-assigned eSIM during the initial setup of an iPhone 13.",
+   "symptoms": [
+    "Activate eSIM",
+    "Set up new iPhone eSIM",
+    "eSIM not working",
+    "No cellular service on new phone",
+    "How to get network on new iPhone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_code_delete-automatically-deleting-your-2fa-codes-from-your-text-messages": {
+  "hash": "6b046507163656f86262e7a18db40c5cb5b89904151cd6e2eca6180b95b374e3",
+  "result": {
+   "summary": "This tutorial explains how to enable automatic deletion of two-factor authentication codes from text messages after they have been used.",
+   "symptoms": [
+    "My 2FA codes are cluttering my messages",
+    "How do I get rid of old verification codes?",
+    "Can my phone automatically delete security codes?",
+    "I want my one-time passwords to disappear",
+    "Too many old verification texts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_autodelete-automatically-deleting-your-old-text-message-conversations": {
+  "hash": "8a2bb17b55924200fdfab64a877d94ce78693a059e3cd3eacf0b04114a06d28a",
+  "result": {
+   "summary": "This guide explains how to configure your iPhone to automatically delete old text message conversations.",
+   "symptoms": [
+    "My phone is full of old texts",
+    "How do I delete old messages?",
+    "Texts are taking up too much space",
+    "I want to auto-delete messages",
+    "My message history is too long",
+    "Need to clear out old conversations"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_icloud-backing-up-iphone-using-icloud": {
+  "hash": "69f5478dc1c227db3a27f2c851d35cfcb198ef1fbe026c451e2f1e48d8fbbc74",
+  "result": {
+   "summary": "This guide explains how to enable and initiate an iCloud backup for an iPhone.",
+   "symptoms": [
+    "How to backup my iPhone?",
+    "iCloud backup not working",
+    "Save my phone data",
+    "Backup photos to iCloud",
+    "Enable iCloud backup"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_message_block-blocking-a-number-from-messages": {
+  "hash": "00dad9f9115860c751c79e39c00a98786fead1e155131a79e99a9ee57dbb5a30",
+  "result": {
+   "summary": "This guide explains how to block a specific phone number from sending messages on an iPhone 13.",
+   "symptoms": [
+    "How do I block a number?",
+    "I'm getting unwanted texts.",
+    "Someone is harassing me via text.",
+    "I want to stop messages from a contact.",
+    "Block text messages."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_block_recent_caller-blocking-a-recent-caller": {
+  "hash": "ac3ef83ec8ecd30eabfa208c5f64e9ef6c0c33f5c37cf069ff9d2a5ca426d181",
+  "result": {
+   "summary": "This tutorial guides the user on how to block a recent caller on an iPhone 13.",
+   "symptoms": [
+    "How do I block a number?",
+    "I want to stop calls from someone.",
+    "A number keeps calling me.",
+    "Block unwanted calls.",
+    "How to block a contact.",
+    "Stop spam calls."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_block-blocking-and-unblocking-a-contact": {
+  "hash": "776d390c00fa987d6aff10fbcdc7f6026846d30ba1c141b48893b5e4bd96ac7c",
+  "result": {
+   "summary": "This tutorial guides the user on how to block and unblock a contact on their iPhone 13.",
+   "symptoms": [
+    "How do I block a number?",
+    "I want to stop calls from someone.",
+    "Can I unblock a contact?",
+    "Someone is bothering me.",
+    "I need to block a person.",
+    "How do I manage blocked numbers?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_wallpaper-changing-your-home-screen-wallpaper": {
+  "hash": "64f927a41e1f02c294650e0df0cc9d223619c9921303ea162f8d0541f061f670",
+  "result": {
+   "summary": "This tutorial guides the user through changing their Home Screen wallpaper on an iPhone 13.",
+   "symptoms": [
+    "How do I change my wallpaper?",
+    "I want a new background.",
+    "My wallpaper is boring.",
+    "Can I customize my home screen?",
+    "Change home screen picture."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_default-changing-your-default-notification-sound-and-haptic-settings": {
+  "hash": "811fb770c742a31023df74c6cb0ebab38769faf3723866ba843d5a7a22a4ffd9",
+  "result": {
+   "summary": "This guide explains how to change the default notification, sound, and haptic settings on an iPhone 13.",
+   "symptoms": [
+    "My phone sounds are too loud",
+    "I want to change my notification sound",
+    "How do I adjust haptics?",
+    "My phone doesn't vibrate"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_name-changing-your-iphone-s-name": {
+  "hash": "c57ae66a8349b5a1b79a7d1e507912e358e8a79e711c5b6523e6b82fb4969c2f",
+  "result": {
+   "summary": "This tutorial guides the user on how to change the name of their iPhone 13.",
+   "symptoms": [
+    "How do I change my iPhone's name?",
+    "I want to rename my phone.",
+    "My iPhone has the wrong name.",
+    "Can I customize my device name?",
+    "Where do I find the option to change the name?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_notifications-changing-your-notification-settings?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "42aa950aa6e20be7e8d3c10909e6a7c9003e7c67dbbc5943ea6e2e7770baad85",
+  "result": {
+   "summary": "This tutorial guides you through enabling and customizing notification settings for the YouTube app on an iPhone 13.",
+   "symptoms": [
+    "I'm not getting YouTube notifications",
+    "My YouTube notifications aren't working",
+    "How do I turn on YouTube notifications?",
+    "I want to change my YouTube notification settings",
+    "YouTube notifications are off",
+    "I don't see YouTube alerts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_start_language-changing-your-phone-s-language": {
+  "hash": "dd5e80b40745608a416d327fcc7f8a887e1f93e5ad546a4cde756e77dc484cf7",
+  "result": {
+   "summary": "This guide explains how to change the display language on your iPhone 13.",
+   "symptoms": [
+    "My phone is in the wrong language",
+    "I want to change my phone's language",
+    "How do I set a new language?",
+    "I need to switch languages on my iPhone",
+    "My phone's menu is in a language I don't understand"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_password-changing-your-voicemail-pin-or-password": {
+  "hash": "0e898df0b889521185e4a9a619a1c08626a356a9ac8e2f3de3364e7ee10be06b",
+  "result": {
+   "summary": "This guide explains how to change the voicemail PIN or password on an iPhone 13.",
+   "symptoms": [
+    "I forgot my voicemail PIN",
+    "I want to change my voicemail password",
+    "My voicemail PIN isn't working",
+    "How do I reset my voicemail PIN?",
+    "Can't access my voicemail",
+    "Need a new voicemail password"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_charge-charging-the-iphone-with-a-lightning-cable": {
+  "hash": "c9b1d8aa2901f56197773ef42a69b52564dd2f1c3184d040e0e4b62cc649f76d",
+  "result": {
+   "summary": "This tutorial guides the user on how to charge their iPhone 13 using a Lightning cable.",
+   "symptoms": [
+    "My iPhone isn't charging",
+    "How do I charge my iPhone?",
+    "Where do I plug in the charger?",
+    "I need to charge my phone",
+    "My battery is low"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_update-checking-for-and-installing-system-updates": {
+  "hash": "fa8cdf8334de3acb917419f4b566e6269f53809bb7ca6734eaf6cbd15b4128ae",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable automatic iOS system updates on their iPhone 13.",
+   "symptoms": [
+    "My iPhone isn't updating automatically",
+    "How do I turn on automatic updates?",
+    "I want my phone to update itself",
+    "Is my iPhone set to update?",
+    "My software is outdated"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked": {
+  "hash": "90e3132b6829477780aed6de79a9c63ee9b9c114ec59b5a5b9392386df46ce75",
+  "result": {
+   "summary": "This tutorial guides users on how to check if their iPhone 13 is carrier locked using the Settings app.",
+   "symptoms": [
+    "Is my phone unlocked?",
+    "My new SIM card isn't working",
+    "I want to switch carriers",
+    "Can I use my phone with a different network?",
+    "I bought a used phone, is it locked?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_clear-clearing-browsing-cache-and-data": {
+  "hash": "f9b7ce20d891fbc3e692e0f24c337198998ab3553c4b8ef52338054222f3977d",
+  "result": {
+   "summary": "This guide explains how to clear browsing history and website data for Safari on an iPhone 13.",
+   "symptoms": [
+    "Safari is slow",
+    "Websites aren't loading correctly",
+    "I need to clear my browsing history",
+    "My browser is acting weird",
+    "I want to delete my website data"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_history_clear-clearing-your-history?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "a930460916f0fdf809cfc2641a6cb8b5099029343ce0ee1e50004de6a56b35e4",
+  "result": {
+   "summary": "This tutorial guides the user through clearing their watch history within the YouTube application.",
+   "symptoms": [
+    "How do I delete my YouTube history?",
+    "I want to clear my watch history on YouTube.",
+    "Can I remove my YouTube activity?",
+    "My YouTube recommendations are bad.",
+    "How to manage YouTube history?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_car_play-connecting-apple-carplay": {
+  "hash": "b1f6fce8fe4a5b9e4ce0c055de4e364f45187841fb1432f62ae66fbf207e0c40",
+  "result": {
+   "summary": "This tutorial guides users on how to connect their iPhone to Apple CarPlay and customize its settings.",
+   "symptoms": [
+    "How do I connect my iPhone to my car?",
+    "CarPlay isn't working.",
+    "I want to set up CarPlay.",
+    "How do I customize CarPlay apps?",
+    "My iPhone won't connect to CarPlay.",
+    "I need help with Apple CarPlay."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_psim_convert-convert-a-physical-sim-to-an-esim": {
+  "hash": "bf39b7fc725c8668818dba2f344afb7ca3956a003b22f918060078e181b5daac",
+  "result": {
+   "summary": "This guide explains how to convert a physical SIM card to an eSIM on an iPhone 13.",
+   "symptoms": [
+    "How do I get an eSIM?",
+    "I want to switch to eSIM.",
+    "Convert my physical SIM.",
+    "Need to change to eSIM.",
+    "My phone has a physical SIM, I want an eSIM."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Confirming the eSIM conversion will temporarily cut cellular service as the phone switches from physical SIM to eSIM."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playlist_create-creating-a-playlist?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "35fbb6f413b497d175eba028aa95d7276df3752ff771d2250c5bb68c1c838cee",
+  "result": {
+   "summary": "This guide explains how to create a new playlist on an iPhone 13 using the YouTube app.",
+   "symptoms": [
+    "How do I make a playlist?",
+    "I want to save videos to a list.",
+    "Can I create a collection of videos?",
+    "Where's the option to start a new playlist?",
+    "I need to organize my YouTube videos."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_store_uninstall-deleting-an-app": {
+  "hash": "7e3ce1509cbfbb9263488eb3eebb6016361f3a8afc86259e29cf8f5e25294045",
+  "result": {
+   "summary": "This tutorial guides the user through the process of deleting an app from their iPhone 13.",
+   "symptoms": [
+    "How do I delete an app?",
+    "I want to remove an application.",
+    "Uninstall an app.",
+    "Get rid of an app on my phone.",
+    "How to uninstall apps."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_delete-deleting-and-restoring-voicemails": {
+  "hash": "c7815e6d3835d425098557a7892f19c69247d6a0758bbfc6555393e607be492f",
+  "result": {
+   "summary": "This guide explains how to delete and restore voicemails on an iPhone 13.",
+   "symptoms": [
+    "How do I delete a voicemail?",
+    "I want to restore a voicemail.",
+    "My voicemail inbox is full.",
+    "I accidentally deleted a voicemail.",
+    "Where are my deleted voicemails?",
+    "Can I undelete a voicemail?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_store_download-downloading-an-app-and-checking-for-app-updates": {
+  "hash": "264047e2787f685d4416443f88304fd5f32fe2813e01a5db19ec0642732d0301",
+  "result": {
+   "summary": "This tutorial guides the user through downloading an app from the App Store on an iPhone 13.",
+   "symptoms": [
+    "How do I get an app?",
+    "I want to download a new app.",
+    "Can you help me install an app?",
+    "I need to find an app.",
+    "How do I use the App Store?",
+    "My app isn't downloading."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_greeting-editing-your-voicemail-greeting": {
+  "hash": "5da0f5e57630c20211d61868f273ffb63b87ca209deff20c1218cf96f4ea7292",
+  "result": {
+   "summary": "This tutorial guides the user on how to edit their voicemail greeting on an iPhone 13.",
+   "symptoms": [
+    "Change my voicemail message",
+    "Record a new greeting",
+    "Update my voicemail",
+    "My voicemail greeting is old",
+    "How to customize voicemail"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_explore-exploring-new-videos?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "3ea074b64a9ea5f3b829668144a90a1f903e55ad88675208cc090bb8bc459d82",
+  "result": {
+   "summary": "This tutorial guides users on how to explore and watch new videos within the YouTube application.",
+   "symptoms": [
+    "How do I find new videos?",
+    "I want to browse YouTube.",
+    "Where is the explore section?",
+    "Can't find videos I like.",
+    "How to watch a video on YouTube?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_library_explore-exploring-your-library?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "746acda2518e15485f2cb028fe9b85b5f9a52132799de346291a21b45ce837f5",
+  "result": {
+   "summary": "This tutorial guides users on how to navigate the YouTube app to find their 'Your videos' and 'Watch later' sections within their library.",
+   "symptoms": [
+    "Where are my saved videos?",
+    "I can't find my watch later list.",
+    "How do I see my uploaded videos?",
+    "Where is my YouTube library?",
+    "I want to find my old videos."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_iccid-finding-your-iccid": {
+  "hash": "4e97399f4dc7e775cedbfb7c65ebb7d4f6cbfae8c72e028ddbf8476069306d8d",
+  "result": {
+   "summary": "This tutorial explains how to find the ICCID (Integrated Circuit Card Identifier) on an iPhone 13.",
+   "symptoms": [
+    "Where can I find my ICCID?",
+    "I need my SIM card number.",
+    "How do I check my ICCID on iPhone?",
+    "What is my ICCID?",
+    "Find SIM card serial number."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_imei-finding-your-imei-device-id": {
+  "hash": "1168feadfbf5eae8c32da46fb13d380f3e45986259e2ac3cf246654198ca5687",
+  "result": {
+   "summary": "This tutorial guides users on how to locate the IMEI or Device ID on their iPhone 13.",
+   "symptoms": [
+    "Where is my IMEI?",
+    "I need my device ID.",
+    "How do I find my phone's serial number?",
+    "My carrier asked for my IMEI.",
+    "I need to register my phone.",
+    "What's my phone's unique identifier?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_restart-force-restarting-iphone": {
+  "hash": "2369ed045b7f4a4b03cb4693ea84349320c3998dc03cb14ff7839876f557b31a",
+  "result": {
+   "summary": "This guide provides instructions on how to force restart an iPhone 13.",
+   "symptoms": [
+    "My phone is frozen",
+    "My screen is unresponsive",
+    "My apps are crashing",
+    "My phone is stuck",
+    "My iPhone won't turn off",
+    "My phone is acting weird"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "The step describes pressing and holding the side button until the Apple logo appears, indicating a restart."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_messages_icloud-forcing-icloud-to-sync-text-messages-on-your-iphone": {
+  "hash": "6eea8ac1170419f2d528494c873e2ef3763541be509b4dcf561643fba920aed8",
+  "result": {
+   "summary": "This tutorial guides users on how to manually initiate the synchronization of text messages with iCloud on their iPhone.",
+   "symptoms": [
+    "My messages aren't syncing to iCloud.",
+    "iCloud messages aren't updating.",
+    "I can't see my old messages on my new iPhone.",
+    "My texts aren't backing up.",
+    "iMessage sync issue."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_live-going-live-on-facebook?topicSource=app-facebook-ios-smartphone&topicVersion=582.0.0": {
+  "hash": "a8184ea3c77cdf6be230b91ccd20278a6830a9f08d4dcac5b5876fd696077f51",
+  "result": {
+   "summary": "This tutorial guides users on how to start and end a live video session on Facebook using their iPhone 13.",
+   "symptoms": [
+    "How do I go live on Facebook?",
+    "I want to broadcast live on Facebook.",
+    "Can you help me start a live video?",
+    "Where is the live button on Facebook?",
+    "How do I stream live from my iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Tapping an icon in an app does not end a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Tapping an option in an app does not end a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Tapping a button in an app does not end a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Tapping a button in an app does not end a call."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Tapping a button in an app does not end a call."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "This step is a concluding statement, not an action."
+    }
+   ]
+  }
+ },
+ "feature_live_go-going-live?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "4c05b01ea8dc2c3952e1144086af261d8f02e99c2862406f5d6c5be177d663b5",
+  "result": {
+   "summary": "This tutorial explains how to start a live stream on YouTube using an iPhone 13.",
+   "symptoms": [
+    "How do I go live on YouTube?",
+    "I want to start a live stream.",
+    "Where is the live button?",
+    "Can I stream from my phone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_lock-hiding-or-locking-an-app": {
+  "hash": "39a5b05d0d52b63a898d9b136e5d9db3e7dfda9dfcc5b9b8298c573a07405104",
+  "result": {
+   "summary": "This tutorial guides the user on how to hide and lock an app using Face ID on an iPhone 13.",
+   "symptoms": [
+    "How do I hide an app?",
+    "I want to lock an app with Face ID.",
+    "Can I make an app invisible?",
+    "Need to secure an app.",
+    "Hide apps from my home screen."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_voicemail_inbox-how-to-manage-your-voicemail-by-dialing-in": {
+  "hash": "ff231fbd47e0f6bed8d9e2e8d6696dae5f35daf678de4fcae253a5c8a6722b98",
+  "result": {
+   "summary": "This tutorial guides you on how to access and manage your voicemail messages by dialing into your voicemail inbox.",
+   "symptoms": [
+    "How do I check my voicemail?",
+    "I can't listen to my messages.",
+    "Where are my voicemails?",
+    "How do I get to my voicemail inbox?",
+    "I need to manage my voicemails."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "User is navigating the phone app."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "User is initiating a call to voicemail."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "User is interacting with the voicemail menu."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "User is navigating voicemail options."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Concluding statement."
+    }
+   ]
+  }
+ },
+ "feature_contacts_import-importing-contacts-from-a-sim-card-to-icloud": {
+  "hash": "a7798054a756810e54ad9ef4b1cef36d3c50edb3e81410e2b9e52403ba9e5817",
+  "result": {
+   "summary": "This tutorial guides the user on how to import contacts stored on their SIM card to iCloud on an iPhone 13.",
+   "symptoms": [
+    "My contacts are on my SIM card",
+    "How do I get my SIM contacts to iCloud?",
+    "I need to move contacts from my SIM",
+    "Can I transfer SIM contacts to my iPhone?",
+    "My new phone doesn't have my old contacts",
+    "I want my contacts backed up to iCloud"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_sim-inserting-and-removing-the-nano-sim-card": {
+  "hash": "069c29d06e61df21feee628c8b58b01bca2f11531a6c6698259772e0932a8638",
+  "result": {
+   "summary": "This guide explains how to insert or remove a Nano SIM card from an iPhone 13.",
+   "symptoms": [
+    "My phone isn't connecting to the network",
+    "I need to change my SIM card",
+    "My SIM card isn't working",
+    "I got a new SIM card",
+    "No service",
+    "SIM card error"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Removing the SIM card will interrupt cellular service."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_keyboard_basics-learning-the-basics-of-your-device-s-keyboard": {
+  "hash": "78fe88af45c6f734deea5950a2f75f20369d71c0217eb7dbbe941fbb11f8b7a5",
+  "result": {
+   "summary": "This tutorial teaches users the basic functions and features of the iPhone keyboard, such as typing, deleting, capitalizing, and using special characters.",
+   "symptoms": [
+    "How do I type on my phone?",
+    "How do I delete text?",
+    "How do I use emojis?",
+    "How do I switch keyboards?",
+    "How do I use voice to text?",
+    "How do I copy and paste?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_guided-limiting-an-iphone-to-a-single-app-using-guided-access": {
+  "hash": "660d90979571fe9d05c16813147d6c0da29c7c428cb3781d760a20e2b42c4c52",
+  "result": {
+   "summary": "This tutorial explains how to enable and disable Guided Access on an iPhone to limit it to a single application.",
+   "symptoms": [
+    "Lock phone to one app",
+    "Restrict app usage",
+    "Enable Guided Access",
+    "Disable Guided Access",
+    "Keep child in one app",
+    "My phone is stuck in an app"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_listen-listening-to-a-voicemail": {
+  "hash": "46475ebc3446a4252ae33b359160d4f4928fa29f1eb8db96f2d28c4ade848f88",
+  "result": {
+   "summary": "This tutorial guides users on how to access and listen to voicemails on an iPhone 13.",
+   "symptoms": [
+    "How do I check my voicemail?",
+    "I can't listen to my voicemails.",
+    "Where can I find my voicemails?",
+    "My voicemail isn't playing.",
+    "I missed a call, how do I hear the message?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_logout-logging-out-of-facebook?topicSource=app-facebook-ios-smartphone&topicVersion=582.0.0": {
+  "hash": "302bae66573e95bc00c69018ba232ac36cd4d228dbcec740be218c6658f0c4c6",
+  "result": {
+   "summary": "This tutorial guides you through the process of logging out of the Facebook app on your device.",
+   "symptoms": [
+    "How do I log out of Facebook?",
+    "I want to sign out of my Facebook account.",
+    "Can you help me log off Facebook?",
+    "Need to log out of the Facebook app.",
+    "How to sign out of Facebook on my phone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facetime_call-making-a-facetime-video-call": {
+  "hash": "69cbfa60c12f16117cb5e8644f61cc19b6f2eec93750a84ae46af3688aa9ef59",
+  "result": {
+   "summary": "This tutorial guides the user on how to initiate and end a FaceTime video call on an iPhone 13.",
+   "symptoms": [
+    "How do I make a video call?",
+    "I want to FaceTime someone.",
+    "Can you help me start a video call?",
+    "How do I use FaceTime?",
+    "I need to call someone on FaceTime.",
+    "My FaceTime isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "This step involves opening an app and tapping an option, which does not interrupt an ongoing call or cellular service."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "This step involves inputting text and selecting a contact, which does not interrupt an ongoing call or cellular service."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step initiates a new call, but does not restart the phone, power it off, or cut its cellular service."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "This step ends the specific FaceTime call, but does not restart the phone, power it off, or cut its cellular service for an ongoing call."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "This step is a concluding statement and involves no action on the device."
+    }
+   ]
+  }
+ },
+ "feature_phone_use-making-phone-calls-and-conference-calls": {
+  "hash": "b611747ec7245bf1abfd8b151d647a84a775e97497d6ab5fd9f3fed12ebb1d00",
+  "result": {
+   "summary": "This tutorial guides users on how to make a phone call and create a conference call on an iPhone 13.",
+   "symptoms": [
+    "How do I make a call?",
+    "I want to make a phone call.",
+    "How do I add someone to a call?",
+    "Can I do a conference call?",
+    "How to merge calls?",
+    "I need to make a three-way call."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_parental_controls-manage-your-child-s-screen-time-schedule-and-time-allowances": {
+  "hash": "fc3f3375f1aa85394c43a21c74cdeac5ee9859f28b37630e48c94779f1ec59b8",
+  "result": {
+   "summary": "This tutorial guides you through managing your child's Screen Time schedule and setting time allowances for apps on their iPhone.",
+   "symptoms": [
+    "My child uses their phone too much",
+    "I need to set screen time limits",
+    "How do I change my kid's schedule?",
+    "Limit app usage for my child",
+    "Adjust screen time allowances",
+    "Manage my child's iPhone usage"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_apps-managing-and-closing-opened-apps": {
+  "hash": "46e731a47b17cfdae511875b7ec7862b5dfddd2cd315afab00e022238ba65893",
+  "result": {
+   "summary": "This tutorial guides the user on how to view and close open applications on their iPhone 13.",
+   "symptoms": [
+    "My phone is slow",
+    "Too many apps open",
+    "How do I close apps?",
+    "Apps are running in the background",
+    "My battery is draining fast"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_share-managing-apps-access-to-your-contacts": {
+  "hash": "aa423a0524c9fc63a802ab8f1d3932a447803c4c3f29b95f2b7eb22a193c26c9",
+  "result": {
+   "summary": "This tutorial guides you on how to manage which apps have access to your contacts on an iPhone 13.",
+   "symptoms": [
+    "An app can't see my contacts",
+    "I want to stop an app from seeing my contacts",
+    "How do I control contact access for an app?",
+    "My contacts aren't showing up in an app",
+    "I need to change app permissions for contacts",
+    "App can't access my address book"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_apps-managing-background-app-refresh-for-individual-apps": {
+  "hash": "68e7be4ff425930e5ca4c6bcdb4424d6a60ca3b2252f3fea9ac07ad34959cdee",
+  "result": {
+   "summary": "This guide explains how to manage background app refresh settings for individual applications on an iPhone 13.",
+   "symptoms": [
+    "My battery is draining fast",
+    "Apps are using too much data",
+    "How do I stop apps from running in the background?",
+    "My phone feels slow",
+    "I want to save battery",
+    "Background apps are a problem"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notifications_app-managing-notification-settings-for-individual-apps": {
+  "hash": "c6588f128673013a61d0d20c629aaf9c24bdeb156ad17264b653992e8c653093",
+  "result": {
+   "summary": "This tutorial guides users on how to manage notification settings for individual applications on an iPhone 13.",
+   "symptoms": [
+    "My app notifications are annoying",
+    "I'm not getting alerts from an app",
+    "How do I change notification sounds?",
+    "I want to customize app alerts",
+    "Notifications are too frequent",
+    "I need to turn off app banners"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_mode_standby-managing-your-standby-mode-s-display-off-times": {
+  "hash": "8a497ef800d3768e2dc8ada0c79753fd64401ea027ffc95520b205b4fa9a4391",
+  "result": {
+   "summary": "This tutorial guides users on how to manage and customize the display off times for StandBy Mode on an iPhone 13.",
+   "symptoms": [
+    "How do I change Standby display settings?",
+    "My Standby Mode screen stays on too long.",
+    "I want to adjust Standby Mode preferences.",
+    "Standby display won't turn off automatically.",
+    "Need to configure Standby Mode display options."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_manual_network_selection-manually-selecting-a-cellular-network": {
+  "hash": "86c8141196a8c7150a267fadb244b91b1636ea90176b5da9b0de512c0a28e5de",
+  "result": {
+   "summary": "This tutorial guides the user through manually selecting a cellular network on their iPhone 13.",
+   "symptoms": [
+    "Can't connect to network",
+    "No service",
+    "Phone not registering",
+    "Want to pick a different carrier",
+    "Network issues",
+    "Bad signal"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_voice-navigating-your-iphone-with-voiceover": {
+  "hash": "1cbcb4d35fb1b252d5d50960354fd58e2eafc25c55a832fadabef8eaaacee42d",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and disable the VoiceOver accessibility feature on an iPhone.",
+   "symptoms": [
+    "How do I turn on VoiceOver?",
+    "My phone is talking to me.",
+    "I need help with accessibility settings.",
+    "How do I turn off VoiceOver?",
+    "VoiceOver isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device": {
+  "hash": "12bc322baead7ad7834f97ef1666e716248264f674385679239b06cdc3b48a2b",
+  "result": {
+   "summary": "This tutorial guides users on how to pair their iPhone with a Bluetooth device.",
+   "symptoms": [
+    "My Bluetooth isn't connecting.",
+    "I can't pair my headphones.",
+    "How do I connect to a Bluetooth speaker?",
+    "My iPhone won't find my Bluetooth device."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_reset-performing-a-factory-reset": {
+  "hash": "1fbff518b89beb4035097e8418fb62307ddba19b60dba6972ed916bd76f5456a",
+  "result": {
+   "summary": "This tutorial guides the user through performing a factory reset on an iPhone 13, which can resolve various software issues or prepare the device for new use.",
+   "symptoms": [
+    "My phone is really slow",
+    "Apps keep crashing",
+    "I want to sell my phone",
+    "My phone is acting weird",
+    "I need to wipe my phone",
+    "I want to start fresh"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Initiates erasing all content and settings, which will wipe the phone."
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Confirms erasing all content and settings, which will wipe the phone."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_post-posting-status-updates-and-photos-to-facebook?topicSource=app-facebook-ios-smartphone&topicVersion=582.0.0": {
+  "hash": "46b64a08384e691ce2e3101e88bebc7dbb46ebee355ac533bc89b7ac49d997a6",
+  "result": {
+   "summary": "This tutorial guides users on how to post status updates and photos to Facebook using an iPhone 13.",
+   "symptoms": [
+    "How do I post on Facebook?",
+    "I want to share a photo on Facebook.",
+    "Can't update my Facebook status.",
+    "Need help posting to Facebook.",
+    "How to add a picture to my Facebook post."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_power_on-powering-your-iphone-on-and-off": {
+  "hash": "de4fa89cf081733f2e97f35abf30a993676e5c799f4b00c4264562a950499897",
+  "result": {
+   "summary": "This tutorial explains how to turn an iPhone on and off.",
+   "symptoms": [
+    "My phone won't turn on",
+    "How do I turn off my iPhone?",
+    "I need to restart my phone",
+    "My screen is frozen",
+    "My phone is stuck"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Powering off the phone will end any active call."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_memo_add-recording-a-voice-memo": {
+  "hash": "f17fff24c78b902b0f5af70f3206f8d7384bc33ee15235330d8d26505f2aa636",
+  "result": {
+   "summary": "This guide explains how to record a voice memo on an iPhone 13.",
+   "symptoms": [
+    "How do I record a voice memo?",
+    "I want to record my voice.",
+    "Where is the voice recorder?",
+    "Can I record a meeting?",
+    "How to use Voice Memos app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_record_transcribe-recording-and-transcribing-a-phone-call": {
+  "hash": "1801ed11637cd720eb0a112de014b2b152b5f3cf55e3bb224052e8918aed7a89",
+  "result": {
+   "summary": "This tutorial explains how to record and transcribe a phone call on an iPhone 13.",
+   "symptoms": [
+    "How do I record a call?",
+    "I need to transcribe a conversation.",
+    "Can I save my phone calls?",
+    "Where are my call recordings?",
+    "How to get a transcript of a call?",
+    "My phone call wasn't recorded."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_clean_up-reframe-extend-and-clean-up-photos-with-apple-intelligence": {
+  "hash": "eabd89e8979089d0308c42e62d218516af0b779f169194405d8f101f0aa02565",
+  "result": {
+   "summary": "This tutorial guides users on how to use Apple Intelligence features like Reframe, Extend, and Clean Up to edit photos on their iPhone 13.",
+   "symptoms": [
+    "How do I reframe a photo?",
+    "I want to extend my photo.",
+    "Can I clean up objects in my pictures?",
+    "How do I use Apple Intelligence for photos?",
+    "My photo needs editing.",
+    "I want to remove something from a picture."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_remove-removing-a-device-from-your-apple-id": {
+  "hash": "f90a220d448f5aa4c40e1d7841679896b778b0da19f3a00216318e79dae6e6e0",
+  "result": {
+   "summary": "This tutorial guides users on how to remove a device from their Apple ID account using the Settings app on an iPhone.",
+   "symptoms": [
+    "How do I remove an old device from my Apple ID?",
+    "I want to unlink a device from my account.",
+    "My old iPhone is still showing on my Apple ID.",
+    "How to unregister a device from Apple ID.",
+    "Remove a device from 'Devices' list."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_delete_esim-removing-esims-from-your-phone": {
+  "hash": "c5d2d6a8d5ca05cb93ec193c76d8ce6e4078b103fb70a95822973cb7f5451d65",
+  "result": {
+   "summary": "This tutorial guides users on how to remove one or all eSIMs from an iPhone 13 through the device's settings.",
+   "symptoms": [
+    "I want to remove an eSIM.",
+    "How do I delete an eSIM?",
+    "I need to get rid of an old eSIM profile.",
+    "My eSIM is not working, I want to remove it.",
+    "I'm selling my phone and want to remove my eSIM.",
+    "I'm switching carriers and need to remove the old eSIM."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Deleting an eSIM cuts cellular service."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": true,
+     "reason": "Deleting all eSIMs cuts cellular service."
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_forgot_password-resetting-your-apple-id-password": {
+  "hash": "6ee019e80f41b154a4f3b291338a06ae98fb42e4f3796c98021fe87dc7bfaf14",
+  "result": {
+   "summary": "This tutorial guides you through the process of resetting your Apple ID password.",
+   "symptoms": [
+    "Forgot Apple ID password",
+    "Can't sign in to Apple ID",
+    "Apple ID locked",
+    "Need to reset Apple ID password",
+    "Can't access iCloud"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_icloud_contacts-restoring-your-contacts": {
+  "hash": "2119c5a895ba36250a20b7b3250cc9148015ac86806990c6826441b3edd4b868",
+  "result": {
+   "summary": "This tutorial guides you through restoring contacts on an iPhone 13 by toggling iCloud Contacts off and on.",
+   "symptoms": [
+    "My contacts are missing",
+    "I lost my contacts",
+    "My contacts disappeared",
+    "I need to get my contacts back",
+    "My contacts aren't showing up",
+    "iCloud contacts aren't syncing"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_save-save-or-share-voicemails": {
+  "hash": "60140013ae5e5924e2b89a3af6dfc149739e919a4e7acc59859bb590839d52c7",
+  "result": {
+   "summary": "This tutorial guides users on how to save or share voicemails from their iPhone 13.",
+   "symptoms": [
+    "How do I save a voicemail?",
+    "I want to share a voicemail message.",
+    "Can I export my voicemails?",
+    "How do I send a voicemail to someone?",
+    "Where can I find my saved voicemails?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_history_call-searching-your-call-history": {
+  "hash": "3be01d9d28902ef2585cbcc80cad1073d44b3fce92e6021bc9af09a0956e413e",
+  "result": {
+   "summary": "This tutorial guides the user on how to search their call history on an iPhone 13.",
+   "symptoms": [
+    "How do I find an old call?",
+    "I need to search my call log.",
+    "Where's the search for calls?",
+    "Can I look up a specific number in my history?",
+    "I can't find a call I made."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_send-sending-a-text-with-an-attachment": {
+  "hash": "0a752c27c5edbaeb93f86e74bd2b255f17edef97e2344113a938f4ef98553c2e",
+  "result": {
+   "summary": "This tutorial guides users on how to send a text message with an attached photo on an iPhone 13.",
+   "symptoms": [
+    "How do I send a picture message?",
+    "I can't attach a photo to my text.",
+    "My MMS isn't working.",
+    "I want to send a photo to someone.",
+    "How do I send a picture in a text?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_email_send-sending-an-email": {
+  "hash": "e7faf8ced91496a60fbf61c9562a2091209fe71d83176ea32981bf5c5290ec7f",
+  "result": {
+   "summary": "This tutorial guides the user through the process of sending an email from their iPhone 13.",
+   "symptoms": [
+    "I can't send an email",
+    "How do I send an email?",
+    "My email isn't going through",
+    "I need to compose an email",
+    "Where is the send button?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_familyshare_settings-set-up-family-sharing": {
+  "hash": "73cc5c164cb8c8bde761f57d7aa3ea5b213cc531f07d768d1dab08bd3071c9a3",
+  "result": {
+   "summary": "This tutorial guides users on how to set up Family Sharing on their iPhone 13.",
+   "symptoms": [
+    "How do I set up Family Sharing?",
+    "I want to share purchases with my family.",
+    "Help me add family members to my Apple account.",
+    "I need to create a family group.",
+    "How do I invite someone to my family plan?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_sim_preferences-set-your-default-sim-for-calls-texts-and-cellular-data": {
+  "hash": "fddfbe2c4124cdc38118811a64b6effef67d02baf794c0355eb25496bc86fbf9",
+  "result": {
+   "summary": "This tutorial guides you on how to set your default SIM for calls, texts, and cellular data on an iPhone 13.",
+   "symptoms": [
+    "My phone is using the wrong SIM",
+    "How do I change my default line?",
+    "I want to use a specific SIM for data",
+    "My calls are going through the wrong number",
+    "How do I manage my dual SIM settings?",
+    "I need to switch my primary line",
+    "My texts are sending from the wrong number"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_special_quickstart-setting-up-iphone-with-quick-start": {
+  "hash": "dae14230233d2c464f43f0a4ae28bf6b8d95493d198d0b4331373fa259a1a99d",
+  "result": {
+   "summary": "This tutorial guides users through the process of setting up a new iPhone using Quick Start to transfer data from an existing iPhone.",
+   "symptoms": [
+    "How do I set up my new iPhone?",
+    "I need help with Quick Start.",
+    "How do I transfer data to my new phone?",
+    "My new iPhone isn't set up yet.",
+    "I want to use Quick Start for my new device."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    },
+    {
+     "n": 17,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_content_restriction-setting-content-purchase-and-browsing-restrictions": {
+  "hash": "7080785265a507eba892ff00de1bddc8fc53154c594392b79549c742ca100749",
+  "result": {
+   "summary": "This tutorial guides users on how to set up content, purchase, and browsing restrictions on an iPhone 13 using Screen Time settings.",
+   "symptoms": [
+    "I want to block certain apps",
+    "My child is making unauthorized purchases",
+    "How do I restrict websites?",
+    "I need to set parental controls",
+    "Stop in-app purchases",
+    "Block explicit content",
+    "Manage screen time for my child"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_location-setting-location-access-for-individual-apps": {
+  "hash": "4aa0c05a68705f647475c357793471e6f92261031341f18d4ef910aa6eaadde9",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust location access settings for individual applications on an iPhone 13.",
+   "symptoms": [
+    "My map app isn't working",
+    "Location services are off for an app",
+    "An app can't find my location",
+    "I want to change an app's location permission",
+    "My location is wrong in an app",
+    "How do I turn on location for an app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_face-setting-up-face-id": {
+  "hash": "a0986ff96c3484f9aff69e0df50821d625ee975b6452a83807638a10752e34e0",
+  "result": {
+   "summary": "This tutorial guides the user through the process of setting up Face ID on their iPhone 13.",
+   "symptoms": [
+    "I need to set up Face ID",
+    "How do I enable Face ID?",
+    "My Face ID isn't working",
+    "I want to configure Face ID",
+    "Help me set up facial recognition"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_esim_qr-setting-up-a-dual-sim-from-an-esim-qr-code": {
+  "hash": "4e3ec33d1dc357cb52cd6128dcf95f439281cb939bac21750f800bfad9570c30",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a Dual SIM on an iPhone 13 by scanning an eSIM QR code.",
+   "symptoms": [
+    "How do I add an eSIM?",
+    "I want to set up dual SIM.",
+    "My carrier gave me an eSIM QR code.",
+    "Need to activate a second line.",
+    "Setting up a new data plan with eSIM.",
+    "How to use two numbers on my iPhone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_esim-setting-up-a-dual-sim-from-an-esim-notification": {
+  "hash": "b0fd30eb5b121f494eb547ecbff50896bdf08cc3ce5e40107430e9947296bffb",
+  "result": {
+   "summary": "This tutorial guides users through the process of setting up a Dual SIM configuration on an iPhone 13 by activating an eSIM from a notification.",
+   "symptoms": [
+    "How do I set up my eSIM?",
+    "I received a notification to install a cellular plan.",
+    "I want to use two phone numbers on my iPhone.",
+    "How do I activate Dual SIM?",
+    "I need to add a second line to my phone.",
+    "My eSIM isn't configured yet."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_push_notification-setting-up-a-pending-esim-notification-device-already-set-up": {
+  "hash": "b5eea2b8848303f76be621139c29da7851e150fb11b217eac3c4a8d3e37ea0d1",
+  "result": {
+   "summary": "This tutorial guides the user through the process of setting up a pending eSIM notification on an iPhone 13 that is already set up.",
+   "symptoms": [
+    "My eSIM isn't working",
+    "I need to activate my eSIM",
+    "How do I set up my eSIM?",
+    "I have a pending eSIM notification",
+    "My new plan isn't active",
+    "eSIM setup failed"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_qr_code-setting-up-an-esim-via-qr-code-or-activation-code-device-already-set-up": {
+  "hash": "1218f4b94ee68b53defd614a7ff16b8d757a6b482444120601dcdeac4b2c88a3",
+  "result": {
+   "summary": "This tutorial guides the user through setting up an eSIM on an iPhone 13 using a QR code or manual entry.",
+   "symptoms": [
+    "I need to add an eSIM",
+    "How do I activate my eSIM?",
+    "I have a QR code for my eSIM",
+    "I want to set up my new cellular plan"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_pay_setup-setting-up-and-using-apple-pay": {
+  "hash": "ebc8b09d79c918c43ff4a5b3431e62587c998f4eb7c0ba34242028e5f2e708b6",
+  "result": {
+   "summary": "This tutorial guides users through setting up and using Apple Pay on their iPhone 13.",
+   "symptoms": [
+    "How do I set up Apple Pay?",
+    "I want to add a card to Apple Pay.",
+    "How do I use Apple Pay?",
+    "My Apple Pay isn't working.",
+    "I need to add a new credit card."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_communication_safety-setting-up-communication-safety-and-contact-approval": {
+  "hash": "a30a2c3a2fbef757de16519960db115ce9985187d1256e1e4e729f1745838640",
+  "result": {
+   "summary": "This guide explains how to configure communication safety and contact approval settings for a child's iPhone through Screen Time.",
+   "symptoms": [
+    "Manage child's contacts",
+    "Set up communication safety",
+    "Approve contacts for my kid",
+    "Restrict who my child can call",
+    "Child talking to strangers",
+    "Screen Time contact settings",
+    "Parental controls for calls"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_icloud_restore-setting-up-iphone-by-restoring-from-icloud": {
+  "hash": "96f81a64b0a3aad2e08c93ecfff35314cb514f08ca31b21ca062b67f8756f119",
+  "result": {
+   "summary": "This tutorial guides users through the initial setup of a new iPhone by restoring data from an iCloud backup.",
+   "symptoms": [
+    "I got a new iPhone",
+    "I need to set up my iPhone",
+    "How do I restore from iCloud?",
+    "My new phone needs data",
+    "I want to transfer my old data",
+    "Setting up a new device"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    },
+    {
+     "n": 17,
+     "call_ending": false
+    },
+    {
+     "n": 18,
+     "call_ending": false
+    },
+    {
+     "n": 19,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_initial_setup-setting-up-iphone-manually-as-a-new-device": {
+  "hash": "3131f700a38441153102d91d641eb118a561bd5761f940d8b4fbda4dda4ad5e6",
+  "result": {
+   "summary": "This tutorial guides users through the initial manual setup process for a new iPhone 13, covering language selection, Wi-Fi connection, Face ID, passcode, Apple ID, and other essential settings.",
+   "symptoms": [
+    "I just got a new iPhone",
+    "How do I set up my iPhone?",
+    "I need to activate my new phone",
+    "Setting up my iPhone for the first time",
+    "Help me with initial iPhone setup",
+    "I want to set up my iPhone manually"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    },
+    {
+     "n": 17,
+     "call_ending": false
+    },
+    {
+     "n": 18,
+     "call_ending": false
+    },
+    {
+     "n": 19,
+     "call_ending": false
+    },
+    {
+     "n": 20,
+     "call_ending": false
+    },
+    {
+     "n": 21,
+     "call_ending": false
+    },
+    {
+     "n": 22,
+     "call_ending": false
+    },
+    {
+     "n": 23,
+     "call_ending": false
+    },
+    {
+     "n": 24,
+     "call_ending": false
+    },
+    {
+     "n": 25,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_parent-setting-up-parental-controls-for-the-first-time": {
+  "hash": "1190be7bf2bace81d931d11a6c36c16aa950714210e0df251a39142d9b35e524",
+  "result": {
+   "summary": "This tutorial guides users through setting up parental controls for a child on an iPhone 13.",
+   "symptoms": [
+    "How do I set up parental controls?",
+    "I want to restrict my child's phone usage.",
+    "Need to manage screen time for my kid.",
+    "How to block apps for my child?",
+    "Set up family sharing controls.",
+    "My child is spending too much time on their phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_setup-setting-up-your-voicemail": {
+  "hash": "cc6003d19323fcf58bcb28aff9adbd4ed13d2ff908738a1fd84ed0506f99878a",
+  "result": {
+   "summary": "This guide explains how to set up voicemail, including creating a password and recording a custom greeting, on an iPhone 13.",
+   "symptoms": [
+    "How do I set up my voicemail?",
+    "I need to record a voicemail greeting.",
+    "My voicemail isn't set up.",
+    "I want to change my voicemail password.",
+    "Where do I find voicemail settings?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_default-setting-your-iphone-s-default-apps": {
+  "hash": "8757c5eca95ecf7d37e4d96a2011ac8b4d6231d207462500375e74c83ed234be",
+  "result": {
+   "summary": "This tutorial guides the user on how to change the default email application on their iPhone.",
+   "symptoms": [
+    "How do I change my default email?",
+    "I want to use a different email app.",
+    "My iPhone keeps opening the wrong email app.",
+    "Can I set Gmail as my default?",
+    "Change default mail app."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_volume-setting-your-volume-and-ringtone-levels": {
+  "hash": "375f716221c51111ea1c238d34b175ccd20a681e4e9cf8c4b5389821147a20a5",
+  "result": {
+   "summary": "This tutorial guides you on how to adjust the volume and ringtone levels on your iPhone.",
+   "symptoms": [
+    "My phone is too loud",
+    "My phone is too quiet",
+    "I can't hear my ringtone",
+    "My ringtone is too loud",
+    "How do I change the volume?",
+    "My notifications are too quiet",
+    "I want to limit the volume",
+    "Headphones are too loud"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_special_find-sharing-your-location-and-finding-your-iphone-using-the-find-my-app": {
+  "hash": "2de7a2e57f52236aff110f726abe1478be46d63cde6b4cb766332e696a6fe019",
+  "result": {
+   "summary": "This tutorial guides you on how to share your location with others and locate your iPhone using the Find My app.",
+   "symptoms": [
+    "I want to share my location",
+    "How do I let someone see where I am?",
+    "I lost my iPhone",
+    "My phone is missing",
+    "How do I find my device?",
+    "I need to play a sound on my lost phone",
+    "Can I track my iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_location-sharing-your-location-in-a-text-message-conversation": {
+  "hash": "f90af1452611dd564752a874e93780e0426f8a926cf86a08baf21610862dc0a8",
+  "result": {
+   "summary": "This tutorial guides the user on how to share their current location within a text message conversation on an iPhone 13.",
+   "symptoms": [
+    "How do I send my location?",
+    "I want to share where I am.",
+    "Can I send my location in a text?",
+    "My friend asked for my location.",
+    "How to share location in iMessage?",
+    "Send current location."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_messages_profile-sharing-your-name-and-photo-with-your-contacts-automatically": {
+  "hash": "2dac20c384b79fa0b1d8f6680af6b30bfc742a8572de57bca908baab791fe1fa",
+  "result": {
+   "summary": "This tutorial guides you on how to set up and automatically share your name and photo with your contacts on an iPhone 13.",
+   "symptoms": [
+    "How do I share my contact info?",
+    "I want to share my photo with contacts.",
+    "My name isn't showing up for others.",
+    "How to set up automatic contact sharing?",
+    "Can I share my contact card?",
+    "How to change my contact photo?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_manage_caller_id-show-or-hide-your-caller-id": {
+  "hash": "ed90dedb86f4e3e762a0e21ca50071a848718df82c8138b44dab27dc684bd5c1",
+  "result": {
+   "summary": "This guide explains how to show or hide your Caller ID on an iPhone 13.",
+   "symptoms": [
+    "My caller ID is hidden",
+    "I want to show my number",
+    "How do I hide my number?",
+    "Caller ID settings",
+    "People can't see my number",
+    "I want to block my number"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_appleid_sign_in-signing-in-and-out-of-your-apple-id": {
+  "hash": "4b79eced486851ebccf3da4997e17aa223f58768620103082ac65fec7c8403c7",
+  "result": {
+   "summary": "This tutorial guides you through the process of signing in and out of your Apple ID on an iPhone 13.",
+   "symptoms": [
+    "Can't sign in to Apple ID",
+    "How to sign out of Apple ID",
+    "Change Apple ID",
+    "Apple ID not working",
+    "Need to sign in to App Store",
+    "Update Apple ID"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_channel_subscribe-subscribing-to-your-favorite-channels?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "8f45561887a39f3190c304a3e3e3dc85465b0a674c32cce384c3100c856ace43",
+  "result": {
+   "summary": "This tutorial guides the user on how to subscribe to a YouTube channel.",
+   "symptoms": [
+    "How do I subscribe to a channel?",
+    "I want to follow a creator on YouTube.",
+    "How do I get more videos from someone?",
+    "I can't subscribe to a channel.",
+    "How to subscribe on YouTube?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_phone-switching-phone-numbers-for-calls-with-dual-sim": {
+  "hash": "9955d6d8aa0088d9eb7d28f4a452b3591251808cc9b5b0805708cca14f09c52d",
+  "result": {
+   "summary": "This guide explains how to select which phone number to use when making a call on an iPhone 13 with Dual SIM.",
+   "symptoms": [
+    "How do I choose which line to call from?",
+    "My phone is using the wrong number for calls.",
+    "I want to switch between my two phone numbers.",
+    "How do I use Dual SIM to make a call?",
+    "Can I pick which number to use before calling?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_data-switching-phone-numbers-for-cellular-data-with-dual-sim": {
+  "hash": "b26fbfe08570a11392418922cf02a104145e8fe87a30880429985186f70a73e9",
+  "result": {
+   "summary": "This tutorial guides the user on how to switch between different phone numbers (SIMs) for cellular data usage on a Dual SIM iPhone 13.",
+   "symptoms": [
+    "My internet isn't working on the right line",
+    "How do I change which SIM uses data?",
+    "I want to use my other number for data",
+    "My data is on the wrong SIM",
+    "Can I switch my data plan?",
+    "I have two SIMs, but only one is using data"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_text-switching-phone-numbers-for-texts-with-dual-sim": {
+  "hash": "ea88bf4e1351a54d34cb6b726d50d57c4a28c9fa7f72b7cb95e68a6daebe148b",
+  "result": {
+   "summary": "This tutorial guides users on how to switch between phone numbers for sending text messages on an iPhone with Dual SIM functionality.",
+   "symptoms": [
+    "How do I change which number I text from?",
+    "I have two numbers, but I can't pick which one to use for texts.",
+    "My iPhone has Dual SIM, but I don't know how to switch numbers for messages.",
+    "I want to send a text from my other phone number.",
+    "Can I choose which SIM to text from?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_camera_use-taking-pictures-and-changing-camera-modes": {
+  "hash": "a94b8a55f14a05f7a05a74d73cb2b2cdf6a0b45d17fcd4d454b4260f69614adc",
+  "result": {
+   "summary": "This tutorial guides users on how to take pictures and videos and switch between different camera modes on their iPhone 13.",
+   "symptoms": [
+    "How to take a picture",
+    "Record a video",
+    "Change camera modes",
+    "Use time-lapse",
+    "Take a live photo",
+    "Switch camera views",
+    "View photos"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screenshot_edit-taking-and-editing-a-screenshot": {
+  "hash": "21e639f566b9f7af1cb6cba06bda117eab7e81febacd76756ee78f1b88199a35",
+  "result": {
+   "summary": "This tutorial explains how to capture and edit a screenshot on an iPhone 13.",
+   "symptoms": [
+    "How do I take a screenshot?",
+    "I want to capture my screen.",
+    "Can I edit a screenshot?",
+    "Where do screenshots go?",
+    "My screenshot didn't save."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_number_transfer_android-transfer-your-esim-from-android-device-already-set-up": {
+  "hash": "9c2340be2aee7c271382a318a6e50cb2cdd4444042a5890251b29e3431003b2a",
+  "result": {
+   "summary": "This tutorial explains how to transfer an existing eSIM from an Android device to an iPhone 13 that has already been set up.",
+   "symptoms": [
+    "I need to transfer my eSIM.",
+    "How do I move my eSIM from Android?",
+    "My new iPhone 13 doesn't have service.",
+    "I want to use my eSIM on my iPhone.",
+    "Can I transfer my eSIM from my old phone?",
+    "Help me set up my eSIM on my iPhone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_number_transfer-transfer-your-esim-from-iphone-device-already-set-up": {
+  "hash": "f9893496c899a557a3edd04a317161d5498ef610bf8d2c4833f586d75d07f6ea",
+  "result": {
+   "summary": "This tutorial guides you through transferring an eSIM from one iPhone to another already set-up iPhone.",
+   "symptoms": [
+    "I need to move my phone number to a new iPhone.",
+    "How do I transfer my eSIM?",
+    "My new phone doesn't have my number.",
+    "I got a new iPhone and want to use my old number.",
+    "eSIM transfer help.",
+    "Moving my cellular plan."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_during_setup_number_transfer-transfer-your-esim-from-iphone-while-setting-up-your-device": {
+  "hash": "ed399891f48b84d8657c7a8043963a6acd824711e728c9222aafba7fef47b58a",
+  "result": {
+   "summary": "This tutorial guides users through transferring an eSIM from an old iPhone to a new iPhone during the initial setup process of the new device.",
+   "symptoms": [
+    "Setting up new iPhone",
+    "Want to transfer phone number",
+    "Need to move eSIM",
+    "Activating new device",
+    "eSIM transfer failed",
+    "Can't get service on new phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "This step involves selecting an option during initial setup, which does not interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "This step involves physical placement and tapping continue, which does not interrupt a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step involves entering a verification code, which does not interrupt a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "This step involves tapping an option, which does not interrupt a call."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "While this initiates the eSIM transfer, the new device is in setup and not actively on a call, so no call is interrupted on 'this device'."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "This step involves tapping OK, which does not interrupt a call."
+    },
+    {
+     "n": 7,
+     "call_ending": false,
+     "reason": "This step involves tapping continue, which does not interrupt a call."
+    },
+    {
+     "n": 8,
+     "call_ending": false,
+     "reason": "This step is a completion message and involves no action that would interrupt a call."
+    }
+   ]
+  }
+ },
+ "feature_move_ios-transferring-data-from-android-to-iphone-move-to-ios": {
+  "hash": "5e81367bcff33b3b8e473d525b044e0f6ac0e0c743affbf08f6f03fa6132341f",
+  "result": {
+   "summary": "This tutorial guides users through the initial setup of a new iPhone and transferring data from an Android device using the Move to iOS app.",
+   "symptoms": [
+    "I just got a new iPhone",
+    "How do I move my data from Android to iPhone?",
+    "I need to transfer content to my new phone",
+    "My new iPhone is on the 'Hello' screen",
+    "I want to use the Move to iOS app",
+    "Help me set up my new iPhone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_transfer_iphone_to_android-transferring-data-from-iphone-to-android": {
+  "hash": "55b041e0e2a94ff3d9106da7c46b90c60ad59381d07ba51974431092fd48f132",
+  "result": {
+   "summary": "This tutorial guides users through the process of transferring data from an iPhone to an Android device.",
+   "symptoms": [
+    "How do I move my data to a new Android?",
+    "I need to transfer my contacts from iPhone to Android.",
+    "Moving photos from my old iPhone.",
+    "Switching from iPhone to Android, need help with data.",
+    "Transferring everything to my new phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working": {
+  "hash": "42252ff0022bf823343d8074879c97e82b68678d08b0cdd6fa8fe43b94ed23b2",
+  "result": {
+   "summary": "This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.",
+   "symptoms": [
+    "My Wi-Fi calling isn't working.",
+    "I can't make calls over Wi-Fi.",
+    "Wi-Fi calls are dropping.",
+    "My phone won't use Wi-Fi for calls.",
+    "I have no signal, but Wi-Fi calling isn't kicking in.",
+    "Calls aren't going through on Wi-Fi."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Checking a setting does not interrupt the call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Checking connection status does not interrupt the call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Enabling a setting does not interrupt the call."
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Forgetting and rejoining the Wi-Fi network will disconnect the device from Wi-Fi, which would interrupt any active Wi-Fi calls."
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the phone will end any active calls."
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Removing the SIM card will disconnect the phone from the cellular network, ending any active cellular calls."
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Resetting network settings will temporarily disconnect the phone from all networks (cellular and Wi-Fi), ending any active calls."
+    },
+    {
+     "n": 8,
+     "call_ending": false,
+     "reason": "This step is a conclusion, not an action."
+    }
+   ]
+  }
+ },
+ "feature_tbs_calls_straight_to_voicemail-troubleshooting-why-incoming-calls-are-going-straight-to-voicemail": {
+  "hash": "f8d863366057f492b8e2041a56b3be090aa084e13f88bff67bacdd6fec79b5ce",
+  "result": {
+   "summary": "This tutorial helps troubleshoot why incoming calls are going directly to voicemail on an iPhone 13.",
+   "symptoms": [
+    "My calls go straight to voicemail.",
+    "People can't reach me.",
+    "My phone isn't ringing.",
+    "I'm missing calls.",
+    "Why are calls going to voicemail?",
+    "My phone sends calls to voicemail."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working": {
+  "hash": "018ceeb887ec214547c249f9a6da77c88b4930666d0f0c96ebfea9e21e6806ed",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for an iPhone 13 personal hotspot that is not working or connecting properly.",
+   "symptoms": [
+    "My personal hotspot isn't working",
+    "Can't connect to my iPhone's hotspot",
+    "My devices won't join my personal hotspot",
+    "Hotspot keeps disconnecting",
+    "No internet on my hotspot",
+    "Personal hotspot not showing up"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Toggling a setting does not end the call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Toggling a setting does not end the call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Checking a password on another device does not end the call on the iPhone being fixed."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Checking device limits does not end the call."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Suggesting an alternative connection method does not end the call."
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Restarting the iPhone will end the call."
+    },
+    {
+     "n": 7,
+     "call_ending": false,
+     "reason": "Installing updates does not immediately end the call, though a subsequent restart might be required."
+    },
+    {
+     "n": 8,
+     "call_ending": false,
+     "reason": "Changing a setting does not end the call."
+    },
+    {
+     "n": 9,
+     "call_ending": true,
+     "reason": "Resetting network settings interrupts cellular service and may restart the phone."
+    },
+    {
+     "n": 10,
+     "call_ending": false,
+     "reason": "This is a concluding statement, not an action."
+    }
+   ]
+  }
+ },
+ "feature_tbs_power_on-troubleshooting-why-my-phone-won-t-turn-on-or-off": {
+  "hash": "2f61d10e9ab01f7dc8904c1db4aafdc169c8fcc63fdb9808a510291fbf802bce",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for an iPhone 13 that is unable to turn on or off.",
+   "symptoms": [
+    "My iPhone won't turn on",
+    "My phone is completely dead",
+    "My screen is black",
+    "My iPhone won't turn off",
+    "My phone is unresponsive",
+    "I can't power on my device",
+    "My phone is frozen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "A force restart will interrupt or end a call on the device."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Letting the battery drain until the device shuts off will end a call."
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_airplane-turning-airplane-mode-on-and-off": {
+  "hash": "3eca83a62f715778aeeb0aaa74bc2f2557a32c8a5dd0882b1c90c29eed6d64f8",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable Airplane Mode on an iPhone 13.",
+   "symptoms": [
+    "How do I turn on airplane mode?",
+    "I need to enable airplane mode.",
+    "Where is airplane mode?",
+    "How do I put my phone in flight mode?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Enabling Airplane Mode disables cellular service."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_forwarding-turning-call-forwarding-on-or-off": {
+  "hash": "93a740a435a809ca4055f6882469cf97b862f586886804c9e2d3a06f8ddf5b6c",
+  "result": {
+   "summary": "This guide explains how to enable, disable, or change the call forwarding settings on an iPhone 13.",
+   "symptoms": [
+    "My calls are being forwarded",
+    "I want to forward my calls",
+    "How do I turn off call forwarding?",
+    "I need to change my forwarding number",
+    "Calls aren't ringing on my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_do_not_disturb-turning-do-not-disturb-on-and-off": {
+  "hash": "c94e4a9a9b74408e4ce73f95dbdaf7ed2f283bcf157271ea7e030d437e5f22a5",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable and disable the Do Not Disturb feature on an iPhone 13.",
+   "symptoms": [
+    "My phone isn't ringing",
+    "I'm not getting notifications",
+    "How do I turn off Do Not Disturb?",
+    "I want to silence my phone",
+    "My calls are going straight to voicemail",
+    "I need to turn on Do Not Disturb"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_tracking_eye-turning-eye-tracking-on": {
+  "hash": "7af847caa9a0640b8c076b03aaa03fbcc6b644f5bca64839dd0b8d03a4d76114",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable Eye Tracking on an iPhone 13.",
+   "symptoms": [
+    "How do I turn on eye tracking?",
+    "I want to use eye tracking.",
+    "Eye tracking isn't working.",
+    "Where is the eye tracking setting?",
+    "Enable eye tracking."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_on-turning-find-my-iphone-on-or-off": {
+  "hash": "53b7151df502e13b6de18b1962b7fff9e5fc43dbc0041bbe87bcfe57f738de89",
+  "result": {
+   "summary": "This tutorial guides users on how to enable or disable the Find My iPhone feature on their device.",
+   "symptoms": [
+    "How do I turn off Find My?",
+    "I need to enable Find My iPhone.",
+    "Where is the Find My setting?",
+    "Can I disable Find My iPhone?",
+    "My phone is lost, how do I turn on Find My?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_haptic_music-turning-music-haptics-on-and-off": {
+  "hash": "ce81eeaadfca69632c2f8b28eb88ac278157c8dc59e36db31507203f7e09e070",
+  "result": {
+   "summary": "This guide explains how to enable or disable the Music Haptics feature on an iPhone 13.",
+   "symptoms": [
+    "My music isn't vibrating",
+    "How do I turn on music haptics?",
+    "I want to turn off music vibrations",
+    "Music haptics isn't working",
+    "Where is the music haptics setting?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_rcs_activate-turning-rcs-messaging-on-or-off": {
+  "hash": "c8e79c6ba1ec988722f7af273746b82e99b1da7059a359259e9a1ed447c70d77",
+  "result": {
+   "summary": "This tutorial guides the user through enabling or disabling RCS messaging on their iPhone 13.",
+   "symptoms": [
+    "RCS messages not working",
+    "How to turn on RCS",
+    "Can't send RCS messages",
+    "RCS settings on iPhone",
+    "Want to use advanced messaging",
+    "Disable RCS chat features"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_imessage-turning-imessage-on-or-off": {
+  "hash": "a2984c405684f8bb511f574f918598bf463c839747066e27d8f6647fa6061609",
+  "result": {
+   "summary": "This tutorial guides the user through enabling or disabling RCS messaging on their iPhone 13.",
+   "symptoms": [
+    "RCS messages not working",
+    "How to turn on RCS",
+    "Can't send RCS messages",
+    "RCS settings on iPhone",
+    "Want to use advanced messaging",
+    "Disable RCS chat features"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_siri_on-turning-siri-on-and-using-siri-handsfree": {
+  "hash": "3ec618ccc623390347ff91099593dbc3d8ba792f2f30c292206e36456a407a82",
+  "result": {
+   "summary": "This guide explains how to enable Siri and set up the hands-free \"Hey Siri\" feature on an iPhone 13.",
+   "symptoms": [
+    "Siri isn't working",
+    "Can't use Hey Siri",
+    "Siri won't respond",
+    "How do I turn on Siri?",
+    "Hands-free Siri not working",
+    "Siri is off"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_shortcut_vocal-turning-vocal-shortcuts-on-and-off": {
+  "hash": "a455eb791b3c94f5e63c1eab4123ef2a7409cf46761db4d687a1d6d868c06562",
+  "result": {
+   "summary": "This tutorial guides you through setting up and removing vocal shortcuts on an iPhone 13.",
+   "symptoms": [
+    "How do I set up vocal shortcuts?",
+    "I want to create a voice command.",
+    "Can I use custom voice commands?",
+    "How do I remove a vocal shortcut?",
+    "I need to delete a voice command.",
+    "My vocal shortcut isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_special_assist-turning-wi-fi-assist-off": {
+  "hash": "c94d8d44e1d7166efa278167fa268f49a437489b684ff31aff250785e2a6cd0a",
+  "result": {
+   "summary": "This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.",
+   "symptoms": [
+    "My phone is using too much data",
+    "Why is my data bill so high?",
+    "My Wi-Fi is slow but it's still using data",
+    "How do I turn off Wi-Fi Assist?",
+    "I want to stop using cellular data when Wi-Fi is bad"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_autoplay-turning-autoplay-off?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "dc212947850bbdf8e651440d41cf554f0a3d41fe968a0b7771a05cfa1ae01f83",
+  "result": {
+   "summary": "This tutorial guides users on how to disable the autoplay feature for the next video within the YouTube app on an iPhone 13.",
+   "symptoms": [
+    "YouTube videos autoplay",
+    "How to stop YouTube autoplay",
+    "Next video plays automatically",
+    "Turn off autoplay on YouTube",
+    "YouTube keeps playing"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_data-turning-cellular-data-on-and-off-for-individual-apps": {
+  "hash": "f637c02cbbeecb2bd5d14bcd35594e079f653d864ae654627fd849d66885b222",
+  "result": {
+   "summary": "This guide explains how to manage cellular data access for specific applications on an iPhone 13.",
+   "symptoms": [
+    "My app is using too much data",
+    "I want to stop an app from using cellular data",
+    "How do I turn off data for one app?",
+    "This app keeps using data in the background",
+    "I need to save data",
+    "Can I block an app from using cellular?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_roaming-turning-data-roaming-on-and-off-single-and-dual-sim": {
+  "hash": "856acd1aabdc694d227c05caaa184089bfb35ece1520a329f0c1762588bd4444",
+  "result": {
+   "summary": "This guide explains how to enable or disable data roaming on an iPhone 13, for both single and dual SIM configurations.",
+   "symptoms": [
+    "My data isn't working when I'm abroad",
+    "I want to turn on data roaming",
+    "How do I stop roaming charges?",
+    "I can't get internet when traveling",
+    "Data roaming settings",
+    "My phone isn't connecting to data overseas"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_mobile_data-turning-mobile-data-on-or-off": {
+  "hash": "87b7c3a9860079a9aa29556fb628674c89c6f94251d931308e23780f481ab98a",
+  "result": {
+   "summary": "This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.",
+   "symptoms": [
+    "My internet isn't working without Wi-Fi",
+    "How do I turn off cellular data?",
+    "I want to save data",
+    "My apps aren't connecting",
+    "I need to turn on mobile data",
+    "Cellular data isn't working"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notifications_led-turning-on-flash-for-alerts": {
+  "hash": "6c1f5492bdcdaffd38c59ae413b1fe104c3b275cb62ae9edf35f7d31880d4a6c",
+  "result": {
+   "summary": "This guide explains how to enable the LED Flash for Alerts feature on an iPhone 13.",
+   "symptoms": [
+    "My phone doesn't flash for calls",
+    "How do I turn on the LED alert?",
+    "I want the camera flash to blink for notifications",
+    "Flash for alerts isn't working",
+    "Where is the flash notification setting?",
+    "My iPhone isn't flashing for calls"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_live_voicemail-turning-on-live-voicemail-for-real-time-call-screening": {
+  "hash": "b16fe263d9d95aa71b6a75c46e573d96a34c50e1d4d449680f8ef9b9279aaad7",
+  "result": {
+   "summary": "This tutorial guides users on how to enable the Live Voicemail feature on an iPhone 13 for real-time call screening.",
+   "symptoms": [
+    "How do I turn on Live Voicemail?",
+    "My phone isn't screening calls live.",
+    "I want to see voicemails as they're being left.",
+    "Live Voicemail isn't working on my iPhone.",
+    "How to enable call screening on iPhone.",
+    "Set up Live Voicemail feature."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_hotspot-turning-on-and-managing-your-personal-hotspot-s-settings": {
+  "hash": "602b789dfdbf0a8d568dddb92b7ea7cf0600c5c8f20c74d91a475998a2f52b04",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and manage the personal hotspot feature on an iPhone 13.",
+   "symptoms": [
+    "My hotspot isn't working",
+    "I can't find my personal hotspot",
+    "How do I turn on my hotspot?",
+    "I need to share my phone's internet",
+    "My friends can't connect to my hotspot"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_captions-turning-on-captions?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "970d51b3f788d907902d963c3f871ef4a0d3182592aabe75ba6a2ecac349f7eb",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable captions for a YouTube video on an iPhone 13.",
+   "symptoms": [
+    "How do I turn on captions?",
+    "I can't see subtitles on YouTube.",
+    "Where is the caption option?",
+    "I need captions for this video.",
+    "Subtitles aren't showing up."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_sim_pin-turning-your-sim-pin-on-and-off": {
+  "hash": "054d9e729a31d4955fd680e48eaac9471a8d6b3824eb09c035965ac34bcd49e2",
+  "result": {
+   "summary": "This guide explains how to enable or disable the SIM PIN on an iPhone 13.",
+   "symptoms": [
+    "How do I set up a SIM PIN?",
+    "I want to turn on my SIM PIN.",
+    "Can I disable my SIM PIN?",
+    "Where are the SIM PIN settings?",
+    "Protect my SIM card.",
+    "Add security to my SIM."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_vpn_on-turning-your-vpn-on-and-off": {
+  "hash": "fd3db9c87aa00968a4e4c6eb72739e6f5412d63771fc7e8da72f850dab583dfe",
+  "result": {
+   "summary": "This tutorial guides users on how to add a VPN configuration on an iPhone 13.",
+   "symptoms": [
+    "Set up VPN",
+    "Add VPN",
+    "Configure VPN",
+    "VPN settings",
+    "Connect to private network"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_family_appleid-create-an-apple-account-for-your-child": {
+  "hash": "d3993258dd4b3d67cd4f95824981be05fed3b610d953492421299d0e54626252",
+  "result": {
+   "summary": "This tutorial guides users on how to add a VPN configuration on an iPhone 13.",
+   "symptoms": [
+    "Set up VPN",
+    "Add VPN",
+    "Configure VPN",
+    "VPN settings",
+    "Connect to private network"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_start_unlock-unlocking-the-screen": {
+  "hash": "2e3ee828befc59a440d0ed47d0492d8502775648967569b07ee028c7f065258b",
+  "result": {
+   "summary": "This tutorial guides you on how to unlock your iPhone screen.",
+   "symptoms": [
+    "My phone is locked",
+    "I can't get past the lock screen",
+    "How do I unlock my iPhone?",
+    "My screen is stuck",
+    "I need to unlock my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_icloud_upgrade-upgrading-your-icloud-storage-plan": {
+  "hash": "35872ae224b3a60671468a0ff149466e5e9f2618386646831ee177d7f435f3d3",
+  "result": {
+   "summary": "This tutorial guides the user through the process of upgrading their iCloud storage plan on an iPhone 13.",
+   "symptoms": [
+    "My iCloud storage is full",
+    "I need more space on iCloud",
+    "How do I upgrade my iCloud plan?",
+    "I can't back up my phone",
+    "My photos aren't syncing",
+    "I need more storage for my iPhone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_air_drop-using-airdrop": {
+  "hash": "041d6769fd15c46e861ee8c526dd29ae38a6423e9a9ba19a27b33341bac93c2d",
+  "result": {
+   "summary": "This tutorial explains how to use AirDrop on an iPhone 13 to share content with another person.",
+   "symptoms": [
+    "How do I AirDrop?",
+    "I want to share a photo with someone nearby.",
+    "AirDrop isn't showing up.",
+    "Can't send files to my friend's iPhone.",
+    "Need to share something quickly with another Apple device."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_assistive_access-using-assistive-access-to-simplify-your-iphone-s-features": {
+  "hash": "ae5c89ef3357adb00215028d57185648fec0fb8d698fe0f44dc594856d26fff4",
+  "result": {
+   "summary": "This tutorial guides the user through setting up Assistive Access to simplify their iPhone's features.",
+   "symptoms": [
+    "Simplify my iPhone",
+    "Make my iPhone easier to use",
+    "Set up Assistive Access",
+    "Help with iPhone accessibility",
+    "Reduce complexity on my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_directions-using-gps-turn-by-turn-navigation": {
+  "hash": "1c5aaf743da7ef23a8375e4025c8dab5bdf53a8f4d73df86c275fe726b4ca3ca",
+  "result": {
+   "summary": "This tutorial explains how to use the Maps app on an iPhone 13 to get turn-by-turn GPS navigation to a destination.",
+   "symptoms": [
+    "How do I use GPS?",
+    "I need directions on my phone",
+    "My navigation isn't working",
+    "How do I start turn-by-turn?",
+    "Can you help me with Maps?",
+    "I want to find a route"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_assist_hold-using-hold-assist": {
+  "hash": "ec2f60b4bd98223fca3473aedc9cef928983a0853b0f3378a75e2ccbafe3d681",
+  "result": {
+   "summary": "This tutorial explains how to use the Hold Assist feature on an iPhone 13 during an ongoing call.",
+   "symptoms": [
+    "I'm on hold",
+    "How do I use Hold Assist?",
+    "My call is on hold",
+    "I need help with Hold Assist",
+    "What is Hold Assist?",
+    "How do I manage a call on hold?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_listen-using-live-listen-to-boost-the-volume-of-real-world-conversations": {
+  "hash": "f0b046791e181393b4cc8a61eea3e3456b5dcf25ee19196e1277c82bf20ab69d",
+  "result": {
+   "summary": "This tutorial explains how to use Live Listen on an iPhone 13 to amplify real-world conversations.",
+   "symptoms": [
+    "I can't hear people talking",
+    "Conversations are too quiet",
+    "I need to boost the volume of real-world sounds",
+    "How do I use Live Listen?",
+    "My hearing isn't great",
+    "I want to hear better in noisy environments"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_live_speech-using-live-speech-to-type-what-you-want-to-say-in-a-call": {
+  "hash": "70b6d5bcdcb5930fcc7f2795defe90495181445f15039627e669d8a8acc18067",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and configure Live Speech on an iPhone 13 to type responses during a phone call.",
+   "symptoms": [
+    "I can't type what I want to say in a call",
+    "How do I use Live Speech?",
+    "My Live Speech isn't working",
+    "I want to type my responses during a call",
+    "Where is the Live Speech setting?",
+    "How to enable Live Speech on iPhone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_magnifier-using-magnifier-to-help-view-nearby-objects": {
+  "hash": "beff8511ca043b4fd1c3769463a2a5b13b349925660ae564f5c792f7c267ed92",
+  "result": {
+   "summary": "This tutorial explains how to use the Magnifier app on an iPhone 13 to view nearby objects and capture images.",
+   "symptoms": [
+    "How do I use Magnifier?",
+    "I need to zoom in on something small.",
+    "My vision is poor, how can my phone help?",
+    "Where is the zoom bar in Magnifier?",
+    "How do I take a picture with Magnifier?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_name_drop-using-namedrop-to-share-contact-information": {
+  "hash": "a51e3a70d383c56784467b99d474a8121f7dd778b69164f3f2f888550c383cbe",
+  "result": {
+   "summary": "This tutorial explains how to use NameDrop to share contact information between two devices.",
+   "symptoms": [
+    "How to use NameDrop",
+    "Share contact info with another iPhone",
+    "NameDrop not working",
+    "Quickly share my contact card",
+    "Share contacts by touching phones"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_personal_voice-using-personal-voice-to-communicate-with-others-by-using-a-voice-that-sounds-like-yourself": {
+  "hash": "f7358d40a6607475e3a231ccfac710553110e2772e66bc0cd1790aeef0b0ff59",
+  "result": {
+   "summary": "This guide explains how to create a Personal Voice on an iPhone, allowing the device to speak in a voice that sounds like the user.",
+   "symptoms": [
+    "I want to create a personal voice",
+    "How do I make my iPhone speak in my voice?",
+    "I need to set up personal voice",
+    "Can I make my phone sound like me?",
+    "Help me create a custom voice",
+    "My phone doesn't sound like me"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_point_speak-using-point-and-speak-to-read-physical-labels-out-loud": {
+  "hash": "8c74fcc4a8cc1212e4a6b5b903de98babc1701ffe36adcfbe3a47450b3bb48b8",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and use the Point and Speak feature within the Magnifier app on an iPhone 13 to read physical labels aloud.",
+   "symptoms": [
+    "My iPhone can't read text aloud",
+    "How do I use Point and Speak?",
+    "I need help with Magnifier's text reading",
+    "Can my phone read labels for me?",
+    "Point and Speak isn't working"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_siri_use-using-siri": {
+  "hash": "7ab3232353473b48937e0caaa3bb7be514408d0c08d5191a45d199f0826eb72d",
+  "result": {
+   "summary": "This tutorial explains how to activate and use Siri on an iPhone 13.",
+   "symptoms": [
+    "How do I use Siri?",
+    "Siri isn't responding",
+    "How to talk to Siri",
+    "Activate Siri",
+    "Siri commands",
+    "What can Siri do?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_spoken-using-spoken-content-to-read-selected-text-or-what-s-on-your-device-s-entire-screen": {
+  "hash": "258996e47c8789127656cab6ee81a7f5e197dedc87dbe26e236c4375d1385ac7",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and utilize the Spoken Content features, Speak Selection and Speak Screen, to have their iPhone 13 read text aloud.",
+   "symptoms": [
+    "My phone won't read text",
+    "How do I make my iPhone speak?",
+    "I want my screen to be read aloud",
+    "Can my phone read articles for me?",
+    "Text-to-speech isn't working",
+    "How to enable spoken content?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_emergency_access-using-emergency-mode": {
+  "hash": "45627274deedc38c52e7636bab7d40d61f242345afcaf5ed04159d3ed2f3b6a7",
+  "result": {
+   "summary": "This guide explains how to access and use the emergency features on an iPhone 13, including calling emergency services and viewing emergency contacts.",
+   "symptoms": [
+    "I need to make an emergency call.",
+    "How do I call 911 from my locked phone?",
+    "I want to see my medical ID.",
+    "How do I access emergency contacts?",
+    "My phone is locked and I need help."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_recovery_mode-using-recovery-mode": {
+  "hash": "6d1428913053145756419f6257b7b01ffb4378b132dc936031735d9ffac51beb",
+  "result": {
+   "summary": "This tutorial guides the user through putting an iPhone 13 into recovery mode to update or restore its software, typically used for resolving software issues or when the device is unresponsive.",
+   "symptoms": [
+    "Phone won't turn on",
+    "Stuck on Apple logo",
+    "iPhone frozen",
+    "Software issues",
+    "Can't update iPhone",
+    "iPhone not responding"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "This step initiates a restart or entry into recovery mode, which will end any active call."
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "This step continues the process of entering recovery mode, during which the phone is not in a calling state."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_usage_view-viewing-your-app-usage?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "e10fd33f378aaa32cede70774fbf591e1de575fe6be80d83d0d93cd6ad25966d",
+  "result": {
+   "summary": "This tutorial guides users on how to set up a 'Remind me to take a break' feature within the YouTube app to manage app usage time.",
+   "symptoms": [
+    "I want to limit my YouTube time.",
+    "How do I set a break reminder on YouTube?",
+    "I need to manage my app usage.",
+    "Can I get a notification to stop watching YouTube?",
+    "How do I set screen time limits for YouTube?",
+    "I spend too much time on YouTube."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_history_view-viewing-your-history?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "1e8d91cea805c1a9b54af625fdf5f73f8360d89fe28de7c7fd517aa3583c25e4",
+  "result": {
+   "summary": "This tutorial guides the user on how to view their YouTube watch history on an iPhone 13.",
+   "symptoms": [
+    "How do I see my YouTube history?",
+    "Where is my watch history?",
+    "I want to check what I watched.",
+    "Show me my past videos.",
+    "Can I see my viewing history?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_notifications-viewing-your-notifications": {
+  "hash": "9d30a161bbf078c75046b254e6935988a4d95387105d8b1ccf6a431bf0adfba4",
+  "result": {
+   "summary": "This tutorial guides users on how to view and interact with notifications directly from the Lock Screen of an iPhone 13.",
+   "symptoms": [
+    "How do I see my notifications?",
+    "Where are my old alerts?",
+    "I want to check my messages on the lock screen.",
+    "How do I dismiss a notification?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notifications_view-viewing-your-notifications?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "cffc0d31959ea6a50fb50bd775011b9b77cece503f84c9e5b84c8a5bbd78bb51",
+  "result": {
+   "summary": "This guide explains how to view notifications on your iPhone 13.",
+   "symptoms": [
+    "How do I see my notifications?",
+    "Where are my alerts?",
+    "I can't find my notifications.",
+    "Show me my messages.",
+    "How to check notifications on YouTube."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_watch-watching-a-video?topicSource=app-youtube-ios-smartphone&topicVersion=21.40.5": {
+  "hash": "9fd326f01f81919b7d5d68971887184a64a545c83f5d5e67b45b4ecefc75b6fc",
+  "result": {
+   "summary": "This tutorial guides the user on how to find and watch a video on YouTube on an iPhone 13.",
+   "symptoms": [
+    "How do I watch a video?",
+    "I want to watch something on YouTube.",
+    "Can you help me play a video?",
+    "How do I find videos?",
+    "I don't know how to use YouTube."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_new_features-what-s-new-in-ios-27": {
+  "hash": "4d84356be16e23c36378f7bb80ba80d6ea9500f08203ce7d60e07ad2f28b0f47",
+  "result": {
+   "summary": "This guide highlights the new features and improvements introduced in iOS 27, covering updates to Siri, Photos, Safari, and system settings.",
+   "symptoms": [
+    "New iOS 27 features",
+    "Siri AI capabilities",
+    "Photos editing tools",
+    "Safari browsing enhancements",
+    "Alarm volume settings",
+    "Child Safety tools",
+    "iOS 27 updates",
+    "What's new on my iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facetime_settings-changing-facetime-settings": {
+  "hash": "d36f3fe03c18c51273656dea267949d14e313cbdfe52248b4f09dc0ea66670a0",
+  "result": {
+   "summary": "This tutorial guides users on how to access and manage various FaceTime settings on an iPhone 13.",
+   "symptoms": [
+    "How do I change FaceTime settings?",
+    "I want to manage my FaceTime preferences.",
+    "Where are FaceTime options?",
+    "How to block contacts on FaceTime?",
+    "Can I change my FaceTime caller ID?",
+    "What is SharePlay?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_change-changing-account-settings": {
+  "hash": "ef74e6017df428f848d58d0e2e10bc6ed538ce6233480062c78ca2915dfbbe57",
+  "result": {
+   "summary": "This guide explains how to change settings for an email account on an iPhone 13.",
+   "symptoms": [
+    "My email isn't syncing",
+    "I need to update my mail password",
+    "I want to remove an email account",
+    "My contacts aren't showing up",
+    "I need to change my mail server settings"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_timeout-changing-your-auto-lock-and-brightness-preferences": {
+  "hash": "9882624e6f80a8c879be8f8f43eff42c77e09ff2010922caf324e72ea26c2ada",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust their iPhone's screen brightness and auto-lock settings.",
+   "symptoms": [
+    "My screen is too dark",
+    "My screen is too bright",
+    "My phone locks too fast",
+    "My phone doesn't lock quickly enough",
+    "How do I change auto-lock?",
+    "How do I adjust screen brightness?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_ringtone-editing-and-deleting-a-contact": {
+  "hash": "6f4439440bad60fbd29f87ec838bd38710c07e9a9f5289878337f7d25dacd51c",
+  "result": {
+   "summary": "This tutorial guides you through editing and deleting a contact on an iPhone 13.",
+   "symptoms": [
+    "How do I change a contact's number?",
+    "I need to update someone's contact info.",
+    "Can I delete a contact?",
+    "How do I edit a contact?",
+    "I want to add an email to a contact.",
+    "My contact's ringtone is wrong."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_group-managing-text-message-conversations": {
+  "hash": "1e7ff7b947d35c946eae846ef958717602e1390aae45fec0fce445d7495f91a5",
+  "result": {
+   "summary": "This tutorial explains how to manage text message conversations, including hiding alerts and deleting conversations.",
+   "symptoms": [
+    "How do I delete a text message?",
+    "I want to mute a conversation.",
+    "My texts are too noisy.",
+    "I need to clean up my messages.",
+    "How do I get rid of old texts?",
+    "I want to stop getting notifications from a group chat."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_silent-managing-your-do-not-disturb-settings": {
+  "hash": "5101ac2b02c5ba70c95b154ed87907a446c38d33992d8acfc175769958b7c903",
+  "result": {
+   "summary": "This tutorial guides users on how to manage and customize Do Not Disturb settings on their iPhone 13.",
+   "symptoms": [
+    "My phone keeps ringing at night",
+    "I want to stop notifications",
+    "How do I turn on Do Not Disturb?",
+    "I need to change my Do Not Disturb settings",
+    "Notifications are bothering me",
+    "I want to silence my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_tabs-managing-your-browser-tabs": {
+  "hash": "cf90f75f588b0de5043e979bf23901b4422142ff8b5bcb88b57a0e9327523519",
+  "result": {
+   "summary": "This tutorial guides the user on how to manage browser tabs in the Safari app on an iPhone 13.",
+   "symptoms": [
+    "How do I open a new tab?",
+    "I want to switch between tabs.",
+    "How do I close a tab?",
+    "I need to manage my tab groups.",
+    "Can I switch my browsing profile?",
+    "My Safari tabs are messy."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_battery-managing-your-iphone-battery": {
+  "hash": "8e36513db166772beb7f16756e2b372ed2b382829c34bbd7dec744a776e0c4d4",
+  "result": {
+   "summary": "This tutorial guides users on how to access and understand various battery management options on their iPhone, including usage statistics, health, and charging settings.",
+   "symptoms": [
+    "My battery is draining fast",
+    "How do I check my battery health?",
+    "I want to see what's using my battery",
+    "How can I make my battery last longer?",
+    "What do these battery settings mean?",
+    "My phone isn't charging properly"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_memory-managing-your-iphone-s-storage": {
+  "hash": "fc77a08aea870e4df7ac2a467fd449ea53f1c70f7905b0fcb94fe4e6670cded6",
+  "result": {
+   "summary": "This tutorial guides you on how to manage your iPhone's storage to free up space.",
+   "symptoms": [
+    "My phone is full",
+    "I need more space on my iPhone",
+    "My storage is low",
+    "I can't download new apps",
+    "My phone is running slow due to storage",
+    "How do I free up space?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_cellular_settings_access-navigating-to-cellular-settings": {
+  "hash": "83dcd63c6b071dc421ed6f4d462db6440fde46eb6c5f7f3ed5142eddab429740",
+  "result": {
+   "summary": "This guide explains how to access and manage cellular settings on an iPhone 13.",
+   "symptoms": [
+    "How do I get to cellular settings?",
+    "Where are my cellular options?",
+    "I need to manage my cellular data.",
+    "How do I check data usage?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_folders-organizing-your-iphone-s-home-screen": {
+  "hash": "95862996297aa249f9d2c70d95f6cf34e015b335d0cea83a764075843b0f1158",
+  "result": {
+   "summary": "This tutorial guides users on how to organize their iPhone's home screen by reordering apps, creating folders, and customizing widgets and wallpapers.",
+   "symptoms": [
+    "My home screen is messy",
+    "I want to move my apps around",
+    "How do I create app folders?",
+    "I need to customize my home screen layout",
+    "My apps are disorganized",
+    "Can I change my app icons?",
+    "I want to add widgets to my home screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_safety_check-performing-a-safety-check": {
+  "hash": "dd2df3aa25a5fbf5c3f7b6564335b0a51ab7a98bc33218cd07fd63c242336520",
+  "result": {
+   "summary": "This tutorial guides users on how to utilize the iPhone's Safety Check feature to manage and revoke access to personal information shared with apps and individuals, and to enhance Apple Account security.",
+   "symptoms": [
+    "Someone has access to my information",
+    "I need to stop sharing my location",
+    "My privacy feels compromised",
+    "I want to review app permissions",
+    "How do I manage who sees my data?",
+    "I need to secure my Apple ID"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_network_reset-resetting-your-iphone-s-settings-and-network-settings": {
+  "hash": "a088d94c5619cbb687d23f128ee3f488736558e63b22509a9ec1cc0e9e24fad0",
+  "result": {
+   "summary": "This tutorial guides the user through resetting various settings on their iPhone, including all settings, network settings, and eSIMs, to resolve device issues.",
+   "symptoms": [
+    "My iPhone isn't connecting to Wi-Fi.",
+    "I'm having cellular data problems.",
+    "My phone is acting weird, I want to reset settings.",
+    "I need to reset my network connection.",
+    "My phone is slow.",
+    "I can't make calls."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "This step presents options including 'Reset All Settings', 'Reset Network Settings', and 'Delete All eSIMs', all of which interrupt or drop the call."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_motion_cues-setting-motion-accessibility-settings": {
+  "hash": "9f134bd442044a3ab1fa3186a6dbeb0d70a17e1011d54ee75980e0432b15b1e5",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust motion accessibility settings on their iPhone to reduce motion sickness, animations, and dim flashing lights.",
+   "symptoms": [
+    "I get motion sick using my phone in a car",
+    "My phone animations are too much",
+    "Flashing lights on videos bother me",
+    "I need to reduce screen motion",
+    "How do I make my phone less dizzying?",
+    "Accessibility settings for motion"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_assistive-setting-touch-accessibility-settings": {
+  "hash": "9024d62668a0feefea88d3232e6afbf4b8af8684ec1ec2b8f51476c301ccdd5e",
+  "result": {
+   "summary": "This tutorial guides users on how to access and manage various touch accessibility settings on their iPhone 13.",
+   "symptoms": [
+    "My touch screen isn't working right",
+    "I need to change accessibility settings",
+    "How do I use AssistiveTouch?",
+    "I want to set up Back Tap",
+    "My phone isn't responding to touch",
+    "I need help with touch sensitivity"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_volte_on-switching-lte-or-5g-voice-and-data-settings": {
+  "hash": "0ca6897817310c21aea1b4f9c1062d6a400bacf5f760cc4c56a211356fcefa5a",
+  "result": {
+   "summary": "This tutorial guides users through adjusting their iPhone's cellular data settings to manage 5G and LTE preferences for voice and data usage.",
+   "symptoms": [
+    "My 5G isn't working right",
+    "I want to save battery on 5G",
+    "How do I turn off 5G?",
+    "My calls are low quality",
+    "I need to change my data mode",
+    "My phone is using too much data"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_stolen_protect-turning-your-passcode-and-stolen-device-protection-on": {
+  "hash": "438e02f5d856aefc495ce62626aa36a49f0fdc7b7d34b42d16eb4d0fc361242e",
+  "result": {
+   "summary": "This tutorial guides users on how to enable a passcode and Stolen Device Protection on their iPhone 13.",
+   "symptoms": [
+    "I want to set up a passcode.",
+    "How do I turn on Stolen Device Protection?",
+    "My phone isn't secure enough.",
+    "I need to add a passcode.",
+    "Someone might know my passcode, I need more protection."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_wifi-turning-your-wi-fi-on-and-off": {
+  "hash": "6151cc367c1974a5bfba0e3aaa5de0ae2c88bb17551ef60b20422295f2aaa7fa",
+  "result": {
+   "summary": "This guide explains how to turn Wi-Fi on or off and manage Wi-Fi network settings on an iPhone 13.",
+   "symptoms": [
+    "My Wi-Fi isn't working",
+    "How do I turn on Wi-Fi?",
+    "I can't connect to Wi-Fi",
+    "I need to forget a Wi-Fi network",
+    "My Wi-Fi keeps disconnecting",
+    "How do I manage my Wi-Fi settings?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_control-using-control-center": {
+  "hash": "48dc6d77cd3241b4db08a7d52625abbd99ab1aefefa78401723e247d6bfd7342",
+  "result": {
+   "summary": "This tutorial guides users on how to access and utilize the various quick settings and features available in the iPhone's Control Center.",
+   "symptoms": [
+    "How do I open Control Center?",
+    "Where are my quick settings?",
+    "I need to turn on Wi-Fi quickly.",
+    "How do I use the flashlight?",
+    "Can I turn on Airplane Mode from here?",
+    "Adjusting screen brightness."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "The step mentions turning Airplane Mode on, which cuts cellular service."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_lockdown_mode-using-lockdown-mode-and-setting-up-sensitive-content-warnings": {
+  "hash": "fc2878c3db8d1e591d4edc7fa0c522c9bc4f45722237e2fffafbcfa262e7129c",
+  "result": {
+   "summary": "This guide explains how to access and manage Lockdown Mode and Sensitive Content Warnings on an iPhone 13 to enhance security and privacy.",
+   "symptoms": [
+    "I want to enable Lockdown Mode.",
+    "How do I turn on Sensitive Content Warnings?",
+    "I need to secure my iPhone from cyberattacks.",
+    "My phone shows inappropriate images.",
+    "I want to restrict app functionality for security."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating menus."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Navigating menus."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Describes settings and their effects, but does not instruct an action that interrupts a call based on the defined criteria."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Concluding statement."
+    }
+   ]
+  }
+ },
+ "feature_satellite_send-using-satellite-when-cellular-or-wi-fi-is-unavailable": {
+  "hash": "b536a647fc4ef3da04fb19f2ce3f70ffb9425436dca0ffc7986e0c14e8789a4c",
+  "result": {
+   "summary": "This tutorial guides users on how to access and test the satellite connection feature on an iPhone 13, including a demo for Emergency SOS.",
+   "symptoms": [
+    "How do I use satellite on my iPhone?",
+    "I want to test my satellite connection.",
+    "Where is the satellite feature?",
+    "Can I make calls with satellite?",
+    "How does Emergency SOS via satellite work?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "One of the options presented ('Try Connecting to Satellite') temporarily disables calling capabilities."
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ }
+}

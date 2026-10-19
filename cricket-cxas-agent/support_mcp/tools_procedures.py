@@ -4,21 +4,35 @@ get_step is the only thing the agent calls during a walk-through. It returns one
 step, its warning, its image, and whether it ends the call, so the agent never
 has to hold the whole tutorial in context and can never invent a step.
 """
+import datetime as dt
+import logging
 import os
 import re
-from pathlib import Path
+
+from google.api_core.exceptions import GoogleAPIError
 
 from knowledge.catalog import Catalog
+from knowledge.content_store import CatalogCache, make_source
+from support_mcp import progress_store
 
-CATALOG_DIR = Path(os.environ.get("CATALOG_DIR", Path(__file__).parent.parent / "knowledge" / "catalog"))
-_cat: Catalog | None = None
+log = logging.getLogger(__name__)
+CONTENT_ERROR = {"error": "Tutorial content is unavailable right now. Offer to text the guide link or open a ticket."}
+_cache: CatalogCache | None = None
 
 
 def catalog() -> Catalog:
-    global _cat
-    if _cat is None:
-        _cat = Catalog.load(CATALOG_DIR)
-    return _cat
+    global _cache
+    if _cache is None:
+        _cache = CatalogCache(make_source(), float(os.environ.get("CONTENT_CHECK_SECONDS", "60")))
+    return _cache.get()
+
+
+def _catalog_or_none() -> Catalog | None:
+    try:
+        return catalog()
+    except (RuntimeError, GoogleAPIError):
+        log.exception("tutorial content unavailable")
+        return None
 
 
 def _summary(t) -> str:
@@ -47,6 +61,42 @@ def _branch_question(t) -> str | None:
     return None
 
 
+WINDOW = 15   # steps returned per get_tutorial call; 13 of 815 paths are longer
+
+
+def is_gated(s: dict) -> bool:
+    return bool(s["call_ending"])
+
+
+def _shared_prefix(t) -> list[dict]:
+    """Steps every branch shares, from the start up to the first difference."""
+    out = []
+    for group in zip(*(p.steps for p in t.paths)):
+        if len({s["text"] for s in group}) > 1:
+            break
+        out.append(group[0])
+    return out
+
+
+def steps_for(t, choice: str):
+    """(steps, complete, error). Without a choice a branching tutorial yields only the shared steps."""
+    if len(t.paths) > 1 and not choice:
+        return _shared_prefix(t), False, None
+    p, err = _path(t, choice)
+    if err:
+        return None, False, err
+    return p.steps, True, None
+
+
+def _public_step(s: dict, titles: dict[str, str]) -> dict:
+    if is_gated(s):
+        return {"n": s["n"], "gated": True, "call_ending": s["call_ending"]}
+    return {"n": s["n"], "gated": False, "heading": s["heading"], "text": s["text"], "notes": s["notes"],
+            "warning": s["warning"], "image_url": s["image_url"],
+            "linked_procedures": [{"id": titles[l], "title": l} for l in s["links"] if l in titles],
+            "next_options": [o for o in s["options"] if not o.startswith("Next")]}
+
+
 def _path(t, choice: str):
     if len(t.paths) == 1:
         return t.paths[0], None
@@ -60,37 +110,54 @@ def _path(t, choice: str):
     }
 
 
-def _title_index(device: str) -> dict[str, str]:
-    return {t.title: t.id for t in catalog()._d[device].values()}
+def _title_index(cat: Catalog, device: str) -> dict[str, str]:
+    return {t.title: t.id for t in cat._d[device].values()}
 
 
 def find_tutorials(device: str, symptom: str) -> dict:
+    cat = _catalog_or_none()
+    if cat is None:
+        return CONTENT_ERROR
     try:
-        results = catalog().search(device, symptom)
+        results = cat.search(device, symptom)
     except KeyError:
-        known = [d["device"] for d in catalog().devices()]
+        known = [d["device"] for d in cat.devices()]
         return {"device": device, "results": [], "note": f"Unknown device '{device}'. Known devices: {known}"}
     return {"device": device, "results": results}
 
 
-def get_tutorial(device: str, tutorial_id: str) -> dict:
+def get_tutorial(device: str, tutorial_id: str, choice: str = "", from_step: int = 1) -> dict:
+    cat = _catalog_or_none()
+    if cat is None:
+        return CONTENT_ERROR
     try:
-        t = catalog().get(device, tutorial_id)
+        t = cat.get(device, tutorial_id)
     except KeyError:
         return {"error": f"No tutorial '{tutorial_id}' for device '{device}'."}
-    steps0 = t.paths[0].steps
+    steps, complete, err = steps_for(t, choice)
+    if err:
+        return err
+    window = [s for s in steps if s["n"] >= from_step][:WINDOW]
+    more = complete and bool(window) and window[-1]["n"] < steps[-1]["n"]
+    titles = _title_index(cat, device)
     return {
-        "id": t.id, "kind": t.kind, "title": t.title, "summary": _summary(t),
-        "step_count": t.step_count, "url": t.url, "branch_question": _branch_question(t),
-        "choices": _branch_choices(t),
-        "call_ending_steps": [s["n"] for s in steps0 if s["call_ending"]],
-        "destructive_steps": [s["n"] for s in steps0 if s["destructive"]],
+        "id": t.id, "kind": t.kind, "title": t.title, "summary": t.summary or _summary(t), "url": t.url,
+        "step_count": len(steps) if complete else t.step_count,
+        "steps": [_public_step(s, titles) for s in window],
+        "path_complete": complete, "choice": choice or None,
+        "branch_question": None if complete else _branch_question(t),
+        "choices": [] if complete else _branch_choices(t),
+        "next_from": window[-1]["n"] + 1 if more else None,
+        "last_step": steps[-1]["n"] if complete and steps else None,
     }
 
 
 def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
+    cat = _catalog_or_none()
+    if cat is None:
+        return CONTENT_ERROR
     try:
-        t = catalog().get(device, tutorial_id)
+        t = cat.get(device, tutorial_id)
     except KeyError:
         return {"error": f"No tutorial '{tutorial_id}' for device '{device}'."}
     p, err = _path(t, choice)
@@ -101,12 +168,54 @@ def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
     if idx is None:
         return {"error": f"Step {n} does not exist; this tutorial has {len(steps)} steps."}
     s = steps[idx]
-    titles = _title_index(device)
+    if is_gated(s):
+        return {"n": s["n"], "gated": True,
+                "error": "This step ends the call; call checkpoint for it instead."}
+    titles = _title_index(cat, device)
     return {
         "n": s["n"], "of": len(steps), "heading": s["heading"], "text": s["text"], "notes": s["notes"],
         "warning": s["warning"], "image_url": s["image_url"], "call_ending": s["call_ending"],
-        "destructive": s["destructive"],
         "linked_procedures": [{"id": titles[l], "title": l} for l in s["links"] if l in titles],
         "is_last": idx == len(steps) - 1,
         "next_options": [o for o in s["options"] if not o.startswith("Next")],
     }
+
+
+SAY_CALL_ENDING = ("This next step will disconnect us. When your phone is back, call again and I'll pick up "
+                   "right where we left off.")
+
+
+def checkpoint(customer_id: str, device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
+    cat = _catalog_or_none()
+    if cat is None:
+        return CONTENT_ERROR
+    try:
+        t = cat.get(device, tutorial_id)
+    except KeyError:
+        return {"error": f"No tutorial '{tutorial_id}' for device '{device}'."}
+    steps, complete, err = steps_for(t, choice)
+    if err:
+        return err
+    s = next((x for x in steps if x["n"] == n), None)
+    if s is None:
+        return {"error": f"Step {n} is not in the loaded steps; valid steps are {[x['n'] for x in steps]}."}
+    if not is_gated(s):
+        return {"error": f"Step {n} is not a checkpoint step; speak it from the tutorial you already have."}
+    progress_store.save(customer_id, {"device": device, "tutorial_id": tutorial_id, "title": t.title,
+                                      "choice": choice or None, "step_n": n,
+                                      "updated_at": dt.datetime.now(dt.timezone.utc)})
+    return {"n": n, "of": len(steps) if complete else None, "heading": s["heading"], "text": s["text"],
+            "notes": s["notes"], "warning": s["warning"], "image_url": s["image_url"],
+            "call_ending": s["call_ending"], "say_first": SAY_CALL_ENDING}
+
+
+def get_progress(customer_id: str) -> dict:
+    rec = progress_store.load(customer_id)
+    if not rec:
+        return {"progress": None}
+    window = dt.timedelta(minutes=float(os.environ.get("RESUME_WINDOW_MINUTES", "30")))
+    age = dt.datetime.now(dt.timezone.utc) - rec["updated_at"]
+    if age > window:
+        return {"progress": None}
+    return {"progress": {**{k: rec[k] for k in ("device", "tutorial_id", "title", "choice", "step_n")},
+                         "resume_at": rec["step_n"] + 1, "minutes_ago": int(age.total_seconds() // 60)}}

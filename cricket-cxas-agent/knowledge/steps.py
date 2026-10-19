@@ -1,7 +1,8 @@
-"""Per-step normalization and the two safety flags the agent relies on.
+"""Per-step normalization and the call-ending flag the agent relies on.
 
-The flags are heuristics over the step's own instruction text, never its notes:
-a note that says "do not choose Erase" must not make the step destructive.
+A step is gated only when doing it drops the call: a restart, power off, loss of service, or an
+erase or reset that reboots the phone. The flag is a heuristic over the step's own instruction
+text, never its notes: a note that says "do not choose Erase" must not flag the step.
 """
 import re
 
@@ -9,12 +10,8 @@ CALL_ENDING = re.compile(
     r"\b(restart|reboot|power (your|the|it) (phone|iphone|device) off|power off|"
     r"turn (your|the|it) (phone|iphone|device) off|turn off (your|the) (phone|iphone|device)|"
     r"airplane mode|remove (the|your) sim|reset network settings|force[- ]restart|"
-    r"hold (the )?(side|power) button)\b",
-    re.I,
-)
-DESTRUCTIVE = re.compile(
-    r"\b(erase all content|factory (data )?reset|reset all settings|delete all esims?|"
-    r"erase (your|the|this) (phone|iphone|device)|wipe)\b",
+    r"hold (the )?(side|power) button|erase all content|factory (data )?reset|reset all settings|"
+    r"delete all esims?|erase (your|the|this) (phone|iphone|device)|wipe)\b",
     re.I,
 )
 OVERVIEW = re.compile(r"within this guide|you'll learn how to|in this guide", re.I)
@@ -52,6 +49,5 @@ def normalize_step(raw: dict, tutorial_title: str) -> dict:
         "substeps": list(raw.get("substeps", [])),
         "image_url": raw.get("image_url", ""),
         "call_ending": bool(CALL_ENDING.search(instr)),
-        "destructive": bool(DESTRUCTIVE.search(instr)),
         "warning": warning,
     }

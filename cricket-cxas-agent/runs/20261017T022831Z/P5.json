@@ -1,0 +1,1054 @@
+{
+ "id": "P5",
+ "title": "Caller wants only the link",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-17T02:34:16.477928+00:00",
+ "turns": [
+  {
+   "user": "my iphone bluetooth won't pair, just text me the guide",
+   "agent": "I understand you're calling about your iPhone. I can't send texts right now, but I can read you the link or walk you through it. What works for you?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "customer_id": "cust_2001",
+         "lines": [
+          {
+           "device_label": "iPhone 13",
+           "is_calling_line": true,
+           "device": "iphone-13",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "os": "27.0.0"
+          },
+          {
+           "device_label": "Galaxy A15 5G",
+           "is_calling_line": false,
+           "device": "galaxy-a15-5g",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "os": "16.0.0"
+          }
+         ],
+         "name": "Jordan Reyes",
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_find_tutorials",
+     "payload": {
+      "args": {
+       "device": "iphone-13",
+       "symptom": "iphone bluetooth won't pair, just text me the guide"
+      },
+      "result": {
+       "text_output": [
+        {
+         "device": "iphone-13",
+         "results": [
+          {
+           "score": 68.997,
+           "branches": 1.0,
+           "step_count": 9.0,
+           "title": "Can't send or receive messages",
+           "kind": "article",
+           "intro": "",
+           "id": "155986-can-t-send-or-receive-messages"
+          },
+          {
+           "score": 64.122,
+           "branches": 1.0,
+           "step_count": 4.0,
+           "title": "Pairing your iPhone with a Bluetooth device",
+           "kind": "procedure",
+           "intro": "Learn how you can connect to a bluetooth device. Bluetooth devices can be anything from your stereo in your car to a keyboard to type on your mobile device with. If your bluetooth device is not connecting try unpairing the device and pairin",
+           "id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+          },
+          {
+           "score": 44.666,
+           "branches": 1.0,
+           "step_count": 7.0,
+           "title": "Forcing iCloud to sync text messages on your iPhone",
+           "kind": "procedure",
+           "intro": "Force sync messages from your iPhone to your iCloud to back up your messages.",
+           "id": "feature_messages_icloud-forcing-icloud-to-sync-text-messages-on-your-iphone"
+          },
+          {
+           "score": 40.909,
+           "branches": 1.0,
+           "step_count": 7.0,
+           "title": "Switching phone numbers for texts with Dual SIM",
+           "kind": "procedure",
+           "intro": "With the dual sim feature of your device, you can easily switch between phone numbers when sending an SMS or MMS message.",
+           "id": "feature_dual_text-switching-phone-numbers-for-texts-with-dual-sim"
+          },
+          {
+           "score": 40.233,
+           "branches": 1.0,
+           "step_count": 5.0,
+           "title": "Blocking a number from messages",
+           "kind": "procedure",
+           "intro": "If you no longer want to receive text messages from a contact, you can block their number on your device.",
+           "id": "feature_message_block-blocking-a-number-from-messages"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_tutorial",
+     "payload": {
+      "args": {
+       "device": "iphone-13",
+       "tutorial_id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+      },
+      "result": {
+       "text_output": [
+        {
+         "branch_question": null,
+         "choice": null,
+         "summary": "This tutorial guides users on how to pair their iPhone with a Bluetooth device.",
+         "last_step": 4.0,
+         "path_complete": true,
+         "steps": [
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/80fb74f86ca82b71d9cf41c4e9a88282f3df7b9cf8a73b8e5859c161c2fa41a7.png",
+           "notes": [],
+           "gated": false,
+           "n": 1.0,
+           "text": "From the Settings app, tap Bluetooth.",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          },
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/4e8fa8640350436427b6b29dae08423209821f8d309e8361492b359bd3f75c8e.jpeg",
+           "notes": [],
+           "gated": false,
+           "n": 2.0,
+           "text": "Tap or slide the Bluetooth switch to ON.",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          },
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/652fe7157087700d6e4c72cdfd40147e168fac83324868b124329f0dfe405c95.jpeg",
+           "notes": [
+            "Note: \n\nA password may be requested. Common manufacturer passwords are 0000 and 1234.\n\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device."
+           ],
+           "gated": false,
+           "n": 3.0,
+           "text": "Select a device to pair.",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          },
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/41647c21ac6302c0a8f3360c0d8516ab79342a02e14baff3092ddfd3f75d7e7b.jpeg",
+           "notes": [],
+           "gated": false,
+           "n": 4.0,
+           "text": "You've completed the steps!",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          }
+         ],
+         "step_count": 4.0,
+         "kind": "procedure",
+         "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+         "next_from": null,
+         "choices": [],
+         "title": "Pairing your iPhone with a Bluetooth device",
+         "id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_send_guide_link",
+     "payload": {
+      "args": {
+       "device": "iphone-13",
+       "customer_id": "cust_2001",
+       "tutorial_id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+       "line_id": "L1"
+      },
+      "result": {
+       "text_output": [
+        {
+         "sent": false,
+         "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+         "to_last4": "4471",
+         "message": "Messaging is not configured; read the link aloud or show it on screen."
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I understand you're calling about your iPhone. I can't send texts right now, but I can read you the link or walk you through it. What works for you?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "current_date": "2026-10-16[America/Los_Angeles]",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:35.489Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my iphone bluetooth won't pair, just text me the guide"
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:35.489Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:36.066Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-997b2f84-362e-4de4-8584-5d8e39ec76b4",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:36.709Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-997b2f84-362e-4de4-8584-5d8e39ec76b4",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:36.961Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-54175e31-dd45-4f74-8537-911508676c5a",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:37.603Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-54175e31-dd45-4f74-8537-911508676c5a",
+            "response": {
+             "text_output": [
+              {
+               "customer_id": "cust_2001",
+               "lines": [
+                {
+                 "device_label": "iPhone 13",
+                 "is_calling_line": true,
+                 "device": "iphone-13",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "os": "27.0.0"
+                },
+                {
+                 "device_label": "Galaxy A15 5G",
+                 "is_calling_line": false,
+                 "device": "galaxy-a15-5g",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "os": "16.0.0"
+                }
+               ],
+               "name": "Jordan Reyes",
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:37.746Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-c1942439-7c76-46f4-9612-7f7b556a8800",
+            "args": {
+             "device": "iphone-13",
+             "symptom": "iphone bluetooth won't pair, just text me the guide"
+            },
+            "displayName": "support_find_tutorials",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "find_tutorials"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:38.537Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-c1942439-7c76-46f4-9612-7f7b556a8800",
+            "response": {
+             "text_output": [
+              {
+               "device": "iphone-13",
+               "results": [
+                {
+                 "score": 68.997,
+                 "branches": 1.0,
+                 "step_count": 9.0,
+                 "title": "Can't send or receive messages",
+                 "kind": "article",
+                 "intro": "",
+                 "id": "155986-can-t-send-or-receive-messages"
+                },
+                {
+                 "score": 64.122,
+                 "branches": 1.0,
+                 "step_count": 4.0,
+                 "title": "Pairing your iPhone with a Bluetooth device",
+                 "kind": "procedure",
+                 "intro": "Learn how you can connect to a bluetooth device. Bluetooth devices can be anything from your stereo in your car to a keyboard to type on your mobile device with. If your bluetooth device is not connecting try unpairing the device and pairin",
+                 "id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+                },
+                {
+                 "score": 44.666,
+                 "branches": 1.0,
+                 "step_count": 7.0,
+                 "title": "Forcing iCloud to sync text messages on your iPhone",
+                 "kind": "procedure",
+                 "intro": "Force sync messages from your iPhone to your iCloud to back up your messages.",
+                 "id": "feature_messages_icloud-forcing-icloud-to-sync-text-messages-on-your-iphone"
+                },
+                {
+                 "score": 40.909,
+                 "branches": 1.0,
+                 "step_count": 7.0,
+                 "title": "Switching phone numbers for texts with Dual SIM",
+                 "kind": "procedure",
+                 "intro": "With the dual sim feature of your device, you can easily switch between phone numbers when sending an SMS or MMS message.",
+                 "id": "feature_dual_text-switching-phone-numbers-for-texts-with-dual-sim"
+                },
+                {
+                 "score": 40.233,
+                 "branches": 1.0,
+                 "step_count": 5.0,
+                 "title": "Blocking a number from messages",
+                 "kind": "procedure",
+                 "intro": "If you no longer want to receive text messages from a contact, you can block their number on your device.",
+                 "id": "feature_message_block-blocking-a-number-from-messages"
+                }
+               ]
+              }
+             ]
+            },
+            "displayName": "support_find_tutorials",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "find_tutorials"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:38.719Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-f32d1f7c-f135-425a-95e5-c948122537a5",
+            "args": {
+             "device": "iphone-13",
+             "tutorial_id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+            },
+            "displayName": "support_get_tutorial",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_tutorial"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:39.612Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-f32d1f7c-f135-425a-95e5-c948122537a5",
+            "response": {
+             "text_output": [
+              {
+               "branch_question": null,
+               "choice": null,
+               "summary": "This tutorial guides users on how to pair their iPhone with a Bluetooth device.",
+               "last_step": 4.0,
+               "path_complete": true,
+               "steps": [
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/80fb74f86ca82b71d9cf41c4e9a88282f3df7b9cf8a73b8e5859c161c2fa41a7.png",
+                 "notes": [],
+                 "gated": false,
+                 "n": 1.0,
+                 "text": "From the Settings app, tap Bluetooth.",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                },
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/4e8fa8640350436427b6b29dae08423209821f8d309e8361492b359bd3f75c8e.jpeg",
+                 "notes": [],
+                 "gated": false,
+                 "n": 2.0,
+                 "text": "Tap or slide the Bluetooth switch to ON.",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                },
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/652fe7157087700d6e4c72cdfd40147e168fac83324868b124329f0dfe405c95.jpeg",
+                 "notes": [
+                  "Note: \n\nA password may be requested. Common manufacturer passwords are 0000 and 1234.\n\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device."
+                 ],
+                 "gated": false,
+                 "n": 3.0,
+                 "text": "Select a device to pair.",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                },
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/41647c21ac6302c0a8f3360c0d8516ab79342a02e14baff3092ddfd3f75d7e7b.jpeg",
+                 "notes": [],
+                 "gated": false,
+                 "n": 4.0,
+                 "text": "You've completed the steps!",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                }
+               ],
+               "step_count": 4.0,
+               "kind": "procedure",
+               "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+               "next_from": null,
+               "choices": [],
+               "title": "Pairing your iPhone with a Bluetooth device",
+               "id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+              }
+             ]
+            },
+            "displayName": "support_get_tutorial",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_tutorial"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:39.756Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-c15f03e7-2b20-4a37-acd0-fe1a8681b588",
+            "args": {
+             "device": "iphone-13",
+             "customer_id": "cust_2001",
+             "line_id": "L1",
+             "tutorial_id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+            },
+            "displayName": "support_send_guide_link",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "send_guide_link"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:40.854Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-c15f03e7-2b20-4a37-acd0-fe1a8681b588",
+            "response": {
+             "text_output": [
+              {
+               "sent": false,
+               "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+               "to_last4": "4471",
+               "message": "Messaging is not configured; read the link aloud or show it on screen."
+              }
+             ]
+            },
+            "displayName": "support_send_guide_link",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "send_guide_link"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:40.996Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I understand you're calling about your iPhone. I can't send texts right now, but I can read you the link or walk you through it. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-17T02:34:41.808Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-17T02:34:35.446503Z",
+        "endTime": "2026-10-17T02:34:41.856183Z",
+        "attributes": {
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 43.0,
+         "perceived latency (ms)": 6410.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:34:35.490237Z",
+          "endTime": "2026-10-17T02:34:36.065750Z",
+          "attributes": {
+           "time to first chunk (ms)": 575.0,
+           "[debug] prefill time (ms)": 191.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "input token count": 1350.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "[debug] decode queue time (ms)": 14.0
+          },
+          "duration": "0.575513s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:34:36.066Z",
+          "endTime": "2026-10-17T02:34:36.067Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0.001s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:34:36.069306Z",
+          "endTime": "2026-10-17T02:34:36.708470Z",
+          "attributes": {
+           "time to first chunk (ms)": 639.0,
+           "[debug] prefill time (ms)": 221.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5197.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "[debug] decode queue time (ms)": 18.0
+          },
+          "duration": "0.639164s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:34:36.710067Z",
+          "endTime": "2026-10-17T02:34:36.960905Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_progress",
+           "tool call id": "adk-997b2f84-362e-4de4-8584-5d8e39ec76b4"
+          },
+          "duration": "0.250838s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:34:36.961910Z",
+          "endTime": "2026-10-17T02:34:37.602059Z",
+          "attributes": {
+           "time to first chunk (ms)": 639.0,
+           "[debug] prefill time (ms)": 221.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5239.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "[debug] decode queue time (ms)": 17.0
+          },
+          "duration": "0.640149s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:34:37.604067Z",
+          "endTime": "2026-10-17T02:34:37.746793Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "customer_id": "cust_2001",
+              "lines": [
+               {
+                "device_label": "iPhone 13",
+                "is_calling_line": true,
+                "device": "iphone-13",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "os": "27.0.0"
+               },
+               {
+                "device_label": "Galaxy A15 5G",
+                "is_calling_line": false,
+                "device": "galaxy-a15-5g",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "os": "16.0.0"
+               }
+              ],
+              "name": "Jordan Reyes",
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_lines",
+           "tool call id": "adk-54175e31-dd45-4f74-8537-911508676c5a"
+          },
+          "duration": "0.142726s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:34:37.747830Z",
+          "endTime": "2026-10-17T02:34:38.535594Z",
+          "attributes": {
+           "time to first chunk (ms)": 787.0,
+           "[debug] prefill time (ms)": 224.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 38.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5439.0,
+           "[debug] decode time to first token (ms)": 66.0,
+           "[debug] decode queue time (ms)": 21.0
+          },
+          "duration": "0.787764s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:34:38.537231Z",
+          "endTime": "2026-10-17T02:34:38.719826Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "device": "iphone-13",
+              "results": [
+               {
+                "score": 68.997,
+                "branches": 1.0,
+                "step_count": 9.0,
+                "title": "Can't send or receive messages",
+                "kind": "article",
+                "intro": "",
+                "id": "155986-can-t-send-or-receive-messages"
+               },
+               {
+                "score": 64.122,
+                "branches": 1.0,
+                "step_count": 4.0,
+                "title": "Pairing your iPhone with a Bluetooth device",
+                "kind": "procedure",
+                "intro": "Learn how you can connect to a bluetooth device. Bluetooth devices can be anything from your stereo in your car to a keyboard to type on your mobile device with. If your bluetooth device is not connecting try unpairing the device and pairin",
+                "id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+               },
+               {
+                "score": 44.666,
+                "branches": 1.0,
+                "step_count": 7.0,
+                "title": "Forcing iCloud to sync text messages on your iPhone",
+                "kind": "procedure",
+                "intro": "Force sync messages from your iPhone to your iCloud to back up your messages.",
+                "id": "feature_messages_icloud-forcing-icloud-to-sync-text-messages-on-your-iphone"
+               },
+               {
+                "score": 40.909,
+                "branches": 1.0,
+                "step_count": 7.0,
+                "title": "Switching phone numbers for texts with Dual SIM",
+                "kind": "procedure",
+                "intro": "With the dual sim feature of your device, you can easily switch between phone numbers when sending an SMS or MMS message.",
+                "id": "feature_dual_text-switching-phone-numbers-for-texts-with-dual-sim"
+               },
+               {
+                "score": 40.233,
+                "branches": 1.0,
+                "step_count": 5.0,
+                "title": "Blocking a number from messages",
+                "kind": "procedure",
+                "intro": "If you no longer want to receive text messages from a contact, you can block their number on your device.",
+                "id": "feature_message_block-blocking-a-number-from-messages"
+               }
+              ]
+             }
+            ]
+           },
+           "args": {
+            "device": "iphone-13",
+            "symptom": "iphone bluetooth won't pair, just text me the guide"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_find_tutorials",
+           "tool call id": "adk-c1942439-7c76-46f4-9612-7f7b556a8800"
+          },
+          "duration": "0.182595s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:34:38.721011Z",
+          "endTime": "2026-10-17T02:34:39.610830Z",
+          "attributes": {
+           "time to first chunk (ms)": 888.0,
+           "[debug] prefill time (ms)": 256.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 45.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5950.0,
+           "[debug] decode time to first token (ms)": 66.0,
+           "[debug] decode queue time (ms)": 23.0
+          },
+          "duration": "0.889819s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:34:39.612694Z",
+          "endTime": "2026-10-17T02:34:39.755902Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "branch_question": null,
+              "choice": null,
+              "summary": "This tutorial guides users on how to pair their iPhone with a Bluetooth device.",
+              "last_step": 4.0,
+              "path_complete": true,
+              "steps": [
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/80fb74f86ca82b71d9cf41c4e9a88282f3df7b9cf8a73b8e5859c161c2fa41a7.png",
+                "notes": [],
+                "gated": false,
+                "n": 1.0,
+                "text": "From the Settings app, tap Bluetooth.",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               },
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/4e8fa8640350436427b6b29dae08423209821f8d309e8361492b359bd3f75c8e.jpeg",
+                "notes": [],
+                "gated": false,
+                "n": 2.0,
+                "text": "Tap or slide the Bluetooth switch to ON.",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               },
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/652fe7157087700d6e4c72cdfd40147e168fac83324868b124329f0dfe405c95.jpeg",
+                "notes": [
+                 "Note: \n\nA password may be requested. Common manufacturer passwords are 0000 and 1234.\n\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device."
+                ],
+                "gated": false,
+                "n": 3.0,
+                "text": "Select a device to pair.",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               },
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/41647c21ac6302c0a8f3360c0d8516ab79342a02e14baff3092ddfd3f75d7e7b.jpeg",
+                "notes": [],
+                "gated": false,
+                "n": 4.0,
+                "text": "You've completed the steps!",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               }
+              ],
+              "step_count": 4.0,
+              "kind": "procedure",
+              "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+              "next_from": null,
+              "choices": [],
+              "title": "Pairing your iPhone with a Bluetooth device",
+              "id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+             }
+            ]
+           },
+           "args": {
+            "device": "iphone-13",
+            "tutorial_id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_tutorial",
+           "tool call id": "adk-f32d1f7c-f135-425a-95e5-c948122537a5"
+          },
+          "duration": "0.143208s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:34:39.757205Z",
+          "endTime": "2026-10-17T02:34:40.852799Z",
+          "attributes": {
+           "time to first chunk (ms)": 1094.0,
+           "[debug] prefill time (ms)": 233.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 69.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 6753.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "[debug] decode queue time (ms)": 20.0
+          },
+          "duration": "1.095594s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:34:40.854776Z",
+          "endTime": "2026-10-17T02:34:40.996449Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "sent": false,
+              "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+              "to_last4": "4471",
+              "message": "Messaging is not configured; read the link aloud or show it on screen."
+             }
+            ]
+           },
+           "args": {
+            "device": "iphone-13",
+            "customer_id": "cust_2001",
+            "tutorial_id": "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+            "line_id": "L1"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_send_guide_link",
+           "tool call id": "adk-c15f03e7-2b20-4a37-acd0-fe1a8681b588"
+          },
+          "duration": "0.141673s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:34:40.997584Z",
+          "endTime": "2026-10-17T02:34:41.806857Z",
+          "attributes": {
+           "time to first chunk (ms)": 808.0,
+           "[debug] prefill time (ms)": 234.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 37.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 6929.0,
+           "[debug] decode time to first token (ms)": 64.0,
+           "[debug] decode queue time (ms)": 19.0
+          },
+          "duration": "0.809273s"
+         }
+        ],
+        "duration": "6.409680s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P5\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"ACTIVE\", \"L2\": \"ACTIVE\"}, \"outage\": false}",
+ "session_id": "dda30799-a3f1-41ce-91cf-1adfd630ae23",
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "find_tutorials",
+  "get_tutorial",
+  "send_guide_link"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

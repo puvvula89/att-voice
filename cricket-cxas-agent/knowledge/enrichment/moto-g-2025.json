@@ -1,0 +1,8129 @@
+{
+ "155949-battery-draining-quickly": {
+  "hash": "343994e0953b608d92c5415b66bd57118ae78d0c617cabcab7dccc57cee327eb",
+  "result": {
+   "summary": "This tutorial provides steps to address a quickly draining battery on the device.",
+   "symptoms": [
+    "My battery dies too fast",
+    "My phone battery isn't lasting",
+    "The battery drains quickly",
+    "I have to charge my phone all the time",
+    "My battery life is terrible"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "155952-can-t-connect-to-wi-fi-or-internet": {
+  "hash": "bf8d9e8f08af139ca887c37ce9f1a713046d89c00318ee611373896992f14621",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps to resolve issues with connecting to Wi-Fi or the internet on a moto-g-2025 device.",
+   "symptoms": [
+    "My Wi-Fi isn't working",
+    "I can't connect to the internet",
+    "My internet is slow",
+    "My phone won't connect to Wi-Fi",
+    "I'm getting a 'No Internet Connection' message",
+    "My Wi-Fi keeps dropping"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "This step is an introduction and outlines the topics covered, not an action performed on the phone."
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Toggling Airplane Mode on and off interrupts cellular service, which would end or interrupt an active phone call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step involves checking network settings, which does not interrupt an active phone call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Forgetting and reconnecting to Wi-Fi only affects Wi-Fi connectivity, not cellular service or device operation that would end a call."
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the phone powers it off and on, which will end any active phone call."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "This step involves restarting an external device (Wi-Fi router/modem), not the phone itself, so it does not affect the phone call."
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Resetting network settings clears cellular-related configurations (like APN settings), which will interrupt cellular service and end an active call."
+    }
+   ]
+  }
+ },
+ "155950-can-t-install-an-app": {
+  "hash": "91703d89f5a8b27e1999560f2f26a8103e4f0922aa7f1a58353d25e4a263bc86",
+  "result": {
+   "summary": "This tutorial helps troubleshoot issues preventing app installation on a moto-g-2025 device.",
+   "symptoms": [
+    "App won't install",
+    "Can't download apps",
+    "Play Store not working",
+    "Apps stuck on pending",
+    "Storage full",
+    "Bad signal"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Restarting your phone will interrupt the call."
+    }
+   ]
+  }
+ },
+ "156118-can-t-make-or-receive-calls": {
+  "hash": "e264914dc554f507dfe1e3293f1ee0b461a2551d58fa099c1b302a2ad5d14fc6",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot issues with making or receiving calls on a moto-g-2025 device.",
+   "symptoms": [
+    "I can't make calls",
+    "My calls aren't going through",
+    "I can't receive calls",
+    "My phone has no signal",
+    "My calls keep dropping",
+    "I have connectivity issues",
+    "My phone isn't connecting to the network"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Turning on Airplane Mode disconnects the phone's wireless radios, cellular, Wi-Fi, and Bluetooth."
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Restarting the device interrupts a call."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Resetting network settings clears out the phone's saved connection info, including cellular and Wi-Fi."
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "156171-can-t-pair-with-bluetooth-device": {
+  "hash": "b5d158d269d0bafffcf929ddeede59b93eb676e2a0098b7588ec6ed49935ea3b",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for a moto-g-2025 that is unable to pair with a Bluetooth device.",
+   "symptoms": [
+    "My Bluetooth won't connect",
+    "I can't pair my device",
+    "Bluetooth not working",
+    "My phone won't find my headphones",
+    "Can't connect to my speaker"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Introduction/overview of the guide."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Toggling Bluetooth on and off."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Pairing with another Bluetooth device for diagnosis."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Forgetting a Bluetooth device."
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the device."
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Resetting Wi-Fi and Bluetooth settings."
+    }
+   ]
+  }
+ },
+ "155948-can-t-send-or-receive-email": {
+  "hash": "e18ac2ee1fc63f713bff2b40c2ec7360de775ffc6eaf381093f2f53fbb803a59",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot issues with sending or receiving email on the device.",
+   "symptoms": [
+    "My email isn't working",
+    "I can't send emails",
+    "I'm not getting emails",
+    "Emails aren't coming through",
+    "My email app is stuck",
+    "Email won't sync"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Toggling Airplane Mode on cuts cellular service."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the device will interrupt or end a call."
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "156123-can-t-send-or-receive-texts": {
+  "hash": "99eaf8aaa009ac20928b18ee1caafec311f7f8d31b3e7f88a5eb4d63d0c78d49",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for a moto-g-2025 phone that is unable to send or receive text messages.",
+   "symptoms": [
+    "My texts aren't sending.",
+    "I'm not getting texts.",
+    "Can't send messages.",
+    "Can't receive messages.",
+    "Text messages not working.",
+    "My phone won't send texts.",
+    "My phone won't receive texts."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "156122-can-t-turn-device-on-or-off": {
+  "hash": "0da63edca941c210045d2e6fe3238c96f5e9d57b367f64f81ad9ab06e5a224ce",
+  "result": {
+   "summary": "This tutorial helps users troubleshoot issues with turning their moto-g-2025 device on or off, including how to force restart a frozen phone.",
+   "symptoms": [
+    "My phone won't turn on.",
+    "I can't power off my device.",
+    "My phone is frozen.",
+    "My screen is unresponsive.",
+    "How do I restart my phone?",
+    "My phone won't charge."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "The step instructs the user to power off the phone."
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "The step instructs the user to force restart the phone."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "156121-mobile-hotspot-isn-t-working": {
+  "hash": "3b2081d4a64f5957a74f600fe1c52090ad474e65c35d8c617fe8f7e6aaf7f602",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for when the mobile hotspot feature on a moto-g-2025 phone is not working.",
+   "symptoms": [
+    "Hotspot isn't working",
+    "Can't connect to my hotspot",
+    "My phone's hotspot won't turn on",
+    "Devices can't connect to my hotspot",
+    "Hotspot is slow",
+    "Can't set up mobile hotspot"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Restart phone"
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Airplane Mode"
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Reset network settings"
+    }
+   ]
+  }
+ },
+ "156120-wi-fi-calling-isn-t-working": {
+  "hash": "cdc0a014d7032a417f14ed1425699b790929418989fe703248bb3d449467d697",
+  "result": {
+   "summary": "This tutorial helps troubleshoot why Wi-Fi Calling is not functioning on a moto-g-2025 device.",
+   "symptoms": [
+    "Wi-Fi calling isn't working",
+    "Can't make calls over Wi-Fi",
+    "My phone won't use Wi-Fi for calls",
+    "Wi-Fi calling is off",
+    "Emergency address needs updating",
+    "Wi-Fi calling keeps dropping"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Turns on Airplane Mode, which cuts cellular service."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Powers off the device."
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": true,
+     "reason": "Powers off the device and removes the SIM card."
+    },
+    {
+     "n": 9,
+     "call_ending": true,
+     "reason": "Resets network settings, which interrupts cellular service."
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_network-accessing-mobile-network-settings": {
+  "hash": "f403832a09a46edc67c5153f59f5d637c9fbaab11483f3756ef790eb63e57f5b",
+  "result": {
+   "summary": "This tutorial guides the user on how to access and adjust mobile network settings on their device.",
+   "symptoms": [
+    "My phone isn't connecting to the network",
+    "I can't make calls",
+    "My data isn't working",
+    "I need to change my network preferences",
+    "My SIM card isn't recognized",
+    "I want to check my network settings"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_access-accessing-settings": {
+  "hash": "78f1ed292e9d5338fb47f148f140b703c16c912736fece385b7d4bca5d8ef026",
+  "result": {
+   "summary": "This tutorial guides the user on how to access the Settings menu on a moto-g-2025 device.",
+   "symptoms": [
+    "I can't find settings",
+    "Where is the settings menu?",
+    "How do I get to settings?",
+    "Need to change a setting",
+    "Can't find the gear icon"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_access-accessing-your-settings?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "16ed2aaeae9344fd2181921ea7bbf0cf8a4df0fec80e797dd873c16af8dab4a3",
+  "result": {
+   "summary": "This guide explains how to access the settings within the YouTube application.",
+   "symptoms": [
+    "How do I get to YouTube settings?",
+    "Where are the settings in the YouTube app?",
+    "I need to change YouTube options.",
+    "Can't find YouTube app settings."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_add-adding-a-facebook-account?topicSource=app-facebook-android-smartphone&topicVersion=582.0.0": {
+  "hash": "d70dd55d6ee51491fdd4d03259100e0d0647693a609d53ce1263518701413399",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a Facebook account to their device.",
+   "symptoms": [
+    "How do I add Facebook?",
+    "I want to log into Facebook.",
+    "Can't add my Facebook account.",
+    "Need to set up Facebook.",
+    "Facebook login help."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_add-adding-a-contact": {
+  "hash": "3bc9a2732b359c0874b3bbb059bdbb8fc5d3acff7d91d79edb5d997f95e9e6c5",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a new contact to their phone.",
+   "symptoms": [
+    "How do I add a new person?",
+    "I want to save a number.",
+    "Need to create a contact.",
+    "How do I put someone in my phone book?",
+    "Save a new contact."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_payment_method-adding-a-payment-method-to-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "049970c89d0c3c006b13d94cf08f8bd01e21a20d0e07d03253e5aa028728f913",
+  "result": {
+   "summary": "This tutorial guides the user on how to add a credit or debit card as a payment method to their Google Play account.",
+   "symptoms": [
+    "Add a new payment method",
+    "Can't buy apps",
+    "Need to add my credit card",
+    "Google Play payment problem",
+    "How to pay for subscriptions"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_add-adding-an-account": {
+  "hash": "f1cd01e9fc32e8858ebc2e2beef66dbe18407a08a99b8000a5efdfd95a5ec3ad",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a new account to their moto-g-2025 device.",
+   "symptoms": [
+    "I can't add an email account.",
+    "How do I set up a new account?",
+    "My account isn't on my phone.",
+    "I need to add another account.",
+    "How do I put my Google account on here?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_add-adding-and-deleting-home-screens": {
+  "hash": "0658b8f347a8849ef4b3e1e74a0c2de91a858b159327c7bd075213838533340c",
+  "result": {
+   "summary": "This tutorial explains how to add new Home screens by moving apps to them and how to delete Home screens by moving apps off them.",
+   "symptoms": [
+    "How do I add a new home screen?",
+    "I want to delete a home screen.",
+    "My home screen is too cluttered.",
+    "I need more space for apps.",
+    "Can I remove an empty home screen?",
+    "How do I organize my home screens?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_favorite-adding-and-removing-contacts-from-favorites": {
+  "hash": "0aae88690e726292f0a20c34cae860e402734170a91c8400553765c70589c796",
+  "result": {
+   "summary": "This tutorial explains how to add and remove contacts from the Favorites list on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I add a contact to favorites?",
+    "I want to favorite someone.",
+    "How do I remove a contact from my favorites?",
+    "My favorite contacts list is incorrect.",
+    "Can't find the favorite contact option."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_widget_add-adding-apps-and-widgets-to-the-home-screen": {
+  "hash": "b1a34c11d26e7643482f88bf5e88a1b1b419f0eba2cbcb41a7ec0da17b869b27",
+  "result": {
+   "summary": "This tutorial guides the user on how to add apps and widgets to their phone's Home screen.",
+   "symptoms": [
+    "How do I add an app to my home screen?",
+    "I want to put a widget on my screen.",
+    "Can I customize my home screen?",
+    "Where do I find widgets?",
+    "How do I get my favorite app icon on the main screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_emergency-adding-emergency-information-to-your-lock-screen": {
+  "hash": "498d407967006af16ea0c542259b70f92fb9836f1f8795936b6c99d65f2a6070",
+  "result": {
+   "summary": "This tutorial guides users on how to add emergency medical information and contacts to their moto-g-2025 lock screen.",
+   "symptoms": [
+    "How do I add emergency info?",
+    "I want to put medical details on my phone.",
+    "How do I set up emergency contacts?",
+    "Where can I add my ICE contacts?",
+    "I need to update my emergency information."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_folders_add-adding-folders-to-the-home-screen": {
+  "hash": "1561668d56d6697f377e7fa92a8d0af02efd0fb03b3f86526186a71e97060203",
+  "result": {
+   "summary": "This tutorial guides you on how to add and name folders on the Home screen of your moto-g-2025.",
+   "symptoms": [
+    "How do I organize my apps?",
+    "I want to group my apps.",
+    "Can I make a folder on my home screen?",
+    "My home screen is messy.",
+    "How do I add a folder?",
+    "I need to create a new folder."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playlist_watchlater-adding-videos-to-your-watch-later-playlist?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "373f1b7bc76b9efe0e11d1a3afbb61f226ccb383f13f4e2e3e8bf5ef5b41524b",
+  "result": {
+   "summary": "This tutorial guides users on how to add a video to their 'Watch later' playlist within the YouTube app.",
+   "symptoms": [
+    "How do I save a video for later?",
+    "I want to add a video to my watch later list.",
+    "Where is the watch later option?",
+    "How to save YouTube videos?",
+    "Can I bookmark a YouTube video?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_rcs_chat-adjusting-rcs-chat-settings": {
+  "hash": "55bc00e837dc9eb6554d544167359c168dab014f8d3f2fabe712e5ab59ca68b1",
+  "result": {
+   "summary": "This guide explains how to adjust RCS chat settings on the moto-g-2025.",
+   "symptoms": [
+    "RCS not working",
+    "Can't send chat messages",
+    "Enable chat features",
+    "RCS settings",
+    "Turn on RCS",
+    "Chat features not enabled"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_rtt_tty_calling-adjusting-rtt-tty-calling-settings": {
+  "hash": "6f34df89080e770987213751f1f79c408b53f39c0fcab787c8f1266c012fd38a",
+  "result": {
+   "summary": "This tutorial guides the user on how to adjust Real Time Text (RTT) calling settings on their device.",
+   "symptoms": [
+    "My RTT calls aren't working",
+    "How do I turn on RTT?",
+    "I need to use TTY",
+    "Can't make RTT calls",
+    "Where are RTT settings?",
+    "Enable real time text"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_widget_adjust-adjusting-apps-and-widgets-on-the-home-screen": {
+  "hash": "2fc16d9c5c12dd74499e6c62e7806d73225eb1b7102bc487051bf62538804032",
+  "result": {
+   "summary": "This tutorial explains how to move, resize, and adjust widgets on the Home screen of the moto-g-2025.",
+   "symptoms": [
+    "Move a widget",
+    "Resize a widget",
+    "Adjust home screen widgets",
+    "Change widget size",
+    "Customize home screen layout"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_timeout-adjusting-the-screen-timeout-and-brightness": {
+  "hash": "705d07af9943480f0b93c42fbcec26536735fb9aae528937205d47713ab38d06",
+  "result": {
+   "summary": "This tutorial guides the user on how to adjust the screen timeout and brightness settings on their device.",
+   "symptoms": [
+    "My screen turns off too fast",
+    "My screen is too dim",
+    "My screen is too bright",
+    "I want to change how long my screen stays on",
+    "How do I make my screen brighter?",
+    "My screen keeps timing out"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_accessibility-adjusting-your-accessibility-options?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "0d194346c26266333de774664ff9babe7a0e7a7a513915d067bd032a0af4ace5",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable the accessibility player within the YouTube app settings.",
+   "symptoms": [
+    "My YouTube player isn't accessible",
+    "I need accessibility options for YouTube",
+    "How do I turn on the accessibility player?",
+    "YouTube accessibility isn't working",
+    "I can't find the accessibility settings in YouTube"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_display_size-adjusting-your-display-size": {
+  "hash": "d23dc29d9493a384f326fcb0adf0c94bc375002b7d32f19d91201bf54af5c288",
+  "result": {
+   "summary": "This tutorial guides you through adjusting the display size on your device.",
+   "symptoms": [
+    "My screen looks too big",
+    "My screen looks too small",
+    "I can't see everything on my screen",
+    "The text is too small",
+    "How do I make the icons bigger?",
+    "I want to change the size of things on my screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_font_size-adjusting-your-font-size": {
+  "hash": "9afb477bc2c118e9ae48200ccefb362113866376771dd47f1c31af296e32eaa8",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust the font size on their moto-g-2025 device.",
+   "symptoms": [
+    "My text is too small",
+    "I can't read the screen",
+    "How do I make the font bigger?",
+    "The letters are tiny",
+    "I need to change my font size"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_ringtone-assigning-a-ringtone-to-a-contact": {
+  "hash": "ac42eed78403db801a5577c703cd17e3824e16bfb168ce3945ae447c0c75f28b",
+  "result": {
+   "summary": "This tutorial guides users on how to assign a unique ringtone to a specific contact on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I set a custom ringtone for a contact?",
+    "I want a special ringtone for my friend.",
+    "Can I change the ringtone for one person?",
+    "My phone rings the same for everyone.",
+    "How to assign a ringtone to a contact?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_contact-assigning-your-preferred-sim-to-use-with-a-contact": {
+  "hash": "029a3fc9372f90ce1d244a8588bf6e712e3a9e994fee16a3c13b15ca57bd42fc",
+  "result": {
+   "summary": "This tutorial guides the user on how to assign a preferred SIM card for making calls or sending messages to a specific contact on their device.",
+   "symptoms": [
+    "How do I set a default SIM for a contact?",
+    "I want to assign a SIM to a contact.",
+    "Can I choose which SIM to use for a specific person?",
+    "My phone has two SIMs, how do I manage them for contacts?",
+    "I need to set a preferred cellular plan for a contact."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_attach-attaching-a-file-to-a-text": {
+  "hash": "d507d3a426c8c5f0034a89938d31e2af6eeae9208335c87231ebe59a42c303c9",
+  "result": {
+   "summary": "This guide explains how to attach an image from the gallery to a text message on the moto-g-2025.",
+   "symptoms": [
+    "How do I send a picture?",
+    "I can't attach a photo to my text.",
+    "Where's the attachment button?",
+    "My texts won't send images.",
+    "Need to add a picture to a message."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_during_setup_auto_esim_install-automatically-activating-a-carrier-assigned-esim-during-initial-setup": {
+  "hash": "ea4332b47c373c9082b0e4234247d90160a7d3a5b232f8e1a47dd366854118c9",
+  "result": {
+   "summary": "This tutorial guides the user through the initial setup of a moto-g-2025 to automatically activate a carrier-assigned eSIM.",
+   "symptoms": [
+    "My new phone isn't set up",
+    "How do I activate my eSIM?",
+    "I need to connect to Wi-Fi during setup",
+    "My phone is asking for a password",
+    "I'm trying to get my new phone working",
+    "Initial setup help"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_automatic_archive_apps-automatically-archive-apps-to-save-space-on-your-device": {
+  "hash": "eef6b9d9afdfedaa33c4e1fde2c473a117ae30480e39f11a7523c5233b2c717f",
+  "result": {
+   "summary": "This tutorial shows how to enable automatic app archiving to save storage space on the device.",
+   "symptoms": [
+    "My phone is full",
+    "I need more storage",
+    "How do I free up space?",
+    "Apps are taking up too much room",
+    "Can I archive apps?",
+    "My phone is running slow because of storage"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_switch-automatically-switching-mobile-data-between-two-sims": {
+  "hash": "675134f0f176978840b0707866a05d66b1e1c67f6fc97e9bd7d4bdc90238f633",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable or disable the automatic switching of mobile data between two SIM cards on a moto-g-2025 device.",
+   "symptoms": [
+    "My phone isn't switching SIMs for data automatically",
+    "How do I set up automatic data SIM switching?",
+    "I want to enable dual SIM data optimization",
+    "My phone isn't using the best SIM for mobile data",
+    "Data isn't working well with my two SIMs"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_backup-backing-up-and-restoring-your-phone": {
+  "hash": "796f1a3bed36fc28860fa622789f8e9ecf132380dc138e8e260048789ddf2e48",
+  "result": {
+   "summary": "This tutorial provides instructions on how to back up data on a moto-g-2025 phone.",
+   "symptoms": [
+    "I need to back up my phone.",
+    "How do I save my data?",
+    "Where are the backup settings?",
+    "My phone is full, I want to back it up."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_block-blocking-and-unblocking-a-contact": {
+  "hash": "dd99f1f0728564d25ac937f73f5035c519fa2f8a71ce648bd927fae215f90e09",
+  "result": {
+   "summary": "This tutorial guides users on how to block and unblock contacts on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I block a number?",
+    "I want to stop getting calls from someone.",
+    "How do I unblock a contact?",
+    "I need to manage my blocked numbers.",
+    "Someone is bothering me.",
+    "I accidentally blocked a number."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_web_bookmark-bookmarking-a-website?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "95dbef890f6f7b11ef0c8aaa7ac5aa17cd2ab87b903911f7ea6ffec3c38d32cc",
+  "result": {
+   "summary": "This tutorial explains how to bookmark a website on the moto-g-2025 device.",
+   "symptoms": [
+    "How do I save a website?",
+    "I want to bookmark this page.",
+    "Where is the bookmark option?",
+    "Can I save this site for later?",
+    "I need to add this to my favorites."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_contact-calling-a-contact": {
+  "hash": "94cd645831858ee0197a83de585abcc2e2ae0840ec681472f2b5bf5669737516",
+  "result": {
+   "summary": "This guide explains how to call a contact from your phone's home screen.",
+   "symptoms": [
+    "How do I call someone?",
+    "I can't make a call.",
+    "Where are my contacts?",
+    "How do I dial a number?",
+    "I want to call a friend.",
+    "My phone won't call."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_subscription_cancel-cancelling-and-requesting-a-refund-for-a-subscription-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "4439080f829d003431f53b969be441590205b8d7f5f6371f3b90cccd046096e7",
+  "result": {
+   "summary": "This guide explains how to cancel a subscription and request a refund through Google Play.",
+   "symptoms": [
+    "How do I cancel a subscription?",
+    "I want to stop a Google Play subscription.",
+    "Can I get a refund for an app?",
+    "My subscription is still active.",
+    "I need to manage my subscriptions.",
+    "How to cancel Google Play subscription?",
+    "Refund for app purchase."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_screenshot-capturing-and-viewing-screenshots?topicSource=app-photos-android-smartphone&topicVersion=7.70": {
+  "hash": "fc5f5211b260d463bda4e6039add63cf9d1e438c651edeafc3540cc534823be1",
+  "result": {
+   "summary": "This tutorial explains how to capture and view screenshots on the device.",
+   "symptoms": [
+    "How do I take a screenshot?",
+    "I want to save what's on my screen.",
+    "Where do my screenshots go?",
+    "Can I view my screenshots?",
+    "Screenshot not working.",
+    "How to capture screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_check-change-permissions-for-apps-on-your-device": {
+  "hash": "813dc32edfdf7563e6ed5cf013bd9dc2f2e51a1d5cee4efcc3a524757c28dd93",
+  "result": {
+   "summary": "This tutorial guides you through changing app permissions on your device.",
+   "symptoms": [
+    "App isn't working right",
+    "I need to change app access",
+    "App can't use my camera",
+    "App can't access my location",
+    "I want to restrict an app",
+    "How do I manage app permissions?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_change_default_wallet_app-change-your-default-wallet-app": {
+  "hash": "d71826075ae495f00e3240ab757acf3445fb9f5488811db56adc684a5ca110fc",
+  "result": {
+   "summary": "This guide explains how to change the default wallet application on a moto-g-2025 device.",
+   "symptoms": [
+    "My default payment app is wrong",
+    "I want to change my wallet app",
+    "How do I set my preferred payment app?",
+    "Google Pay isn't my default",
+    "I need to switch wallet apps"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_default-change-your-device-s-default-apps": {
+  "hash": "027302200d76cc653188fc5fa6dda5489dda9a578dda3e29e8dbd21192e6a332",
+  "result": {
+   "summary": "This guide explains how to change the default wallet application on a moto-g-2025 device.",
+   "symptoms": [
+    "My default payment app is wrong",
+    "I want to change my wallet app",
+    "How do I set my preferred payment app?",
+    "Google Pay isn't my default",
+    "I need to switch wallet apps"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_change-changing-account-settings": {
+  "hash": "50d83543849b0640b99b038530bae13a0243395e8fc733636f613c49f38a0f43",
+  "result": {
+   "summary": "This tutorial guides users on how to change their account synchronization settings on their device.",
+   "symptoms": [
+    "My emails aren't syncing",
+    "I want to stop syncing my contacts",
+    "How do I manage my Google account settings?",
+    "My calendar isn't updating",
+    "I need to change sync preferences"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_settings-changing-call-settings": {
+  "hash": "18b9f2870bded6b10c4b5c6156809cb7a0b558796d30491839833b1dd3bef5ac",
+  "result": {
+   "summary": "This tutorial guides the user on how to access and modify call settings on their device.",
+   "symptoms": [
+    "How do I change my ringtone?",
+    "I want to adjust call volume",
+    "Where are my call settings?",
+    "How do I manage call vibrations?",
+    "I need to change call preferences",
+    "My phone's call sound is wrong"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_settings-changing-message-settings": {
+  "hash": "606b15fbaecc419a5d43f97d75ce7c09d96339ad678188196b50b562360d3035",
+  "result": {
+   "summary": "This tutorial guides the user on how to access and modify various settings within the Messages application on their device.",
+   "symptoms": [
+    "I want to change my text message settings",
+    "How do I customize my messaging app?",
+    "My message notifications are wrong",
+    "I need to adjust advanced message options"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_roaming-changing-roaming-settings-for-a-trip": {
+  "hash": "c62f7f68a722c9895eac947ebcdcd520504b00b8ee3c7f86f3d54595dafd1817",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable international data roaming settings on their device.",
+   "symptoms": [
+    "My data isn't working abroad",
+    "I can't get internet when I travel",
+    "How do I turn on roaming?",
+    "I need to use my phone overseas",
+    "Data roaming isn't active",
+    "My phone won't connect to data internationally"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_size-changing-the-file-size-of-pictures-and-videos": {
+  "hash": "1de7ef3e0ca2aad2ea9200721fd08d518bdb96a906d390f2a1a10bb4e39511cf",
+  "result": {
+   "summary": "This tutorial guides users on how to change the file size of pictures and videos by adjusting the resolution within the camera app on a moto-g-2025.",
+   "symptoms": [
+    "Pictures are too big",
+    "Videos take up too much space",
+    "How to change photo resolution",
+    "My phone storage is full from photos",
+    "Need smaller video files",
+    "Adjust camera quality"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_language_change-changing-the-language": {
+  "hash": "60766791db7aca37c08fc37b7e6cdbefc434df10620d2279c14bacc3e5a4c68d",
+  "result": {
+   "summary": "This tutorial guides the user through changing the system language on their moto-g-2025 device.",
+   "symptoms": [
+    "My phone is in the wrong language",
+    "I need to change the language on my phone",
+    "How do I set a different language?",
+    "My phone's menu is in a language I don't understand",
+    "I want to switch my phone's language"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_ringtone-changing-the-ringtone": {
+  "hash": "3b918af249214aa630f7c4986d93d28ab3a15b4d552a764258134900a2dad10d",
+  "result": {
+   "summary": "This tutorial guides the user on how to change the ringtone on their device.",
+   "symptoms": [
+    "Change my ringtone",
+    "Set a new ringtone",
+    "My ringtone is boring",
+    "How to change call sound"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_wallpaper_change-changing-the-wallpaper": {
+  "hash": "83895d52488968d180989b97714c8dc893f3219f4fe237b92418e67cda4dfd15",
+  "result": {
+   "summary": "This tutorial guides the user through changing the wallpaper on their moto-g-2025 device.",
+   "symptoms": [
+    "How do I change my background?",
+    "I want a new wallpaper.",
+    "My phone's wallpaper is boring.",
+    "How can I customize my home screen?",
+    "I need to set a new image as my wallpaper."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_settings-changing-web-content-settings?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "78d604baac67bd4929a36fb0ff8b6ed6c62db4a945ff43084336fd37560332f5",
+  "result": {
+   "summary": "This tutorial guides the user on how to change web content settings within the Chrome app on their device.",
+   "symptoms": [
+    "My browser isn't showing websites right",
+    "I want to block pop-ups",
+    "How do I manage site permissions?",
+    "Websites are asking for my location too much",
+    "I need to clear cookies for a specific site",
+    "My camera isn't working on a website"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_displaymode-changing-your-display-mode": {
+  "hash": "c7a510340755a6156633a19e914d3e8c12130aee300a3bf2f88ed5186ac6bdf3",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable or disable outline text for improved display readability on their device.",
+   "symptoms": [
+    "Can't read text",
+    "Text is blurry",
+    "Need bigger text",
+    "Display is hard to see",
+    "Want to change text style",
+    "Accessibility options"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_notifications-changing-your-notification-settings?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "81c7553478ff86944d93773fe78b489dea3c5a4f1f1584fc3499983fbf55b489",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable subscription notifications within the YouTube app settings.",
+   "symptoms": [
+    "I'm not getting YouTube notifications",
+    "How do I turn on YouTube alerts?",
+    "My YouTube subscriptions aren't notifying me",
+    "I want to get notifications from YouTube",
+    "YouTube notifications are off"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_tapduration-changing-your-tap-duration": {
+  "hash": "24c759d72d0e1e3c00bca0443e9e9ab450291f0323826993ae6e8fddbfaa1bb6",
+  "result": {
+   "summary": "This tutorial guides the user on how to adjust the touch and hold delay (tap duration) settings on their device.",
+   "symptoms": [
+    "Tap duration too short",
+    "Tap duration too long",
+    "Adjust touch sensitivity",
+    "Change touch and hold delay",
+    "Screen too sensitive"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_typingpreference-changing-your-typing-preference-for-talkback": {
+  "hash": "3a17a021912456376c9ed5eb04f05533c11911c5e5a3177a4974d69bf9a05b86",
+  "result": {
+   "summary": "This tutorial guides users on how to change the tap duration or touch and hold delay settings on a moto-g-2025 device.",
+   "symptoms": [
+    "My phone's tap duration is too long.",
+    "I want to adjust the touch and hold delay.",
+    "How do I change how long I need to press?",
+    "My touch sensitivity feels off.",
+    "I need to make my taps register faster."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_password-changing-your-voicemail-pin-or-password": {
+  "hash": "fe0b8ec824c4b407c1807d9c301c7279eef78c093dfb49a3ed0ce13d17df89f8",
+  "result": {
+   "summary": "This guide explains how to change the voicemail PIN or password on a moto-g-2025 device.",
+   "symptoms": [
+    "I forgot my voicemail PIN",
+    "I need to change my voicemail password",
+    "How do I update my voicemail security code?",
+    "My voicemail PIN is compromised"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_charge-charging-your-phone": {
+  "hash": "8f7d7765e4edbd89281aa025895c00950c6b88649130021643530b6cce238b68",
+  "result": {
+   "summary": "This tutorial guides the user on how to charge their phone using a USB cable.",
+   "symptoms": [
+    "My phone isn't charging",
+    "How do I charge my phone?",
+    "Where is the charging port?",
+    "I need to plug in my phone",
+    "Is my phone charging?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_google_play_system_check-checking-for-and-installing-google-play-system-updates": {
+  "hash": "ce485636f7b06452611e652c9562c2ea117aad7f74c72c4e1179436218cb9efd",
+  "result": {
+   "summary": "This tutorial guides the user through checking for and installing Google Play System updates on their device.",
+   "symptoms": [
+    "My apps are crashing",
+    "My phone isn't secure",
+    "I need the latest security updates",
+    "My phone is acting weird",
+    "Google Play isn't working right",
+    "I want to update my system"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_update-checking-for-and-installing-system-updates": {
+  "hash": "90e97b1c8f2a558036106722c071ae5390becb763b6b10f9b9f978ff6cd6e60f",
+  "result": {
+   "summary": "This tutorial guides the user on how to check for and install system updates on their device.",
+   "symptoms": [
+    "My phone is acting strange",
+    "Apps are crashing",
+    "I have a software bug",
+    "My phone is slow",
+    "I need to update my phone",
+    "How do I get the new software?",
+    "My phone isn't working right"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked": {
+  "hash": "700118b718aabb4a6ac430753f874c9b5d47235ff22371e01498e63373022392",
+  "result": {
+   "summary": "This tutorial guides the user on how to check if their moto-g-2025 phone is carrier locked.",
+   "symptoms": [
+    "Is my phone carrier locked?",
+    "How do I check if my phone is unlocked?",
+    "Can I use a different SIM card?",
+    "Is my phone tied to a network?",
+    "Check network lock status",
+    "Find carrier lock information"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_refund_status-checking-the-status-of-a-google-play-refund?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "02b1224a33250bc568b23e18776f2b95d40979119f39fca7c74c69d0c7c15e03",
+  "result": {
+   "summary": "This tutorial guides the user on how to check the status of a Google Play refund.",
+   "symptoms": [
+    "Where is my refund?",
+    "Did my refund go through?",
+    "I need to check a refund status.",
+    "How do I see my Google Play refunds?",
+    "Is my refund approved?",
+    "I want to track my refund."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_refund_request-requesting-a-refund-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "7ab0876068586c45e29ab2210afa8eca93e84fcfba2a61f38298742aee62a4a3",
+  "result": {
+   "summary": "This guide explains how to check the status of a Google Play refund.",
+   "symptoms": [
+    "How do I see my refund?",
+    "Where is my Google Play refund?",
+    "Did my refund go through?",
+    "I want to check a refund.",
+    "Google Play refund status."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_points_weekly-claiming-the-weekly-google-play-points-bonus?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "bd66236da251503db9edaf12d40f7184e93ede0b752e7929fe96f3c694135e8f",
+  "result": {
+   "summary": "This tutorial explains how to claim the weekly Google Play points bonus through the Play Store app.",
+   "symptoms": [
+    "How do I get my Play Points bonus?",
+    "Where do I claim my weekly points?",
+    "I can't find the Play Points claim button.",
+    "Help me claim my Google Play bonus.",
+    "How to get free Play Points?",
+    "Where are my Play Points perks?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_clear-clearing-browsing-data?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "f8fd4bc516bbb6e4c813a86424fce0c58312353b13a0f5d4157ec74a35a1b80a",
+  "result": {
+   "summary": "This tutorial guides the user on how to clear browsing data from the Chrome app on their device.",
+   "symptoms": [
+    "My browser is slow",
+    "I want to clear my history",
+    "How do I delete cookies?",
+    "My phone is running out of space",
+    "I need to clear my cache",
+    "My website isn't loading correctly"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_clear-clearing-browsing-data": {
+  "hash": "b7fe0d5d8fc56523f13f84cd206cf365724b84a95da1d7cc3d5a1cb3674bafb6",
+  "result": {
+   "summary": "This tutorial guides you through clearing browsing data in the Chrome app on a moto-g-2025 device.",
+   "symptoms": [
+    "Browser is slow",
+    "Websites not loading",
+    "Clear history",
+    "Delete cookies",
+    "Privacy issues",
+    "Browser acting weird"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_clear_app_cache-clearing-the-cache-and-data-for-an-individual-app": {
+  "hash": "b84b38dd5fac7846317aac183744e315c6e228fdb51ce3624af3d2135033a50d",
+  "result": {
+   "summary": "This tutorial guides the user on how to clear the cache and data for a specific application to resolve app-related issues.",
+   "symptoms": [
+    "My app is crashing",
+    "This app keeps freezing",
+    "The app isn't working right",
+    "I'm having problems with one specific app",
+    "An app is acting weird",
+    "My app is slow"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_location-configuring-location-settings": {
+  "hash": "8b02e27b48d5039e8ef9c48a5f79a2532e4338a1c2f410a51f67dd56b9bb30cd",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and manage location services and app permissions on their device.",
+   "symptoms": [
+    "My location isn't working",
+    "Apps can't find my location",
+    "I want to turn on location services",
+    "How do I change app location permissions?",
+    "My GPS isn't accurate",
+    "I need to adjust my privacy settings for location"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating through settings does not interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Toggling a location switch does not interrupt a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Navigating through settings does not interrupt a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Selecting an app does not interrupt a call."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Selecting a setting does not interrupt a call."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "This step is a completion message and involves no action on the phone."
+    }
+   ]
+  }
+ },
+ "feature_wifi_connect-connecting-to-a-wi-fi-network": {
+  "hash": "d410c3075395a5d710f9d664c46763c8a573f12b31552cebd75b9c9bc661a4cf",
+  "result": {
+   "summary": "This tutorial explains how to connect a moto-g-2025 device to a Wi-Fi network.",
+   "symptoms": [
+    "Can't connect to Wi-Fi",
+    "My internet isn't working",
+    "How do I get on Wi-Fi?",
+    "Need to connect to wireless",
+    "Wi-Fi not showing up",
+    "Can't find my network"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "UI navigation"
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "UI interaction"
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Toggling Wi-Fi"
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "UI interaction"
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Completion message"
+    }
+   ]
+  }
+ },
+ "feature_psim_convert-converting-a-physical-sim-into-an-esim-on-the-same-device": {
+  "hash": "64c742cdb7e2842c222e1f0279fbce5eda25db6ce139bb036cc3b1124e639be9",
+  "result": {
+   "summary": "This tutorial guides the user through the process of converting a physical SIM card into an eSIM on their moto-g-2025 device.",
+   "symptoms": [
+    "I want to use an eSIM.",
+    "How do I convert my physical SIM?",
+    "Can I switch to an eSIM?",
+    "I need to change my SIM to an eSIM.",
+    "Convert SIM to eSIM."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Converting a physical SIM to an eSIM involves deactivating the physical SIM and activating the eSIM, which typically causes a temporary interruption or loss of cellular service."
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playlist_create-creating-a-playlist?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "3c73bdd3f19ae6663d49cfb4066a8dd620a03b761ed777fb54bb7628b1c6cd5e",
+  "result": {
+   "summary": "This tutorial guides the user through creating a new playlist on YouTube from a video on their moto-g-2025 device.",
+   "symptoms": [
+    "How do I make a playlist?",
+    "I want to save videos to a list.",
+    "Can I create a new playlist?",
+    "Where's the option to make a playlist?",
+    "How do I organize my YouTube videos?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_panel_customize-customizing-your-notification-panel": {
+  "hash": "ca08666d44adf70c42f814705637cced4d19720fcced44c15e5516760ae4bae5",
+  "result": {
+   "summary": "This tutorial guides the user on how to customize the layout and order of quick settings tiles in their phone's notification panel.",
+   "symptoms": [
+    "How do I change my quick settings?",
+    "I want to rearrange the icons at the top.",
+    "Can I move the Wi-Fi button?",
+    "My notification panel looks messy.",
+    "I want to organize my quick toggles."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_delete-deleting-a-voicemail": {
+  "hash": "fb8f95495b87d7260c6cd00c1063ecf8ef5678e36fc4b388546b95b2c0ce92eb",
+  "result": {
+   "summary": "This tutorial guides the user on how to delete a voicemail from their device.",
+   "symptoms": [
+    "How do I delete a voicemail?",
+    "I want to remove a message from my voicemail.",
+    "My voicemail box is full.",
+    "Can't get rid of old voicemails.",
+    "Voicemail won't disappear."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_delete_all_esims-deleting-all-esims-from-your-device": {
+  "hash": "f872486381347e398f24b81add0ae9adbfed39e91a974b3394862e8633ca7de1",
+  "result": {
+   "summary": "This tutorial guides the user through deleting all eSIMs from their moto-g-2025 device.",
+   "symptoms": [
+    "I need to remove an eSIM",
+    "How do I delete my eSIM profile?",
+    "My eSIM isn't working, I want to reset it",
+    "I'm switching carriers and need to delete my old eSIM",
+    "I want to clear all eSIMs from my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Deleting an eSIM will remove cellular service, interrupting any active calls or preventing new ones."
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Confirming the deletion of eSIMs will remove cellular service, interrupting any active calls or preventing new ones."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_delete-deleting-messages-and-reporting-spam": {
+  "hash": "2974ef6661005267a7db5be637e72e543d80aa12b467305652b857912bb3ae9e",
+  "result": {
+   "summary": "This tutorial guides users on how to delete individual message conversations and how to block senders and report messages as spam on a moto-g-2025.",
+   "symptoms": [
+    "How do I delete a text message?",
+    "I want to clear out old conversations.",
+    "I'm getting spam texts.",
+    "How can I block a number from texting me?",
+    "I need to report a spam message."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_family_delete-deleting-your-family-group-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "56d040b17acf0b3dc4417e60d11345fa1c262ca135a103c54f08f64c3cdd3c3b",
+  "result": {
+   "summary": "This tutorial explains how to delete a family group associated with your Google Play account.",
+   "symptoms": [
+    "How do I remove my family group?",
+    "I want to delete my Google Play family.",
+    "Need to get rid of a family group.",
+    "Can't delete family group.",
+    "How to manage family on Google Play?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating an app interface."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Navigating an app interface."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Navigating an app interface."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Navigating an app interface."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "Selecting an option within an app."
+    },
+    {
+     "n": 6,
+     "call_ending": false,
+     "reason": "Initiating an action within an app, does not affect call or connectivity."
+    },
+    {
+     "n": 7,
+     "call_ending": false,
+     "reason": "Entering credentials within an app."
+    },
+    {
+     "n": 8,
+     "call_ending": false,
+     "reason": "Navigating to another app or service."
+    },
+    {
+     "n": 9,
+     "call_ending": false,
+     "reason": "Concluding statement, no action required."
+    }
+   ]
+  }
+ },
+ "feature_playstore_app_download-downloading-an-app-from-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "56b6f5c3562448f39334001743781664343430f38961117a3f6ccbd4998cccd2",
+  "result": {
+   "summary": "This guide explains how to download and install an app from the Google Play Store on your device.",
+   "symptoms": [
+    "How do I download an app?",
+    "I want to install an app.",
+    "Where is the Play Store?",
+    "Can you help me get an app?",
+    "I need to find an app."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_nearby_share-enabling-nearby-share": {
+  "hash": "b35b69e0bb9f05b2da1b4685eba374283c8543bd3e0aed0d375340e552aaa37b",
+  "result": {
+   "summary": "This tutorial explains how to enable Nearby Share (also known as Quick Share) on a moto-g-2025 device so it can be visible to other nearby devices for file sharing.",
+   "symptoms": [
+    "Nearby Share not working",
+    "Can't share files with other phones",
+    "How to turn on Quick Share",
+    "My phone isn't visible for sharing",
+    "Enable Nearby Share",
+    "Trouble with file sharing"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_enable_offline_device_lock-enabling-offline-device-lock": {
+  "hash": "f1b74123b05c254f144ccc7756f3e919f9694b4aebf5c8ed09606156aa57b279",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable the Offline Device Lock feature on their phone for enhanced security.",
+   "symptoms": [
+    "How do I protect my phone if it's lost?",
+    "I want to secure my device when it's offline.",
+    "How to enable offline security?",
+    "Turn on offline device lock.",
+    "Protect my phone from theft.",
+    "My phone was stolen, can I lock it remotely without internet?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_enable_remote_lock-enabling-remote-lock": {
+  "hash": "7162e4c9cb7c7cdf67079c5c626cc11aa432415e6c31ed650e1d5ed18dbb52d2",
+  "result": {
+   "summary": "This guide explains how to enable the Remote Lock feature on a moto-g-2025 device.",
+   "symptoms": [
+    "Enable remote lock",
+    "Turn on remote lock",
+    "Set up remote lock",
+    "My phone is lost",
+    "Protect my phone",
+    "How to lock my phone remotely"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_enable_theft_detection_lock-enabling-theft-detection-lock": {
+  "hash": "8fc38e6e5f7aaae9ef5f803028368973160d0abe444daee8da8cab27e42b9361",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable the Theft Detection Lock feature on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I turn on theft protection?",
+    "I want to secure my phone",
+    "Enable theft lock",
+    "Protect my device from theft",
+    "Set up theft detection"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_debugging-enabling-usb-debugging": {
+  "hash": "e81042dbd7d7f369aa1d5b4245c1b524fbdbd5dc9a850d18504086098b89185e",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable USB debugging on their moto-g-2025 device.",
+   "symptoms": [
+    "How do I turn on USB debugging?",
+    "I need to enable developer options.",
+    "My computer isn't recognizing my phone for debugging.",
+    "Where is the USB debugging setting?",
+    "I can't find developer options.",
+    "Enable debugging mode."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_enable_autoupdate_all-enabling-auto-updates-for-all-android-apps?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "561250ff8b24f5f34d1bd258bdb961734fca13a2e5d75e60fcf41a5805979fd3",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable automatic updates for all Android applications through the Google Play Store settings.",
+   "symptoms": [
+    "Apps not updating automatically",
+    "My apps won't update",
+    "How to turn on app updates",
+    "Play Store updates not working",
+    "Need to enable auto updates",
+    "Apps are outdated"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_enable_autoupdate_single-enabling-auto-updates-for-individual-apps?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "b904506d3f431c9cd8415bc49ff86fe433e23052c811929e130157e083edb9d9",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable automatic updates for individual applications on their device.",
+   "symptoms": [
+    "My apps aren't updating automatically",
+    "How do I turn on auto-updates for an app?",
+    "I want my apps to update by themselves",
+    "Can I set specific apps to auto-update?",
+    "My apps are outdated"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_explore-exploring-new-videos?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "2456dbfec5aeb2bd85e465564f1921e745acf6ece026096ec2a92db510f736ac",
+  "result": {
+   "summary": "This guide explains how to explore and watch videos within the YouTube app.",
+   "symptoms": [
+    "How do I find new videos on YouTube?",
+    "Where is the explore tab?",
+    "I want to browse YouTube categories.",
+    "How do I watch a video from the explore section?",
+    "Can't find specific video types."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_library_explore-exploring-your-library?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "bd7e4ced5bcfb58a9d1dcdd36420a3d7fc5d6c5dbb6c86265da6900423626bae",
+  "result": {
+   "summary": "This tutorial guides the user on how to navigate and explore their video library within the YouTube application.",
+   "symptoms": [
+    "Where are my saved videos?",
+    "How do I find my watch later list?",
+    "I can't find my YouTube library.",
+    "Show me my videos on YouTube."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_phone-finding-a-family-member-s-device": {
+  "hash": "33ceafe6096469555063c0950d8b90acadc126799525b467f12999c22e66f4b0",
+  "result": {
+   "summary": "This tutorial guides users on how to enable location tracking for a family member's device using the Google Family Link app.",
+   "symptoms": [
+    "I need to find my kid's phone",
+    "Where is my family member's device?",
+    "How do I track my child's location?",
+    "Family Link location isn't working",
+    "I can't see my family's devices on the map",
+    "Help me find a lost family phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_iccid-finding-your-iccid": {
+  "hash": "97c5509a9f17ab73489f1d296db113cfb4246f0b75060ce548220cc411922c33",
+  "result": {
+   "summary": "This tutorial guides the user on how to locate the ICCID (Integrated Circuit Card Identifier) on their device.",
+   "symptoms": [
+    "How do I find my SIM card number?",
+    "Where is the ICCID?",
+    "I need my SIM serial number.",
+    "Can you help me find my ICCID?",
+    "What's my SIM ID?",
+    "I need to activate my SIM."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_imei-finding-your-device-s-imei-number": {
+  "hash": "10840f008b86f4dff445a935a9776a69070e8059f3026f6eb726e4372790bc27",
+  "result": {
+   "summary": "This tutorial guides the user on how to locate their device's IMEI number.",
+   "symptoms": [
+    "Where can I find my IMEI?",
+    "I need my phone's IMEI.",
+    "How do I check my IMEI?",
+    "What's my IMEI number?",
+    "My carrier asked for my IMEI."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_voicemail_number-finding-your-voicemail-number": {
+  "hash": "de37b101945ef3c1a54b1d3c935c2832d05183d51010a94d48c4e5fd971d56b5",
+  "result": {
+   "summary": "This tutorial shows how to locate your voicemail number on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I find my voicemail number?",
+    "Where is my voicemail number?",
+    "I need to know my voicemail number.",
+    "Can you help me find my voicemail number?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_force_restart-force-restarting-your-device": {
+  "hash": "e1beb8ef66c0224e485aef1ffa710b0aca4b48a44cdeb852cf8bc6ec2d25f9a6",
+  "result": {
+   "summary": "This tutorial explains how to force restart a moto-g-2025 device.",
+   "symptoms": [
+    "My phone is frozen",
+    "Screen is unresponsive",
+    "Apps are crashing",
+    "Device not responding",
+    "Can't turn off phone",
+    "Phone is stuck"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": true,
+     "reason": "force restarting the device"
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_forward-forwarding-a-text": {
+  "hash": "138a0bd829d5982e0eacd8b6bc243c2a6185267a4b4584a3f308d9dfbc6a3608",
+  "result": {
+   "summary": "This guide provides instructions on how to forward a text message on the moto-g-2025.",
+   "symptoms": [
+    "How do I forward a text?",
+    "I want to send a text to someone else.",
+    "Can I share this message?",
+    "Forwarding messages.",
+    "Text message forwarding."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_play_points-getting-to-know-google-play-points?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "135638c5e0de48f8a8f0ad08718eb09ffb369a0bb6e44e90380eff9b798e1217",
+  "result": {
+   "summary": "This tutorial guides the user on how to access and view Google Play Points information within the Play Store app.",
+   "symptoms": [
+    "How do I check my Play Points?",
+    "Where can I see my Google Play Points?",
+    "Tell me about Play Points.",
+    "I want to learn about Play Points.",
+    "Show me my Play Points balance."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_live-going-live-on-facebook?topicSource=app-facebook-android-smartphone&topicVersion=582.0.0": {
+  "hash": "d87e71f20eba09a89d4848b6f764b2585e53f9c330ea5bbd3f552d8a133903ec",
+  "result": {
+   "summary": "This tutorial guides the user on how to start and finish a live video broadcast on Facebook using their moto-g-2025 device.",
+   "symptoms": [
+    "How to go live on Facebook?",
+    "Start a live video",
+    "Facebook live stream help",
+    "Where is the live button?",
+    "How to end a live video?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_live_go-going-live?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "3edd905c5c59d76a6528205d33691208af5f6473ed2e4ef803bb71e0e2074ef5",
+  "result": {
+   "summary": "This tutorial guides the user on how to start a live stream using the YouTube app.",
+   "symptoms": [
+    "How do I go live on YouTube?",
+    "I want to start a live stream.",
+    "Can you help me broadcast live?",
+    "YouTube live stream setup.",
+    "How to use YouTube live feature."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_private_space-hiding-apps-using-secure-folder": {
+  "hash": "b2b3a5c53df685879735e7f5dcc7266962fa820c4d49c6837d7cccde047d287e",
+  "result": {
+   "summary": "This tutorial guides the user on how to set up and use the Secure Folder feature to hide apps on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I hide apps?",
+    "I want to use a secure folder.",
+    "Where is the secure folder option?",
+    "Can I protect certain apps?",
+    "Need to secure my private apps."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_payments_profile-how-to-change-your-google-play-country?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "482f4e060ff71582afcd9c5a94c7fa6488364db254d77a074e7c1173d6a63bb5",
+  "result": {
+   "summary": "This tutorial guides the user on how to change their Google Play country settings on a moto-g-2025 device.",
+   "symptoms": [
+    "Can't change Play Store country",
+    "Need to update my Google Play region",
+    "My Play Store is showing the wrong country",
+    "How do I switch my Play Store country?",
+    "Google Play country change",
+    "Play Store region update"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_voicemail_inbox-how-to-manage-your-voicemail-by-dialing-in": {
+  "hash": "11a3f07a0b0bc99028b7bd9e563395a5d5a3d5997a680b8ecd4a2a01f043d05b",
+  "result": {
+   "summary": "This tutorial guides users on how to access and manage their voicemail messages by dialing into their voicemail inbox on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I check my voicemail?",
+    "I can't listen to my messages.",
+    "Where are my voicemails?",
+    "How do I dial into voicemail?",
+    "I need to retrieve a message."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_gift_book-how-to-send-a-book-as-a-gift-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "06411c14062fd25c602df23a490a8cf8f01a94fd4f293ec822f29df8e51688ad",
+  "result": {
+   "summary": "This tutorial explains how to send a book as a gift using the Google Play app on your device.",
+   "symptoms": [
+    "How do I gift a book on Google Play?",
+    "I want to send a book to a friend.",
+    "Can I buy a book for someone else?",
+    "How to gift an ebook?",
+    "Google Play book gifting."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_family_setup-how-to-set-up-a-family-library-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "1498fd7bd8024f55483177ec01dfa8f329449d988dab8e391f1372f63d114d34",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a Family Library in Google Play to share apps and purchases.",
+   "symptoms": [
+    "How do I set up Family Library?",
+    "I want to share apps with my family.",
+    "Can I share Google Play purchases?",
+    "Need help with family sharing on Play Store."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_submit_feedback-how-to-submit-feedback-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "4aea47320334b6bcfda474e2416af09f235e6b88d3ab80c3fd0d7ec097071655",
+  "result": {
+   "summary": "This tutorial guides users on how to submit feedback within the Google Play Store application on a moto-g-2025.",
+   "symptoms": [
+    "I want to report a bug in the Play Store",
+    "How do I give feedback on an app?",
+    "I need to tell Google about a problem",
+    "Where do I send suggestions for the Play Store?",
+    "I want to submit a complaint about the Play Store"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_import-importing-and-exporting-contacts": {
+  "hash": "efb17ddb848c37da947b168cfc60118ecb0b2e7e94f3b9da2d9640dbd1de377f",
+  "result": {
+   "summary": "This tutorial guides the user on how to import contacts on their moto-g-2025 device.",
+   "symptoms": [
+    "How do I get my contacts on this phone?",
+    "I need to move my contacts to this device.",
+    "My contacts aren't showing up.",
+    "Can I import contacts?",
+    "Where are my old contacts?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_sd-inserting-and-removing-a-microsd-card": {
+  "hash": "4ee1e1762a1ca84b9a7d11c23b6bb6a4a9ccb01255cea56f7e0a2a37dfa166f6",
+  "result": {
+   "summary": "This guide explains how to insert or remove a microSD card from the moto-g-2025 device.",
+   "symptoms": [
+    "How do I put in an SD card?",
+    "My phone storage is full.",
+    "I need to remove my memory card.",
+    "Where is the SD card slot?",
+    "Can't install my microSD card."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_sim-inserting-and-removing-the-nano-sim-card": {
+  "hash": "3f172cc4ea4dd7090f9267eadd28483607559ac503cffc1e718ca72fc0195c20",
+  "result": {
+   "summary": "This guide explains how to properly insert or remove a nano SIM card from the moto-g-2025 device.",
+   "symptoms": [
+    "My phone isn't connecting to the network.",
+    "I need to put my SIM card in.",
+    "My SIM card isn't working.",
+    "How do I take out my SIM card?",
+    "I got a new SIM card.",
+    "My phone says 'No SIM card'."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Removing or inserting the SIM card will interrupt cellular service, thus ending any active call."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_gemini_voice_launch-launching-and-using-google-gemini": {
+  "hash": "c9016763baf0874917ec1826ea3cca37d66b4ef903754566331ae700d77d1c9e",
+  "result": {
+   "summary": "This guide explains how to launch and use Google Gemini on the moto-g-2025 device.",
+   "symptoms": [
+    "How do I use Google Gemini?",
+    "Where is the Gemini button?",
+    "I can't activate Gemini.",
+    "How do I talk to Gemini?",
+    "Google Assistant isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_listen-listening-to-a-voicemail": {
+  "hash": "177f31f79801de97f63255f3f8115a560b8cdf09742cc23398a90b5351586c7d",
+  "result": {
+   "summary": "This tutorial guides the user on how to access and listen to voicemails on the moto-g-2025.",
+   "symptoms": [
+    "How do I listen to my voicemail?",
+    "I can't find my voicemails.",
+    "Where is the voicemail app?",
+    "How do I play a message?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_logout-logging-out-of-facebook?topicSource=app-facebook-android-smartphone&topicVersion=582.0.0": {
+  "hash": "e9475d46b5420cbea1c697e10f4b629485a50cd4be18c2d4e16f525c596f654d",
+  "result": {
+   "summary": "This tutorial guides the user on how to log out of the Facebook app on their device.",
+   "symptoms": [
+    "How do I log out of Facebook?",
+    "I want to sign out of Facebook.",
+    "Can't log out of my Facebook account.",
+    "Need to log off Facebook.",
+    "Where's the logout button for Facebook?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_call-making-a-video-call": {
+  "hash": "918676820b4a0e80f1ca742a03151c589398f45ada72393c42e04aec567dce5d",
+  "result": {
+   "summary": "This tutorial guides the user on how to initiate a video call from their moto-g-2025 device.",
+   "symptoms": [
+    "How do I make a video call?",
+    "I want to video chat someone.",
+    "Can I video call on this phone?",
+    "Where is the video call button?",
+    "How to start a video call?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_app_purchase-making-an-in-app-purchase?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "7831a6c756334cc71661efb482c6de6b16cc34f034c0d9da4443f996234f4f72",
+  "result": {
+   "summary": "This guide explains how to complete an in-app purchase on your device.",
+   "symptoms": [
+    "Can't buy items in an app",
+    "In-app purchase failed",
+    "How to make a purchase in a game",
+    "Google Play purchase problem",
+    "App store payment issue"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_apps-managing-app-power-usage-and-force-closing-apps": {
+  "hash": "10c4a6ae8fdec8e9d76766d7751fd401f964f8bfeee74411aa1f814088b88fac",
+  "result": {
+   "summary": "This tutorial guides users on how to manage app power usage and force close misbehaving applications on their device.",
+   "symptoms": [
+    "My app is draining battery",
+    "This app is frozen",
+    "An app is not responding",
+    "How do I close an app?",
+    "My phone battery dies fast",
+    "An app is acting weird"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_usage-managing-data-usage": {
+  "hash": "f5b29e97068b020f2d5cdff59f8619be861f3f8e1b3a496adc681e6e18659c69",
+  "result": {
+   "summary": "This tutorial guides you through setting up data usage warnings and limits on your device.",
+   "symptoms": [
+    "My data bill is too high",
+    "I keep going over my data limit",
+    "How do I track my data?",
+    "I want to set a data warning",
+    "Can I limit my mobile data?",
+    "My phone uses too much data",
+    "I need to control my data usage"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_family_manage-managing-family-members-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "7f04b93bd7793551472c8344fdc9803cedf40bf2c49ca4146d66eaa76e306a74",
+  "result": {
+   "summary": "This tutorial guides the user on how to manage family members within the Google Play Store settings.",
+   "symptoms": [
+    "How do I manage my family group?",
+    "I need to add a family member to Google Play.",
+    "Where are the family settings in Play Store?",
+    "I want to remove someone from my Google Play family.",
+    "Can't find family management options."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_battery-managing-the-battery": {
+  "hash": "a3cbf909bb56da072523ffe5de518f9cd9e195910960e809ba3b4085c6acbd4e",
+  "result": {
+   "summary": "This guide explains how to manage battery settings, including viewing battery usage and enabling Battery Saver, on a moto-g-2025.",
+   "symptoms": [
+    "My battery is draining fast",
+    "How do I save battery?",
+    "I want to see what's using my battery",
+    "Battery saver isn't on",
+    "My phone battery dies quickly",
+    "How do I extend battery life?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_memory-managing-the-device-memory": {
+  "hash": "316c77a6618d0f852f3d6ed2d771bbc536446e9a47f0804edaa26c8907a94530",
+  "result": {
+   "summary": "This tutorial guides the user on how to manage device memory by accessing app storage settings.",
+   "symptoms": [
+    "My phone is slow",
+    "I'm running out of storage",
+    "I need to free up space",
+    "My apps are taking up too much room",
+    "How do I check my storage?",
+    "My phone keeps saying storage full"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_close-multitasking-between-apps": {
+  "hash": "5ac6413c2242934bac1ea31a211e99b2418ab8e0f518adaa5e4f4cd672245c0b",
+  "result": {
+   "summary": "This tutorial guides the user on how to multitask between applications, including copying and pasting content between them, and closing apps on the moto-g-2025.",
+   "symptoms": [
+    "How do I switch between apps?",
+    "I want to copy and paste text.",
+    "How do I manage open applications?",
+    "My apps are running in the background.",
+    "I need to close an app.",
+    "Can I move information from one app to another?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_web_navigate-navigating-to-a-website?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "2d4d3526fe8c5bbd550b974993d63ee1846d4ae38b3e65743042c29ffa01238e",
+  "result": {
+   "summary": "This tutorial guides the user on how to open the Chrome browser and navigate to a website or perform a search on their moto-g-2025.",
+   "symptoms": [
+    "How do I open a website?",
+    "I need to use the internet browser.",
+    "Where do I type a web address?",
+    "How do I search online?",
+    "I can't get to a webpage."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_cellular_settings_access-navigating-to-your-cellular-settings": {
+  "hash": "4645005620cab90c855bb998be19db04f298b438ccccc7bb045ff4ed8320a65a",
+  "result": {
+   "summary": "This tutorial guides the user on how to navigate to the cellular settings on a moto-g-2025 device.",
+   "symptoms": [
+    "I need to find my network settings",
+    "Where are my cellular options?",
+    "I want to manage my SIM card",
+    "How do I get to mobile network settings?",
+    "I can't find my SIM settings"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_bluetooth_pair-pairing-with-a-bluetooth-device": {
+  "hash": "d453155f704a6c8db802476bf43eceb9daaee4de695486f5eea63ba38004c21d",
+  "result": {
+   "summary": "This tutorial guides the user on how to pair their moto-g-2025 with a Bluetooth device.",
+   "symptoms": [
+    "My headphones won't connect",
+    "How do I pair my speaker?",
+    "I can't connect to Bluetooth",
+    "Bluetooth isn't working",
+    "Help me connect my car",
+    "Pairing a new device"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_partial_screen_recording-partial-screen-recording-individual-apps": {
+  "hash": "0e5fb18db1b6b2a53429056a140b8765159c7ef8fb053f539ad578aa5d0e8df7",
+  "result": {
+   "summary": "This tutorial guides users on how to record the screen of a single application on a Moto G 2025 device.",
+   "symptoms": [
+    "How do I record just one app?",
+    "I want to record an app, not my whole screen.",
+    "Can I record a specific application?",
+    "My screen recorder records everything.",
+    "Need to record only one app's activity.",
+    "How to isolate app recording?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_reset-performing-a-factory-reset": {
+  "hash": "3b1ddb83d8f0f02211354faebdc38ca83475cf78fea4fb61527c0e7ff01faf81",
+  "result": {
+   "summary": "This tutorial guides the user through performing a factory reset on a moto-g-2025 to resolve software issues or prepare the device for sale.",
+   "symptoms": [
+    "My phone is frozen",
+    "Apps keep crashing",
+    "Phone is very slow",
+    "I want to sell my phone",
+    "Forgot my lock screen password",
+    "Phone has a virus"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Performing a factory reset will erase all data and restart the phone, ending any active call."
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Confirming to erase all data will initiate the factory reset process, ending any active call."
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Confirming to erase all data will initiate the factory reset process, ending any active call."
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_post-posting-status-updates-and-photos-to-facebook?topicSource=app-facebook-android-smartphone&topicVersion=582.0.0": {
+  "hash": "4fe3eaa5f55becc9218e230e27eb332effaf74c63a106ee542b829f0f8bfe494",
+  "result": {
+   "summary": "This tutorial guides the user on how to post status updates and photos to Facebook using the Facebook app.",
+   "symptoms": [
+    "How to post on Facebook",
+    "Share photos on Facebook",
+    "Update Facebook status",
+    "Add picture to Facebook post",
+    "Facebook posting help"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_network-preventing-google-play-from-downloading-apps-over-a-cellular-connection?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "629a17e18fcf38f0ff845d1898a6f21aeaea4a2144823defcf4fa29eb8fa106f",
+  "result": {
+   "summary": "This tutorial guides users on how to prevent Google Play from downloading apps using cellular data.",
+   "symptoms": [
+    "My phone is using too much data",
+    "Google Play is downloading apps on cellular",
+    "How do I stop app downloads over mobile data?",
+    "I want to save my data plan",
+    "Apps are downloading without Wi-Fi"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_record-recording-a-video": {
+  "hash": "60cda4647a13a9cb83c85ccad59f3a42a6031c718c2f957b5fc6dd6a5cff4876",
+  "result": {
+   "summary": "This tutorial guides the user on how to record a video using the camera app on a moto-g-2025.",
+   "symptoms": [
+    "How to record a video?",
+    "I want to make a video",
+    "Video recording instructions",
+    "My camera won't record video"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_points_redeem-redeeming-google-play-points?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "3743475ac70035c9babb9740b8b6cd6ab907bec541b8a2125004cbbd24084592",
+  "result": {
+   "summary": "This tutorial guides the user through the process of redeeming Google Play points for items within the Play Store.",
+   "symptoms": [
+    "How do I use my Play Points?",
+    "I want to redeem points",
+    "Where can I find my Play Points?",
+    "Can I use my points for an app?",
+    "How do I spend my Google Play points?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_redeem-redeeming-a-google-play-gift-card?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "0d151fb5e9bf9c8a93c2c83555f77ac18b5d01f81fd0e30f46e56e09bc37a16f",
+  "result": {
+   "summary": "This tutorial guides users on how to redeem Google Play points through the Play Store app.",
+   "symptoms": [
+    "How do I use my Play Points?",
+    "I want to redeem Google Play points.",
+    "Where can I spend my Play Points?",
+    "Help me use my Play Points.",
+    "I have Play Points, what do I do?",
+    "Can I use my Play Points for purchases?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_restrict-reducing-data-usage-by-turning-on-data-saver": {
+  "hash": "725b0e7f61c262646a11c1ca6d19225641d60273e10e59c9f088846c12544e0a",
+  "result": {
+   "summary": "This guide explains how to reduce mobile data usage by enabling Data Saver on the device.",
+   "symptoms": [
+    "My data bill is too high",
+    "I'm running out of data",
+    "How do I save data?",
+    "My phone uses too much data",
+    "I want to use less mobile data"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_application_notification-reducing-or-limiting-app-notifications": {
+  "hash": "a9fccb1c8600af5497419885f85e5c8897b8c1a12fc96359873aa6dc1f02ea67",
+  "result": {
+   "summary": "This guide shows how to manage app notifications on a moto-g-2025 device.",
+   "symptoms": [
+    "My phone keeps buzzing",
+    "Too many notifications",
+    "How do I turn off app alerts?",
+    "I want to stop notifications from an app",
+    "Notifications are annoying",
+    "Can I silence an app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_reinstall_apps-reinstalling-a-previously-downloaded-app?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "bfbf521c645847cb50120f635531e8e8e003964aca727e115c6f058e59ce2713",
+  "result": {
+   "summary": "This guide explains how to reinstall an application that was previously downloaded on a moto-g-2025 device.",
+   "symptoms": [
+    "I need to get an app back",
+    "I deleted an app by mistake",
+    "How do I reinstall an app?",
+    "My app disappeared",
+    "I want to redownload an app"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_remove-removing-an-account": {
+  "hash": "b752ec4f2b82bf4cb4e4babc8599a21068dac3b7c0b4b0dc32bf9b42931dbb46",
+  "result": {
+   "summary": "This tutorial guides the user through the process of removing an account from their device.",
+   "symptoms": [
+    "I want to delete an account",
+    "How do I get rid of an old email account?",
+    "Need to remove a Google account",
+    "Can't sign out of an app",
+    "My phone has too many accounts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_widget_remove-removing-apps-and-widgets-from-the-home-screen": {
+  "hash": "34eb6f03140cc3951e2f8f638b9b8edb1f8ad6f80195be1244536fc40c5d7864",
+  "result": {
+   "summary": "This tutorial guides the user on how to remove apps and widgets from the Home screen of their device.",
+   "symptoms": [
+    "How do I remove an app icon?",
+    "I want to delete a widget",
+    "Clean up my home screen",
+    "Get rid of this shortcut",
+    "Remove an app from the home screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_developer_report-reporting-a-third-party-developer-issue-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "27e696e79b11a04cdf18c2514e7ab0f0a5e9cbf3301291012d719dc418c0dfc1",
+  "result": {
+   "summary": "This tutorial guides the user on how to report an issue with a third-party application through Google Play.",
+   "symptoms": [
+    "I have a problem with an app",
+    "An app isn't working correctly",
+    "I need to report a bug in an app",
+    "How do I contact app support?",
+    "My app crashed",
+    "The app is frozen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_content_report-reporting-inappropriate-or-infringing-content-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "b8d68795037a45b183eecfb2aade0934e534608c3ea4a00d5a7ffdba82375400",
+  "result": {
+   "summary": "This guide explains how to report inappropriate or infringing content within the Google Play Store on your device.",
+   "symptoms": [
+    "How to report an app",
+    "Flag inappropriate content",
+    "Report a bad game",
+    "Content is infringing",
+    "Found a problematic app",
+    "Need to report an app on Google Play"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_all-resetting-all-settings": {
+  "hash": "a3c8340f5c40e8dcd2dc91cc7abcbe56becf411712df131f16e4be137b22ded2",
+  "result": {
+   "summary": "This guide explains how to reset app preferences on a moto-g-2025 device to resolve app-related issues.",
+   "symptoms": [
+    "My apps are acting weird",
+    "Apps keep crashing",
+    "Notifications aren't working",
+    "App permissions are wrong",
+    "I need to reset app settings",
+    "Apps are frozen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_network_reset-resetting-network-settings": {
+  "hash": "90dff31da1d590e756604f1f51088d913dea54a9a525d9c49e29c8965aded083",
+  "result": {
+   "summary": "This tutorial guides the user through resetting the network settings on their device to resolve connectivity problems.",
+   "symptoms": [
+    "Can't connect to Wi-Fi",
+    "My internet isn't working",
+    "Calls are dropping",
+    "Can't send texts",
+    "No service",
+    "Mobile data not working"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Resetting mobile network settings will temporarily disconnect the phone from the cellular network."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_password_reset-resetting-your-google-account-password": {
+  "hash": "7d3b80721d86c5c3145c3d86ac041fd7d13234c5c2df8d1a2a38365b57685096",
+  "result": {
+   "summary": "This tutorial guides the user through resetting their Google Account password.",
+   "symptoms": [
+    "I forgot my Google password",
+    "I can't log into my Google account",
+    "I need to change my Google password",
+    "My Google account is locked",
+    "How do I reset my Gmail password?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_restart-restarting-your-phone": {
+  "hash": "5546d35406bb9cf6cd92014432caeff0679ea8f3ef3415d0956e2ac46b2543a9",
+  "result": {
+   "summary": "This tutorial guides the user through restarting their phone.",
+   "symptoms": [
+    "My phone is frozen",
+    "My app isn't working",
+    "My phone is slow",
+    "I can't hear anyone",
+    "My screen is stuck",
+    "My phone is acting weird"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Restarting the phone will interrupt or drop the call."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_transaction_history-reviewing-your-google-play-transaction-history?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "1ada016a12bd1d668c30d1cac4d9d5b7be5909316399d24dccfb4db131d8a96e",
+  "result": {
+   "summary": "This tutorial guides the user on how to review their Google Play transaction history, including past purchases and subscriptions.",
+   "symptoms": [
+    "How do I see my Google Play purchases?",
+    "Where is my transaction history?",
+    "I want to check my subscriptions.",
+    "Show me my app purchase history.",
+    "How to view past Google Play orders?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_save_app_pairs-saving-split-screen-app-layouts": {
+  "hash": "c3ec686f0230a80580f9edb7a62dec753bb97d1dee614d3b7cc13037e4c828fa",
+  "result": {
+   "summary": "This tutorial explains how to save a split-screen app layout on your device for quick access.",
+   "symptoms": [
+    "How do I save my split screen apps?",
+    "Can I save app pairs?",
+    "I want to quickly open two apps together.",
+    "Is there a shortcut for split screen?",
+    "My phone has split screen, but I want to save the layout.",
+    "How to create app shortcuts for split screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_search-searching-locally?topicSource=app-maps-android-smartphone&topicVersion=26.31.02": {
+  "hash": "89846c4efe5d5f3e85c74cba1c819aca025ca0c20b6759be53a5a64ff65a4554",
+  "result": {
+   "summary": "This tutorial guides users on how to search for local places and get directions using Google Maps on their device.",
+   "symptoms": [
+    "How do I find a place nearby?",
+    "I need directions to a location.",
+    "How do I search for businesses on Google Maps?",
+    "Can you help me use Google Maps search filters?",
+    "Where is the nearest gas station?",
+    "I want to find a specific type of store."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_advanced_protection-secure-your-phone-with-advanced-protection": {
+  "hash": "5da79850b0fc62b48359a7f9dda9b987424ce36861b7bb78d9196c55e8950295",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable Advanced Protection on their moto-g-2025 to enhance device security.",
+   "symptoms": [
+    "How do I turn on advanced protection?",
+    "I want to secure my phone more.",
+    "Enable device protection.",
+    "My phone isn't secure enough.",
+    "Where is advanced protection setting?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_send-sending-a-text-with-an-attachment": {
+  "hash": "fde45597f8cd8f6c4a86f62646f40b6c65bb5d2c23062a089f767acaf489d03b",
+  "result": {
+   "summary": "This guide explains how to send a text message with an attachment on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I send a picture message?",
+    "I can't send an MMS.",
+    "My texts with attachments aren't going through.",
+    "Need to send a photo in a text.",
+    "How to attach a file to a message."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_voice-sending-an-audio-message": {
+  "hash": "171ce3cc48404aa359bcc043c06932f4d43f344741524a348e4be8a8308f4704",
+  "result": {
+   "summary": "This tutorial guides you on how to send an audio message using the Messages app.",
+   "symptoms": [
+    "How to send a voice message",
+    "Can't send audio message",
+    "Record a message in chat",
+    "Voice note not sending",
+    "Microphone icon missing"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_wellbeing_timer-setting-an-app-timer": {
+  "hash": "be6dd89ae0c5b8bd847cf14aeab1267ec582c7ea3481a991a6b3ad6e1ae9252f",
+  "result": {
+   "summary": "This tutorial guides the user on how to set a time limit for app usage on their moto-g-2025.",
+   "symptoms": [
+    "How do I limit my screen time?",
+    "I want to set a timer for an app.",
+    "My kid uses this app too much.",
+    "Can I restrict app usage?",
+    "How to set app limits?",
+    "I need to control app time."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_content_restriction-setting-app-limits-for-family-members": {
+  "hash": "eeeeffa34e358566b3dcf6981d9c24950bdcad2c431de23a13f1af95eb64350c",
+  "result": {
+   "summary": "This tutorial explains how to set or edit app usage limits for family members using the Google Family Link app.",
+   "symptoms": [
+    "How do I limit app time for my kid?",
+    "My child is using an app too much.",
+    "I want to set app limits.",
+    "Need to change app privileges.",
+    "Family Link app limits."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_security-setting-screen-security": {
+  "hash": "af446a342b7d95b7243039f70b3557a49b48afd41fcfe047c6d8ca4721822654",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a PIN for screen security on their device.",
+   "symptoms": [
+    "I want to set a screen lock.",
+    "How do I add a PIN to my phone?",
+    "My phone isn't secure.",
+    "I need to protect my phone with a password.",
+    "How do I change my screen lock?",
+    "I want to use a PIN to unlock my phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_silent-setting-the-phone-to-silent": {
+  "hash": "906a657a572259f30d13600ecfecf3864780d4a9979aa917d1b68ac647c1d627",
+  "result": {
+   "summary": "This tutorial guides the user on how to set their phone to silent mode using the Do Not Disturb feature.",
+   "symptoms": [
+    "How do I silence my phone?",
+    "My phone is making too much noise.",
+    "I need to put my phone on silent.",
+    "How do I mute my phone?",
+    "I want to turn off sounds."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_forwarding-setting-up-call-forwarding": {
+  "hash": "474759563b655be838a84541cfdbf3924f848dca71385ea9c188b2a8d15216e4",
+  "result": {
+   "summary": "This tutorial guides the user through setting up call forwarding on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I forward my calls?",
+    "I want to send calls to another number",
+    "Set up call forwarding",
+    "Calls aren't going to my other phone",
+    "Redirecting incoming calls"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_assistant_setup-setting-up-gemini": {
+  "hash": "d2459822c6793b4c66f16bacb969f9469a38680c61f4b9e95bd963d8507dc171",
+  "result": {
+   "summary": "This tutorial guides you through the process of setting up Gemini on your moto-g-2025 device.",
+   "symptoms": [
+    "How do I set up Gemini?",
+    "I want to use Gemini on my phone.",
+    "Gemini isn't working yet.",
+    "Where can I find Gemini?",
+    "Help me get started with Gemini."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_moto_actions-setting-up-moto-actions": {
+  "hash": "f52dfecd23fa1f92bd9761453bb14dce27bad8ca2c8efdc2934db8682c20a1fd",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable the 'Pick up to silence' Moto Action on their device.",
+   "symptoms": [
+    "My phone doesn't silence when I pick it up",
+    "How do I turn on pick up to silence?",
+    "I want to use Moto Gestures",
+    "My phone keeps ringing when I lift it",
+    "How to set up Moto Actions"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_parent-setting-up-screen-time-as-a-parent": {
+  "hash": "aede9568b9ae6df74fe658f704cd66133e4d55c543df4f4a282b1592612dfa00",
+  "result": {
+   "summary": "This guide explains how to set up screen time limits for a child's device using the Google Family Link app.",
+   "symptoms": [
+    "How do I limit my kid's screen time?",
+    "I want to set a daily limit for my child's phone.",
+    "Can I schedule screen time for my child?",
+    "Where do I find screen time settings in Family Link?",
+    "My child is spending too much time on their phone.",
+    "Need to set up parental controls for screen time."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_setup-setting-up-voicemail": {
+  "hash": "390d11dc50da93eb4961408b131fe12cc049e39f1cd19489a0cd3cacc04d4fa9",
+  "result": {
+   "summary": "This guide explains how to set up voicemail on a moto-g-2025 device, either by calling the voicemail inbox or through the phone's settings.",
+   "symptoms": [
+    "How do I set up voicemail?",
+    "My voicemail isn't working.",
+    "I can't get my voicemail.",
+    "Need to activate voicemail.",
+    "Voicemail setup help.",
+    "Can't access voicemail."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_initial_setup-setting-up-a-new-phone-manually": {
+  "hash": "28f7bb540607dbe6537953a73c8347b7003a150502c57074559a514b1268c468",
+  "result": {
+   "summary": "This guide walks you through the initial manual setup process for a new moto-g-2025 phone, including connecting to Wi-Fi, signing into a Google account, and setting up a PIN.",
+   "symptoms": [
+    "I just got a new phone",
+    "How do I set up my new phone?",
+    "I need to activate my moto-g-2025",
+    "Help me with the initial setup",
+    "I'm stuck on the setup screen",
+    "How do I connect to Wi-Fi on my new phone?",
+    "I need to sign into Google"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    },
+    {
+     "n": 17,
+     "call_ending": false
+    },
+    {
+     "n": 18,
+     "call_ending": false
+    },
+    {
+     "n": 19,
+     "call_ending": false
+    },
+    {
+     "n": 20,
+     "call_ending": false
+    },
+    {
+     "n": 21,
+     "call_ending": false
+    },
+    {
+     "n": 22,
+     "call_ending": false
+    },
+    {
+     "n": 23,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_qr_code-setting-up-an-esim-using-a-qr-code-or-activation-code": {
+  "hash": "7888c80ae714ced5dd682530a50a76f268769fb0d8f1fa22d283bc44fae120da",
+  "result": {
+   "summary": "This tutorial guides the user through setting up an eSIM on their moto-g-2025 using a QR code or an activation code.",
+   "symptoms": [
+    "How do I add an eSIM?",
+    "I need to activate my eSIM.",
+    "Where do I scan my eSIM QR code?",
+    "My new phone needs an eSIM.",
+    "I got an eSIM activation code.",
+    "Help me set up my digital SIM."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_push_notification-setting-up-an-esim-with-a-push-notification-after-device-setup": {
+  "hash": "0f711435d46566195fffda9cbf2704ab7f1990d8998e017f670139b9b7b673cc",
+  "result": {
+   "summary": "This tutorial guides the user through setting up an eSIM on a moto-g-2025 device using a push notification after the initial device setup.",
+   "symptoms": [
+    "How do I activate my eSIM?",
+    "I received a notification to set up my eSIM.",
+    "My eSIM isn't working.",
+    "I need to set up my carrier eSIM.",
+    "How do I enable my eSIM?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_hotspot_on-setting-up-mobile-hotspot": {
+  "hash": "1f7c93baa48b906faa527fbcdc96f746d7efb00f4a39abcc9f06ccf74522217c",
+  "result": {
+   "summary": "This tutorial guides users on how to set up and configure a mobile hotspot on a moto-g-2025 device.",
+   "symptoms": [
+    "I need to share my phone's internet.",
+    "How do I turn on my Wi-Fi hotspot?",
+    "I want to create a mobile hotspot.",
+    "What's the password for my hotspot?",
+    "My other devices can't connect to my phone's internet."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_android_parent-setting-up-parental-controls": {
+  "hash": "c1dbf8d21e91f922942f3f0e82aea3b37c0bece63743a55e8ebb0c5c18c48a2a",
+  "result": {
+   "summary": "This tutorial guides users on how to set up and manage parental controls on a moto-g-2025 device.",
+   "symptoms": [
+    "I need to set up parental controls",
+    "How do I manage my child's phone?",
+    "Want to restrict apps for my kid",
+    "Set screen time limits for my child",
+    "Control what my child can access",
+    "Parental control settings"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_email_personal-setting-up-personal-email": {
+  "hash": "b1aa827073959564d77f011c5bf89732095146dc453e0fa5740dfe424955d644",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a personal email account on their device using the Gmail app.",
+   "symptoms": [
+    "I need to add my email account",
+    "How do I set up Gmail?",
+    "My email isn't on my phone",
+    "I want to check my personal email",
+    "Help me add an email account"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_esim-setting-up-your-second-cellular-plan-with-an-esim": {
+  "hash": "222ab3355411e1915aabfdfe954b683a4acf68cff2766788d26a0157579e5e1d",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a second cellular plan using an eSIM on their device.",
+   "symptoms": [
+    "How do I add an eSIM?",
+    "I want to set up a second line.",
+    "My new eSIM isn't working.",
+    "I need to activate my digital SIM.",
+    "Can you help me install an eSIM?",
+    "I'm trying to get my second plan working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_volume-setting-your-volume-levels-with-the-volume-panel": {
+  "hash": "60408035e3d0f1bee149f657c50ab1c6e39a06b45078b3e0a71559ac9647a50c",
+  "result": {
+   "summary": "This tutorial guides the user on how to adjust different volume levels using the volume panel on their device.",
+   "symptoms": [
+    "My phone is too loud",
+    "I can't hear my calls",
+    "How do I turn down the ringer?",
+    "My media volume is too high",
+    "I want to change notification sounds",
+    "Where are the volume settings?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_share-sharing-photos?topicSource=app-photos-android-smartphone&topicVersion=7.70": {
+  "hash": "b93934d825318ee14e25ad2580c5be64a3320c896504715837e1b75cb8bba4ed",
+  "result": {
+   "summary": "This guide explains how to share photos from your moto-g-2025 using Bluetooth.",
+   "symptoms": [
+    "How do I share a photo?",
+    "Send pictures via Bluetooth",
+    "Transfer images to another device",
+    "Bluetooth photo sharing",
+    "Share photos from my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_picture_share-sharing-photos": {
+  "hash": "7654192d8114c3fccae25a825645fda45c38669ed02d0d5148da35462bfab0a6",
+  "result": {
+   "summary": "This tutorial guides the user on how to share photos via Bluetooth on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I share a picture?",
+    "Send photo with Bluetooth",
+    "Can't send images to another phone",
+    "Bluetooth photo transfer",
+    "Share media wirelessly"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_channel_subscribe-subscribing-to-your-favorite-channels?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "3d3d17c37b118cb79e7a7d290570f9cedb6d62ee0c2969551879d7c4099477a5",
+  "result": {
+   "summary": "This tutorial guides the user on how to subscribe to a YouTube channel.",
+   "symptoms": [
+    "How do I subscribe to a channel?",
+    "I want to follow a YouTube creator.",
+    "How can I get updates from a channel?",
+    "I can't find the subscribe button.",
+    "Help me subscribe on YouTube."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_switch-switching-between-calls": {
+  "hash": "45363ce7603d7850a1e9c5cd5ee9736acc508ee61883169a5dd353b2c81b3e26",
+  "result": {
+   "summary": "This tutorial explains how to manage and switch between multiple active phone calls on your device.",
+   "symptoms": [
+    "How do I switch between calls?",
+    "I have two calls, how do I manage them?",
+    "Can I answer a second call while on the phone?",
+    "How do I put a call on hold to talk to someone else?",
+    "My phone is ringing during a call."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_sync-syncing-account-contacts": {
+  "hash": "a6fccb310251af2040beea5f8a1e18988b4784d1a8843d4b47e59cf9bdf866f6",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable contact synchronization for an account on their device.",
+   "symptoms": [
+    "Contacts not showing",
+    "Can't see all contacts",
+    "Need to sync contacts",
+    "Missing contacts",
+    "Contacts not updating"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating menus does not interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Selecting an account does not interrupt a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Navigating menus does not interrupt a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Toggling a setting does not interrupt a call."
+    },
+    {
+     "n": 5,
+     "call_ending": false,
+     "reason": "This step is a completion message, not an action."
+    }
+   ]
+  }
+ },
+ "feature_picture_take-taking-a-picture": {
+  "hash": "1eced4cf1dfcc1ad89ca6adf6832505d75c6bed1e9412573310657b61fea6c21",
+  "result": {
+   "summary": "This guide explains how to open the camera app and take a picture on the moto-g-2025.",
+   "symptoms": [
+    "How do I take a picture?",
+    "I can't find the camera app.",
+    "Where's the shutter button?",
+    "How do I use the camera?",
+    "I want to capture a moment."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step is a concluding statement, not an action for the user to perform on the device."
+    }
+   ]
+  }
+ },
+ "feature_phone_911-teaching-kids-how-to-call-911": {
+  "hash": "dae16f0f4d107a624724b71f1c27c839c5ef6e6b5aa5c5a2f61e4125604e140d",
+  "result": {
+   "summary": "This tutorial guides users on how to teach a child to dial 911 on a moto-g-2025 phone.",
+   "symptoms": [
+    "How do I call 911?",
+    "My child needs to know how to call emergency services.",
+    "I want to teach my kid to dial 911.",
+    "What's the emergency number?",
+    "How do I use the phone for emergencies?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_smart_switch_wireless-transferring-content-from-your-old-device-via-wireless-connection": {
+  "hash": "e962fa4b62514f94c003ae2782983e1e62bec03aaa41c12980aa808dfb98c161",
+  "result": {
+   "summary": "This tutorial guides users through wirelessly transferring content from an old device to a new moto-g-2025 during initial setup.",
+   "symptoms": [
+    "How do I move my data to my new phone?",
+    "I need to transfer my apps and photos.",
+    "My new phone is empty, how do I get my old stuff?",
+    "Help me set up my new device with my old content.",
+    "I want to copy everything from my old Android to this new one."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_number_transfer-transferring-your-esim-and-phone-number-after-device-setup": {
+  "hash": "18f75427fd045c0ac1b5d465e75738f5842c9f1e9cd2ab5c19be08d31a2c817a",
+  "result": {
+   "summary": "This guide helps you transfer your eSIM and phone number from another Android device to your new moto-g-2025.",
+   "symptoms": [
+    "I need to move my phone number",
+    "How do I transfer my eSIM?",
+    "My new phone doesn't have my number",
+    "Moving my service to a new device",
+    "eSIM transfer help",
+    "Can't get my old number on my new phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_during_setup_number_transfer-transferring-your-esim-and-phone-number-during-initial-setup": {
+  "hash": "b0aef49b4ec7b3d3aa5806b0f15ea0fbc2de6a1265fe5436cd35a074a1ee626d",
+  "result": {
+   "summary": "This tutorial guides the user through transferring their eSIM and phone number from an old device to a new moto-g-2025 during its initial setup process.",
+   "symptoms": [
+    "How do I transfer my eSIM?",
+    "I need to move my phone number to a new phone.",
+    "eSIM transfer during setup.",
+    "Setting up new phone, need to transfer number.",
+    "Moving my phone number to a new Android."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_airplane-turning-airplane-mode-on-and-off": {
+  "hash": "7fa165f50189a9e1d6dac766b047668df947faf59a304889479b3d25d75c285f",
+  "result": {
+   "summary": "This tutorial guides the user on how to toggle Airplane mode on their device to resolve connectivity issues.",
+   "symptoms": [
+    "No signal",
+    "Can't make calls",
+    "Internet not working",
+    "Phone not connecting to network"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Turning Airplane mode ON disables cellular service, which will end any active call."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_do_not_disturb-turning-do-not-disturb-on-or-off": {
+  "hash": "7bbd13f50379de6217e0898047e3f99b2e0e7f6c3cfc66f665709f43c40056d2",
+  "result": {
+   "summary": "This guide explains how to enable or disable the Do Not Disturb feature on your device.",
+   "symptoms": [
+    "My phone keeps ringing",
+    "I'm getting too many notifications",
+    "How do I silence my phone?",
+    "Do Not Disturb isn't working",
+    "I want to turn off Do Not Disturb",
+    "My phone is always silent"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_autoplay-turning-autoplay-off?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "0db499547759b70a52e1f6037a0d5318176e9d4f75fc1a21ff93590051c36d81",
+  "result": {
+   "summary": "This tutorial guides the user on how to disable the autoplay feature for videos within the YouTube app on their device.",
+   "symptoms": [
+    "Videos keep playing automatically",
+    "YouTube autoplay won't turn off",
+    "How to stop next video from playing",
+    "YouTube automatically plays next video",
+    "Don't want videos to autoplay"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "This step involves navigating within an app, which does not interrupt a call."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "This step involves navigating within an app, which does not interrupt a call."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "This step involves changing a setting within an app, which does not interrupt a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "This step is a concluding statement and does not involve any action that would interrupt a call."
+    }
+   ]
+  }
+ },
+ "feature_accessibility_removeanimations-turning-off-animations-on-your-device": {
+  "hash": "60cf59e6d71b989c9149e726e40812482422964d6eb5ffdc8588a935891f5305",
+  "result": {
+   "summary": "This tutorial guides you through turning off animations on your device.",
+   "symptoms": [
+    "My phone is slow",
+    "Animations are annoying",
+    "I want to speed up my phone",
+    "How do I turn off visual effects?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_spokenassistance-turning-on-spoken-assistance-accessibility-options": {
+  "hash": "279be73c28f8d5774054042ccb19770a963909c5965a1be3903fb9d8630f4629",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable and use the Select to Speak accessibility feature on their device.",
+   "symptoms": [
+    "I want my phone to read text aloud.",
+    "How do I turn on spoken assistance?",
+    "My phone isn't reading text.",
+    "I need help with accessibility features.",
+    "Can my phone speak what's on the screen?",
+    "Enable text-to-speech."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_universalswitch-turning-on-universal-switch": {
+  "hash": "759b5e10853981ea248b9251a8ccafcea97b3176078faf60724dd0f37462355c",
+  "result": {
+   "summary": "This guide explains how to enable the Universal switch (Switch Access) accessibility feature on a moto-g-2025.",
+   "symptoms": [
+    "How do I turn on Switch Access?",
+    "I need to use Universal switch",
+    "Accessibility feature not working",
+    "Can't find Switch Access setting",
+    "Enable accessibility controls"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_coloradjustment-turning-on-and-changing-color-adjustment-settings": {
+  "hash": "2257579360c390bff1b4c948a5d57421dd122bd26fc1fff382783ec31c6913cd",
+  "result": {
+   "summary": "This guide explains how to enable and customize color correction settings on a moto-g-2025 device.",
+   "symptoms": [
+    "My screen colors look wrong",
+    "I need to adjust display colors",
+    "How do I turn on color correction?",
+    "My phone's colors are off",
+    "I want to change color settings",
+    "The screen looks discolored"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_flashnotification-turning-on-and-changing-flash-notification-settings": {
+  "hash": "cbe950aa2b877123ba8a15db9950b663c53d5ae200d25d7f16e775e4212a53e5",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and customize flash notification settings on a moto-g-2025 device.",
+   "symptoms": [
+    "My phone doesn't flash for notifications",
+    "How do I turn on flash alerts?",
+    "I want my screen to flash when I get a call",
+    "Can I change my flash notification settings?",
+    "My camera flash isn't working for alerts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_livecaption-turning-on-and-changing-live-caption-settings": {
+  "hash": "a79797a112f6865c6e18953dcb1a9875ed8aca1b1228dbe17eba0870bfdd4c35",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable and adjust Live Caption settings on their device.",
+   "symptoms": [
+    "I can't see captions on my phone",
+    "How do I turn on live captions?",
+    "My captions aren't working",
+    "I want to change caption settings",
+    "Live captions aren't showing up",
+    "Can I customize captions?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_assistantmenu-turning-on-and-changing-your-accessibility-menu": {
+  "hash": "ac2668007cdd7d3f888417cdde5dd0b324d365219bb8274126e253011af336ee",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable and access the Accessibility Menu on their moto-g-2025 device.",
+   "symptoms": [
+    "How do I turn on Accessibility Menu?",
+    "I can't find the Accessibility shortcut.",
+    "Where are the accessibility settings?",
+    "My Accessibility Menu isn't showing up.",
+    "I need to enable the Accessibility Menu."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_captions-turning-on-captions?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "dd19275323649f237c9bc1cd2c56e2392eff8744b1ca82fbbf7b47248979b1d8",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable captions within the YouTube application on their device.",
+   "symptoms": [
+    "How do I get captions?",
+    "I can't see subtitles.",
+    "Captions aren't showing up.",
+    "Need to turn on closed captions.",
+    "Where are the subtitles settings?",
+    "My captions are off."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_authentication-turning-on-purchase-authentication-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "190ee8d23b14038a21876a45aa4301bcb8a561767cf3285920fadd01cbb01553",
+  "result": {
+   "summary": "This guide explains how to enable purchase authentication for Google Play Store transactions.",
+   "symptoms": [
+    "I want to require a password for purchases",
+    "How do I stop accidental app purchases?",
+    "My kids are buying things on my phone",
+    "I need to approve Google Play purchases",
+    "Set up purchase verification",
+    "Require authentication for apps"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_power_on-turning-your-phone-on-and-off": {
+  "hash": "a2a949c8097fbca5c3e266aef3252bcb0c4bc823740164271d181539e6d880cd",
+  "result": {
+   "summary": "This guide explains how to turn the moto-g-2025 phone on and off.",
+   "symptoms": [
+    "How do I turn on my phone?",
+    "My phone won't turn on.",
+    "I need to power off my device.",
+    "How do I shut down my phone?",
+    "My phone is frozen, how do I restart it?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Turning off the phone will end any active call."
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Tapping 'Power off' will shut down the phone, ending any active call."
+    }
+   ]
+  }
+ },
+ "feature_playstore_app_uninstall-uninstalling-an-app-from-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "cf6a4f6d0676deb8e0a315b6e35b12f7ae6e6b923693b56fbd7626a0625fdbb2",
+  "result": {
+   "summary": "This guide explains how to uninstall an application from your device using the Google Play Store.",
+   "symptoms": [
+    "How do I get rid of an app?",
+    "I want to delete an application.",
+    "Uninstall an app.",
+    "Remove an app.",
+    "An app is taking up too much space.",
+    "I don't want this app anymore."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_unlock-unlocking-the-screen": {
+  "hash": "2ec51a3974dd42b2938015f14640ac5211835bcf6a4fad7521217125c34bec62",
+  "result": {
+   "summary": "This guide explains how to unlock the screen of a moto-g-2025 phone using a PIN.",
+   "symptoms": [
+    "My phone is locked",
+    "I can't get into my phone",
+    "How do I unlock my screen?",
+    "I need to enter my PIN",
+    "My phone is stuck on the lock screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_account_update-updating-account-information-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "56f9aa466e6cc36bea26388863e4ad96cbe7eddfd708e92e6aa0c40763a077e4",
+  "result": {
+   "summary": "This tutorial guides the user through updating account and device preferences within the Google Play Store app.",
+   "symptoms": [
+    "I need to change my Google Play account details.",
+    "How do I update my Play Store settings?",
+    "My Google Play account information is incorrect.",
+    "I want to access Play Store account preferences.",
+    "Can't find where to edit my Google Play account.",
+    "Where are the device preferences in Play Store?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_app_update-updating-an-app-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "1de2aa4bd93bb9ff960620e91832df3a395bd17bdcf2b049c8d41435994a6b40",
+  "result": {
+   "summary": "This guide explains how to update an application using the Google Play Store.",
+   "symptoms": [
+    "My app isn't working right",
+    "I need to update an app",
+    "How do I get the latest version of an app?",
+    "My app is outdated",
+    "I can't update my apps"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_update_playstore-updating-the-google-play-store?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "35fd24f639985d30ee7e7c33eaace491a76856e39d61c7c9cd6c66f28470bcc4",
+  "result": {
+   "summary": "This guide explains how to update the Google Play Store application on a moto-g-2025 device.",
+   "symptoms": [
+    "Play Store not working",
+    "Can't download apps",
+    "Play Store is outdated",
+    "Need to update Play Store",
+    "Apps won't update"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_family_payment-updating-your-family-payment-method-in-google-play?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "94f7e054db06fcbad21ea4b29d30b6ecb06664da1c84eebabed9cd0982cbdf2e",
+  "result": {
+   "summary": "This guide explains how to update the family payment method in Google Play.",
+   "symptoms": [
+    "I need to change my family payment method",
+    "How do I update Google Play family payment?",
+    "My family payment method is wrong",
+    "Can't update family payment",
+    "Google Play family payment"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_multi_window-using-dual-window": {
+  "hash": "46fc0f066b75235d916cd10ca33b629a62955fdc7963ad26302587910ce0711d",
+  "result": {
+   "summary": "This tutorial guides users on how to activate and use the Dual Window (split screen) feature on their moto-g-2025 device.",
+   "symptoms": [
+    "How do I use two apps at once?",
+    "I want to split my screen",
+    "Can I multitask on my phone?",
+    "How do I get out of split screen?",
+    "My screen is split, how do I fix it?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_talkback_use-using-talkback": {
+  "hash": "4b37d362b22d02fa286cd4238c3deada73418e8a3963bee4ccca2cbd4c9a0a24",
+  "result": {
+   "summary": "This tutorial guides users on how to enable, configure, and use the TalkBack accessibility feature on their moto-g-2025 device.",
+   "symptoms": [
+    "I need my phone to read things aloud.",
+    "How do I turn on the screen reader?",
+    "I have trouble seeing the screen.",
+    "I want to use TalkBack.",
+    "My vision is impaired."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notification_cooldown-using-notification-cooldown-to-limit-repetitive-notifications": {
+  "hash": "7eefeb5db3710eef8850f5e85ef533f174302224e8b9f45fe0e3dbc9960c6330",
+  "result": {
+   "summary": "This tutorial explains how to enable notification cooldown to reduce repetitive alerts on the device.",
+   "symptoms": [
+    "My phone keeps buzzing for the same notification",
+    "I'm getting too many notifications from one app",
+    "How do I stop repetitive alerts?",
+    "Notifications are overwhelming",
+    "Can I quiet down notifications?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_emergency_mode-using-power-saving-mode": {
+  "hash": "057de6148c57033418db47e15bd2d8121004444cd9c449a0c7ecf3316f9e7235",
+  "result": {
+   "summary": "This tutorial guides the user on how to configure the battery saver to automatically turn off when the phone's battery reaches 90% on a moto-g-2025.",
+   "symptoms": [
+    "How do I manage power saving mode?",
+    "My battery saver is always on.",
+    "I want to schedule battery saver.",
+    "How do I turn off battery saver at a certain percentage?",
+    "My phone's battery is draining too fast.",
+    "I need to adjust my battery settings."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_magnify-using-screen-magnification": {
+  "hash": "ddce5ec5327cf98a6f053c73ab83ae9f453c7601fa05ed9f4e74ac793e6275b7",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and use screen magnification on a moto-g-2025 device.",
+   "symptoms": [
+    "I can't see the screen clearly",
+    "The text is too small",
+    "How do I zoom in on my phone?",
+    "I need to magnify my display",
+    "My vision isn't great, I need help seeing the screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_wifi-activating-wi-fi-calling": {
+  "hash": "4199a79a06b5c3a20d8c00d47fe0af294469f3629cfbe079c585d37882722a3d",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and use screen magnification on a moto-g-2025 device.",
+   "symptoms": [
+    "I can't see the screen clearly",
+    "The text is too small",
+    "How do I zoom in on my phone?",
+    "I need to magnify my display",
+    "My vision isn't great, I need help seeing the screen"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_speakerphone-using-speakerphone": {
+  "hash": "acaeaeccbe28479603614fdf26dcacff76716b30554335192579fde7f180485d",
+  "result": {
+   "summary": "This tutorial explains how to activate and deactivate the speakerphone feature during an active call on your device.",
+   "symptoms": [
+    "How to turn on speakerphone",
+    "Speaker not working",
+    "Can't hear without speaker",
+    "Need to use speaker",
+    "Turn off speakerphone",
+    "Speakerphone option"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_view_blocked_list-viewing-a-list-of-your-blocked-numbers": {
+  "hash": "d2e7fbcdef4e6822032e97b0cc0f1353f5b136b2480d97c84217fadae55a8bfc",
+  "result": {
+   "summary": "This tutorial explains how to activate and deactivate the speakerphone feature during an active call on your device.",
+   "symptoms": [
+    "How to turn on speakerphone",
+    "Speaker not working",
+    "Can't hear without speaker",
+    "Need to use speaker",
+    "Turn off speakerphone",
+    "Speakerphone option"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notification_clear-using-the-notification-panel": {
+  "hash": "7933f446a9e85717b0518cd6a944eb2ede33683c250ed010ecd0b95f94403f76",
+  "result": {
+   "summary": "This tutorial explains how to access and manage notifications using the notification panel on a moto-g-2025 device.",
+   "symptoms": [
+    "How do I see my notifications?",
+    "My notifications are cluttering the screen.",
+    "I want to get rid of a specific notification.",
+    "How do I clear all my notifications?",
+    "Where is the notification panel?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_navigation-using-turn-by-turn-navigation?topicSource=app-maps-android-smartphone&topicVersion=26.31.02": {
+  "hash": "67ebc6d40f4a1ba1ba3d17e22493889519f3d8ea18da90f1e4be86313fb13d22",
+  "result": {
+   "summary": "This tutorial guides the user on how to start and use turn-by-turn navigation in Google Maps.",
+   "symptoms": [
+    "How do I get directions?",
+    "I can't start navigation.",
+    "How do I use Google Maps for directions?",
+    "I need turn-by-turn directions.",
+    "How do I find a destination?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_google_voice-using-voice-actions": {
+  "hash": "7a03a36808da8793fdd73a7c268822cc77ae3848766aea676e09ade84503a54d",
+  "result": {
+   "summary": "This tutorial guides users on how to initiate and use voice commands on their moto-g-2025 device.",
+   "symptoms": [
+    "How to use voice commands",
+    "Voice search not working",
+    "Google Assistant help",
+    "Can I talk to my phone?",
+    "Voice actions tutorial"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_web_switch-using-web-browser-windows?topicSource=app-chrome-android-smartphone&topicVersion=152.0.7977.64": {
+  "hash": "04d0ca071bea526ad1072084a476c81d567d65ba5ac621f0e691d12e789bd5e1",
+  "result": {
+   "summary": "This tutorial guides users on how to open and close web browser tabs in the Chrome app on their device.",
+   "symptoms": [
+    "How do I open a new tab?",
+    "I have too many tabs open",
+    "How do I close a tab?",
+    "I want to manage my browser tabs",
+    "My phone browser is slow because of tabs"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playstore_certification_status-verifying-your-device-s-certification-status?topicSource=app-playstore-android-smartphone&topicVersion=52.6.26": {
+  "hash": "609010a41025c686741b04a6fb24d09c080e9332ca24b270f67e4d49f014c8ef",
+  "result": {
+   "summary": "This tutorial explains how to check the Play Protect certification status of your device through the Google Play Store settings.",
+   "symptoms": [
+    "Is my phone certified?",
+    "How to check Play Protect status?",
+    "My device isn't working right.",
+    "Play Store problems.",
+    "Verify device certification.",
+    "Google Play issues."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_layers-viewing-current-traffic?topicSource=app-maps-android-smartphone&topicVersion=26.31.02": {
+  "hash": "90ac5142b2cabf44a86e47c1a016b7721b8496c2fa21edc29d36371eee55dc2f",
+  "result": {
+   "summary": "This tutorial guides the user on how to view current traffic conditions using Google Maps.",
+   "symptoms": [
+    "How do I see traffic?",
+    "Show me traffic on the map.",
+    "I want to check traffic.",
+    "Can I see live traffic?",
+    "Where's the traffic layer?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_usage_view-viewing-your-app-usage?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "cb60441e63a53622f00fab35aad04070256060de7806a32d65fd2164619b7299",
+  "result": {
+   "summary": "This tutorial guides the user on how to set up a 'Remind me to take a break' feature within the YouTube app to manage app usage time.",
+   "symptoms": [
+    "I want to limit my YouTube time.",
+    "How do I get reminders to stop watching YouTube?",
+    "I need to manage my screen time on YouTube.",
+    "Can I set a break reminder for YouTube?",
+    "I'm watching too much YouTube.",
+    "Help me set a YouTube usage reminder."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_history_view-viewing-your-history?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "bd4b8388ff7e96c8b4304649d5f41a7673a3f4880968a199aad65c0c1fb6d51f",
+  "result": {
+   "summary": "This tutorial guides the user on how to view and delete their watch history within the YouTube app.",
+   "symptoms": [
+    "How do I see my YouTube history?",
+    "I want to delete my watch history.",
+    "Can I clear my YouTube activity?",
+    "Where is my viewing history?",
+    "My recommendations are bad, I need to clear history."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notifications_view-viewing-your-notifications?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "66ae4539f80fafdaf3fcfcff87194df40999f63bad9089449a94cca3d903d4a3",
+  "result": {
+   "summary": "This tutorial guides the user on how to view notifications within the YouTube app.",
+   "symptoms": [
+    "How do I see my YouTube notifications?",
+    "Where are my notifications?",
+    "I can't find my alerts.",
+    "Show me my YouTube messages."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_watch-watching-a-video?topicSource=app-youtube-android-smartphone&topicVersion=21.39.522": {
+  "hash": "a173312c82ee404e668d4a3c4158225743e782642681df46ffabaa2720b5331e",
+  "result": {
+   "summary": "This tutorial guides the user on how to find and watch a video using the YouTube app on their device.",
+   "symptoms": [
+    "How do I watch a video?",
+    "I can't find a video on YouTube.",
+    "Help me play a video.",
+    "How do I use the YouTube app?",
+    "I want to watch something."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_sim_preferences-set-your-default-sim-for-calls-texts-and-cellular-data": {
+  "hash": "3894fe8deb7e804e19c979413f73cc608e8d2f9c8e98cba806e84d9355144f7a",
+  "result": {
+   "summary": "This tutorial guides the user on how to set their default SIM card for making calls, sending texts, and using cellular data on their device.",
+   "symptoms": [
+    "How do I choose which SIM to use?",
+    "My phone isn't using the right SIM for calls.",
+    "I want to change my default SIM for texts.",
+    "How do I set my preferred SIM for mobile data?",
+    "I have two SIMs, how do I manage them?",
+    "My phone keeps asking which SIM to use."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false,
+     "reason": "Navigating settings."
+    },
+    {
+     "n": 2,
+     "call_ending": false,
+     "reason": "Navigating settings."
+    },
+    {
+     "n": 3,
+     "call_ending": false,
+     "reason": "Changing preferences does not interrupt current service."
+    },
+    {
+     "n": 4,
+     "call_ending": false,
+     "reason": "Completion statement."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,1306 @@
+{
+ "id": "P3",
+ "title": "Clean account, Wi-Fi slow on the iPhone",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-16T04:34:35.729777+00:00",
+ "turns": [
+  {
+   "user": "my wifi is really slow",
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device_label": "iPhone 13",
+           "device": "iphone-13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device_label": "Galaxy A15 5G",
+           "device": "galaxy-a15-5g"
+          }
+         ],
+         "customer_id": "cust_2001",
+         "name": "Jordan Reyes",
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "current_date": "2026-10-15[America/Los_Angeles]",
+            "_session": {
+             "channel": "API",
+             "modality": "TEXT"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:54.367Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my wifi is really slow"
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:54.367Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:54.963Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-4695a2be-9c80-4586-934a-fe13b39dad37",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:55.641Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-4695a2be-9c80-4586-934a-fe13b39dad37",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device_label": "iPhone 13",
+                 "device": "iphone-13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device_label": "Galaxy A15 5G",
+                 "device": "galaxy-a15-5g"
+                }
+               ],
+               "customer_id": "cust_2001",
+               "name": "Jordan Reyes",
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:55.824Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:56.460Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:34:54.291832Z",
+        "endTime": "2026-10-16T04:34:56.508Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 76.0,
+         "perceived latency (ms)": 2217.0,
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:34:54.368225Z",
+          "endTime": "2026-10-16T04:34:54.962176Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 57.0,
+           "[debug] prefill time (ms)": 190.0,
+           "time to first chunk (ms)": 593.0,
+           "agent": "Care Concierge",
+           "output token count": 19.0,
+           "input token count": 1342.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.593951s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:34:54.963Z",
+          "endTime": "2026-10-16T04:34:54.963Z",
+          "attributes": {
+           "type": "TransferToAgentTool",
+           "agent": "Care Concierge",
+           "name": "transfer_to_agent",
+           "args": {
+            "agent_name": "Tech Support"
+           }
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:34:54.965989Z",
+          "endTime": "2026-10-16T04:34:55.640465Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 61.0,
+           "[debug] prefill time (ms)": 217.0,
+           "time to first chunk (ms)": 674.0,
+           "agent": "Tech Support",
+           "output token count": 23.0,
+           "input token count": 4608.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.674476s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:34:55.641846Z",
+          "endTime": "2026-10-16T04:34:55.824131Z",
+          "attributes": {
+           "tool call id": "adk-4695a2be-9c80-4586-934a-fe13b39dad37",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_lines",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device_label": "iPhone 13",
+                "device": "iphone-13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device_label": "Galaxy A15 5G",
+                "device": "galaxy-a15-5g"
+               }
+              ],
+              "customer_id": "cust_2001",
+              "name": "Jordan Reyes",
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           }
+          },
+          "duration": "0.182285s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:34:55.825271Z",
+          "endTime": "2026-10-16T04:34:56.458805Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "[debug] prefill time (ms)": 219.0,
+           "time to first chunk (ms)": 630.0,
+           "agent": "Tech Support",
+           "output token count": 17.0,
+           "input token count": 4808.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.633534s"
+         }
+        ],
+        "duration": "2.216168s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes it's this iPhone",
+   "agent": "Slow Wi-Fi is no fun. Let me check a couple of things on our side first. Everything looks normal with the network. I have a guide that can help, it's 7 steps and takes about 4 minutes. I can text you the guide, walk you through it now, or both. What works for you?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_find_tutorials",
+     "payload": {
+      "args": {
+       "symptom": "wifi is really slow",
+       "device": "iphone-13"
+      },
+      "result": {
+       "text_output": [
+        {
+         "results": [
+          {
+           "kind": "article",
+           "branches": 1.0,
+           "title": "Wi-Fi connection issues or slowdowns",
+           "intro": "",
+           "score": 107.917,
+           "id": "156126-wi-fi-connection-issues-or-slowdowns",
+           "step_count": 7.0
+          },
+          {
+           "kind": "article",
+           "branches": 1.0,
+           "title": "Wi-Fi Calling isn't working",
+           "intro": "When Wi-Fi calling is on, your device can make and receive calls via Wi-Fi networks. Your device will choose to make calls via Wi-Fi or over a cellular network based on which signal is stronger at the time.",
+           "score": 106.876,
+           "id": "155842-wi-fi-calling-isn-t-working",
+           "step_count": 7.0
+          },
+          {
+           "kind": "procedure",
+           "branches": 1.0,
+           "title": "Troubleshooting why Wi-Fi calling isn't working",
+           "intro": "An official troubleshooting guide to resolve Wi-Fi calling issues. Follow these step-by-step manual instructions to diagnose network errors, fix connection drops, and restore seamless voice calling on your device.",
+           "score": 33.53,
+           "id": "feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working",
+           "step_count": 8.0
+          },
+          {
+           "kind": "procedure",
+           "branches": 1.0,
+           "title": "Turning Wi-Fi assist off",
+           "intro": "Learn how to save data by turning off Wi-Fi Assist on your device. Wi-Fi Assist will use your data plan to connect to the internet when your Wi-Fi signal is poor.",
+           "score": 33.53,
+           "id": "feature_special_assist-turning-wi-fi-assist-off",
+           "step_count": 4.0
+          },
+          {
+           "kind": "procedure",
+           "branches": 1.0,
+           "title": "Turning your Wi-Fi on and off",
+           "intro": "Follow along with these steps to connect to Wi-Fi.",
+           "score": 33.53,
+           "id": "feature_connections_wifi-turning-your-wi-fi-on-and-off",
+           "step_count": 6.0
+          }
+         ],
+         "device": "iphone-13"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_tutorial",
+     "payload": {
+      "args": {
+       "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+       "device": "iphone-13"
+      },
+      "result": {
+       "text_output": [
+        {
+         "title": "Wi-Fi connection issues or slowdowns",
+         "summary": "7 steps, about 4 minutes.",
+         "call_ending_steps": [
+          2.0,
+          5.0,
+          7.0
+         ],
+         "branch_question": null,
+         "kind": "article",
+         "id": "156126-wi-fi-connection-issues-or-slowdowns",
+         "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns",
+         "destructive_steps": [],
+         "choices": [],
+         "step_count": 7.0
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Slow Wi-Fi is no fun. Let me check a couple of things on our side first. Everything looks normal with the network. I have a guide that can help, it's 7 steps and takes about 4 minutes. I can text you the guide, walk you through it now, or both. What works for you?",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes it's this iPhone"
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:56.631Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-6ae2865a-2dbe-4faa-890b-396be73d3e81",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:57.316Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-6ae2865a-2dbe-4faa-890b-396be73d3e81",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:57.495Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-3140147c-09fa-41e1-bec9-882e927d35d4",
+            "args": {
+             "symptom": "wifi is really slow",
+             "device": "iphone-13"
+            },
+            "displayName": "support_find_tutorials",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "find_tutorials"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:58.249Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-3140147c-09fa-41e1-bec9-882e927d35d4",
+            "response": {
+             "text_output": [
+              {
+               "results": [
+                {
+                 "kind": "article",
+                 "branches": 1.0,
+                 "title": "Wi-Fi connection issues or slowdowns",
+                 "intro": "",
+                 "score": 107.917,
+                 "id": "156126-wi-fi-connection-issues-or-slowdowns",
+                 "step_count": 7.0
+                },
+                {
+                 "kind": "article",
+                 "branches": 1.0,
+                 "title": "Wi-Fi Calling isn't working",
+                 "intro": "When Wi-Fi calling is on, your device can make and receive calls via Wi-Fi networks. Your device will choose to make calls via Wi-Fi or over a cellular network based on which signal is stronger at the time.",
+                 "score": 106.876,
+                 "id": "155842-wi-fi-calling-isn-t-working",
+                 "step_count": 7.0
+                },
+                {
+                 "kind": "procedure",
+                 "branches": 1.0,
+                 "title": "Troubleshooting why Wi-Fi calling isn't working",
+                 "intro": "An official troubleshooting guide to resolve Wi-Fi calling issues. Follow these step-by-step manual instructions to diagnose network errors, fix connection drops, and restore seamless voice calling on your device.",
+                 "score": 33.53,
+                 "id": "feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working",
+                 "step_count": 8.0
+                },
+                {
+                 "kind": "procedure",
+                 "branches": 1.0,
+                 "title": "Turning Wi-Fi assist off",
+                 "intro": "Learn how to save data by turning off Wi-Fi Assist on your device. Wi-Fi Assist will use your data plan to connect to the internet when your Wi-Fi signal is poor.",
+                 "score": 33.53,
+                 "id": "feature_special_assist-turning-wi-fi-assist-off",
+                 "step_count": 4.0
+                },
+                {
+                 "kind": "procedure",
+                 "branches": 1.0,
+                 "title": "Turning your Wi-Fi on and off",
+                 "intro": "Follow along with these steps to connect to Wi-Fi.",
+                 "score": 33.53,
+                 "id": "feature_connections_wifi-turning-your-wi-fi-on-and-off",
+                 "step_count": 6.0
+                }
+               ],
+               "device": "iphone-13"
+              }
+             ]
+            },
+            "displayName": "support_find_tutorials",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "find_tutorials"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:58.605Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-1f0585a6-ab8f-45d9-ac48-1836b3a6c06f",
+            "args": {
+             "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+             "device": "iphone-13"
+            },
+            "displayName": "support_get_tutorial",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_tutorial"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:59.480Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-1f0585a6-ab8f-45d9-ac48-1836b3a6c06f",
+            "response": {
+             "text_output": [
+              {
+               "title": "Wi-Fi connection issues or slowdowns",
+               "summary": "7 steps, about 4 minutes.",
+               "call_ending_steps": [
+                2.0,
+                5.0,
+                7.0
+               ],
+               "branch_question": null,
+               "kind": "article",
+               "id": "156126-wi-fi-connection-issues-or-slowdowns",
+               "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns",
+               "destructive_steps": [],
+               "choices": [],
+               "step_count": 7.0
+              }
+             ]
+            },
+            "displayName": "support_get_tutorial",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_tutorial"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:34:59.622Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Slow Wi-Fi is no fun. Let me check a couple of things on our side first. Everything looks normal with the network. I have a guide that can help, it's 7 steps and takes about 4 minutes. I can text you the guide, walk you through it now, or both. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-16T04:35:00.712Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:34:56.582728Z",
+        "endTime": "2026-10-16T04:35:00.760273Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 49.0,
+         "perceived latency (ms)": 4178.0,
+         "connection index": 2.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:34:56.633864Z",
+          "endTime": "2026-10-16T04:34:57.313960Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 59.0,
+           "[debug] prefill time (ms)": 218.0,
+           "time to first chunk (ms)": 679.0,
+           "agent": "Tech Support",
+           "output token count": 23.0,
+           "input token count": 4841.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 14.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.680096s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:34:57.316266Z",
+          "endTime": "2026-10-16T04:34:57.495363Z",
+          "attributes": {
+           "tool call id": "adk-6ae2865a-2dbe-4faa-890b-396be73d3e81",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_check_outage",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "zip_code": "30301"
+           }
+          },
+          "duration": "0.179097s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:34:57.496195Z",
+          "endTime": "2026-10-16T04:34:58.248202Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 62.0,
+           "[debug] prefill time (ms)": 219.0,
+           "time to first chunk (ms)": 751.0,
+           "agent": "Tech Support",
+           "output token count": 30.0,
+           "input token count": 4897.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.752007s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:34:58.249602Z",
+          "endTime": "2026-10-16T04:34:58.605625Z",
+          "attributes": {
+           "tool call id": "adk-3140147c-09fa-41e1-bec9-882e927d35d4",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_find_tutorials",
+           "response": {
+            "text_output": [
+             {
+              "results": [
+               {
+                "kind": "article",
+                "branches": 1.0,
+                "title": "Wi-Fi connection issues or slowdowns",
+                "intro": "",
+                "score": 107.917,
+                "id": "156126-wi-fi-connection-issues-or-slowdowns",
+                "step_count": 7.0
+               },
+               {
+                "kind": "article",
+                "branches": 1.0,
+                "title": "Wi-Fi Calling isn't working",
+                "intro": "When Wi-Fi calling is on, your device can make and receive calls via Wi-Fi networks. Your device will choose to make calls via Wi-Fi or over a cellular network based on which signal is stronger at the time.",
+                "score": 106.876,
+                "id": "155842-wi-fi-calling-isn-t-working",
+                "step_count": 7.0
+               },
+               {
+                "kind": "procedure",
+                "branches": 1.0,
+                "title": "Troubleshooting why Wi-Fi calling isn't working",
+                "intro": "An official troubleshooting guide to resolve Wi-Fi calling issues. Follow these step-by-step manual instructions to diagnose network errors, fix connection drops, and restore seamless voice calling on your device.",
+                "score": 33.53,
+                "id": "feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working",
+                "step_count": 8.0
+               },
+               {
+                "kind": "procedure",
+                "branches": 1.0,
+                "title": "Turning Wi-Fi assist off",
+                "intro": "Learn how to save data by turning off Wi-Fi Assist on your device. Wi-Fi Assist will use your data plan to connect to the internet when your Wi-Fi signal is poor.",
+                "score": 33.53,
+                "id": "feature_special_assist-turning-wi-fi-assist-off",
+                "step_count": 4.0
+               },
+               {
+                "kind": "procedure",
+                "branches": 1.0,
+                "title": "Turning your Wi-Fi on and off",
+                "intro": "Follow along with these steps to connect to Wi-Fi.",
+                "score": 33.53,
+                "id": "feature_connections_wifi-turning-your-wi-fi-on-and-off",
+                "step_count": 6.0
+               }
+              ],
+              "device": "iphone-13"
+             }
+            ]
+           },
+           "args": {
+            "symptom": "wifi is really slow",
+            "device": "iphone-13"
+           }
+          },
+          "duration": "0.356023s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:34:58.606450Z",
+          "endTime": "2026-10-16T04:34:59.479087Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 59.0,
+           "[debug] prefill time (ms)": 225.0,
+           "time to first chunk (ms)": 872.0,
+           "agent": "Tech Support",
+           "output token count": 45.0,
+           "input token count": 5430.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.872637s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:34:59.480422Z",
+          "endTime": "2026-10-16T04:34:59.621901Z",
+          "attributes": {
+           "tool call id": "adk-1f0585a6-ab8f-45d9-ac48-1836b3a6c06f",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_tutorial",
+           "response": {
+            "text_output": [
+             {
+              "title": "Wi-Fi connection issues or slowdowns",
+              "summary": "7 steps, about 4 minutes.",
+              "call_ending_steps": [
+               2.0,
+               5.0,
+               7.0
+              ],
+              "branch_question": null,
+              "kind": "article",
+              "id": "156126-wi-fi-connection-issues-or-slowdowns",
+              "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns",
+              "destructive_steps": [],
+              "choices": [],
+              "step_count": 7.0
+             }
+            ]
+           },
+           "args": {
+            "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+            "device": "iphone-13"
+           }
+          },
+          "duration": "0.141479s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:34:59.622920Z",
+          "endTime": "2026-10-16T04:35:00.711038Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 64.0,
+           "[debug] prefill time (ms)": 225.0,
+           "time to first chunk (ms)": 1086.0,
+           "agent": "Tech Support",
+           "output token count": 69.0,
+           "input token count": 5632.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "1.088118s"
+         }
+        ],
+        "duration": "4.177545s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "walk me through it",
+   "agent": "To start, there are several things we can try, like confirming your connection and restarting your phone. First, open Settings and tap Wi-Fi. Do you see a checkmark next to your Wi-Fi network?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_get_step",
+     "payload": {
+      "args": {
+       "n": 1.0,
+       "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+       "device": "iphone-13"
+      },
+      "result": {
+       "text_output": [
+        {
+         "warning": null,
+         "is_last": false,
+         "destructive": false,
+         "next_options": [],
+         "heading": "",
+         "n": 1.0,
+         "call_ending": false,
+         "linked_procedures": [],
+         "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/375e143fa4bf3d884d5cee8e742342badb6d68cafe2eb7ab74403b323c87b5f8.jpeg",
+         "notes": [],
+         "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+         "of": 7.0
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "To start, there are several things we can try, like confirming your connection and restarting your phone. First, open Settings and tap Wi-Fi. Do you see a checkmark next to your Wi-Fi network?",
+      "turnCompleted": true,
+      "turnIndex": 3,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "walk me through it"
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:31.400Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-635410b9-db37-47e3-abbe-db7704f3bed4",
+            "args": {
+             "n": 1.0,
+             "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+             "device": "iphone-13"
+            },
+            "displayName": "support_get_step",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_step"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:32.484Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-635410b9-db37-47e3-abbe-db7704f3bed4",
+            "response": {
+             "text_output": [
+              {
+               "warning": null,
+               "is_last": false,
+               "destructive": false,
+               "next_options": [],
+               "heading": "",
+               "n": 1.0,
+               "call_ending": false,
+               "linked_procedures": [],
+               "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/375e143fa4bf3d884d5cee8e742342badb6d68cafe2eb7ab74403b323c87b5f8.jpeg",
+               "notes": [],
+               "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+               "of": 7.0
+              }
+             ]
+            },
+            "displayName": "support_get_step",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_step"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:32.636Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "To start, there are several things we can try, like confirming your connection and restarting your phone. First, open Settings and tap Wi-Fi. Do you see a checkmark next to your Wi-Fi network?"
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:33.499Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:36:31.309782Z",
+        "endTime": "2026-10-16T04:36:33.578094Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 91.0,
+         "perceived latency (ms)": 2269.0,
+         "connection index": 3.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:31.578919Z",
+          "endTime": "2026-10-16T04:36:32.482796Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 66.0,
+           "[debug] prefill time (ms)": 226.0,
+           "time to first chunk (ms)": 903.0,
+           "agent": "Tech Support",
+           "output token count": 49.0,
+           "input token count": 5715.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 21.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.903877s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:36:32.484233Z",
+          "endTime": "2026-10-16T04:36:32.636230Z",
+          "attributes": {
+           "tool call id": "adk-635410b9-db37-47e3-abbe-db7704f3bed4",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_step",
+           "response": {
+            "text_output": [
+             {
+              "warning": null,
+              "is_last": false,
+              "destructive": false,
+              "next_options": [],
+              "heading": "",
+              "n": 1.0,
+              "call_ending": false,
+              "linked_procedures": [],
+              "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/375e143fa4bf3d884d5cee8e742342badb6d68cafe2eb7ab74403b323c87b5f8.jpeg",
+              "notes": [],
+              "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+              "of": 7.0
+             }
+            ]
+           },
+           "args": {
+            "n": 1.0,
+            "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+            "device": "iphone-13"
+           }
+          },
+          "duration": "0.151997s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:32.637147Z",
+          "endTime": "2026-10-16T04:36:33.497744Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 64.0,
+           "[debug] prefill time (ms)": 227.0,
+           "time to first chunk (ms)": 858.0,
+           "agent": "Tech Support",
+           "output token count": 44.0,
+           "input token count": 5998.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.860597s"
+         }
+        ],
+        "duration": "2.268312s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "done, next",
+   "agent": "This next step might disconnect our call. When your phone is back, call again and I'll pick up right where we left off. From Wi-Fi settings, please turn Wi-Fi off, wait a moment, then turn it back on. Let me know when you're ready to try that.",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_get_step",
+     "payload": {
+      "args": {
+       "n": 2.0,
+       "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+       "device": "iphone-13"
+      },
+      "result": {
+       "text_output": [
+        {
+         "warning": null,
+         "is_last": false,
+         "destructive": false,
+         "next_options": [],
+         "heading": "Confirming your Wi-Fi connection",
+         "n": 2.0,
+         "call_ending": true,
+         "linked_procedures": [
+          {
+           "id": "feature_connections_wifi-turning-your-wi-fi-on-and-off",
+           "title": "Turning your Wi-Fi on and off"
+          }
+         ],
+         "image_url": "",
+         "notes": [],
+         "text": "Within the Settings app, take a moment to confirm that your iPhone is connected to a Wi-Fi network. A blue checkmark will appear next to your active connection within your Wi-Fi settings. If you don't see one, tap on an available Wi-Fi network and attempt to connect. (Make sure your iPhone's Airplane Mode isn't on.)\nNote: If you're successfully connected to Wi-Fi, but you're getting a \"No Internet Connection\" message, there may be an issue with your Wi-Fi router/gateway that you'll need to troubleshoot. Apple also maintains a list of recommended settings for Wi-Fi routers you'll want to review.",
+         "of": 7.0
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "This next step might disconnect our call. When your phone is back, call again and I'll pick up right where we left off. From Wi-Fi settings, please turn Wi-Fi off, wait a moment, then turn it back on. Let me know when you're ready to try that.",
+      "turnCompleted": true,
+      "turnIndex": 4,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "done, next"
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:33.684Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-6faae776-65ad-45b9-ba5b-9429606702c5",
+            "args": {
+             "n": 2.0,
+             "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+             "device": "iphone-13"
+            },
+            "displayName": "support_get_step",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_step"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:34.589Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-6faae776-65ad-45b9-ba5b-9429606702c5",
+            "response": {
+             "text_output": [
+              {
+               "warning": null,
+               "is_last": false,
+               "destructive": false,
+               "next_options": [],
+               "heading": "Confirming your Wi-Fi connection",
+               "n": 2.0,
+               "call_ending": true,
+               "linked_procedures": [
+                {
+                 "id": "feature_connections_wifi-turning-your-wi-fi-on-and-off",
+                 "title": "Turning your Wi-Fi on and off"
+                }
+               ],
+               "image_url": "",
+               "notes": [],
+               "text": "Within the Settings app, take a moment to confirm that your iPhone is connected to a Wi-Fi network. A blue checkmark will appear next to your active connection within your Wi-Fi settings. If you don't see one, tap on an available Wi-Fi network and attempt to connect. (Make sure your iPhone's Airplane Mode isn't on.)\nNote: If you're successfully connected to Wi-Fi, but you're getting a \"No Internet Connection\" message, there may be an issue with your Wi-Fi router/gateway that you'll need to troubleshoot. Apple also maintains a list of recommended settings for Wi-Fi routers you'll want to review.",
+               "of": 7.0
+              }
+             ]
+            },
+            "displayName": "support_get_step",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_step"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:34.752Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "This next step might disconnect our call. When your phone is back, call again and I'll pick up right where we left off. From Wi-Fi settings, please turn Wi-Fi off, wait a moment, then turn it back on. Let me know when you're ready to try that."
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:35.804Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:36:33.636904Z",
+        "endTime": "2026-10-16T04:36:35.876361Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 48.0,
+         "perceived latency (ms)": 2240.0,
+         "connection index": 4.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:33.687045Z",
+          "endTime": "2026-10-16T04:36:34.587727Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 67.0,
+           "[debug] prefill time (ms)": 228.0,
+           "time to first chunk (ms)": 899.0,
+           "agent": "Tech Support",
+           "output token count": 49.0,
+           "input token count": 6055.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 22.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.900682s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:36:34.589340Z",
+          "endTime": "2026-10-16T04:36:34.752465Z",
+          "attributes": {
+           "tool call id": "adk-6faae776-65ad-45b9-ba5b-9429606702c5",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_step",
+           "response": {
+            "text_output": [
+             {
+              "warning": null,
+              "is_last": false,
+              "destructive": false,
+              "next_options": [],
+              "heading": "Confirming your Wi-Fi connection",
+              "n": 2.0,
+              "call_ending": true,
+              "linked_procedures": [
+               {
+                "id": "feature_connections_wifi-turning-your-wi-fi-on-and-off",
+                "title": "Turning your Wi-Fi on and off"
+               }
+              ],
+              "image_url": "",
+              "notes": [],
+              "text": "Within the Settings app, take a moment to confirm that your iPhone is connected to a Wi-Fi network. A blue checkmark will appear next to your active connection within your Wi-Fi settings. If you don't see one, tap on an available Wi-Fi network and attempt to connect. (Make sure your iPhone's Airplane Mode isn't on.)\nNote: If you're successfully connected to Wi-Fi, but you're getting a \"No Internet Connection\" message, there may be an issue with your Wi-Fi router/gateway that you'll need to troubleshoot. Apple also maintains a list of recommended settings for Wi-Fi routers you'll want to review.",
+              "of": 7.0
+             }
+            ]
+           },
+           "args": {
+            "n": 2.0,
+            "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+            "device": "iphone-13"
+           }
+          },
+          "duration": "0.163125s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:34.753771Z",
+          "endTime": "2026-10-16T04:36:35.803080Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 62.0,
+           "[debug] prefill time (ms)": 254.0,
+           "time to first chunk (ms)": 1047.0,
+           "agent": "Tech Support",
+           "output token count": 63.0,
+           "input token count": 6364.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "1.049309s"
+         }
+        ],
+        "duration": "2.239457s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P3\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"ACTIVE\", \"L2\": \"ACTIVE\"}, \"outage\": false}",
+ "session_id": "b34d6380-d076-4b34-ba4d-5abfa053a63e",
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_lines",
+  "check_outage",
+  "find_tutorials",
+  "get_tutorial",
+  "get_step",
+  "get_step"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

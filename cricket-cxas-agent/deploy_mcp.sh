@@ -26,7 +26,7 @@ echo "[1] deploying $SERVICE to $REGION in $PROJECT (profile $PROFILE)"
 gcloud run deploy "$SERVICE" \
   --source . --region "$REGION" --project "$PROJECT" \
   --no-allow-unauthenticated --min-instances 1 --max-instances 1 \
-  --set-env-vars "^|^DEMO_PROFILE=${PROFILE}|MCP_WIRE_LOG=${MCP_WIRE_LOG:-0}${TWILIO_ENV}" \
+  --set-env-vars "^|^DEMO_PROFILE=${PROFILE}|MCP_WIRE_LOG=${MCP_WIRE_LOG:-0}|CONTENT_BACKEND=firestore|GOOGLE_CLOUD_PROJECT=${PROJECT}|RESUME_WINDOW_MINUTES=${RESUME_WINDOW_MINUTES:-30}${TWILIO_ENV}" \
   --quiet >/dev/null
 
 URL=$(gcloud run services describe "$SERVICE" --region "$REGION" \
@@ -35,7 +35,13 @@ URL=$(gcloud run services describe "$SERVICE" --region "$REGION" \
 PROJECT_NUMBER=$(gcloud projects describe "$PROJECT" --format='value(projectNumber)')
 CES_SERVICE_AGENT="${CES_SERVICE_AGENT:-service-${PROJECT_NUMBER}@gcp-sa-ces.iam.gserviceaccount.com}"
 
-echo "[2] granting run.invoker to $CES_SERVICE_AGENT"
+RUNTIME_SA=$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" \
+               --format='value(spec.template.spec.serviceAccountName)')
+echo "[2] granting Firestore access to $RUNTIME_SA"
+gcloud projects add-iam-policy-binding "$PROJECT" --member "serviceAccount:${RUNTIME_SA}" \
+  --role roles/datastore.user --condition=None --quiet >/dev/null
+
+echo "[3] granting run.invoker to $CES_SERVICE_AGENT"
 gcloud run services add-iam-policy-binding "$SERVICE" \
   --region "$REGION" --project "$PROJECT" \
   --member "serviceAccount:${CES_SERVICE_AGENT}" \

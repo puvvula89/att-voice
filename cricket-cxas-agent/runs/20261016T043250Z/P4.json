@@ -1,0 +1,1097 @@
+{
+ "id": "P4",
+ "title": "Galaxy will not power on, calling from the iPhone line",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-16T04:36:35.814351+00:00",
+ "turns": [
+  {
+   "user": "my galaxy won't turn on at all",
+   "agent": "I understand your Galaxy won't turn on. I'll help you with that.\n\nSince it has no power, I know you're calling from your iPhone. Let me check a few things on our side first.\nEverything looks normal on our side.\n\nI have a guide that can help unfreeze your screen and safely restart your Galaxy. It's 3 steps and takes about 2 minutes.\n\nI can text you the guide, walk you through it now, or both. What works for you?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device_label": "iPhone 13",
+           "device": "iphone-13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device_label": "Galaxy A15 5G",
+           "device": "galaxy-a15-5g"
+          }
+         ],
+         "customer_id": "cust_2001",
+         "name": "Jordan Reyes",
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_find_tutorials",
+     "payload": {
+      "args": {
+       "symptom": "won't turn on at all",
+       "device": "galaxy-a15-5g"
+      },
+      "result": {
+       "text_output": [
+        {
+         "results": [
+          {
+           "kind": "article",
+           "branches": 2.0,
+           "title": "Can't turn device on or off",
+           "intro": "A frozen phone that will not turn on or off stops you from using your device completely. Learning simple button combinations and charging steps helps unfreeze your screen and safely restart your device.",
+           "score": 26.619,
+           "id": "155887-can-t-turn-device-on-or-off",
+           "step_count": 3.0
+          },
+          {
+           "kind": "procedure",
+           "branches": 1.0,
+           "title": "Using power saving mode",
+           "intro": "Use emergency power saving mode when your device is low on battery and you still need to be able use some functions on your device.",
+           "score": 20.111,
+           "id": "feature_emergency_mode-using-power-saving-mode",
+           "step_count": 4.0
+          },
+          {
+           "kind": "article",
+           "branches": 1.0,
+           "title": "Wi-Fi Calling isn't working",
+           "intro": "When Wi-Fi calling is on, your device can make and receive calls via Wi-Fi networks. Your device will choose to make calls via Wi-Fi or over a cellular network based on which signal is stronger at the time.",
+           "score": 19.179,
+           "id": "155885-wi-fi-calling-isn-t-working",
+           "step_count": 10.0
+          },
+          {
+           "kind": "procedure",
+           "branches": 1.0,
+           "title": "Using recovery mode to reset your device to factory settings",
+           "intro": "Your Android's Recovery Mode can be a powerful tool for troubleshooting your device, but you'll need to navigate its menus using your device's physical buttons.",
+           "score": 17.914,
+           "id": "feature_android_recovery-using-recovery-mode-to-reset-your-device-to-factory-settings",
+           "step_count": 9.0
+          },
+          {
+           "kind": "procedure",
+           "branches": 1.0,
+           "title": "Using turn-by-turn navigation",
+           "intro": "The Maps application can help guide you to your destination with turn-by-turn navigation. You can also use the Maps app to search for nearby places such as restaurants or grocery stores.",
+           "score": 17.578,
+           "id": "feature_maps_navigation-using-turn-by-turn-navigation?topicSource=app-maps-android-smartphone&topicVersion=26.31.02",
+           "step_count": 5.0
+          }
+         ],
+         "device": "galaxy-a15-5g"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_tutorial",
+     "payload": {
+      "args": {
+       "tutorial_id": "155887-can-t-turn-device-on-or-off",
+       "device": "galaxy-a15-5g"
+      },
+      "result": {
+       "text_output": [
+        {
+         "title": "Can't turn device on or off",
+         "summary": "A frozen phone that will not turn on or off stops you from using your device completely. Learning simple button combinations and charging steps helps unfreeze your screen and safely restart your device. 3 steps, about 2 minutes.",
+         "call_ending_steps": [
+          2.0,
+          3.0
+         ],
+         "branch_question": "Are you having issues powering off your phone, or powering it on?",
+         "kind": "article",
+         "id": "155887-can-t-turn-device-on-or-off",
+         "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off",
+         "destructive_steps": [],
+         "choices": [
+          "Powering off my phone",
+          "Powering on my phone"
+         ],
+         "step_count": 3.0
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I understand your Galaxy won't turn on. I'll help you with that.\n\nSince it has no power, I know you're calling from your iPhone. Let me check a few things on our side first.",
+      "turnIndex": 1
+     },
+     {
+      "text": "Everything looks normal on our side.\n\nI have a guide that can help unfreeze your screen and safely restart your Galaxy. It's 3 steps and takes about 2 minutes.\n\nI can text you the guide, walk you through it now, or both. What works for you?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "current_date": "2026-10-15[America/Los_Angeles]",
+            "_session": {
+             "channel": "API",
+             "modality": "TEXT"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:55.217Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my galaxy won't turn on at all"
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:55.217Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:55.787Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-ac085bf1-2f27-498a-8440-a0c48d4a157d",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:56.443Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-ac085bf1-2f27-498a-8440-a0c48d4a157d",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device_label": "iPhone 13",
+                 "device": "iphone-13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device_label": "Galaxy A15 5G",
+                 "device": "galaxy-a15-5g"
+                }
+               ],
+               "customer_id": "cust_2001",
+               "name": "Jordan Reyes",
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:56.618Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I understand your Galaxy won't turn on. I'll help you with that.\n\nSince it has no power, I know you're calling from your iPhone. Let me check a few things on our side first."
+          },
+          {
+           "toolCall": {
+            "id": "adk-f1138a35-6b18-4f74-b3e6-07c726df8486",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:57.683Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-f1138a35-6b18-4f74-b3e6-07c726df8486",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:57.824Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-b971ec14-e3ac-4d8e-94c6-42fdaf8e6017",
+            "args": {
+             "symptom": "won't turn on at all",
+             "device": "galaxy-a15-5g"
+            },
+            "displayName": "support_find_tutorials",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "find_tutorials"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:58.634Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-b971ec14-e3ac-4d8e-94c6-42fdaf8e6017",
+            "response": {
+             "text_output": [
+              {
+               "results": [
+                {
+                 "kind": "article",
+                 "branches": 2.0,
+                 "title": "Can't turn device on or off",
+                 "intro": "A frozen phone that will not turn on or off stops you from using your device completely. Learning simple button combinations and charging steps helps unfreeze your screen and safely restart your device.",
+                 "score": 26.619,
+                 "id": "155887-can-t-turn-device-on-or-off",
+                 "step_count": 3.0
+                },
+                {
+                 "kind": "procedure",
+                 "branches": 1.0,
+                 "title": "Using power saving mode",
+                 "intro": "Use emergency power saving mode when your device is low on battery and you still need to be able use some functions on your device.",
+                 "score": 20.111,
+                 "id": "feature_emergency_mode-using-power-saving-mode",
+                 "step_count": 4.0
+                },
+                {
+                 "kind": "article",
+                 "branches": 1.0,
+                 "title": "Wi-Fi Calling isn't working",
+                 "intro": "When Wi-Fi calling is on, your device can make and receive calls via Wi-Fi networks. Your device will choose to make calls via Wi-Fi or over a cellular network based on which signal is stronger at the time.",
+                 "score": 19.179,
+                 "id": "155885-wi-fi-calling-isn-t-working",
+                 "step_count": 10.0
+                },
+                {
+                 "kind": "procedure",
+                 "branches": 1.0,
+                 "title": "Using recovery mode to reset your device to factory settings",
+                 "intro": "Your Android's Recovery Mode can be a powerful tool for troubleshooting your device, but you'll need to navigate its menus using your device's physical buttons.",
+                 "score": 17.914,
+                 "id": "feature_android_recovery-using-recovery-mode-to-reset-your-device-to-factory-settings",
+                 "step_count": 9.0
+                },
+                {
+                 "kind": "procedure",
+                 "branches": 1.0,
+                 "title": "Using turn-by-turn navigation",
+                 "intro": "The Maps application can help guide you to your destination with turn-by-turn navigation. You can also use the Maps app to search for nearby places such as restaurants or grocery stores.",
+                 "score": 17.578,
+                 "id": "feature_maps_navigation-using-turn-by-turn-navigation?topicSource=app-maps-android-smartphone&topicVersion=26.31.02",
+                 "step_count": 5.0
+                }
+               ],
+               "device": "galaxy-a15-5g"
+              }
+             ]
+            },
+            "displayName": "support_find_tutorials",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "find_tutorials"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:58.768Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-b3ce6a46-f180-4632-8ff9-73f2f51c4921",
+            "args": {
+             "tutorial_id": "155887-can-t-turn-device-on-or-off",
+             "device": "galaxy-a15-5g"
+            },
+            "displayName": "support_get_tutorial",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_tutorial"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:59.672Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-b3ce6a46-f180-4632-8ff9-73f2f51c4921",
+            "response": {
+             "text_output": [
+              {
+               "title": "Can't turn device on or off",
+               "summary": "A frozen phone that will not turn on or off stops you from using your device completely. Learning simple button combinations and charging steps helps unfreeze your screen and safely restart your device. 3 steps, about 2 minutes.",
+               "call_ending_steps": [
+                2.0,
+                3.0
+               ],
+               "branch_question": "Are you having issues powering off your phone, or powering it on?",
+               "kind": "article",
+               "id": "155887-can-t-turn-device-on-or-off",
+               "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off",
+               "destructive_steps": [],
+               "choices": [
+                "Powering off my phone",
+                "Powering on my phone"
+               ],
+               "step_count": 3.0
+              }
+             ]
+            },
+            "displayName": "support_get_tutorial",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_tutorial"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:36:59.815Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Everything looks normal on our side.\n\nI have a guide that can help unfreeze your screen and safely restart your Galaxy. It's 3 steps and takes about 2 minutes.\n\nI can text you the guide, walk you through it now, or both. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-16T04:37:00.834Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:36:55.168966Z",
+        "endTime": "2026-10-16T04:37:00.905856Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 49.0,
+         "perceived latency (ms)": 5737.0,
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:55.217812Z",
+          "endTime": "2026-10-16T04:36:55.786316Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "[debug] prefill time (ms)": 190.0,
+           "time to first chunk (ms)": 567.0,
+           "agent": "Care Concierge",
+           "output token count": 19.0,
+           "input token count": 1346.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.568504s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:36:55.787Z",
+          "endTime": "2026-10-16T04:36:55.787Z",
+          "attributes": {
+           "type": "TransferToAgentTool",
+           "agent": "Care Concierge",
+           "name": "transfer_to_agent",
+           "args": {
+            "agent_name": "Tech Support"
+           }
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:55.789687Z",
+          "endTime": "2026-10-16T04:36:56.442498Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 69.0,
+           "[debug] prefill time (ms)": 217.0,
+           "time to first chunk (ms)": 651.0,
+           "agent": "Tech Support",
+           "output token count": 23.0,
+           "input token count": 4612.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 28.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.652811s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:36:56.443744Z",
+          "endTime": "2026-10-16T04:36:56.617995Z",
+          "attributes": {
+           "tool call id": "adk-ac085bf1-2f27-498a-8440-a0c48d4a157d",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_lines",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device_label": "iPhone 13",
+                "device": "iphone-13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device_label": "Galaxy A15 5G",
+                "device": "galaxy-a15-5g"
+               }
+              ],
+              "customer_id": "cust_2001",
+              "name": "Jordan Reyes",
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           }
+          },
+          "duration": "0.174251s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:56.618857Z",
+          "endTime": "2026-10-16T04:36:57.682760Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "[debug] prefill time (ms)": 218.0,
+           "time to first chunk (ms)": 1061.0,
+           "agent": "Tech Support",
+           "output token count": 69.0,
+           "input token count": 4812.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "1.063903s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:36:57.684055Z",
+          "endTime": "2026-10-16T04:36:57.824581Z",
+          "attributes": {
+           "tool call id": "adk-f1138a35-6b18-4f74-b3e6-07c726df8486",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_check_outage",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "zip_code": "30301"
+           }
+          },
+          "duration": "0.140526s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:57.825484Z",
+          "endTime": "2026-10-16T04:36:58.633405Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 65.0,
+           "[debug] prefill time (ms)": 219.0,
+           "time to first chunk (ms)": 807.0,
+           "agent": "Tech Support",
+           "output token count": 37.0,
+           "input token count": 4914.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 21.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.807921s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:36:58.634654Z",
+          "endTime": "2026-10-16T04:36:58.768037Z",
+          "attributes": {
+           "tool call id": "adk-b971ec14-e3ac-4d8e-94c6-42fdaf8e6017",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_find_tutorials",
+           "response": {
+            "text_output": [
+             {
+              "results": [
+               {
+                "kind": "article",
+                "branches": 2.0,
+                "title": "Can't turn device on or off",
+                "intro": "A frozen phone that will not turn on or off stops you from using your device completely. Learning simple button combinations and charging steps helps unfreeze your screen and safely restart your device.",
+                "score": 26.619,
+                "id": "155887-can-t-turn-device-on-or-off",
+                "step_count": 3.0
+               },
+               {
+                "kind": "procedure",
+                "branches": 1.0,
+                "title": "Using power saving mode",
+                "intro": "Use emergency power saving mode when your device is low on battery and you still need to be able use some functions on your device.",
+                "score": 20.111,
+                "id": "feature_emergency_mode-using-power-saving-mode",
+                "step_count": 4.0
+               },
+               {
+                "kind": "article",
+                "branches": 1.0,
+                "title": "Wi-Fi Calling isn't working",
+                "intro": "When Wi-Fi calling is on, your device can make and receive calls via Wi-Fi networks. Your device will choose to make calls via Wi-Fi or over a cellular network based on which signal is stronger at the time.",
+                "score": 19.179,
+                "id": "155885-wi-fi-calling-isn-t-working",
+                "step_count": 10.0
+               },
+               {
+                "kind": "procedure",
+                "branches": 1.0,
+                "title": "Using recovery mode to reset your device to factory settings",
+                "intro": "Your Android's Recovery Mode can be a powerful tool for troubleshooting your device, but you'll need to navigate its menus using your device's physical buttons.",
+                "score": 17.914,
+                "id": "feature_android_recovery-using-recovery-mode-to-reset-your-device-to-factory-settings",
+                "step_count": 9.0
+               },
+               {
+                "kind": "procedure",
+                "branches": 1.0,
+                "title": "Using turn-by-turn navigation",
+                "intro": "The Maps application can help guide you to your destination with turn-by-turn navigation. You can also use the Maps app to search for nearby places such as restaurants or grocery stores.",
+                "score": 17.578,
+                "id": "feature_maps_navigation-using-turn-by-turn-navigation?topicSource=app-maps-android-smartphone&topicVersion=26.31.02",
+                "step_count": 5.0
+               }
+              ],
+              "device": "galaxy-a15-5g"
+             }
+            ]
+           },
+           "args": {
+            "symptom": "won't turn on at all",
+            "device": "galaxy-a15-5g"
+           }
+          },
+          "duration": "0.133383s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:58.768871Z",
+          "endTime": "2026-10-16T04:36:59.671040Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 58.0,
+           "[debug] prefill time (ms)": 223.0,
+           "time to first chunk (ms)": 901.0,
+           "agent": "Tech Support",
+           "output token count": 50.0,
+           "input token count": 5514.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.902169s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:36:59.672313Z",
+          "endTime": "2026-10-16T04:36:59.815018Z",
+          "attributes": {
+           "tool call id": "adk-b3ce6a46-f180-4632-8ff9-73f2f51c4921",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_tutorial",
+           "response": {
+            "text_output": [
+             {
+              "title": "Can't turn device on or off",
+              "summary": "A frozen phone that will not turn on or off stops you from using your device completely. Learning simple button combinations and charging steps helps unfreeze your screen and safely restart your device. 3 steps, about 2 minutes.",
+              "call_ending_steps": [
+               2.0,
+               3.0
+              ],
+              "branch_question": "Are you having issues powering off your phone, or powering it on?",
+              "kind": "article",
+              "id": "155887-can-t-turn-device-on-or-off",
+              "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off",
+              "destructive_steps": [],
+              "choices": [
+               "Powering off my phone",
+               "Powering on my phone"
+              ],
+              "step_count": 3.0
+             }
+            ]
+           },
+           "args": {
+            "tutorial_id": "155887-can-t-turn-device-on-or-off",
+            "device": "galaxy-a15-5g"
+           }
+          },
+          "duration": "0.142705s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:36:59.815970Z",
+          "endTime": "2026-10-16T04:37:00.832997Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 55.0,
+           "[debug] prefill time (ms)": 261.0,
+           "time to first chunk (ms)": 1015.0,
+           "agent": "Tech Support",
+           "output token count": 60.0,
+           "input token count": 5792.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 10.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "1.017027s"
+         }
+        ],
+        "duration": "5.736890s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "it's the second line",
+   "agent": "Thank you for clarifying. I've selected the Galaxy A15 5G.\n\nEverything looks normal on our side.\n\nI have a guide that can help unfreeze your screen and safely restart your Galaxy. It's 3 steps and takes about 2 minutes.\n\nI can text you the guide, walk you through it now, or both. What works for you?",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Thank you for clarifying. I've selected the Galaxy A15 5G.\n\nEverything looks normal on our side.\n\nI have a guide that can help unfreeze your screen and safely restart your Galaxy. It's 3 steps and takes about 2 minutes.\n\nI can text you the guide, walk you through it now, or both. What works for you?",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "it's the second line"
+          }
+         ],
+         "eventTime": "2026-10-16T04:37:01.052Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Thank you for clarifying. I've selected the Galaxy A15 5G.\n\nEverything looks normal on our side.\n\nI have a guide that can help unfreeze your screen and safely restart your Galaxy. It's 3 steps and takes about 2 minutes.\n\nI can text you the guide, walk you through it now, or both. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-16T04:37:02.251Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:37:00.953693Z",
+        "endTime": "2026-10-16T04:37:02.322385Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 99.0,
+         "perceived latency (ms)": 1369.0,
+         "connection index": 2.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:37:01.053645Z",
+          "endTime": "2026-10-16T04:37:02.250315Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 63.0,
+           "[debug] prefill time (ms)": 258.0,
+           "time to first chunk (ms)": 1194.0,
+           "agent": "Tech Support",
+           "output token count": 79.0,
+           "input token count": 5868.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "1.196670s"
+         }
+        ],
+        "duration": "1.368692s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "ok what do I do",
+   "agent": "If you're having issues powering your phone off or on, there are a few steps you can take. Do you see options to power off or power on?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_get_step",
+     "payload": {
+      "args": {
+       "choice": "Powering on my phone",
+       "n": 1.0,
+       "tutorial_id": "155887-can-t-turn-device-on-or-off",
+       "device": "galaxy-a15-5g"
+      },
+      "result": {
+       "text_output": [
+        {
+         "warning": null,
+         "is_last": false,
+         "destructive": false,
+         "next_options": [],
+         "heading": "",
+         "n": 1.0,
+         "call_ending": false,
+         "linked_procedures": [],
+         "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/15e94fb875be7ae41d733d9f0536db137d43887a7fc655a91c14c4284c9ddc16.png",
+         "notes": [],
+         "text": "If you're having issues powering your phone off or on, there are a few steps you can take to troubleshoot the problem.\nWithin this guide, you'll learn how to:\nPower off your phone\nPower on your phone\nForce restart a frozen or unresponsive phone\nAre you having issues powering off your phone, or powering it on?",
+         "of": 3.0
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "If you're having issues powering your phone off or on, there are a few steps you can take. Do you see options to power off or power on?",
+      "turnCompleted": true,
+      "turnIndex": 3,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "ok what do I do"
+          }
+         ],
+         "eventTime": "2026-10-16T04:38:32.880Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-447cd5f0-b198-48a9-bbeb-050d7a7d80f1",
+            "args": {
+             "choice": "Powering on my phone",
+             "n": 1.0,
+             "tutorial_id": "155887-can-t-turn-device-on-or-off",
+             "device": "galaxy-a15-5g"
+            },
+            "displayName": "support_get_step",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_step"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:38:33.926Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-447cd5f0-b198-48a9-bbeb-050d7a7d80f1",
+            "response": {
+             "text_output": [
+              {
+               "warning": null,
+               "is_last": false,
+               "destructive": false,
+               "next_options": [],
+               "heading": "",
+               "n": 1.0,
+               "call_ending": false,
+               "linked_procedures": [],
+               "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/15e94fb875be7ae41d733d9f0536db137d43887a7fc655a91c14c4284c9ddc16.png",
+               "notes": [],
+               "text": "If you're having issues powering your phone off or on, there are a few steps you can take to troubleshoot the problem.\nWithin this guide, you'll learn how to:\nPower off your phone\nPower on your phone\nForce restart a frozen or unresponsive phone\nAre you having issues powering off your phone, or powering it on?",
+               "of": 3.0
+              }
+             ]
+            },
+            "displayName": "support_get_step",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_step"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:38:34.130Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "If you're having issues powering your phone off or on, there are a few steps you can take. Do you see options to power off or power on?"
+          }
+         ],
+         "eventTime": "2026-10-16T04:38:34.909Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:38:32.830976Z",
+        "endTime": "2026-10-16T04:38:34.978884Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 49.0,
+         "perceived latency (ms)": 2148.0,
+         "connection index": 3.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:38:32.882606Z",
+          "endTime": "2026-10-16T04:38:33.925594Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 59.0,
+           "[debug] prefill time (ms)": 226.0,
+           "time to first chunk (ms)": 1042.0,
+           "agent": "Tech Support",
+           "output token count": 64.0,
+           "input token count": 5962.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "1.042988s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:38:33.926923Z",
+          "endTime": "2026-10-16T04:38:34.130668Z",
+          "attributes": {
+           "tool call id": "adk-447cd5f0-b198-48a9-bbeb-050d7a7d80f1",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_step",
+           "response": {
+            "text_output": [
+             {
+              "warning": null,
+              "is_last": false,
+              "destructive": false,
+              "next_options": [],
+              "heading": "",
+              "n": 1.0,
+              "call_ending": false,
+              "linked_procedures": [],
+              "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/15e94fb875be7ae41d733d9f0536db137d43887a7fc655a91c14c4284c9ddc16.png",
+              "notes": [],
+              "text": "If you're having issues powering your phone off or on, there are a few steps you can take to troubleshoot the problem.\nWithin this guide, you'll learn how to:\nPower off your phone\nPower on your phone\nForce restart a frozen or unresponsive phone\nAre you having issues powering off your phone, or powering it on?",
+              "of": 3.0
+             }
+            ]
+           },
+           "args": {
+            "choice": "Powering on my phone",
+            "n": 1.0,
+            "tutorial_id": "155887-can-t-turn-device-on-or-off",
+            "device": "galaxy-a15-5g"
+           }
+          },
+          "duration": "0.203745s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:38:34.131620Z",
+          "endTime": "2026-10-16T04:38:34.907710Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "[debug] prefill time (ms)": 230.0,
+           "time to first chunk (ms)": 774.0,
+           "agent": "Tech Support",
+           "output token count": 33.0,
+           "input token count": 6253.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.776090s"
+         }
+        ],
+        "duration": "2.147908s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P4\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"ACTIVE\", \"L2\": \"ACTIVE\"}, \"outage\": false}",
+ "session_id": "baa244a1-6838-44a1-8c68-fc3d99393c20",
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_lines",
+  "check_outage",
+  "find_tutorials",
+  "get_tutorial",
+  "get_step"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

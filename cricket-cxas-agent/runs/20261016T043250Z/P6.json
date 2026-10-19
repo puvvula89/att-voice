@@ -1,0 +1,386 @@
+{
+ "id": "P6",
+ "title": "Caller names a device not on the account",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-16T04:39:29.112311+00:00",
+ "turns": [
+  {
+   "user": "my pixel 9 screen is frozen",
+   "agent": "I understand your screen is frozen. I see you have an iPhone and a Galaxy on your account; which phone is having the issue?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device_label": "iPhone 13",
+           "device": "iphone-13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device_label": "Galaxy A15 5G",
+           "device": "galaxy-a15-5g"
+          }
+         ],
+         "customer_id": "cust_2001",
+         "name": "Jordan Reyes",
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I understand your screen is frozen. I see you have an iPhone and a Galaxy on your account; which phone is having the issue?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "current_date": "2026-10-15[America/Los_Angeles]",
+            "_session": {
+             "channel": "API",
+             "modality": "TEXT"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:40:17.577Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my pixel 9 screen is frozen"
+          }
+         ],
+         "eventTime": "2026-10-16T04:40:17.577Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:40:18.176Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-a2989c70-20a6-4bf5-b274-b570d60be94e",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:40:19.023Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-a2989c70-20a6-4bf5-b274-b570d60be94e",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device_label": "iPhone 13",
+                 "device": "iphone-13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device_label": "Galaxy A15 5G",
+                 "device": "galaxy-a15-5g"
+                }
+               ],
+               "customer_id": "cust_2001",
+               "name": "Jordan Reyes",
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-16T04:40:19.170Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I understand your screen is frozen. I see you have an iPhone and a Galaxy on your account; which phone is having the issue?"
+          }
+         ],
+         "eventTime": "2026-10-16T04:40:19.916Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:40:17.508082Z",
+        "endTime": "2026-10-16T04:40:19.964998Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 69.0,
+         "perceived latency (ms)": 2456.0,
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:40:17.578349Z",
+          "endTime": "2026-10-16T04:40:18.175354Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 56.0,
+           "[debug] prefill time (ms)": 189.0,
+           "time to first chunk (ms)": 596.0,
+           "agent": "Care Concierge",
+           "output token count": 19.0,
+           "input token count": 1344.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.597005s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:40:18.176Z",
+          "endTime": "2026-10-16T04:40:18.176Z",
+          "attributes": {
+           "type": "TransferToAgentTool",
+           "agent": "Care Concierge",
+           "name": "transfer_to_agent",
+           "args": {
+            "agent_name": "Tech Support"
+           }
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:40:18.360183Z",
+          "endTime": "2026-10-16T04:40:19.021880Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "[debug] prefill time (ms)": 216.0,
+           "time to first chunk (ms)": 661.0,
+           "agent": "Tech Support",
+           "output token count": 23.0,
+           "input token count": 4610.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.661697s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-16T04:40:19.023426Z",
+          "endTime": "2026-10-16T04:40:19.170091Z",
+          "attributes": {
+           "tool call id": "adk-a2989c70-20a6-4bf5-b274-b570d60be94e",
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_lines",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device_label": "iPhone 13",
+                "device": "iphone-13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device_label": "Galaxy A15 5G",
+                "device": "galaxy-a15-5g"
+               }
+              ],
+              "customer_id": "cust_2001",
+              "name": "Jordan Reyes",
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           }
+          },
+          "duration": "0.146665s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:40:19.171161Z",
+          "endTime": "2026-10-16T04:40:19.914509Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 65.0,
+           "[debug] prefill time (ms)": 233.0,
+           "time to first chunk (ms)": 742.0,
+           "agent": "Tech Support",
+           "output token count": 27.0,
+           "input token count": 4810.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "[debug] decode queue time (ms)": 21.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.743348s"
+         }
+        ],
+        "duration": "2.456916s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "I'm sure it's a pixel",
+   "agent": "I can only troubleshoot the phones listed on your account, which are an iPhone and a Galaxy. To check your Pixel, please go to Settings and then About Phone to read me the model number.",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I can only troubleshoot the phones listed on your account, which are an iPhone and a Galaxy. To check your Pixel, please go to Settings and then About Phone to read me the model number.",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "I'm sure it's a pixel"
+          }
+         ],
+         "eventTime": "2026-10-16T04:40:20.098Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I can only troubleshoot the phones listed on your account, which are an iPhone and a Galaxy. To check your Pixel, please go to Settings and then About Phone to read me the model number."
+          }
+         ],
+         "eventTime": "2026-10-16T04:40:20.928Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-16T04:40:20.031507Z",
+        "endTime": "2026-10-16T04:40:20.977227Z",
+        "attributes": {
+         "[debug] agent start latency (ms)": 67.0,
+         "perceived latency (ms)": 946.0,
+         "connection index": 2.0,
+         "input types": [
+          "text"
+         ]
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-16T04:40:20.100567Z",
+          "endTime": "2026-10-16T04:40:20.926704Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 63.0,
+           "[debug] prefill time (ms)": 218.0,
+           "time to first chunk (ms)": 824.0,
+           "agent": "Tech Support",
+           "output token count": 39.0,
+           "input token count": 4856.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "model": "gemini-3.1-flash-live"
+          },
+          "duration": "0.826137s"
+         }
+        ],
+        "duration": "0.945720s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P6\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"ACTIVE\", \"L2\": \"ACTIVE\"}, \"outage\": false}",
+ "session_id": "fe9580bf-a5f2-4c19-86da-9a7ffb36e260",
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_lines"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

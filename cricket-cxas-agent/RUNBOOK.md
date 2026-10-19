@@ -147,6 +147,22 @@ given state for manual testing: `.venv/bin/python bootstrap/demo_reset.py P4`.
 
 Console menu names may differ slightly from the above; the order of the steps does not.
 
+## Tutorial content
+
+The support server reads tutorials from Firestore (`CONTENT_BACKEND=firestore`, set by `deploy_mcp.sh`) and
+reloads within `CONTENT_CHECK_SECONDS` whenever `meta/content.version` changes. Content updates never need a redeploy.
+
+```bash
+.venv/bin/python -m knowledge.enrich --workers 2      # Gemini labels: safety flags, symptoms, summaries (cached)
+.venv/bin/python -m knowledge.build_catalog           # apply labels; disagreements -> knowledge/enrichment/review.jsonl
+.venv/bin/python -m knowledge.load_firestore --dry-run
+.venv/bin/python -m knowledge.load_firestore          # upsert changed tutorials, bump the version
+```
+
+The Firestore `(default)` database must exist in Native mode. `deploy_mcp.sh` grants the service's runtime
+account `roles/datastore.user`. A caller's place in a tutorial is kept in `progress/{customer_id}` for
+`RESUME_WINDOW_MINUTES`.
+
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |

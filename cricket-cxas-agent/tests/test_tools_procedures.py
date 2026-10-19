@@ -19,7 +19,8 @@ def test_find_unknown_device_is_an_error_not_an_exception():
 
 def test_get_tutorial_summary_and_flags():
     t = get_tutorial("iphone-13", RESET)
-    assert t["step_count"] == 5 and "steps" in t["summary"] and 4 in t["call_ending_steps"]
+    assert t["step_count"] == 5 and t["summary"]
+    assert next(s for s in t["steps"] if s["n"] == 4)["gated"]
 
 
 def test_branch_article_exposes_choices():
@@ -28,9 +29,10 @@ def test_branch_article_exposes_choices():
 
 
 def test_get_step_follows_choice():
-    one = get_step("galaxy-a15-5g", CALLS_GALAXY, 3, choice=ONE_SIM)
-    two = get_step("galaxy-a15-5g", CALLS_GALAXY, 3, choice=TWO_SIM)
-    assert one["text"] != two["text"]
+    one = get_step("galaxy-a15-5g", CALLS_GALAXY, 5, choice=ONE_SIM)
+    two = get_step("galaxy-a15-5g", CALLS_GALAXY, 5, choice=TWO_SIM)
+    # Step 5 is "Check for updates" on the one-SIM branch and a restart on the two-SIM branch.
+    assert one["text"] and two["gated"] and "text" not in two
 
 
 def test_get_step_invalid_choice_lists_valid_ones():
@@ -39,8 +41,8 @@ def test_get_step_invalid_choice_lists_valid_ones():
 
 
 def test_get_step_links_resolve_to_ids():
-    s = get_step("iphone-13", CALLS_IPHONE, 3)
-    assert s["linked_procedures"] and all(p["id"] for p in s["linked_procedures"])
+    linked = [p for n in range(1, 9) for p in get_step("iphone-13", CALLS_IPHONE, n).get("linked_procedures", [])]
+    assert linked and all(p["id"] for p in linked)
 
 
 def test_last_step_flag():

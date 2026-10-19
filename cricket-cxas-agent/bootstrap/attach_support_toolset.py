@@ -22,8 +22,8 @@ TOOLSET = f"{APP}/toolsets/{SUPPORT_TOOLSET_ID}"
 # AgentToolset.tool_ids selects which of the toolset's tools the agent receives.
 # Left empty, the agent gets NONE: discovery succeeds, the model sees no tools,
 # and every call it attempts is rejected as an "unexpected function call".
-TOOL_IDS = ["find_tutorials", "get_tutorial", "get_step", "get_lines", "get_line_status",
-            "check_outage", "get_data_usage", "get_sim_status", "refresh_network",
+TOOL_IDS = ["find_tutorials", "get_tutorial", "get_step", "checkpoint", "get_progress", "get_lines",
+            "get_line_status", "check_outage", "get_data_usage", "get_sim_status", "refresh_network",
             "send_guide_link", "open_ticket"]
 
 

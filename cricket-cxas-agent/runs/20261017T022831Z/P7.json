@@ -1,0 +1,1556 @@
+{
+ "id": "P7",
+ "title": "Fix fails after the full article",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-17T02:36:18.908891+00:00",
+ "turns": [
+  {
+   "user": "data is crawling on my iphone",
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "customer_id": "cust_2001",
+         "lines": [
+          {
+           "device_label": "iPhone 13",
+           "is_calling_line": true,
+           "device": "iphone-13",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "os": "27.0.0"
+          },
+          {
+           "device_label": "Galaxy A15 5G",
+           "is_calling_line": false,
+           "device": "galaxy-a15-5g",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "os": "16.0.0"
+          }
+         ],
+         "name": "Jordan Reyes",
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "current_date": "2026-10-16[America/Los_Angeles]",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:36.967Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "data is crawling on my iphone"
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:36.967Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:37.540Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-6d17efad-7f41-43a8-8c0b-dae9c849dae6",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:38.205Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-6d17efad-7f41-43a8-8c0b-dae9c849dae6",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:38.513Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-6d62b04c-e21a-470b-a0e0-a89ca1b4e396",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:39.179Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-6d62b04c-e21a-470b-a0e0-a89ca1b4e396",
+            "response": {
+             "text_output": [
+              {
+               "customer_id": "cust_2001",
+               "lines": [
+                {
+                 "device_label": "iPhone 13",
+                 "is_calling_line": true,
+                 "device": "iphone-13",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "os": "27.0.0"
+                },
+                {
+                 "device_label": "Galaxy A15 5G",
+                 "is_calling_line": false,
+                 "device": "galaxy-a15-5g",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "os": "16.0.0"
+                }
+               ],
+               "name": "Jordan Reyes",
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:39.321Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:39.966Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-17T02:36:36.924096Z",
+        "endTime": "2026-10-17T02:36:40.042702Z",
+        "attributes": {
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 43.0,
+         "perceived latency (ms)": 3118.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:36.968033Z",
+          "endTime": "2026-10-17T02:36:37.539095Z",
+          "attributes": {
+           "time to first chunk (ms)": 570.0,
+           "[debug] prefill time (ms)": 190.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "input token count": 1343.0,
+           "[debug] decode time to first token (ms)": 65.0,
+           "[debug] decode queue time (ms)": 21.0
+          },
+          "duration": "0.571062s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:37.540Z",
+          "endTime": "2026-10-17T02:36:37.540Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:37.542379Z",
+          "endTime": "2026-10-17T02:36:38.203876Z",
+          "attributes": {
+           "time to first chunk (ms)": 661.0,
+           "[debug] prefill time (ms)": 220.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5190.0,
+           "[debug] decode time to first token (ms)": 65.0,
+           "[debug] decode queue time (ms)": 20.0
+          },
+          "duration": "0.661497s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:38.205265Z",
+          "endTime": "2026-10-17T02:36:38.513201Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_progress",
+           "tool call id": "adk-6d17efad-7f41-43a8-8c0b-dae9c849dae6"
+          },
+          "duration": "0.307936s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:38.514297Z",
+          "endTime": "2026-10-17T02:36:39.177723Z",
+          "attributes": {
+           "time to first chunk (ms)": 662.0,
+           "[debug] prefill time (ms)": 222.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5232.0,
+           "[debug] decode time to first token (ms)": 61.0,
+           "[debug] decode queue time (ms)": 16.0
+          },
+          "duration": "0.663426s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:39.179157Z",
+          "endTime": "2026-10-17T02:36:39.321569Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "customer_id": "cust_2001",
+              "lines": [
+               {
+                "device_label": "iPhone 13",
+                "is_calling_line": true,
+                "device": "iphone-13",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "os": "27.0.0"
+               },
+               {
+                "device_label": "Galaxy A15 5G",
+                "is_calling_line": false,
+                "device": "galaxy-a15-5g",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "os": "16.0.0"
+               }
+              ],
+              "name": "Jordan Reyes",
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_lines",
+           "tool call id": "adk-6d62b04c-e21a-470b-a0e0-a89ca1b4e396"
+          },
+          "duration": "0.142412s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:39.322622Z",
+          "endTime": "2026-10-17T02:36:39.965160Z",
+          "attributes": {
+           "time to first chunk (ms)": 641.0,
+           "[debug] prefill time (ms)": 242.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "output token count": 17.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5432.0,
+           "[debug] decode time to first token (ms)": 64.0,
+           "[debug] decode queue time (ms)": 20.0
+          },
+          "duration": "0.642538s"
+         }
+        ],
+        "duration": "3.118606s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes",
+   "agent": "So data is crawling on your iPhone. Let me check a couple of things on our side first.\nYou've used all your high-speed data for this month. It will reset on October 28th, but we can still try device steps if you want.",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001",
+       "line_id": "L1"
+      },
+      "result": {
+       "text_output": [
+        {
+         "status": "ACTIVE",
+         "reason": null,
+         "line_id": "L1",
+         "since": "2025-11-02"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_data_usage",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001",
+       "line_id": "L1"
+      },
+      "result": {
+       "text_output": [
+        {
+         "used_gb": 25.0,
+         "allowance_gb": 25.0,
+         "throttled": true,
+         "cycle_ends": "2026-10-28"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "So data is crawling on your iPhone. Let me check a couple of things on our side first.",
+      "turnIndex": 2
+     },
+     {
+      "text": "You've used all your high-speed data for this month. It will reset on October 28th, but we can still try device steps if you want.",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes"
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:40.173Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "So data is crawling on your iPhone. Let me check a couple of things on our side first."
+          },
+          {
+           "toolCall": {
+            "id": "adk-8f691ecb-9104-40da-8642-19aae9ac1e3b",
+            "args": {
+             "customer_id": "cust_2001",
+             "line_id": "L1"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-88b6e309-a2f2-4ba4-9e38-15fab3a0efa9",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-436aa49e-a410-4862-b2af-5c204929e7c1",
+            "args": {
+             "customer_id": "cust_2001",
+             "line_id": "L1"
+            },
+            "displayName": "support_get_data_usage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_data_usage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:41.632Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-8f691ecb-9104-40da-8642-19aae9ac1e3b",
+            "response": {
+             "text_output": [
+              {
+               "status": "ACTIVE",
+               "reason": null,
+               "line_id": "L1",
+               "since": "2025-11-02"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-88b6e309-a2f2-4ba4-9e38-15fab3a0efa9",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-436aa49e-a410-4862-b2af-5c204929e7c1",
+            "response": {
+             "text_output": [
+              {
+               "used_gb": 25.0,
+               "allowance_gb": 25.0,
+               "throttled": true,
+               "cycle_ends": "2026-10-28"
+              }
+             ]
+            },
+            "displayName": "support_get_data_usage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_data_usage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:41.783Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "You've used all your high-speed data for this month. It will reset on October 28th, but we can still try device steps if you want."
+          }
+         ],
+         "eventTime": "2026-10-17T02:36:42.551Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-17T02:36:40.118933Z",
+        "endTime": "2026-10-17T02:36:42.633175Z",
+        "attributes": {
+         "connection index": 2.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 54.0,
+         "perceived latency (ms)": 2515.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:40.175946Z",
+          "endTime": "2026-10-17T02:36:41.630002Z",
+          "attributes": {
+           "time to first chunk (ms)": 1450.0,
+           "[debug] prefill time (ms)": 224.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 111.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5460.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "[debug] decode queue time (ms)": 19.0
+          },
+          "duration": "1.454056s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:41.632526Z",
+          "endTime": "2026-10-17T02:36:41.783515Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "status": "ACTIVE",
+              "reason": null,
+              "line_id": "L1",
+              "since": "2025-11-02"
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001",
+            "line_id": "L1"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_line_status",
+           "tool call id": "adk-8f691ecb-9104-40da-8642-19aae9ac1e3b"
+          },
+          "duration": "0.150989s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:41.632567Z",
+          "endTime": "2026-10-17T02:36:41.787086Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "args": {
+            "zip_code": "30301"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_check_outage",
+           "tool call id": "adk-88b6e309-a2f2-4ba4-9e38-15fab3a0efa9"
+          },
+          "duration": "0.154519s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:36:41.632597Z",
+          "endTime": "2026-10-17T02:36:41.784140Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "used_gb": 25.0,
+              "allowance_gb": 25.0,
+              "throttled": true,
+              "cycle_ends": "2026-10-28"
+             }
+            ]
+           },
+           "args": {
+            "customer_id": "cust_2001",
+            "line_id": "L1"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_data_usage",
+           "tool call id": "adk-436aa49e-a410-4862-b2af-5c204929e7c1"
+          },
+          "duration": "0.151543s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:36:41.788537Z",
+          "endTime": "2026-10-17T02:36:42.549596Z",
+          "attributes": {
+           "time to first chunk (ms)": 759.0,
+           "[debug] prefill time (ms)": 226.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 35.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5710.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "[debug] decode queue time (ms)": 14.0
+          },
+          "duration": "0.761059s"
+         }
+        ],
+        "duration": "2.514242s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "did that, still slow",
+   "agent": "Okay, I have a guide that can help. It involves toggling your mobile data off and back on, which takes about a minute.\n\nI can text you the guide, walk you through it now, or both. What works for you?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_find_tutorials",
+     "payload": {
+      "args": {
+       "device": "iphone-13",
+       "symptom": "slow data"
+      },
+      "result": {
+       "text_output": [
+        {
+         "device": "iphone-13",
+         "results": [
+          {
+           "score": 68.873,
+           "branches": 1.0,
+           "step_count": 6.0,
+           "title": "Turning mobile data on or off",
+           "kind": "procedure",
+           "intro": "Mobile data connects your phone to the internet through your network when Wi-Fi isn't available. Toggling it off and back on is also a quick fix for connection issues, like slow speeds, stuck signals, or apps that won't sync. Follow the ste",
+           "id": "feature_mobile_data-turning-mobile-data-on-or-off"
+          },
+          {
+           "score": 51.963,
+           "branches": 1.0,
+           "step_count": 7.0,
+           "title": "Wi-Fi connection issues or slowdowns",
+           "kind": "article",
+           "intro": "",
+           "id": "156126-wi-fi-connection-issues-or-slowdowns"
+          },
+          {
+           "score": 38.881,
+           "branches": 1.0,
+           "step_count": 7.0,
+           "title": "Switching phone numbers for cellular data with Dual SIM",
+           "kind": "procedure",
+           "intro": "If you have two SIMs on your device (physical or eSIM), you can set your device to use cellular data from one or the other.",
+           "id": "feature_dual_data-switching-phone-numbers-for-cellular-data-with-dual-sim"
+          },
+          {
+           "score": 38.082,
+           "branches": 1.0,
+           "step_count": 5.0,
+           "title": "Turning data roaming on and off (single and dual SIM)",
+           "kind": "procedure",
+           "intro": "When traveling internationally, you may want to turn data roaming on and off to conserve data and minimize unwanted fees.",
+           "id": "feature_data_roaming-turning-data-roaming-on-and-off-single-and-dual-sim"
+          },
+          {
+           "score": 31.685,
+           "branches": 1.0,
+           "step_count": 4.0,
+           "title": "Turning cellular data on and off for individual apps",
+           "kind": "procedure",
+           "intro": "You can view how much cellular data each of your apps has used and temporarily prevent them from accessing cellular data.",
+           "id": "feature_settings_data-turning-cellular-data-on-and-off-for-individual-apps"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_tutorial",
+     "payload": {
+      "args": {
+       "device": "iphone-13",
+       "tutorial_id": "feature_mobile_data-turning-mobile-data-on-or-off"
+      },
+      "result": {
+       "text_output": [
+        {
+         "branch_question": null,
+         "choice": null,
+         "summary": "This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.",
+         "last_step": 6.0,
+         "path_complete": true,
+         "steps": [
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/80fb74f86ca82b71d9cf41c4e9a88282f3df7b9cf8a73b8e5859c161c2fa41a7.png",
+           "notes": [],
+           "gated": false,
+           "n": 1.0,
+           "text": "From the Settings app, tap Cellular.",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          },
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6832f39c89dbfbd77d0fe2d2353e84e6a7c51c7b1a9944199b6723837c34bdb4.jpeg",
+           "notes": [
+            "Note: \n\nWhen Cellular Data is turned off, apps and services use Wi-Fi for internet access."
+           ],
+           "gated": false,
+           "n": 2.0,
+           "text": "Tap or slide the Cellular Data switch to turn mobile data on or off.",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          },
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/c79b2def64fb695bf90bd5c6f3176bffea51c9c525879f9b72b184471c200182.jpeg",
+           "notes": [],
+           "gated": false,
+           "n": 3.0,
+           "text": "To access mobile data from Control Center, swipe down from the upper-right corner of the screen.",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          },
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/496e76f4954ed7604dfb5df9ee0bf5c09883b5a29e043bf248353b0e73e0bf0a.jpeg",
+           "notes": [],
+           "gated": false,
+           "n": 4.0,
+           "text": "Tap the connectivity controls group.",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          },
+          {
+           "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/2636fc1f3cb4c8ec79218a0ea475ee3e64d018a94ea01074c3e9f81c37ce6baf.jpeg",
+           "notes": [],
+           "gated": false,
+           "n": 5.0,
+           "text": "Tap the Cellular Data icon to turn mobile data on or off.",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          },
+          {
+           "image_url": "",
+           "notes": [],
+           "gated": false,
+           "n": 6.0,
+           "text": "You've completed the steps!",
+           "warning": null,
+           "linked_procedures": [],
+           "next_options": [],
+           "heading": ""
+          }
+         ],
+         "step_count": 6.0,
+         "kind": "procedure",
+         "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off",
+         "next_from": null,
+         "choices": [],
+         "title": "Turning mobile data on or off",
+         "id": "feature_mobile_data-turning-mobile-data-on-or-off"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Okay, I have a guide that can help. It involves toggling your mobile data off and back on, which takes about a minute.\n\nI can text you the guide, walk you through it now, or both. What works for you?",
+      "turnCompleted": true,
+      "turnIndex": 3,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "did that, still slow"
+          }
+         ],
+         "eventTime": "2026-10-17T02:38:13.272Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-b4761c73-8b18-48b4-8e8c-692d7e814723",
+            "args": {
+             "device": "iphone-13",
+             "symptom": "slow data"
+            },
+            "displayName": "support_find_tutorials",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "find_tutorials"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:38:14.100Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-b4761c73-8b18-48b4-8e8c-692d7e814723",
+            "response": {
+             "text_output": [
+              {
+               "device": "iphone-13",
+               "results": [
+                {
+                 "score": 68.873,
+                 "branches": 1.0,
+                 "step_count": 6.0,
+                 "title": "Turning mobile data on or off",
+                 "kind": "procedure",
+                 "intro": "Mobile data connects your phone to the internet through your network when Wi-Fi isn't available. Toggling it off and back on is also a quick fix for connection issues, like slow speeds, stuck signals, or apps that won't sync. Follow the ste",
+                 "id": "feature_mobile_data-turning-mobile-data-on-or-off"
+                },
+                {
+                 "score": 51.963,
+                 "branches": 1.0,
+                 "step_count": 7.0,
+                 "title": "Wi-Fi connection issues or slowdowns",
+                 "kind": "article",
+                 "intro": "",
+                 "id": "156126-wi-fi-connection-issues-or-slowdowns"
+                },
+                {
+                 "score": 38.881,
+                 "branches": 1.0,
+                 "step_count": 7.0,
+                 "title": "Switching phone numbers for cellular data with Dual SIM",
+                 "kind": "procedure",
+                 "intro": "If you have two SIMs on your device (physical or eSIM), you can set your device to use cellular data from one or the other.",
+                 "id": "feature_dual_data-switching-phone-numbers-for-cellular-data-with-dual-sim"
+                },
+                {
+                 "score": 38.082,
+                 "branches": 1.0,
+                 "step_count": 5.0,
+                 "title": "Turning data roaming on and off (single and dual SIM)",
+                 "kind": "procedure",
+                 "intro": "When traveling internationally, you may want to turn data roaming on and off to conserve data and minimize unwanted fees.",
+                 "id": "feature_data_roaming-turning-data-roaming-on-and-off-single-and-dual-sim"
+                },
+                {
+                 "score": 31.685,
+                 "branches": 1.0,
+                 "step_count": 4.0,
+                 "title": "Turning cellular data on and off for individual apps",
+                 "kind": "procedure",
+                 "intro": "You can view how much cellular data each of your apps has used and temporarily prevent them from accessing cellular data.",
+                 "id": "feature_settings_data-turning-cellular-data-on-and-off-for-individual-apps"
+                }
+               ]
+              }
+             ]
+            },
+            "displayName": "support_find_tutorials",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "find_tutorials"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:38:14.337Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-69691d5c-79db-4e9b-826a-3c0aaafeb12c",
+            "args": {
+             "device": "iphone-13",
+             "tutorial_id": "feature_mobile_data-turning-mobile-data-on-or-off"
+            },
+            "displayName": "support_get_tutorial",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_tutorial"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:38:15.174Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-69691d5c-79db-4e9b-826a-3c0aaafeb12c",
+            "response": {
+             "text_output": [
+              {
+               "branch_question": null,
+               "choice": null,
+               "summary": "This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.",
+               "last_step": 6.0,
+               "path_complete": true,
+               "steps": [
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/80fb74f86ca82b71d9cf41c4e9a88282f3df7b9cf8a73b8e5859c161c2fa41a7.png",
+                 "notes": [],
+                 "gated": false,
+                 "n": 1.0,
+                 "text": "From the Settings app, tap Cellular.",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                },
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6832f39c89dbfbd77d0fe2d2353e84e6a7c51c7b1a9944199b6723837c34bdb4.jpeg",
+                 "notes": [
+                  "Note: \n\nWhen Cellular Data is turned off, apps and services use Wi-Fi for internet access."
+                 ],
+                 "gated": false,
+                 "n": 2.0,
+                 "text": "Tap or slide the Cellular Data switch to turn mobile data on or off.",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                },
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/c79b2def64fb695bf90bd5c6f3176bffea51c9c525879f9b72b184471c200182.jpeg",
+                 "notes": [],
+                 "gated": false,
+                 "n": 3.0,
+                 "text": "To access mobile data from Control Center, swipe down from the upper-right corner of the screen.",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                },
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/496e76f4954ed7604dfb5df9ee0bf5c09883b5a29e043bf248353b0e73e0bf0a.jpeg",
+                 "notes": [],
+                 "gated": false,
+                 "n": 4.0,
+                 "text": "Tap the connectivity controls group.",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                },
+                {
+                 "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/2636fc1f3cb4c8ec79218a0ea475ee3e64d018a94ea01074c3e9f81c37ce6baf.jpeg",
+                 "notes": [],
+                 "gated": false,
+                 "n": 5.0,
+                 "text": "Tap the Cellular Data icon to turn mobile data on or off.",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                },
+                {
+                 "image_url": "",
+                 "notes": [],
+                 "gated": false,
+                 "n": 6.0,
+                 "text": "You've completed the steps!",
+                 "warning": null,
+                 "linked_procedures": [],
+                 "next_options": [],
+                 "heading": ""
+                }
+               ],
+               "step_count": 6.0,
+               "kind": "procedure",
+               "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off",
+               "next_from": null,
+               "choices": [],
+               "title": "Turning mobile data on or off",
+               "id": "feature_mobile_data-turning-mobile-data-on-or-off"
+              }
+             ]
+            },
+            "displayName": "support_get_tutorial",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_tutorial"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-17T02:38:15.312Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Okay, I have a guide that can help. It involves toggling your mobile data off and back on, which takes about a minute.\n\nI can text you the guide, walk you through it now, or both. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-17T02:38:16.229Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-17T02:38:13.177047Z",
+        "endTime": "2026-10-17T02:38:16.302995Z",
+        "attributes": {
+         "connection index": 3.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 95.0,
+         "perceived latency (ms)": 3125.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:38:13.275569Z",
+          "endTime": "2026-10-17T02:38:14.097965Z",
+          "attributes": {
+           "time to first chunk (ms)": 821.0,
+           "[debug] prefill time (ms)": 342.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 3.0,
+           "output token count": 28.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 5760.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "[debug] decode queue time (ms)": 12.0
+          },
+          "duration": "0.822396s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:38:14.100154Z",
+          "endTime": "2026-10-17T02:38:14.337755Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "device": "iphone-13",
+              "results": [
+               {
+                "score": 68.873,
+                "branches": 1.0,
+                "step_count": 6.0,
+                "title": "Turning mobile data on or off",
+                "kind": "procedure",
+                "intro": "Mobile data connects your phone to the internet through your network when Wi-Fi isn't available. Toggling it off and back on is also a quick fix for connection issues, like slow speeds, stuck signals, or apps that won't sync. Follow the ste",
+                "id": "feature_mobile_data-turning-mobile-data-on-or-off"
+               },
+               {
+                "score": 51.963,
+                "branches": 1.0,
+                "step_count": 7.0,
+                "title": "Wi-Fi connection issues or slowdowns",
+                "kind": "article",
+                "intro": "",
+                "id": "156126-wi-fi-connection-issues-or-slowdowns"
+               },
+               {
+                "score": 38.881,
+                "branches": 1.0,
+                "step_count": 7.0,
+                "title": "Switching phone numbers for cellular data with Dual SIM",
+                "kind": "procedure",
+                "intro": "If you have two SIMs on your device (physical or eSIM), you can set your device to use cellular data from one or the other.",
+                "id": "feature_dual_data-switching-phone-numbers-for-cellular-data-with-dual-sim"
+               },
+               {
+                "score": 38.082,
+                "branches": 1.0,
+                "step_count": 5.0,
+                "title": "Turning data roaming on and off (single and dual SIM)",
+                "kind": "procedure",
+                "intro": "When traveling internationally, you may want to turn data roaming on and off to conserve data and minimize unwanted fees.",
+                "id": "feature_data_roaming-turning-data-roaming-on-and-off-single-and-dual-sim"
+               },
+               {
+                "score": 31.685,
+                "branches": 1.0,
+                "step_count": 4.0,
+                "title": "Turning cellular data on and off for individual apps",
+                "kind": "procedure",
+                "intro": "You can view how much cellular data each of your apps has used and temporarily prevent them from accessing cellular data.",
+                "id": "feature_settings_data-turning-cellular-data-on-and-off-for-individual-apps"
+               }
+              ]
+             }
+            ]
+           },
+           "args": {
+            "device": "iphone-13",
+            "symptom": "slow data"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_find_tutorials",
+           "tool call id": "adk-b4761c73-8b18-48b4-8e8c-692d7e814723"
+          },
+          "duration": "0.237601s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:38:14.339368Z",
+          "endTime": "2026-10-17T02:38:15.173275Z",
+          "attributes": {
+           "time to first chunk (ms)": 833.0,
+           "[debug] prefill time (ms)": 232.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 43.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 6297.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "[debug] decode queue time (ms)": 14.0
+          },
+          "duration": "0.833907s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-17T02:38:15.175067Z",
+          "endTime": "2026-10-17T02:38:15.311911Z",
+          "attributes": {
+           "response": {
+            "text_output": [
+             {
+              "branch_question": null,
+              "choice": null,
+              "summary": "This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.",
+              "last_step": 6.0,
+              "path_complete": true,
+              "steps": [
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/80fb74f86ca82b71d9cf41c4e9a88282f3df7b9cf8a73b8e5859c161c2fa41a7.png",
+                "notes": [],
+                "gated": false,
+                "n": 1.0,
+                "text": "From the Settings app, tap Cellular.",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               },
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/6832f39c89dbfbd77d0fe2d2353e84e6a7c51c7b1a9944199b6723837c34bdb4.jpeg",
+                "notes": [
+                 "Note: \n\nWhen Cellular Data is turned off, apps and services use Wi-Fi for internet access."
+                ],
+                "gated": false,
+                "n": 2.0,
+                "text": "Tap or slide the Cellular Data switch to turn mobile data on or off.",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               },
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/c79b2def64fb695bf90bd5c6f3176bffea51c9c525879f9b72b184471c200182.jpeg",
+                "notes": [],
+                "gated": false,
+                "n": 3.0,
+                "text": "To access mobile data from Control Center, swipe down from the upper-right corner of the screen.",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               },
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/496e76f4954ed7604dfb5df9ee0bf5c09883b5a29e043bf248353b0e73e0bf0a.jpeg",
+                "notes": [],
+                "gated": false,
+                "n": 4.0,
+                "text": "Tap the connectivity controls group.",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               },
+               {
+                "image_url": "https://content.sds.modeaondemand.com/media/image/authoring/image/2636fc1f3cb4c8ec79218a0ea475ee3e64d018a94ea01074c3e9f81c37ce6baf.jpeg",
+                "notes": [],
+                "gated": false,
+                "n": 5.0,
+                "text": "Tap the Cellular Data icon to turn mobile data on or off.",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               },
+               {
+                "image_url": "",
+                "notes": [],
+                "gated": false,
+                "n": 6.0,
+                "text": "You've completed the steps!",
+                "warning": null,
+                "linked_procedures": [],
+                "next_options": [],
+                "heading": ""
+               }
+              ],
+              "step_count": 6.0,
+              "kind": "procedure",
+              "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off",
+              "next_from": null,
+              "choices": [],
+              "title": "Turning mobile data on or off",
+              "id": "feature_mobile_data-turning-mobile-data-on-or-off"
+             }
+            ]
+           },
+           "args": {
+            "device": "iphone-13",
+            "tutorial_id": "feature_mobile_data-turning-mobile-data-on-or-off"
+           },
+           "type": "McpTool",
+           "agent": "Tech Support",
+           "name": "support_get_tutorial",
+           "tool call id": "adk-69691d5c-79db-4e9b-826a-3c0aaafeb12c"
+          },
+          "duration": "0.136844s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:38:15.313309Z",
+          "endTime": "2026-10-17T02:38:16.227917Z",
+          "attributes": {
+           "time to first chunk (ms)": 912.0,
+           "[debug] prefill time (ms)": 237.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "output token count": 50.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 7278.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "[debug] decode queue time (ms)": 13.0
+          },
+          "duration": "0.914608s"
+         }
+        ],
+        "duration": "3.125948s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "did that too, still slow",
+   "agent": "It's likely your speeds are slow because you've used all your high-speed data, as we saw. Since we've ruled out basic settings, I can open a support ticket to have this looked into further, or we can discuss upgrading your plan. Which would you prefer?",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "It's likely your speeds are slow because you've used all your high-speed data, as we saw. Since we've ruled out basic settings, I can open a support ticket to have this looked into further, or we can discuss upgrading your plan. Which would you prefer?",
+      "turnCompleted": true,
+      "turnIndex": 4,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "did that too, still slow"
+          }
+         ],
+         "eventTime": "2026-10-17T02:38:16.415Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "It's likely your speeds are slow because you've used all your high-speed data, as we saw. Since we've ruled out basic settings, I can open a support ticket to have this looked into further, or we can discuss upgrading your plan. Which would you prefer?"
+          }
+         ],
+         "eventTime": "2026-10-17T02:38:17.425Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-17T02:38:16.354201Z",
+        "endTime": "2026-10-17T02:38:17.504286Z",
+        "attributes": {
+         "connection index": 4.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 61.0,
+         "perceived latency (ms)": 1150.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:38:16.418308Z",
+          "endTime": "2026-10-17T02:38:17.423808Z",
+          "attributes": {
+           "time to first chunk (ms)": 1003.0,
+           "[debug] prefill time (ms)": 239.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 59.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 7344.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "[debug] decode queue time (ms)": 14.0
+          },
+          "duration": "1.005500s"
+         }
+        ],
+        "duration": "1.150085s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "nothing worked",
+   "agent": "Understood. Since your high-speed data is used up, that's the most likely cause. I can open a support ticket for you, or you can also visit a store for faster help. Which would you prefer?",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Understood. Since your high-speed data is used up, that's the most likely cause. I can open a support ticket for you, or you can also visit a store for faster help. Which would you prefer?",
+      "turnCompleted": true,
+      "turnIndex": 5,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "nothing worked"
+          }
+         ],
+         "eventTime": "2026-10-17T02:39:02.874Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Understood. Since your high-speed data is used up, that's the most likely cause. I can open a support ticket for you, or you can also visit a store for faster help. Which would you prefer?"
+          }
+         ],
+         "eventTime": "2026-10-17T02:39:03.792Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-17T02:39:02.784060Z",
+        "endTime": "2026-10-17T02:39:03.869818Z",
+        "attributes": {
+         "connection index": 5.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 89.0,
+         "perceived latency (ms)": 1085.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-17T02:39:02.875080Z",
+          "endTime": "2026-10-17T02:39:03.789404Z",
+          "attributes": {
+           "time to first chunk (ms)": 912.0,
+           "[debug] prefill time (ms)": 254.0,
+           "thought token count": 0.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "output token count": 46.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "input token count": 7415.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "[debug] decode queue time (ms)": 17.0
+          },
+          "duration": "0.914324s"
+         }
+        ],
+        "duration": "1.085758s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P7\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"ACTIVE\", \"L2\": \"ACTIVE\"}, \"outage\": false}",
+ "session_id": "0f9199d5-2859-4a66-b110-c0903e5d2e38",
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "get_line_status",
+  "check_outage",
+  "get_data_usage",
+  "find_tutorials",
+  "get_tutorial"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}
