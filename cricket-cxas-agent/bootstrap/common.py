@@ -19,10 +19,18 @@ TECH_ID = "tech-support"
 BILLING_ID = "billing-support"
 SUPPORT_TOOLSET_ID = "support"
 END_SESSION = f"{APP}/tools/end_session"
+SEARCH_TOOL = f"{APP}/tools/search-tutorials"
+NEXT_STEP_TOOL = f"{APP}/tools/next-step"
+DATASTORE = (f"projects/{PROJECT}/locations/global/collections/default_collection/dataStores/"
+             f"{os.environ.get('DATASTORE_ID', 'cricket-tutorials')}")
 
 
 def agent_name(agent_id: str) -> str:
     return f"{APP}/agents/{agent_id}"
+
+
+def source(agent_dir: str, name: str) -> str:
+    return (ROOT / "agents" / agent_dir / name).read_text()
 
 
 def instruction(agent_dir: str) -> str:

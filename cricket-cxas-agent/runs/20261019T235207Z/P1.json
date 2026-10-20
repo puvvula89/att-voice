@@ -1,0 +1,955 @@
+{
+ "id": "P1",
+ "title": "Line suspended for non-payment",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-19T23:52:08.933715+00:00",
+ "turns": [
+  {
+   "user": "my calls keep failing",
+   "call": 1,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "name": "Jordan Reyes",
+         "lines": [
+          {
+           "phone_last4": "4471",
+           "os": "27.0.0",
+           "device": "iphone-13",
+           "is_calling_line": true,
+           "line_id": "L1",
+           "device_label": "iPhone 13"
+          },
+          {
+           "phone_last4": "8820",
+           "os": "16.0.0",
+           "device": "galaxy-a15-5g",
+           "is_calling_line": false,
+           "line_id": "L2",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "_session": {
+             "channel": "API",
+             "modality": "TEXT"
+            },
+            "walk": "",
+            "steps_by_id": "",
+            "session_id": "",
+            "current_date": "2026-10-19[America/Los_Angeles]"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:14.545Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my calls keep failing"
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:14.545Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:15.119Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "session_id": "1418550b-1d2e-46c2-b3f0-0a008b1ca87a"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:15.143Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-3376430b-fac9-4ba8-8c69-2c42af3dd008",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:15.828Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-3376430b-fac9-4ba8-8c69-2c42af3dd008",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:16.061Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-0e6d19ba-13f4-4d13-a379-6525d0cb1c96",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:16.740Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-0e6d19ba-13f4-4d13-a379-6525d0cb1c96",
+            "response": {
+             "text_output": [
+              {
+               "name": "Jordan Reyes",
+               "lines": [
+                {
+                 "phone_last4": "4471",
+                 "os": "27.0.0",
+                 "device": "iphone-13",
+                 "is_calling_line": true,
+                 "line_id": "L1",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "phone_last4": "8820",
+                 "os": "16.0.0",
+                 "device": "galaxy-a15-5g",
+                 "is_calling_line": false,
+                 "line_id": "L2",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:16.900Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:17.536Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-19T23:52:14.497404Z",
+        "endTime": "2026-10-19T23:52:17.584857Z",
+        "attributes": {
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ],
+         "perceived latency (ms)": 3087.0,
+         "[debug] agent start latency (ms)": 48.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:52:14.546417Z",
+          "endTime": "2026-10-19T23:52:15.112577Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 59.0,
+           "agent": "Care Concierge",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 1359.0,
+           "[debug] prefill time (ms)": 191.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 564.0,
+           "output token count": 19.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.566160s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:52:15.119Z",
+          "endTime": "2026-10-19T23:52:15.119Z",
+          "attributes": {
+           "name": "transfer_to_agent",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "agent": "Care Concierge",
+           "type": "TransferToAgentTool"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:15.119331Z",
+          "endTime": "2026-10-19T23:52:15.143927Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeAgent",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 5.0,
+            "total code execution latency (ms)": 9.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.024596s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:52:15.146726Z",
+          "endTime": "2026-10-19T23:52:15.826835Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 62.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5253.0,
+           "[debug] prefill time (ms)": 222.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 679.0,
+           "output token count": 23.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.680109s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:15.829074Z",
+          "endTime": "2026-10-19T23:52:15.842615Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.013541s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:52:15.842708Z",
+          "endTime": "2026-10-19T23:52:16.044792Z",
+          "attributes": {
+           "name": "support_get_progress",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-3376430b-fac9-4ba8-8c69-2c42af3dd008"
+          },
+          "duration": "0.202084s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:16.044911Z",
+          "endTime": "2026-10-19T23:52:16.061084Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.016173s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:52:16.062408Z",
+          "endTime": "2026-10-19T23:52:16.738865Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 61.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5295.0,
+           "[debug] prefill time (ms)": 223.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 676.0,
+           "output token count": 23.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.676457s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:16.740727Z",
+          "endTime": "2026-10-19T23:52:16.749598Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.008871s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:52:16.749672Z",
+          "endTime": "2026-10-19T23:52:16.889627Z",
+          "attributes": {
+           "name": "support_get_lines",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "name": "Jordan Reyes",
+              "lines": [
+               {
+                "phone_last4": "4471",
+                "os": "27.0.0",
+                "device": "iphone-13",
+                "is_calling_line": true,
+                "line_id": "L1",
+                "device_label": "iPhone 13"
+               },
+               {
+                "phone_last4": "8820",
+                "os": "16.0.0",
+                "device": "galaxy-a15-5g",
+                "is_calling_line": false,
+                "line_id": "L2",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-0e6d19ba-13f4-4d13-a379-6525d0cb1c96"
+          },
+          "duration": "0.139955s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:16.889760Z",
+          "endTime": "2026-10-19T23:52:16.900660Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.010900s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:52:16.901751Z",
+          "endTime": "2026-10-19T23:52:17.535213Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 65.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5495.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 631.0,
+           "output token count": 17.0,
+           "[debug] decode queue time (ms)": 20.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.633462s"
+         }
+        ],
+        "duration": "3.087453s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes it's this phone",
+   "call": 1,
+   "agent": "\"Let me check a couple of things on our side first.\"\nI see your line is suspended because the payment is past due. I can connect you to billing to resolve that.",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": "Payment past due",
+         "since": "2026-10-13T00:00:00",
+         "line_id": "L1",
+         "status": "SUSPENDED_NONPAY"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_sim_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "sim_type": "eSIM",
+         "provisioned": true,
+         "activated": "2025-11-02",
+         "changed_days_ago": 340.0
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "\"Let me check a couple of things on our side first.\"",
+      "turnIndex": 2
+     },
+     {
+      "text": "I see your line is suspended because the payment is past due. I can connect you to billing to resolve that.",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes it's this phone"
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:17.720Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "\"Let me check a couple of things on our side first.\""
+          },
+          {
+           "toolCall": {
+            "id": "adk-2f4d6578-bdbd-4831-9517-85dfe8acd72c",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-2982302c-0fb1-41fa-a927-bdb692a850d9",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-968e1142-5685-4a71-a11e-9d3021b6e674",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_sim_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_sim_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:19.178Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-2f4d6578-bdbd-4831-9517-85dfe8acd72c",
+            "response": {
+             "text_output": [
+              {
+               "reason": "Payment past due",
+               "since": "2026-10-13T00:00:00",
+               "line_id": "L1",
+               "status": "SUSPENDED_NONPAY"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-2982302c-0fb1-41fa-a927-bdb692a850d9",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-968e1142-5685-4a71-a11e-9d3021b6e674",
+            "response": {
+             "text_output": [
+              {
+               "sim_type": "eSIM",
+               "provisioned": true,
+               "activated": "2025-11-02",
+               "changed_days_ago": 340.0
+              }
+             ]
+            },
+            "displayName": "support_get_sim_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_sim_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:19.360Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see your line is suspended because the payment is past due. I can connect you to billing to resolve that."
+          }
+         ],
+         "eventTime": "2026-10-19T23:52:20.068Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-19T23:52:17.668388Z",
+        "endTime": "2026-10-19T23:52:20.116489Z",
+        "attributes": {
+         "connection index": 2.0,
+         "input types": [
+          "text"
+         ],
+         "perceived latency (ms)": 2448.0,
+         "[debug] agent start latency (ms)": 52.0
+        },
+        "childSpans": [
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:17.720616Z",
+          "endTime": "2026-10-19T23:52:17.750182Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeAgent",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 5.0,
+            "total code execution latency (ms)": 13.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.029566s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:52:17.754560Z",
+          "endTime": "2026-10-19T23:52:19.177391Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 66.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5528.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 1417.0,
+           "output token count": 104.0,
+           "[debug] decode queue time (ms)": 22.0,
+           "thought token count": 0.0
+          },
+          "duration": "1.422831s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:19.178974Z",
+          "endTime": "2026-10-19T23:52:19.208142Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 5.0,
+            "total code execution latency (ms)": 13.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.029168s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:19.178983Z",
+          "endTime": "2026-10-19T23:52:19.190843Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011860s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:19.178989Z",
+          "endTime": "2026-10-19T23:52:19.208959Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 4.0,
+            "total code execution latency (ms)": 13.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.029970s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:52:19.190902Z",
+          "endTime": "2026-10-19T23:52:19.324749Z",
+          "attributes": {
+           "name": "support_check_outage",
+           "args": {
+            "zip_code": "30301"
+           },
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-2982302c-0fb1-41fa-a927-bdb692a850d9"
+          },
+          "duration": "0.133847s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:52:19.208193Z",
+          "endTime": "2026-10-19T23:52:19.347661Z",
+          "attributes": {
+           "name": "support_get_line_status",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "reason": "Payment past due",
+              "since": "2026-10-13T00:00:00",
+              "line_id": "L1",
+              "status": "SUSPENDED_NONPAY"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-2f4d6578-bdbd-4831-9517-85dfe8acd72c"
+          },
+          "duration": "0.139468s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:52:19.209003Z",
+          "endTime": "2026-10-19T23:52:19.340661Z",
+          "attributes": {
+           "name": "support_get_sim_status",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "sim_type": "eSIM",
+              "provisioned": true,
+              "activated": "2025-11-02",
+              "changed_days_ago": 340.0
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-968e1142-5685-4a71-a11e-9d3021b6e674"
+          },
+          "duration": "0.131658s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:19.324891Z",
+          "endTime": "2026-10-19T23:52:19.337347Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.012456s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:19.340867Z",
+          "endTime": "2026-10-19T23:52:19.353541Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.012674s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:52:19.347779Z",
+          "endTime": "2026-10-19T23:52:19.359958Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 5.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.012179s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:52:19.362831Z",
+          "endTime": "2026-10-19T23:52:20.065947Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 63.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5790.0,
+           "[debug] prefill time (ms)": 226.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 700.0,
+           "output token count": 23.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.703116s"
+         }
+        ],
+        "duration": "2.448101s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P1\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"SUSPENDED_NONPAY\", \"L2\": \"ACTIVE\"}, \"outage\": false}",
+ "session_ids": [
+  "1418550b-1d2e-46c2-b3f0-0a008b1ca87a"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "check_outage",
+  "get_line_status",
+  "get_sim_status"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

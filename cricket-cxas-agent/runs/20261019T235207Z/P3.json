@@ -1,0 +1,1918 @@
+{
+ "id": "P3",
+ "title": "Clean account, Wi-Fi slow on the iPhone",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-19T23:53:59.074429+00:00",
+ "turns": [
+  {
+   "user": "my wifi is really slow",
+   "call": 1,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "name": "Jordan Reyes",
+         "lines": [
+          {
+           "phone_last4": "4471",
+           "os": "27.0.0",
+           "device": "iphone-13",
+           "is_calling_line": true,
+           "line_id": "L1",
+           "device_label": "iPhone 13"
+          },
+          {
+           "phone_last4": "8820",
+           "os": "16.0.0",
+           "device": "galaxy-a15-5g",
+           "is_calling_line": false,
+           "line_id": "L2",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "_session": {
+             "channel": "API",
+             "modality": "TEXT"
+            },
+            "walk": "",
+            "steps_by_id": "",
+            "session_id": "",
+            "current_date": "2026-10-19[America/Los_Angeles]"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:17.904Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my wifi is really slow"
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:17.905Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:18.469Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "session_id": "2659f96b-942f-45cd-8fc3-b9262bae4a5f"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:18.495Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-44a56dc2-b8d4-4710-8984-b6054010cfeb",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:19.145Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-44a56dc2-b8d4-4710-8984-b6054010cfeb",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:19.400Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-65e857b4-0af9-47f8-84c0-eb49f95f0bd7",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:20.096Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-65e857b4-0af9-47f8-84c0-eb49f95f0bd7",
+            "response": {
+             "text_output": [
+              {
+               "name": "Jordan Reyes",
+               "lines": [
+                {
+                 "phone_last4": "4471",
+                 "os": "27.0.0",
+                 "device": "iphone-13",
+                 "is_calling_line": true,
+                 "line_id": "L1",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "phone_last4": "8820",
+                 "os": "16.0.0",
+                 "device": "galaxy-a15-5g",
+                 "is_calling_line": false,
+                 "line_id": "L2",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:20.260Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:20.905Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-19T23:54:17.859011Z",
+        "endTime": "2026-10-19T23:54:20.954447Z",
+        "attributes": {
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ],
+         "perceived latency (ms)": 3095.0,
+         "[debug] agent start latency (ms)": 45.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:54:17.905752Z",
+          "endTime": "2026-10-19T23:54:18.467815Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 62.0,
+           "agent": "Care Concierge",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 1360.0,
+           "[debug] prefill time (ms)": 190.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 561.0,
+           "output token count": 19.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.562063s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:54:18.469Z",
+          "endTime": "2026-10-19T23:54:18.469Z",
+          "attributes": {
+           "name": "transfer_to_agent",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "agent": "Care Concierge",
+           "type": "TransferToAgentTool"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:18.470012Z",
+          "endTime": "2026-10-19T23:54:18.495376Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeAgent",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 5.0,
+            "total code execution latency (ms)": 11.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.025364s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:54:18.498038Z",
+          "endTime": "2026-10-19T23:54:19.143972Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5254.0,
+           "[debug] prefill time (ms)": 222.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 645.0,
+           "output token count": 23.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.645934s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:19.146104Z",
+          "endTime": "2026-10-19T23:54:19.158865Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.012761s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:54:19.158939Z",
+          "endTime": "2026-10-19T23:54:19.388646Z",
+          "attributes": {
+           "name": "support_get_progress",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-44a56dc2-b8d4-4710-8984-b6054010cfeb"
+          },
+          "duration": "0.229707s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:19.388825Z",
+          "endTime": "2026-10-19T23:54:19.400852Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.012027s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:54:19.402398Z",
+          "endTime": "2026-10-19T23:54:20.094031Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5296.0,
+           "[debug] prefill time (ms)": 268.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 691.0,
+           "output token count": 23.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.691633s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:20.096510Z",
+          "endTime": "2026-10-19T23:54:20.107605Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 1.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011095s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:54:20.107701Z",
+          "endTime": "2026-10-19T23:54:20.250243Z",
+          "attributes": {
+           "name": "support_get_lines",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "name": "Jordan Reyes",
+              "lines": [
+               {
+                "phone_last4": "4471",
+                "os": "27.0.0",
+                "device": "iphone-13",
+                "is_calling_line": true,
+                "line_id": "L1",
+                "device_label": "iPhone 13"
+               },
+               {
+                "phone_last4": "8820",
+                "os": "16.0.0",
+                "device": "galaxy-a15-5g",
+                "is_calling_line": false,
+                "line_id": "L2",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-65e857b4-0af9-47f8-84c0-eb49f95f0bd7"
+          },
+          "duration": "0.142542s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:20.250406Z",
+          "endTime": "2026-10-19T23:54:20.260205Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.009799s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:54:20.261825Z",
+          "endTime": "2026-10-19T23:54:20.902898Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 61.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5496.0,
+           "[debug] prefill time (ms)": 258.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 639.0,
+           "output token count": 17.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.641073s"
+         }
+        ],
+        "duration": "3.095436s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes it's this iPhone",
+   "call": 1,
+   "agent": "Thanks. Let me check a couple of things on our side first.\nEverything looks normal on our side. It might be a setting on your iPhone.\nI have a guide for troubleshooting slow Wi-Fi. I can text it to you, walk you through it now, or both. What works?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2025-11-02",
+         "line_id": "L1",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "search_tutorials",
+     "payload": {
+      "args": {
+       "rewrittenQueries": [
+        "iPhone slow wifi connection"
+       ],
+       "filter": "device: ANY(\"iphone-13\")",
+       "query": "wifi is slow"
+      },
+      "result": {
+       "answer": "[1] Wi-Fi connection issues or slowdowns\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWutuHLcVfhV2f8QJMFLRtGkB95cqx4lb2RYsJUFRFQF3hqNlNENOhhytt0GBPET_9PXyJP3OOZzbXmRLtZsEDQxD2lkOeS7f-c6F-m7R6LgKi8fqb98t8pW3ueEPf8_UIkTTpG8cfvwGj1ZGF9Zd49NigY_RvI70-7NSbXz3qDVqpW_xvbIhdCao3Dtn8khPoldafWWPnlrlTFz79iZTvlUa75jXjWmtcTmtC5Vfp3WhMaYIyjvavFX2fOWdyVRcGbxEL2pVmrViMWmJyrVTUd8YOiy2vltWJqy8j_SKiHR85b6ycWWxbmWDuu5sgR1J9qpSldGtUyucH_3jK3fqXWnbWg4XiXp9vLtylx0W-7JUp-nhrY0bdRKCDfHKvTIh6jZOJaeHtb816svzF6ppfWkhHvbBSlk27q7WEFJ50lQV5pacwluatDJZUOEBGTeQL5yPE9d1y8F79Nk3tC1_XLyA0x6rpB2ZfOvwBb2whinE0a6rKjzIdVV9bVzyfqmrAMMtar35umh9M3kE-30dPR_8z0wJdD6eQ2f77G3jTqE1uMuoi6St0k2TiaO1qn1tXCSP58lfcaVndofn-71NsQeHx-pELavOqHxl8ptaw65rCzjgFAACq17z9ryjJj-bbU9ZN9Wjd8qxkrBQhXePIh4bJfjVDWEaWNW32lYaKJ0LhK8KpWM0ddMrRqcdqw-fk86hA_Qn-j0K6sS2TaWh6nNfkL50nnfHH125F0DFYzXGZ-hygCmUcOpmbhUWIVPLLvZrr0UR2Otq8cKrZy6aFiIOgEcULFSN3fT1EJYAhFoaUo7jTYA8MQ6iErv8-lpHs8bS3lcUfs6IINPIhW-aBvYBtjz2ti7iPwCgKkQZok-1Jvc1EFDg3d7wqvTz40J_xFoLVFrElFkfPyBs7or6dxY43y2ijZUh-NN5W3HC2ClIiMWcpA-Q89PW13vjp5EN52ZYCGKuwHBfBDo5BSc8Whi4IibsLQmg7UY1fg2SKjXkaMmdKRRy3YLSR6YaI-Z4IbxwQNpLio4WaQDMzFKnoAKQ8hX57uWLgwJfAjy9f0aDpYi7c8-nT98g1oWpID6A1yuEt77x1h2URY5Y-Rga_Oe4QG5EAJq8awkzla1t1IwvZgqYh0Kp3WTKUKThrEaHgMMK9jcp8Wc-8Y32IxWfudIrC7MjHAPpPUFQT3xz_N-1a8IQmDTkrTEuG_ItUjfCrYa0txoeh2KISs2eDmSkWjvQw36ef7zHeFfuqW_BPHLai2TtI5UcwE8lLCWQOaOSwr1jShKVj5PMeaz-mkRtzZEuCmWjqkA_rXAdU31PPWJ4C38NbrKO1GM_KX0N9kEJcd7aW-yQ9Dkpihaeg4yvTNHlkKbV-Q2FDosyy-IUvKzCnPCXGxyNRCBs-9S-hjgA7CtPABliUMtBEOCki_6IwIBDv1oZNzMLfuPNTJHN0qAktQq0C8cgcsfMwqxLO_TyrGlPG5FZcESr3bVhrPzUPUMy_si-IRF-DO_cGb0w8yOuWmom8IK9wonjV1sUQP_6ou2386Ktz0SHkt-Ug0j-u5dnSoeZ_rW9XkUqHaB86he6QAXepNZinxEF6xZeyU1VdZUecwwqgwh5iYD20s1D8v2eOv59pvkEJjbRPTP8-nCh3KjTZKuD6er007OzL85OXvUFHKkDoAyPn5xcnhDsn7_807OzT-Uj6gFReGjRUly_IZXmrQfW-5IzAeIeyehAiSD7bGf1A_q-5MhP_h4iX5Ib26CwZcncMNGRzsp1o5e2stESY5SzaueH7_89RikkfHubPCxCf7cVoQi7VvA6lIwJspOjnmvXaar-9y-VSsVUjQq-uqVKftN386ktmLXrXN-L_U-xKx6hmCFq0uq6NSjurxZoykI8ImXQLkyLew5zk6-c_RadAhXttYcDx9PAlLnvmPm3EfaQSEZCoiOn7Td5qTWUdIoxsSBqwtsEeWy7-8T4OVXK29a-bzE_lLhbQ5GG0xxttfKVwOeCwgOJNO4w311IPL9zI_7CWA6eL33V1cMXcJOteDnrOXJQiinppsPBgOxLAe70gByE8NZGoHyPYGTU4BgkFYCpArVJtZwk7r-Wl7kA5s70DQH4pNXyXmIVnxobSl_8qJU0bFRLieqgGocLZVZMc_ctrjO1QTnlcqlkWIFgqPN36uLlxTA94K5BeoGcunt0udl2y2xd06UcNaxbGkSU2a0xBr3eCyV9MqekewbddKRIJNJ4cDrNR3hOoKe7yPRweP8I0tXYD9uwcSA5lQOcxTIquiyhpJQAHIcSk-JACX0meYn2ZjJP5zzT_Aoprxa08gP1hLlJPeeOh6ZS4Lsgu2c9286jlvu6drMzJ00Vzu5UqAsDgQgTpjJKOSqFidXXvqsKtAjjyKc133a2FaBISUXi_vD9v5hyzWtNDs74YEEnRMUBVBGXfRL7xi_5DTqKEsQwq9HVzTAco22l3eNgKe01Tap8R55DMumkhiO3uc20rDucXqDHBdpkFC7VJhsO54gYvHsABHOCFABRVPra0IR3Pxz2TCvUmfc3LDU2J3IfG5s6S0ELacp0Qg3A3Jo-wntVTEqKczz3-tC8jB8S8SW9eH8ZBBbfdIFH2LYdR1xs39dJRbJfRjL0yIe1Obq2x8oQDgfVQVDWUPbPuYSGxR40DQN2tZt2Ue8hbz5BfylzSM4i9xx6fQ6HD1wcfYe8MiQ32ZCtVqjKysVBQceZe5ajabJ_smPGN73Iyj38xXu89DA-__1uiTkhK46cLQDsc0LQ5ITGD6PlNN2eNHrDbHN-17NDjsN2Q53ttiRQHwb2cuAp9LkG_2tV6Sb6JhuWNrK_iWgjwQT6oyHfUq7uO2_hZ-0CtwI6ataYGC3FHAsrQ2ZePHA1dCRAyZBdmLDAr22LbavNjJ9DpLQ8q6qFEbMZQ8gtFk8Nqe8Y-550JuiFZwFZ6jxmPB0adCwiLWWQnRsH0OHOvQhZ9uPj3332-T-Eh3a__QTf8eDfsQvXK5uvzC1McW0TB7KYS7rhmrBQnTqQ462qL-7pX6ZjfFIsZ6asUeDUzHiI38ryQ85gUy6mJibIjAntRkfxTqfwLc9k7e4xK4bORtFt0po82TXwPfmDNWTDUuq5tTRourtBeuDM4eBF37u_m_vDdsV25y1jH9q8bHTT9lIpNRFXgEVDty2-C4gFoGRyTcOMOzF_P-4O3M4g5Chm0s5Bci2VGPTzBD-HezaGEZXDs0QaNi7fu7uMkexp5btCJo0EUqGFufx99GBfbjKotEgj4JdI6n26LaTAsIGKg6X3cVqgZdMx3u4MXtTai8ndComwWNIAcg9_pIv3PcmeCaHfNJVDiLlHcSoZoXgmWJhdFWY7jIJ3o8a7cj9H9VEw7b1783dfLWwBU_TlwcxYtcPi_fj6YoLt-w3a-jdlwPaZcUB7dY98PI7B-tudyz7T0HiZw1Ckv3ctglcPNqifckye4GRqoOnqnI4fbHOkTlfeB-mibYqDloWhdan4lbtwdGwZZ0UBsSDh2ROKgn76S5GVsjJVrACMB8kPkbt4D5dO-y-VxJ6k9lupit_CFC7CR1TJh61RVKpJbDtoV5hSd1WEbazLq44nEkNfKUY6RyDlWpgOtGQSu92YDbGZyLqN0P03LRLXzAyJAdKEbadMm8j8R7ppmajLDcZ-Hj-oHeTsa1di-otnzweLmgN3QXpYiHYNxkQhRPcmwieze6FLer_wMDYcSR7PTZVIsR_60987ILtfevozBW6Z17y5FAnjC7QuG9hqOq097qfAYoTESgNW_mI2Sw8fqSeWgaWhPBSkPxJK7V1AH1ooySk8xJPKcgKV8cbrJu2GKq0Y9ht8_TleX6ODJWddxA28dyRhnE4C3gPeIJYfFwZaOG5Bfc6FzNrO9IZqVNqDAjFtMl2RCunkzD4rVPxeNsWLX7vK60Kaar5w0lWz0kt0ZKBpGJsmY7qUy3_KTi2g1Ojr3okJBGmqV4-9MTVeJZow-uuM0UwTGSU1DyDQZUnYX1kAhtu2MVLOfC63gB8ovv3LN1vmq_oFEsqyZOqnwygnMvn5cMco7U-dPUjSnzt_kA6_MMgvDPK2DPK_wMN42n-BiMkm_3-YGJV_r6h4h7M6-vcfXFn3yg==\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting,My internet is slow on my phone,I can't get Wi-Fi to work,My phone keeps losing Wi-Fi,Wi-Fi is not working,I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n\n[2] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n\n[3] Turning your Wi-Fi on and off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrNVTtv2zAQ_itXLVlkA30O2bIYSAc3SFIERV0EZ_FksaF4AklZEYL-9x5J2amBOt3iwjAsPnT3vUg_FR2Gxhfn8P2pqBrWFaXBjxIKH6ibVqz8vJWphlBpu5FRUcgw0GOIzwvHLYSG4IZCkHUP2HUlBOzgTs8Weh43Ww65drGUp3NY2ZX96mV33gMVWlDUGQoEI_cO1hgCuRE6HshBjYLHSRfZlpYrdE7LjKUwsHuAiq2lKmi28yLB79d7BnHMXVzbDwd0NlOxvTEyUaEx92QnfjUaTzLb4nivHHd_TDU83AdOdX6VkMV5d1ycW1GBHXijFSWRMl0_6FA1EBi-LI_qc8sQemeB6zqTTu9mZV-uuVicQIX3x1W4ISPmAO7tEpA_Wduj1DOjhoPv5AuCABrcEniqeqfDCEa3OmBiM4fLWgpLdj26sQSyMSoIHXovzRSgVUmzz6njq-vy4eV0RAMvbc2gJcOwJh9dfbZ7J9mhVK9O4uM_z7_24CtHZMuIPh3ojlzNrhUvtiinVWzjGjCdUh8j0KLFzQHZ52N8_pdorOyC3YZC7racsjSDKV5pNqsQqztqeZsPyC52dYSa2inaym03h28TVEczVAp0AIMSnxLWfYBBGyPvkorlcqy0pHEfQm0jvZRCwA1Kulb2yumtVJj4XCjlJJeC8ZpUXwkah9VDvPYSFBZwOywC3WYKB77DepTWuDbxJYSFfhQ4cvqvOcZ_f39ibiQALvrAsxh1aXrXkD2QRZ5SMVJl1kFfNWwpM0Uz4CjGyK0rfCcr4mOqsMMzxJo6nHmhDw7thlI0_3dnIsYTexMhnMKdV78sPh2_LMTVM7G-4jb916sUgoTszWkuuPj5DXltBX4=\nsummary: This guide explains how to turn Wi-Fi on or off and manage Wi-Fi network settings on an iPhone 13.\nsymptoms: [My Wi-Fi isn't working,How do I turn on Wi-Fi?,I can't connect to Wi-Fi,I need to forget a Wi-Fi network,My Wi-Fi keeps disconnecting,How do I manage my Wi-Fi settings?]\ntitle: Turning your Wi-Fi on and off\ntutorial_id: feature_connections_wifi-turning-your-wi-fi-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_wifi-turning-your-wi-fi-on-and-off\n\n"
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Thanks. Let me check a couple of things on our side first.",
+      "turnIndex": 2
+     },
+     {
+      "text": "Everything looks normal on our side. It might be a setting on your iPhone.",
+      "turnIndex": 2
+     },
+     {
+      "text": "I have a guide for troubleshooting slow Wi-Fi. I can text it to you, walk you through it now, or both. What works?",
+      "turnIndex": 2
+     },
+     {
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes it's this iPhone"
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:21.070Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Thanks. Let me check a couple of things on our side first."
+          },
+          {
+           "toolCall": {
+            "id": "adk-aea08a35-34ac-4235-a413-87f9b5e9ca98",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-f952ecf8-67d2-4d95-97c0-d12e357c3ee8",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:22.199Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-aea08a35-34ac-4235-a413-87f9b5e9ca98",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2025-11-02",
+               "line_id": "L1",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-f952ecf8-67d2-4d95-97c0-d12e357c3ee8",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:22.384Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Everything looks normal on our side. It might be a setting on your iPhone."
+          },
+          {
+           "toolCall": {
+            "id": "adk-3cb4a648-6dad-4f94-b022-a5db48499ce7",
+            "tool": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/tools/search-tutorials",
+            "args": {
+             "rewrittenQueries": [
+              "iPhone slow wifi connection"
+             ],
+             "filter": "device: ANY(\"iphone-13\")",
+             "query": "wifi is slow"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:23.392Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "steps_by_id": "{\"156126-wi-fi-connection-issues-or-slowdowns\": {\"title\": \"Wi-Fi connection issues or slowdowns\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\\nWithin this guide, you'll learn how to:\\nConfirm your Wi-Fi connection\\nTurn off Connectivity Assist\\nRestart your iPhone\\nRemove VPN profiles\\nTest your connection with other devices\\nReset your network settings\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Confirming your connection\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"Confirming your Wi-Fi connection\", \"text\": \"Within the Settings app, take a moment to confirm that your iPhone is connected to a Wi-Fi network. A blue checkmark will appear next to your active connection within your Wi-Fi settings. If you don't see one, tap on an available Wi-Fi network and attempt to connect. (Make sure your iPhone's Airplane Mode isn't on.)\\nNote: If you're successfully connected to Wi-Fi, but you're getting a \\\"No Internet Connection\\\" message, there may be an issue with your Wi-Fi router/gateway that you'll need to troubleshoot. Apple also maintains a list of recommended settings for Wi-Fi routers you'll want to review.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Turn off Connectivity Assist\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning your Wi-Fi on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Settings app, tap Wi-Fi.\", \"notes\": [\"Note: \\n\\nUsing Wi-Fi can deplete your battery power faster than your carrier network connection.\"]}, {\"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi switch to ON.\", \"notes\": [\"Note: \\n\\nTo turn off your Wi-Fi, tap or slide the Wi-Fi switch to OFF.\"]}, {\"heading\": \"\", \"text\": \"Select a network to join.\", \"notes\": [\"Note: \\n\\nWi-Fi hotspots may have security limitations. If necessary, enter a password and tap Join.\"]}, {\"heading\": \"\", \"text\": \"Tap the Info icon beside your Wi-Fi network.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions to manage your Wi-Fi connection:\", \"notes\": [\"Note:\\nForget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\\nPrivate Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\\nAuto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.\", \"Forget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\", \"Private Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\", \"Auto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 3, \"heading\": \"Turning off Connectivity Assist\", \"text\": \"Try turning off Connectivity Assist, as your iPhone might be trying to use a connection from a nearby cellular network instead of your Wi-Fi connection.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Restart your iPhone\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning Wi-Fi assist off\", \"steps\": [{\"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device.\"]}, {\"heading\": \"\", \"text\": \"Scroll to Wi-Fi Assist.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi Assist switch to OFF.\", \"notes\": [\"Note: \\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 4, \"heading\": \"Try restarting your iPhone\", \"text\": \"Manually restarting your iPhone may help solve any issues you're experiencing with Wi-Fi Calling. It's a great \\\"first-step\\\" troubleshooting technique for most issues you encounter on your device.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Removing VPN profiles or related security apps\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Powering your iPhone on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"To turn on your iPhone, press and hold the Side button.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Press and hold the Side button and either Volume button until the Power Settings screen appears.\", \"notes\": [\"Note: \\n\\nYou can also reach Power Settings by opening the Control Center and holding the Power icon there.\"]}, {\"heading\": \"\", \"text\": \"Drag the slide to power off slider to the right.\", \"notes\": [\"Note: \\n\\nFrom this screen, you can also access your emergency info and send an SOS. If you have a passcode set, you'll need to input your passcode before your iPhone will power off.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 5, \"heading\": \"Removing VPN profiles or related security apps\", \"text\": \"It's possible that a VPN profile, or a security-themed app you've installed, is interfering with your connection. Try removing any VPN profiles within your Settings app's \\\"VPN & Device Management\\\" section, restart your iPhone, and try connecting to a nearby Wi-Fi network and using your device as you normally would.\\nIf you're required to use a VPN \u2014 for example, to access resources for your job \u2014 you may need to talk to your VPN manager to figure out a solution for any connection issues you're experiencing.\\nSimilarly, you may have installed a security-themed app on your iPhone that is somehow interfering with your network connection. Look for these, remove them, and see if that improves your experience. It's possible that you may be able to reinstall them and adjust their settings to fix your issue, if you've isolated your connection problems to a particular app.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Try another device\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Deleting an app\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Home screen, touch and hold an app you'd like to delete.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Remove App.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Delete App.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Delete.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 6, \"heading\": \"Try connecting with another device\", \"text\": \"From the same spot you're attempting to use Wi-Fi on your iPhone, try connecting to the same network on another device (such as an iPad, a laptop, another phone, et cetera). If you can connect and transfer data without issue, your router and network are likely configured correctly.\\nIf you're still experiencing issues, you may be at the limit of the Wi-Fi network's range, or you may need to split your single Wi-Fi network into a Wi-Fi network on 2.4GHz and a Wi-Fi network on 5GHz, then use whichever gives you the best connection manually.\\nYou can also try restarting your Wi-Fi router or cable modem, if applicable, to see if that helps. You should also check to see if your Wi-Fi router has any firmware updates, which may alleviate any issues you're experiencing.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Reset your network settings\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 7, \"heading\": \"Reset your network settings\", \"text\": \"Resetting your network settings will erase previously used settings like your Wi-Fi passwords, preferred networks, and VPN and APN settings.\\nYou'll be able to resync your Wi-Fi passwords from iCloud, but the other settings will need to be entered again.\\nOnce you've done this, reboot your device, connect to your Wi-Fi network, and check to see if your connection issues are fixed.\\nIf you're still having connection problems, or if your iPhone can't connect to any Wi-Fi networks successfully, you may need to contact Apple for service.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Resetting your iPhone\u2019s Settings and Network Settings\", \"steps\": [{\"heading\": \"\", \"text\": \"From within Settings, tap General.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Scroll to and tap Transfer or Reset iPhone.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Reset.\", \"notes\": [\"Note: \\n\\nErase All Content and Settings - Choosing this will reset and remove your apps, data, and Apple ID, returning the device to factory settings.\"]}, {\"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions:\", \"notes\": [\"Note:\\nReset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\\nReset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\\nDelete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\\nOther reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\", \"Reset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\", \"Delete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\", \"Other reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\", \"Reset Handwriting Style - Resets your personal handwriting style.\", \"Reset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\", \"Reset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}]}]}, \"feature_special_assist-turning-wi-fi-assist-off\": {\"title\": \"Turning Wi-Fi assist off\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Scroll to Wi-Fi Assist.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi Assist switch to OFF.\", \"notes\": [\"Note: \\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"feature_connections_wifi-turning-your-wi-fi-on-and-off\": {\"title\": \"Turning your Wi-Fi on and off\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From the Settings app, tap Wi-Fi.\", \"notes\": [\"Note: \\n\\nUsing Wi-Fi can deplete your battery power faster than your carrier network connection.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi switch to ON.\", \"notes\": [\"Note: \\n\\nTo turn off your Wi-Fi, tap or slide the Wi-Fi switch to OFF.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Select a network to join.\", \"notes\": [\"Note: \\n\\nWi-Fi hotspots may have security limitations. If necessary, enter a password and tap Join.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Tap the Info icon beside your Wi-Fi network.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions to manage your Wi-Fi connection:\", \"notes\": [\"Note:\\nForget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\\nPrivate Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\\nAuto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.\", \"Forget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\", \"Private Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\", \"Auto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:23.586Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-3cb4a648-6dad-4f94-b022-a5db48499ce7",
+            "tool": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/tools/search-tutorials",
+            "response": {
+             "answer": "[1] Wi-Fi connection issues or slowdowns\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting,My internet is slow on my phone,I can't get Wi-Fi to work,My phone keeps losing Wi-Fi,Wi-Fi is not working,I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n\n[2] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n\n[3] Turning your Wi-Fi on and off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This guide explains how to turn Wi-Fi on or off and manage Wi-Fi network settings on an iPhone 13.\nsymptoms: [My Wi-Fi isn't working,How do I turn on Wi-Fi?,I can't connect to Wi-Fi,I need to forget a Wi-Fi network,My Wi-Fi keeps disconnecting,How do I manage my Wi-Fi settings?]\ntitle: Turning your Wi-Fi on and off\ntutorial_id: feature_connections_wifi-turning-your-wi-fi-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_wifi-turning-your-wi-fi-on-and-off"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:23.586Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I have a guide for troubleshooting slow Wi-Fi. I can text it to you, walk you through it now, or both. What works?"
+          }
+         ],
+         "eventTime": "2026-10-19T23:54:24.356Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-19T23:54:21.027167Z",
+        "endTime": "2026-10-19T23:54:24.407077Z",
+        "attributes": {
+         "connection index": 2.0,
+         "input types": [
+          "text"
+         ],
+         "perceived latency (ms)": 3380.0,
+         "[debug] agent start latency (ms)": 42.0
+        },
+        "childSpans": [
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:21.070189Z",
+          "endTime": "2026-10-19T23:54:21.097795Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeAgent",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 4.0,
+            "total code execution latency (ms)": 8.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.027606s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:54:21.100098Z",
+          "endTime": "2026-10-19T23:54:22.197567Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 59.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5529.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 1090.0,
+           "output token count": 71.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "thought token count": 0.0
+          },
+          "duration": "1.097469s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:22.199271Z",
+          "endTime": "2026-10-19T23:54:22.220298Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 4.0,
+            "total code execution latency (ms)": 8.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.021027s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:22.199273Z",
+          "endTime": "2026-10-19T23:54:22.211910Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.012637s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:54:22.211959Z",
+          "endTime": "2026-10-19T23:54:22.348536Z",
+          "attributes": {
+           "name": "support_check_outage",
+           "args": {
+            "zip_code": "30301"
+           },
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-f952ecf8-67d2-4d95-97c0-d12e357c3ee8"
+          },
+          "duration": "0.136577s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:54:22.220403Z",
+          "endTime": "2026-10-19T23:54:22.373170Z",
+          "attributes": {
+           "name": "support_get_line_status",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2025-11-02",
+              "line_id": "L1",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-aea08a35-34ac-4235-a413-87f9b5e9ca98"
+          },
+          "duration": "0.152767s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:22.348672Z",
+          "endTime": "2026-10-19T23:54:22.364452Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 5.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.015780s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:22.373292Z",
+          "endTime": "2026-10-19T23:54:22.384415Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011123s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:54:22.385698Z",
+          "endTime": "2026-10-19T23:54:23.390961Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 59.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5684.0,
+           "[debug] prefill time (ms)": 226.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1002.0,
+           "output token count": 57.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "thought token count": 0.0
+          },
+          "duration": "1.005263s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:23.392828Z",
+          "endTime": "2026-10-19T23:54:23.403734Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.010906s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:54:23.403782Z",
+          "endTime": "2026-10-19T23:54:23.571103Z",
+          "attributes": {
+           "snippets": [
+            {
+             "title": "Wi-Fi connection issues or slowdowns",
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns",
+             "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWutuHLcVfhV2f8QJMFLRtGkB95cqx4lb2RYsJUFRFQF3hqNlNENOhhytt0GBPET_9PXyJP3OOZzbXmRLtZsEDQxD2lkOeS7f-c6F-m7R6LgKi8fqb98t8pW3ueEPf8_UIkTTpG8cfvwGj1ZGF9Zd49NigY_RvI70-7NSbXz3qDVqpW_xvbIhdCao3Dtn8khPoldafWWPnlrlTFz79iZTvlUa75jXjWmtcTmtC5Vfp3WhMaYIyjvavFX2fOWdyVRcGbxEL2pVmrViMWmJyrVTUd8YOiy2vltWJqy8j_SKiHR85b6ycWWxbmWDuu5sgR1J9qpSldGtUyucH_3jK3fqXWnbWg4XiXp9vLtylx0W-7JUp-nhrY0bdRKCDfHKvTIh6jZOJaeHtb816svzF6ppfWkhHvbBSlk27q7WEFJ50lQV5pacwluatDJZUOEBGTeQL5yPE9d1y8F79Nk3tC1_XLyA0x6rpB2ZfOvwBb2whinE0a6rKjzIdVV9bVzyfqmrAMMtar35umh9M3kE-30dPR_8z0wJdD6eQ2f77G3jTqE1uMuoi6St0k2TiaO1qn1tXCSP58lfcaVndofn-71NsQeHx-pELavOqHxl8ptaw65rCzjgFAACq17z9ryjJj-bbU9ZN9Wjd8qxkrBQhXePIh4bJfjVDWEaWNW32lYaKJ0LhK8KpWM0ddMrRqcdqw-fk86hA_Qn-j0K6sS2TaWh6nNfkL50nnfHH125F0DFYzXGZ-hygCmUcOpmbhUWIVPLLvZrr0UR2Otq8cKrZy6aFiIOgEcULFSN3fT1EJYAhFoaUo7jTYA8MQ6iErv8-lpHs8bS3lcUfs6IINPIhW-aBvYBtjz2ti7iPwCgKkQZok-1Jvc1EFDg3d7wqvTz40J_xFoLVFrElFkfPyBs7or6dxY43y2ijZUh-NN5W3HC2ClIiMWcpA-Q89PW13vjp5EN52ZYCGKuwHBfBDo5BSc8Whi4IibsLQmg7UY1fg2SKjXkaMmdKRRy3YLSR6YaI-Z4IbxwQNpLio4WaQDMzFKnoAKQ8hX57uWLgwJfAjy9f0aDpYi7c8-nT98g1oWpID6A1yuEt77x1h2URY5Y-Rga_Oe4QG5EAJq8awkzla1t1IwvZgqYh0Kp3WTKUKThrEaHgMMK9jcp8Wc-8Y32IxWfudIrC7MjHAPpPUFQT3xz_N-1a8IQmDTkrTEuG_ItUjfCrYa0txoeh2KISs2eDmSkWjvQw36ef7zHeFfuqW_BPHLai2TtI5UcwE8lLCWQOaOSwr1jShKVj5PMeaz-mkRtzZEuCmWjqkA_rXAdU31PPWJ4C38NbrKO1GM_KX0N9kEJcd7aW-yQ9Dkpihaeg4yvTNHlkKbV-Q2FDosyy-IUvKzCnPCXGxyNRCBs-9S-hjgA7CtPABliUMtBEOCki_6IwIBDv1oZNzMLfuPNTJHN0qAktQq0C8cgcsfMwqxLO_TyrGlPG5FZcESr3bVhrPzUPUMy_si-IRF-DO_cGb0w8yOuWmom8IK9wonjV1sUQP_6ou2386Ktz0SHkt-Ug0j-u5dnSoeZ_rW9XkUqHaB86he6QAXepNZinxEF6xZeyU1VdZUecwwqgwh5iYD20s1D8v2eOv59pvkEJjbRPTP8-nCh3KjTZKuD6er007OzL85OXvUFHKkDoAyPn5xcnhDsn7_807OzT-Uj6gFReGjRUly_IZXmrQfW-5IzAeIeyehAiSD7bGf1A_q-5MhP_h4iX5Ib26CwZcncMNGRzsp1o5e2stESY5SzaueH7_89RikkfHubPCxCf7cVoQi7VvA6lIwJspOjnmvXaar-9y-VSsVUjQq-uqVKftN386ktmLXrXN-L_U-xKx6hmCFq0uq6NSjurxZoykI8ImXQLkyLew5zk6-c_RadAhXttYcDx9PAlLnvmPm3EfaQSEZCoiOn7Td5qTWUdIoxsSBqwtsEeWy7-8T4OVXK29a-bzE_lLhbQ5GG0xxttfKVwOeCwgOJNO4w311IPL9zI_7CWA6eL33V1cMXcJOteDnrOXJQiinppsPBgOxLAe70gByE8NZGoHyPYGTU4BgkFYCpArVJtZwk7r-Wl7kA5s70DQH4pNXyXmIVnxobSl_8qJU0bFRLieqgGocLZVZMc_ctrjO1QTnlcqlkWIFgqPN36uLlxTA94K5BeoGcunt0udl2y2xd06UcNaxbGkSU2a0xBr3eCyV9MqekewbddKRIJNJ4cDrNR3hOoKe7yPRweP8I0tXYD9uwcSA5lQOcxTIquiyhpJQAHIcSk-JACX0meYn2ZjJP5zzT_Aoprxa08gP1hLlJPeeOh6ZS4Lsgu2c9286jlvu6drMzJ00Vzu5UqAsDgQgTpjJKOSqFidXXvqsKtAjjyKc133a2FaBISUXi_vD9v5hyzWtNDs74YEEnRMUBVBGXfRL7xi_5DTqKEsQwq9HVzTAco22l3eNgKe01Tap8R55DMumkhiO3uc20rDucXqDHBdpkFC7VJhsO54gYvHsABHOCFABRVPra0IR3Pxz2TCvUmfc3LDU2J3IfG5s6S0ELacp0Qg3A3Jo-wntVTEqKczz3-tC8jB8S8SW9eH8ZBBbfdIFH2LYdR1xs39dJRbJfRjL0yIe1Obq2x8oQDgfVQVDWUPbPuYSGxR40DQN2tZt2Ue8hbz5BfylzSM4i9xx6fQ6HD1wcfYe8MiQ32ZCtVqjKysVBQceZe5ajabJ_smPGN73Iyj38xXu89DA-__1uiTkhK46cLQDsc0LQ5ITGD6PlNN2eNHrDbHN-17NDjsN2Q53ttiRQHwb2cuAp9LkG_2tV6Sb6JhuWNrK_iWgjwQT6oyHfUq7uO2_hZ-0CtwI6ataYGC3FHAsrQ2ZePHA1dCRAyZBdmLDAr22LbavNjJ9DpLQ8q6qFEbMZQ8gtFk8Nqe8Y-550JuiFZwFZ6jxmPB0adCwiLWWQnRsH0OHOvQhZ9uPj3332-T-Eh3a__QTf8eDfsQvXK5uvzC1McW0TB7KYS7rhmrBQnTqQ462qL-7pX6ZjfFIsZ6asUeDUzHiI38ryQ85gUy6mJibIjAntRkfxTqfwLc9k7e4xK4bORtFt0po82TXwPfmDNWTDUuq5tTRourtBeuDM4eBF37u_m_vDdsV25y1jH9q8bHTT9lIpNRFXgEVDty2-C4gFoGRyTcOMOzF_P-4O3M4g5Chm0s5Bci2VGPTzBD-HezaGEZXDs0QaNi7fu7uMkexp5btCJo0EUqGFufx99GBfbjKotEgj4JdI6n26LaTAsIGKg6X3cVqgZdMx3u4MXtTai8ndComwWNIAcg9_pIv3PcmeCaHfNJVDiLlHcSoZoXgmWJhdFWY7jIJ3o8a7cj9H9VEw7b1783dfLWwBU_TlwcxYtcPi_fj6YoLt-w3a-jdlwPaZcUB7dY98PI7B-tudyz7T0HiZw1Ckv3ctglcPNqifckye4GRqoOnqnI4fbHOkTlfeB-mibYqDloWhdan4lbtwdGwZZ0UBsSDh2ROKgn76S5GVsjJVrACMB8kPkbt4D5dO-y-VxJ6k9lupit_CFC7CR1TJh61RVKpJbDtoV5hSd1WEbazLq44nEkNfKUY6RyDlWpgOtGQSu92YDbGZyLqN0P03LRLXzAyJAdKEbadMm8j8R7ppmajLDcZ-Hj-oHeTsa1di-otnzweLmgN3QXpYiHYNxkQhRPcmwieze6FLer_wMDYcSR7PTZVIsR_60987ILtfevozBW6Z17y5FAnjC7QuG9hqOq097qfAYoTESgNW_mI2Sw8fqSeWgaWhPBSkPxJK7V1AH1ooySk8xJPKcgKV8cbrJu2GKq0Y9ht8_TleX6ODJWddxA28dyRhnE4C3gPeIJYfFwZaOG5Bfc6FzNrO9IZqVNqDAjFtMl2RCunkzD4rVPxeNsWLX7vK60Kaar5w0lWz0kt0ZKBpGJsmY7qUy3_KTi2g1Ojr3okJBGmqV4-9MTVeJZow-uuM0UwTGSU1DyDQZUnYX1kAhtu2MVLOfC63gB8ovv3LN1vmq_oFEsqyZOqnwygnMvn5cMco7U-dPUjSnzt_kA6_MMgvDPK2DPK_wMN42n-BiMkm_3-YGJV_r6h4h7M6-vcfXFn3yg==\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting, My internet is slow on my phone, I can't get Wi-Fi to work, My phone keeps losing Wi-Fi, Wi-Fi is not working, I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n",
+             "document": "projects/882766655179/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/62675b56ddcd4624ea48025b1b006ea016076b12"
+            },
+            {
+             "title": "Turning Wi-Fi assist off",
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data, Why is my data bill so high?, My Wi-Fi is slow but it's still using data, How do I turn off Wi-Fi Assist?, I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n",
+             "document": "projects/882766655179/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/dc01ed34f0567135d979da919d3f1569b8c6d7d5"
+            },
+            {
+             "title": "Turning your Wi-Fi on and off",
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_wifi-turning-your-wi-fi-on-and-off",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrNVTtv2zAQ_itXLVlkA30O2bIYSAc3SFIERV0EZ_FksaF4AklZEYL-9x5J2amBOt3iwjAsPnT3vUg_FR2Gxhfn8P2pqBrWFaXBjxIKH6ibVqz8vJWphlBpu5FRUcgw0GOIzwvHLYSG4IZCkHUP2HUlBOzgTs8Weh43Ww65drGUp3NY2ZX96mV33gMVWlDUGQoEI_cO1hgCuRE6HshBjYLHSRfZlpYrdE7LjKUwsHuAiq2lKmi28yLB79d7BnHMXVzbDwd0NlOxvTEyUaEx92QnfjUaTzLb4nivHHd_TDU83AdOdX6VkMV5d1ycW1GBHXijFSWRMl0_6FA1EBi-LI_qc8sQemeB6zqTTu9mZV-uuVicQIX3x1W4ISPmAO7tEpA_Wduj1DOjhoPv5AuCABrcEniqeqfDCEa3OmBiM4fLWgpLdj26sQSyMSoIHXovzRSgVUmzz6njq-vy4eV0RAMvbc2gJcOwJh9dfbZ7J9mhVK9O4uM_z7_24CtHZMuIPh3ojlzNrhUvtiinVWzjGjCdUh8j0KLFzQHZ52N8_pdorOyC3YZC7racsjSDKV5pNqsQqztqeZsPyC52dYSa2inaym03h28TVEczVAp0AIMSnxLWfYBBGyPvkorlcqy0pHEfQm0jvZRCwA1Kulb2yumtVJj4XCjlJJeC8ZpUXwkah9VDvPYSFBZwOywC3WYKB77DepTWuDbxJYSFfhQ4cvqvOcZ_f39ibiQALvrAsxh1aXrXkD2QRZ5SMVJl1kFfNWwpM0Uz4CjGyK0rfCcr4mOqsMMzxJo6nHmhDw7thlI0_3dnIsYTexMhnMKdV78sPh2_LMTVM7G-4jb916sUgoTszWkuuPj5DXltBX4=\nsummary: This guide explains how to turn Wi-Fi on or off and manage Wi-Fi network settings on an iPhone 13.\nsymptoms: [My Wi-Fi isn't working, How do I turn on Wi-Fi?, I can't connect to Wi-Fi, I need to forget a Wi-Fi network, My Wi-Fi keeps disconnecting, How do I manage my Wi-Fi settings?]\ntitle: Turning your Wi-Fi on and off\ntutorial_id: feature_connections_wifi-turning-your-wi-fi-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_wifi-turning-your-wi-fi-on-and-off\n",
+             "document": "projects/882766655179/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/def4cd6654d22bb50e077c584059a0f5f0dc5e0b"
+            }
+           ],
+           "agent": "Tech Support",
+           "args": {
+            "rewrittenQueries": [
+             "iPhone slow wifi connection"
+            ],
+            "filter": "device: ANY(\"iphone-13\")",
+            "query": "wifi is slow"
+           },
+           "response": {
+            "answer": "[1] Wi-Fi connection issues or slowdowns\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWutuHLcVfhV2f8QJMFLRtGkB95cqx4lb2RYsJUFRFQF3hqNlNENOhhytt0GBPET_9PXyJP3OOZzbXmRLtZsEDQxD2lkOeS7f-c6F-m7R6LgKi8fqb98t8pW3ueEPf8_UIkTTpG8cfvwGj1ZGF9Zd49NigY_RvI70-7NSbXz3qDVqpW_xvbIhdCao3Dtn8khPoldafWWPnlrlTFz79iZTvlUa75jXjWmtcTmtC5Vfp3WhMaYIyjvavFX2fOWdyVRcGbxEL2pVmrViMWmJyrVTUd8YOiy2vltWJqy8j_SKiHR85b6ycWWxbmWDuu5sgR1J9qpSldGtUyucH_3jK3fqXWnbWg4XiXp9vLtylx0W-7JUp-nhrY0bdRKCDfHKvTIh6jZOJaeHtb816svzF6ppfWkhHvbBSlk27q7WEFJ50lQV5pacwluatDJZUOEBGTeQL5yPE9d1y8F79Nk3tC1_XLyA0x6rpB2ZfOvwBb2whinE0a6rKjzIdVV9bVzyfqmrAMMtar35umh9M3kE-30dPR_8z0wJdD6eQ2f77G3jTqE1uMuoi6St0k2TiaO1qn1tXCSP58lfcaVndofn-71NsQeHx-pELavOqHxl8ptaw65rCzjgFAACq17z9ryjJj-bbU9ZN9Wjd8qxkrBQhXePIh4bJfjVDWEaWNW32lYaKJ0LhK8KpWM0ddMrRqcdqw-fk86hA_Qn-j0K6sS2TaWh6nNfkL50nnfHH125F0DFYzXGZ-hygCmUcOpmbhUWIVPLLvZrr0UR2Otq8cKrZy6aFiIOgEcULFSN3fT1EJYAhFoaUo7jTYA8MQ6iErv8-lpHs8bS3lcUfs6IINPIhW-aBvYBtjz2ti7iPwCgKkQZok-1Jvc1EFDg3d7wqvTz40J_xFoLVFrElFkfPyBs7or6dxY43y2ijZUh-NN5W3HC2ClIiMWcpA-Q89PW13vjp5EN52ZYCGKuwHBfBDo5BSc8Whi4IibsLQmg7UY1fg2SKjXkaMmdKRRy3YLSR6YaI-Z4IbxwQNpLio4WaQDMzFKnoAKQ8hX57uWLgwJfAjy9f0aDpYi7c8-nT98g1oWpID6A1yuEt77x1h2URY5Y-Rga_Oe4QG5EAJq8awkzla1t1IwvZgqYh0Kp3WTKUKThrEaHgMMK9jcp8Wc-8Y32IxWfudIrC7MjHAPpPUFQT3xz_N-1a8IQmDTkrTEuG_ItUjfCrYa0txoeh2KISs2eDmSkWjvQw36ef7zHeFfuqW_BPHLai2TtI5UcwE8lLCWQOaOSwr1jShKVj5PMeaz-mkRtzZEuCmWjqkA_rXAdU31PPWJ4C38NbrKO1GM_KX0N9kEJcd7aW-yQ9Dkpihaeg4yvTNHlkKbV-Q2FDosyy-IUvKzCnPCXGxyNRCBs-9S-hjgA7CtPABliUMtBEOCki_6IwIBDv1oZNzMLfuPNTJHN0qAktQq0C8cgcsfMwqxLO_TyrGlPG5FZcESr3bVhrPzUPUMy_si-IRF-DO_cGb0w8yOuWmom8IK9wonjV1sUQP_6ou2386Ktz0SHkt-Ug0j-u5dnSoeZ_rW9XkUqHaB86he6QAXepNZinxEF6xZeyU1VdZUecwwqgwh5iYD20s1D8v2eOv59pvkEJjbRPTP8-nCh3KjTZKuD6er007OzL85OXvUFHKkDoAyPn5xcnhDsn7_807OzT-Uj6gFReGjRUly_IZXmrQfW-5IzAeIeyehAiSD7bGf1A_q-5MhP_h4iX5Ib26CwZcncMNGRzsp1o5e2stESY5SzaueH7_89RikkfHubPCxCf7cVoQi7VvA6lIwJspOjnmvXaar-9y-VSsVUjQq-uqVKftN386ktmLXrXN-L_U-xKx6hmCFq0uq6NSjurxZoykI8ImXQLkyLew5zk6-c_RadAhXttYcDx9PAlLnvmPm3EfaQSEZCoiOn7Td5qTWUdIoxsSBqwtsEeWy7-8T4OVXK29a-bzE_lLhbQ5GG0xxttfKVwOeCwgOJNO4w311IPL9zI_7CWA6eL33V1cMXcJOteDnrOXJQiinppsPBgOxLAe70gByE8NZGoHyPYGTU4BgkFYCpArVJtZwk7r-Wl7kA5s70DQH4pNXyXmIVnxobSl_8qJU0bFRLieqgGocLZVZMc_ctrjO1QTnlcqlkWIFgqPN36uLlxTA94K5BeoGcunt0udl2y2xd06UcNaxbGkSU2a0xBr3eCyV9MqekewbddKRIJNJ4cDrNR3hOoKe7yPRweP8I0tXYD9uwcSA5lQOcxTIquiyhpJQAHIcSk-JACX0meYn2ZjJP5zzT_Aoprxa08gP1hLlJPeeOh6ZS4Lsgu2c9286jlvu6drMzJ00Vzu5UqAsDgQgTpjJKOSqFidXXvqsKtAjjyKc133a2FaBISUXi_vD9v5hyzWtNDs74YEEnRMUBVBGXfRL7xi_5DTqKEsQwq9HVzTAco22l3eNgKe01Tap8R55DMumkhiO3uc20rDucXqDHBdpkFC7VJhsO54gYvHsABHOCFABRVPra0IR3Pxz2TCvUmfc3LDU2J3IfG5s6S0ELacp0Qg3A3Jo-wntVTEqKczz3-tC8jB8S8SW9eH8ZBBbfdIFH2LYdR1xs39dJRbJfRjL0yIe1Obq2x8oQDgfVQVDWUPbPuYSGxR40DQN2tZt2Ue8hbz5BfylzSM4i9xx6fQ6HD1wcfYe8MiQ32ZCtVqjKysVBQceZe5ajabJ_smPGN73Iyj38xXu89DA-__1uiTkhK46cLQDsc0LQ5ITGD6PlNN2eNHrDbHN-17NDjsN2Q53ttiRQHwb2cuAp9LkG_2tV6Sb6JhuWNrK_iWgjwQT6oyHfUq7uO2_hZ-0CtwI6ataYGC3FHAsrQ2ZePHA1dCRAyZBdmLDAr22LbavNjJ9DpLQ8q6qFEbMZQ8gtFk8Nqe8Y-550JuiFZwFZ6jxmPB0adCwiLWWQnRsH0OHOvQhZ9uPj3332-T-Eh3a__QTf8eDfsQvXK5uvzC1McW0TB7KYS7rhmrBQnTqQ462qL-7pX6ZjfFIsZ6asUeDUzHiI38ryQ85gUy6mJibIjAntRkfxTqfwLc9k7e4xK4bORtFt0po82TXwPfmDNWTDUuq5tTRourtBeuDM4eBF37u_m_vDdsV25y1jH9q8bHTT9lIpNRFXgEVDty2-C4gFoGRyTcOMOzF_P-4O3M4g5Chm0s5Bci2VGPTzBD-HezaGEZXDs0QaNi7fu7uMkexp5btCJo0EUqGFufx99GBfbjKotEgj4JdI6n26LaTAsIGKg6X3cVqgZdMx3u4MXtTai8ndComwWNIAcg9_pIv3PcmeCaHfNJVDiLlHcSoZoXgmWJhdFWY7jIJ3o8a7cj9H9VEw7b1783dfLWwBU_TlwcxYtcPi_fj6YoLt-w3a-jdlwPaZcUB7dY98PI7B-tudyz7T0HiZw1Ckv3ctglcPNqifckye4GRqoOnqnI4fbHOkTlfeB-mibYqDloWhdan4lbtwdGwZZ0UBsSDh2ROKgn76S5GVsjJVrACMB8kPkbt4D5dO-y-VxJ6k9lupit_CFC7CR1TJh61RVKpJbDtoV5hSd1WEbazLq44nEkNfKUY6RyDlWpgOtGQSu92YDbGZyLqN0P03LRLXzAyJAdKEbadMm8j8R7ppmajLDcZ-Hj-oHeTsa1di-otnzweLmgN3QXpYiHYNxkQhRPcmwieze6FLer_wMDYcSR7PTZVIsR_60987ILtfevozBW6Z17y5FAnjC7QuG9hqOq097qfAYoTESgNW_mI2Sw8fqSeWgaWhPBSkPxJK7V1AH1ooySk8xJPKcgKV8cbrJu2GKq0Y9ht8_TleX6ODJWddxA28dyRhnE4C3gPeIJYfFwZaOG5Bfc6FzNrO9IZqVNqDAjFtMl2RCunkzD4rVPxeNsWLX7vK60Kaar5w0lWz0kt0ZKBpGJsmY7qUy3_KTi2g1Ojr3okJBGmqV4-9MTVeJZow-uuM0UwTGSU1DyDQZUnYX1kAhtu2MVLOfC63gB8ovv3LN1vmq_oFEsqyZOqnwygnMvn5cMco7U-dPUjSnzt_kA6_MMgvDPK2DPK_wMN42n-BiMkm_3-YGJV_r6h4h7M6-vcfXFn3yg==\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting,My internet is slow on my phone,I can't get Wi-Fi to work,My phone keeps losing Wi-Fi,Wi-Fi is not working,I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n\n[2] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n\n[3] Turning your Wi-Fi on and off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrNVTtv2zAQ_itXLVlkA30O2bIYSAc3SFIERV0EZ_FksaF4AklZEYL-9x5J2amBOt3iwjAsPnT3vUg_FR2Gxhfn8P2pqBrWFaXBjxIKH6ibVqz8vJWphlBpu5FRUcgw0GOIzwvHLYSG4IZCkHUP2HUlBOzgTs8Weh43Ww65drGUp3NY2ZX96mV33gMVWlDUGQoEI_cO1hgCuRE6HshBjYLHSRfZlpYrdE7LjKUwsHuAiq2lKmi28yLB79d7BnHMXVzbDwd0NlOxvTEyUaEx92QnfjUaTzLb4nivHHd_TDU83AdOdX6VkMV5d1ycW1GBHXijFSWRMl0_6FA1EBi-LI_qc8sQemeB6zqTTu9mZV-uuVicQIX3x1W4ISPmAO7tEpA_Wduj1DOjhoPv5AuCABrcEniqeqfDCEa3OmBiM4fLWgpLdj26sQSyMSoIHXovzRSgVUmzz6njq-vy4eV0RAMvbc2gJcOwJh9dfbZ7J9mhVK9O4uM_z7_24CtHZMuIPh3ojlzNrhUvtiinVWzjGjCdUh8j0KLFzQHZ52N8_pdorOyC3YZC7racsjSDKV5pNqsQqztqeZsPyC52dYSa2inaym03h28TVEczVAp0AIMSnxLWfYBBGyPvkorlcqy0pHEfQm0jvZRCwA1Kulb2yumtVJj4XCjlJJeC8ZpUXwkah9VDvPYSFBZwOywC3WYKB77DepTWuDbxJYSFfhQ4cvqvOcZ_f39ibiQALvrAsxh1aXrXkD2QRZ5SMVJl1kFfNWwpM0Uz4CjGyK0rfCcr4mOqsMMzxJo6nHmhDw7thlI0_3dnIsYTexMhnMKdV78sPh2_LMTVM7G-4jb916sUgoTszWkuuPj5DXltBX4=\nsummary: This guide explains how to turn Wi-Fi on or off and manage Wi-Fi network settings on an iPhone 13.\nsymptoms: [My Wi-Fi isn't working,How do I turn on Wi-Fi?,I can't connect to Wi-Fi,I need to forget a Wi-Fi network,My Wi-Fi keeps disconnecting,How do I manage my Wi-Fi settings?]\ntitle: Turning your Wi-Fi on and off\ntutorial_id: feature_connections_wifi-turning-your-wi-fi-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_wifi-turning-your-wi-fi-on-and-off\n\n"
+           },
+           "name": "search_tutorials",
+           "cited snippets": [],
+           "type": "DataStoreTool",
+           "tool call id": "adk-3cb4a648-6dad-4f94-b022-a5db48499ce7"
+          },
+          "childSpans": [
+           {
+            "name": "Search with original query",
+            "startTime": "2026-10-19T23:54:23.418Z",
+            "endTime": "2026-10-19T23:54:23.546Z",
+            "attributes": {
+             "info": "[projects/882766655179/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Search with rewritten query",
+            "startTime": "2026-10-19T23:54:23.418Z",
+            "endTime": "2026-10-19T23:54:23.567Z",
+            "attributes": {
+             "info": "[projects/882766655179/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Summarization",
+            "attributes": {
+             "summarization model display name": "disable_summarizer",
+             "disabled": true
+            }
+           },
+           {
+            "name": "Query rewrite",
+            "attributes": {
+             "rewriter model display name": "rewrite-by-agent (Default)"
+            }
+           }
+          ],
+          "duration": "0.167321s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:54:23.571239Z",
+          "endTime": "2026-10-19T23:54:23.586009Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 6.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.014770s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:54:23.587172Z",
+          "endTime": "2026-10-19T23:54:24.354723Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 70.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 6376.0,
+           "[debug] prefill time (ms)": 267.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 766.0,
+           "output token count": 30.0,
+           "[debug] decode queue time (ms)": 24.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.767551s"
+         }
+        ],
+        "duration": "3.379910s"
+       }
+      },
+      "citations": {
+       "citedChunks": [
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_special_assist%2Dturning%2Dwi%2Dfi%2Dassist%2Doff%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_special_assist%2Dturning%2Dwi%2Dfi%2Dassist%2Doff",
+         "title": "Turning Wi-Fi assist off",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data, Why is my data bill so high?, My Wi-Fi is slow but it's still using data, How do I turn off Wi-Fi Assist?, I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_connections_wifi%2Dturning%2Dyour%2Dwi%2Dfi%2Don%2Dand%2Doff%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_connections_wifi%2Dturning%2Dyour%2Dwi%2Dfi%2Don%2Dand%2Doff",
+         "title": "Turning your Wi-Fi on and off",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrNVTtv2zAQ_itXLVlkA30O2bIYSAc3SFIERV0EZ_FksaF4AklZEYL-9x5J2amBOt3iwjAsPnT3vUg_FR2Gxhfn8P2pqBrWFaXBjxIKH6ibVqz8vJWphlBpu5FRUcgw0GOIzwvHLYSG4IZCkHUP2HUlBOzgTs8Weh43Ww65drGUp3NY2ZX96mV33gMVWlDUGQoEI_cO1hgCuRE6HshBjYLHSRfZlpYrdE7LjKUwsHuAiq2lKmi28yLB79d7BnHMXVzbDwd0NlOxvTEyUaEx92QnfjUaTzLb4nivHHd_TDU83AdOdX6VkMV5d1ycW1GBHXijFSWRMl0_6FA1EBi-LI_qc8sQemeB6zqTTu9mZV-uuVicQIX3x1W4ISPmAO7tEpA_Wduj1DOjhoPv5AuCABrcEniqeqfDCEa3OmBiM4fLWgpLdj26sQSyMSoIHXovzRSgVUmzz6njq-vy4eV0RAMvbc2gJcOwJh9dfbZ7J9mhVK9O4uM_z7_24CtHZMuIPh3ojlzNrhUvtiinVWzjGjCdUh8j0KLFzQHZ52N8_pdorOyC3YZC7racsjSDKV5pNqsQqztqeZsPyC52dYSa2inaym03h28TVEczVAp0AIMSnxLWfYBBGyPvkorlcqy0pHEfQm0jvZRCwA1Kulb2yumtVJj4XCjlJJeC8ZpUXwkah9VDvPYSFBZwOywC3WYKB77DepTWuDbxJYSFfhQ4cvqvOcZ_f39ibiQALvrAsxh1aXrXkD2QRZ5SMVJl1kFfNWwpM0Uz4CjGyK0rfCcr4mOqsMMzxJo6nHmhDw7thlI0_3dnIsYTexMhnMKdV78sPh2_LMTVM7G-4jb916sUgoTszWkuuPj5DXltBX4=\nsummary: This guide explains how to turn Wi-Fi on or off and manage Wi-Fi network settings on an iPhone 13.\nsymptoms: [My Wi-Fi isn't working, How do I turn on Wi-Fi?, I can't connect to Wi-Fi, I need to forget a Wi-Fi network, My Wi-Fi keeps disconnecting, How do I manage my Wi-Fi settings?]\ntitle: Turning your Wi-Fi on and off\ntutorial_id: feature_connections_wifi-turning-your-wi-fi-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_wifi-turning-your-wi-fi-on-and-off\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20iOS%20New,156126%2Dwi%2Dfi%2Dconnection%2Dissues%2Dor%2Dslowdowns%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2F156126%2Dwi%2Dfi%2Dconnection%2Dissues%2Dor%2Dslowdowns",
+         "title": "Wi-Fi connection issues or slowdowns",
+         "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWutuHLcVfhV2f8QJMFLRtGkB95cqx4lb2RYsJUFRFQF3hqNlNENOhhytt0GBPET_9PXyJP3OOZzbXmRLtZsEDQxD2lkOeS7f-c6F-m7R6LgKi8fqb98t8pW3ueEPf8_UIkTTpG8cfvwGj1ZGF9Zd49NigY_RvI70-7NSbXz3qDVqpW_xvbIhdCao3Dtn8khPoldafWWPnlrlTFz79iZTvlUa75jXjWmtcTmtC5Vfp3WhMaYIyjvavFX2fOWdyVRcGbxEL2pVmrViMWmJyrVTUd8YOiy2vltWJqy8j_SKiHR85b6ycWWxbmWDuu5sgR1J9qpSldGtUyucH_3jK3fqXWnbWg4XiXp9vLtylx0W-7JUp-nhrY0bdRKCDfHKvTIh6jZOJaeHtb816svzF6ppfWkhHvbBSlk27q7WEFJ50lQV5pacwluatDJZUOEBGTeQL5yPE9d1y8F79Nk3tC1_XLyA0x6rpB2ZfOvwBb2whinE0a6rKjzIdVV9bVzyfqmrAMMtar35umh9M3kE-30dPR_8z0wJdD6eQ2f77G3jTqE1uMuoi6St0k2TiaO1qn1tXCSP58lfcaVndofn-71NsQeHx-pELavOqHxl8ptaw65rCzjgFAACq17z9ryjJj-bbU9ZN9Wjd8qxkrBQhXePIh4bJfjVDWEaWNW32lYaKJ0LhK8KpWM0ddMrRqcdqw-fk86hA_Qn-j0K6sS2TaWh6nNfkL50nnfHH125F0DFYzXGZ-hygCmUcOpmbhUWIVPLLvZrr0UR2Otq8cKrZy6aFiIOgEcULFSN3fT1EJYAhFoaUo7jTYA8MQ6iErv8-lpHs8bS3lcUfs6IINPIhW-aBvYBtjz2ti7iPwCgKkQZok-1Jvc1EFDg3d7wqvTz40J_xFoLVFrElFkfPyBs7or6dxY43y2ijZUh-NN5W3HC2ClIiMWcpA-Q89PW13vjp5EN52ZYCGKuwHBfBDo5BSc8Whi4IibsLQmg7UY1fg2SKjXkaMmdKRRy3YLSR6YaI-Z4IbxwQNpLio4WaQDMzFKnoAKQ8hX57uWLgwJfAjy9f0aDpYi7c8-nT98g1oWpID6A1yuEt77x1h2URY5Y-Rga_Oe4QG5EAJq8awkzla1t1IwvZgqYh0Kp3WTKUKThrEaHgMMK9jcp8Wc-8Y32IxWfudIrC7MjHAPpPUFQT3xz_N-1a8IQmDTkrTEuG_ItUjfCrYa0txoeh2KISs2eDmSkWjvQw36ef7zHeFfuqW_BPHLai2TtI5UcwE8lLCWQOaOSwr1jShKVj5PMeaz-mkRtzZEuCmWjqkA_rXAdU31PPWJ4C38NbrKO1GM_KX0N9kEJcd7aW-yQ9Dkpihaeg4yvTNHlkKbV-Q2FDosyy-IUvKzCnPCXGxyNRCBs-9S-hjgA7CtPABliUMtBEOCki_6IwIBDv1oZNzMLfuPNTJHN0qAktQq0C8cgcsfMwqxLO_TyrGlPG5FZcESr3bVhrPzUPUMy_si-IRF-DO_cGb0w8yOuWmom8IK9wonjV1sUQP_6ou2386Ktz0SHkt-Ug0j-u5dnSoeZ_rW9XkUqHaB86he6QAXepNZinxEF6xZeyU1VdZUecwwqgwh5iYD20s1D8v2eOv59pvkEJjbRPTP8-nCh3KjTZKuD6er007OzL85OXvUFHKkDoAyPn5xcnhDsn7_807OzT-Uj6gFReGjRUly_IZXmrQfW-5IzAeIeyehAiSD7bGf1A_q-5MhP_h4iX5Ib26CwZcncMNGRzsp1o5e2stESY5SzaueH7_89RikkfHubPCxCf7cVoQi7VvA6lIwJspOjnmvXaar-9y-VSsVUjQq-uqVKftN386ktmLXrXN-L_U-xKx6hmCFq0uq6NSjurxZoykI8ImXQLkyLew5zk6-c_RadAhXttYcDx9PAlLnvmPm3EfaQSEZCoiOn7Td5qTWUdIoxsSBqwtsEeWy7-8T4OVXK29a-bzE_lLhbQ5GG0xxttfKVwOeCwgOJNO4w311IPL9zI_7CWA6eL33V1cMXcJOteDnrOXJQiinppsPBgOxLAe70gByE8NZGoHyPYGTU4BgkFYCpArVJtZwk7r-Wl7kA5s70DQH4pNXyXmIVnxobSl_8qJU0bFRLieqgGocLZVZMc_ctrjO1QTnlcqlkWIFgqPN36uLlxTA94K5BeoGcunt0udl2y2xd06UcNaxbGkSU2a0xBr3eCyV9MqekewbddKRIJNJ4cDrNR3hOoKe7yPRweP8I0tXYD9uwcSA5lQOcxTIquiyhpJQAHIcSk-JACX0meYn2ZjJP5zzT_Aoprxa08gP1hLlJPeeOh6ZS4Lsgu2c9286jlvu6drMzJ00Vzu5UqAsDgQgTpjJKOSqFidXXvqsKtAjjyKc133a2FaBISUXi_vD9v5hyzWtNDs74YEEnRMUBVBGXfRL7xi_5DTqKEsQwq9HVzTAco22l3eNgKe01Tap8R55DMumkhiO3uc20rDucXqDHBdpkFC7VJhsO54gYvHsABHOCFABRVPra0IR3Pxz2TCvUmfc3LDU2J3IfG5s6S0ELacp0Qg3A3Jo-wntVTEqKczz3-tC8jB8S8SW9eH8ZBBbfdIFH2LYdR1xs39dJRbJfRjL0yIe1Obq2x8oQDgfVQVDWUPbPuYSGxR40DQN2tZt2Ue8hbz5BfylzSM4i9xx6fQ6HD1wcfYe8MiQ32ZCtVqjKysVBQceZe5ajabJ_smPGN73Iyj38xXu89DA-__1uiTkhK46cLQDsc0LQ5ITGD6PlNN2eNHrDbHN-17NDjsN2Q53ttiRQHwb2cuAp9LkG_2tV6Sb6JhuWNrK_iWgjwQT6oyHfUq7uO2_hZ-0CtwI6ataYGC3FHAsrQ2ZePHA1dCRAyZBdmLDAr22LbavNjJ9DpLQ8q6qFEbMZQ8gtFk8Nqe8Y-550JuiFZwFZ6jxmPB0adCwiLWWQnRsH0OHOvQhZ9uPj3332-T-Eh3a__QTf8eDfsQvXK5uvzC1McW0TB7KYS7rhmrBQnTqQ462qL-7pX6ZjfFIsZ6asUeDUzHiI38ryQ85gUy6mJibIjAntRkfxTqfwLc9k7e4xK4bORtFt0po82TXwPfmDNWTDUuq5tTRourtBeuDM4eBF37u_m_vDdsV25y1jH9q8bHTT9lIpNRFXgEVDty2-C4gFoGRyTcOMOzF_P-4O3M4g5Chm0s5Bci2VGPTzBD-HezaGEZXDs0QaNi7fu7uMkexp5btCJo0EUqGFufx99GBfbjKotEgj4JdI6n26LaTAsIGKg6X3cVqgZdMx3u4MXtTai8ndComwWNIAcg9_pIv3PcmeCaHfNJVDiLlHcSoZoXgmWJhdFWY7jIJ3o8a7cj9H9VEw7b1783dfLWwBU_TlwcxYtcPi_fj6YoLt-w3a-jdlwPaZcUB7dY98PI7B-tudyz7T0HiZw1Ckv3ctglcPNqifckye4GRqoOnqnI4fbHOkTlfeB-mibYqDloWhdan4lbtwdGwZZ0UBsSDh2ROKgn76S5GVsjJVrACMB8kPkbt4D5dO-y-VxJ6k9lupit_CFC7CR1TJh61RVKpJbDtoV5hSd1WEbazLq44nEkNfKUY6RyDlWpgOtGQSu92YDbGZyLqN0P03LRLXzAyJAdKEbadMm8j8R7ppmajLDcZ-Hj-oHeTsa1di-otnzweLmgN3QXpYiHYNxkQhRPcmwieze6FLer_wMDYcSR7PTZVIsR_60987ILtfevozBW6Z17y5FAnjC7QuG9hqOq097qfAYoTESgNW_mI2Sw8fqSeWgaWhPBSkPxJK7V1AH1ooySk8xJPKcgKV8cbrJu2GKq0Y9ht8_TleX6ODJWddxA28dyRhnE4C3gPeIJYfFwZaOG5Bfc6FzNrO9IZqVNqDAjFtMl2RCunkzD4rVPxeNsWLX7vK60Kaar5w0lWz0kt0ZKBpGJsmY7qUy3_KTi2g1Ojr3okJBGmqV4-9MTVeJZow-uuM0UwTGSU1DyDQZUnYX1kAhtu2MVLOfC63gB8ovv3LN1vmq_oFEsqyZOqnwygnMvn5cMco7U-dPUjSnzt_kA6_MMgvDPK2DPK_wMN42n-BiMkm_3-YGJV_r6h4h7M6-vcfXFn3yg==\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting, My internet is slow on my phone, I can't get Wi-Fi to work, My phone keeps losing Wi-Fi, Wi-Fi is not working, I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "walk me through it",
+   "call": 1,
+   "agent": "Alright, let's start. First, we'll try a few things like checking your connection, restarting, and resetting network settings.\nGo to Settings, then tap Wi-Fi. Do you see a blue checkmark next to your network?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "next_step",
+     "payload": {
+      "args": {
+       "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+      },
+      "result": {
+       "result": {
+        "call_ending": false,
+        "of": 7.0,
+        "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+        "heading": "",
+        "step": 1.0
+       }
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "next_step",
+     "payload": {
+      "args": {
+       "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+      },
+      "result": {
+       "result": {
+        "call_ending": false,
+        "of": 7.0,
+        "how_to": [
+         {
+          "steps": [
+           {
+            "text": "From the Settings app, tap Wi-Fi.",
+            "notes": [
+             "Note: \n\nUsing Wi-Fi can deplete your battery power faster than your carrier network connection."
+            ],
+            "heading": ""
+           },
+           {
+            "text": "Tap or slide the Wi-Fi switch to ON.",
+            "notes": [
+             "Note: \n\nTo turn off your Wi-Fi, tap or slide the Wi-Fi switch to OFF."
+            ],
+            "heading": ""
+           },
+           {
+            "text": "Select a network to join.",
+            "notes": [
+             "Note: \n\nWi-Fi hotspots may have security limitations. If necessary, enter a password and tap Join."
+            ],
+            "heading": ""
+           },
+           {
+            "text": "Tap the Info icon beside your Wi-Fi network.",
+            "notes": [],
+            "heading": ""
+           },
+           {
+            "text": "From this screen, you can perform a variety of actions to manage your Wi-Fi connection:",
+            "notes": [
+             "Note:\nForget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\nPrivate Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\nAuto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.",
+             "Forget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.",
+             "Private Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.",
+             "Auto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range."
+            ],
+            "heading": ""
+           },
+           {
+            "text": "You've completed the steps!",
+            "notes": [],
+            "heading": ""
+           }
+          ],
+          "title": "Turning your Wi-Fi on and off"
+         }
+        ],
+        "text": "Within the Settings app, take a moment to confirm that your iPhone is connected to a Wi-Fi network. A blue checkmark will appear next to your active connection within your Wi-Fi settings. If you don't see one, tap on an available Wi-Fi network and attempt to connect. (Make sure your iPhone's Airplane Mode isn't on.)\nNote: If you're successfully connected to Wi-Fi, but you're getting a \"No Internet Connection\" message, there may be an issue with your Wi-Fi router/gateway that you'll need to troubleshoot. Apple also maintains a list of recommended settings for Wi-Fi routers you'll want to review.",
+        "heading": "Confirming your Wi-Fi connection",
+        "step": 2.0
+       }
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Alright, let's start. First, we'll try a few things like checking your connection, restarting, and resetting network settings.",
+      "turnIndex": 3
+     },
+     {
+      "text": "Go to Settings, then tap Wi-Fi. Do you see a blue checkmark next to your network?",
+      "turnCompleted": true,
+      "turnIndex": 3,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "walk me through it"
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:54.958Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-6a74793f-4721-4c4d-b4c7-32795ce3fedf",
+            "tool": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/tools/next-step",
+            "args": {
+             "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:55.761Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "walk": "{\"progress\": {\"156126-wi-fi-connection-issues-or-slowdowns\": {\"done\": 1, \"warned\": 0, \"choice\": \"\"}}, \"stack\": [], \"active\": \"156126-wi-fi-connection-issues-or-slowdowns\", \"resume\": {\"tutorial_id\": \"156126-wi-fi-connection-issues-or-slowdowns\", \"step\": 1, \"heading\": \"If you're having issues connecting to a Wi-Fi network, or are experiencing slow \", \"risk\": \"safe\", \"choice\": \"\"}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:55.808Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-6a74793f-4721-4c4d-b4c7-32795ce3fedf",
+            "tool": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/tools/next-step",
+            "response": {
+             "result": {
+              "call_ending": false,
+              "of": 7.0,
+              "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+              "heading": "",
+              "step": 1.0
+             }
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:55.808Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Alright, let's start. First, we'll try a few things like checking your connection, restarting, and resetting network settings."
+          },
+          {
+           "toolCall": {
+            "id": "adk-cb97065e-08a9-4b41-b115-b58ed6044d02",
+            "tool": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/tools/next-step",
+            "args": {
+             "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:56.855Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "walk": "{\"progress\": {\"156126-wi-fi-connection-issues-or-slowdowns\": {\"done\": 2, \"warned\": 0, \"choice\": \"\"}}, \"stack\": [], \"active\": \"156126-wi-fi-connection-issues-or-slowdowns\", \"resume\": {\"tutorial_id\": \"156126-wi-fi-connection-issues-or-slowdowns\", \"step\": 2, \"heading\": \"Confirming your Wi-Fi connection\", \"risk\": \"safe\", \"choice\": \"\"}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:56.892Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-cb97065e-08a9-4b41-b115-b58ed6044d02",
+            "tool": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/tools/next-step",
+            "response": {
+             "result": {
+              "call_ending": false,
+              "of": 7.0,
+              "how_to": [
+               {
+                "steps": [
+                 {
+                  "text": "From the Settings app, tap Wi-Fi.",
+                  "notes": [
+                   "Note: \n\nUsing Wi-Fi can deplete your battery power faster than your carrier network connection."
+                  ],
+                  "heading": ""
+                 },
+                 {
+                  "text": "Tap or slide the Wi-Fi switch to ON.",
+                  "notes": [
+                   "Note: \n\nTo turn off your Wi-Fi, tap or slide the Wi-Fi switch to OFF."
+                  ],
+                  "heading": ""
+                 },
+                 {
+                  "text": "Select a network to join.",
+                  "notes": [
+                   "Note: \n\nWi-Fi hotspots may have security limitations. If necessary, enter a password and tap Join."
+                  ],
+                  "heading": ""
+                 },
+                 {
+                  "text": "Tap the Info icon beside your Wi-Fi network.",
+                  "notes": [],
+                  "heading": ""
+                 },
+                 {
+                  "text": "From this screen, you can perform a variety of actions to manage your Wi-Fi connection:",
+                  "notes": [
+                   "Note:\nForget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\nPrivate Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\nAuto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.",
+                   "Forget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.",
+                   "Private Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.",
+                   "Auto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range."
+                  ],
+                  "heading": ""
+                 },
+                 {
+                  "text": "You've completed the steps!",
+                  "notes": [],
+                  "heading": ""
+                 }
+                ],
+                "title": "Turning your Wi-Fi on and off"
+               }
+              ],
+              "text": "Within the Settings app, take a moment to confirm that your iPhone is connected to a Wi-Fi network. A blue checkmark will appear next to your active connection within your Wi-Fi settings. If you don't see one, tap on an available Wi-Fi network and attempt to connect. (Make sure your iPhone's Airplane Mode isn't on.)\nNote: If you're successfully connected to Wi-Fi, but you're getting a \"No Internet Connection\" message, there may be an issue with your Wi-Fi router/gateway that you'll need to troubleshoot. Apple also maintains a list of recommended settings for Wi-Fi routers you'll want to review.",
+              "heading": "Confirming your Wi-Fi connection",
+              "step": 2.0
+             }
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:56.892Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Go to Settings, then tap Wi-Fi. Do you see a blue checkmark next to your network?"
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:57.599Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-19T23:55:54.910231Z",
+        "endTime": "2026-10-19T23:55:57.648859Z",
+        "attributes": {
+         "connection index": 3.0,
+         "input types": [
+          "text"
+         ],
+         "perceived latency (ms)": 2738.0,
+         "[debug] agent start latency (ms)": 48.0
+        },
+        "childSpans": [
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:55:54.958902Z",
+          "endTime": "2026-10-19T23:55:54.980218Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeAgent",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 3.0,
+            "total code execution latency (ms)": 9.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.021316s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:55:54.982692Z",
+          "endTime": "2026-10-19T23:55:55.759415Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 65.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 6420.0,
+           "[debug] prefill time (ms)": 247.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 776.0,
+           "output token count": 34.0,
+           "[debug] decode queue time (ms)": 21.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.776723s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:55:55.761810Z",
+          "endTime": "2026-10-19T23:55:55.773508Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011698s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:55:55.773579Z",
+          "endTime": "2026-10-19T23:55:55.793474Z",
+          "attributes": {
+           "tool call id": "adk-6a74793f-4721-4c4d-b4c7-32795ce3fedf",
+           "name": "next_step",
+           "args": {
+            "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+           },
+           "response": {
+            "result": {
+             "call_ending": false,
+             "of": 7.0,
+             "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+             "heading": "",
+             "step": 1.0
+            }
+           },
+           "agent": "Tech Support",
+           "type": "PythonFunctionTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 10.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.019895s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:55:55.793690Z",
+          "endTime": "2026-10-19T23:55:55.808104Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.014414s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:55:55.809931Z",
+          "endTime": "2026-10-19T23:55:56.853382Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 6571.0,
+           "[debug] prefill time (ms)": 232.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 1040.0,
+           "output token count": 62.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "thought token count": 0.0
+          },
+          "duration": "1.043451s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:55:56.855527Z",
+          "endTime": "2026-10-19T23:55:56.867047Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011520s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:55:56.867105Z",
+          "endTime": "2026-10-19T23:55:56.880757Z",
+          "attributes": {
+           "tool call id": "adk-cb97065e-08a9-4b41-b115-b58ed6044d02",
+           "name": "next_step",
+           "args": {
+            "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+           },
+           "response": {
+            "result": {
+             "call_ending": false,
+             "of": 7.0,
+             "how_to": [
+              {
+               "steps": [
+                {
+                 "text": "From the Settings app, tap Wi-Fi.",
+                 "notes": [
+                  "Note: \n\nUsing Wi-Fi can deplete your battery power faster than your carrier network connection."
+                 ],
+                 "heading": ""
+                },
+                {
+                 "text": "Tap or slide the Wi-Fi switch to ON.",
+                 "notes": [
+                  "Note: \n\nTo turn off your Wi-Fi, tap or slide the Wi-Fi switch to OFF."
+                 ],
+                 "heading": ""
+                },
+                {
+                 "text": "Select a network to join.",
+                 "notes": [
+                  "Note: \n\nWi-Fi hotspots may have security limitations. If necessary, enter a password and tap Join."
+                 ],
+                 "heading": ""
+                },
+                {
+                 "text": "Tap the Info icon beside your Wi-Fi network.",
+                 "notes": [],
+                 "heading": ""
+                },
+                {
+                 "text": "From this screen, you can perform a variety of actions to manage your Wi-Fi connection:",
+                 "notes": [
+                  "Note:\nForget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\nPrivate Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\nAuto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.",
+                  "Forget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.",
+                  "Private Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.",
+                  "Auto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range."
+                 ],
+                 "heading": ""
+                },
+                {
+                 "text": "You've completed the steps!",
+                 "notes": [],
+                 "heading": ""
+                }
+               ],
+               "title": "Turning your Wi-Fi on and off"
+              }
+             ],
+             "text": "Within the Settings app, take a moment to confirm that your iPhone is connected to a Wi-Fi network. A blue checkmark will appear next to your active connection within your Wi-Fi settings. If you don't see one, tap on an available Wi-Fi network and attempt to connect. (Make sure your iPhone's Airplane Mode isn't on.)\nNote: If you're successfully connected to Wi-Fi, but you're getting a \"No Internet Connection\" message, there may be an issue with your Wi-Fi router/gateway that you'll need to troubleshoot. Apple also maintains a list of recommended settings for Wi-Fi routers you'll want to review.",
+             "heading": "Confirming your Wi-Fi connection",
+             "step": 2.0
+            }
+           },
+           "agent": "Tech Support",
+           "type": "PythonFunctionTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 6.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.013652s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:55:56.880908Z",
+          "endTime": "2026-10-19T23:55:56.892767Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011859s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:55:56.894062Z",
+          "endTime": "2026-10-19T23:55:57.597868Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 58.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 7244.0,
+           "[debug] prefill time (ms)": 246.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 702.0,
+           "output token count": 22.0,
+           "[debug] decode queue time (ms)": 14.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.703806s"
+         }
+        ],
+        "duration": "2.738628s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "done, next",
+   "call": 1,
+   "agent": "Thanks. Now, we'll try turning off Connectivity Assist. This will make sure your phone isn't trying to use cellular data instead of Wi-Fi. From Settings, tap Cellular, then scroll down and turn off Wi-Fi Assist. Let me know when that's done.",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "next_step",
+     "payload": {
+      "args": {
+       "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+      },
+      "result": {
+       "result": {
+        "call_ending": false,
+        "of": 7.0,
+        "how_to": [
+         {
+          "steps": [
+           {
+            "text": "From within the Settings app, tap Cellular.",
+            "notes": [
+             "Note: \n\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device."
+            ],
+            "heading": ""
+           },
+           {
+            "text": "Scroll to Wi-Fi Assist.",
+            "notes": [],
+            "heading": ""
+           },
+           {
+            "text": "Tap or slide the Wi-Fi Assist switch to OFF.",
+            "notes": [
+             "Note: \n\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device."
+            ],
+            "heading": ""
+           },
+           {
+            "text": "You've completed the steps!",
+            "notes": [],
+            "heading": ""
+           }
+          ],
+          "title": "Turning Wi-Fi assist off"
+         }
+        ],
+        "text": "Try turning off Connectivity Assist, as your iPhone might be trying to use a connection from a nearby cellular network instead of your Wi-Fi connection.",
+        "heading": "Turning off Connectivity Assist",
+        "step": 3.0
+       }
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Thanks. Now, we'll try turning off Connectivity Assist. This will make sure your phone isn't trying to use cellular data instead of Wi-Fi. From Settings, tap Cellular, then scroll down and turn off Wi-Fi Assist. Let me know when that's done.",
+      "turnCompleted": true,
+      "turnIndex": 4,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "done, next"
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:57.759Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-ea34119a-a07c-4eef-8a45-74b8ff42ca01",
+            "tool": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/tools/next-step",
+            "args": {
+             "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:58.604Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "walk": "{\"progress\": {\"156126-wi-fi-connection-issues-or-slowdowns\": {\"done\": 3, \"warned\": 0, \"choice\": \"\"}}, \"stack\": [], \"active\": \"156126-wi-fi-connection-issues-or-slowdowns\", \"resume\": {\"tutorial_id\": \"156126-wi-fi-connection-issues-or-slowdowns\", \"step\": 3, \"heading\": \"Turning off Connectivity Assist\", \"risk\": \"safe\", \"choice\": \"\"}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:58.646Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-ea34119a-a07c-4eef-8a45-74b8ff42ca01",
+            "tool": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/tools/next-step",
+            "response": {
+             "result": {
+              "call_ending": false,
+              "of": 7.0,
+              "how_to": [
+               {
+                "steps": [
+                 {
+                  "text": "From within the Settings app, tap Cellular.",
+                  "notes": [
+                   "Note: \n\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device."
+                  ],
+                  "heading": ""
+                 },
+                 {
+                  "text": "Scroll to Wi-Fi Assist.",
+                  "notes": [],
+                  "heading": ""
+                 },
+                 {
+                  "text": "Tap or slide the Wi-Fi Assist switch to OFF.",
+                  "notes": [
+                   "Note: \n\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device."
+                  ],
+                  "heading": ""
+                 },
+                 {
+                  "text": "You've completed the steps!",
+                  "notes": [],
+                  "heading": ""
+                 }
+                ],
+                "title": "Turning Wi-Fi assist off"
+               }
+              ],
+              "text": "Try turning off Connectivity Assist, as your iPhone might be trying to use a connection from a nearby cellular network instead of your Wi-Fi connection.",
+              "heading": "Turning off Connectivity Assist",
+              "step": 3.0
+             }
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:58.646Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Thanks. Now, we'll try turning off Connectivity Assist. This will make sure your phone isn't trying to use cellular data instead of Wi-Fi. From Settings, tap Cellular, then scroll down and turn off Wi-Fi Assist. Let me know when that's done."
+          }
+         ],
+         "eventTime": "2026-10-19T23:55:59.696Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-19T23:55:57.709215Z",
+        "endTime": "2026-10-19T23:55:59.745747Z",
+        "attributes": {
+         "connection index": 4.0,
+         "input types": [
+          "text"
+         ],
+         "perceived latency (ms)": 2036.0,
+         "[debug] agent start latency (ms)": 50.0
+        },
+        "childSpans": [
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:55:57.759694Z",
+          "endTime": "2026-10-19T23:55:57.793375Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeAgent",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 3.0,
+            "total code execution latency (ms)": 16.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.033681s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:55:57.795682Z",
+          "endTime": "2026-10-19T23:55:58.602529Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 62.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 7279.0,
+           "[debug] prefill time (ms)": 240.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 805.0,
+           "output token count": 34.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.806847s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:55:58.604157Z",
+          "endTime": "2026-10-19T23:55:58.615876Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011719s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:55:58.615918Z",
+          "endTime": "2026-10-19T23:55:58.635791Z",
+          "attributes": {
+           "tool call id": "adk-ea34119a-a07c-4eef-8a45-74b8ff42ca01",
+           "name": "next_step",
+           "args": {
+            "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns"
+           },
+           "response": {
+            "result": {
+             "call_ending": false,
+             "of": 7.0,
+             "how_to": [
+              {
+               "steps": [
+                {
+                 "text": "From within the Settings app, tap Cellular.",
+                 "notes": [
+                  "Note: \n\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device."
+                 ],
+                 "heading": ""
+                },
+                {
+                 "text": "Scroll to Wi-Fi Assist.",
+                 "notes": [],
+                 "heading": ""
+                },
+                {
+                 "text": "Tap or slide the Wi-Fi Assist switch to OFF.",
+                 "notes": [
+                  "Note: \n\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device."
+                 ],
+                 "heading": ""
+                },
+                {
+                 "text": "You've completed the steps!",
+                 "notes": [],
+                 "heading": ""
+                }
+               ],
+               "title": "Turning Wi-Fi assist off"
+              }
+             ],
+             "text": "Try turning off Connectivity Assist, as your iPhone might be trying to use a connection from a nearby cellular network instead of your Wi-Fi connection.",
+             "heading": "Turning off Connectivity Assist",
+             "step": 3.0
+            }
+           },
+           "agent": "Tech Support",
+           "type": "PythonFunctionTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 12.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.019873s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:55:58.635912Z",
+          "endTime": "2026-10-19T23:55:58.646198Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.010286s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:55:58.647490Z",
+          "endTime": "2026-10-19T23:55:59.694452Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 65.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 7535.0,
+           "[debug] prefill time (ms)": 240.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1042.0,
+           "output token count": 59.0,
+           "[debug] decode queue time (ms)": 21.0,
+           "thought token count": 0.0
+          },
+          "duration": "1.046962s"
+         }
+        ],
+        "duration": "2.036532s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P3\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"ACTIVE\", \"L2\": \"ACTIVE\"}, \"outage\": false}",
+ "session_ids": [
+  "2659f96b-942f-45cd-8fc3-b9262bae4a5f"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "check_outage",
+  "get_line_status",
+  "search_tutorials",
+  "next_step",
+  "next_step",
+  "next_step"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

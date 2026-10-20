@@ -1,7 +1,7 @@
 """Where a caller's place in a tutorial is kept between calls.
 
-Written at every checkpoint (the steps that can end the call), read when the caller calls back.
-CONTENT_BACKEND=firestore keeps it in progress/{customer_id}; otherwise in process memory.
+Written before a step that can drop the call, read when the caller calls back.
+PROGRESS_BACKEND=firestore keeps it in progress/{customer_id}; otherwise in process memory.
 """
 import os
 
@@ -19,7 +19,7 @@ def _firestore():
 
 
 def _remote() -> bool:
-    return os.environ.get("CONTENT_BACKEND", "local") == "firestore"
+    return os.environ.get("PROGRESS_BACKEND", "local") == "firestore"
 
 
 def save(customer_id: str, record: dict) -> None:
@@ -35,6 +35,13 @@ def load(customer_id: str) -> dict | None:
         return snap.to_dict() if snap.exists else None
     rec = _mem.get(customer_id)
     return dict(rec) if rec else None
+
+
+def forget(customer_id: str) -> None:
+    if _remote():
+        _firestore().collection("progress").document(customer_id).delete()
+    else:
+        _mem.pop(customer_id, None)
 
 
 def reset() -> None:

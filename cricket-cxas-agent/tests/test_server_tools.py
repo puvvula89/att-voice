@@ -2,7 +2,7 @@ import asyncio
 
 from support_mcp.server import mcp
 
-EXPECTED = {"find_tutorials", "get_tutorial", "get_step", "checkpoint", "get_progress", "get_lines",
+EXPECTED = {"get_progress", "save_progress", "get_lines",
             "get_line_status", "check_outage", "get_data_usage", "get_sim_status", "refresh_network",
             "send_guide_link", "open_ticket"}
 

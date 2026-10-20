@@ -3,8 +3,7 @@ import pytest
 from support_mcp import account_store
 from support_mcp.tools_outreach import open_ticket, send_guide_link
 
-RESET = "feature_network_reset-resetting-your-iphone-s-settings-and-network-settings"
-
+URL = "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/wifi"
 
 @pytest.fixture(autouse=True)
 def seed(monkeypatch):
@@ -14,20 +13,19 @@ def seed(monkeypatch):
 
 
 def test_unconfigured_sms_is_honest_not_fatal():
-    r = send_guide_link("cust_2001", "L1", "iphone-13", RESET)
-    assert r["sent"] is False
-    assert r["url"].startswith("https://www.cricketwireless.com")
+    r = send_guide_link("cust_2001", "L1", "Wi-Fi slow", URL)
+    assert r["sent"] is False and r["url"] == URL
     assert "not configured" in r["message"]
 
 
-def test_url_is_the_exact_device_tutorial():
-    r = send_guide_link("cust_2001", "L2", "galaxy-a15-5g", "155859-can-t-make-or-receive-calls")
-    assert "galaxy-a15-5g" in r["url"]
+def test_a_link_that_is_not_a_cricket_guide_is_refused():
+    r = send_guide_link("cust_2001", "L1", "Wi-Fi slow", "https://example.com/x")
+    assert r["sent"] is False and "url" in r["message"]
 
 
-def test_unknown_tutorial_is_an_error_not_an_exception():
-    r = send_guide_link("cust_2001", "L1", "iphone-13", "nope")
-    assert r["sent"] is False and "tutorial" in r["message"].lower()
+def test_unknown_line_is_an_error_not_an_exception():
+    r = send_guide_link("cust_2001", "L9", "Wi-Fi slow", URL)
+    assert r["sent"] is False and "line" in r["message"].lower()
 
 
 def test_ticket_has_id_and_summary():
