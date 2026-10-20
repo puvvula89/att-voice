@@ -1,4 +1,7 @@
-"""Support MCP server: tutorial procedures plus the mock account/network store.
+"""Support MCP server: callback resume plus the mock account/network store.
+
+Tutorials are found and walked inside the agent (data store search and a step tool); this server
+only holds what needs the network: account checks, outreach, and the saved place for callbacks.
 
 Stateless streamable HTTP so Cloud Run may route each request anywhere. The
 account store is per-process; with min-instances=1 and max-instances=1 that is
@@ -10,48 +13,24 @@ from mcp.server.mcpserver import MCPServer
 
 from support_mcp import tools_account as A
 from support_mcp import tools_outreach as O
-from support_mcp import tools_procedures as P
+from support_mcp import tools_progress as P
 
 mcp = MCPServer("cricket-support")
 
 
 @mcp.tool()
-def find_tutorials(device: str, symptom: str) -> dict:
-    """Find the troubleshooting article or procedure for a symptom on ONE device.
-    Call this once, after you know the device, with the caller's words as the symptom.
-    Prefer an 'article' result when the caller describes a problem; a 'procedure' when
-    they ask how to do a specific thing. Never call it again mid walk-through."""
-    return P.find_tutorials(device, symptom)
-
-
-@mcp.tool()
-def get_tutorial(device: str, tutorial_id: str, choice: str = "", from_step: int = 1) -> dict:
-    """Load a tutorial's summary and its steps for this caller's branch, once. Call this right after
-    find_tutorials, and again only when the caller's answer changes the branch (pass `choice`) or
-    when next_from is set (pass from_step=next_from). Steps marked gated are withheld: call
-    checkpoint before speaking one."""
-    return P.get_tutorial(device, tutorial_id, choice, from_step)
-
-
-@mcp.tool()
-def get_step(device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
-    """Get one ungated step again. Use this only to resume after a callback or when the loaded
-    tutorial is no longer in view; during a walk speak steps from get_tutorial."""
-    return P.get_step(device, tutorial_id, n, choice)
-
-
-@mcp.tool()
-def checkpoint(customer_id: str, device: str, tutorial_id: str, n: int, choice: str = "") -> dict:
-    """Release a gated step (one that ends the call or erases data) and save the caller's place.
-    Call this before speaking any step marked gated. Say `say_first` before the instruction."""
-    return P.checkpoint(customer_id, device, tutorial_id, n, choice)
-
-
-@mcp.tool()
 def get_progress(customer_id: str) -> dict:
-    """Where this caller left off in a tutorial on a recent call, if anywhere. Call this at the
-    start of every troubleshooting call, before identifying the device."""
+    """Where this caller left off in a tutorial on a recent call that dropped, if anywhere.
+    Call this once at the start of every troubleshooting call."""
     return P.get_progress(customer_id)
+
+
+@mcp.tool()
+def save_progress(customer_id: str, walk: str, steps_by_id: str) -> dict:
+    """Save the caller's place so a dropped call can resume. Call this when next_step returns
+    save_first, before you speak that step. Pass walk and steps_by_id as empty strings; they are
+    filled in for you."""
+    return P.save_progress(customer_id, walk, steps_by_id)
 
 
 @mcp.tool()
@@ -97,10 +76,11 @@ def refresh_network(customer_id: str, line_id: str) -> dict:
 
 
 @mcp.tool()
-def send_guide_link(customer_id: str, line_id: str, device: str, tutorial_id: str) -> dict:
-    """Text the caller the link to this exact tutorial. Call this when the caller asks
-    for the guide, or chooses 'text me' when offered. Say honestly if it did not send."""
-    return O.send_guide_link(customer_id, line_id, device, tutorial_id)
+def send_guide_link(customer_id: str, line_id: str, title: str, url: str) -> dict:
+    """Text the caller the guide's link, using the title and url from the search result.
+    Call this when the caller asks for the guide, or chooses 'text me' when offered.
+    Say honestly if it did not send."""
+    return O.send_guide_link(customer_id, line_id, title, url)
 
 
 @mcp.tool()
@@ -118,19 +98,21 @@ from starlette.requests import Request  # noqa: E402
 from starlette.responses import JSONResponse  # noqa: E402
 from starlette.routing import Route  # noqa: E402
 
-from support_mcp import account_store  # noqa: E402
+from support_mcp import account_store, progress_store  # noqa: E402
 from support_mcp.wire_log import install as _install_wire_log  # noqa: E402
 
 
 async def admin_reset(request: Request) -> JSONResponse:
-    """Developer control, never exposed to the agent: reseed the demo account.
+    """Developer control, never exposed to the agent: reseed the demo account and forget its last call.
 
     POST /admin/reset?profile=P1 — behind Cloud Run IAM like everything else.
     """
     profile = request.query_params.get("profile", "")
     if profile not in account_store.profiles():
         return JSONResponse({"error": f"unknown profile '{profile}'", "profiles": account_store.profiles()}, 400)
-    acct = account_store.reset_profile(os.environ.get("DEMO_CUSTOMER_ID", "cust_2001"), profile)
+    customer_id = os.environ.get("DEMO_CUSTOMER_ID", "cust_2001")
+    acct = account_store.reset_profile(customer_id, profile)
+    progress_store.forget(customer_id)  # a reseeded account starts with no call to resume
     return JSONResponse({"profile": profile, "customer_id": acct["customer_id"],
                          "lines": {k: v["status"] for k, v in acct["lines"].items()},
                          "outage": bool(acct.get("outage"))})

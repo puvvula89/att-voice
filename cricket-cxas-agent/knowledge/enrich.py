@@ -9,6 +9,7 @@ build_catalog applies the cache and writes every step where Gemini and the keywo
 knowledge/enrichment/review.jsonl.
 """
 import argparse
+import hashlib
 import json
 import logging
 import os
@@ -17,8 +18,6 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from dotenv import load_dotenv
-
-from knowledge.load_firestore import content_hash
 
 log = logging.getLogger(__name__)
 OUT = Path(__file__).parent / "enrichment"
@@ -49,6 +48,11 @@ SCHEMA = {"type": "OBJECT", "properties": {
         "reason": {"type": "STRING"}},
         "required": ["n", "call_ending"]}}},
     "required": ["summary", "symptoms", "steps"]}
+
+
+def content_hash(rec: dict) -> str:
+    """Cache key: an unlabelled record's exact content, so only new or changed tutorials go to Gemini."""
+    return hashlib.sha256(json.dumps(rec, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
 def unique_steps(rec: dict) -> list[dict]:

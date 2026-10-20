@@ -1,12 +1,14 @@
 import datetime as dt
+import json
 
 import pytest
 
 from support_mcp import progress_store
-from support_mcp.tools_procedures import checkpoint, get_progress
+from support_mcp.tools_progress import get_progress, save_progress
 
-RESET = "feature_network_reset-resetting-your-iphone-s-settings-and-network-settings"
 CUST = "cust_2001"
+WALK = json.dumps({"resume": {"tutorial_id": "wifi", "step": 4, "heading": "Restart", "risk": "drops", "choice": ""}})
+STEPS = json.dumps({"wifi": {"title": "Wi-Fi slow", "paths": []}})
 
 
 @pytest.fixture(autouse=True)
@@ -14,31 +16,32 @@ def clean():
     progress_store.reset()
 
 
-def test_checkpoint_releases_the_gated_step_and_says_what_to_say_first():
-    r = checkpoint(CUST, "iphone-13", RESET, 4)
-    assert r["text"] and r["call_ending"] and "destructive" not in r
-    assert "disconnect" in r["say_first"].lower()
+def test_no_saved_place_is_none():
+    assert get_progress(CUST) == {"progress": None}
 
 
-def test_checkpoint_refuses_an_ungated_step():
-    r = checkpoint(CUST, "iphone-13", RESET, 2)
-    assert "error" in r and "text" not in r
+def test_saved_place_comes_back_once_with_its_steps():
+    assert save_progress(CUST, WALK, STEPS) == {"saved": True, "step": 4}
+    r = get_progress(CUST)
+    assert r["progress"]["step"] == 4 and r["progress"]["title"] == "Wi-Fi slow"
+    assert r["walk"] == WALK and r["steps_by_id"] == STEPS
+    assert get_progress(CUST) == {"progress": None}
 
 
-def test_checkpoint_saves_progress_and_resume_starts_after_it():
-    checkpoint(CUST, "iphone-13", RESET, 4)
-    p = get_progress(CUST)["progress"]
-    assert p["tutorial_id"] == RESET and p["step_n"] == 4 and p["resume_at"] == 5
-
-
-def test_stale_progress_is_ignored(monkeypatch):
-    checkpoint(CUST, "iphone-13", RESET, 4)
-    rec = progress_store.load(CUST)
-    rec["updated_at"] = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=2)
-    progress_store.save(CUST, rec)
+def test_old_saved_place_is_not_resumed(monkeypatch):
     monkeypatch.setenv("RESUME_WINDOW_MINUTES", "30")
-    assert get_progress(CUST)["progress"] is None
+    save_progress(CUST, WALK, STEPS)
+    rec = progress_store.load(CUST)
+    progress_store.save(CUST, {**rec, "saved_at": rec["saved_at"] - dt.timedelta(minutes=45)})
+    assert get_progress(CUST) == {"progress": None}
 
 
-def test_no_progress_is_none():
-    assert get_progress("nobody")["progress"] is None
+def test_nothing_to_save_before_the_walk_starts():
+    assert save_progress(CUST, "", "")["saved"] is False
+    assert progress_store.load(CUST) is None
+
+
+def test_forget_drops_the_saved_place():
+    save_progress(CUST, WALK, STEPS)
+    progress_store.forget(CUST)
+    assert get_progress(CUST) == {"progress": None}

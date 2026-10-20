@@ -1,7 +1,7 @@
 # Runbook: deploy the Cricket Care troubleshooting agent into a new project
 
 Everything project-specific lives in `.env`. Pointing the bundle at another Google Cloud
-project is a config change plus the commands below. Budget about 45 minutes the first time.
+project is a config change plus the commands below. Budget about an hour the first time, most of it waiting on the server build and the test suite.
 Run every command from the `cricket-cxas-agent/` folder.
 
 ## 0. What you need
@@ -21,9 +21,9 @@ gcloud auth login
 gcloud auth application-default login
 gcloud config set project "$PROJECT"
 gcloud auth application-default set-quota-project "$PROJECT"
-gcloud services enable ces.googleapis.com run.googleapis.com cloudbuild.googleapis.com \
-  artifactregistry.googleapis.com
 ```
+
+`deploy/prep.sh` (step 3) enables the APIs.
 
 The two logins are both needed. `gcloud` commands use the first; the Python scripts use the
 second (application default credentials).
@@ -53,6 +53,7 @@ Edit `.env`:
 | `CXAS_LOCATION` | `us` (the agent platform region; keep as is) |
 | `GOOGLE_CLOUD_LOCATION` | `us-central1` (the Cloud Run region; keep as is) |
 | `CARE_APP_ID`, `CARE_LIVE_MODEL`, `DEMO_CUSTOMER_ID`, `SUPPORT_MCP_SERVICE`, `DEMO_PROFILE` | keep the example values |
+| `DATASTORE_ID`, `FIRESTORE_DATABASE`, `FIRESTORE_LOCATION`, `RESUME_WINDOW_MINUTES`, `EXTRACT_MODEL` | keep the example values |
 | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM`, `DEMO_SMS_NUMBER` | optional. Fill all four to have the agent text the guide link to `DEMO_SMS_NUMBER` (a Twilio trial only sends to numbers verified in Twilio). Leave empty and the agent says it could not text and reads the link instead. |
 
 ```bash
@@ -61,107 +62,94 @@ python3 -m venv .venv
 .venv/bin/pytest -q
 ```
 
-Expect `38 passed`. A warning about ffmpeg is harmless.
+Expect `64 passed`. A warning about ffmpeg is harmless.
 
-## 3. Create the app
-
-```bash
-.venv/bin/python bootstrap/create_app.py
-```
-
-Creates app `cricket-care` with the live model, the Care Concierge root agent, and the Tech
-Support child agent. Safe to rerun; it updates in place. This comes before the server deploy
-because creating the first app also creates the platform's service agent, which step 4 grants
-access to.
-
-## 4. Deploy the support MCP server
+## 3. Prep
 
 ```bash
-./deploy_mcp.sh
+deploy/prep.sh
 ```
 
-Builds the server image from this folder, deploys a private Cloud Run service
-`cricket-support-mcp` with one always-warm instance, and lets the platform's service agent
-(`service-<project-number>@gcp-sa-ces.iam.gserviceaccount.com`) call it. Takes 3 to 5 minutes.
-The last lines print the endpoint, for example:
+Enables the APIs, makes sure the agent platform's service agent exists, creates the Firestore
+`(default)` database in Native mode if the project has none, installs the Python packages, and
+creates the Agent Search data store `cricket-tutorials` with its schema. Safe to rerun.
 
-```
-MCP endpoint: https://cricket-support-mcp-abc123-uc.a.run.app/mcp
-```
-
-Copy that URL, including `/mcp`, for the next step.
-
-## 5. Attach the toolset
+## 4. Content
 
 ```bash
-.venv/bin/python bootstrap/attach_support_toolset.py https://<the-url-from-step-4>/mcp
+deploy/content.sh            # from the tutorials already in knowledge/raw
+deploy/content.sh --scrape   # scrape the support site again first (headless browser, about an hour)
 ```
 
-Creates the `support` toolset over the endpoint and binds its eleven tools to Tech Support.
-Success looks like:
+Runs on your machine:
 
-```
-   toolsets on agent: [('support', 11)]
-```
+| Stage | What it does |
+|---|---|
+| Scrape (only with `--scrape`) | Reads every tutorial for the devices in `knowledge/raw` from the support site |
+| Label | Gemini marks which steps end the call and writes symptoms and a summary. Cached per tutorial, so only new or changed tutorials are sent |
+| Build | Writes `knowledge/catalog`. The hand review in `knowledge/step_review.json` is applied on top: each step is marked as dropping the call, might drop it, or safe |
+| Load | Upserts one document per tutorial into the data store and removes tutorials that are gone. Search sees changes within a few minutes |
 
-If the count is 0 or the line is missing, stop and fix that first; the agent will otherwise
-answer without any tools.
+Rerun this whenever tutorials change. The agent needs no redeploy for new content.
 
-## 6. Run the typed suite and share the results
+## 5. Deploy and test
 
 ```bash
-.venv/bin/python bootstrap/run_suite.py            # all seven scenarios
-.venv/bin/python bootstrap/run_suite.py P3 P4      # or a subset
+deploy/deploy.sh             # app, server, connection, then the typed suite
+deploy/deploy.sh --no-test   # deploy only
 ```
 
-Before each scenario the runner resets the demo account to that scenario's profile, then plays
-the scripted caller turns and records what the agent said and which tools it called. Each run
-creates `runs/<UTC timestamp>/`:
+| Step | What it does |
+|---|---|
+| Agent app | Creates or updates app `cricket-care` with the live model: the Care Concierge, Tech Support, the `search_tutorials` data store tool, the `next_step` step tool, its variables and callbacks |
+| Support server | Builds and deploys the private Cloud Run service `cricket-support-mcp` (one always-warm instance). Takes 3 to 5 minutes |
+| Access | Lets the server use Firestore and lets the agent platform call the server |
+| Connect | Creates the `support` toolset and binds its tools to Tech Support. Expect `toolsets on agent: [('support', 10)]` |
+| Typed suite | Plays the scripted callers in `bootstrap/suite_a.json` |
+
+To run the suite again, or only some scenarios:
+
+```bash
+.venv/bin/python bootstrap/run_suite.py            # all scenarios
+.venv/bin/python bootstrap/run_suite.py P3 P8      # a subset
+```
+
+Before each scenario the runner resets the demo account to that scenario's profile and clears any
+saved place. P8 drops the call at the restart and calls back in a new session. Each run creates
+`runs/<UTC timestamp>/`:
 
 | File | Contents |
 |---|---|
-| `summary.md` | PASS or FAIL per scenario, then every transcript. Read this first. |
-| `P1.json` … `P7.json` | Full record per scenario: caller and agent text, tool calls, raw platform response, session id. |
+| `summary.md` | PASS or FAIL per scenario, then every transcript. Read this first |
+| `P1.json` … `P8.json` | Full record per scenario: caller and agent text, tool calls, raw responses, session ids |
 
-A FAIL means an expected tool was not called or a forbidden one was. It points at the agent's
-behaviour, not at the deployment, as long as step 5 showed 11 tools.
-
-To share a run, commit and push the folder:
-
-```bash
-git add runs/<timestamp> && git commit -m "Add suite run <timestamp>" && git push
-```
-
-The scripts and pass criteria live in `bootstrap/suite_a.json`. To put the demo account in a
+A FAIL means an expected tool was not called or a forbidden one was. To put the demo account in a
 given state for manual testing: `.venv/bin/python bootstrap/demo_reset.py P4`.
 
-## 7. Voice
+## 6. Voice
 
 1. Console → Customer Engagement Suite → the `cricket-care` app.
 2. Create a version, then a deployment from it.
 3. In the telephony settings, bind a phone number to that deployment.
 4. Call it and say "my wifi is really slow". The account starts in profile P3 (clean account,
    iPhone on the calling line). Run `demo_reset.py` with another profile to try the others.
-5. Note the conversation id shown in the console for each call, and anything that sounded
+5. To try a callback, let it walk you to the restart step, say you're okay to call back, hang up,
+   and call again within 30 minutes.
+6. Note the conversation id shown in the console for each call, and anything that sounded
    wrong (reading long lists, talking over you, long silences).
 
 Console menu names may differ slightly from the above; the order of the steps does not.
 
-## Tutorial content
+## How a call works
 
-The support server reads tutorials from Firestore (`CONTENT_BACKEND=firestore`, set by `deploy_mcp.sh`) and
-reloads within `CONTENT_CHECK_SECONDS` whenever `meta/content.version` changes. Content updates never need a redeploy.
-
-```bash
-.venv/bin/python -m knowledge.enrich --workers 2      # Gemini labels: safety flags, symptoms, summaries (cached)
-.venv/bin/python -m knowledge.build_catalog           # apply labels; disagreements -> knowledge/enrichment/review.jsonl
-.venv/bin/python -m knowledge.load_firestore --dry-run
-.venv/bin/python -m knowledge.load_firestore          # upsert changed tutorials, bump the version
-```
-
-The Firestore `(default)` database must exist in Native mode. `deploy_mcp.sh` grants the service's runtime
-account `roles/datastore.user`. A caller's place in a tutorial is kept in `progress/{customer_id}` for
-`RESUME_WINDOW_MINUTES`.
+| Part | Where it runs | Role |
+|---|---|---|
+| `search_tutorials` | Agent platform, data store tool | Finds tutorials for the caller's words, filtered to their phone |
+| `agents/tech_support/after_tool.py` | Agent platform, callback | Drops results for other phones, keeps the steps out of the model's view, loads a saved place on callback |
+| `agents/tech_support/next_step.py` | Agent platform, Python tool | Gives one step at a time. Holds a step that ends the call until the caller says yes, and any step that ends or might drop the call until its place is saved |
+| `agents/tech_support/before_tool.py` | Agent platform, callback | Fills `save_progress` with the caller's place, so the model never copies it |
+| `get_progress`, `save_progress` | Support server | Keep the caller's place in Firestore `progress/{customer_id}`, used once within `RESUME_WINDOW_MINUTES` |
+| Account tools, `send_guide_link`, `open_ticket` | Support server | Demo account checks and outreach |
 
 ## Troubleshooting
 
@@ -169,26 +157,30 @@ account `roles/datastore.user`. A caller's place in a tutorial is kept in `progr
 |---|---|---|
 | `create_app.py` fails with permission denied | The application-default login is a different user, or lacks the platform admin role | Rerun `gcloud auth application-default login` as the project user |
 | Any API error mentioning a quota project | Quota project not set for application default credentials | `gcloud auth application-default set-quota-project "$PROJECT"` |
-| `deploy_mcp.sh` fails at the build | Cloud Build service account lacks permissions, common in managed orgs | Ask the org admin for the default Cloud Build setup, or grant the build service account Cloud Run and Artifact Registry roles |
-| `deploy_mcp.sh` fails granting the invoker role on `gcp-sa-ces` | The service agent does not exist yet, or an org policy limits which identities can be granted roles | Make sure step 3 ran first. If it still fails, ask the org admin to allow Google-managed service agents |
+| `deploy.sh` fails at the build | Cloud Build service account lacks permissions, common in managed orgs | Ask the org admin for the default Cloud Build setup, or grant the build service account Cloud Run and Artifact Registry roles |
+| `deploy.sh` fails granting the invoker role on `gcp-sa-ces` | An org policy limits which identities can be granted roles | Ask the org admin to allow Google-managed service agents |
+| `content.sh` stops with "steps are … bytes encoded" | A tutorial is too large for the search tool, which silently drops results of about 16 KB | Split the tutorial, or raise the limit in `knowledge/load_datastore.py` only after testing it |
+| The build prints "review entry no longer matches the step text" | A scraped tutorial changed under a hand-reviewed step | Recheck that step and update `knowledge/step_review.json` |
 | Turns print `(429 quota; retry in …)` | Token quota at the default | Wait for it, or raise the quota (step 1) |
-| Agent replies but step 5 printed 0 tools | Toolset bound without tool ids | Rerun step 5; do not edit the toolset by hand in the console |
+| The agent says it found nothing for a common problem right after `content.sh` | The data store is still indexing | Wait a few minutes |
 
 ## Known behaviour
 
 - One turn uses about 4,000 tokens. The runner retries rate-limited turns four times with growing
   waits.
-- `create_app.py` updates instructions only. It never touches the toolset binding, so you do not
-  need to rerun step 5 after editing instructions.
+- `next_step` must stay the first function in its file: the platform takes the first one as the tool.
 - Set `MCP_WIRE_LOG=1` in `.env` and redeploy to log every request to the server. Useful for
   debugging tool calls; noisy otherwise.
 
 ## Tear down
 
 ```bash
-gcloud run services delete cricket-support-mcp --region us-central1 --project "$PROJECT" --quiet
-gcloud artifacts repositories delete cloud-run-source-deploy --location us-central1 --project "$PROJECT" --quiet
+deploy/teardown.sh           # asks first; --yes skips the question
 ```
 
-Delete the `cricket-care` app from the console. Skip the second command if other Cloud Run
-services in the project were also deployed from source; they share that image repository.
+Deletes the app, the Cloud Run service, the data store, and the saved progress. It keeps the
+enabled APIs and the Firestore database itself (deleting a project's `(default)` database blocks
+re-creating it for a while). The server images stay in the Artifact Registry repository
+`cloud-run-source-deploy`; delete it with
+`gcloud artifacts repositories delete cloud-run-source-deploy --location us-central1` if no other
+Cloud Run service in the project was deployed from source.

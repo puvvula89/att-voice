@@ -14,6 +14,7 @@ import json
 import pathlib
 import subprocess
 import sys
+import time
 
 from cxas_scrapi.core.sessions import Sessions
 
@@ -39,12 +40,18 @@ def run_scenario(sessions: Sessions, sc: dict, do_reset: bool) -> dict:
               "started": dt.datetime.now(dt.timezone.utc).isoformat(), "turns": []}
     if do_reset and sc.get("reset_profile"):
         record["reset"] = reset_profile(sc["reset_profile"])
-    session_id = sessions.create_session_id()
-    record["session_id"] = session_id
     tools_seen: list[str] = []
-    for text in sc["turns"]:
+    # callback_turns: the first call drops after its turns and the caller rings back in a new session.
+    calls = [sc["turns"]] + ([sc["callback_turns"]] if sc.get("callback_turns") else [])
+    record["session_ids"] = []
+    for call, text in ((c, t) for c, turns in enumerate(calls) for t in turns):
+        if len(record["session_ids"]) <= call:
+            if call:
+                time.sleep(5)  # the dropped call's record is readable about a second after it ends
+            record["session_ids"].append(sessions.create_session_id())
+        session_id = record["session_ids"][call]
         res = _run_with_retry(sessions, session_id, text)
-        turn = {"user": text, "agent": None, "spans": [], "raw": None}
+        turn = {"user": text, "call": call + 1, "agent": None, "spans": [], "raw": None}
         if res is None:
             turn["agent"] = "(no response: quota exhausted after retries)"
         else:
@@ -101,9 +108,9 @@ def main():
                      f"{', '.join(r['missing_expected']) or '-'} | {', '.join(r['forbidden_hit']) or '-'} |")
     lines += ["", "## Transcripts", ""]
     for r in rows:
-        lines.append(f"### {r['id']} — {r['title']} (session `{r['session_id']}`)")
+        lines.append(f"### {r['id']} — {r['title']} (sessions {', '.join(f'`{x}`' for x in r['session_ids'])})")
         for t in r["turns"]:
-            lines.append(f"- **Caller:** {t['user']}")
+            lines.append(f"- **Caller (call {t['call']}):** {t['user']}")
             lines.append(f"  **Agent:** {t['agent']}")
             tools = [s["name"] for s in t["spans"] if s["kind"] == "tool"]
             if tools:

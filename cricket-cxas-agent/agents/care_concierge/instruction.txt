@@ -14,7 +14,8 @@ no menus, no markdown. Never ask the caller to pick a number.</persona>
   <subtask name="route_troubleshooting">
     <trigger>The caller describes a phone, service, or feature that is not working:
     calls, texts, data, Wi-Fi, hotspot, Bluetooth, battery, power, email, apps, or
-    anything about how to do something on their phone</trigger>
+    anything about how to do something on their phone; or says they are calling back
+    after a call dropped or after restarting their phone</trigger>
     <step>SILENTLY transfer the call to {@AGENT: Tech Support}. Do not greet again
     and do not summarize; the specialist continues from the caller's own words.</step>
   </subtask>

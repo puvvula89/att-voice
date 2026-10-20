@@ -1,0 +1,862 @@
+{
+ "id": "P2",
+ "title": "Tower outage at the caller's zip",
+ "app": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care",
+ "project": "river-vigil-507817-e7",
+ "started": "2026-10-19T23:52:20.024248+00:00",
+ "turns": [
+  {
+   "user": "I have no service at all right now",
+   "call": 1,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "name": "Jordan Reyes",
+         "lines": [
+          {
+           "phone_last4": "4471",
+           "os": "27.0.0",
+           "device": "iphone-13",
+           "is_calling_line": true,
+           "line_id": "L1",
+           "device_label": "iPhone 13"
+          },
+          {
+           "phone_last4": "8820",
+           "os": "16.0.0",
+           "device": "galaxy-a15-5g",
+           "is_calling_line": false,
+           "line_id": "L2",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "_session": {
+             "channel": "API",
+             "modality": "TEXT"
+            },
+            "walk": "",
+            "steps_by_id": "",
+            "session_id": "",
+            "current_date": "2026-10-19[America/Los_Angeles]"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:53.556Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "I have no service at all right now"
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:53.557Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:54.152Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "session_id": "05a281f2-974b-4f80-a0f3-e06bea965b97"
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:54.173Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-f95d41d7-43f0-42c3-9498-72eb81cbcacb",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:55.021Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-f95d41d7-43f0-42c3-9498-72eb81cbcacb",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:55.260Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-e134bc96-8a87-4eff-8dfa-efdf6f81e03f",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:55.937Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-e134bc96-8a87-4eff-8dfa-efdf6f81e03f",
+            "response": {
+             "text_output": [
+              {
+               "name": "Jordan Reyes",
+               "lines": [
+                {
+                 "phone_last4": "4471",
+                 "os": "27.0.0",
+                 "device": "iphone-13",
+                 "is_calling_line": true,
+                 "line_id": "L1",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "phone_last4": "8820",
+                 "os": "16.0.0",
+                 "device": "galaxy-a15-5g",
+                 "is_calling_line": false,
+                 "line_id": "L2",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:56.099Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:56.740Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-19T23:53:53.509106Z",
+        "endTime": "2026-10-19T23:53:56.789137Z",
+        "attributes": {
+         "connection index": 1.0,
+         "input types": [
+          "text"
+         ],
+         "perceived latency (ms)": 3280.0,
+         "[debug] agent start latency (ms)": 48.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:53:53.558129Z",
+          "endTime": "2026-10-19T23:53:54.151036Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 58.0,
+           "agent": "Care Concierge",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 1363.0,
+           "[debug] prefill time (ms)": 190.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 592.0,
+           "output token count": 19.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.592907s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:53:54.152Z",
+          "endTime": "2026-10-19T23:53:54.152Z",
+          "attributes": {
+           "name": "transfer_to_agent",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "agent": "Care Concierge",
+           "type": "TransferToAgentTool"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:54.152578Z",
+          "endTime": "2026-10-19T23:53:54.173349Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeAgent",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 5.0,
+            "total code execution latency (ms)": 7.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.020771s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:53:54.367682Z",
+          "endTime": "2026-10-19T23:53:55.019807Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 66.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5257.0,
+           "[debug] prefill time (ms)": 227.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 651.0,
+           "output token count": 23.0,
+           "[debug] decode queue time (ms)": 21.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.652125s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:55.022192Z",
+          "endTime": "2026-10-19T23:53:55.032683Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.010491s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:53:55.032771Z",
+          "endTime": "2026-10-19T23:53:55.248405Z",
+          "attributes": {
+           "name": "support_get_progress",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-f95d41d7-43f0-42c3-9498-72eb81cbcacb"
+          },
+          "duration": "0.215634s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:55.248566Z",
+          "endTime": "2026-10-19T23:53:55.260486Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011920s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:53:55.261865Z",
+          "endTime": "2026-10-19T23:53:55.935498Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 62.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5299.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 673.0,
+           "output token count": 23.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.673633s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:55.937704Z",
+          "endTime": "2026-10-19T23:53:55.946665Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.008961s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:53:55.946719Z",
+          "endTime": "2026-10-19T23:53:56.089013Z",
+          "attributes": {
+           "name": "support_get_lines",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "name": "Jordan Reyes",
+              "lines": [
+               {
+                "phone_last4": "4471",
+                "os": "27.0.0",
+                "device": "iphone-13",
+                "is_calling_line": true,
+                "line_id": "L1",
+                "device_label": "iPhone 13"
+               },
+               {
+                "phone_last4": "8820",
+                "os": "16.0.0",
+                "device": "galaxy-a15-5g",
+                "is_calling_line": false,
+                "line_id": "L2",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-e134bc96-8a87-4eff-8dfa-efdf6f81e03f"
+          },
+          "duration": "0.142294s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:56.089159Z",
+          "endTime": "2026-10-19T23:53:56.099262Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.010103s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:53:56.100637Z",
+          "endTime": "2026-10-19T23:53:56.738716Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5499.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 636.0,
+           "output token count": 17.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.638079s"
+         }
+        ],
+        "duration": "3.280031s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes",
+   "call": 1,
+   "agent": "Got it, no service at all on your iPhone. Let me check a couple of things on our side first.\nIt looks like there's a network outage in your area that started around 7 AM today. We expect to have it fixed by 11 AM, so your phone is fine.",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "services": [
+          "voice",
+          "data"
+         ],
+         "eta": "2026-10-13T11:00:00",
+         "outage": true,
+         "zip_code": "30301",
+         "started": "2026-10-13T07:10:00"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2025-11-02",
+         "line_id": "L1",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Got it, no service at all on your iPhone. Let me check a couple of things on our side first.",
+      "turnIndex": 2
+     },
+     {
+      "text": "It looks like there's a network outage in your area that started around 7 AM today. We expect to have it fixed by 11 AM, so your phone is fine.",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes"
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:56.916Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Got it, no service at all on your iPhone. Let me check a couple of things on our side first."
+          },
+          {
+           "toolCall": {
+            "id": "adk-574de3f0-d2d1-47b0-94c8-6d6644893ba1",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-47632ca8-2321-457a-978f-6b2cacc85540",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:58.134Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-574de3f0-d2d1-47b0-94c8-6d6644893ba1",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2025-11-02",
+               "line_id": "L1",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-47632ca8-2321-457a-978f-6b2cacc85540",
+            "response": {
+             "text_output": [
+              {
+               "services": [
+                "voice",
+                "data"
+               ],
+               "eta": "2026-10-13T11:00:00",
+               "outage": true,
+               "zip_code": "30301",
+               "started": "2026-10-13T07:10:00"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/river-vigil-507817-e7/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:58.310Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "It looks like there's a network outage in your area that started around 7 AM today. We expect to have it fixed by 11 AM, so your phone is fine."
+          }
+         ],
+         "eventTime": "2026-10-19T23:53:59.120Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-19T23:53:56.871126Z",
+        "endTime": "2026-10-19T23:53:59.169141Z",
+        "attributes": {
+         "connection index": 2.0,
+         "input types": [
+          "text"
+         ],
+         "perceived latency (ms)": 2298.0,
+         "[debug] agent start latency (ms)": 45.0
+        },
+        "childSpans": [
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:56.916772Z",
+          "endTime": "2026-10-19T23:53:56.939575Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeAgent",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 3.0,
+            "total code execution latency (ms)": 12.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.022803s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:53:56.941803Z",
+          "endTime": "2026-10-19T23:53:58.132645Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 59.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5527.0,
+           "[debug] prefill time (ms)": 223.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1188.0,
+           "output token count": 80.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "thought token count": 0.0
+          },
+          "duration": "1.190842s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:58.134338Z",
+          "endTime": "2026-10-19T23:53:58.146215Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.011877s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:58.134338Z",
+          "endTime": "2026-10-19T23:53:58.162589Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "BeforeTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 4.0,
+            "total code execution latency (ms)": 15.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.028251s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:53:58.146280Z",
+          "endTime": "2026-10-19T23:53:58.284477Z",
+          "attributes": {
+           "name": "support_check_outage",
+           "args": {
+            "zip_code": "30301"
+           },
+           "response": {
+            "text_output": [
+             {
+              "services": [
+               "voice",
+               "data"
+              ],
+              "eta": "2026-10-13T11:00:00",
+              "outage": true,
+              "zip_code": "30301",
+              "started": "2026-10-13T07:10:00"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-47632ca8-2321-457a-978f-6b2cacc85540"
+          },
+          "duration": "0.138197s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-19T23:53:58.162685Z",
+          "endTime": "2026-10-19T23:53:58.299441Z",
+          "attributes": {
+           "name": "support_get_line_status",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2025-11-02",
+              "line_id": "L1",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "agent": "Tech Support",
+           "type": "McpTool",
+           "tool call id": "adk-574de3f0-d2d1-47b0-94c8-6d6644893ba1"
+          },
+          "duration": "0.136756s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:58.284586Z",
+          "endTime": "2026-10-19T23:53:58.295517Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.010931s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-19T23:53:58.299579Z",
+          "endTime": "2026-10-19T23:53:58.310336Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "stage": "AfterTool",
+           "[debug] detailed latency": {
+            "sandbox init latency (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "waiting for external calls (ms)": 0.0
+           }
+          },
+          "duration": "0.010757s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-19T23:53:58.311709Z",
+          "endTime": "2026-10-19T23:53:59.118552Z",
+          "attributes": {
+           "[debug] decode time to first token (ms)": 60.0,
+           "agent": "Tech Support",
+           "model": "gemini-3.1-flash-live",
+           "input token count": 5749.0,
+           "[debug] prefill time (ms)": 226.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 806.0,
+           "output token count": 38.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "thought token count": 0.0
+          },
+          "duration": "0.806843s"
+         }
+        ],
+        "duration": "2.298015s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "{\"profile\": \"P2\", \"customer_id\": \"cust_2001\", \"lines\": {\"L1\": \"ACTIVE\", \"L2\": \"ACTIVE\"}, \"outage\": true}",
+ "session_ids": [
+  "05a281f2-974b-4f80-a0f3-e06bea965b97"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "check_outage",
+  "get_line_status"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

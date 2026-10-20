@@ -4,7 +4,7 @@
 
 The toolset is recreated on every run (delete-if-exists, then create) so a new
 server URL always lands. Auth is the CES service agent's own ID token; the Cloud
-Run service must grant it roles/run.invoker (deploy_mcp.sh does).
+Run service must grant it roles/run.invoker (deploy/deploy.sh does).
 
 The server mounts streamable HTTP at /mcp with NO trailing slash in this SDK
 version; the slash form 307-redirects and the platform's discovery then returns
@@ -22,7 +22,7 @@ TOOLSET = f"{APP}/toolsets/{SUPPORT_TOOLSET_ID}"
 # AgentToolset.tool_ids selects which of the toolset's tools the agent receives.
 # Left empty, the agent gets NONE: discovery succeeds, the model sees no tools,
 # and every call it attempts is rejected as an "unexpected function call".
-TOOL_IDS = ["find_tutorials", "get_tutorial", "get_step", "checkpoint", "get_progress", "get_lines",
+TOOL_IDS = ["get_progress", "save_progress", "get_lines",
             "get_line_status", "check_outage", "get_data_usage", "get_sim_status", "refresh_network",
             "send_guide_link", "open_ticket"]
 
@@ -63,9 +63,9 @@ def main():
                         toolsets=[T.Agent.AgentToolset(toolset=TOOLSET, tool_ids=TOOL_IDS)])
     tech = agents.get_agent(agent_name(TECH_ID))
     print(f"   toolsets on agent: {[(ts.toolset.rsplit('/', 1)[-1], len(ts.tool_ids)) for ts in tech.toolsets]}")
-    print("   qualified names in instructions: support_<tool>, e.g. support_get_step")
+    print("   qualified names in instructions: support_<tool>, e.g. support_get_lines")
     print("\nOpen the app in the console simulator and type: \"my wifi is really slow\"")
-    print("PASS: the trace shows support_get_lines, then outage/usage checks, then find_tutorials.")
+    print("PASS: the trace shows support_get_lines, then outage/usage checks, then search_tutorials.")
 
 
 if __name__ == "__main__":
