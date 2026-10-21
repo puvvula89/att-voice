@@ -25,16 +25,18 @@ def service_url() -> str:
          "--format=value(status.url)"], text=True).strip()
 
 
-def main():
-    profile = sys.argv[1] if len(sys.argv) > 1 else "P3"
+def reset(profile: str) -> dict:
     url = f"{service_url()}/admin/reset?profile={profile}"
     token = subprocess.check_output(["gcloud", "auth", "print-identity-token"], text=True).strip()
     req = urllib.request.Request(url, method="POST", headers={"authorization": f"Bearer {token}"})
     try:
-        body = json.load(urllib.request.urlopen(req, timeout=20))
+        return json.load(urllib.request.urlopen(req, timeout=20))
     except urllib.error.HTTPError as e:
         sys.exit(f"reset failed: {e.code} {e.read().decode()[:200]}")
-    print(json.dumps(body))
+
+
+def main():
+    print(json.dumps(reset(sys.argv[1] if len(sys.argv) > 1 else "P3")))
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ knowledge/extract/
 spikes/
 tests/
 bootstrap/
-agents/
+app/
 evals/
 *.md
 .pytest_cache/

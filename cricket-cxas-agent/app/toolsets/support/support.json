@@ -1,0 +1,10 @@
+{
+  "name": "support",
+  "displayName": "support",
+  "mcpToolset": {
+    "serverAddress": "SUPPORT_MCP_URL",
+    "apiAuthentication": {
+      "serviceAgentIdTokenAuthConfig": {}
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "next-step",
+  "pythonFunction": {
+    "name": "next_step",
+    "pythonCode": "tools/next_step/python_function/python_code.py",
+    "description": "Give the caller the next step of the confirmed tutorial, one step per call.\n\nArgs:\n    tutorial_id: id of the tutorial the caller confirmed (or of a linked tutorial you just searched for).\n    action: \"next\" for the next step (the first call returns step 1), or \"repeat\" for the current step again.\n    caller_confirmed: true only after the caller said yes to the disconnect warning for this step.\n    choice: when next_step returned needs_choice, the option the caller picked, copied exactly."
+  },
+  "displayName": "next_step"
+}
