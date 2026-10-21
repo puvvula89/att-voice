@@ -1,139 +1,26 @@
-deploy/deploy.sh 
+➜  cricket-cxas-agent git:(main) deploy/prep.sh 
 
-== Agent app cricket-care (agents, search and step tools, variables, callbacks)
-app=projects/tmeg-working-demos/locations/us/apps/cricket-care
-model=gemini-3.1-flash-live
+== APIs in tmeg-working-demos
+Operation "operations/acat.p2-827537433050-43a8fbd1-db9c-413e-b9e5-e45884fd38c1" finished successfully.
 
-[1] App cricket-care
-   variables: ['steps_by_id', 'walk']
+== Agent platform service agent (granted access to the support server at deploy)
+Service identity created: service-827537433050@gcp-sa-ces.iam.gserviceaccount.com
 
-[2] Tools: search_tutorials (data store), next_step (Python)
-   (NotFound: 404 Failed to get data store projects/tmeg-working-demos/locations/global/collections/default_collection/dataStores/cric)
+== Firestore (default) database, Native mode
+exists
+
+== Python environment
+
+[notice] A new release of pip is available: 25.3 -> 26.2.1
+[notice] To update, run: /Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/bin/python3.14 -m pip install --upgrade pip
+
+== Agent Search data store
 Traceback (most recent call last):
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/google/api_core/grpc_helpers.py", line 76, in error_remapped_callable
-    return callable_(*args, **kwargs)
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_interceptor.py", line 276, in __call__
-    response, ignored_call = self._with_call(
-                             ~~~~~~~~~~~~~~~^
-        request,
-        ^^^^^^^^
-    ...<4 lines>...
-        compression=compression,
-        ^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_interceptor.py", line 331, in _with_call
-    return call.result(), call
-           ~~~~~~~~~~~^^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_channel.py", line 447, in result
-    raise self
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_interceptor.py", line 314, in continuation
-    response, call = self._thunk(new_method).with_call(
-                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        request,
-        ^^^^^^^^
-    ...<4 lines>...
-        compression=new_compression,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_channel.py", line 1182, in with_call
-    return _end_unary_response_blocking(state, call, True, None)
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_channel.py", line 999, in _end_unary_response_blocking
-    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
-        status = StatusCode.NOT_FOUND
-        details = "Failed to get data store projects/tmeg-working-demos/locations/global/collections/default_collection/dataStores/cricket-tutorials: DataStore projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials not found."
-        debug_error_string = "NOT_FOUND:Failed to get data store projects/tmeg-working-demos/locations/global/collections/default_collection/dataStores/cricket-tutorials: DataStore projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials not found."
->
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/bootstrap/create_app.py", line 33, in put_tool
-    client.create_tool(parent=APP, tool_id=tool_id, tool=tool)
-    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/google/cloud/ces_v1beta/services/agent_service/client.py", line 4307, in create_tool
-    response = rpc(
-        request,
-    ...<2 lines>...
-        metadata=metadata,
-    )
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/google/api_core/gapic_v1/method.py", line 390, in __call__
-    result = wrapped_func(*args, **kwargs)
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
-    raise exceptions.from_grpc_error(exc) from exc
-google.api_core.exceptions.NotFound: 404 Failed to get data store projects/tmeg-working-demos/locations/global/collections/default_collection/dataStores/cricket-tutorials: DataStore projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials not found.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/google/api_core/grpc_helpers.py", line 76, in error_remapped_callable
-    return callable_(*args, **kwargs)
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_interceptor.py", line 276, in __call__
-    response, ignored_call = self._with_call(
-                             ~~~~~~~~~~~~~~~^
-        request,
-        ^^^^^^^^
-    ...<4 lines>...
-        compression=compression,
-        ^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_interceptor.py", line 331, in _with_call
-    return call.result(), call
-           ~~~~~~~~~~~^^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_channel.py", line 447, in result
-    raise self
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_interceptor.py", line 314, in continuation
-    response, call = self._thunk(new_method).with_call(
-                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        request,
-        ^^^^^^^^
-    ...<4 lines>...
-        compression=new_compression,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_channel.py", line 1182, in with_call
-    return _end_unary_response_blocking(state, call, True, None)
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/grpc/_channel.py", line 999, in _end_unary_response_blocking
-    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
-        status = StatusCode.NOT_FOUND
-        details = "com.google.apps.framework.request.NotFoundException: Tool search-tutorials does not exist in the app."
-        debug_error_string = "NOT_FOUND:com.google.apps.framework.request.NotFoundException: Tool search-tutorials does not exist in the app."
->
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/bootstrap/create_app.py", line 109, in <module>
-    main()
-    ~~~~^^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/bootstrap/create_app.py", line 61, in main
-    put_tool(client, "search-tutorials", T.Tool(display_name="search_tutorials", data_store_tool=T.DataStoreTool(
-    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        name="search_tutorials",
-        ^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-        data_store_source=T.DataStoreTool.DataStoreSource(data_store=T.DataStore(name=DATASTORE)))),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        "data_store_tool")
-        ^^^^^^^^^^^^^^^^^^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/bootstrap/create_app.py", line 38, in put_tool
-    client.update_tool(tool=tool, update_mask=field_mask_pb2.FieldMask(paths=["display_name", field]))
-    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/google/cloud/ces_v1beta/services/agent_service/client.py", line 4431, in update_tool
-    response = rpc(
-        request,
-    ...<2 lines>...
-        metadata=metadata,
-    )
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/google/api_core/gapic_v1/method.py", line 390, in __call__
-    result = wrapped_func(*args, **kwargs)
-  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/.venv/lib/python3.14/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
-    raise exceptions.from_grpc_error(exc) from exc
-google.api_core.exceptions.NotFound: 404 com.google.apps.framework.request.NotFoundException: Tool search-tutorials does not exist in the app.
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/knowledge/load_datastore.py", line 136, in <module>
+    {"create": create, "load": load, "delete": delete}[sys.argv[1] if len(sys.argv) > 1 else "load"]()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/wilsondayakar/Projects/Google/att-voice/cricket-cxas-agent/knowledge/load_datastore.py", line 89, in create
+    from google.cloud import discoveryengine_v1 as de
+ImportError: cannot import name 'discoveryengine_v1' from 'google.cloud' (unknown location)
