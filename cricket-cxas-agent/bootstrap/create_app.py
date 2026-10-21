@@ -15,6 +15,7 @@ import google.cloud.ces_v1beta.types as T
 from cxas_scrapi.core.agents import Agents
 from cxas_scrapi.core.apps import Apps
 from cxas_scrapi.core.variables import Variables, VariableType
+from google.api_core import exceptions as gax
 from google.cloud import ces_v1beta
 from google.protobuf import field_mask_pb2
 
@@ -32,8 +33,7 @@ def put_tool(client, tool_id: str, tool: T.Tool, field: str) -> None:
     try:
         client.create_tool(parent=APP, tool_id=tool_id, tool=tool)
         print(f"   created {tool_id}")
-    except Exception as e:  # noqa: BLE001  (exists: update in place)
-        print(f"   ({type(e).__name__}: {str(e)[:120]})")
+    except gax.AlreadyExists:
         tool.name = name
         client.update_tool(tool=tool, update_mask=field_mask_pb2.FieldMask(paths=["display_name", field]))
         print(f"   updated {tool_id}")

@@ -7,4 +7,5 @@ mcp>=2.2,<3
 uvicorn>=0.30
 pytest>=8
 google-cloud-firestore>=2.19
+google-cloud-discoveryengine>=0.13
 google-genai>=1.0
