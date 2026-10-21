@@ -4,7 +4,8 @@ from pathlib import Path
 
 from knowledge import load_datastore
 
-SRC = Path(__file__).parent.parent / "agents" / "tech_support"
+SRC = Path(__file__).parent.parent / "app" / "agents" / "Tech_Support"
+FILES = {"before_tool.py": "before_tool_callbacks", "after_tool.py": "after_tool_callbacks"}
 
 
 class Ctx:
@@ -14,7 +15,7 @@ class Ctx:
 
 def load(name):
     g = {"Tool": object, "CallbackContext": Ctx, "Content": object}
-    exec((SRC / name).read_text(), g)
+    exec((SRC / FILES[name] / f"{FILES[name]}_01" / "python_code.py").read_text(), g)
     return g
 
 

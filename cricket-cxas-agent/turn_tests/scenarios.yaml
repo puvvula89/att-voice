@@ -1,0 +1,297 @@
+# Typed test scenarios, run locally with SCRAPI's turn tests against the deployed app.
+# Each test is tagged with the demo profile it needs; bootstrap/run_turn_tests.py resets the
+# account to that profile before its group. Order matters within P3: the callback test resumes
+# the place the drop test saved.
+tests:
+- name: P1 line suspended
+  tags:
+  - P1
+  turns:
+  - turn: opening
+    user: my calls keep failing
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: tool_called
+      value: support_get_lines
+    - type: tool_input
+      value:
+        customer_id: cust_2001
+  - turn: account checks
+    user: 'yes'
+    expectations:
+    - type: tool_called
+      value: support_get_line_status
+    - type: tool_input
+      value:
+        line_id: L1
+    - type: tool_not_called
+      value: next_step
+  expectations:
+  - The agent tells the caller the line is suspended because a payment is past due and offers billing.
+  - The agent gives no troubleshooting steps for the phone.
+- name: P2 outage
+  tags:
+  - P2
+  turns:
+  - turn: opening
+    user: I have no service at all right now
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: tool_called
+      value: support_get_lines
+    - type: tool_input
+      value:
+        customer_id: cust_2001
+  - turn: account checks
+    user: 'yes'
+    expectations:
+    - type: tool_called
+      value: support_check_outage
+    - type: tool_not_called
+      value: next_step
+  expectations:
+  - The agent reports an outage in the caller's area, with when it started and when it should be fixed.
+  - The agent says the phone is fine and gives no troubleshooting steps.
+- name: P3 Wi-Fi walk-through
+  tags:
+  - P3
+  turns:
+  - turn: opening
+    user: my wifi is really slow
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: tool_called
+      value: support_get_lines
+    - type: tool_input
+      value:
+        customer_id: cust_2001
+  - turn: checks and search
+    user: yes it's this iPhone
+    expectations:
+    - type: tool_called
+      value: support_get_line_status
+    - type: tool_called
+      value: support_check_outage
+    - type: tool_called
+      value: search_tutorials
+    - type: tool_input
+      value:
+        filter: 'device: ANY("iphone-13")'
+  - turn: first step
+    user: walk me through it
+    expectations:
+    - type: tool_called
+      value: next_step
+  - turn: second step
+    user: done, next
+    expectations:
+    - type: tool_called
+      value: next_step
+  expectations:
+  - The agent finds an iPhone guide for slow Wi-Fi and offers to text it, walk through it, or both.
+  - The agent gives one step per turn.
+- name: P3 Galaxy won't turn on
+  tags:
+  - P3
+  turns:
+  - turn: opening
+    user: my galaxy won't turn on at all
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: tool_called
+      value: support_get_lines
+    - type: tool_input
+      value:
+        customer_id: cust_2001
+  - turn: second line
+    user: it's the second line
+    expectations:
+    - type: tool_called
+      value: search_tutorials
+    - type: tool_input
+      value:
+        filter: 'device: ANY("galaxy-a15-5g")'
+  - turn: first step
+    user: walk me through it
+    expectations:
+    - type: tool_called
+      value: next_step
+  expectations:
+  - The agent does not ask whether the caller is calling from the Galaxy.
+  - The agent walks a Galaxy guide, not an iPhone guide.
+- name: P3 text me the guide
+  tags:
+  - P3
+  turns:
+  - turn: opening
+    user: my iphone bluetooth won't pair, just text me the guide
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: tool_called
+      value: support_get_lines
+    - type: tool_input
+      value:
+        customer_id: cust_2001
+  - turn: send
+    user: yes, this iPhone
+    expectations:
+    - type: tool_called
+      value: search_tutorials
+    - type: tool_called
+      value: support_send_guide_link
+    - type: tool_not_called
+      value: next_step
+  expectations:
+  - The agent tries to text the Bluetooth guide link.
+  - If the text could not be sent, the agent says so and offers to walk the caller through it.
+- name: P3 phone not on the account
+  tags:
+  - P3
+  turns:
+  - turn: opening
+    user: my pixel 9 screen is frozen
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: tool_called
+      value: support_get_lines
+    - type: tool_input
+      value:
+        customer_id: cust_2001
+  - turn: insists
+    user: I'm sure it's a pixel
+    expectations:
+    - type: tool_not_called
+      value: next_step
+    - type: tool_not_called
+      value: search_tutorials
+  expectations:
+  - The agent says the Pixel is not on the account and asks the caller to read the model name from Settings.
+  - The agent gives no troubleshooting steps.
+- name: P3 call drops at the restart
+  tags:
+  - P3
+  turns:
+  - turn: opening
+    user: my wifi is really slow
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: tool_called
+      value: support_get_lines
+    - type: tool_input
+      value:
+        customer_id: cust_2001
+  - turn: checks and search
+    user: yes it's this iPhone
+    expectations:
+    - type: tool_called
+      value: support_get_line_status
+    - type: tool_called
+      value: support_check_outage
+    - type: tool_called
+      value: search_tutorials
+    - type: tool_input
+      value:
+        filter: 'device: ANY("iphone-13")'
+  - turn: first step
+    user: walk me through it
+    expectations:
+    - type: tool_called
+      value: next_step
+  - turn: step 2
+    user: done
+    expectations:
+    - type: tool_called
+      value: next_step
+  - turn: step 3
+    user: done
+    expectations:
+    - type: tool_called
+      value: next_step
+  - turn: warning
+    user: done
+    expectations:
+    - type: tool_called
+      value: support_save_progress
+    - type: contains
+      value: okay to call back
+  - turn: unclear answer
+    user: done
+    expectations:
+    - type: contains
+      value: confirmation
+  - turn: clear yes
+    user: yes, I'm okay to call back
+    expectations:
+    - type: tool_called
+      value: next_step
+  expectations:
+  - Before the restart step, the agent warns that the step will end the call and asks the caller to confirm.
+  - The agent gives the restart step only after the caller clearly says yes.
+- name: P3 caller rings back
+  tags:
+  - P3
+  turns:
+  - turn: callback
+    user: hi, I'm calling back
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: contains
+      value: welcome back
+  - turn: continue
+    user: no, it's still slow
+    expectations:
+    - type: tool_called
+      value: next_step
+    - type: tool_not_called
+      value: search_tutorials
+  expectations:
+  - The agent says it saved the caller's place and asks whether restarting the iPhone fixed the Wi-Fi.
+  - The agent continues with the step after the restart without searching again or re-checking the account.
+- name: P7 data used up
+  tags:
+  - P7
+  turns:
+  - turn: opening
+    user: data is crawling on my iphone
+    expectations:
+    - type: agent_transfer
+      value: Tech_Support
+    - type: tool_called
+      value: support_get_progress
+    - type: tool_called
+      value: support_get_lines
+    - type: tool_input
+      value:
+        customer_id: cust_2001
+  - turn: account checks
+    user: 'yes'
+    expectations:
+    - type: tool_called
+      value: support_get_data_usage
+  expectations:
+  - The agent explains the high-speed data is used up and when it resets.
+  - The agent asks whether the caller still wants to try steps on the phone.

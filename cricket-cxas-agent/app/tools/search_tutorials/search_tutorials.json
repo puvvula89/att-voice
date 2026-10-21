@@ -1,0 +1,28 @@
+{
+  "name": "search-tutorials",
+  "dataStoreTool": {
+    "name": "search_tutorials",
+    "description": "Find the troubleshooting guide for the caller's problem on their phone.",
+    "dataStoreSource": {
+      "dataStore": {
+        "name": "$env_var"
+      }
+    },
+    "modalityConfigs": [
+      {
+        "modalityType": "TEXT",
+        "summarizationConfig": {
+          "disabled": true
+        }
+      },
+      {
+        "modalityType": "AUDIO",
+        "summarizationConfig": {
+          "disabled": true
+        }
+      }
+    ],
+    "filterParameterBehavior": "ALWAYS_INCLUDE"
+  },
+  "displayName": "search_tutorials"
+}

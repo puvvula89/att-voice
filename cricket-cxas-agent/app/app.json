@@ -1,0 +1,46 @@
+{
+  "name": "cricket-care",
+  "displayName": "Cricket Care",
+  "rootAgent": "Care_Concierge",
+  "loggingSettings": {
+    "conversationLoggingSettings": {
+      "retentionWindow": "31536000s"
+    }
+  },
+  "modelSettings": {
+    "model": "gemini-3.1-flash-live"
+  },
+  "variableDeclarations": [
+    {
+      "name": "customer_id",
+      "description": "The signed-in caller's account id; telephony or the client sets it at session start",
+      "schema": {
+        "type": "STRING",
+        "default": "cust_2001",
+        "required": []
+      }
+    },
+    {
+      "name": "steps_by_id",
+      "description": "Steps of the tutorials found this call",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
+      "name": "walk",
+      "description": "The caller's place in the tutorial, kept at every step",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    }
+  ],
+  "dataStoreSettings": {},
+  "timeZoneSettings": {
+    "timeZone": "America/Los_Angeles"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "tech-support",
+  "displayName": "Tech_Support",
+  "modelSettings": {
+    "model": "gemini-3.1-flash-live"
+  },
+  "instruction": "agents/Tech_Support/instruction.txt",
+  "tools": [
+    "end_session",
+    "next_step",
+    "search_tutorials"
+  ],
+  "beforeToolCallbacks": [
+    {
+      "pythonCode": "agents/Tech_Support/before_tool_callbacks/before_tool_callbacks_01/python_code.py"
+    }
+  ],
+  "afterToolCallbacks": [
+    {
+      "pythonCode": "agents/Tech_Support/after_tool_callbacks/after_tool_callbacks_01/python_code.py"
+    }
+  ],
+  "llmAgent": {},
+  "toolsets": [
+    {
+      "toolset": "support",
+      "toolIds": [
+        "check_outage",
+        "get_data_usage",
+        "get_line_status",
+        "get_lines",
+        "get_progress",
+        "get_sim_status",
+        "open_ticket",
+        "refresh_network",
+        "save_progress",
+        "send_guide_link"
+      ]
+    }
+  ]
+}

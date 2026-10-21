@@ -1,0 +1,15 @@
+{
+  "name": "care-concierge",
+  "displayName": "Care_Concierge",
+  "modelSettings": {
+    "model": "gemini-3.1-flash-live"
+  },
+  "instruction": "agents/Care_Concierge/instruction.txt",
+  "tools": [
+    "end_session"
+  ],
+  "childAgents": [
+    "Tech_Support"
+  ],
+  "llmAgent": {}
+}

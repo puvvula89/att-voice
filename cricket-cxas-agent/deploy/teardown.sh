@@ -13,15 +13,7 @@ if [ "${1:-}" != "--yes" ]; then
 fi
 
 step "Agent app $APP_ID"
-$PY - <<PY
-from google.api_core import exceptions as gax
-from google.cloud import ces_v1beta
-try:
-    ces_v1beta.AgentServiceClient().delete_app(name="projects/$PROJECT/locations/$LOC/apps/$APP_ID").result(timeout=300)
-    print("deleted")
-except gax.NotFound:
-    print("not found")
-PY
+.venv/bin/cxas --no-input delete --app-name "projects/$PROJECT/locations/$LOC/apps/$APP_ID" --force || echo "not found"
 
 step "Support server $SERVICE"
 gcloud run services delete "$SERVICE" --region "$REGION" --project "$PROJECT" --quiet 2>/dev/null || echo "not found"

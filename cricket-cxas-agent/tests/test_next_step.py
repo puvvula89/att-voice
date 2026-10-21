@@ -7,7 +7,8 @@ import pytest
 from knowledge import load_datastore
 
 ROOT = Path(__file__).parent.parent
-SRC = (ROOT / "agents" / "tech_support" / "next_step.py").read_text()
+APP = ROOT / "app"
+SRC = (APP / "tools" / "next_step" / "python_function" / "python_code.py").read_text()
 # What the search callback decodes: the data store records, with linked how-tos attached.
 CAT = {d: {r["tutorial_id"]: {"title": r["title"], **load_datastore.decode_steps(r["steps_b64"])}
            for r in load_datastore.records(json.loads((ROOT / "knowledge" / "catalog" / f"{d}.json").read_text()))}
@@ -29,7 +30,7 @@ def walk():
     g = {"get_variable": store.get, "set_variable": store.__setitem__}
     exec(SRC, g)
     cb = {"Tool": object, "CallbackContext": Ctx}
-    exec((ROOT / "agents" / "tech_support" / "before_tool.py").read_text(), cb)
+    exec((APP / "agents" / "Tech_Support" / "before_tool_callbacks" / "before_tool_callbacks_01" / "python_code.py").read_text(), cb)
 
     def save():
         """What the agent's save_progress call does: the callback picks what to send and marks it saved."""
@@ -115,11 +116,11 @@ def test_branch_asks_then_follows_the_choice(walk):
             walk["save"]()
         r = walk["next_step"](MOTO_CALLS, caller_confirmed=bool(r.get("needs_confirmation")))
     assert r["question"] and len(r["choices"]) >= 2
-    assert walk["next_step"](MOTO_CALLS, choice="not a choice")["error"]
+    assert walk["next_step"](MOTO_CALLS, choice="not a choice")["agent_action"]
     nxt = walk["next_step"](MOTO_CALLS, choice=r["choices"][-1])
     assert nxt.get("step") or nxt.get("needs_confirmation")
 
 
 def test_unknown_tutorial_says_to_search_first(walk):
     walk["load"]("iphone-13", WIFI)
-    assert "Search" in walk["next_step"]("nope")["error"]
+    assert "Search" in walk["next_step"]("nope")["agent_action"]

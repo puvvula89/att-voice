@@ -25,7 +25,7 @@ def next_step(tutorial_id: str, action: str = "next", caller_confirmed: bool = F
     """
     tut = json.loads(get_variable("steps_by_id") or "{}").get(tutorial_id)
     if not tut:
-        return {"error": "That tutorial is not loaded. Search for it by its title, then call next_step again."}
+        return {"agent_action": "That tutorial is not loaded. Search for it by its title, then call next_step again."}
     walk = json.loads(get_variable("walk") or "{}")
     prog = walk.setdefault("progress", {})
     active = walk.get("active")
@@ -44,7 +44,7 @@ def next_step(tutorial_id: str, action: str = "next", caller_confirmed: bool = F
     paths = tut["paths"]
     if choice and len(paths) > 1:
         if choice not in _forks(paths):
-            return {"error": "Not a valid choice.", "choices": _forks(paths)}
+            return {"agent_action": "Not a valid choice. Ask again with one of choices.", "choices": _forks(paths)}
         p["choice"] = choice
     if len(paths) == 1:
         steps = paths[0]["steps"]
