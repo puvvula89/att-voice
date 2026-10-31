@@ -126,9 +126,10 @@ from your machine against the deployed app; nothing is added to the app.
 .venv/bin/python bootstrap/run_turn_tests.py P1 P3     # only these profiles
 ```
 
-Each scenario is tagged with the demo profile it needs; the runner resets the demo account to that
-profile before its group. Within P3 the order matters: the callback scenario resumes the place the
-drop scenario saved. A scenario stops at its first failed turn.
+Scenarios run one at a time, in file order. Each is tagged with the demo profile it needs, and the
+runner resets the demo account to that profile before it, which also clears any saved place. The
+callback scenario is tagged `continues`: it skips the reset and resumes the place the drop scenario
+above it saved. A scenario stops at its first failed turn.
 
 It prints PASS or FAIL per scenario and writes `runs/<UTC timestamp>/results.csv`: one row per check,
 with what was expected, what happened, and the session id to look up in the console.

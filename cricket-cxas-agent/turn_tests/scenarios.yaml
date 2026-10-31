@@ -1,6 +1,7 @@
 # Typed test scenarios, run locally with SCRAPI's turn tests against the deployed app.
 # Each test is tagged with the demo profile it needs; bootstrap/run_turn_tests.py resets the
-# account to that profile before its group. Order matters within P3: the callback test resumes
+# account to that profile before each test, which also clears any saved place. A test tagged
+# `continues` skips the reset and runs right after the test above it: the callback test resumes
 # the place the drop test saved.
 tests:
 - name: P1 line suspended
@@ -251,9 +252,10 @@ tests:
 - name: P3 caller rings back
   tags:
   - P3
+  - continues
   turns:
   - turn: callback
-    user: hi, I'm calling back
+    user: hi, my call dropped while I was restarting my phone
     expectations:
     - type: agent_transfer
       value: Tech_Support
