@@ -8,7 +8,7 @@ APP_ID="${CARE_APP_ID:-cricket-care}"
 LOC="${CXAS_LOCATION:-us}"
 
 if [ "${1:-}" != "--yes" ]; then
-  read -r -p "Delete app $APP_ID, service $SERVICE, data store ${DATASTORE_ID:-cricket-tutorials} and saved progress in $PROJECT? [y/N] " a
+  read -r -p "Delete app $APP_ID, service $SERVICE, the chat page, the picture bucket, data store ${DATASTORE_ID:-cricket-tutorials} and saved progress in $PROJECT? [y/N] " a
   [ "$a" = "y" ] || { echo "nothing deleted"; exit 0; }
 fi
 
@@ -17,6 +17,12 @@ step "Agent app $APP_ID"
 
 step "Support server $SERVICE"
 gcloud run services delete "$SERVICE" --region "$REGION" --project "$PROJECT" --quiet 2>/dev/null || echo "not found"
+
+step "Chat page ${CHAT_WEB_SERVICE:-cricket-chat-web}"
+gcloud run services delete "${CHAT_WEB_SERVICE:-cricket-chat-web}" --region "$REGION" --project "$PROJECT" --quiet 2>/dev/null || echo "not found"
+
+step "Picture bucket $IMAGES_BUCKET"
+gcloud storage rm -r "gs://$IMAGES_BUCKET" --project "$PROJECT" --quiet 2>/dev/null || echo "not found"
 
 step "Data store"
 $PY -m knowledge.load_datastore delete

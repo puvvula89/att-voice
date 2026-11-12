@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Stage 2 (runs locally): tutorials → labels → catalog → Agent Search data store.
+# Stage 2 (runs locally): tutorials → labels → catalog → step pictures bucket → Agent Search data store.
 #
 #   deploy/content.sh            build from the committed raw tutorials and load them
 #   deploy/content.sh --scrape   re-scrape every device in knowledge/raw first (headless browser, ~1 h)
@@ -24,6 +24,12 @@ $PY -m knowledge.enrich --workers 2
 
 step "Build the catalog"
 $PY -m knowledge.build_catalog
+
+step "Copy step pictures into the private images bucket (only new ones)"
+gcloud storage buckets describe "gs://${IMAGES_BUCKET}" --project "$PROJECT" >/dev/null 2>&1 ||
+  gcloud storage buckets create "gs://${IMAGES_BUCKET}" --project "$PROJECT" --location "$REGION" \
+    --uniform-bucket-level-access --public-access-prevention --quiet
+IMAGES_BUCKET="$IMAGES_BUCKET" $PY -m knowledge.images sync
 
 step "Load the data store"
 $PY -m knowledge.load_datastore load

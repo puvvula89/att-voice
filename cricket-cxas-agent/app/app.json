@@ -8,7 +8,7 @@
     }
   },
   "modelSettings": {
-    "model": "gemini-3.1-flash-live"
+    "model": "gemini-composite-v2"
   },
   "variableDeclarations": [
     {
@@ -17,6 +17,15 @@
       "schema": {
         "type": "STRING",
         "default": "cust_2001",
+        "required": []
+      }
+    },
+    {
+      "name": "customer_name",
+      "description": "The signed-in caller's first name, for the chat welcome; the client sets it at session start",
+      "schema": {
+        "type": "STRING",
+        "default": "Jordan",
         "required": []
       }
     },
@@ -32,6 +41,33 @@
     {
       "name": "walk",
       "description": "The caller's place in the tutorial, kept at every step",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
+      "name": "channel",
+      "description": "voice or chat; set every turn from the session's modality",
+      "schema": {
+        "type": "STRING",
+        "default": "voice",
+        "required": []
+      }
+    },
+    {
+      "name": "show_image",
+      "description": "Chat: picture name of the step just given, for the reply to show",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
+      "name": "image_links",
+      "description": "Chat: signed links to the walked guide's pictures, by picture name",
       "schema": {
         "type": "STRING",
         "default": "",

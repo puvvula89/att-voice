@@ -21,7 +21,7 @@ step "Support server $SERVICE in $REGION"
 gcloud run deploy "$SERVICE" \
   --source . --region "$REGION" --project "$PROJECT" \
   --no-allow-unauthenticated --min-instances 1 --max-instances 1 \
-  --set-env-vars "^|^DEMO_PROFILE=${DEMO_PROFILE:-P3}|DEMO_CUSTOMER_ID=${DEMO_CUSTOMER_ID:-cust_2001}|MCP_WIRE_LOG=${MCP_WIRE_LOG:-0}|PROGRESS_BACKEND=firestore|GOOGLE_CLOUD_PROJECT=${PROJECT}|FIRESTORE_DATABASE=${FIRESTORE_DATABASE:-(default)}|RESUME_WINDOW_MINUTES=${RESUME_WINDOW_MINUTES:-30}${TWILIO_ENV}" \
+  --set-env-vars "^|^DEMO_PROFILE=${DEMO_PROFILE:-P3}|DEMO_CUSTOMER_ID=${DEMO_CUSTOMER_ID:-cust_2001}|MCP_WIRE_LOG=${MCP_WIRE_LOG:-0}|PROGRESS_BACKEND=firestore|GOOGLE_CLOUD_PROJECT=${PROJECT}|FIRESTORE_DATABASE=${FIRESTORE_DATABASE:-(default)}|RESUME_WINDOW_MINUTES=${RESUME_WINDOW_MINUTES:-30}|IMAGES_BUCKET=${IMAGES_BUCKET}|IMAGE_LINK_MINUTES=${IMAGE_LINK_MINUTES:-60}${TWILIO_ENV}" \
   --quiet >/dev/null
 URL=$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')
 RUNTIME_SA=$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" \
@@ -29,9 +29,14 @@ RUNTIME_SA=$(gcloud run services describe "$SERVICE" --region "$REGION" --projec
 PROJECT_NUMBER=$(gcloud projects describe "$PROJECT" --format='value(projectNumber)')
 CES_SA="${CES_SERVICE_AGENT:-service-${PROJECT_NUMBER}@gcp-sa-ces.iam.gserviceaccount.com}"
 
-step "Access: the server uses Firestore; the agent platform calls the server"
+step "Access: the server uses Firestore and signs picture links; the agent platform calls the server"
 gcloud projects add-iam-policy-binding "$PROJECT" --member "serviceAccount:${RUNTIME_SA}" \
   --role roles/datastore.user --condition=None --quiet >/dev/null
+# Signed links without a key file: the server signs as itself through IAM, and reads the bucket.
+gcloud iam service-accounts add-iam-policy-binding "$RUNTIME_SA" --project "$PROJECT" \
+  --member "serviceAccount:${RUNTIME_SA}" --role roles/iam.serviceAccountTokenCreator --quiet >/dev/null
+gcloud storage buckets add-iam-policy-binding "gs://${IMAGES_BUCKET}" --project "$PROJECT" \
+  --member "serviceAccount:${RUNTIME_SA}" --role roles/storage.objectViewer --quiet >/dev/null
 gcloud run services add-iam-policy-binding "$SERVICE" --region "$REGION" --project "$PROJECT" \
   --member "serviceAccount:${CES_SA}" --role roles/run.invoker --quiet >/dev/null
 
@@ -50,7 +55,7 @@ cat > "$BUILD/environment.json" <<JSON
 JSON
 $CXAS lint --app-dir "$BUILD/Cricket_Care"
 
-step "Agent app $APP_ID: create if missing (the voice model can only be set at creation), then push"
+step "Agent app $APP_ID: create if missing (the model can only be set at creation), then push"
 $PY - "$PROJECT" "$LOC" "$APP_ID" <<'PY'
 import json, sys
 from cxas_scrapi.core.apps import Apps

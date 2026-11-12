@@ -1,9 +1,13 @@
-"""after_tool_callback for Tech Support. Runs for every tool, so it acts only on two results:
+"""after_tool_callback for Tech Support. Runs for every tool, so it acts only on these results:
 
 - search_tutorials: keep only tutorials for the caller's phone (the device in the search filter), save
   their steps in `steps_by_id` for next_step, and show the model titles and summaries without the steps.
 - get_progress: move the saved `walk` and `steps_by_id` into this call's variables, so next_step
   continues from the saved place, and show the model only where the caller left off.
+- next_step: take the step's picture name off the result. In chat (`channel` is "chat") it goes to
+  `show_image` for the after_model_callback to attach, and the model is told whether there is a picture
+  and, the first time a guide's pictures are needed, to get their links; on voice it is dropped.
+- sign_images (chat only): keep the signed links in `image_links`, by picture name.
 """
 import base64
 import json
@@ -59,7 +63,24 @@ def after_tool_callback(tool: Tool, input: dict[str, Any], callback_context: Cal
                         tool_response: dict[str, Any]) -> Optional[dict[str, Any]]:
     if "answer" in tool_response:
         return _search(input, callback_context, str(tool_response["answer"]))
+    # A python tool's result arrives wrapped as {"result": {...}}; edit it in place and return the whole.
+    step = tool_response.get("result") if isinstance(tool_response.get("result"), dict) else tool_response
+    if "step" in step and "of" in step:
+        image = step.pop("image", "")
+        if callback_context.variables.get("channel") != "chat" or "text" not in step:
+            return tool_response if image else None   # voice, or a save/confirm result with no step to show
+        # "-" marks a step without a picture: the reply still gets quick replies.
+        callback_context.variables["show_image"] = image or "-"
+        step["picture"] = bool(image)
+        if image and image not in json.loads(callback_context.variables.get("image_links") or "{}"):
+            step["get_pictures"] = True
+        return tool_response
     r = _payload(tool_response)
+    if isinstance(r.get("images"), dict):
+        links = json.loads(callback_context.variables.get("image_links") or "{}")
+        links.update(r["images"])
+        callback_context.variables["image_links"] = json.dumps(links)
+        return {"images_ready": len(r["images"])}
     if "progress" in r and r.get("walk"):
         callback_context.variables["walk"] = r["walk"]
         callback_context.variables["steps_by_id"] = r.get("steps_by_id") or "{}"
