@@ -1,9 +1,6 @@
 {
   "name": "care-concierge",
   "displayName": "Care_Concierge",
-  "modelSettings": {
-    "model": "gemini-3.1-flash-live"
-  },
   "instruction": "agents/Care_Concierge/instruction.txt",
   "tools": [
     "end_session"
@@ -11,5 +8,10 @@
   "childAgents": [
     "Tech_Support"
   ],
-  "llmAgent": {}
+  "llmAgent": {},
+  "beforeAgentCallbacks": [
+    {
+      "pythonCode": "agents/Care_Concierge/before_agent_callbacks/before_agent_callbacks_01/python_code.py"
+    }
+  ]
 }

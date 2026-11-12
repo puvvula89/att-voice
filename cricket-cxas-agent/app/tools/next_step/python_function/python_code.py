@@ -101,6 +101,8 @@ def next_step(tutorial_id: str, action: str = "next", caller_confirmed: bool = F
             out[k] = s[k]
     if s.get("warning"):
         out["warning"] = s["warning"]
+    if s.get("image"):
+        out["image"] = s["image"]   # the agent's after_tool_callback takes it; chat shows the picture
     extra = [o for o in s.get("options", []) if not o.startswith("Next")]
     if extra:
         out["options"] = extra

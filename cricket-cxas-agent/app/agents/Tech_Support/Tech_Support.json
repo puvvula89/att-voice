@@ -1,9 +1,6 @@
 {
   "name": "tech-support",
   "displayName": "Tech_Support",
-  "modelSettings": {
-    "model": "gemini-3.1-flash-live"
-  },
   "instruction": "agents/Tech_Support/instruction.txt",
   "tools": [
     "end_session",
@@ -34,8 +31,19 @@
         "open_ticket",
         "refresh_network",
         "save_progress",
-        "send_guide_link"
+        "send_guide_link",
+        "sign_images"
       ]
+    }
+  ],
+  "beforeAgentCallbacks": [
+    {
+      "pythonCode": "agents/Tech_Support/before_agent_callbacks/before_agent_callbacks_01/python_code.py"
+    }
+  ],
+  "afterModelCallbacks": [
+    {
+      "pythonCode": "agents/Tech_Support/after_model_callbacks/after_model_callbacks_01/python_code.py"
     }
   ]
 }

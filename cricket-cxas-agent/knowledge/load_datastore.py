@@ -8,7 +8,7 @@ One document per tutorial. Search runs on title, summary, symptoms and category;
 filter; `url` is the public guide the agent can text. The steps travel in `steps_b64` (zlib + url-safe
 base64 JSON), which the agent's search callback decodes; the model never sees it. Each step carries
 the steps of the tutorials it links to as `how_to`, so the agent can explain "how do I restart it?"
-from our content.
+from our content, and `image`, the name of its picture in the images bucket (knowledge/images.py).
 """
 import base64
 import hashlib
@@ -19,6 +19,8 @@ import zlib
 from pathlib import Path
 
 from dotenv import load_dotenv
+
+from knowledge.images import image_name
 
 CATALOG = Path(__file__).parent / "catalog"
 # The data store tool silently drops a result whose record is about 16 KB; stay well below.
@@ -66,6 +68,8 @@ def records(cat: dict) -> list[dict]:
             steps = []
             for s in p["steps"]:
                 step = {k: s[k] for k in STEP_FIELDS if k in s}
+                if s.get("image_url"):
+                    step["image"] = image_name(s["image_url"])
                 step["how_to"] = [{"title": x, "steps": [{"heading": y["heading"], "text": y["text"], "notes": y["notes"]}
                                                        for y in by_title[x]["paths"][0]["steps"]]}
                                   for x in s.get("links", []) if x in by_title]

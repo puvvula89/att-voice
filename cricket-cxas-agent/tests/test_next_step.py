@@ -124,3 +124,9 @@ def test_branch_asks_then_follows_the_choice(walk):
 def test_unknown_tutorial_says_to_search_first(walk):
     walk["load"]("iphone-13", WIFI)
     assert "Search" in walk["next_step"]("nope")["agent_action"]
+
+
+def test_a_step_with_a_picture_names_it(walk):
+    walk["load"]("iphone-13", WIFI)
+    r = walk["next_step"](WIFI)
+    assert r["step"] == 1 and r["image"].endswith((".jpeg", ".png")) and len(r["image"].split(".")[0]) == 16

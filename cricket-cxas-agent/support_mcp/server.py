@@ -1,7 +1,8 @@
 """Support MCP server: callback resume plus the mock account/network store.
 
 Tutorials are found and walked inside the agent (data store search and a step tool); this server
-only holds what needs the network: account checks, outreach, and the saved place for callbacks.
+only holds what needs the network: account checks, outreach, the saved place for callbacks, and
+signed links to step pictures for chat.
 
 Stateless streamable HTTP so Cloud Run may route each request anywhere. The
 account store is per-process; with min-instances=1 and max-instances=1 that is
@@ -12,6 +13,7 @@ import os
 from mcp.server.mcpserver import MCPServer
 
 from support_mcp import tools_account as A
+from support_mcp import tools_images as I
 from support_mcp import tools_outreach as O
 from support_mcp import tools_progress as P
 
@@ -88,6 +90,13 @@ def open_ticket(customer_id: str, line_id: str, summary: str) -> dict:
     """Open a support ticket with a one-line summary of what was tried. Call this when
     the tutorial is exhausted and the problem remains."""
     return O.open_ticket(customer_id, line_id, summary)
+
+
+@mcp.tool()
+def sign_images(names: str) -> dict:
+    """Short-lived links to the chosen guide's step pictures, for showing them in chat. Call this
+    once, right after choosing the guide; the image names are filled in automatically."""
+    return I.sign_images(names)
 
 
 # json_response: the platform's tool discovery reads plain JSON replies. With SSE

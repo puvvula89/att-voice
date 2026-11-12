@@ -5,6 +5,7 @@
 step "APIs in $PROJECT"
 gcloud services enable ces.googleapis.com discoveryengine.googleapis.com firestore.googleapis.com \
   run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com aiplatform.googleapis.com \
+  storage.googleapis.com iamcredentials.googleapis.com \
   --project "$PROJECT"
 
 step "Agent platform service agent (granted access to the support server at deploy)"

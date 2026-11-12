@@ -7,13 +7,17 @@ waiting on the server build and the tests.
 The agent itself is the folder `app/`, in the SCRAPI (`cxas-scrapi`) app format: one folder per agent
 with its `instruction.txt` and callbacks, plus the tools, the support toolset and the variables.
 `deploy.sh` pushes it with `cxas push`.
+
+One app answers phone calls and web chat. It runs on the `gemini-composite-v2` model, which takes
+spoken and typed turns. On each turn the app reads how the turn arrived: a spoken turn gets voice
+wording, a typed turn gets chat wording plus a picture of the step and quick replies.
 Run every command from the `cricket-cxas-agent/` folder.
 
 ## 0. What you need
 
 | Item | Notes |
 |---|---|
-| A Google Cloud project with billing enabled | Owner, or these roles: Customer Engagement Suite admin, Cloud Run admin, Cloud Build editor, Service Usage admin, Project IAM admin. |
+| A Google Cloud project with billing enabled | Owner, or these roles: Customer Engagement Suite admin, Cloud Run admin, Cloud Build editor, Service Usage admin, Project IAM admin, Storage admin. |
 | `gcloud` CLI | Logged in as a user on that project (step 1 does the login). |
 | Python 3.10 or newer | Check with `python3 --version`. The server image uses its own Python. |
 | This repository | `git clone https://github.com/puvvula89/att-voice.git && cd att-voice/cricket-cxas-agent` |
@@ -36,7 +40,7 @@ second (application default credentials).
 **Check the quota before going further.** Console → IAM & Admin → Quotas & System Limits. In the
 filter, search for the service by its display name, **Gemini Enterprise for Customer Experience
 API** (searching `ces.googleapis.com` finds nothing). Find **RunSession LLM tokens per minute per
-project per region per base model**, row region `us-central1`, base model `gemini-3.1-flash-live`.
+project per region per base model**, the row for the app's model (`gemini-composite-v2`).
 
 | Value | What to expect |
 |---|---|
@@ -59,6 +63,8 @@ Edit `.env`:
 | `GOOGLE_CLOUD_LOCATION` | `us-central1` (the Cloud Run region; keep as is) |
 | `CARE_APP_ID`, `DEMO_CUSTOMER_ID`, `SUPPORT_MCP_SERVICE`, `DEMO_PROFILE` | keep the example values |
 | `DATASTORE_ID`, `FIRESTORE_DATABASE`, `FIRESTORE_LOCATION`, `RESUME_WINDOW_MINUTES`, `EXTRACT_MODEL` | keep the example values |
+| `IMAGES_BUCKET`, `IMAGE_LINK_MINUTES` | optional. The private bucket for step pictures (default `<project>-cricket-tutorial-images`) and how long a picture link in chat stays valid (default 60 minutes) |
+| `CHAT_WEB_SERVICE`, `CHAT_DEPLOYMENT_ID`, `CHAT_TITLE`, `CHAT_EXTRA_ORIGINS` | optional, for web chat (step 7). The defaults work |
 | `TURN_TESTS_RPM` | requests per minute for the tests: `6` with a raised quota, `0.25` at the default 1,000 tokens per minute |
 | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM`, `DEMO_SMS_NUMBER` | optional. Fill all four to have the agent text the guide link to `DEMO_SMS_NUMBER` (a Twilio trial only sends to numbers verified in Twilio). Leave empty and the agent says it could not text and reads the link instead. |
 
@@ -68,7 +74,7 @@ python3 -m venv .venv
 .venv/bin/pytest -q
 ```
 
-Expect `64 passed`. A warning about ffmpeg is harmless.
+Expect `75 passed`. A warning about ffmpeg is harmless.
 
 ## 3. Prep
 
@@ -94,6 +100,7 @@ Runs on your machine:
 | Scrape (only with `--scrape`) | Reads every tutorial for the devices in `knowledge/raw` from the support site |
 | Label | Gemini marks which steps end the call and writes symptoms and a summary. Cached per tutorial, so only new or changed tutorials are sent |
 | Build | Writes `knowledge/catalog`. The hand review in `knowledge/step_review.json` is applied on top: each step is marked as dropping the call, might drop it, or safe |
+| Pictures | Creates the private bucket if missing and copies each step's picture into it. Only new pictures are copied; the first run copies about 2,900 and takes 20 to 30 minutes. A few may fail on a timeout: rerun to pick them up. A step without a picture still works in chat, without one |
 | Load | Upserts one document per tutorial into the data store and removes tutorials that are gone. Search sees changes within a few minutes |
 
 Rerun this whenever tutorials change. The agent needs no redeploy for new content.
@@ -108,9 +115,9 @@ deploy/deploy.sh --no-test   # deploy only
 | Step | What it does |
 |---|---|
 | Support server | Builds and deploys the private Cloud Run service `cricket-support-mcp` (one always-warm instance). Takes 3 to 5 minutes |
-| Access | Lets the server use Firestore and lets the agent platform call the server |
+| Access | Lets the server use Firestore, sign picture links and read the picture bucket, and lets the agent platform call the server |
 | Build | Copies `app/` to a temporary folder and fills in the two per-project values: the server's URL in `toolsets/support/support.json`, and the data store in `environment.json`. Then runs `cxas lint` on it |
-| Create | Creates app `cricket-care` with the voice model from `app/app.json` if it does not exist. The model can only be set when an app is created |
+| Create | Creates app `cricket-care` with the model from `app/app.json` if it does not exist |
 | Push | `cxas push --overwrite` makes the live app match `app/` exactly, removing anything that is no longer in the folder |
 | Tests | Runs `bootstrap/run_turn_tests.py` |
 
@@ -134,6 +141,9 @@ above it saved. A scenario stops at its first failed turn.
 It prints PASS or FAIL per scenario and writes `runs/<UTC timestamp>/results.csv`: one row per check,
 with what was expected, what happened, and the session id to look up in the console.
 
+The scenarios send typed turns, so the app answers them as chat. A check on exact words written for
+a phone call can fail on chat wording; the tool checks apply to both.
+
 To put the demo account in a given state for manual testing: `.venv/bin/python bootstrap/demo_reset.py P1`.
 
 ### Change the agent
@@ -151,7 +161,9 @@ Edits made in the console are overwritten by the next deploy; copy them into `ap
 ## 6. Voice
 
 1. Console → Customer Engagement Suite → the `cricket-care` app.
-2. Create a version, then a deployment from it.
+2. Create a version, then a deployment from it. If a deployment already exists from an earlier
+   deploy, create a new version and point the deployment at it: a deployment keeps serving its old
+   version until then.
 3. In the telephony settings, bind a phone number to that deployment.
 4. Pick a profile (below), then call the number.
 5. Note the conversation id shown in the console for each call, and anything that sounded
@@ -204,12 +216,93 @@ It prints the account state, for example `{"profile": "P1", ... "lines": {"L1": 
 
 P4, P5 and P6 are clean accounts, the same as P3.
 
+## 7. Web chat
+
+```bash
+deploy/chat.sh
+```
+
+Run it after `deploy/deploy.sh`, and again after every later deploy: the chat channel serves a
+version of the app, and this creates a new one. Safe to rerun.
+
+| Step | What it does |
+|---|---|
+| Demo page | Deploys `chat_web/` as the public Cloud Run service `cricket-chat-web`: a copy of the Cricket support page with the chat widget on it |
+| Version | Creates a version of the app as it is now |
+| Chat channel | Creates the chat-only deployment `cricket-chat` if missing and points it at the new version. Public access is on, allowed only from the demo page's own address (plus `CHAT_EXTRA_ORIGINS`) |
+
+It prints the chat page's address at the end. Open it, then open the chat from the mascot's
+**Start chat** button or the chat button at the bottom right.
+
+- The agent greets when the chat opens: "Welcome to Cricket Wireless, Jordan. How can I help you today?"
+  The name is the app variable `customer_name`; the page shows `CHAT_USER` as the signed-in customer.
+- The chat window uses the browser's height, and each step picture is sized to show whole. Use a
+  maximised window.
+
+- Chat uses the same demo account and profile as voice. Switch profiles the same way.
+- In chat the agent never texts the guide; it puts the link in its reply.
+- Each walk-through step shows its picture and three quick replies: Done, Say it again, I'm stuck.
+- The page keeps the conversation across reloads. Open it in a private window for a clean start.
+- The pictures stay private. The agent hands the page links that expire after `IMAGE_LINK_MINUTES`.
+
+## 8. Demo scripts
+
+Two scenarios, one per channel, both on the same app and the same account. Both were run end to end
+against the deployed app: the voice one with spoken turns, the chat one on the chat page.
+
+Before each one, reset the account. It clears any saved place, which otherwise makes the agent open
+with "Welcome back":
+
+```bash
+.venv/bin/python bootstrap/demo_reset.py P3
+```
+
+Leave a few seconds between turns. At the default quota a fast run hits the rate limit: on a call
+the line drops, in chat the page shows an error with a Retry button. Check the quota (step 1) on the
+project you demo from.
+
+### Voice: slow Wi-Fi, the call drops, the caller rings back
+
+Shows: account checks before device steps, one step at a time, a warning before a step that ends the
+call, and picking up where the caller left off.
+
+| # | Say | The agent |
+|---|---|---|
+| 1 | "My Wi-Fi is really slow" | Says it sees you are calling from your iPhone and asks if that is the one |
+| 2 | "Yes, it's this iPhone" | Says everything looks normal on its side, names the guide for Wi-Fi connection issues or slowdowns, offers to text it, walk you through it, or both |
+| 3 | "Walk me through it" | Step 1: open Settings and tap Wi-Fi |
+| 4 | "Done" | Step 2: Cellular, Wi-Fi Assist |
+| 5 | "Done" | Warns that the next step will disconnect the call, says it saved your place, asks you to confirm you are okay to call back |
+| 6 | "Done" (optional) | Does not accept it: asks again for a clear confirmation |
+| 7 | "Yes, I'm okay to call back" | Tells you to restart the iPhone and call back |
+| 8 | Hang up. Call again within 30 minutes: "Hi, my call dropped while I was restarting my phone" | "Welcome back, I saved your place." Asks whether the restart fixed it |
+
+End the demo at row 8. The step after the restart also ends the call, so answering "no, it's still
+slow" brings the same warning again.
+
+### Chat: set up Wi-Fi calling, with a picture of every step
+
+Shows: the same agent in chat wording, a picture of the screen under every step, and quick replies.
+Open the chat page from step 7 in a private window.
+
+| # | Type or click | The agent |
+|---|---|---|
+| 1 | "How do I set up Wi-Fi calling on my iPhone?" | Says it sees you are chatting from your iPhone and asks if that is the one |
+| 2 | "Yes" | Names the guide Activating Wi-Fi calling, offers the link, a walk-through here, or both |
+| 3 | "Walk me through it here" | Step 1 with a picture of the Settings screen, and the quick replies Done, Say it again, I'm stuck |
+| 4 | Click **Done** | Step 2 with its picture |
+| 5 | Click **Done** for each of the 6 steps | A picture under every step. No step in this guide ends a call |
+| 6 | Optional: click **Say it again** or **I'm stuck** on any step | Repeats the step, or helps with it |
+
 ## How a call works
 
 | Part | Where it runs | Role |
 |---|---|---|
 | `search_tutorials` | Agent platform, data store tool | Finds tutorials for the caller's words, filtered to their phone |
-| `app/agents/Tech_Support/after_tool_callbacks/` | Agent platform, callback | Drops results for other phones, keeps the steps out of the model's view, loads a saved place on callback |
+| `before_agent_callbacks/` (both agents) | Agent platform, callback | Sets `channel` to voice or chat from how the turn arrived |
+| `app/agents/Tech_Support/after_tool_callbacks/` | Agent platform, callback | Drops results for other phones, keeps the steps out of the model's view, loads a saved place on callback. In chat, notes the step's picture |
+| `app/agents/Tech_Support/after_model_callbacks/` | Agent platform, callback | Chat only: attaches the step's picture and the quick replies under the reply |
+| `sign_images` | Support server | Chat only: makes short-lived links to a guide's pictures in the private bucket |
 | `app/tools/next_step/` | Agent platform, Python tool | Gives one step at a time. Holds a step that ends the call until the caller says yes, and any step that ends or might drop the call until its place is saved |
 | `app/agents/Tech_Support/before_tool_callbacks/` | Agent platform, callback | Fills `save_progress` with the caller's place, so the model never copies it |
 | `get_progress`, `save_progress` | Support server | Keep the caller's place in Firestore `progress/{customer_id}`, used once within `RESUME_WINDOW_MINUTES` |
@@ -227,6 +320,10 @@ P4, P5 and P6 are clean accounts, the same as P3.
 | The build prints "review entry no longer matches the step text" | A scraped tutorial changed under a hand-reviewed step | Recheck that step and update `knowledge/step_review.json` |
 | Tests fail with `429 Resource has been exhausted` | Token quota at the default | Set `TURN_TESTS_RPM=0.25`, or raise the quota (step 1) |
 | `deploy.sh` stops at `cxas lint` | An edit in `app/` breaks a SCRAPI rule | Fix what the lint names; `cxas lint --app-dir app` shows the same list |
+| The chat page shows "An unexpected error occurred" | Rate limit on the token quota (the request returns 429) | Wait a minute and press Retry, or raise the quota (step 1) |
+| The chat page fails on the first message every time | The page's address is not in the channel's allowed list, or `chat.sh` has not run since the app was recreated | Rerun `deploy/chat.sh` |
+| Chat steps show no picture | The picture copy has not run, or the server cannot read the bucket | Run `deploy/content.sh`, then `deploy/deploy.sh --no-test` |
+| `chat.sh` fails at the demo page | An org policy blocks public Cloud Run services | Ask the org admin to allow it for this service, or serve `chat_web/` elsewhere and add that address to `CHAT_EXTRA_ORIGINS` |
 | The agent says it found nothing for a common problem right after `content.sh` | The data store is still indexing | Wait a few minutes |
 
 ## Known behaviour
@@ -243,7 +340,8 @@ P4, P5 and P6 are clean accounts, the same as P3.
 deploy/teardown.sh           # asks first; --yes skips the question
 ```
 
-Deletes the app, the Cloud Run service, the data store, and the saved progress. It keeps the
+Deletes the app (with its chat channel), both Cloud Run services, the picture bucket, the data
+store, and the saved progress. It keeps the
 enabled APIs and the Firestore database itself (deleting a project's `(default)` database blocks
 re-creating it for a while). The server images stay in the Artifact Registry repository
 `cloud-run-source-deploy`; delete it with

@@ -7,5 +7,6 @@ set -a; . ./.env; set +a
 PROJECT="${CXAS_PROJECT:-$GOOGLE_CLOUD_PROJECT}"
 REGION="${GOOGLE_CLOUD_LOCATION:-us-central1}"
 SERVICE="${SUPPORT_MCP_SERVICE:-cricket-support-mcp}"
+IMAGES_BUCKET="${IMAGES_BUCKET:-${PROJECT}-cricket-tutorial-images}"
 PY=.venv/bin/python
 step() { echo; echo "== $*"; }
