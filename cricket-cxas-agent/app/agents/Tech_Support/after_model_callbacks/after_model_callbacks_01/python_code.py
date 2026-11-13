@@ -8,9 +8,9 @@ The model sometimes writes the previous step again after next_step has moved on.
 the previous step's words better than the new step's, the new step's own text is sent instead.
 
 On both channels, a turn that has just fetched a step cannot end the session: an end_session call in
-that turn is dropped, because the model sometimes takes the caller's "done" as goodbye. And when the
-model ends the session without saying anything, a short goodbye is added, so the caller never hears
-the line just go quiet."""
+that turn is dropped, because the model sometimes takes the caller's "done" as goodbye. In chat an
+end_session call is always dropped and the goodbye kept, so the customer can go on typing. On voice,
+when the model ends the call without saying anything, a short goodbye is added."""
 import json
 import re
 from typing import Optional
@@ -30,15 +30,18 @@ def after_model_callback(callback_context: CallbackContext, llm_response: LlmRes
     parts = llm_response.content.parts if llm_response.content else []
     said = json.loads(v.get("step_said") or "{}")
     ending = [p for p in parts if getattr(getattr(p, "function_call", None), "name", "") == "end_session"]
-    dropped = bool(ending and v.get("step_given"))
-    if dropped:   # "done" in a walk means the step is finished, not the conversation
+    chat = v.get("channel") == "chat"
+    # "done" in a walk means the step is finished, not the conversation. And a chat is never ended from
+    # here: ending it locks the customer's message box, so the goodbye is said and the chat stays open.
+    dropped = bool(ending and (v.get("step_given") or chat))
+    if dropped:
         parts = [p for p in parts if p not in ending]
-        if not parts:
-            parts = [Part(text="Next: " + said.get("cur", "").strip() + " Tell me when that's done.")]
-    if ending and not dropped and not any((getattr(p, "text", None) or "").strip() for p in parts):
-        bye = "Thanks for chatting with Cricket Wireless. Take care." if v.get("channel") == "chat" else \
-            "Thanks for calling Cricket Wireless. Take care."
-        return LlmResponse(content=Content(parts=[Part(text=bye)] + parts))
+        if not any((getattr(p, "text", None) or "").strip() for p in parts):
+            parts = [Part(text="Next: " + said.get("cur", "").strip() + " Tell me when that's done.")] if v.get("step_given") \
+                else [Part(text="You're all set. Thanks for chatting with Cricket Wireless. "
+                                "If anything else comes up, just type it here.")]
+    elif ending and not any((getattr(p, "text", None) or "").strip() for p in parts):
+        return LlmResponse(content=Content(parts=[Part(text="Thanks for calling Cricket Wireless. Take care.")] + parts))
     kept = LlmResponse(content=Content(parts=parts)) if dropped else None
     link = json.loads(v.get("show_link") or "{}")
     if v.get("channel") != "chat" or not (shown or link):

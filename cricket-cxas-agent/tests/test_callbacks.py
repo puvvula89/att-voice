@@ -254,15 +254,18 @@ def test_specialist_gets_the_place_the_concierge_found_without_asking_the_server
     assert before(NamedTool("support_get_lines"), {"customer_id": "c"}, Ctx(resume_info="{}")) is None
 
 
-def test_a_silent_end_session_gets_a_spoken_goodbye():
+def test_a_silent_end_session_gets_a_goodbye_and_chat_stays_open():
     class Call:
         def __init__(self, name): self.name = name
     model = load("after_model.py")
-    for channel, word in (("voice", "calling"), ("chat", "chatting")):
-        silent = model["LlmResponse"](content=Content(parts=[Part(function_call=Call("end_session"))]))
-        out = model["after_model_callback"](Ctx(channel=channel, step_given=""), silent)
-        assert word in out.content.parts[0].text and "Cricket Wireless" in out.content.parts[0].text
-        assert out.content.parts[1].function_call.name == "end_session"
+    silent = lambda: model["LlmResponse"](content=Content(parts=[Part(function_call=Call("end_session"))]))  # noqa: E731
+    out = model["after_model_callback"](Ctx(channel="voice", step_given=""), silent())
+    assert "calling Cricket Wireless" in out.content.parts[0].text and out.content.parts[1].function_call.name == "end_session"
+    out = model["after_model_callback"](Ctx(channel="chat", step_given=""), silent())
+    assert "chatting with Cricket Wireless" in out.content.parts[0].text and len(out.content.parts) == 1
+    bye = model["LlmResponse"](content=Content(parts=[Part(text="Take care!"), Part(function_call=Call("end_session"))]))
+    out = model["after_model_callback"](Ctx(channel="chat", step_given=""), bye)
+    assert [p.text for p in out.content.parts] == ["Take care!"]
 
 
 def test_chat_guide_link_is_shown_as_a_card_and_never_texted():
