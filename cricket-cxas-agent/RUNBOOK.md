@@ -193,7 +193,21 @@ private window and maximise it.
 | 6 | "Where the hell is the menu icon? I can't see it anywhere" | Apologises and explains where to look, in different words |
 | 7 | Click **Done** for each remaining step | A picture under every step, through deleting, restoring and clearing voicemails. No step in this guide ends a call |
 
-## 7. Tear down
+## 7. Save a call's trace
+
+After a call or chat, save what the agent did (every turn, with the tools it called) to a text file
+in `traces/`:
+
+```bash
+.venv/bin/python bootstrap/save_trace.py        # the latest conversation
+.venv/bin/python bootstrap/save_trace.py 2      # the latest two, e.g. a call and the call back
+git add traces && git commit -m "Add call traces" && git push
+```
+
+A conversation shows up a minute or so after it ends. The files hold the project id and the demo
+account's data.
+
+## 8. Tear down
 
 ```bash
 deploy/teardown.sh           # asks first; --yes skips the question
