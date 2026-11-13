@@ -1,0 +1,1175 @@
+{
+ "id": "P5",
+ "title": "Caller wants only the link",
+ "app": "projects/tmeg-working-demos/locations/us/apps/cricket-care",
+ "project": "tmeg-working-demos",
+ "started": "2026-10-21T03:57:27.380628+00:00",
+ "turns": [
+  {
+   "user": "my iphone bluetooth won't pair, just text me the guide",
+   "call": 1,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device": "iphone-13",
+           "device_label": "iPhone 13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device": "galaxy-a15-5g",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "name": "Jordan Reyes",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "steps_by_id": "",
+            "current_date": "2026-10-20[America/Los_Angeles]",
+            "walk": "",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:29.462Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my iphone bluetooth won't pair, just text me the guide"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:29.462Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/tmeg-working-demos/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:30.066Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-372e2547-fc1b-4e2f-ae3f-7a49315475dd",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:30.720Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-372e2547-fc1b-4e2f-ae3f-7a49315475dd",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:30.955Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-b28ccc8b-55a6-4eaa-886c-a35498eba49f",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:31.616Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-b28ccc8b-55a6-4eaa-886c-a35498eba49f",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device": "iphone-13",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device": "galaxy-a15-5g",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "name": "Jordan Reyes",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:31.783Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:32.401Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:57:29.408842Z",
+        "endTime": "2026-10-21T03:57:32.450276Z",
+        "attributes": {
+         "connection index": 1.0,
+         "perceived latency (ms)": 3042.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 54.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:29.463347Z",
+          "endTime": "2026-10-21T03:57:30.064778Z",
+          "attributes": {
+           "input token count": 1368.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 600.0,
+           "[debug] prefill time (ms)": 190.0,
+           "[debug] decode time to first token (ms)": 57.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "thought token count": 0.0
+          },
+          "duration": "0.601431s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:30.066Z",
+          "endTime": "2026-10-21T03:57:30.066Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:30.068262Z",
+          "endTime": "2026-10-21T03:57:30.718752Z",
+          "attributes": {
+           "input token count": 5262.0,
+           "[debug] decode queue time (ms)": 21.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 650.0,
+           "[debug] prefill time (ms)": 222.0,
+           "[debug] decode time to first token (ms)": 65.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.650490s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:30.720989Z",
+          "endTime": "2026-10-21T03:57:30.753218Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 15.0,
+            "sandbox init latency (ms)": 6.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.032229s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:30.753280Z",
+          "endTime": "2026-10-21T03:57:30.941164Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "name": "support_get_progress",
+           "tool call id": "adk-372e2547-fc1b-4e2f-ae3f-7a49315475dd"
+          },
+          "duration": "0.187884s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:30.941285Z",
+          "endTime": "2026-10-21T03:57:30.955097Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013812s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:30.956627Z",
+          "endTime": "2026-10-21T03:57:31.614555Z",
+          "attributes": {
+           "input token count": 5304.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 657.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.657928s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:31.616667Z",
+          "endTime": "2026-10-21T03:57:31.627046Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.010379s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:31.627109Z",
+          "endTime": "2026-10-21T03:57:31.771138Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device": "iphone-13",
+                "device_label": "iPhone 13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device": "galaxy-a15-5g",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "name": "Jordan Reyes",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "name": "support_get_lines",
+           "tool call id": "adk-b28ccc8b-55a6-4eaa-886c-a35498eba49f"
+          },
+          "duration": "0.144029s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:31.771289Z",
+          "endTime": "2026-10-21T03:57:31.783510Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.012221s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:31.785053Z",
+          "endTime": "2026-10-21T03:57:32.399317Z",
+          "attributes": {
+           "input token count": 5504.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 613.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 57.0,
+           "output token count": 17.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.614264s"
+         }
+        ],
+        "duration": "3.041434s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes, this iPhone",
+   "call": 1,
+   "agent": "I was unable to send that text. I can walk you through it now instead.",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2025-11-02",
+         "line_id": "L1",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "search_tutorials",
+     "payload": {
+      "args": {
+       "rewrittenQueries": [
+        "troubleshoot iphone bluetooth pairing"
+       ],
+       "query": "bluetooth won't pair",
+       "filter": "device: ANY(\"iphone-13\")"
+      },
+      "result": {
+       "answer": "[1] Pairing your iPhone with a Bluetooth device\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUr1OwzAQfpUjC0sV0Z-pGyAxtkNZEEWVG1-wheMz9qWhqpB4DV6PJ-GSVFEZulJnsO---_m-uxyyoNikbA7Ph6wwZAvsjJcRZIkxHBEv11hcBpW2_lWsLBOT8YPb90OkCtggrJBZ8AQqhBGwCnDnamQiNnmb4IlP6tfboUVrU2BLfjAbFX3fy9fOiaNQzm3QHwmUyiUUb6X2Gx0pnLgMNRumrs7nCHr2k_PsH4UmRUjOauxUDJwhNZYLA0ywXFxYwPS8gBU6LBgUaNzJAlu6Qdn4l3C2kNcc1n7tbwVOqaGoQZrDFiHie42iRedwT1VFXgBfl6rgOmIcwmWvEeFGDiivYTyZzvK24FKmFuEoHySbjU2QiojouxbalqVEaAy9_D4GoVBBba2zbFHySthTHcUZo8X48_WdwCNL47d2Px3WK8yzfx__7Pz4n6i-3okWqoJDmWGnrGN2dZlfpv1-AcxlQDk=\nsummary: This tutorial guides users on how to pair their iPhone with a Bluetooth device.\nsymptoms: [My Bluetooth isn't connecting.,I can't pair my headphones.,How do I connect to a Bluetooth speaker?,My iPhone won't find my Bluetooth device.]\ntitle: Pairing your iPhone with a Bluetooth device\ntutorial_id: feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\n\n[2] Troubleshooting why my personal hotspot isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlltvEz0Qhv_KkJuCFMrh45iLSlDESUArSoUQRZWzO8kaHI8_e5wlIP47Y3s3pJRQkFqiXGR9WM_MM--M9-vAKW7CYATvvw6qhnSFefBhCIPA6LoVK383ZKpBVWs7ldFgIEPGz5yedxusPsEDY6iFPW7QB2CC56QtaHmM3mINZEdH9tDW6GFfdpBVBp4SB0csu6dTg78-gSYTULYGmbUwVmKI7HaybomLs4NX8jSCI3tk3zRiMCCzeJlsG6oUi3HFIzE2Q9iBg7Ia5PGUHztrXBCDmUgcL6GkMTnWZJfDVnlb6NhojExUyphjtB2yiTIBZXamFse1J7cy1VB7zJTP-TaEwvvmWbx30ZholIdasfo1aAnjx7bQB97RTovViTMuEPXSi5XHR9nmJtj-dxbbxKbpROFUCC35OgUZXRKFwEJhvGcLQ7IWq4yhxrlU0BAm5KfIedUiy8ufMleP3V5oNTfl5eg92lUj5dBT0lTOXZzq3-qrjzXsdz5sICG3zkpIB06CKozB6JlmSYLeb8gihOgceQ5wu9sQJHqYqc_b8EiHHruyC6ErCzXZLZbcyHmai-b9AtRU6fWCf0cRKmWhWiqkS55ZnHIv_CH7DaC-vR71YUBQcHjwEMjDQxORiUSnvcBzY3k26dTSl4foTWitVsFvj5CcLGCM4CgEPZY2VKrDU7T1SfT_nMyd9WReY2DlGRYUPRTJCYunZCTh1JaSDbrGLCXU6fqAOZko-R9HZgn7svD4GAPnbdeYXLcwBJ2aLshR8s6MajRXhqUDh1a70qZL2Kn1OGplW2rU2ZWitvPmxj7-Bba767E9s4LNmFx3rhwPeu9A2mhqoUEQ7nez3UzqnKuRZbVUKoowdQhRNuTOmXcUGfbKmmtenFODfIIWvdSoTNKEhRXCYXZvA9V6bz3cF1kKSR4Tj_9HtJUUluhvVFpVIpcbnKjG5K0r4t0KP72UdjVoXGqZ0lm_pGttJt-GeqyNkE3Lp3rcxd1HL3sndk84sZFvhfu_7Qpyy7_qbvg-JOGfF3L0mXn_DbD8Aku5ybQ9BjJzPKHiXumpFJr-mjhnYb_xyoZJ6iQeShTdPbrTDfv_n4Pbhmyy1VLVcpbUZVBzMViKsf-KCeeRp7_rQjeur8-TlMPWvCjaYMKT23Xy7NJmbpz0-w701oKC\nsummary: This tutorial provides troubleshooting steps for an iPhone 13 personal hotspot that is not working or connecting properly.\nsymptoms: [My personal hotspot isn't working,Can't connect to my iPhone's hotspot,My devices won't join my personal hotspot,Hotspot keeps disconnecting,No internet on my hotspot,Personal hotspot not showing up]\ntitle: Troubleshooting why my personal hotspot isn't working\ntutorial_id: feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\n\n"
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_send_guide_link",
+     "payload": {
+      "args": {
+       "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+       "line_id": "L1",
+       "customer_id": "cust_2001",
+       "title": "Pairing your iPhone with a Bluetooth device"
+      },
+      "result": {
+       "text_output": [
+        {
+         "message": "Messaging is not configured; read the link aloud or show it on screen.",
+         "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+         "to_last4": "4471",
+         "sent": false
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I was unable to send that text. I can walk you through it now instead.",
+      "turnIndex": 2
+     },
+     {
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes, this iPhone"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:32.561Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-36b4bb32-58bb-486d-af47-5cdab05d4854",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:33.204Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-36b4bb32-58bb-486d-af47-5cdab05d4854",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:33.383Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-3580d674-8a97-4b35-932b-91c575a0ffd2",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:34.127Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-3580d674-8a97-4b35-932b-91c575a0ffd2",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2025-11-02",
+               "line_id": "L1",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:34.292Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-1bb056b2-a5f1-48a0-9b1f-1c890b1f6716",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "args": {
+             "rewrittenQueries": [
+              "troubleshoot iphone bluetooth pairing"
+             ],
+             "query": "bluetooth won't pair",
+             "filter": "device: ANY(\"iphone-13\")"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:35.197Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "steps_by_id": "{\"feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\": {\"title\": \"Pairing your iPhone with a Bluetooth device\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From the Settings app, tap Bluetooth.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Tap or slide the Bluetooth switch to ON.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Select a device to pair.\", \"notes\": [\"Note: \\n\\nA password may be requested. Common manufacturer passwords are 0000 and 1234.\\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\": {\"title\": \"Troubleshooting why my personal hotspot isn't working\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"Check Allow Others to Join is turned on:\\nUnder Personal Hotspot toggle Allow Others to Join off and then back on.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > Personal Hotspot > Allow Others to Join on.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Check Cellular data is turned on:\\nUnder the Cellular settings toggle the cellular data off and then back on.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > Cellular > Cellular Data on.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Check the hotspot password is up to date:\\nOn the connecting device, forget the network and reconnect with the current password in the Personal Hotspot app.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > Personal Hotspot > Wi-Fi Password.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Check connected device limit:\\niPhone supports 5 devices at max. Disconnect any that don't need it and try again.\", \"notes\": [\"Note: \\n\\nYou can check the currently connected devices at: Home > Settings > Personal Hotspot.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"Use a USB or Bluetooth connection:\\nIf Wi-Fi hotspot is not connecting a USB or Bluetooth connection may be possible work around.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"Restart your iPhone:\\nHold down the side and either volume button (or just side/top button, if an older model), then swipe the option to power off your device.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 7, \"heading\": \"\", \"text\": \"Install any pending iOS updates:\\nPending updates for your device may cause issues with your Wi-Fi connectivity.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > General > Software Update.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 8, \"heading\": \"\", \"text\": \"Lower the frequency band:\\nYou may need to lower your iPhone's frequency band to help maximize compatibility to connected devices.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > Personal Hotspot > Maximize Compatibility on.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 9, \"heading\": \"\", \"text\": \"Reset Network Settings:\\nResetting your network settings may help resolve connectivity issues for hotspot.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > General > Transfer or Reset iPhone > Reset > Reset Network Settings. This will erase saved Wi-Fi passwords.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 10, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:35.652Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-1bb056b2-a5f1-48a0-9b1f-1c890b1f6716",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "response": {
+             "answer": "[1] Pairing your iPhone with a Bluetooth device\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial guides users on how to pair their iPhone with a Bluetooth device.\nsymptoms: [My Bluetooth isn't connecting.,I can't pair my headphones.,How do I connect to a Bluetooth speaker?,My iPhone won't find my Bluetooth device.]\ntitle: Pairing your iPhone with a Bluetooth device\ntutorial_id: feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\n\n[2] Troubleshooting why my personal hotspot isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial provides troubleshooting steps for an iPhone 13 personal hotspot that is not working or connecting properly.\nsymptoms: [My personal hotspot isn't working,Can't connect to my iPhone's hotspot,My devices won't join my personal hotspot,Hotspot keeps disconnecting,No internet on my hotspot,Personal hotspot not showing up]\ntitle: Troubleshooting why my personal hotspot isn't working\ntutorial_id: feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:35.652Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-7f3651db-d9d1-45f7-959a-71fa6e783130",
+            "args": {
+             "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+             "line_id": "L1",
+             "customer_id": "cust_2001",
+             "title": "Pairing your iPhone with a Bluetooth device"
+            },
+            "displayName": "support_send_guide_link",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "send_guide_link"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:37.047Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-7f3651db-d9d1-45f7-959a-71fa6e783130",
+            "response": {
+             "text_output": [
+              {
+               "message": "Messaging is not configured; read the link aloud or show it on screen.",
+               "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+               "to_last4": "4471",
+               "sent": false
+              }
+             ]
+            },
+            "displayName": "support_send_guide_link",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "send_guide_link"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:37.195Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I was unable to send that text. I can walk you through it now instead."
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:37.897Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:57:32.511891Z",
+        "endTime": "2026-10-21T03:57:37.947673Z",
+        "attributes": {
+         "connection index": 2.0,
+         "perceived latency (ms)": 5436.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 49.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:32.563469Z",
+          "endTime": "2026-10-21T03:57:33.202203Z",
+          "attributes": {
+           "input token count": 5535.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 638.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.638734s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:33.204381Z",
+          "endTime": "2026-10-21T03:57:33.229064Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 12.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.024683s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:33.229189Z",
+          "endTime": "2026-10-21T03:57:33.370494Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "zip_code": "30301"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "name": "support_check_outage",
+           "tool call id": "adk-36b4bb32-58bb-486d-af47-5cdab05d4854"
+          },
+          "duration": "0.141305s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:33.370633Z",
+          "endTime": "2026-10-21T03:57:33.383836Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013203s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:33.385505Z",
+          "endTime": "2026-10-21T03:57:34.125028Z",
+          "attributes": {
+           "input token count": 5591.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 739.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 34.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.739523s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:34.127388Z",
+          "endTime": "2026-10-21T03:57:34.137194Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.009806s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:34.137273Z",
+          "endTime": "2026-10-21T03:57:34.280387Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2025-11-02",
+              "line_id": "L1",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "name": "support_get_line_status",
+           "tool call id": "adk-3580d674-8a97-4b35-932b-91c575a0ffd2"
+          },
+          "duration": "0.143114s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:34.280572Z",
+          "endTime": "2026-10-21T03:57:34.292267Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.011695s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:34.294170Z",
+          "endTime": "2026-10-21T03:57:35.195095Z",
+          "attributes": {
+           "input token count": 5676.0,
+           "[debug] decode queue time (ms)": 12.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 900.0,
+           "[debug] prefill time (ms)": 227.0,
+           "[debug] decode time to first token (ms)": 56.0,
+           "output token count": 45.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.900925s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:35.197327Z",
+          "endTime": "2026-10-21T03:57:35.207374Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.010047s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:35.207443Z",
+          "endTime": "2026-10-21T03:57:35.638944Z",
+          "attributes": {
+           "args": {
+            "rewrittenQueries": [
+             "troubleshoot iphone bluetooth pairing"
+            ],
+            "query": "bluetooth won't pair",
+            "filter": "device: ANY(\"iphone-13\")"
+           },
+           "type": "DataStoreTool",
+           "cited snippets": [],
+           "tool call id": "adk-1bb056b2-a5f1-48a0-9b1f-1c890b1f6716",
+           "response": {
+            "answer": "[1] Pairing your iPhone with a Bluetooth device\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUr1OwzAQfpUjC0sV0Z-pGyAxtkNZEEWVG1-wheMz9qWhqpB4DV6PJ-GSVFEZulJnsO---_m-uxyyoNikbA7Ph6wwZAvsjJcRZIkxHBEv11hcBpW2_lWsLBOT8YPb90OkCtggrJBZ8AQqhBGwCnDnamQiNnmb4IlP6tfboUVrU2BLfjAbFX3fy9fOiaNQzm3QHwmUyiUUb6X2Gx0pnLgMNRumrs7nCHr2k_PsH4UmRUjOauxUDJwhNZYLA0ywXFxYwPS8gBU6LBgUaNzJAlu6Qdn4l3C2kNcc1n7tbwVOqaGoQZrDFiHie42iRedwT1VFXgBfl6rgOmIcwmWvEeFGDiivYTyZzvK24FKmFuEoHySbjU2QiojouxbalqVEaAy9_D4GoVBBba2zbFHySthTHcUZo8X48_WdwCNL47d2Px3WK8yzfx__7Pz4n6i-3okWqoJDmWGnrGN2dZlfpv1-AcxlQDk=\nsummary: This tutorial guides users on how to pair their iPhone with a Bluetooth device.\nsymptoms: [My Bluetooth isn't connecting.,I can't pair my headphones.,How do I connect to a Bluetooth speaker?,My iPhone won't find my Bluetooth device.]\ntitle: Pairing your iPhone with a Bluetooth device\ntutorial_id: feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\n\n[2] Troubleshooting why my personal hotspot isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlltvEz0Qhv_KkJuCFMrh45iLSlDESUArSoUQRZWzO8kaHI8_e5wlIP47Y3s3pJRQkFqiXGR9WM_MM--M9-vAKW7CYATvvw6qhnSFefBhCIPA6LoVK383ZKpBVWs7ldFgIEPGz5yedxusPsEDY6iFPW7QB2CC56QtaHmM3mINZEdH9tDW6GFfdpBVBp4SB0csu6dTg78-gSYTULYGmbUwVmKI7HaybomLs4NX8jSCI3tk3zRiMCCzeJlsG6oUi3HFIzE2Q9iBg7Ia5PGUHztrXBCDmUgcL6GkMTnWZJfDVnlb6NhojExUyphjtB2yiTIBZXamFse1J7cy1VB7zJTP-TaEwvvmWbx30ZholIdasfo1aAnjx7bQB97RTovViTMuEPXSi5XHR9nmJtj-dxbbxKbpROFUCC35OgUZXRKFwEJhvGcLQ7IWq4yhxrlU0BAm5KfIedUiy8ufMleP3V5oNTfl5eg92lUj5dBT0lTOXZzq3-qrjzXsdz5sICG3zkpIB06CKozB6JlmSYLeb8gihOgceQ5wu9sQJHqYqc_b8EiHHruyC6ErCzXZLZbcyHmai-b9AtRU6fWCf0cRKmWhWiqkS55ZnHIv_CH7DaC-vR71YUBQcHjwEMjDQxORiUSnvcBzY3k26dTSl4foTWitVsFvj5CcLGCM4CgEPZY2VKrDU7T1SfT_nMyd9WReY2DlGRYUPRTJCYunZCTh1JaSDbrGLCXU6fqAOZko-R9HZgn7svD4GAPnbdeYXLcwBJ2aLshR8s6MajRXhqUDh1a70qZL2Kn1OGplW2rU2ZWitvPmxj7-Bba767E9s4LNmFx3rhwPeu9A2mhqoUEQ7nez3UzqnKuRZbVUKoowdQhRNuTOmXcUGfbKmmtenFODfIIWvdSoTNKEhRXCYXZvA9V6bz3cF1kKSR4Tj_9HtJUUluhvVFpVIpcbnKjG5K0r4t0KP72UdjVoXGqZ0lm_pGttJt-GeqyNkE3Lp3rcxd1HL3sndk84sZFvhfu_7Qpyy7_qbvg-JOGfF3L0mXn_DbD8Aku5ybQ9BjJzPKHiXumpFJr-mjhnYb_xyoZJ6iQeShTdPbrTDfv_n4Pbhmyy1VLVcpbUZVBzMViKsf-KCeeRp7_rQjeur8-TlMPWvCjaYMKT23Xy7NJmbpz0-w701oKC\nsummary: This tutorial provides troubleshooting steps for an iPhone 13 personal hotspot that is not working or connecting properly.\nsymptoms: [My personal hotspot isn't working,Can't connect to my iPhone's hotspot,My devices won't join my personal hotspot,Hotspot keeps disconnecting,No internet on my hotspot,Personal hotspot not showing up]\ntitle: Troubleshooting why my personal hotspot isn't working\ntutorial_id: feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\n\n"
+           },
+           "name": "search_tutorials",
+           "agent": "Tech Support",
+           "snippets": [
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUr1OwzAQfpUjC0sV0Z-pGyAxtkNZEEWVG1-wheMz9qWhqpB4DV6PJ-GSVFEZulJnsO---_m-uxyyoNikbA7Ph6wwZAvsjJcRZIkxHBEv11hcBpW2_lWsLBOT8YPb90OkCtggrJBZ8AQqhBGwCnDnamQiNnmb4IlP6tfboUVrU2BLfjAbFX3fy9fOiaNQzm3QHwmUyiUUb6X2Gx0pnLgMNRumrs7nCHr2k_PsH4UmRUjOauxUDJwhNZYLA0ywXFxYwPS8gBU6LBgUaNzJAlu6Qdn4l3C2kNcc1n7tbwVOqaGoQZrDFiHie42iRedwT1VFXgBfl6rgOmIcwmWvEeFGDiivYTyZzvK24FKmFuEoHySbjU2QiojouxbalqVEaAy9_D4GoVBBba2zbFHySthTHcUZo8X48_WdwCNL47d2Px3WK8yzfx__7Pz4n6i-3okWqoJDmWGnrGN2dZlfpv1-AcxlQDk=\nsummary: This tutorial guides users on how to pair their iPhone with a Bluetooth device.\nsymptoms: [My Bluetooth isn't connecting., I can't pair my headphones., How do I connect to a Bluetooth speaker?, My iPhone won't find my Bluetooth device.]\ntitle: Pairing your iPhone with a Bluetooth device\ntutorial_id: feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\n",
+             "title": "Pairing your iPhone with a Bluetooth device",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/8f7ba0d6f5406e3c2fd89f366e1b46fc41e22561"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlltvEz0Qhv_KkJuCFMrh45iLSlDESUArSoUQRZWzO8kaHI8_e5wlIP47Y3s3pJRQkFqiXGR9WM_MM--M9-vAKW7CYATvvw6qhnSFefBhCIPA6LoVK383ZKpBVWs7ldFgIEPGz5yedxusPsEDY6iFPW7QB2CC56QtaHmM3mINZEdH9tDW6GFfdpBVBp4SB0csu6dTg78-gSYTULYGmbUwVmKI7HaybomLs4NX8jSCI3tk3zRiMCCzeJlsG6oUi3HFIzE2Q9iBg7Ia5PGUHztrXBCDmUgcL6GkMTnWZJfDVnlb6NhojExUyphjtB2yiTIBZXamFse1J7cy1VB7zJTP-TaEwvvmWbx30ZholIdasfo1aAnjx7bQB97RTovViTMuEPXSi5XHR9nmJtj-dxbbxKbpROFUCC35OgUZXRKFwEJhvGcLQ7IWq4yhxrlU0BAm5KfIedUiy8ufMleP3V5oNTfl5eg92lUj5dBT0lTOXZzq3-qrjzXsdz5sICG3zkpIB06CKozB6JlmSYLeb8gihOgceQ5wu9sQJHqYqc_b8EiHHruyC6ErCzXZLZbcyHmai-b9AtRU6fWCf0cRKmWhWiqkS55ZnHIv_CH7DaC-vR71YUBQcHjwEMjDQxORiUSnvcBzY3k26dTSl4foTWitVsFvj5CcLGCM4CgEPZY2VKrDU7T1SfT_nMyd9WReY2DlGRYUPRTJCYunZCTh1JaSDbrGLCXU6fqAOZko-R9HZgn7svD4GAPnbdeYXLcwBJ2aLshR8s6MajRXhqUDh1a70qZL2Kn1OGplW2rU2ZWitvPmxj7-Bba767E9s4LNmFx3rhwPeu9A2mhqoUEQ7nez3UzqnKuRZbVUKoowdQhRNuTOmXcUGfbKmmtenFODfIIWvdSoTNKEhRXCYXZvA9V6bz3cF1kKSR4Tj_9HtJUUluhvVFpVIpcbnKjG5K0r4t0KP72UdjVoXGqZ0lm_pGttJt-GeqyNkE3Lp3rcxd1HL3sndk84sZFvhfu_7Qpyy7_qbvg-JOGfF3L0mXn_DbD8Aku5ybQ9BjJzPKHiXumpFJr-mjhnYb_xyoZJ6iQeShTdPbrTDfv_n4Pbhmyy1VLVcpbUZVBzMViKsf-KCeeRp7_rQjeur8-TlMPWvCjaYMKT23Xy7NJmbpz0-w701oKC\nsummary: This tutorial provides troubleshooting steps for an iPhone 13 personal hotspot that is not working or connecting properly.\nsymptoms: [My personal hotspot isn't working, Can't connect to my iPhone's hotspot, My devices won't join my personal hotspot, Hotspot keeps disconnecting, No internet on my hotspot, Personal hotspot not showing up]\ntitle: Troubleshooting why my personal hotspot isn't working\ntutorial_id: feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\n",
+             "title": "Troubleshooting why my personal hotspot isn't working",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/d1fb62d3f8ebd4c31909ac52fe378fc8db1d264c"
+            }
+           ]
+          },
+          "childSpans": [
+           {
+            "name": "Search with original query",
+            "startTime": "2026-10-21T03:57:35.227Z",
+            "endTime": "2026-10-21T03:57:35.540Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Search with rewritten query",
+            "startTime": "2026-10-21T03:57:35.224Z",
+            "endTime": "2026-10-21T03:57:35.499Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Summarization",
+            "attributes": {
+             "summarization model display name": "disable_summarizer",
+             "disabled": true
+            }
+           },
+           {
+            "name": "Query rewrite",
+            "attributes": {
+             "rewriter model display name": "rewrite-by-agent (Default)"
+            }
+           }
+          ],
+          "duration": "0.431501s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:35.639083Z",
+          "endTime": "2026-10-21T03:57:35.652514Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 6.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013431s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:35.655254Z",
+          "endTime": "2026-10-21T03:57:37.045610Z",
+          "attributes": {
+           "input token count": 6131.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1390.0,
+           "[debug] prefill time (ms)": 228.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 101.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "1.390356s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:37.047904Z",
+          "endTime": "2026-10-21T03:57:37.058377Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.010473s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:37.058476Z",
+          "endTime": "2026-10-21T03:57:37.183341Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+            "line_id": "L1",
+            "customer_id": "cust_2001",
+            "title": "Pairing your iPhone with a Bluetooth device"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "message": "Messaging is not configured; read the link aloud or show it on screen.",
+              "url": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device",
+              "to_last4": "4471",
+              "sent": false
+             }
+            ]
+           },
+           "name": "support_send_guide_link",
+           "tool call id": "adk-7f3651db-d9d1-45f7-959a-71fa6e783130"
+          },
+          "duration": "0.124865s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:37.183537Z",
+          "endTime": "2026-10-21T03:57:37.195638Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.012101s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:37.197720Z",
+          "endTime": "2026-10-21T03:57:37.895149Z",
+          "attributes": {
+           "input token count": 6339.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 696.0,
+           "[debug] prefill time (ms)": 290.0,
+           "[debug] decode time to first token (ms)": 57.0,
+           "output token count": 17.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.697429s"
+         }
+        ],
+        "duration": "5.435782s"
+       }
+      },
+      "citations": {
+       "citedChunks": [
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_tbs_personal_hotspot%2Dtroubleshooting%2Dwhy%2Dmy%2Dpersonal%2Dhotspot%2Disn%2Dt%2Dworking%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_tbs_personal_hotspot%2Dtroubleshooting%2Dwhy%2Dmy%2Dpersonal%2Dhotspot%2Disn%2Dt%2Dworking",
+         "title": "Troubleshooting why my personal hotspot isn't working",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlltvEz0Qhv_KkJuCFMrh45iLSlDESUArSoUQRZWzO8kaHI8_e5wlIP47Y3s3pJRQkFqiXGR9WM_MM--M9-vAKW7CYATvvw6qhnSFefBhCIPA6LoVK383ZKpBVWs7ldFgIEPGz5yedxusPsEDY6iFPW7QB2CC56QtaHmM3mINZEdH9tDW6GFfdpBVBp4SB0csu6dTg78-gSYTULYGmbUwVmKI7HaybomLs4NX8jSCI3tk3zRiMCCzeJlsG6oUi3HFIzE2Q9iBg7Ia5PGUHztrXBCDmUgcL6GkMTnWZJfDVnlb6NhojExUyphjtB2yiTIBZXamFse1J7cy1VB7zJTP-TaEwvvmWbx30ZholIdasfo1aAnjx7bQB97RTovViTMuEPXSi5XHR9nmJtj-dxbbxKbpROFUCC35OgUZXRKFwEJhvGcLQ7IWq4yhxrlU0BAm5KfIedUiy8ufMleP3V5oNTfl5eg92lUj5dBT0lTOXZzq3-qrjzXsdz5sICG3zkpIB06CKozB6JlmSYLeb8gihOgceQ5wu9sQJHqYqc_b8EiHHruyC6ErCzXZLZbcyHmai-b9AtRU6fWCf0cRKmWhWiqkS55ZnHIv_CH7DaC-vR71YUBQcHjwEMjDQxORiUSnvcBzY3k26dTSl4foTWitVsFvj5CcLGCM4CgEPZY2VKrDU7T1SfT_nMyd9WReY2DlGRYUPRTJCYunZCTh1JaSDbrGLCXU6fqAOZko-R9HZgn7svD4GAPnbdeYXLcwBJ2aLshR8s6MajRXhqUDh1a70qZL2Kn1OGplW2rU2ZWitvPmxj7-Bba767E9s4LNmFx3rhwPeu9A2mhqoUEQ7nez3UzqnKuRZbVUKoowdQhRNuTOmXcUGfbKmmtenFODfIIWvdSoTNKEhRXCYXZvA9V6bz3cF1kKSR4Tj_9HtJUUluhvVFpVIpcbnKjG5K0r4t0KP72UdjVoXGqZ0lm_pGttJt-GeqyNkE3Lp3rcxd1HL3sndk84sZFvhfu_7Qpyy7_qbvg-JOGfF3L0mXn_DbD8Aku5ybQ9BjJzPKHiXumpFJr-mjhnYb_xyoZJ6iQeShTdPbrTDfv_n4Pbhmyy1VLVcpbUZVBzMViKsf-KCeeRp7_rQjeur8-TlMPWvCjaYMKT23Xy7NJmbpz0-w701oKC\nsummary: This tutorial provides troubleshooting steps for an iPhone 13 personal hotspot that is not working or connecting properly.\nsymptoms: [My personal hotspot isn't working, Can't connect to my iPhone's hotspot, My devices won't join my personal hotspot, Hotspot keeps disconnecting, No internet on my hotspot, Personal hotspot not showing up]\ntitle: Troubleshooting why my personal hotspot isn't working\ntutorial_id: feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_personal_hotspot-troubleshooting-why-my-personal-hotspot-isn-t-working\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_connections_bluetooth%2Dpairing%2Dyour%2Diphone%2Dwith%2Da%2Dbluetooth%2Ddevice%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_connections_bluetooth%2Dpairing%2Dyour%2Diphone%2Dwith%2Da%2Dbluetooth%2Ddevice",
+         "title": "Pairing your iPhone with a Bluetooth device",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUr1OwzAQfpUjC0sV0Z-pGyAxtkNZEEWVG1-wheMz9qWhqpB4DV6PJ-GSVFEZulJnsO---_m-uxyyoNikbA7Ph6wwZAvsjJcRZIkxHBEv11hcBpW2_lWsLBOT8YPb90OkCtggrJBZ8AQqhBGwCnDnamQiNnmb4IlP6tfboUVrU2BLfjAbFX3fy9fOiaNQzm3QHwmUyiUUb6X2Gx0pnLgMNRumrs7nCHr2k_PsH4UmRUjOauxUDJwhNZYLA0ywXFxYwPS8gBU6LBgUaNzJAlu6Qdn4l3C2kNcc1n7tbwVOqaGoQZrDFiHie42iRedwT1VFXgBfl6rgOmIcwmWvEeFGDiivYTyZzvK24FKmFuEoHySbjU2QiojouxbalqVEaAy9_D4GoVBBba2zbFHySthTHcUZo8X48_WdwCNL47d2Px3WK8yzfx__7Pz4n6i-3okWqoJDmWGnrGN2dZlfpv1-AcxlQDk=\nsummary: This tutorial guides users on how to pair their iPhone with a Bluetooth device.\nsymptoms: [My Bluetooth isn't connecting., I can't pair my headphones., How do I connect to a Bluetooth speaker?, My iPhone won't find my Bluetooth device.]\ntitle: Pairing your iPhone with a Bluetooth device\ntutorial_id: feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device\n"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "I1020 22:57:27.389803 7131400 ev_poll_posix.cc:587] FD from fork parent still in poll list: fd(8, generation: 1)\nreset failed: 401 \n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>401 Unauthorized</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Unauthorized</h1>\n<h2>Your clien",
+ "session_ids": [
+  "6ab83c49-fa5c-4fbd-943a-0c11e11f9344"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "check_outage",
+  "get_line_status",
+  "search_tutorials",
+  "send_guide_link"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

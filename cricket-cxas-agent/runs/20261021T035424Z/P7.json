@@ -1,0 +1,1660 @@
+{
+ "id": "P7",
+ "title": "Fix fails after the full article",
+ "app": "projects/tmeg-working-demos/locations/us/apps/cricket-care",
+ "project": "tmeg-working-demos",
+ "started": "2026-10-21T03:57:43.955334+00:00",
+ "turns": [
+  {
+   "user": "data is crawling on my iphone",
+   "call": 1,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device": "iphone-13",
+           "device_label": "iPhone 13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device": "galaxy-a15-5g",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "name": "Jordan Reyes",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "steps_by_id": "",
+            "current_date": "2026-10-20[America/Los_Angeles]",
+            "walk": "",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:45.972Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "data is crawling on my iphone"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:45.972Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/tmeg-working-demos/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:46.577Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-0bc00cbf-1d8d-43dc-ab3c-3b2399b368c0",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:47.269Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-0bc00cbf-1d8d-43dc-ab3c-3b2399b368c0",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:47.512Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-d0eceead-cd5b-40a7-9fce-55594c70e893",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:48.208Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-d0eceead-cd5b-40a7-9fce-55594c70e893",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device": "iphone-13",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device": "galaxy-a15-5g",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "name": "Jordan Reyes",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:48.372Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:49.006Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:57:45.923813Z",
+        "endTime": "2026-10-21T03:57:49.055442Z",
+        "attributes": {
+         "connection index": 1.0,
+         "perceived latency (ms)": 3132.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 49.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:45.973372Z",
+          "endTime": "2026-10-21T03:57:46.576043Z",
+          "attributes": {
+           "input token count": 1361.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 602.0,
+           "[debug] prefill time (ms)": 190.0,
+           "[debug] decode time to first token (ms)": 57.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "thought token count": 0.0
+          },
+          "duration": "0.602671s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:46.577Z",
+          "endTime": "2026-10-21T03:57:46.577Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:46.580292Z",
+          "endTime": "2026-10-21T03:57:47.268Z",
+          "attributes": {
+           "input token count": 5255.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 687.0,
+           "[debug] prefill time (ms)": 222.0,
+           "[debug] decode time to first token (ms)": 57.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.687708s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:47.269756Z",
+          "endTime": "2026-10-21T03:57:47.297984Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 12.0,
+            "sandbox init latency (ms)": 5.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.028228s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:47.298035Z",
+          "endTime": "2026-10-21T03:57:47.498937Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "name": "support_get_progress",
+           "tool call id": "adk-0bc00cbf-1d8d-43dc-ab3c-3b2399b368c0"
+          },
+          "duration": "0.200902s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:47.499052Z",
+          "endTime": "2026-10-21T03:57:47.512093Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013041s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:47.513332Z",
+          "endTime": "2026-10-21T03:57:48.206812Z",
+          "attributes": {
+           "input token count": 5297.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 693.0,
+           "[debug] prefill time (ms)": 222.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.693480s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:48.208630Z",
+          "endTime": "2026-10-21T03:57:48.223441Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.014811s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:48.223494Z",
+          "endTime": "2026-10-21T03:57:48.359570Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device": "iphone-13",
+                "device_label": "iPhone 13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device": "galaxy-a15-5g",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "name": "Jordan Reyes",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "name": "support_get_lines",
+           "tool call id": "adk-d0eceead-cd5b-40a7-9fce-55594c70e893"
+          },
+          "duration": "0.136076s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:48.359700Z",
+          "endTime": "2026-10-21T03:57:48.372054Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.012354s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:48.373518Z",
+          "endTime": "2026-10-21T03:57:49.005184Z",
+          "attributes": {
+           "input token count": 5497.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 630.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 17.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.631666s"
+         }
+        ],
+        "duration": "3.131629s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes",
+   "call": 1,
+   "agent": "So your data is crawling. Let me check a couple of things on our side first.\nEverything looks normal on our side. It might be a setting on your iPhone.\nCould you tell me more about what's happening? For example, is it slow everywhere, or just inside certain buildings?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2025-11-02",
+         "line_id": "L1",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_data_usage",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "used_gb": 6.2,
+         "throttled": false,
+         "allowance_gb": 25.0,
+         "cycle_ends": "2026-10-28"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "search_tutorials",
+     "payload": {
+      "args": {
+       "rewrittenQueries": [
+        "data slow"
+       ],
+       "query": "data is crawling",
+       "filter": "device: ANY(\"iphone-13\")"
+      },
+      "result": {}
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "So your data is crawling. Let me check a couple of things on our side first.",
+      "turnIndex": 2
+     },
+     {
+      "text": "Everything looks normal on our side. It might be a setting on your iPhone.",
+      "turnIndex": 2
+     },
+     {
+      "text": "Could you tell me more about what's happening? For example, is it slow everywhere, or just inside certain buildings?",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:49.161Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "So your data is crawling. Let me check a couple of things on our side first."
+          },
+          {
+           "toolCall": {
+            "id": "adk-7e0ba7ff-2a0d-4834-8cf2-5528b316ae93",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-9afd8435-b83d-4ef7-bc28-5de6d8c6e77e",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-70c887aa-b8cc-4359-8496-4d582573a0f4",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_data_usage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_data_usage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:50.593Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-7e0ba7ff-2a0d-4834-8cf2-5528b316ae93",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2025-11-02",
+               "line_id": "L1",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-9afd8435-b83d-4ef7-bc28-5de6d8c6e77e",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-70c887aa-b8cc-4359-8496-4d582573a0f4",
+            "response": {
+             "text_output": [
+              {
+               "used_gb": 6.2,
+               "throttled": false,
+               "allowance_gb": 25.0,
+               "cycle_ends": "2026-10-28"
+              }
+             ]
+            },
+            "displayName": "support_get_data_usage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_data_usage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:50.791Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Everything looks normal on our side. It might be a setting on your iPhone."
+          },
+          {
+           "toolCall": {
+            "id": "adk-772c5c95-8735-4b69-bf89-e7fa1eef4374",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "args": {
+             "rewrittenQueries": [
+              "data slow"
+             ],
+             "query": "data is crawling",
+             "filter": "device: ANY(\"iphone-13\")"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:51.748Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-772c5c95-8735-4b69-bf89-e7fa1eef4374",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "response": {},
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:51.925Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Could you tell me more about what's happening? For example, is it slow everywhere, or just inside certain buildings?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:52.678Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:57:49.110381Z",
+        "endTime": "2026-10-21T03:57:52.729425Z",
+        "attributes": {
+         "connection index": 2.0,
+         "perceived latency (ms)": 3619.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 51.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:49.165304Z",
+          "endTime": "2026-10-21T03:57:50.591006Z",
+          "attributes": {
+           "input token count": 5525.0,
+           "[debug] decode queue time (ms)": 11.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1420.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] decode time to first token (ms)": 56.0,
+           "output token count": 109.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "1.425702s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:50.593993Z",
+          "endTime": "2026-10-21T03:57:50.620009Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 13.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.026016s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:50.594006Z",
+          "endTime": "2026-10-21T03:57:50.625041Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 14.0,
+            "sandbox init latency (ms)": 5.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.031035s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:50.594023Z",
+          "endTime": "2026-10-21T03:57:50.612068Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 8.0,
+            "sandbox init latency (ms)": 3.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.018045s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:50.612172Z",
+          "endTime": "2026-10-21T03:57:50.757967Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "zip_code": "30301"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "name": "support_check_outage",
+           "tool call id": "adk-9afd8435-b83d-4ef7-bc28-5de6d8c6e77e"
+          },
+          "duration": "0.145795s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:50.620077Z",
+          "endTime": "2026-10-21T03:57:50.777846Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2025-11-02",
+              "line_id": "L1",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "name": "support_get_line_status",
+           "tool call id": "adk-7e0ba7ff-2a0d-4834-8cf2-5528b316ae93"
+          },
+          "duration": "0.157769s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:50.625113Z",
+          "endTime": "2026-10-21T03:57:50.760983Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "used_gb": 6.2,
+              "throttled": false,
+              "allowance_gb": 25.0,
+              "cycle_ends": "2026-10-28"
+             }
+            ]
+           },
+           "name": "support_get_data_usage",
+           "tool call id": "adk-70c887aa-b8cc-4359-8496-4d582573a0f4"
+          },
+          "duration": "0.135870s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:50.758113Z",
+          "endTime": "2026-10-21T03:57:50.767432Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009319s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:50.761172Z",
+          "endTime": "2026-10-21T03:57:50.773102Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.011930s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:50.778Z",
+          "endTime": "2026-10-21T03:57:50.791708Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013708s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:50.793810Z",
+          "endTime": "2026-10-21T03:57:51.745991Z",
+          "attributes": {
+           "input token count": 5774.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 949.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 55.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.952181s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:51.748731Z",
+          "endTime": "2026-10-21T03:57:51.757289Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.008558s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:51.757370Z",
+          "endTime": "2026-10-21T03:57:51.911932Z",
+          "attributes": {
+           "args": {
+            "rewrittenQueries": [
+             "data slow"
+            ],
+            "query": "data is crawling",
+            "filter": "device: ANY(\"iphone-13\")"
+           },
+           "type": "DataStoreTool",
+           "cited snippets": [],
+           "tool call id": "adk-772c5c95-8735-4b69-bf89-e7fa1eef4374",
+           "response": {},
+           "name": "search_tutorials",
+           "agent": "Tech Support",
+           "snippets": []
+          },
+          "childSpans": [
+           {
+            "name": "Search with rewritten query",
+            "startTime": "2026-10-21T03:57:51.771Z",
+            "endTime": "2026-10-21T03:57:51.890Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "NOT_FOUND"
+             }
+            }
+           },
+           {
+            "name": "Search with original query",
+            "startTime": "2026-10-21T03:57:51.771Z",
+            "endTime": "2026-10-21T03:57:51.910Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "NOT_FOUND"
+             }
+            }
+           },
+           {
+            "name": "Summarization",
+            "attributes": {
+             "summarization model display name": "disable_summarizer",
+             "disabled": true
+            }
+           },
+           {
+            "name": "Query rewrite",
+            "attributes": {
+             "rewriter model display name": "rewrite-by-agent (Default)"
+            }
+           }
+          ],
+          "duration": "0.154562s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:51.912058Z",
+          "endTime": "2026-10-21T03:57:51.925144Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013086s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:51.926847Z",
+          "endTime": "2026-10-21T03:57:52.675538Z",
+          "attributes": {
+           "input token count": 5837.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 746.0,
+           "[debug] prefill time (ms)": 292.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "output token count": 25.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.748691s"
+         }
+        ],
+        "duration": "3.619044s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "did that, still slow",
+   "call": 1,
+   "agent": "Let me search again with that in mind.\nI can walk you through checking your data settings. I can text you the guide, walk you through it now, or both. What works for you?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "search_tutorials",
+     "payload": {
+      "args": {
+       "rewrittenQueries": [
+        "troubleshoot slow mobile data"
+       ],
+       "query": "slow data everywhere",
+       "filter": "device: ANY(\"iphone-13\")"
+      },
+      "result": {
+       "answer": "[1] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n\n[2] Switching LTE or 5G Voice and Data settings\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrlVlFvG0UQ_iuDH-iLYwlooOQNKImQKK2UqFXVoGh9N_Yt3ts9dud8dSsk_gZ_j1_CN7tnx4U6VCDiB5RIvt27nfnmm29m5-2kM9KkyRm9ejupmmArzosfpzRJwt34xuPnE2w1bGrrl1hNJlgKvxZ9Po-hpcFKYz1Jw3TJIvgskem6KYnp6Bt2rncmzvSYD1K8TH7A0xld-2u__YBasyHr4dvUNGeqjHNc787TYyOGQqQnYW4dl2XNHXvFRcHTJvQRO2tEMpvkMPr5LhJdh05s8LvlYKIvIfneOWyox5tiD5sL4xJjF7Bu6hi6va0mDDcSsp1fplRI-vQwSVd7NBTcTwuSg5xcNTaR9BKiNQ78OkdJTJRMNaUtyQvQcXoxxgzOfU2eZQhxlWb03aIwkqrI7MmFsEpU28WCI3uZ0k9925EEugRF9CgfroKH4Z7B5hEY_Owwgy-Kwt5LYpHZcxUwfZzfvEvrvcfx8G_KRTS5JStTTRGU7pFTx5WUjCGlXeScJ6T17D0iufb45qmnE3oWLUQi9g3yjz1k0MOOBkdDw57XHLUwN7__-ltkMmtjnZk7nmULX0FhsPGYF6Z3klQNpxdTmvcCALd2v7_6NssjmTVWcyPCcUPOLpjsYgf51jUhvoHNCk70KBzYpE7fQbi2siEI0UZ2mwLnUuDFuOD5r4Gp1JEUqrYSMKONKXpG5frcBEbx77MwvaVhP_jnAcjOlEI20Vm8tc8addyGml0qedGGlBisUf58W3czuuqzXsiK9h3ACkPKJ0Bga1ZMjV02HE9-7o3TMNdZnCqqRH3Sk9orH15kZmvV8oh8pojakAQbA0Bt0WTJ4N-HAZxpDGiRGxR-TtyUUsjuh-AfSIas9ovIczH8W7WMNv5rvaibD1XMCOneNKP-_k-qufe2eXr3BarYvjbViiwypZSpuoqYqsb45Xj_RRbQrO8_4Ma99xg_vzvGjPQJsndkmF8chvlyvK_0zsVPgaF0465CLsxSiwG94891i1J0toX0DXpIa8RWOV1zZHQZQ4_HOgzeBVMnrY5dye63KNh4YU_O7cGx6Tzk9oUyeA1BK10UFqUMtsMUapvLQIURs1SVGQeoPFwF9DLFbjqDMRO9hNMRauHRPxuFcl9BufuT3VSopI1tQhsCp22Fpx0Lux63nb6PrL4v71TfA1R9FdrOsaCdabYzso-Og1n__gBiP3Fd\nsummary: This tutorial guides users through adjusting their iPhone's cellular data settings to manage 5G and LTE preferences for voice and data usage.\nsymptoms: [My 5G isn't working right,I want to save battery on 5G,How do I turn off 5G?,My calls are low quality,I need to change my data mode,My phone is using too much data]\ntitle: Switching LTE or 5G Voice and Data settings\ntutorial_id: feature_volte_on-switching-lte-or-5g-voice-and-data-settings\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_volte_on-switching-lte-or-5g-voice-and-data-settings\n\n[3] Turning mobile data on or off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFU01PwzAM_SumFy4Fic8DV9COXECaEENTSN01UmZHibsxTfx37G4gQALEZVMPjf0S573X13WVnHSluoLHdeU7Dh6H4qmGqgimLUL6OtFWh64JNNOqqrQUfBFbjzLPQTqEOxRRvIBLqQZxCa4xxj66fGz7ieXT-P754warOUlg-iiXLtPmKupj1IZ3MU6Rtve3LhbU7tytpk3m9KnV8XIqPMx5rWFD_vRn8vfKkjOUGBocRLxThhsnDsoyiO9AGKTPBHN-DhGhMYjJDnLbfhVX3erqCiY0oXGH9G1eKMMgbOxgbUapW9RAwbww96EvCONwNArQ6vRAgrpbwHkFy3G1c-vOfrGOt7S-2NJaGq6ZJHNU8SagNhuT4rykDW5G9ylhPsph1gl4VpVm5oAUnxFpz5k5_z0zxtMzEXoJiyArK0xygVnmPu2Z_MXf5L_lUun_J-U7V3T5s6IH7g8X9jXmKaLorzVkyJgd7IezPW8Q0rkL\nsummary: This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.\nsymptoms: [My internet isn't working without Wi-Fi,How do I turn off cellular data?,I want to save data,My apps aren't connecting,I need to turn on mobile data,Cellular data isn't working]\ntitle: Turning mobile data on or off\ntutorial_id: feature_mobile_data-turning-mobile-data-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off\n\n"
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Let me search again with that in mind.",
+      "turnIndex": 3
+     },
+     {
+      "text": "I can walk you through checking your data settings. I can text you the guide, walk you through it now, or both. What works for you?",
+      "turnIndex": 3
+     },
+     {
+      "turnCompleted": true,
+      "turnIndex": 3,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "did that, still slow"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:52.841Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Let me search again with that in mind."
+          },
+          {
+           "toolCall": {
+            "id": "adk-12b6559c-57dc-4ce8-a5c9-2415f58cfeaa",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "args": {
+             "rewrittenQueries": [
+              "troubleshoot slow mobile data"
+             ],
+             "query": "slow data everywhere",
+             "filter": "device: ANY(\"iphone-13\")"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:53.757Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "steps_by_id": "{\"feature_special_assist-turning-wi-fi-assist-off\": {\"title\": \"Turning Wi-Fi assist off\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Scroll to Wi-Fi Assist.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi Assist switch to OFF.\", \"notes\": [\"Note: \\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"feature_volte_on-switching-lte-or-5g-voice-and-data-settings\": {\"title\": \"Switching LTE or 5G Voice and Data settings\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCellular may instead be called Cellular Data or Mobile Data depending on your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Tap Cellular Data Options.\", \"notes\": [\"Note: \\n\\nThis tutorial will start with settings for 5G devices and networks. If your screen looks different, jump to Step 8 and continue on.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Within Cellular Data Options, tap Voice & Data.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"From this screen, you can select your 5G preferences:\", \"notes\": [\"Note:\\n5G On - Prioritizes 5G connections whenever they\u2019re available.\\n5G Auto - Defaults to 5G, but prioritizes LTE and saves battery life if your 5G connection is weak.\\nLTE - Disables 5G connectivity entirely.\\n5G Standalone - Prioritizes 5G for all cellular activity, including network connections, whenever available.\\nVoLTE: On earlier iPhone models, you may see a VoLTE setting. Turning it on allows you to make higher-quality voice calls using the 4G LTE data network. On most newer models, this is now enabled by default, so you won't see the option.\", \"5G On - Prioritizes 5G connections whenever they\u2019re available.\", \"5G Auto - Defaults to 5G, but prioritizes LTE and saves battery life if your 5G connection is weak.\", \"LTE - Disables 5G connectivity entirely.\", \"5G Standalone - Prioritizes 5G for all cellular activity, including network connections, whenever available.\", \"VoLTE: On earlier iPhone models, you may see a VoLTE setting. Turning it on allows you to make higher-quality voice calls using the 4G LTE data network. On most newer models, this is now enabled by default, so you won't see the option.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"Tap the Back icon to save your changes and return to Cellular Data Options.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"Tap Data Mode.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 7, \"heading\": \"\", \"text\": \"You can tap an option to encourage more 5G connectivity or limit automatic and background downloads on cellular connections or Wi-Fi.\", \"notes\": [\"Note: \\n\\nFor the next steps of this tutorial, we will be using a device without 5G capabilities.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 8, \"heading\": \"\", \"text\": \"Within Cellular Data Options on a non-5G device or network, these options will be available instead.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 9, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"feature_mobile_data-turning-mobile-data-on-or-off\": {\"title\": \"Turning mobile data on or off\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From the Settings app, tap Cellular.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Tap or slide the Cellular Data switch to turn mobile data on or off.\", \"notes\": [\"Note: \\n\\nWhen Cellular Data is turned off, apps and services use Wi-Fi for internet access.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"To access mobile data from Control Center, swipe down from the upper-right corner of the screen.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Tap the connectivity controls group.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"Tap the Cellular Data icon to turn mobile data on or off.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:54.090Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-12b6559c-57dc-4ce8-a5c9-2415f58cfeaa",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "response": {
+             "answer": "[1] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n\n[2] Switching LTE or 5G Voice and Data settings\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial guides users through adjusting their iPhone's cellular data settings to manage 5G and LTE preferences for voice and data usage.\nsymptoms: [My 5G isn't working right,I want to save battery on 5G,How do I turn off 5G?,My calls are low quality,I need to change my data mode,My phone is using too much data]\ntitle: Switching LTE or 5G Voice and Data settings\ntutorial_id: feature_volte_on-switching-lte-or-5g-voice-and-data-settings\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_volte_on-switching-lte-or-5g-voice-and-data-settings\n\n[3] Turning mobile data on or off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.\nsymptoms: [My internet isn't working without Wi-Fi,How do I turn off cellular data?,I want to save data,My apps aren't connecting,I need to turn on mobile data,Cellular data isn't working]\ntitle: Turning mobile data on or off\ntutorial_id: feature_mobile_data-turning-mobile-data-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:54.090Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I can walk you through checking your data settings. I can text you the guide, walk you through it now, or both. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:54.850Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:57:52.795076Z",
+        "endTime": "2026-10-21T03:57:54.900257Z",
+        "attributes": {
+         "connection index": 3.0,
+         "perceived latency (ms)": 2105.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 46.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:52.844477Z",
+          "endTime": "2026-10-21T03:57:53.755314Z",
+          "attributes": {
+           "input token count": 5877.0,
+           "[debug] decode queue time (ms)": 11.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 908.0,
+           "[debug] prefill time (ms)": 226.0,
+           "[debug] decode time to first token (ms)": 56.0,
+           "output token count": 52.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.910837s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:53.757814Z",
+          "endTime": "2026-10-21T03:57:53.785994Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 14.0,
+            "sandbox init latency (ms)": 5.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.028180s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:53.786057Z",
+          "endTime": "2026-10-21T03:57:54.075458Z",
+          "attributes": {
+           "args": {
+            "rewrittenQueries": [
+             "troubleshoot slow mobile data"
+            ],
+            "query": "slow data everywhere",
+            "filter": "device: ANY(\"iphone-13\")"
+           },
+           "type": "DataStoreTool",
+           "cited snippets": [],
+           "tool call id": "adk-12b6559c-57dc-4ce8-a5c9-2415f58cfeaa",
+           "response": {
+            "answer": "[1] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n\n[2] Switching LTE or 5G Voice and Data settings\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrlVlFvG0UQ_iuDH-iLYwlooOQNKImQKK2UqFXVoGh9N_Yt3ts9dud8dSsk_gZ_j1_CN7tnx4U6VCDiB5RIvt27nfnmm29m5-2kM9KkyRm9ejupmmArzosfpzRJwt34xuPnE2w1bGrrl1hNJlgKvxZ9Po-hpcFKYz1Jw3TJIvgskem6KYnp6Bt2rncmzvSYD1K8TH7A0xld-2u__YBasyHr4dvUNGeqjHNc787TYyOGQqQnYW4dl2XNHXvFRcHTJvQRO2tEMpvkMPr5LhJdh05s8LvlYKIvIfneOWyox5tiD5sL4xJjF7Bu6hi6va0mDDcSsp1fplRI-vQwSVd7NBTcTwuSg5xcNTaR9BKiNQ78OkdJTJRMNaUtyQvQcXoxxgzOfU2eZQhxlWb03aIwkqrI7MmFsEpU28WCI3uZ0k9925EEugRF9CgfroKH4Z7B5hEY_Owwgy-Kwt5LYpHZcxUwfZzfvEvrvcfx8G_KRTS5JStTTRGU7pFTx5WUjCGlXeScJ6T17D0iufb45qmnE3oWLUQi9g3yjz1k0MOOBkdDw57XHLUwN7__-ltkMmtjnZk7nmULX0FhsPGYF6Z3klQNpxdTmvcCALd2v7_6NssjmTVWcyPCcUPOLpjsYgf51jUhvoHNCk70KBzYpE7fQbi2siEI0UZ2mwLnUuDFuOD5r4Gp1JEUqrYSMKONKXpG5frcBEbx77MwvaVhP_jnAcjOlEI20Vm8tc8addyGml0qedGGlBisUf58W3czuuqzXsiK9h3ACkPKJ0Bga1ZMjV02HE9-7o3TMNdZnCqqRH3Sk9orH15kZmvV8oh8pojakAQbA0Bt0WTJ4N-HAZxpDGiRGxR-TtyUUsjuh-AfSIas9ovIczH8W7WMNv5rvaibD1XMCOneNKP-_k-qufe2eXr3BarYvjbViiwypZSpuoqYqsb45Xj_RRbQrO8_4Ma99xg_vzvGjPQJsndkmF8chvlyvK_0zsVPgaF0465CLsxSiwG94891i1J0toX0DXpIa8RWOV1zZHQZQ4_HOgzeBVMnrY5dye63KNh4YU_O7cGx6Tzk9oUyeA1BK10UFqUMtsMUapvLQIURs1SVGQeoPFwF9DLFbjqDMRO9hNMRauHRPxuFcl9BufuT3VSopI1tQhsCp22Fpx0Lux63nb6PrL4v71TfA1R9FdrOsaCdabYzso-Og1n__gBiP3Fd\nsummary: This tutorial guides users through adjusting their iPhone's cellular data settings to manage 5G and LTE preferences for voice and data usage.\nsymptoms: [My 5G isn't working right,I want to save battery on 5G,How do I turn off 5G?,My calls are low quality,I need to change my data mode,My phone is using too much data]\ntitle: Switching LTE or 5G Voice and Data settings\ntutorial_id: feature_volte_on-switching-lte-or-5g-voice-and-data-settings\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_volte_on-switching-lte-or-5g-voice-and-data-settings\n\n[3] Turning mobile data on or off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFU01PwzAM_SumFy4Fic8DV9COXECaEENTSN01UmZHibsxTfx37G4gQALEZVMPjf0S573X13WVnHSluoLHdeU7Dh6H4qmGqgimLUL6OtFWh64JNNOqqrQUfBFbjzLPQTqEOxRRvIBLqQZxCa4xxj66fGz7ieXT-P754warOUlg-iiXLtPmKupj1IZ3MU6Rtve3LhbU7tytpk3m9KnV8XIqPMx5rWFD_vRn8vfKkjOUGBocRLxThhsnDsoyiO9AGKTPBHN-DhGhMYjJDnLbfhVX3erqCiY0oXGH9G1eKMMgbOxgbUapW9RAwbww96EvCONwNArQ6vRAgrpbwHkFy3G1c-vOfrGOt7S-2NJaGq6ZJHNU8SagNhuT4rykDW5G9ylhPsph1gl4VpVm5oAUnxFpz5k5_z0zxtMzEXoJiyArK0xygVnmPu2Z_MXf5L_lUun_J-U7V3T5s6IH7g8X9jXmKaLorzVkyJgd7IezPW8Q0rkL\nsummary: This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.\nsymptoms: [My internet isn't working without Wi-Fi,How do I turn off cellular data?,I want to save data,My apps aren't connecting,I need to turn on mobile data,Cellular data isn't working]\ntitle: Turning mobile data on or off\ntutorial_id: feature_mobile_data-turning-mobile-data-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off\n\n"
+           },
+           "name": "search_tutorials",
+           "agent": "Tech Support",
+           "snippets": [
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data, Why is my data bill so high?, My Wi-Fi is slow but it's still using data, How do I turn off Wi-Fi Assist?, I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n",
+             "title": "Turning Wi-Fi assist off",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/dc01ed34f0567135d979da919d3f1569b8c6d7d5"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_volte_on-switching-lte-or-5g-voice-and-data-settings",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrlVlFvG0UQ_iuDH-iLYwlooOQNKImQKK2UqFXVoGh9N_Yt3ts9dud8dSsk_gZ_j1_CN7tnx4U6VCDiB5RIvt27nfnmm29m5-2kM9KkyRm9ejupmmArzosfpzRJwt34xuPnE2w1bGrrl1hNJlgKvxZ9Po-hpcFKYz1Jw3TJIvgskem6KYnp6Bt2rncmzvSYD1K8TH7A0xld-2u__YBasyHr4dvUNGeqjHNc787TYyOGQqQnYW4dl2XNHXvFRcHTJvQRO2tEMpvkMPr5LhJdh05s8LvlYKIvIfneOWyox5tiD5sL4xJjF7Bu6hi6va0mDDcSsp1fplRI-vQwSVd7NBTcTwuSg5xcNTaR9BKiNQ78OkdJTJRMNaUtyQvQcXoxxgzOfU2eZQhxlWb03aIwkqrI7MmFsEpU28WCI3uZ0k9925EEugRF9CgfroKH4Z7B5hEY_Owwgy-Kwt5LYpHZcxUwfZzfvEvrvcfx8G_KRTS5JStTTRGU7pFTx5WUjCGlXeScJ6T17D0iufb45qmnE3oWLUQi9g3yjz1k0MOOBkdDw57XHLUwN7__-ltkMmtjnZk7nmULX0FhsPGYF6Z3klQNpxdTmvcCALd2v7_6NssjmTVWcyPCcUPOLpjsYgf51jUhvoHNCk70KBzYpE7fQbi2siEI0UZ2mwLnUuDFuOD5r4Gp1JEUqrYSMKONKXpG5frcBEbx77MwvaVhP_jnAcjOlEI20Vm8tc8addyGml0qedGGlBisUf58W3czuuqzXsiK9h3ACkPKJ0Bga1ZMjV02HE9-7o3TMNdZnCqqRH3Sk9orH15kZmvV8oh8pojakAQbA0Bt0WTJ4N-HAZxpDGiRGxR-TtyUUsjuh-AfSIas9ovIczH8W7WMNv5rvaibD1XMCOneNKP-_k-qufe2eXr3BarYvjbViiwypZSpuoqYqsb45Xj_RRbQrO8_4Ma99xg_vzvGjPQJsndkmF8chvlyvK_0zsVPgaF0465CLsxSiwG94891i1J0toX0DXpIa8RWOV1zZHQZQ4_HOgzeBVMnrY5dye63KNh4YU_O7cGx6Tzk9oUyeA1BK10UFqUMtsMUapvLQIURs1SVGQeoPFwF9DLFbjqDMRO9hNMRauHRPxuFcl9BufuT3VSopI1tQhsCp22Fpx0Lux63nb6PrL4v71TfA1R9FdrOsaCdabYzso-Og1n__gBiP3Fd\nsummary: This tutorial guides users through adjusting their iPhone's cellular data settings to manage 5G and LTE preferences for voice and data usage.\nsymptoms: [My 5G isn't working right, I want to save battery on 5G, How do I turn off 5G?, My calls are low quality, I need to change my data mode, My phone is using too much data]\ntitle: Switching LTE or 5G Voice and Data settings\ntutorial_id: feature_volte_on-switching-lte-or-5g-voice-and-data-settings\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_volte_on-switching-lte-or-5g-voice-and-data-settings\n",
+             "title": "Switching LTE or 5G Voice and Data settings",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/f907949375ba7922d409812c3a9bd848034df787"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFU01PwzAM_SumFy4Fic8DV9COXECaEENTSN01UmZHibsxTfx37G4gQALEZVMPjf0S573X13WVnHSluoLHdeU7Dh6H4qmGqgimLUL6OtFWh64JNNOqqrQUfBFbjzLPQTqEOxRRvIBLqQZxCa4xxj66fGz7ieXT-P754warOUlg-iiXLtPmKupj1IZ3MU6Rtve3LhbU7tytpk3m9KnV8XIqPMx5rWFD_vRn8vfKkjOUGBocRLxThhsnDsoyiO9AGKTPBHN-DhGhMYjJDnLbfhVX3erqCiY0oXGH9G1eKMMgbOxgbUapW9RAwbww96EvCONwNArQ6vRAgrpbwHkFy3G1c-vOfrGOt7S-2NJaGq6ZJHNU8SagNhuT4rykDW5G9ylhPsph1gl4VpVm5oAUnxFpz5k5_z0zxtMzEXoJiyArK0xygVnmPu2Z_MXf5L_lUun_J-U7V3T5s6IH7g8X9jXmKaLorzVkyJgd7IezPW8Q0rkL\nsummary: This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.\nsymptoms: [My internet isn't working without Wi-Fi, How do I turn off cellular data?, I want to save data, My apps aren't connecting, I need to turn on mobile data, Cellular data isn't working]\ntitle: Turning mobile data on or off\ntutorial_id: feature_mobile_data-turning-mobile-data-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off\n",
+             "title": "Turning mobile data on or off",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/f44d9aa8f330a5ae6f8b73227a80d0aa14d0f48d"
+            }
+           ]
+          },
+          "childSpans": [
+           {
+            "name": "Search with original query",
+            "startTime": "2026-10-21T03:57:53.800Z",
+            "endTime": "2026-10-21T03:57:53.955Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "NOT_FOUND"
+             }
+            }
+           },
+           {
+            "name": "Search with rewritten query",
+            "startTime": "2026-10-21T03:57:53.800Z",
+            "endTime": "2026-10-21T03:57:54.071Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Summarization",
+            "attributes": {
+             "summarization model display name": "disable_summarizer",
+             "disabled": true
+            }
+           },
+           {
+            "name": "Query rewrite",
+            "attributes": {
+             "rewriter model display name": "rewrite-by-agent (Default)"
+            }
+           }
+          ],
+          "duration": "0.289401s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:54.075637Z",
+          "endTime": "2026-10-21T03:57:54.090580Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 7.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.014943s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:54.092242Z",
+          "endTime": "2026-10-21T03:57:54.848228Z",
+          "attributes": {
+           "input token count": 6569.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 753.0,
+           "[debug] prefill time (ms)": 231.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 31.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.755986s"
+         }
+        ],
+        "duration": "2.105181s"
+       }
+      },
+      "citations": {
+       "citedChunks": [
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_volte_on%2Dswitching%2Dlte%2Dor%2D5g%2Dvoice%2Dand%2Ddata%2Dsettings%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_volte_on%2Dswitching%2Dlte%2Dor%2D5g%2Dvoice%2Dand%2Ddata%2Dsettings",
+         "title": "Switching LTE or 5G Voice and Data settings",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrlVlFvG0UQ_iuDH-iLYwlooOQNKImQKK2UqFXVoGh9N_Yt3ts9dud8dSsk_gZ_j1_CN7tnx4U6VCDiB5RIvt27nfnmm29m5-2kM9KkyRm9ejupmmArzosfpzRJwt34xuPnE2w1bGrrl1hNJlgKvxZ9Po-hpcFKYz1Jw3TJIvgskem6KYnp6Bt2rncmzvSYD1K8TH7A0xld-2u__YBasyHr4dvUNGeqjHNc787TYyOGQqQnYW4dl2XNHXvFRcHTJvQRO2tEMpvkMPr5LhJdh05s8LvlYKIvIfneOWyox5tiD5sL4xJjF7Bu6hi6va0mDDcSsp1fplRI-vQwSVd7NBTcTwuSg5xcNTaR9BKiNQ78OkdJTJRMNaUtyQvQcXoxxgzOfU2eZQhxlWb03aIwkqrI7MmFsEpU28WCI3uZ0k9925EEugRF9CgfroKH4Z7B5hEY_Owwgy-Kwt5LYpHZcxUwfZzfvEvrvcfx8G_KRTS5JStTTRGU7pFTx5WUjCGlXeScJ6T17D0iufb45qmnE3oWLUQi9g3yjz1k0MOOBkdDw57XHLUwN7__-ltkMmtjnZk7nmULX0FhsPGYF6Z3klQNpxdTmvcCALd2v7_6NssjmTVWcyPCcUPOLpjsYgf51jUhvoHNCk70KBzYpE7fQbi2siEI0UZ2mwLnUuDFuOD5r4Gp1JEUqrYSMKONKXpG5frcBEbx77MwvaVhP_jnAcjOlEI20Vm8tc8addyGml0qedGGlBisUf58W3czuuqzXsiK9h3ACkPKJ0Bga1ZMjV02HE9-7o3TMNdZnCqqRH3Sk9orH15kZmvV8oh8pojakAQbA0Bt0WTJ4N-HAZxpDGiRGxR-TtyUUsjuh-AfSIas9ovIczH8W7WMNv5rvaibD1XMCOneNKP-_k-qufe2eXr3BarYvjbViiwypZSpuoqYqsb45Xj_RRbQrO8_4Ma99xg_vzvGjPQJsndkmF8chvlyvK_0zsVPgaF0465CLsxSiwG94891i1J0toX0DXpIa8RWOV1zZHQZQ4_HOgzeBVMnrY5dye63KNh4YU_O7cGx6Tzk9oUyeA1BK10UFqUMtsMUapvLQIURs1SVGQeoPFwF9DLFbjqDMRO9hNMRauHRPxuFcl9BufuT3VSopI1tQhsCp22Fpx0Lux63nb6PrL4v71TfA1R9FdrOsaCdabYzso-Og1n__gBiP3Fd\nsummary: This tutorial guides users through adjusting their iPhone's cellular data settings to manage 5G and LTE preferences for voice and data usage.\nsymptoms: [My 5G isn't working right, I want to save battery on 5G, How do I turn off 5G?, My calls are low quality, I need to change my data mode, My phone is using too much data]\ntitle: Switching LTE or 5G Voice and Data settings\ntutorial_id: feature_volte_on-switching-lte-or-5g-voice-and-data-settings\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_volte_on-switching-lte-or-5g-voice-and-data-settings\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_special_assist%2Dturning%2Dwi%2Dfi%2Dassist%2Doff%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_special_assist%2Dturning%2Dwi%2Dfi%2Dassist%2Doff",
+         "title": "Turning Wi-Fi assist off",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data, Why is my data bill so high?, My Wi-Fi is slow but it's still using data, How do I turn off Wi-Fi Assist?, I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_mobile_data%2Dturning%2Dmobile%2Ddata%2Don%2Dor%2Doff%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_mobile_data%2Dturning%2Dmobile%2Ddata%2Don%2Dor%2Doff",
+         "title": "Turning mobile data on or off",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFU01PwzAM_SumFy4Fic8DV9COXECaEENTSN01UmZHibsxTfx37G4gQALEZVMPjf0S573X13WVnHSluoLHdeU7Dh6H4qmGqgimLUL6OtFWh64JNNOqqrQUfBFbjzLPQTqEOxRRvIBLqQZxCa4xxj66fGz7ieXT-P754warOUlg-iiXLtPmKupj1IZ3MU6Rtve3LhbU7tytpk3m9KnV8XIqPMx5rWFD_vRn8vfKkjOUGBocRLxThhsnDsoyiO9AGKTPBHN-DhGhMYjJDnLbfhVX3erqCiY0oXGH9G1eKMMgbOxgbUapW9RAwbww96EvCONwNArQ6vRAgrpbwHkFy3G1c-vOfrGOt7S-2NJaGq6ZJHNU8SagNhuT4rykDW5G9ylhPsph1gl4VpVm5oAUnxFpz5k5_z0zxtMzEXoJiyArK0xygVnmPu2Z_MXf5L_lUun_J-U7V3T5s6IH7g8X9jXmKaLorzVkyJgd7IezPW8Q0rkL\nsummary: This tutorial explains how to enable or disable mobile data on an iPhone 13 using either the Settings app or Control Center.\nsymptoms: [My internet isn't working without Wi-Fi, How do I turn off cellular data?, I want to save data, My apps aren't connecting, I need to turn on mobile data, Cellular data isn't working]\ntitle: Turning mobile data on or off\ntutorial_id: feature_mobile_data-turning-mobile-data-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_mobile_data-turning-mobile-data-on-or-off\n"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "did that too, still slow",
+   "call": 1,
+   "agent": "Understood. I can walk you through checking your 5G and LTE settings instead. I can text you the guide, walk you through it, or both. Which do you prefer?",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Understood. I can walk you through checking your 5G and LTE settings instead. I can text you the guide, walk you through it, or both. Which do you prefer?",
+      "turnCompleted": true,
+      "turnIndex": 4,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "did that too, still slow"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:40.194Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Understood. I can walk you through checking your 5G and LTE settings instead. I can text you the guide, walk you through it, or both. Which do you prefer?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:41.003Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:40.137975Z",
+        "endTime": "2026-10-21T03:58:41.053794Z",
+        "attributes": {
+         "connection index": 4.0,
+         "perceived latency (ms)": 916.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 57.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:40.195833Z",
+          "endTime": "2026-10-21T03:58:41.001400Z",
+          "attributes": {
+           "input token count": 6616.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 804.0,
+           "[debug] prefill time (ms)": 235.0,
+           "[debug] decode time to first token (ms)": 64.0,
+           "output token count": 38.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.805567s"
+         }
+        ],
+        "duration": "0.915819s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "nothing worked",
+   "call": 1,
+   "agent": "I can open a support ticket for you. A store visit is also a faster option. I'll open that ticket now.\nI've opened a ticket, number T-1001. A specialist will call you within one business day. You can also visit a store sooner. Is there anything else?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_open_ticket",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001",
+       "summary": "Checked data usage and outage, tried troubleshooting data settings."
+      },
+      "result": {
+       "text_output": [
+        {
+         "next_step": "A support specialist will call back within one business day; a store visit is available sooner.",
+         "ticket_id": "T-1001",
+         "summary": "Checked data usage and outage, tried troubleshooting data settings."
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I can open a support ticket for you. A store visit is also a faster option. I'll open that ticket now.",
+      "turnIndex": 5
+     },
+     {
+      "text": "I've opened a ticket, number T-1001. A specialist will call you within one business day. You can also visit a store sooner. Is there anything else?",
+      "turnCompleted": true,
+      "turnIndex": 5,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "nothing worked"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:41.152Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I can open a support ticket for you. A store visit is also a faster option. I'll open that ticket now."
+          },
+          {
+           "toolCall": {
+            "id": "adk-94a48020-e50f-4c97-a0ef-f9e9dbeb0ece",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001",
+             "summary": "Checked data usage and outage, tried troubleshooting data settings."
+            },
+            "displayName": "support_open_ticket",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "open_ticket"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:42.302Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-94a48020-e50f-4c97-a0ef-f9e9dbeb0ece",
+            "response": {
+             "text_output": [
+              {
+               "next_step": "A support specialist will call back within one business day; a store visit is available sooner.",
+               "ticket_id": "T-1001",
+               "summary": "Checked data usage and outage, tried troubleshooting data settings."
+              }
+             ]
+            },
+            "displayName": "support_open_ticket",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "open_ticket"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:42.512Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I've opened a ticket, number T-1001. A specialist will call you within one business day. You can also visit a store sooner. Is there anything else?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:43.380Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:41.103025Z",
+        "endTime": "2026-10-21T03:58:43.434687Z",
+        "attributes": {
+         "connection index": 5.0,
+         "perceived latency (ms)": 2331.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 48.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:41.154644Z",
+          "endTime": "2026-10-21T03:58:42.299232Z",
+          "attributes": {
+           "input token count": 6666.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1142.0,
+           "[debug] prefill time (ms)": 250.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 74.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "1.144588s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:42.302340Z",
+          "endTime": "2026-10-21T03:58:42.332636Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 15.0,
+            "sandbox init latency (ms)": 5.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.030296s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:58:42.332721Z",
+          "endTime": "2026-10-21T03:58:42.498288Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001",
+            "summary": "Checked data usage and outage, tried troubleshooting data settings."
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "next_step": "A support specialist will call back within one business day; a store visit is available sooner.",
+              "ticket_id": "T-1001",
+              "summary": "Checked data usage and outage, tried troubleshooting data settings."
+             }
+            ]
+           },
+           "name": "support_open_ticket",
+           "tool call id": "adk-94a48020-e50f-4c97-a0ef-f9e9dbeb0ece"
+          },
+          "duration": "0.165567s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:42.498467Z",
+          "endTime": "2026-10-21T03:58:42.512301Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013834s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:42.514305Z",
+          "endTime": "2026-10-21T03:58:43.377881Z",
+          "attributes": {
+           "input token count": 6809.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 862.0,
+           "[debug] prefill time (ms)": 255.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 38.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.863576s"
+         }
+        ],
+        "duration": "2.331662s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "I1020 22:57:43.964781 7132615 ev_poll_posix.cc:587] FD from fork parent still in poll list: fd(8, generation: 1)\nreset failed: 401 \n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>401 Unauthorized</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Unauthorized</h1>\n<h2>Your clien",
+ "session_ids": [
+  "454568a6-35f1-47a7-a7a5-582834027675"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "check_outage",
+  "get_line_status",
+  "get_data_usage",
+  "search_tutorials",
+  "search_tutorials",
+  "open_ticket"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

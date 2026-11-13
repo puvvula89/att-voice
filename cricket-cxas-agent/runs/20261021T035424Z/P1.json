@@ -1,0 +1,1126 @@
+{
+ "id": "P1",
+ "title": "Line suspended for non-payment",
+ "app": "projects/tmeg-working-demos/locations/us/apps/cricket-care",
+ "project": "tmeg-working-demos",
+ "started": "2026-10-21T03:54:25.445397+00:00",
+ "turns": [
+  {
+   "user": "my calls keep failing",
+   "call": 1,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+       "status": "error"
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device": "iphone-13",
+           "device_label": "iPhone 13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device": "galaxy-a15-5g",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "name": "Jordan Reyes",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "steps_by_id": "",
+            "current_date": "2026-10-20[America/Los_Angeles]",
+            "walk": "",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:27.714Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my calls keep failing"
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:27.715Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/tmeg-working-demos/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:28.290Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-fb3470a3-1449-4418-91ff-dbfbe3fc897b",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:29.102Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-fb3470a3-1449-4418-91ff-dbfbe3fc897b",
+            "response": {
+             "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+             "status": "error"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:31.415Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-2a5bcdf8-f05c-44f2-85f6-9659c7fdd94c",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:32.058Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-2a5bcdf8-f05c-44f2-85f6-9659c7fdd94c",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device": "iphone-13",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device": "galaxy-a15-5g",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "name": "Jordan Reyes",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:32.232Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:32.840Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:54:27.665384Z",
+        "endTime": "2026-10-21T03:54:32.889519Z",
+        "attributes": {
+         "connection index": 1.0,
+         "perceived latency (ms)": 5224.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 50.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:27.715966Z",
+          "endTime": "2026-10-21T03:54:28.288868Z",
+          "attributes": {
+           "input token count": 1359.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 572.0,
+           "[debug] prefill time (ms)": 190.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "thought token count": 0.0
+          },
+          "duration": "0.572902s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:28.290Z",
+          "endTime": "2026-10-21T03:54:28.290Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:28.459054Z",
+          "endTime": "2026-10-21T03:54:29.100776Z",
+          "attributes": {
+           "input token count": 5253.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 641.0,
+           "[debug] prefill time (ms)": 221.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.641722s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:29.102584Z",
+          "endTime": "2026-10-21T03:54:29.127004Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 12.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.024420s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:29.127061Z",
+          "endTime": "2026-10-21T03:54:31.405211Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+           "type": "McpTool",
+           "response": {
+            "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+            "status": "error"
+           },
+           "name": "support_get_progress",
+           "tool call id": "adk-fb3470a3-1449-4418-91ff-dbfbe3fc897b"
+          },
+          "duration": "2.278150s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:31.405346Z",
+          "endTime": "2026-10-21T03:54:31.415576Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.010230s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:31.417044Z",
+          "endTime": "2026-10-21T03:54:32.055943Z",
+          "attributes": {
+           "input token count": 5314.0,
+           "[debug] decode queue time (ms)": 11.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 638.0,
+           "[debug] prefill time (ms)": 221.0,
+           "[debug] decode time to first token (ms)": 25.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.638899s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:32.058421Z",
+          "endTime": "2026-10-21T03:54:32.067708Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 1.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.009287s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:32.067803Z",
+          "endTime": "2026-10-21T03:54:32.223094Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device": "iphone-13",
+                "device_label": "iPhone 13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device": "galaxy-a15-5g",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "name": "Jordan Reyes",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "name": "support_get_lines",
+           "tool call id": "adk-2a5bcdf8-f05c-44f2-85f6-9659c7fdd94c"
+          },
+          "duration": "0.155291s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:32.223257Z",
+          "endTime": "2026-10-21T03:54:32.232745Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009488s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:32.234271Z",
+          "endTime": "2026-10-21T03:54:32.838703Z",
+          "attributes": {
+           "input token count": 5514.0,
+           "[debug] decode queue time (ms)": 14.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 602.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "output token count": 17.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.604432s"
+         }
+        ],
+        "duration": "5.224135s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes it's this phone",
+   "call": 1,
+   "agent": "Let me check a couple of things on our side first.\nEverything looks normal on our side. I'll search for a fix.\nI have a guide that can help. I can text it to you, walk you through it now, or both. What works for you?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_get_sim_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "provisioned": true,
+         "changed_days_ago": 340.0,
+         "sim_type": "eSIM",
+         "activated": "2025-11-02"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2025-11-02",
+         "line_id": "L1",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "search_tutorials",
+     "payload": {
+      "args": {
+       "rewrittenQueries": [
+        "iPhone calls dropped"
+       ],
+       "query": "calls failing",
+       "filter": "device: ANY(\"iphone-13\")"
+      },
+      "result": {
+       "answer": "[1] Troubleshooting why Wi-Fi calling isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlVtrGzEQhf_K1C9pIXHovfjBUELT9CGlNIFS6hLk3XFWsTwSktauCf3vPdKubwlOUzAuBu_qstKcb45Gtx2nYhU6Pfpx2ykqqwvOjZ-H1AmRXTsieDxHV8Wq1HKNVqeDZuRfMb2fVFyM6b32zihhOrclkw4Uay9ckh2NegPZHJ1pY6jUQQ0Nk5I5fdNHp5pGtRRRWwkU6qIiFdr-QhmDfbtpU7GxibHzGW89GshALitsFzhGTEo7G1uoiK1V7NGZnTD16aIZDXjdDAXhdTtZbz1cSk5t63Ioi-ZMeWm0S20MOlJQVywtkJEygdE7UfOr0lu31lXZ2VW0eZ3fh9TQfPE3mq1wK8IZCRBusKCZlYOIfz8mK6RoxgpvnmoJMWNdfdsdyImVkfYTmtv6wAN5EWusM19MSqykpEpNMUYlFyyRgr4WZTah7x3Uy-2gLuGvpL3hctJwAacPkvVv4tKStHvSXyorfLC0C2xqaaLGTC4N5PmB6pC-UfeysCsHOrcWQJ9yTOsdG5LutaE579dooRTW3vPyantevvIR7MO-Ad6E7lQI8GpJx3Rq_TXH7DfPNxaJidUiW8IxOTrVCxqqco08EiNwpMHKsO0QfMd3MsxTFtKjtlc5x8qHlcH34OPo6224Xj-ECwfWx3V7Qv-ZNSWVdtbQCbrkTIw1mp6m1tQw1bCOEWie4tjf1CHmacfRunbgMOEANiyFbyaodubZYVoPJGfacV66UZ1OgbMzTEM9bEIpeYrrYNfYWkaPdNmbh7BN7JRbG2kJDIRJjyixdPHpPBWCG2R-c0ZWhlG4BmaEaJZQp4JIDtFA_mPPer7BrCQvcjKb0UWuOliyySEKS6UiKklevJoHTDDLrXdxYv8N5dsHHYgD-bk5e8s6BYB5IJe0zK09natCha2pYuPAN1gzXd05Ux3nKIOhBoYR3FnZGJyNOyqfH1nYA2afLr2SMEqu9dSoaGtiv20unnfFdWmVRayFJAXcfeWdahX2n6Z329P0HXd3ZjxxhhOdXBlSYE_-zx2dfn8AhjVm9A==\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working.,I can't make calls over Wi-Fi.,Wi-Fi calls are dropping.,My phone won't use Wi-Fi for calls.,I have no signal,but Wi-Fi calling isn't kicking in.,Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n\n[2] Wi-Fi Calling isn't working\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1v3LgR_ivsfmhaYG2gb3dA-sm1k9atExtZ5w5FXQRciVrxLIk6kvJmERS4H9Ev_Xv3S_rMkJKo9a5jO3HvDj0YhveFHHJmnnnmRf4wa6Uv3ey5-MeHWVYanSl-88-5mDmv2vhNgz-_wUelkrluVng3m-GtV-89vT4txMZ0z6wSXSOXlRLeiM4p8bU-eKnFsawqbBKmoVVW6IvSNGoufKmwQ9KvKNRa8Hm0RGSyEV5esxxvTQeRrjTG0xahnevU4VXztfalxrpSO7HqdA6JdImqEpWSthGlWWP_86tmobzo2ull5kI3WdWRMqK15kbzK75eJq3VygrcQea5Vc716hTGClUru1JNthFO2Rsy11VzaVarqtf2yDnt_FVzXKrsmrfo8wXOz6WntW-U89L61BJYa5pGZZ7OyXVRwCyNj-Ia5dfGXvMdICCYoFDSd1axNBVlxYW4lvfQxZF_GuMTd3bLwaP03rRem4bfzl7Dkc_FImy9ZawZLV_DpsH1TVdV-CDDl-9UE_FQyMrBA7Nabt7l1rTJR3DEO2_42H_NRQDTb6dg2ntyArJLAoQUtanJOjBHxhb2pextlUWgARCKcZgPmMsV-epQ_D0gBDczYi2jHNMU2tZB0hYE8t7Noq0AiAAa5aa3JDCWik-KB2-DrQemvlbVRiwVYa5uPS6I86EOzuKDW2Vr2ZB-EXqHIsQWhcQzL3IT8L4O2E9A9MzhcpBTyAw2j6YxuD0CJkhoVDhul4yoMITILDMdzu9hJH4FE2qP5WrptFcCgK7NUkNH2ba_PiT0B2DimKkbGLdz4XTdQulomCNtyZJKvDK52qIEtrf0XsE0dNM6eLzl70iqWJd0cBbCJagjp4Fy-AjcX3agC1MUkwh-JOi97aaY_zDz2leKEHyUeX0jGegTS82mZLuHZF8CMr3TiAQWvYfgB1g5swYGIoPAiF624qht3ZY1OPz2iF_cEsA--SQJ0yi5v6RL7AXOXAVWZ11vJZJLQnBEjYNRspLOPX_9wENeMCinm2av8eq5uGquGsReH6hzUHlVUUopCbYwt1LEBw4OzxhQYyiPmeNQvLiVLziVcAQm6aUyGfIDx2kMV0RJRhGRZBwOAXODE9gezGacK0N2QZgierBlI7yuodWd6hMT3lAsIToVxxIUYxT-YsuG9NPz9u-mvE2Rwx7ZDp7Uzhb32bNuLqSbMECtV6UngvR2Qxti5pWgH3ndBz6sLQqKBomol3YJy6iq6io5ZkFyDK6JAyM8orC7EHkvruC0TsK2Mvtny5EJX_TWDZeWbDEy4efgCwrP42i1vfg_fnF29vbs6A2YmLMWqQOkDB-fHF0eUaC-Ov_T6dmL8DZXbVB4O_fO7kkeKT4-nTOCnJQjXr7cq-85laQiOp3uz2EaY51sEKqzqY50ViZbiZyovUZ8m2KSVL__7j9uwKWxD7DJ40L099MQ3VmHpqe8oizrUE5OAhF6265h-NGpleQcD-5xFH1QEdLm4puOEn8DVZnTpEcF4VCgUe3dWnUDPox1dQjYzo14ToqnCbuXoIQlGdx1bWusD1VcuBakowQL_o0X_cI9Jox3lOFPEcETtqCsSLwU9XQb3LFOPfKwmO7jeVfu_7NqlJXVA8NnYQq_pn7sLd_pgbuPOm9qVDdZ3P6Q4uM0hBEhNG5GumSiD0xFgb3WrRoPgRE34jRYc1fqT6KaGsUQyQEHfXMwnwB-rakvmIjPzbqpDLJI9FHqQbovXBHL_j6gKWwm1SlDm-pxaVfcCZAIJPtrlQ-lPfchqRAu0reOXnYeC5Hhe1YFi6Nvlax8eqf5UGlPdDnpBcbM-CTU84et6gCZ34ZAG7rrGGsT_mk6vuLupcy7papaEEt1o7i84RGA62cO6j3aJo0KiZsOcvaUYMQp0ZIUK4u2WVzN0Ow5f0DKXM0m4wUmO5WVjf62C91-bYjfhtNgWu6OKElsJbdHdB2wjtzX79-HjGKrcV8uujBrmGnLuFCDEHnvooKaPe6WtmY5LReyJKo0VUDLghIxYOtN8wAmuLhTEH-hNKfpr0zV1cMX8IrmABCs51jtxOyNcEGp6PaSRF9K82QAQEGxsCUIZaZB2u8z4rFpgJ0KRVSs-cON-6_DZp2FAsF-LNWfWBn2xfrFiJYFUMHMH1keAGGBpQp5rxqcIJKqZT7M01gxdPdkXnbd2FfopjBx1kENOFLL-WJgp1LecBOO8jOjlt0pP8wz-pGCbtouUtiwbqkQQOo2xQ56PQkDfbFV_IyDtf2hluYhYorWoGbkKSYNhMZSsq_h-lGni7MmVCS4JJiW9tzmH_H9d_-mpk4KEI9acw8HAzCGkeQ6q_2mn-g5HocuKUHQzkxZL5HqqQxCPaa-7SAhZ2aaHgH96GrzMKJ8L8lmKKwWQ9W7V_u5ALiYfql1TFZxR6oZvkDEmme1uwg3sGNIbLvGToS92MuGBnZXDcidLBF9jygfRqrJsJMgwzNjJh-5gl3mIf9SZRoKydNiOxmHw6T46uL1Vij4pC1lRwf5qoaxpdXVZp4owgt0TRlX9eHTG0E9sv6MI8_dw9sn7Cb5wGD-h7J_ZJddvWSYSOyjpbcuHXo11EBRUIe7LGnkB28EZiikIz5l1E2Gsb2NxiHARxhkT0e4f1yUXHjIc0WRGGwsRvfLpPby7k5XVURJclAIu74xurmjfqUjSuNdi99QDxEpD-RR6Vp7DtYwL4Z5wPLSbub9QIppGYflQ4fwVz7xo_YjFU8pPXAmWypHeicI2j11vUvq_gyFeAJ90VTnBgGooBjaTDkO12rZyNXk9BEKz3cYD9nQIMP5cNrraO0DER2QdgSecn6N4GaFe8dwy7r9-ICvatWBzHMauFFjbOehPNdJSgyGp8H54CZKs7YOpMr8Bca6sDQRHoYVcSB4AH7IO-oErIz9I10l5Ixwl3E8MU1OyzhpD7T3Ur-n9tmKN8ang-d-PHnVUJdwQGDAofwQIzXL-CBlV69UreXGBR41vStClaLHgQcztPb8eEJY2awCXf7YPUN3_IF9Q1f4IbzzBFXZl9Oq7CNPLfuzPpIjg57K0uiJZk3adA5lTOdUPq6hJ24pY_Q86LhlQalD9VT_jDUUMSgV-O8R_vZyDrlBoJJ3iTomPuGGlzZNtlN6wIQ-rkyXBwjyY4NY86X371EJuQxMvOu54ZwmXZtg8JwcS66b49glPQpP0D9P_XubnINanpvxgwGAj5-Ef_7WdMvTAcc8Nx0LDajQE8UiActjZ2aPm5LdfsR1iahxNBOmQGZc64c-N6M8y1v3VgAvGORHOJm6Tn48jOMH2xyI49IYFypZHYFl-TK0LvJnPzWC8rn0MqDiqEUci9MTgtVYDatkElUgAxu7GUNh9gTpfXf6DvYkte-lKl65FC4hwKlCd1vjmthLaztol6tCdpV36f-FsN3oRTDShaQncIE6EOd9z3OtNkQP4a7bCN2d02JnRK0eCjnWJUyhhoKmH2Qld_4j5bREXR697ybGvdrhnieKC28yqlqcvhosqvZkXTksRK6kxpA6xTwPpDXJwPxINjcwNhxJHs9UFSv4_ukcPflHiYrimpI_VcBrFk7Bk26gdUxqHgpMuoDD_iFNMEJkpQErf1ObpYGPxIlmYKEGJgXpH4Ji2-ZQOecikDT3PiwthcpYW1xHaUiP-SBv8PVfsH2N8oGctfAbeO8ghLEb_pfDYUcFH48LHS0cRZgavVQYUJ1J7PIsgwIxCklXxAFQdGaf7SveN0_xEke9lEoQ7pTaZdWWcql4GAxj0zhJFqHNUoLnocD0qndiBEEchdVjzwtx9Bgc21MzJXcMuW4AgSwKwn6pARgewY2RctaPF34puM7KNlvmG-YPIZTDktRP-1FOZPLT4Y7xtj929qCb_tT5g3T4mUF-ZpD7Msj_Ag_jaZ-AiETI_x8mRuWfFBWfsTWmn_8C2m-7FA==\nsummary: This guide provides troubleshooting steps for when Wi-Fi Calling is not working on an iPhone.\nsymptoms: [Wi-Fi Calling isn't working,Can't make calls over Wi-Fi,My phone won't use Wi-Fi for calls,Wi-Fi calls are failing,Can't enable Wi-Fi Calling]\ntitle: Wi-Fi Calling isn't working\ntutorial_id: 155842-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/155842-wi-fi-calling-isn-t-working\n\n[3] Can't make or receive calls\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1vHLcR_ivsfagd4HxA2qYtnE-KZDtCZVuIFBtFrzB4u7w7Vnvkdsm98zUokB_RL_17-SV9Zob7Kp0sKVHRoIET2LvHJYczzzzzQn43KXVch8lz9ZfvJtna28zww1-nahKiKdMvDn99jldro3PrVniaTPAYzcdI_z5dqr2vn1RG1U4vCqOiVxt9ZVS59s6oTBdFUN7RoErZc3o5VXFt8IGm_9XS7BQvR0Mw3qlIn2Oa3ERTbSxmscv0fQg1noLa2biWV7nZQnDlq967TFeVNZV6ql1O38Y1PsF_WkWzKX2lq70qKw9pN_ShViXW0c64qIKNtY5WBKZdGZf52kEQ7P2z2dy9xyrWyZSr2ubYDY0sClUYXTm19jvI_nzujtcmuxJ5zEcbIr5XmXfOZDT93H0bjDqyVVlgYfXa57zl-aQywcT5JG2kN17mW0Je-_ZC1WWuowlz940JUVexr19-adIrZ-LOV1cKL0gEfHGBnzT0ttR1EZWrNwuoiubl8Se1Lp5dnL6mD-pSPYX6dFkWNiPjfjZ3Ly10qvPcklS6UKEuodFIwuMtpA8yT9IvQcX52ENWvWjBRc--pIn4cfIGmHqueorLTFHUha7ISu_ts5cW9llh1Ql9uYO6BZCuLgq8IKx9MC6hdKmLAONMNnr_Ia982XsFG32IniX451QJxH8zhHhfiNYIfdzLAAC5E1JkA5h1rIE3fKcYKXCNEgh7VtnVOmK6ykHhftnH70y9MniLDezZO9TGA3sLXQU86ciuktsAsOxNLiMWMCjmYQlaCb9MrqLWemtUASxCc84n0aYyGTSCr_nLyugAMXfrfYv3jxDVAvWEV_a3QP5MTz2PhiN0jp-WNzmBgM3U-gQU7mmthhm2Ft7O-26VVRm3guMmTQW9YWLQM_WC-ITWFcvTuvRE0q9NUfI2oZBsSDWYhz5PFFHYjSXBRAutpTK_hbJXZvYAeF6CPAZ--whg_O0QjPejigE7xydBlT4EywYg6_dZk3VJSNFqBaXF3izs0GAPXS32neKi35meN-osI4cvvXVxqhY1zw6bWpgeTP4kSijQPQsBOX9ueB6aDDBTtia7CmvwOCw92O5U7bRlAgUVVf6j3YD7ir36_AuwFETOw1QR1ceajTDSlV-CwlbaugFoRchRzNIs4lTYPe5LS497tTHahRS0OIw0wYMxRrBd6yrfkZP2tYuhjT4hVPQz1ewcr5e22sg6pF8iE3a4ASvw2GvBVDN92-US4iBiFT7jgDV7MNWOYspd8Byr-pNw_m4SbSwMwfDyZsM4thrsMxmmHAdSjZeV37C2v_YgiZBVxjjYSpfqIgW3kQ7Ynw5MdonPsO9Q2FyocCib4JKA8fbNcNbJG_zruZq7DsjMcgS-bpLNcINYofL1SsBy7F2sfKGODeUVM5rpLYFLJQPRd4wM2SJ7qdgbuCjFBjKGIFHqhS3gHeDpJqak_OeH7_8d2vjfxPcUbya3Kgcbe7IlYt-UhWFiJ2omA_1qpGH607DW724KoWNwjVaBD-60i60HhrpxIsllyImq2jF6SIiCJokK9B2IpLBjTM6O1YabZr5MIjSCnzGDsKgd0r-kxiZVbNKjRk76zjqEcjDWAxxrkJWJyn-yMNHzq-OGN0jLnOyKyPQq7CHjpq_3O3rYTjLcxqemBEMP5VJAIJKF46Rk5Z7uduGXkUnyW5bpnl8f1dGD922WPr-Ps5-KsxAO08cUOMhowh9EBDtbmm4R5v1T0eYnWOC9BAEAVXCAkoGCSj4d4HhH4UYPps_9zhVe5y3mehYkeWGKtXEHQsog28oQf1bYt4RBRIQrk8-UBDvxh_4kVFqNl6bYTUG2LdU40m510XMElmmatjdS1UkzIY2FER6FYL4YEgxlYpU4WptAiLb7S73WrmYRbx7a5ZPBF4kcmqi9tXHf5MA3pMfQMKVXTe40nyCmh_iMtoGsDBRfQ09h7b3Ef5Otnf076ldy1o0Hi3VTd2Vma4CGqB9EPoeqv0eI7eeUEo6Vet_Qfpni57hRUHJBSVOtfSEouaCADbjGaynPbYA7v3Ui_sFYDsLvfFFv2h9gE8vAV7zPlhWb2Aw3QYoc7pYiACbIKUYTIf3ziEZNgBsmB63Ezc_yMdeWnI9-ws9OUOWIb0me45GrcwaPlIRfUUovlSAVpwe3kVKvNieZts0a3liqA6TZsTHVCnCG57ilhIxgqGeAkEKh-rQfiVWpQ8g44TKxrRqdEXazrqwTkNtxC7P0oxSBqbXd16Mwz--HzHObh_XW4mEd4YyHiuAIpCjvAPSt9XUAT9XB5N2Ywl6l3UrJRYrALFTy4BvkhBVGp5lTGfTu_A3_fYS_m3mk7CLl9qpx-MTeZTfOrpZkcXtc-DqXyo705NlDhvI3xlpQrwyQxdOw2oKpeYAAui8UuDdxc2wxpLtiM-3qGixyn5oitEwDCB2ptydFYr_c_HENqLYbxhXbqq641HoEFh1BRZDNCXxLFGTSNwlCFz20PTSte1gid3EtGbysUB0vpS0gjiHS3zO_408PEtAL9pIjrEwESXUvLd_q5hmM5n0QlrQJmdwf4XGV2fitaRMbbB5ZjxZvOSpBBOr0ZIpRTQOBsN4lS0udRU-9irbKvHUzh7kSqQOwugFAtxpJBJIL1C-a89Dw_IadN41c2vadtop_hT5chCFAxiaM8opE-7Zqd5cawtCNdVlRc8RhvXHhzko6R6qEgom5B0RhEt9cmT3xi8g6RijkvTAFsqlBipzKMSoGEAh4L5Iu9Tsm4yb_lwr5aW-7f6vDARI-vDvIeWKI-FmpBq7datQMJGR6ZNTodmBWV9RyAV_pPBcuGvRwL-n73EPZMCRZHFQ2amRTdyBgpFcrbsM7s-PJyXn6H9C4KSkjYgODqn7WdAtECYm-Wqz8yewXHjZSJ5aBRWcd2CAdTqQAHRB5cyUsz0kaz9aHCnM_j71KsyHNzdv5Wlt_jc93lXTmLuIe1nsmbtycAaBK50OCdW9goIHdFNTKuZBc6kzjq8hzkCOmSfojUq7SnF2k-F_wd9M-XlI1QrEI7s5N4aJc64XhegXKpsxHL5sGOifuwPSqMWICQcraCAahZQ_k7wU-76upJ6MEyxYEerkk7K8tAMPZYucpZ6lxp36tziu71dl-pL6ms5dcWYb07XQY5UQmPx_u6KT9X2cPkvTnzh-0h18Y5BcGuSuD_Dfw0K32IxDRm-T_DxPd5h8VFY9QW_9hfNjZZOByXk7kRpo-VIvdfBdFJtl5xcRrB_FrKgDdWVD2lYNRlQ79-fnmw7Q7P-gOJq4doMKodStv5kHvWaQgiAqFYEKzLZmZ6cxcHT6NFeTR8DXLsjP6anQY2-dwoHJtM4Zlc5rf1PQcFhANYdpF_3g1gVxcEws9pDB-lUrU69c_HuNw48LcoJ5Wm6hfIVPKItrwSGXd3Wri9h6P6VXYZSll8XGa72A5evzi7Ozbs6NvGu2TSLB3-_rk6PKIQvLrt1-dnr2Qx8HZ3d3P4i7pACsOGKqgO1Gsif6-h6KrE7yaqbeyRZBL4XdMlb1jUz5Qo7naYwKgpA73qtxvk06Oq6lNIKaiNU_SqHd030ydYezjC_mSG-7w31WlXboAIl1WugeiuCtLS9yy4Ea76_dFPtkFoA5tV_7LHF2aGWqsqynxovPxbl0615QW7Q_f_4uu_bBva_kR-aOt6PIDxSUKbG2ebSMnBo5u0LRz0QwrC1K2lC1myHkhVoGQVainZraaqfnkPEXU-YSWnU_eIxeeTz5TCFKWCMvoYKVPbHNafYn0NavAYtKQlkb9axMCNpf88VjyztCkK-_o2g-NRubvM6spNkiPLl0_IzGbSxFCbekHuodhJVVmvqRNzeQOW12mpuVxOvGkSeQaB7d8MkP7ThcQyc66uUnU8SofsF27FkSrlt7TBcKttoUcsO-TA3fVUCJjuhX4Qs7E2tuOQrPi34EF0wXfxuL3UhE1v9JNKJPzBajE8k1LKiFd6oqhW2HN4xQGCRpEjeenb2SlnJvtwGGlKYuRy2bBoPqgXaRAwIq8O5wfFtr_OAztryg2XY8dN0ZwuZ-TyrvhPbR-f_faiRFfQIJjFPmN1Y-clF-TgRI0sx-1x_lUsMU83yNtbgC5dBVVjmGQKdEJBwGUzgM5OWtbuYIJcbbRzSHJ_TI--UunxTDklNzQbCmx41StGF2_IrzJwSPlkbdf7lqMLvTp7qYSb4CPY4JvW-zt3YmkOkFiFJKHw2nONum614Z7sLGV8ZVxtg7qK7msqWuQU2X_QScZ6YJoJrdd7pN2_HQX6-jPfwB4wKgK\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls,Can't receive calls,My phone calls aren't working,Having trouble with calls,Calls not connecting,No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n\n"
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Let me check a couple of things on our side first.",
+      "turnIndex": 2
+     },
+     {
+      "text": "Everything looks normal on our side. I'll search for a fix.",
+      "turnIndex": 2
+     },
+     {
+      "text": "I have a guide that can help. I can text it to you, walk you through it now, or both. What works for you?",
+      "turnIndex": 2
+     },
+     {
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes it's this phone"
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:33.123Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Let me check a couple of things on our side first."
+          },
+          {
+           "toolCall": {
+            "id": "adk-306a969e-4890-442c-9583-c59da5de4af6",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-fc9e00ab-0b4e-44aa-a059-ccdcf2b67b40",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-1c7a6fcc-3bfd-49e3-8a18-cad2ff5c6fc1",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_sim_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_sim_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:34.608Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-306a969e-4890-442c-9583-c59da5de4af6",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2025-11-02",
+               "line_id": "L1",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-fc9e00ab-0b4e-44aa-a059-ccdcf2b67b40",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-1c7a6fcc-3bfd-49e3-8a18-cad2ff5c6fc1",
+            "response": {
+             "text_output": [
+              {
+               "provisioned": true,
+               "changed_days_ago": 340.0,
+               "sim_type": "eSIM",
+               "activated": "2025-11-02"
+              }
+             ]
+            },
+            "displayName": "support_get_sim_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_sim_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:34.809Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Everything looks normal on our side. I'll search for a fix."
+          },
+          {
+           "toolCall": {
+            "id": "adk-4d7bcbfc-4873-44ba-b2c6-af27dbef98dd",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "args": {
+             "rewrittenQueries": [
+              "iPhone calls dropped"
+             ],
+             "query": "calls failing",
+             "filter": "device: ANY(\"iphone-13\")"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:35.791Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "steps_by_id": "{\"feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\": {\"title\": \"Troubleshooting why Wi-Fi calling isn't working\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"Check Airplane Mode is turned off:\\nAirplane Mode will disable any Wi-Fi functions such as Wi-Fi calling.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > Airplane Mode off.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Check Wi-Fi connection:\\nWi-Fi calling won't work on a weak or unstable connection.\\nConfirm you're actually connected and have a decent signal.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Turn on Wi-Fi Calling:\\nEnable Wi-Fi calling in your iPhone's settings to make phone calls using a Wi-Fi connection.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > Apps settings > Phone settings > Wi-Fi Calling > Wi-Fi Calling on This iPhone on.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Re-enter your Wi-Fi password / Forget and rejoin the Wi-Fi network:\\nA bad connection can silently block Wi-Fi calling even if Wi-Fi appears connected.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": true, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"Restart your iPhone:\\nHold down the side and either volume button (or just side/top button, if an older model), then swipe the option to power off your device.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"Remove and reinsert the nano SIM:\\nEject and reinsert your SIM card to ensure a proper connection.\", \"notes\": [\"Note: \\n\\nThis will only be applicable to iPhones that use a physical SIM card.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 7, \"heading\": \"\", \"text\": \"Reset Network Settings:\\nResetting your network settings may help resolve connectivity issues for hotspot.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > General > Transfer or Reset iPhone > Reset > Reset Network Settings. This will erase saved Wi-Fi passwords.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 8, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"155842-wi-fi-calling-isn-t-working\": {\"title\": \"Wi-Fi Calling isn't working\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"If you're unable to use Wi-Fi Calling on your iPhone, there are a few steps you can take to troubleshoot the issue.\\nWithin this guide, you'll learn how to:\\nSet up Wi-Fi Calling, including providing your carrier an address to use for emergency services\\nToggle Wi-Fi Assist\\nCheck for iOS updates\\nRestart your iPhone\\nConnect to different Wi-Fi networks to test the feature\\nReset your network settings\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Setting up Wi-Fi Calling\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"Setting up Wi-Fi Calling\", \"text\": \"Take a moment to check that Wi-Fi calling is enabled on your device. You'll also want to confirm that your carrier and service plan includes Wi-Fi Calling.\\nWhen you enable Wi-Fi Calling, you'll likely be prompted to enter your permanent address. If you can't do this within your iPhone's interface, check to see if you need to do this within your carrier's account settings (on its website or mobile app).\\nTo test if Wi-Fi calling works, simply enable Airplane Mode on your iPhone and attempt to make a phone call while connected to a Wi-Fi network.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Turn off Wi-Fi Assist\"], \"warning\": null, \"call_ending\": false, \"may_drop\": true, \"how_to\": [{\"title\": \"Activating Wi-Fi calling\", \"steps\": [{\"heading\": \"\", \"text\": \"From within the Settings app, scroll to and tap Apps.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Scroll to and tap Phone.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Scroll to and tap Wi-Fi Calling.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi Calling on This iPhone switch to ON.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Enable.\", \"notes\": [\"Note: \\n\\nIf prompted, follow the onscreen instructions to enter an address. Emergency services use this address to locate you if you place an emergency call over Wi-Fi. You can update it at any time.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 3, \"heading\": \"Turning off Wi-Fi Assist\", \"text\": \"Try turning off Wi-Fi Assist, as your iPhone might be trying to use a weak connection from a nearby cellular network instead of switching to Wi-Fi Calling.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Checking for iOS updates\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning Wi-Fi assist off\", \"steps\": [{\"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device.\"]}, {\"heading\": \"\", \"text\": \"Scroll to Wi-Fi Assist.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi Assist switch to OFF.\", \"notes\": [\"Note: \\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 4, \"heading\": \"Check for iOS updates\", \"text\": \"Make sure your iPhone is running the latest version of iOS, just in case that's somehow preventing you from using Wi-Fi Calling.\\nWi-Fi Calling has been supported on iPhones since the iPhone 6s.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Restart your iPhone\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Checking for and installing system updates\", \"steps\": [{\"heading\": \"\", \"text\": \"From within Settings, scroll to and tap General.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Software Update.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Automatic Updates.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"In the iOS Updates section, tap or swipe Automatically Install to ON.\", \"notes\": [\"Note: \\n\\nWith this option enabled, your iPhone will automatically download updates and install them when your device is connected to Wi-Fi, charging, and locked. If you want your device to download updates but wait on your approval to install them, enable Automatically Download instead.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 5, \"heading\": \"Try restarting your iPhone\", \"text\": \"Manually restarting your iPhone may help solve any issues you're experiencing with Wi-Fi Calling. It's a great \\\"first-step\\\" troubleshooting technique for most issues you encounter on your device.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Try a different Wi-Fi network\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Powering your iPhone on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"To turn on your iPhone, press and hold the Side button.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Press and hold the Side button and either Volume button until the Power Settings screen appears.\", \"notes\": [\"Note: \\n\\nYou can also reach Power Settings by opening the Control Center and holding the Power icon there.\"]}, {\"heading\": \"\", \"text\": \"Drag the slide to power off slider to the right.\", \"notes\": [\"Note: \\n\\nFrom this screen, you can also access your emergency info and send an SOS. If you have a passcode set, you'll need to input your passcode before your iPhone will power off.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 6, \"heading\": \"Connect to a different Wi-Fi network\", \"text\": \"It's possible that the Wi-Fi network you're using is incompatible with Wi-Fi Calling \u2014 if a firewall or other security features are blocking certain ports required for Wi-Fi Calling to work, for example.\\nSwitch to a different Wi-Fi network, ideally at a different location than where you're experiencing issues, and check to see if you can place a call using Wi-Fi Calling. You may need to toggle the feature off, then on again, when testing.\\nIf your device is using a VPN, you can also try turning that off, temporarily, to see if that improves your experience.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Resetting your network settings\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning your Wi-Fi on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Settings app, tap Wi-Fi.\", \"notes\": [\"Note: \\n\\nUsing Wi-Fi can deplete your battery power faster than your carrier network connection.\"]}, {\"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi switch to ON.\", \"notes\": [\"Note: \\n\\nTo turn off your Wi-Fi, tap or slide the Wi-Fi switch to OFF.\"]}, {\"heading\": \"\", \"text\": \"Select a network to join.\", \"notes\": [\"Note: \\n\\nWi-Fi hotspots may have security limitations. If necessary, enter a password and tap Join.\"]}, {\"heading\": \"\", \"text\": \"Tap the Info icon beside your Wi-Fi network.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions to manage your Wi-Fi connection:\", \"notes\": [\"Note:\\nForget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\\nPrivate Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\\nAuto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.\", \"Forget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\", \"Private Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\", \"Auto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 7, \"heading\": \"Reset your network settings\", \"text\": \"Resetting your network settings will erase previously used settings like your Wi-Fi passwords, preferred networks, and VPN and APN settings.\\nYou'll be able to resync your Wi-Fi passwords from iCloud, but the other settings will need to be entered again.\\nOnce you've done this, reboot your device, connect to your Wi-Fi network, and try re-enabling Wi-Fi Calling.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Resetting your iPhone\u2019s Settings and Network Settings\", \"steps\": [{\"heading\": \"\", \"text\": \"From within Settings, tap General.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Scroll to and tap Transfer or Reset iPhone.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Reset.\", \"notes\": [\"Note: \\n\\nErase All Content and Settings - Choosing this will reset and remove your apps, data, and Apple ID, returning the device to factory settings.\"]}, {\"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions:\", \"notes\": [\"Note:\\nReset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\\nReset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\\nDelete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\\nOther reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\", \"Reset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\", \"Delete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\", \"Other reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\", \"Reset Handwriting Style - Resets your personal handwriting style.\", \"Reset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\", \"Reset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}]}]}, \"154674-can-t-make-or-receive-calls\": {\"title\": \"Can't make or receive calls\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"If you're unable to make phone calls on your iPhone, there are a few steps you can take to determine if your issue is with your device or with your carrier (and if this is a temporary problem or a permanent situation you're encountering).\\nWithin this guide, you'll learn how to:\\nCheck your existing connection\\nUse Airplane Mode to \\\"reset\\\" your connection\\nCheck for iOS updates\\nRestart your iPhone\\nReset your network settings\\nSet a default number for your Dual-SIM setup (if applicable)\\nFind additional support to address your problem\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Check your cellular or Wi-Fi signal\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"Check your connection\", \"text\": \"Check the cellular signal status icon in the upper-right corner of your device. Generally, the more bars that are displayed, the better the connection; if you have low or no signal, that may be the reason why you're experiencing issues making phone calls.\\nIf you're connected to Wi-Fi, you'll also be able to view your signal strength in the same area. Enabling Wi-Fi calling may help you place phone calls in areas with limited or no cellular coverage.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Try Airplane Mode\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"Use Airplane Mode to \\\"reset\\\" your connection\", \"text\": \"It's possible that your device may have a great connection to a nearby cellular tower or Wi-Fi access point, but you still can't make a phone call.\\nYou can try switching your phone to Airplane Mode, waiting approximately 15 seconds, and turning Airplane Mode off again.\\nIf you're still unable to make a call, this typically means there is a problem with the hardware your device is connecting to. You can confirm this by checking if your device can make phone calls at a different location.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Check for iOS updates\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning Airplane Mode on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Home screen, tap Settings.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap or slide the Airplane Mode switch to ON.\", \"notes\": [\"Note: \\n\\nYou can also turn Airplane mode on and off through the Control Center.\\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 4, \"heading\": \"Check for iOS updates\", \"text\": \"You'll want to make sure your iPhone is running the latest version of iOS. You'll also want to check to see if you have any pending carrier settings updates to install.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Restart your device\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Checking for and installing system updates\", \"steps\": [{\"heading\": \"\", \"text\": \"From within Settings, scroll to and tap General.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Software Update.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Automatic Updates.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"In the iOS Updates section, tap or swipe Automatically Install to ON.\", \"notes\": [\"Note: \\n\\nWith this option enabled, your iPhone will automatically download updates and install them when your device is connected to Wi-Fi, charging, and locked. If you want your device to download updates but wait on your approval to install them, enable Automatically Download instead.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 5, \"heading\": \"Try restarting your iPhone\", \"text\": \"Manually restarting your iPhone may help solve any connectivity issues you're experiencing. It's a great \\\"first-step\\\" troubleshooting technique for most issues you encounter on your device.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Reset your network settings\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Powering your iPhone on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"To turn on your iPhone, press and hold the Side button.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Press and hold the Side button and either Volume button until the Power Settings screen appears.\", \"notes\": [\"Note: \\n\\nYou can also reach Power Settings by opening the Control Center and holding the Power icon there.\"]}, {\"heading\": \"\", \"text\": \"Drag the slide to power off slider to the right.\", \"notes\": [\"Note: \\n\\nFrom this screen, you can also access your emergency info and send an SOS. If you have a passcode set, you'll need to input your passcode before your iPhone will power off.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 6, \"heading\": \"Reset your network settings\", \"text\": \"Resetting your network settings will erase previously used settings like your Wi-Fi passwords, preferred networks, and VPN and APN settings.\\nYou'll be able to resync your Wi-Fi passwords from iCloud, but the other settings will need to be entered again.\\nIf you had to enter APN settings manually to access a cellular network, you'll need to do that again before attempting a phone call.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Check your Dual-SIM configuration\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Resetting your iPhone\u2019s Settings and Network Settings\", \"steps\": [{\"heading\": \"\", \"text\": \"From within Settings, tap General.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Scroll to and tap Transfer or Reset iPhone.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Reset.\", \"notes\": [\"Note: \\n\\nErase All Content and Settings - Choosing this will reset and remove your apps, data, and Apple ID, returning the device to factory settings.\"]}, {\"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions:\", \"notes\": [\"Note:\\nReset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\\nReset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\\nDelete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\\nOther reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\", \"Reset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\", \"Delete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\", \"Other reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\", \"Reset Handwriting Style - Resets your personal handwriting style.\", \"Reset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\", \"Reset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 7, \"heading\": \"Using the right SIM in a Dual-SIM configuration\", \"text\": \"If you're using two SIMs in your device, otherwise known as a Dual-SIM setup, check to make sure that your device is using the correct, intended SIM for calls. It's possible that your default SIM has a weak connection to your carrier, which you may be able to get around by switching to the other SIM.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Getting additional support\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Set your default SIM for calls, texts, and cellular data\", \"steps\": [{\"heading\": \"\", \"text\": \"Within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device.\"]}, {\"heading\": \"\", \"text\": \"To set the default line for cellular data, tap Cellular Data. On the following screen, tap the line you want to use.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"To set the default line for calls and texts, tap Default Voice Line. On the following screen, tap the line you want to use.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"For more granular control over each line, tap the line you want to manage.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"From here, you can manage settings such as:\\nTurn the line on or off \u2014 disable a line entirely without removing it.\\nRename the line \u2014 give it a custom label (e.g. \\\"Personal\\\" or \\\"Work\\\") so it's easier to identify across the Phone, Messages, and Contacts apps.\\nView the associated phone number \u2014 confirm which number is tied to that line.\\nSet up Wi-Fi Calling \u2014 make and receive calls over a Wi-Fi connection when cellular coverage is poor (availability depends on your carrier).\\nEnable calls on other devices \u2014 allow other Apple devices signed in to your Apple ID to use this line for calls.\\nConfigure a SIM PIN \u2014 add an extra layer of security to the line.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 8, \"heading\": \"Get additional support\", \"text\": \"If you're still having issues making a phone call on your iPhone, you should contact your carrier for additional support. They'll be able to help identify if there is an issue on their end that's affecting your calls (e.g. a problem with your account, your SIM, or even a local cellular tower).\\nIt's also possible that your device may be experiencing a hardware issue. If so, you'll want to contact Apple to set up an appointment at a local Genius Bar or authorized support center.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:36.278Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-4d7bcbfc-4873-44ba-b2c6-af27dbef98dd",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "response": {
+             "answer": "[1] Troubleshooting why Wi-Fi calling isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working.,I can't make calls over Wi-Fi.,Wi-Fi calls are dropping.,My phone won't use Wi-Fi for calls.,I have no signal,but Wi-Fi calling isn't kicking in.,Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n\n[2] Wi-Fi Calling isn't working\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsummary: This guide provides troubleshooting steps for when Wi-Fi Calling is not working on an iPhone.\nsymptoms: [Wi-Fi Calling isn't working,Can't make calls over Wi-Fi,My phone won't use Wi-Fi for calls,Wi-Fi calls are failing,Can't enable Wi-Fi Calling]\ntitle: Wi-Fi Calling isn't working\ntutorial_id: 155842-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/155842-wi-fi-calling-isn-t-working\n\n[3] Can't make or receive calls\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls,Can't receive calls,My phone calls aren't working,Having trouble with calls,Calls not connecting,No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:36.278Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I have a guide that can help. I can text it to you, walk you through it now, or both. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:37.007Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:54:33.070630Z",
+        "endTime": "2026-10-21T03:54:37.059191Z",
+        "attributes": {
+         "connection index": 2.0,
+         "perceived latency (ms)": 3989.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 53.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:33.126588Z",
+          "endTime": "2026-10-21T03:54:34.606001Z",
+          "attributes": {
+           "input token count": 5547.0,
+           "[debug] decode queue time (ms)": 20.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1475.0,
+           "[debug] prefill time (ms)": 310.0,
+           "[debug] decode time to first token (ms)": 64.0,
+           "output token count": 103.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "1.479413s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:34.608726Z",
+          "endTime": "2026-10-21T03:54:34.633320Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 13.0,
+            "sandbox init latency (ms)": 3.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.024594s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:34.608755Z",
+          "endTime": "2026-10-21T03:54:34.632748Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 13.0,
+            "sandbox init latency (ms)": 3.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.023993s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:34.608766Z",
+          "endTime": "2026-10-21T03:54:34.636129Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 14.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.027363s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:34.632823Z",
+          "endTime": "2026-10-21T03:54:34.792240Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "provisioned": true,
+              "changed_days_ago": 340.0,
+              "sim_type": "eSIM",
+              "activated": "2025-11-02"
+             }
+            ]
+           },
+           "name": "support_get_sim_status",
+           "tool call id": "adk-1c7a6fcc-3bfd-49e3-8a18-cad2ff5c6fc1"
+          },
+          "duration": "0.159417s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:34.633380Z",
+          "endTime": "2026-10-21T03:54:34.799067Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2025-11-02",
+              "line_id": "L1",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "name": "support_get_line_status",
+           "tool call id": "adk-306a969e-4890-442c-9583-c59da5de4af6"
+          },
+          "duration": "0.165687s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:34.636189Z",
+          "endTime": "2026-10-21T03:54:34.800812Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "zip_code": "30301"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "name": "support_check_outage",
+           "tool call id": "adk-fc9e00ab-0b4e-44aa-a059-ccdcf2b67b40"
+          },
+          "duration": "0.164623s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:34.792435Z",
+          "endTime": "2026-10-21T03:54:34.802051Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009616s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:34.799208Z",
+          "endTime": "2026-10-21T03:54:34.809169Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009961s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:34.800948Z",
+          "endTime": "2026-10-21T03:54:34.811752Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.010804s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:34.813699Z",
+          "endTime": "2026-10-21T03:54:35.789029Z",
+          "attributes": {
+           "input token count": 5790.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 972.0,
+           "[debug] prefill time (ms)": 226.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 54.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.975330s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:35.791360Z",
+          "endTime": "2026-10-21T03:54:35.799389Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 1.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.008029s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:35.799453Z",
+          "endTime": "2026-10-21T03:54:36.263178Z",
+          "attributes": {
+           "args": {
+            "rewrittenQueries": [
+             "iPhone calls dropped"
+            ],
+            "query": "calls failing",
+            "filter": "device: ANY(\"iphone-13\")"
+           },
+           "type": "DataStoreTool",
+           "cited snippets": [],
+           "tool call id": "adk-4d7bcbfc-4873-44ba-b2c6-af27dbef98dd",
+           "response": {
+            "answer": "[1] Troubleshooting why Wi-Fi calling isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlVtrGzEQhf_K1C9pIXHovfjBUELT9CGlNIFS6hLk3XFWsTwSktauCf3vPdKubwlOUzAuBu_qstKcb45Gtx2nYhU6Pfpx2ykqqwvOjZ-H1AmRXTsieDxHV8Wq1HKNVqeDZuRfMb2fVFyM6b32zihhOrclkw4Uay9ckh2NegPZHJ1pY6jUQQ0Nk5I5fdNHp5pGtRRRWwkU6qIiFdr-QhmDfbtpU7GxibHzGW89GshALitsFzhGTEo7G1uoiK1V7NGZnTD16aIZDXjdDAXhdTtZbz1cSk5t63Ioi-ZMeWm0S20MOlJQVywtkJEygdE7UfOr0lu31lXZ2VW0eZ3fh9TQfPE3mq1wK8IZCRBusKCZlYOIfz8mK6RoxgpvnmoJMWNdfdsdyImVkfYTmtv6wAN5EWusM19MSqykpEpNMUYlFyyRgr4WZTah7x3Uy-2gLuGvpL3hctJwAacPkvVv4tKStHvSXyorfLC0C2xqaaLGTC4N5PmB6pC-UfeysCsHOrcWQJ9yTOsdG5LutaE579dooRTW3vPyantevvIR7MO-Ad6E7lQI8GpJx3Rq_TXH7DfPNxaJidUiW8IxOTrVCxqqco08EiNwpMHKsO0QfMd3MsxTFtKjtlc5x8qHlcH34OPo6224Xj-ECwfWx3V7Qv-ZNSWVdtbQCbrkTIw1mp6m1tQw1bCOEWie4tjf1CHmacfRunbgMOEANiyFbyaodubZYVoPJGfacV66UZ1OgbMzTEM9bEIpeYrrYNfYWkaPdNmbh7BN7JRbG2kJDIRJjyixdPHpPBWCG2R-c0ZWhlG4BmaEaJZQp4JIDtFA_mPPer7BrCQvcjKb0UWuOliyySEKS6UiKklevJoHTDDLrXdxYv8N5dsHHYgD-bk5e8s6BYB5IJe0zK09natCha2pYuPAN1gzXd05Ux3nKIOhBoYR3FnZGJyNOyqfH1nYA2afLr2SMEqu9dSoaGtiv20unnfFdWmVRayFJAXcfeWdahX2n6Z329P0HXd3ZjxxhhOdXBlSYE_-zx2dfn8AhjVm9A==\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working.,I can't make calls over Wi-Fi.,Wi-Fi calls are dropping.,My phone won't use Wi-Fi for calls.,I have no signal,but Wi-Fi calling isn't kicking in.,Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n\n[2] Wi-Fi Calling isn't working\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1v3LgR_ivsfmhaYG2gb3dA-sm1k9atExtZ5w5FXQRciVrxLIk6kvJmERS4H9Ev_Xv3S_rMkJKo9a5jO3HvDj0YhveFHHJmnnnmRf4wa6Uv3ey5-MeHWVYanSl-88-5mDmv2vhNgz-_wUelkrluVng3m-GtV-89vT4txMZ0z6wSXSOXlRLeiM4p8bU-eKnFsawqbBKmoVVW6IvSNGoufKmwQ9KvKNRa8Hm0RGSyEV5esxxvTQeRrjTG0xahnevU4VXztfalxrpSO7HqdA6JdImqEpWSthGlWWP_86tmobzo2ull5kI3WdWRMqK15kbzK75eJq3VygrcQea5Vc716hTGClUru1JNthFO2Rsy11VzaVarqtf2yDnt_FVzXKrsmrfo8wXOz6WntW-U89L61BJYa5pGZZ7OyXVRwCyNj-Ia5dfGXvMdICCYoFDSd1axNBVlxYW4lvfQxZF_GuMTd3bLwaP03rRem4bfzl7Dkc_FImy9ZawZLV_DpsH1TVdV-CDDl-9UE_FQyMrBA7Nabt7l1rTJR3DEO2_42H_NRQDTb6dg2ntyArJLAoQUtanJOjBHxhb2pextlUWgARCKcZgPmMsV-epQ_D0gBDczYi2jHNMU2tZB0hYE8t7Noq0AiAAa5aa3JDCWik-KB2-DrQemvlbVRiwVYa5uPS6I86EOzuKDW2Vr2ZB-EXqHIsQWhcQzL3IT8L4O2E9A9MzhcpBTyAw2j6YxuD0CJkhoVDhul4yoMITILDMdzu9hJH4FE2qP5WrptFcCgK7NUkNH2ba_PiT0B2DimKkbGLdz4XTdQulomCNtyZJKvDK52qIEtrf0XsE0dNM6eLzl70iqWJd0cBbCJagjp4Fy-AjcX3agC1MUkwh-JOi97aaY_zDz2leKEHyUeX0jGegTS82mZLuHZF8CMr3TiAQWvYfgB1g5swYGIoPAiF624qht3ZY1OPz2iF_cEsA--SQJ0yi5v6RL7AXOXAVWZ11vJZJLQnBEjYNRspLOPX_9wENeMCinm2av8eq5uGquGsReH6hzUHlVUUopCbYwt1LEBw4OzxhQYyiPmeNQvLiVLziVcAQm6aUyGfIDx2kMV0RJRhGRZBwOAXODE9gezGacK0N2QZgierBlI7yuodWd6hMT3lAsIToVxxIUYxT-YsuG9NPz9u-mvE2Rwx7ZDp7Uzhb32bNuLqSbMECtV6UngvR2Qxti5pWgH3ndBz6sLQqKBomol3YJy6iq6io5ZkFyDK6JAyM8orC7EHkvruC0TsK2Mvtny5EJX_TWDZeWbDEy4efgCwrP42i1vfg_fnF29vbs6A2YmLMWqQOkDB-fHF0eUaC-Ov_T6dmL8DZXbVB4O_fO7kkeKT4-nTOCnJQjXr7cq-85laQiOp3uz2EaY51sEKqzqY50ViZbiZyovUZ8m2KSVL__7j9uwKWxD7DJ40L099MQ3VmHpqe8oizrUE5OAhF6265h-NGpleQcD-5xFH1QEdLm4puOEn8DVZnTpEcF4VCgUe3dWnUDPox1dQjYzo14ToqnCbuXoIQlGdx1bWusD1VcuBakowQL_o0X_cI9Jox3lOFPEcETtqCsSLwU9XQb3LFOPfKwmO7jeVfu_7NqlJXVA8NnYQq_pn7sLd_pgbuPOm9qVDdZ3P6Q4uM0hBEhNG5GumSiD0xFgb3WrRoPgRE34jRYc1fqT6KaGsUQyQEHfXMwnwB-rakvmIjPzbqpDLJI9FHqQbovXBHL_j6gKWwm1SlDm-pxaVfcCZAIJPtrlQ-lPfchqRAu0reOXnYeC5Hhe1YFi6Nvlax8eqf5UGlPdDnpBcbM-CTU84et6gCZ34ZAG7rrGGsT_mk6vuLupcy7papaEEt1o7i84RGA62cO6j3aJo0KiZsOcvaUYMQp0ZIUK4u2WVzN0Ow5f0DKXM0m4wUmO5WVjf62C91-bYjfhtNgWu6OKElsJbdHdB2wjtzX79-HjGKrcV8uujBrmGnLuFCDEHnvooKaPe6WtmY5LReyJKo0VUDLghIxYOtN8wAmuLhTEH-hNKfpr0zV1cMX8IrmABCs51jtxOyNcEGp6PaSRF9K82QAQEGxsCUIZaZB2u8z4rFpgJ0KRVSs-cON-6_DZp2FAsF-LNWfWBn2xfrFiJYFUMHMH1keAGGBpQp5rxqcIJKqZT7M01gxdPdkXnbd2FfopjBx1kENOFLL-WJgp1LecBOO8jOjlt0pP8wz-pGCbtouUtiwbqkQQOo2xQ56PQkDfbFV_IyDtf2hluYhYorWoGbkKSYNhMZSsq_h-lGni7MmVCS4JJiW9tzmH_H9d_-mpk4KEI9acw8HAzCGkeQ6q_2mn-g5HocuKUHQzkxZL5HqqQxCPaa-7SAhZ2aaHgH96GrzMKJ8L8lmKKwWQ9W7V_u5ALiYfql1TFZxR6oZvkDEmme1uwg3sGNIbLvGToS92MuGBnZXDcidLBF9jygfRqrJsJMgwzNjJh-5gl3mIf9SZRoKydNiOxmHw6T46uL1Vij4pC1lRwf5qoaxpdXVZp4owgt0TRlX9eHTG0E9sv6MI8_dw9sn7Cb5wGD-h7J_ZJddvWSYSOyjpbcuHXo11EBRUIe7LGnkB28EZiikIz5l1E2Gsb2NxiHARxhkT0e4f1yUXHjIc0WRGGwsRvfLpPby7k5XVURJclAIu74xurmjfqUjSuNdi99QDxEpD-RR6Vp7DtYwL4Z5wPLSbub9QIppGYflQ4fwVz7xo_YjFU8pPXAmWypHeicI2j11vUvq_gyFeAJ90VTnBgGooBjaTDkO12rZyNXk9BEKz3cYD9nQIMP5cNrraO0DER2QdgSecn6N4GaFe8dwy7r9-ICvatWBzHMauFFjbOehPNdJSgyGp8H54CZKs7YOpMr8Bca6sDQRHoYVcSB4AH7IO-oErIz9I10l5Ixwl3E8MU1OyzhpD7T3Ur-n9tmKN8ang-d-PHnVUJdwQGDAofwQIzXL-CBlV69UreXGBR41vStClaLHgQcztPb8eEJY2awCXf7YPUN3_IF9Q1f4IbzzBFXZl9Oq7CNPLfuzPpIjg57K0uiJZk3adA5lTOdUPq6hJ24pY_Q86LhlQalD9VT_jDUUMSgV-O8R_vZyDrlBoJJ3iTomPuGGlzZNtlN6wIQ-rkyXBwjyY4NY86X371EJuQxMvOu54ZwmXZtg8JwcS66b49glPQpP0D9P_XubnINanpvxgwGAj5-Ef_7WdMvTAcc8Nx0LDajQE8UiActjZ2aPm5LdfsR1iahxNBOmQGZc64c-N6M8y1v3VgAvGORHOJm6Tn48jOMH2xyI49IYFypZHYFl-TK0LvJnPzWC8rn0MqDiqEUci9MTgtVYDatkElUgAxu7GUNh9gTpfXf6DvYkte-lKl65FC4hwKlCd1vjmthLaztol6tCdpV36f-FsN3oRTDShaQncIE6EOd9z3OtNkQP4a7bCN2d02JnRK0eCjnWJUyhhoKmH2Qld_4j5bREXR697ybGvdrhnieKC28yqlqcvhosqvZkXTksRK6kxpA6xTwPpDXJwPxINjcwNhxJHs9UFSv4_ukcPflHiYrimpI_VcBrFk7Bk26gdUxqHgpMuoDD_iFNMEJkpQErf1ObpYGPxIlmYKEGJgXpH4Ji2-ZQOecikDT3PiwthcpYW1xHaUiP-SBv8PVfsH2N8oGctfAbeO8ghLEb_pfDYUcFH48LHS0cRZgavVQYUJ1J7PIsgwIxCklXxAFQdGaf7SveN0_xEke9lEoQ7pTaZdWWcql4GAxj0zhJFqHNUoLnocD0qndiBEEchdVjzwtx9Bgc21MzJXcMuW4AgSwKwn6pARgewY2RctaPF34puM7KNlvmG-YPIZTDktRP-1FOZPLT4Y7xtj929qCb_tT5g3T4mUF-ZpD7Msj_Ag_jaZ-AiETI_x8mRuWfFBWfsTWmn_8C2m-7FA==\nsummary: This guide provides troubleshooting steps for when Wi-Fi Calling is not working on an iPhone.\nsymptoms: [Wi-Fi Calling isn't working,Can't make calls over Wi-Fi,My phone won't use Wi-Fi for calls,Wi-Fi calls are failing,Can't enable Wi-Fi Calling]\ntitle: Wi-Fi Calling isn't working\ntutorial_id: 155842-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/155842-wi-fi-calling-isn-t-working\n\n[3] Can't make or receive calls\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1vHLcR_ivsfagd4HxA2qYtnE-KZDtCZVuIFBtFrzB4u7w7Vnvkdsm98zUokB_RL_17-SV9Zob7Kp0sKVHRoIET2LvHJYczzzzzQn43KXVch8lz9ZfvJtna28zww1-nahKiKdMvDn99jldro3PrVniaTPAYzcdI_z5dqr2vn1RG1U4vCqOiVxt9ZVS59s6oTBdFUN7RoErZc3o5VXFt8IGm_9XS7BQvR0Mw3qlIn2Oa3ERTbSxmscv0fQg1noLa2biWV7nZQnDlq967TFeVNZV6ql1O38Y1PsF_WkWzKX2lq70qKw9pN_ShViXW0c64qIKNtY5WBKZdGZf52kEQ7P2z2dy9xyrWyZSr2ubYDY0sClUYXTm19jvI_nzujtcmuxJ5zEcbIr5XmXfOZDT93H0bjDqyVVlgYfXa57zl-aQywcT5JG2kN17mW0Je-_ZC1WWuowlz940JUVexr19-adIrZ-LOV1cKL0gEfHGBnzT0ttR1EZWrNwuoiubl8Se1Lp5dnL6mD-pSPYX6dFkWNiPjfjZ3Ly10qvPcklS6UKEuodFIwuMtpA8yT9IvQcX52ENWvWjBRc--pIn4cfIGmHqueorLTFHUha7ISu_ts5cW9llh1Ql9uYO6BZCuLgq8IKx9MC6hdKmLAONMNnr_Ia982XsFG32IniX451QJxH8zhHhfiNYIfdzLAAC5E1JkA5h1rIE3fKcYKXCNEgh7VtnVOmK6ykHhftnH70y9MniLDezZO9TGA3sLXQU86ciuktsAsOxNLiMWMCjmYQlaCb9MrqLWemtUASxCc84n0aYyGTSCr_nLyugAMXfrfYv3jxDVAvWEV_a3QP5MTz2PhiN0jp-WNzmBgM3U-gQU7mmthhm2Ft7O-26VVRm3guMmTQW9YWLQM_WC-ITWFcvTuvRE0q9NUfI2oZBsSDWYhz5PFFHYjSXBRAutpTK_hbJXZvYAeF6CPAZ--whg_O0QjPejigE7xydBlT4EywYg6_dZk3VJSNFqBaXF3izs0GAPXS32neKi35meN-osI4cvvXVxqhY1zw6bWpgeTP4kSijQPQsBOX9ueB6aDDBTtia7CmvwOCw92O5U7bRlAgUVVf6j3YD7ir36_AuwFETOw1QR1ceajTDSlV-CwlbaugFoRchRzNIs4lTYPe5LS497tTHahRS0OIw0wYMxRrBd6yrfkZP2tYuhjT4hVPQz1ewcr5e22sg6pF8iE3a4ASvw2GvBVDN92-US4iBiFT7jgDV7MNWOYspd8Byr-pNw_m4SbSwMwfDyZsM4thrsMxmmHAdSjZeV37C2v_YgiZBVxjjYSpfqIgW3kQ7Ynw5MdonPsO9Q2FyocCib4JKA8fbNcNbJG_zruZq7DsjMcgS-bpLNcINYofL1SsBy7F2sfKGODeUVM5rpLYFLJQPRd4wM2SJ7qdgbuCjFBjKGIFHqhS3gHeDpJqak_OeH7_8d2vjfxPcUbya3Kgcbe7IlYt-UhWFiJ2omA_1qpGH607DW724KoWNwjVaBD-60i60HhrpxIsllyImq2jF6SIiCJokK9B2IpLBjTM6O1YabZr5MIjSCnzGDsKgd0r-kxiZVbNKjRk76zjqEcjDWAxxrkJWJyn-yMNHzq-OGN0jLnOyKyPQq7CHjpq_3O3rYTjLcxqemBEMP5VJAIJKF46Rk5Z7uduGXkUnyW5bpnl8f1dGD922WPr-Ps5-KsxAO08cUOMhowh9EBDtbmm4R5v1T0eYnWOC9BAEAVXCAkoGCSj4d4HhH4UYPps_9zhVe5y3mehYkeWGKtXEHQsog28oQf1bYt4RBRIQrk8-UBDvxh_4kVFqNl6bYTUG2LdU40m510XMElmmatjdS1UkzIY2FER6FYL4YEgxlYpU4WptAiLb7S73WrmYRbx7a5ZPBF4kcmqi9tXHf5MA3pMfQMKVXTe40nyCmh_iMtoGsDBRfQ09h7b3Ef5Otnf076ldy1o0Hi3VTd2Vma4CGqB9EPoeqv0eI7eeUEo6Vet_Qfpni57hRUHJBSVOtfSEouaCADbjGaynPbYA7v3Ui_sFYDsLvfFFv2h9gE8vAV7zPlhWb2Aw3QYoc7pYiACbIKUYTIf3ziEZNgBsmB63Ezc_yMdeWnI9-ws9OUOWIb0me45GrcwaPlIRfUUovlSAVpwe3kVKvNieZts0a3liqA6TZsTHVCnCG57ilhIxgqGeAkEKh-rQfiVWpQ8g44TKxrRqdEXazrqwTkNtxC7P0oxSBqbXd16Mwz--HzHObh_XW4mEd4YyHiuAIpCjvAPSt9XUAT9XB5N2Ywl6l3UrJRYrALFTy4BvkhBVGp5lTGfTu_A3_fYS_m3mk7CLl9qpx-MTeZTfOrpZkcXtc-DqXyo705NlDhvI3xlpQrwyQxdOw2oKpeYAAui8UuDdxc2wxpLtiM-3qGixyn5oitEwDCB2ptydFYr_c_HENqLYbxhXbqq641HoEFh1BRZDNCXxLFGTSNwlCFz20PTSte1gid3EtGbysUB0vpS0gjiHS3zO_408PEtAL9pIjrEwESXUvLd_q5hmM5n0QlrQJmdwf4XGV2fitaRMbbB5ZjxZvOSpBBOr0ZIpRTQOBsN4lS0udRU-9irbKvHUzh7kSqQOwugFAtxpJBJIL1C-a89Dw_IadN41c2vadtop_hT5chCFAxiaM8opE-7Zqd5cawtCNdVlRc8RhvXHhzko6R6qEgom5B0RhEt9cmT3xi8g6RijkvTAFsqlBipzKMSoGEAh4L5Iu9Tsm4yb_lwr5aW-7f6vDARI-vDvIeWKI-FmpBq7datQMJGR6ZNTodmBWV9RyAV_pPBcuGvRwL-n73EPZMCRZHFQ2amRTdyBgpFcrbsM7s-PJyXn6H9C4KSkjYgODqn7WdAtECYm-Wqz8yewXHjZSJ5aBRWcd2CAdTqQAHRB5cyUsz0kaz9aHCnM_j71KsyHNzdv5Wlt_jc93lXTmLuIe1nsmbtycAaBK50OCdW9goIHdFNTKuZBc6kzjq8hzkCOmSfojUq7SnF2k-F_wd9M-XlI1QrEI7s5N4aJc64XhegXKpsxHL5sGOifuwPSqMWICQcraCAahZQ_k7wU-76upJ6MEyxYEerkk7K8tAMPZYucpZ6lxp36tziu71dl-pL6ms5dcWYb07XQY5UQmPx_u6KT9X2cPkvTnzh-0h18Y5BcGuSuD_Dfw0K32IxDRm-T_DxPd5h8VFY9QW_9hfNjZZOByXk7kRpo-VIvdfBdFJtl5xcRrB_FrKgDdWVD2lYNRlQ79-fnmw7Q7P-gOJq4doMKodStv5kHvWaQgiAqFYEKzLZmZ6cxcHT6NFeTR8DXLsjP6anQY2-dwoHJtM4Zlc5rf1PQcFhANYdpF_3g1gVxcEws9pDB-lUrU69c_HuNw48LcoJ5Wm6hfIVPKItrwSGXd3Wri9h6P6VXYZSll8XGa72A5evzi7Ozbs6NvGu2TSLB3-_rk6PKIQvLrt1-dnr2Qx8HZ3d3P4i7pACsOGKqgO1Gsif6-h6KrE7yaqbeyRZBL4XdMlb1jUz5Qo7naYwKgpA73qtxvk06Oq6lNIKaiNU_SqHd030ydYezjC_mSG-7w31WlXboAIl1WugeiuCtLS9yy4Ea76_dFPtkFoA5tV_7LHF2aGWqsqynxovPxbl0615QW7Q_f_4uu_bBva_kR-aOt6PIDxSUKbG2ebSMnBo5u0LRz0QwrC1K2lC1myHkhVoGQVainZraaqfnkPEXU-YSWnU_eIxeeTz5TCFKWCMvoYKVPbHNafYn0NavAYtKQlkb9axMCNpf88VjyztCkK-_o2g-NRubvM6spNkiPLl0_IzGbSxFCbekHuodhJVVmvqRNzeQOW12mpuVxOvGkSeQaB7d8MkP7ThcQyc66uUnU8SofsF27FkSrlt7TBcKttoUcsO-TA3fVUCJjuhX4Qs7E2tuOQrPi34EF0wXfxuL3UhE1v9JNKJPzBajE8k1LKiFd6oqhW2HN4xQGCRpEjeenb2SlnJvtwGGlKYuRy2bBoPqgXaRAwIq8O5wfFtr_OAztryg2XY8dN0ZwuZ-TyrvhPbR-f_faiRFfQIJjFPmN1Y-clF-TgRI0sx-1x_lUsMU83yNtbgC5dBVVjmGQKdEJBwGUzgM5OWtbuYIJcbbRzSHJ_TI--UunxTDklNzQbCmx41StGF2_IrzJwSPlkbdf7lqMLvTp7qYSb4CPY4JvW-zt3YmkOkFiFJKHw2nONum614Z7sLGV8ZVxtg7qK7msqWuQU2X_QScZ6YJoJrdd7pN2_HQX6-jPfwB4wKgK\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls,Can't receive calls,My phone calls aren't working,Having trouble with calls,Calls not connecting,No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n\n"
+           },
+           "name": "search_tutorials",
+           "agent": "Tech Support",
+           "snippets": [
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlVtrGzEQhf_K1C9pIXHovfjBUELT9CGlNIFS6hLk3XFWsTwSktauCf3vPdKubwlOUzAuBu_qstKcb45Gtx2nYhU6Pfpx2ykqqwvOjZ-H1AmRXTsieDxHV8Wq1HKNVqeDZuRfMb2fVFyM6b32zihhOrclkw4Uay9ckh2NegPZHJ1pY6jUQQ0Nk5I5fdNHp5pGtRRRWwkU6qIiFdr-QhmDfbtpU7GxibHzGW89GshALitsFzhGTEo7G1uoiK1V7NGZnTD16aIZDXjdDAXhdTtZbz1cSk5t63Ioi-ZMeWm0S20MOlJQVywtkJEygdE7UfOr0lu31lXZ2VW0eZ3fh9TQfPE3mq1wK8IZCRBusKCZlYOIfz8mK6RoxgpvnmoJMWNdfdsdyImVkfYTmtv6wAN5EWusM19MSqykpEpNMUYlFyyRgr4WZTah7x3Uy-2gLuGvpL3hctJwAacPkvVv4tKStHvSXyorfLC0C2xqaaLGTC4N5PmB6pC-UfeysCsHOrcWQJ9yTOsdG5LutaE579dooRTW3vPyantevvIR7MO-Ad6E7lQI8GpJx3Rq_TXH7DfPNxaJidUiW8IxOTrVCxqqco08EiNwpMHKsO0QfMd3MsxTFtKjtlc5x8qHlcH34OPo6224Xj-ECwfWx3V7Qv-ZNSWVdtbQCbrkTIw1mp6m1tQw1bCOEWie4tjf1CHmacfRunbgMOEANiyFbyaodubZYVoPJGfacV66UZ1OgbMzTEM9bEIpeYrrYNfYWkaPdNmbh7BN7JRbG2kJDIRJjyixdPHpPBWCG2R-c0ZWhlG4BmaEaJZQp4JIDtFA_mPPer7BrCQvcjKb0UWuOliyySEKS6UiKklevJoHTDDLrXdxYv8N5dsHHYgD-bk5e8s6BYB5IJe0zK09natCha2pYuPAN1gzXd05Ux3nKIOhBoYR3FnZGJyNOyqfH1nYA2afLr2SMEqu9dSoaGtiv20unnfFdWmVRayFJAXcfeWdahX2n6Z329P0HXd3ZjxxhhOdXBlSYE_-zx2dfn8AhjVm9A==\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working., I can't make calls over Wi-Fi., Wi-Fi calls are dropping., My phone won't use Wi-Fi for calls., I have no signal, but Wi-Fi calling isn't kicking in., Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n",
+             "title": "Troubleshooting why Wi-Fi calling isn't working",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/88fc384c3aa342cda1e1958fe93693097f0ae40a"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/155842-wi-fi-calling-isn-t-working",
+             "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1v3LgR_ivsfmhaYG2gb3dA-sm1k9atExtZ5w5FXQRciVrxLIk6kvJmERS4H9Ev_Xv3S_rMkJKo9a5jO3HvDj0YhveFHHJmnnnmRf4wa6Uv3ey5-MeHWVYanSl-88-5mDmv2vhNgz-_wUelkrluVng3m-GtV-89vT4txMZ0z6wSXSOXlRLeiM4p8bU-eKnFsawqbBKmoVVW6IvSNGoufKmwQ9KvKNRa8Hm0RGSyEV5esxxvTQeRrjTG0xahnevU4VXztfalxrpSO7HqdA6JdImqEpWSthGlWWP_86tmobzo2ull5kI3WdWRMqK15kbzK75eJq3VygrcQea5Vc716hTGClUru1JNthFO2Rsy11VzaVarqtf2yDnt_FVzXKrsmrfo8wXOz6WntW-U89L61BJYa5pGZZ7OyXVRwCyNj-Ia5dfGXvMdICCYoFDSd1axNBVlxYW4lvfQxZF_GuMTd3bLwaP03rRem4bfzl7Dkc_FImy9ZawZLV_DpsH1TVdV-CDDl-9UE_FQyMrBA7Nabt7l1rTJR3DEO2_42H_NRQDTb6dg2ntyArJLAoQUtanJOjBHxhb2pextlUWgARCKcZgPmMsV-epQ_D0gBDczYi2jHNMU2tZB0hYE8t7Noq0AiAAa5aa3JDCWik-KB2-DrQemvlbVRiwVYa5uPS6I86EOzuKDW2Vr2ZB-EXqHIsQWhcQzL3IT8L4O2E9A9MzhcpBTyAw2j6YxuD0CJkhoVDhul4yoMITILDMdzu9hJH4FE2qP5WrptFcCgK7NUkNH2ba_PiT0B2DimKkbGLdz4XTdQulomCNtyZJKvDK52qIEtrf0XsE0dNM6eLzl70iqWJd0cBbCJagjp4Fy-AjcX3agC1MUkwh-JOi97aaY_zDz2leKEHyUeX0jGegTS82mZLuHZF8CMr3TiAQWvYfgB1g5swYGIoPAiF624qht3ZY1OPz2iF_cEsA--SQJ0yi5v6RL7AXOXAVWZ11vJZJLQnBEjYNRspLOPX_9wENeMCinm2av8eq5uGquGsReH6hzUHlVUUopCbYwt1LEBw4OzxhQYyiPmeNQvLiVLziVcAQm6aUyGfIDx2kMV0RJRhGRZBwOAXODE9gezGacK0N2QZgierBlI7yuodWd6hMT3lAsIToVxxIUYxT-YsuG9NPz9u-mvE2Rwx7ZDp7Uzhb32bNuLqSbMECtV6UngvR2Qxti5pWgH3ndBz6sLQqKBomol3YJy6iq6io5ZkFyDK6JAyM8orC7EHkvruC0TsK2Mvtny5EJX_TWDZeWbDEy4efgCwrP42i1vfg_fnF29vbs6A2YmLMWqQOkDB-fHF0eUaC-Ov_T6dmL8DZXbVB4O_fO7kkeKT4-nTOCnJQjXr7cq-85laQiOp3uz2EaY51sEKqzqY50ViZbiZyovUZ8m2KSVL__7j9uwKWxD7DJ40L099MQ3VmHpqe8oizrUE5OAhF6265h-NGpleQcD-5xFH1QEdLm4puOEn8DVZnTpEcF4VCgUe3dWnUDPox1dQjYzo14ToqnCbuXoIQlGdx1bWusD1VcuBakowQL_o0X_cI9Jox3lOFPEcETtqCsSLwU9XQb3LFOPfKwmO7jeVfu_7NqlJXVA8NnYQq_pn7sLd_pgbuPOm9qVDdZ3P6Q4uM0hBEhNG5GumSiD0xFgb3WrRoPgRE34jRYc1fqT6KaGsUQyQEHfXMwnwB-rakvmIjPzbqpDLJI9FHqQbovXBHL_j6gKWwm1SlDm-pxaVfcCZAIJPtrlQ-lPfchqRAu0reOXnYeC5Hhe1YFi6Nvlax8eqf5UGlPdDnpBcbM-CTU84et6gCZ34ZAG7rrGGsT_mk6vuLupcy7papaEEt1o7i84RGA62cO6j3aJo0KiZsOcvaUYMQp0ZIUK4u2WVzN0Ow5f0DKXM0m4wUmO5WVjf62C91-bYjfhtNgWu6OKElsJbdHdB2wjtzX79-HjGKrcV8uujBrmGnLuFCDEHnvooKaPe6WtmY5LReyJKo0VUDLghIxYOtN8wAmuLhTEH-hNKfpr0zV1cMX8IrmABCs51jtxOyNcEGp6PaSRF9K82QAQEGxsCUIZaZB2u8z4rFpgJ0KRVSs-cON-6_DZp2FAsF-LNWfWBn2xfrFiJYFUMHMH1keAGGBpQp5rxqcIJKqZT7M01gxdPdkXnbd2FfopjBx1kENOFLL-WJgp1LecBOO8jOjlt0pP8wz-pGCbtouUtiwbqkQQOo2xQ56PQkDfbFV_IyDtf2hluYhYorWoGbkKSYNhMZSsq_h-lGni7MmVCS4JJiW9tzmH_H9d_-mpk4KEI9acw8HAzCGkeQ6q_2mn-g5HocuKUHQzkxZL5HqqQxCPaa-7SAhZ2aaHgH96GrzMKJ8L8lmKKwWQ9W7V_u5ALiYfql1TFZxR6oZvkDEmme1uwg3sGNIbLvGToS92MuGBnZXDcidLBF9jygfRqrJsJMgwzNjJh-5gl3mIf9SZRoKydNiOxmHw6T46uL1Vij4pC1lRwf5qoaxpdXVZp4owgt0TRlX9eHTG0E9sv6MI8_dw9sn7Cb5wGD-h7J_ZJddvWSYSOyjpbcuHXo11EBRUIe7LGnkB28EZiikIz5l1E2Gsb2NxiHARxhkT0e4f1yUXHjIc0WRGGwsRvfLpPby7k5XVURJclAIu74xurmjfqUjSuNdi99QDxEpD-RR6Vp7DtYwL4Z5wPLSbub9QIppGYflQ4fwVz7xo_YjFU8pPXAmWypHeicI2j11vUvq_gyFeAJ90VTnBgGooBjaTDkO12rZyNXk9BEKz3cYD9nQIMP5cNrraO0DER2QdgSecn6N4GaFe8dwy7r9-ICvatWBzHMauFFjbOehPNdJSgyGp8H54CZKs7YOpMr8Bca6sDQRHoYVcSB4AH7IO-oErIz9I10l5Ixwl3E8MU1OyzhpD7T3Ur-n9tmKN8ang-d-PHnVUJdwQGDAofwQIzXL-CBlV69UreXGBR41vStClaLHgQcztPb8eEJY2awCXf7YPUN3_IF9Q1f4IbzzBFXZl9Oq7CNPLfuzPpIjg57K0uiJZk3adA5lTOdUPq6hJ24pY_Q86LhlQalD9VT_jDUUMSgV-O8R_vZyDrlBoJJ3iTomPuGGlzZNtlN6wIQ-rkyXBwjyY4NY86X371EJuQxMvOu54ZwmXZtg8JwcS66b49glPQpP0D9P_XubnINanpvxgwGAj5-Ef_7WdMvTAcc8Nx0LDajQE8UiActjZ2aPm5LdfsR1iahxNBOmQGZc64c-N6M8y1v3VgAvGORHOJm6Tn48jOMH2xyI49IYFypZHYFl-TK0LvJnPzWC8rn0MqDiqEUci9MTgtVYDatkElUgAxu7GUNh9gTpfXf6DvYkte-lKl65FC4hwKlCd1vjmthLaztol6tCdpV36f-FsN3oRTDShaQncIE6EOd9z3OtNkQP4a7bCN2d02JnRK0eCjnWJUyhhoKmH2Qld_4j5bREXR697ybGvdrhnieKC28yqlqcvhosqvZkXTksRK6kxpA6xTwPpDXJwPxINjcwNhxJHs9UFSv4_ukcPflHiYrimpI_VcBrFk7Bk26gdUxqHgpMuoDD_iFNMEJkpQErf1ObpYGPxIlmYKEGJgXpH4Ji2-ZQOecikDT3PiwthcpYW1xHaUiP-SBv8PVfsH2N8oGctfAbeO8ghLEb_pfDYUcFH48LHS0cRZgavVQYUJ1J7PIsgwIxCklXxAFQdGaf7SveN0_xEke9lEoQ7pTaZdWWcql4GAxj0zhJFqHNUoLnocD0qndiBEEchdVjzwtx9Bgc21MzJXcMuW4AgSwKwn6pARgewY2RctaPF34puM7KNlvmG-YPIZTDktRP-1FOZPLT4Y7xtj929qCb_tT5g3T4mUF-ZpD7Msj_Ag_jaZ-AiETI_x8mRuWfFBWfsTWmn_8C2m-7FA==\nsummary: This guide provides troubleshooting steps for when Wi-Fi Calling is not working on an iPhone.\nsymptoms: [Wi-Fi Calling isn't working, Can't make calls over Wi-Fi, My phone won't use Wi-Fi for calls, Wi-Fi calls are failing, Can't enable Wi-Fi Calling]\ntitle: Wi-Fi Calling isn't working\ntutorial_id: 155842-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/155842-wi-fi-calling-isn-t-working\n",
+             "title": "Wi-Fi Calling isn't working",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/86ca692559206dba5129774f536f863132fa1254"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls",
+             "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1vHLcR_ivsfagd4HxA2qYtnE-KZDtCZVuIFBtFrzB4u7w7Vnvkdsm98zUokB_RL_17-SV9Zob7Kp0sKVHRoIET2LvHJYczzzzzQn43KXVch8lz9ZfvJtna28zww1-nahKiKdMvDn99jldro3PrVniaTPAYzcdI_z5dqr2vn1RG1U4vCqOiVxt9ZVS59s6oTBdFUN7RoErZc3o5VXFt8IGm_9XS7BQvR0Mw3qlIn2Oa3ERTbSxmscv0fQg1noLa2biWV7nZQnDlq967TFeVNZV6ql1O38Y1PsF_WkWzKX2lq70qKw9pN_ShViXW0c64qIKNtY5WBKZdGZf52kEQ7P2z2dy9xyrWyZSr2ubYDY0sClUYXTm19jvI_nzujtcmuxJ5zEcbIr5XmXfOZDT93H0bjDqyVVlgYfXa57zl-aQywcT5JG2kN17mW0Je-_ZC1WWuowlz940JUVexr19-adIrZ-LOV1cKL0gEfHGBnzT0ttR1EZWrNwuoiubl8Se1Lp5dnL6mD-pSPYX6dFkWNiPjfjZ3Ly10qvPcklS6UKEuodFIwuMtpA8yT9IvQcX52ENWvWjBRc--pIn4cfIGmHqueorLTFHUha7ISu_ts5cW9llh1Ql9uYO6BZCuLgq8IKx9MC6hdKmLAONMNnr_Ia982XsFG32IniX451QJxH8zhHhfiNYIfdzLAAC5E1JkA5h1rIE3fKcYKXCNEgh7VtnVOmK6ykHhftnH70y9MniLDezZO9TGA3sLXQU86ciuktsAsOxNLiMWMCjmYQlaCb9MrqLWemtUASxCc84n0aYyGTSCr_nLyugAMXfrfYv3jxDVAvWEV_a3QP5MTz2PhiN0jp-WNzmBgM3U-gQU7mmthhm2Ft7O-26VVRm3guMmTQW9YWLQM_WC-ITWFcvTuvRE0q9NUfI2oZBsSDWYhz5PFFHYjSXBRAutpTK_hbJXZvYAeF6CPAZ--whg_O0QjPejigE7xydBlT4EywYg6_dZk3VJSNFqBaXF3izs0GAPXS32neKi35meN-osI4cvvXVxqhY1zw6bWpgeTP4kSijQPQsBOX9ueB6aDDBTtia7CmvwOCw92O5U7bRlAgUVVf6j3YD7ir36_AuwFETOw1QR1ceajTDSlV-CwlbaugFoRchRzNIs4lTYPe5LS497tTHahRS0OIw0wYMxRrBd6yrfkZP2tYuhjT4hVPQz1ewcr5e22sg6pF8iE3a4ASvw2GvBVDN92-US4iBiFT7jgDV7MNWOYspd8Byr-pNw_m4SbSwMwfDyZsM4thrsMxmmHAdSjZeV37C2v_YgiZBVxjjYSpfqIgW3kQ7Ynw5MdonPsO9Q2FyocCib4JKA8fbNcNbJG_zruZq7DsjMcgS-bpLNcINYofL1SsBy7F2sfKGODeUVM5rpLYFLJQPRd4wM2SJ7qdgbuCjFBjKGIFHqhS3gHeDpJqak_OeH7_8d2vjfxPcUbya3Kgcbe7IlYt-UhWFiJ2omA_1qpGH607DW724KoWNwjVaBD-60i60HhrpxIsllyImq2jF6SIiCJokK9B2IpLBjTM6O1YabZr5MIjSCnzGDsKgd0r-kxiZVbNKjRk76zjqEcjDWAxxrkJWJyn-yMNHzq-OGN0jLnOyKyPQq7CHjpq_3O3rYTjLcxqemBEMP5VJAIJKF46Rk5Z7uduGXkUnyW5bpnl8f1dGD922WPr-Ps5-KsxAO08cUOMhowh9EBDtbmm4R5v1T0eYnWOC9BAEAVXCAkoGCSj4d4HhH4UYPps_9zhVe5y3mehYkeWGKtXEHQsog28oQf1bYt4RBRIQrk8-UBDvxh_4kVFqNl6bYTUG2LdU40m510XMElmmatjdS1UkzIY2FER6FYL4YEgxlYpU4WptAiLb7S73WrmYRbx7a5ZPBF4kcmqi9tXHf5MA3pMfQMKVXTe40nyCmh_iMtoGsDBRfQ09h7b3Ef5Otnf076ldy1o0Hi3VTd2Vma4CGqB9EPoeqv0eI7eeUEo6Vet_Qfpni57hRUHJBSVOtfSEouaCADbjGaynPbYA7v3Ui_sFYDsLvfFFv2h9gE8vAV7zPlhWb2Aw3QYoc7pYiACbIKUYTIf3ziEZNgBsmB63Ezc_yMdeWnI9-ws9OUOWIb0me45GrcwaPlIRfUUovlSAVpwe3kVKvNieZts0a3liqA6TZsTHVCnCG57ilhIxgqGeAkEKh-rQfiVWpQ8g44TKxrRqdEXazrqwTkNtxC7P0oxSBqbXd16Mwz--HzHObh_XW4mEd4YyHiuAIpCjvAPSt9XUAT9XB5N2Ywl6l3UrJRYrALFTy4BvkhBVGp5lTGfTu_A3_fYS_m3mk7CLl9qpx-MTeZTfOrpZkcXtc-DqXyo705NlDhvI3xlpQrwyQxdOw2oKpeYAAui8UuDdxc2wxpLtiM-3qGixyn5oitEwDCB2ptydFYr_c_HENqLYbxhXbqq641HoEFh1BRZDNCXxLFGTSNwlCFz20PTSte1gid3EtGbysUB0vpS0gjiHS3zO_408PEtAL9pIjrEwESXUvLd_q5hmM5n0QlrQJmdwf4XGV2fitaRMbbB5ZjxZvOSpBBOr0ZIpRTQOBsN4lS0udRU-9irbKvHUzh7kSqQOwugFAtxpJBJIL1C-a89Dw_IadN41c2vadtop_hT5chCFAxiaM8opE-7Zqd5cawtCNdVlRc8RhvXHhzko6R6qEgom5B0RhEt9cmT3xi8g6RijkvTAFsqlBipzKMSoGEAh4L5Iu9Tsm4yb_lwr5aW-7f6vDARI-vDvIeWKI-FmpBq7datQMJGR6ZNTodmBWV9RyAV_pPBcuGvRwL-n73EPZMCRZHFQ2amRTdyBgpFcrbsM7s-PJyXn6H9C4KSkjYgODqn7WdAtECYm-Wqz8yewXHjZSJ5aBRWcd2CAdTqQAHRB5cyUsz0kaz9aHCnM_j71KsyHNzdv5Wlt_jc93lXTmLuIe1nsmbtycAaBK50OCdW9goIHdFNTKuZBc6kzjq8hzkCOmSfojUq7SnF2k-F_wd9M-XlI1QrEI7s5N4aJc64XhegXKpsxHL5sGOifuwPSqMWICQcraCAahZQ_k7wU-76upJ6MEyxYEerkk7K8tAMPZYucpZ6lxp36tziu71dl-pL6ms5dcWYb07XQY5UQmPx_u6KT9X2cPkvTnzh-0h18Y5BcGuSuD_Dfw0K32IxDRm-T_DxPd5h8VFY9QW_9hfNjZZOByXk7kRpo-VIvdfBdFJtl5xcRrB_FrKgDdWVD2lYNRlQ79-fnmw7Q7P-gOJq4doMKodStv5kHvWaQgiAqFYEKzLZmZ6cxcHT6NFeTR8DXLsjP6anQY2-dwoHJtM4Zlc5rf1PQcFhANYdpF_3g1gVxcEws9pDB-lUrU69c_HuNw48LcoJ5Wm6hfIVPKItrwSGXd3Wri9h6P6VXYZSll8XGa72A5evzi7Ozbs6NvGu2TSLB3-_rk6PKIQvLrt1-dnr2Qx8HZ3d3P4i7pACsOGKqgO1Gsif6-h6KrE7yaqbeyRZBL4XdMlb1jUz5Qo7naYwKgpA73qtxvk06Oq6lNIKaiNU_SqHd030ydYezjC_mSG-7w31WlXboAIl1WugeiuCtLS9yy4Ea76_dFPtkFoA5tV_7LHF2aGWqsqynxovPxbl0615QW7Q_f_4uu_bBva_kR-aOt6PIDxSUKbG2ebSMnBo5u0LRz0QwrC1K2lC1myHkhVoGQVainZraaqfnkPEXU-YSWnU_eIxeeTz5TCFKWCMvoYKVPbHNafYn0NavAYtKQlkb9axMCNpf88VjyztCkK-_o2g-NRubvM6spNkiPLl0_IzGbSxFCbekHuodhJVVmvqRNzeQOW12mpuVxOvGkSeQaB7d8MkP7ThcQyc66uUnU8SofsF27FkSrlt7TBcKttoUcsO-TA3fVUCJjuhX4Qs7E2tuOQrPi34EF0wXfxuL3UhE1v9JNKJPzBajE8k1LKiFd6oqhW2HN4xQGCRpEjeenb2SlnJvtwGGlKYuRy2bBoPqgXaRAwIq8O5wfFtr_OAztryg2XY8dN0ZwuZ-TyrvhPbR-f_faiRFfQIJjFPmN1Y-clF-TgRI0sx-1x_lUsMU83yNtbgC5dBVVjmGQKdEJBwGUzgM5OWtbuYIJcbbRzSHJ_TI--UunxTDklNzQbCmx41StGF2_IrzJwSPlkbdf7lqMLvTp7qYSb4CPY4JvW-zt3YmkOkFiFJKHw2nONum614Z7sLGV8ZVxtg7qK7msqWuQU2X_QScZ6YJoJrdd7pN2_HQX6-jPfwB4wKgK\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls, Can't receive calls, My phone calls aren't working, Having trouble with calls, Calls not connecting, No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n",
+             "title": "Can't make or receive calls",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/fb087cc711a7bb42d0a2c9b423de12b315d091fd"
+            }
+           ]
+          },
+          "childSpans": [
+           {
+            "name": "Search with original query",
+            "startTime": "2026-10-21T03:54:35.814Z",
+            "endTime": "2026-10-21T03:54:36.123Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Search with rewritten query",
+            "startTime": "2026-10-21T03:54:35.814Z",
+            "endTime": "2026-10-21T03:54:36.148Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Summarization",
+            "attributes": {
+             "summarization model display name": "disable_summarizer",
+             "disabled": true
+            }
+           },
+           {
+            "name": "Query rewrite",
+            "attributes": {
+             "rewriter model display name": "rewrite-by-agent (Default)"
+            }
+           }
+          ],
+          "duration": "0.463725s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:36.263347Z",
+          "endTime": "2026-10-21T03:54:36.278656Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 7.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.015309s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:36.280441Z",
+          "endTime": "2026-10-21T03:54:37.004745Z",
+          "attributes": {
+           "input token count": 6453.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 723.0,
+           "[debug] prefill time (ms)": 231.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 29.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.724304s"
+         }
+        ],
+        "duration": "3.988561s"
+       }
+      },
+      "citations": {
+       "citedChunks": [
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_tbs_wifi_calling_issues%2Dtroubleshooting%2Dwhy%2Dwi%2Dfi%2Dcalling%2Disn%2Dt%2Dworking%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_tbs_wifi_calling_issues%2Dtroubleshooting%2Dwhy%2Dwi%2Dfi%2Dcalling%2Disn%2Dt%2Dworking",
+         "title": "Troubleshooting why Wi-Fi calling isn't working",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlVtrGzEQhf_K1C9pIXHovfjBUELT9CGlNIFS6hLk3XFWsTwSktauCf3vPdKubwlOUzAuBu_qstKcb45Gtx2nYhU6Pfpx2ykqqwvOjZ-H1AmRXTsieDxHV8Wq1HKNVqeDZuRfMb2fVFyM6b32zihhOrclkw4Uay9ckh2NegPZHJ1pY6jUQQ0Nk5I5fdNHp5pGtRRRWwkU6qIiFdr-QhmDfbtpU7GxibHzGW89GshALitsFzhGTEo7G1uoiK1V7NGZnTD16aIZDXjdDAXhdTtZbz1cSk5t63Ioi-ZMeWm0S20MOlJQVywtkJEygdE7UfOr0lu31lXZ2VW0eZ3fh9TQfPE3mq1wK8IZCRBusKCZlYOIfz8mK6RoxgpvnmoJMWNdfdsdyImVkfYTmtv6wAN5EWusM19MSqykpEpNMUYlFyyRgr4WZTah7x3Uy-2gLuGvpL3hctJwAacPkvVv4tKStHvSXyorfLC0C2xqaaLGTC4N5PmB6pC-UfeysCsHOrcWQJ9yTOsdG5LutaE579dooRTW3vPyantevvIR7MO-Ad6E7lQI8GpJx3Rq_TXH7DfPNxaJidUiW8IxOTrVCxqqco08EiNwpMHKsO0QfMd3MsxTFtKjtlc5x8qHlcH34OPo6224Xj-ECwfWx3V7Qv-ZNSWVdtbQCbrkTIw1mp6m1tQw1bCOEWie4tjf1CHmacfRunbgMOEANiyFbyaodubZYVoPJGfacV66UZ1OgbMzTEM9bEIpeYrrYNfYWkaPdNmbh7BN7JRbG2kJDIRJjyixdPHpPBWCG2R-c0ZWhlG4BmaEaJZQp4JIDtFA_mPPer7BrCQvcjKb0UWuOliyySEKS6UiKklevJoHTDDLrXdxYv8N5dsHHYgD-bk5e8s6BYB5IJe0zK09natCha2pYuPAN1gzXd05Ux3nKIOhBoYR3FnZGJyNOyqfH1nYA2afLr2SMEqu9dSoaGtiv20unnfFdWmVRayFJAXcfeWdahX2n6Z329P0HXd3ZjxxhhOdXBlSYE_-zx2dfn8AhjVm9A==\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working., I can't make calls over Wi-Fi., Wi-Fi calls are dropping., My phone won't use Wi-Fi for calls., I have no signal, but Wi-Fi calling isn't kicking in., Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20iOS%20New,155842%2Dwi%2Dfi%2Dcalling%2Disn%2Dt%2Dworking%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2F155842%2Dwi%2Dfi%2Dcalling%2Disn%2Dt%2Dworking",
+         "title": "Wi-Fi Calling isn't working",
+         "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1v3LgR_ivsfmhaYG2gb3dA-sm1k9atExtZ5w5FXQRciVrxLIk6kvJmERS4H9Ev_Xv3S_rMkJKo9a5jO3HvDj0YhveFHHJmnnnmRf4wa6Uv3ey5-MeHWVYanSl-88-5mDmv2vhNgz-_wUelkrluVng3m-GtV-89vT4txMZ0z6wSXSOXlRLeiM4p8bU-eKnFsawqbBKmoVVW6IvSNGoufKmwQ9KvKNRa8Hm0RGSyEV5esxxvTQeRrjTG0xahnevU4VXztfalxrpSO7HqdA6JdImqEpWSthGlWWP_86tmobzo2ull5kI3WdWRMqK15kbzK75eJq3VygrcQea5Vc716hTGClUru1JNthFO2Rsy11VzaVarqtf2yDnt_FVzXKrsmrfo8wXOz6WntW-U89L61BJYa5pGZZ7OyXVRwCyNj-Ia5dfGXvMdICCYoFDSd1axNBVlxYW4lvfQxZF_GuMTd3bLwaP03rRem4bfzl7Dkc_FImy9ZawZLV_DpsH1TVdV-CDDl-9UE_FQyMrBA7Nabt7l1rTJR3DEO2_42H_NRQDTb6dg2ntyArJLAoQUtanJOjBHxhb2pextlUWgARCKcZgPmMsV-epQ_D0gBDczYi2jHNMU2tZB0hYE8t7Noq0AiAAa5aa3JDCWik-KB2-DrQemvlbVRiwVYa5uPS6I86EOzuKDW2Vr2ZB-EXqHIsQWhcQzL3IT8L4O2E9A9MzhcpBTyAw2j6YxuD0CJkhoVDhul4yoMITILDMdzu9hJH4FE2qP5WrptFcCgK7NUkNH2ba_PiT0B2DimKkbGLdz4XTdQulomCNtyZJKvDK52qIEtrf0XsE0dNM6eLzl70iqWJd0cBbCJagjp4Fy-AjcX3agC1MUkwh-JOi97aaY_zDz2leKEHyUeX0jGegTS82mZLuHZF8CMr3TiAQWvYfgB1g5swYGIoPAiF624qht3ZY1OPz2iF_cEsA--SQJ0yi5v6RL7AXOXAVWZ11vJZJLQnBEjYNRspLOPX_9wENeMCinm2av8eq5uGquGsReH6hzUHlVUUopCbYwt1LEBw4OzxhQYyiPmeNQvLiVLziVcAQm6aUyGfIDx2kMV0RJRhGRZBwOAXODE9gezGacK0N2QZgierBlI7yuodWd6hMT3lAsIToVxxIUYxT-YsuG9NPz9u-mvE2Rwx7ZDp7Uzhb32bNuLqSbMECtV6UngvR2Qxti5pWgH3ndBz6sLQqKBomol3YJy6iq6io5ZkFyDK6JAyM8orC7EHkvruC0TsK2Mvtny5EJX_TWDZeWbDEy4efgCwrP42i1vfg_fnF29vbs6A2YmLMWqQOkDB-fHF0eUaC-Ov_T6dmL8DZXbVB4O_fO7kkeKT4-nTOCnJQjXr7cq-85laQiOp3uz2EaY51sEKqzqY50ViZbiZyovUZ8m2KSVL__7j9uwKWxD7DJ40L099MQ3VmHpqe8oizrUE5OAhF6265h-NGpleQcD-5xFH1QEdLm4puOEn8DVZnTpEcF4VCgUe3dWnUDPox1dQjYzo14ToqnCbuXoIQlGdx1bWusD1VcuBakowQL_o0X_cI9Jox3lOFPEcETtqCsSLwU9XQb3LFOPfKwmO7jeVfu_7NqlJXVA8NnYQq_pn7sLd_pgbuPOm9qVDdZ3P6Q4uM0hBEhNG5GumSiD0xFgb3WrRoPgRE34jRYc1fqT6KaGsUQyQEHfXMwnwB-rakvmIjPzbqpDLJI9FHqQbovXBHL_j6gKWwm1SlDm-pxaVfcCZAIJPtrlQ-lPfchqRAu0reOXnYeC5Hhe1YFi6Nvlax8eqf5UGlPdDnpBcbM-CTU84et6gCZ34ZAG7rrGGsT_mk6vuLupcy7papaEEt1o7i84RGA62cO6j3aJo0KiZsOcvaUYMQp0ZIUK4u2WVzN0Ow5f0DKXM0m4wUmO5WVjf62C91-bYjfhtNgWu6OKElsJbdHdB2wjtzX79-HjGKrcV8uujBrmGnLuFCDEHnvooKaPe6WtmY5LReyJKo0VUDLghIxYOtN8wAmuLhTEH-hNKfpr0zV1cMX8IrmABCs51jtxOyNcEGp6PaSRF9K82QAQEGxsCUIZaZB2u8z4rFpgJ0KRVSs-cON-6_DZp2FAsF-LNWfWBn2xfrFiJYFUMHMH1keAGGBpQp5rxqcIJKqZT7M01gxdPdkXnbd2FfopjBx1kENOFLL-WJgp1LecBOO8jOjlt0pP8wz-pGCbtouUtiwbqkQQOo2xQ56PQkDfbFV_IyDtf2hluYhYorWoGbkKSYNhMZSsq_h-lGni7MmVCS4JJiW9tzmH_H9d_-mpk4KEI9acw8HAzCGkeQ6q_2mn-g5HocuKUHQzkxZL5HqqQxCPaa-7SAhZ2aaHgH96GrzMKJ8L8lmKKwWQ9W7V_u5ALiYfql1TFZxR6oZvkDEmme1uwg3sGNIbLvGToS92MuGBnZXDcidLBF9jygfRqrJsJMgwzNjJh-5gl3mIf9SZRoKydNiOxmHw6T46uL1Vij4pC1lRwf5qoaxpdXVZp4owgt0TRlX9eHTG0E9sv6MI8_dw9sn7Cb5wGD-h7J_ZJddvWSYSOyjpbcuHXo11EBRUIe7LGnkB28EZiikIz5l1E2Gsb2NxiHARxhkT0e4f1yUXHjIc0WRGGwsRvfLpPby7k5XVURJclAIu74xurmjfqUjSuNdi99QDxEpD-RR6Vp7DtYwL4Z5wPLSbub9QIppGYflQ4fwVz7xo_YjFU8pPXAmWypHeicI2j11vUvq_gyFeAJ90VTnBgGooBjaTDkO12rZyNXk9BEKz3cYD9nQIMP5cNrraO0DER2QdgSecn6N4GaFe8dwy7r9-ICvatWBzHMauFFjbOehPNdJSgyGp8H54CZKs7YOpMr8Bca6sDQRHoYVcSB4AH7IO-oErIz9I10l5Ixwl3E8MU1OyzhpD7T3Ur-n9tmKN8ang-d-PHnVUJdwQGDAofwQIzXL-CBlV69UreXGBR41vStClaLHgQcztPb8eEJY2awCXf7YPUN3_IF9Q1f4IbzzBFXZl9Oq7CNPLfuzPpIjg57K0uiJZk3adA5lTOdUPq6hJ24pY_Q86LhlQalD9VT_jDUUMSgV-O8R_vZyDrlBoJJ3iTomPuGGlzZNtlN6wIQ-rkyXBwjyY4NY86X371EJuQxMvOu54ZwmXZtg8JwcS66b49glPQpP0D9P_XubnINanpvxgwGAj5-Ef_7WdMvTAcc8Nx0LDajQE8UiActjZ2aPm5LdfsR1iahxNBOmQGZc64c-N6M8y1v3VgAvGORHOJm6Tn48jOMH2xyI49IYFypZHYFl-TK0LvJnPzWC8rn0MqDiqEUci9MTgtVYDatkElUgAxu7GUNh9gTpfXf6DvYkte-lKl65FC4hwKlCd1vjmthLaztol6tCdpV36f-FsN3oRTDShaQncIE6EOd9z3OtNkQP4a7bCN2d02JnRK0eCjnWJUyhhoKmH2Qld_4j5bREXR697ybGvdrhnieKC28yqlqcvhosqvZkXTksRK6kxpA6xTwPpDXJwPxINjcwNhxJHs9UFSv4_ukcPflHiYrimpI_VcBrFk7Bk26gdUxqHgpMuoDD_iFNMEJkpQErf1ObpYGPxIlmYKEGJgXpH4Ji2-ZQOecikDT3PiwthcpYW1xHaUiP-SBv8PVfsH2N8oGctfAbeO8ghLEb_pfDYUcFH48LHS0cRZgavVQYUJ1J7PIsgwIxCklXxAFQdGaf7SveN0_xEke9lEoQ7pTaZdWWcql4GAxj0zhJFqHNUoLnocD0qndiBEEchdVjzwtx9Bgc21MzJXcMuW4AgSwKwn6pARgewY2RctaPF34puM7KNlvmG-YPIZTDktRP-1FOZPLT4Y7xtj929qCb_tT5g3T4mUF-ZpD7Msj_Ag_jaZ-AiETI_x8mRuWfFBWfsTWmn_8C2m-7FA==\nsummary: This guide provides troubleshooting steps for when Wi-Fi Calling is not working on an iPhone.\nsymptoms: [Wi-Fi Calling isn't working, Can't make calls over Wi-Fi, My phone won't use Wi-Fi for calls, Wi-Fi calls are failing, Can't enable Wi-Fi Calling]\ntitle: Wi-Fi Calling isn't working\ntutorial_id: 155842-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/155842-wi-fi-calling-isn-t-working\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20iOS%20New,154674%2Dcan%2Dt%2Dmake%2Dor%2Dreceive%2Dcalls%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2F154674%2Dcan%2Dt%2Dmake%2Dor%2Dreceive%2Dcalls",
+         "title": "Can't make or receive calls",
+         "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1vHLcR_ivsfagd4HxA2qYtnE-KZDtCZVuIFBtFrzB4u7w7Vnvkdsm98zUokB_RL_17-SV9Zob7Kp0sKVHRoIET2LvHJYczzzzzQn43KXVch8lz9ZfvJtna28zww1-nahKiKdMvDn99jldro3PrVniaTPAYzcdI_z5dqr2vn1RG1U4vCqOiVxt9ZVS59s6oTBdFUN7RoErZc3o5VXFt8IGm_9XS7BQvR0Mw3qlIn2Oa3ERTbSxmscv0fQg1noLa2biWV7nZQnDlq967TFeVNZV6ql1O38Y1PsF_WkWzKX2lq70qKw9pN_ShViXW0c64qIKNtY5WBKZdGZf52kEQ7P2z2dy9xyrWyZSr2ubYDY0sClUYXTm19jvI_nzujtcmuxJ5zEcbIr5XmXfOZDT93H0bjDqyVVlgYfXa57zl-aQywcT5JG2kN17mW0Je-_ZC1WWuowlz940JUVexr19-adIrZ-LOV1cKL0gEfHGBnzT0ttR1EZWrNwuoiubl8Se1Lp5dnL6mD-pSPYX6dFkWNiPjfjZ3Ly10qvPcklS6UKEuodFIwuMtpA8yT9IvQcX52ENWvWjBRc--pIn4cfIGmHqueorLTFHUha7ISu_ts5cW9llh1Ql9uYO6BZCuLgq8IKx9MC6hdKmLAONMNnr_Ia982XsFG32IniX451QJxH8zhHhfiNYIfdzLAAC5E1JkA5h1rIE3fKcYKXCNEgh7VtnVOmK6ykHhftnH70y9MniLDezZO9TGA3sLXQU86ciuktsAsOxNLiMWMCjmYQlaCb9MrqLWemtUASxCc84n0aYyGTSCr_nLyugAMXfrfYv3jxDVAvWEV_a3QP5MTz2PhiN0jp-WNzmBgM3U-gQU7mmthhm2Ft7O-26VVRm3guMmTQW9YWLQM_WC-ITWFcvTuvRE0q9NUfI2oZBsSDWYhz5PFFHYjSXBRAutpTK_hbJXZvYAeF6CPAZ--whg_O0QjPejigE7xydBlT4EywYg6_dZk3VJSNFqBaXF3izs0GAPXS32neKi35meN-osI4cvvXVxqhY1zw6bWpgeTP4kSijQPQsBOX9ueB6aDDBTtia7CmvwOCw92O5U7bRlAgUVVf6j3YD7ir36_AuwFETOw1QR1ceajTDSlV-CwlbaugFoRchRzNIs4lTYPe5LS497tTHahRS0OIw0wYMxRrBd6yrfkZP2tYuhjT4hVPQz1ewcr5e22sg6pF8iE3a4ASvw2GvBVDN92-US4iBiFT7jgDV7MNWOYspd8Byr-pNw_m4SbSwMwfDyZsM4thrsMxmmHAdSjZeV37C2v_YgiZBVxjjYSpfqIgW3kQ7Ynw5MdonPsO9Q2FyocCib4JKA8fbNcNbJG_zruZq7DsjMcgS-bpLNcINYofL1SsBy7F2sfKGODeUVM5rpLYFLJQPRd4wM2SJ7qdgbuCjFBjKGIFHqhS3gHeDpJqak_OeH7_8d2vjfxPcUbya3Kgcbe7IlYt-UhWFiJ2omA_1qpGH607DW724KoWNwjVaBD-60i60HhrpxIsllyImq2jF6SIiCJokK9B2IpLBjTM6O1YabZr5MIjSCnzGDsKgd0r-kxiZVbNKjRk76zjqEcjDWAxxrkJWJyn-yMNHzq-OGN0jLnOyKyPQq7CHjpq_3O3rYTjLcxqemBEMP5VJAIJKF46Rk5Z7uduGXkUnyW5bpnl8f1dGD922WPr-Ps5-KsxAO08cUOMhowh9EBDtbmm4R5v1T0eYnWOC9BAEAVXCAkoGCSj4d4HhH4UYPps_9zhVe5y3mehYkeWGKtXEHQsog28oQf1bYt4RBRIQrk8-UBDvxh_4kVFqNl6bYTUG2LdU40m510XMElmmatjdS1UkzIY2FER6FYL4YEgxlYpU4WptAiLb7S73WrmYRbx7a5ZPBF4kcmqi9tXHf5MA3pMfQMKVXTe40nyCmh_iMtoGsDBRfQ09h7b3Ef5Otnf076ldy1o0Hi3VTd2Vma4CGqB9EPoeqv0eI7eeUEo6Vet_Qfpni57hRUHJBSVOtfSEouaCADbjGaynPbYA7v3Ui_sFYDsLvfFFv2h9gE8vAV7zPlhWb2Aw3QYoc7pYiACbIKUYTIf3ziEZNgBsmB63Ezc_yMdeWnI9-ws9OUOWIb0me45GrcwaPlIRfUUovlSAVpwe3kVKvNieZts0a3liqA6TZsTHVCnCG57ilhIxgqGeAkEKh-rQfiVWpQ8g44TKxrRqdEXazrqwTkNtxC7P0oxSBqbXd16Mwz--HzHObh_XW4mEd4YyHiuAIpCjvAPSt9XUAT9XB5N2Ywl6l3UrJRYrALFTy4BvkhBVGp5lTGfTu_A3_fYS_m3mk7CLl9qpx-MTeZTfOrpZkcXtc-DqXyo705NlDhvI3xlpQrwyQxdOw2oKpeYAAui8UuDdxc2wxpLtiM-3qGixyn5oitEwDCB2ptydFYr_c_HENqLYbxhXbqq641HoEFh1BRZDNCXxLFGTSNwlCFz20PTSte1gid3EtGbysUB0vpS0gjiHS3zO_408PEtAL9pIjrEwESXUvLd_q5hmM5n0QlrQJmdwf4XGV2fitaRMbbB5ZjxZvOSpBBOr0ZIpRTQOBsN4lS0udRU-9irbKvHUzh7kSqQOwugFAtxpJBJIL1C-a89Dw_IadN41c2vadtop_hT5chCFAxiaM8opE-7Zqd5cawtCNdVlRc8RhvXHhzko6R6qEgom5B0RhEt9cmT3xi8g6RijkvTAFsqlBipzKMSoGEAh4L5Iu9Tsm4yb_lwr5aW-7f6vDARI-vDvIeWKI-FmpBq7datQMJGR6ZNTodmBWV9RyAV_pPBcuGvRwL-n73EPZMCRZHFQ2amRTdyBgpFcrbsM7s-PJyXn6H9C4KSkjYgODqn7WdAtECYm-Wqz8yewXHjZSJ5aBRWcd2CAdTqQAHRB5cyUsz0kaz9aHCnM_j71KsyHNzdv5Wlt_jc93lXTmLuIe1nsmbtycAaBK50OCdW9goIHdFNTKuZBc6kzjq8hzkCOmSfojUq7SnF2k-F_wd9M-XlI1QrEI7s5N4aJc64XhegXKpsxHL5sGOifuwPSqMWICQcraCAahZQ_k7wU-76upJ6MEyxYEerkk7K8tAMPZYucpZ6lxp36tziu71dl-pL6ms5dcWYb07XQY5UQmPx_u6KT9X2cPkvTnzh-0h18Y5BcGuSuD_Dfw0K32IxDRm-T_DxPd5h8VFY9QW_9hfNjZZOByXk7kRpo-VIvdfBdFJtl5xcRrB_FrKgDdWVD2lYNRlQ79-fnmw7Q7P-gOJq4doMKodStv5kHvWaQgiAqFYEKzLZmZ6cxcHT6NFeTR8DXLsjP6anQY2-dwoHJtM4Zlc5rf1PQcFhANYdpF_3g1gVxcEws9pDB-lUrU69c_HuNw48LcoJ5Wm6hfIVPKItrwSGXd3Wri9h6P6VXYZSll8XGa72A5evzi7Ozbs6NvGu2TSLB3-_rk6PKIQvLrt1-dnr2Qx8HZ3d3P4i7pACsOGKqgO1Gsif6-h6KrE7yaqbeyRZBL4XdMlb1jUz5Qo7naYwKgpA73qtxvk06Oq6lNIKaiNU_SqHd030ydYezjC_mSG-7w31WlXboAIl1WugeiuCtLS9yy4Ea76_dFPtkFoA5tV_7LHF2aGWqsqynxovPxbl0615QW7Q_f_4uu_bBva_kR-aOt6PIDxSUKbG2ebSMnBo5u0LRz0QwrC1K2lC1myHkhVoGQVainZraaqfnkPEXU-YSWnU_eIxeeTz5TCFKWCMvoYKVPbHNafYn0NavAYtKQlkb9axMCNpf88VjyztCkK-_o2g-NRubvM6spNkiPLl0_IzGbSxFCbekHuodhJVVmvqRNzeQOW12mpuVxOvGkSeQaB7d8MkP7ThcQyc66uUnU8SofsF27FkSrlt7TBcKttoUcsO-TA3fVUCJjuhX4Qs7E2tuOQrPi34EF0wXfxuL3UhE1v9JNKJPzBajE8k1LKiFd6oqhW2HN4xQGCRpEjeenb2SlnJvtwGGlKYuRy2bBoPqgXaRAwIq8O5wfFtr_OAztryg2XY8dN0ZwuZ-TyrvhPbR-f_faiRFfQIJjFPmN1Y-clF-TgRI0sx-1x_lUsMU83yNtbgC5dBVVjmGQKdEJBwGUzgM5OWtbuYIJcbbRzSHJ_TI--UunxTDklNzQbCmx41StGF2_IrzJwSPlkbdf7lqMLvTp7qYSb4CPY4JvW-zt3YmkOkFiFJKHw2nONum614Z7sLGV8ZVxtg7qK7msqWuQU2X_QScZ6YJoJrdd7pN2_HQX6-jPfwB4wKgK\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls, Can't receive calls, My phone calls aren't working, Having trouble with calls, Calls not connecting, No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "reset failed: 401 \n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>401 Unauthorized</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Unauthorized</h1>\n<h2>Your clien",
+ "session_ids": [
+  "0b8d6859-d33a-4a67-9aa5-7d68f9a1ffef"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "get_sim_status",
+  "get_line_status",
+  "check_outage",
+  "search_tutorials"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

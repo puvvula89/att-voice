@@ -1,0 +1,2403 @@
+{
+ "id": "P8",
+ "title": "Call drops at the restart and the caller rings back",
+ "app": "projects/tmeg-working-demos/locations/us/apps/cricket-care",
+ "project": "tmeg-working-demos",
+ "started": "2026-10-21T03:58:43.407710+00:00",
+ "turns": [
+  {
+   "user": "my wifi is really slow",
+   "call": 1,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device": "iphone-13",
+           "device_label": "iPhone 13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device": "galaxy-a15-5g",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "name": "Jordan Reyes",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "steps_by_id": "",
+            "current_date": "2026-10-20[America/Los_Angeles]",
+            "walk": "",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:45.445Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my wifi is really slow"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:45.445Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/tmeg-working-demos/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:46.009Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-bc115493-a7e6-435d-9ea0-2b49c91f5e18",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:46.655Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-bc115493-a7e6-435d-9ea0-2b49c91f5e18",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:46.894Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-cad115c5-88c7-449f-8e52-1b0bbbcaedbc",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:47.532Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-cad115c5-88c7-449f-8e52-1b0bbbcaedbc",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device": "iphone-13",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device": "galaxy-a15-5g",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "name": "Jordan Reyes",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:47.682Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:48.282Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:45.395826Z",
+        "endTime": "2026-10-21T03:58:48.332044Z",
+        "attributes": {
+         "connection index": 1.0,
+         "perceived latency (ms)": 2937.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 50.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:45.446418Z",
+          "endTime": "2026-10-21T03:58:46.008288Z",
+          "attributes": {
+           "input token count": 1360.0,
+           "[debug] decode queue time (ms)": 12.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 561.0,
+           "[debug] prefill time (ms)": 189.0,
+           "[debug] decode time to first token (ms)": 56.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "thought token count": 0.0
+          },
+          "duration": "0.561870s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:58:46.009Z",
+          "endTime": "2026-10-21T03:58:46.010Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0.001s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:46.011792Z",
+          "endTime": "2026-10-21T03:58:46.653679Z",
+          "attributes": {
+           "input token count": 5254.0,
+           "[debug] decode queue time (ms)": 12.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 641.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] decode time to first token (ms)": 57.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.641887s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:46.655374Z",
+          "endTime": "2026-10-21T03:58:46.680945Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 13.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.025571s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:58:46.681018Z",
+          "endTime": "2026-10-21T03:58:46.884572Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "name": "support_get_progress",
+           "tool call id": "adk-bc115493-a7e6-435d-9ea0-2b49c91f5e18"
+          },
+          "duration": "0.203554s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:46.884701Z",
+          "endTime": "2026-10-21T03:58:46.894408Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009707s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:46.895945Z",
+          "endTime": "2026-10-21T03:58:47.531052Z",
+          "attributes": {
+           "input token count": 5296.0,
+           "[debug] decode queue time (ms)": 14.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 634.0,
+           "[debug] prefill time (ms)": 221.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.635107s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:47.533033Z",
+          "endTime": "2026-10-21T03:58:47.540966Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 1.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.007933s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:58:47.541030Z",
+          "endTime": "2026-10-21T03:58:47.673032Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device": "iphone-13",
+                "device_label": "iPhone 13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device": "galaxy-a15-5g",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "name": "Jordan Reyes",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "name": "support_get_lines",
+           "tool call id": "adk-cad115c5-88c7-449f-8e52-1b0bbbcaedbc"
+          },
+          "duration": "0.132002s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:47.673215Z",
+          "endTime": "2026-10-21T03:58:47.682792Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009577s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:47.684537Z",
+          "endTime": "2026-10-21T03:58:48.279830Z",
+          "attributes": {
+           "input token count": 5496.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "[debug] prefill queue wait time (ms)": 1.0,
+           "time to first chunk (ms)": 594.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 17.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.595293s"
+         }
+        ],
+        "duration": "2.936218s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes it's this iPhone",
+   "call": 1,
+   "agent": "\"Slow Wi-Fi, got it. Let me check a couple of things on our side first.\"\nEverything looks normal on our side. I have a guide that can help fix Wi-Fi connection issues or slowdowns. I can text you the guide, walk you through it now, or both. What works for you?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2025-11-02",
+         "line_id": "L1",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "search_tutorials",
+     "payload": {
+      "args": {
+       "rewrittenQueries": [
+        "slow wifi connection"
+       ],
+       "query": "wifi is really slow",
+       "filter": "device: ANY(\"iphone-13\")"
+      },
+      "result": {
+       "answer": "[1] Wi-Fi connection issues or slowdowns\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWutuHLcVfhV2f8QJMFLRtGkB95cqx4lb2RYsJUFRFQF3hqNlNENOhhytt0GBPET_9PXyJP3OOZzbXmRLtZsEDQxD2lkOeS7f-c6F-m7R6LgKi8fqb98t8pW3ueEPf8_UIkTTpG8cfvwGj1ZGF9Zd49NigY_RvI70-7NSbXz3qDVqpW_xvbIhdCao3Dtn8khPoldafWWPnlrlTFz79iZTvlUa75jXjWmtcTmtC5Vfp3WhMaYIyjvavFX2fOWdyVRcGbxEL2pVmrViMWmJyrVTUd8YOiy2vltWJqy8j_SKiHR85b6ycWWxbmWDuu5sgR1J9qpSldGtUyucH_3jK3fqXWnbWg4XiXp9vLtylx0W-7JUp-nhrY0bdRKCDfHKvTIh6jZOJaeHtb816svzF6ppfWkhHvbBSlk27q7WEFJ50lQV5pacwluatDJZUOEBGTeQL5yPE9d1y8F79Nk3tC1_XLyA0x6rpB2ZfOvwBb2whinE0a6rKjzIdVV9bVzyfqmrAMMtar35umh9M3kE-30dPR_8z0wJdD6eQ2f77G3jTqE1uMuoi6St0k2TiaO1qn1tXCSP58lfcaVndofn-71NsQeHx-pELavOqHxl8ptaw65rCzjgFAACq17z9ryjJj-bbU9ZN9Wjd8qxkrBQhXePIh4bJfjVDWEaWNW32lYaKJ0LhK8KpWM0ddMrRqcdqw-fk86hA_Qn-j0K6sS2TaWh6nNfkL50nnfHH125F0DFYzXGZ-hygCmUcOpmbhUWIVPLLvZrr0UR2Otq8cKrZy6aFiIOgEcULFSN3fT1EJYAhFoaUo7jTYA8MQ6iErv8-lpHs8bS3lcUfs6IINPIhW-aBvYBtjz2ti7iPwCgKkQZok-1Jvc1EFDg3d7wqvTz40J_xFoLVFrElFkfPyBs7or6dxY43y2ijZUh-NN5W3HC2ClIiMWcpA-Q89PW13vjp5EN52ZYCGKuwHBfBDo5BSc8Whi4IibsLQmg7UY1fg2SKjXkaMmdKRRy3YLSR6YaI-Z4IbxwQNpLio4WaQDMzFKnoAKQ8hX57uWLgwJfAjy9f0aDpYi7c8-nT98g1oWpID6A1yuEt77x1h2URY5Y-Rga_Oe4QG5EAJq8awkzla1t1IwvZgqYh0Kp3WTKUKThrEaHgMMK9jcp8Wc-8Y32IxWfudIrC7MjHAPpPUFQT3xz_N-1a8IQmDTkrTEuG_ItUjfCrYa0txoeh2KISs2eDmSkWjvQw36ef7zHeFfuqW_BPHLai2TtI5UcwE8lLCWQOaOSwr1jShKVj5PMeaz-mkRtzZEuCmWjqkA_rXAdU31PPWJ4C38NbrKO1GM_KX0N9kEJcd7aW-yQ9Dkpihaeg4yvTNHlkKbV-Q2FDosyy-IUvKzCnPCXGxyNRCBs-9S-hjgA7CtPABliUMtBEOCki_6IwIBDv1oZNzMLfuPNTJHN0qAktQq0C8cgcsfMwqxLO_TyrGlPG5FZcESr3bVhrPzUPUMy_si-IRF-DO_cGb0w8yOuWmom8IK9wonjV1sUQP_6ou2386Ktz0SHkt-Ug0j-u5dnSoeZ_rW9XkUqHaB86he6QAXepNZinxEF6xZeyU1VdZUecwwqgwh5iYD20s1D8v2eOv59pvkEJjbRPTP8-nCh3KjTZKuD6er007OzL85OXvUFHKkDoAyPn5xcnhDsn7_807OzT-Uj6gFReGjRUly_IZXmrQfW-5IzAeIeyehAiSD7bGf1A_q-5MhP_h4iX5Ib26CwZcncMNGRzsp1o5e2stESY5SzaueH7_89RikkfHubPCxCf7cVoQi7VvA6lIwJspOjnmvXaar-9y-VSsVUjQq-uqVKftN386ktmLXrXN-L_U-xKx6hmCFq0uq6NSjurxZoykI8ImXQLkyLew5zk6-c_RadAhXttYcDx9PAlLnvmPm3EfaQSEZCoiOn7Td5qTWUdIoxsSBqwtsEeWy7-8T4OVXK29a-bzE_lLhbQ5GG0xxttfKVwOeCwgOJNO4w311IPL9zI_7CWA6eL33V1cMXcJOteDnrOXJQiinppsPBgOxLAe70gByE8NZGoHyPYGTU4BgkFYCpArVJtZwk7r-Wl7kA5s70DQH4pNXyXmIVnxobSl_8qJU0bFRLieqgGocLZVZMc_ctrjO1QTnlcqlkWIFgqPN36uLlxTA94K5BeoGcunt0udl2y2xd06UcNaxbGkSU2a0xBr3eCyV9MqekewbddKRIJNJ4cDrNR3hOoKe7yPRweP8I0tXYD9uwcSA5lQOcxTIquiyhpJQAHIcSk-JACX0meYn2ZjJP5zzT_Aoprxa08gP1hLlJPeeOh6ZS4Lsgu2c9286jlvu6drMzJ00Vzu5UqAsDgQgTpjJKOSqFidXXvqsKtAjjyKc133a2FaBISUXi_vD9v5hyzWtNDs74YEEnRMUBVBGXfRL7xi_5DTqKEsQwq9HVzTAco22l3eNgKe01Tap8R55DMumkhiO3uc20rDucXqDHBdpkFC7VJhsO54gYvHsABHOCFABRVPra0IR3Pxz2TCvUmfc3LDU2J3IfG5s6S0ELacp0Qg3A3Jo-wntVTEqKczz3-tC8jB8S8SW9eH8ZBBbfdIFH2LYdR1xs39dJRbJfRjL0yIe1Obq2x8oQDgfVQVDWUPbPuYSGxR40DQN2tZt2Ue8hbz5BfylzSM4i9xx6fQ6HD1wcfYe8MiQ32ZCtVqjKysVBQceZe5ajabJ_smPGN73Iyj38xXu89DA-__1uiTkhK46cLQDsc0LQ5ITGD6PlNN2eNHrDbHN-17NDjsN2Q53ttiRQHwb2cuAp9LkG_2tV6Sb6JhuWNrK_iWgjwQT6oyHfUq7uO2_hZ-0CtwI6ataYGC3FHAsrQ2ZePHA1dCRAyZBdmLDAr22LbavNjJ9DpLQ8q6qFEbMZQ8gtFk8Nqe8Y-550JuiFZwFZ6jxmPB0adCwiLWWQnRsH0OHOvQhZ9uPj3332-T-Eh3a__QTf8eDfsQvXK5uvzC1McW0TB7KYS7rhmrBQnTqQ462qL-7pX6ZjfFIsZ6asUeDUzHiI38ryQ85gUy6mJibIjAntRkfxTqfwLc9k7e4xK4bORtFt0po82TXwPfmDNWTDUuq5tTRourtBeuDM4eBF37u_m_vDdsV25y1jH9q8bHTT9lIpNRFXgEVDty2-C4gFoGRyTcOMOzF_P-4O3M4g5Chm0s5Bci2VGPTzBD-HezaGEZXDs0QaNi7fu7uMkexp5btCJo0EUqGFufx99GBfbjKotEgj4JdI6n26LaTAsIGKg6X3cVqgZdMx3u4MXtTai8ndComwWNIAcg9_pIv3PcmeCaHfNJVDiLlHcSoZoXgmWJhdFWY7jIJ3o8a7cj9H9VEw7b1783dfLWwBU_TlwcxYtcPi_fj6YoLt-w3a-jdlwPaZcUB7dY98PI7B-tudyz7T0HiZw1Ckv3ctglcPNqifckye4GRqoOnqnI4fbHOkTlfeB-mibYqDloWhdan4lbtwdGwZZ0UBsSDh2ROKgn76S5GVsjJVrACMB8kPkbt4D5dO-y-VxJ6k9lupit_CFC7CR1TJh61RVKpJbDtoV5hSd1WEbazLq44nEkNfKUY6RyDlWpgOtGQSu92YDbGZyLqN0P03LRLXzAyJAdKEbadMm8j8R7ppmajLDcZ-Hj-oHeTsa1di-otnzweLmgN3QXpYiHYNxkQhRPcmwieze6FLer_wMDYcSR7PTZVIsR_60987ILtfevozBW6Z17y5FAnjC7QuG9hqOq097qfAYoTESgNW_mI2Sw8fqSeWgaWhPBSkPxJK7V1AH1ooySk8xJPKcgKV8cbrJu2GKq0Y9ht8_TleX6ODJWddxA28dyRhnE4C3gPeIJYfFwZaOG5Bfc6FzNrO9IZqVNqDAjFtMl2RCunkzD4rVPxeNsWLX7vK60Kaar5w0lWz0kt0ZKBpGJsmY7qUy3_KTi2g1Ojr3okJBGmqV4-9MTVeJZow-uuM0UwTGSU1DyDQZUnYX1kAhtu2MVLOfC63gB8ovv3LN1vmq_oFEsqyZOqnwygnMvn5cMco7U-dPUjSnzt_kA6_MMgvDPK2DPK_wMN42n-BiMkm_3-YGJV_r6h4h7M6-vcfXFn3yg==\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting,My internet is slow on my phone,I can't get Wi-Fi to work,My phone keeps losing Wi-Fi,Wi-Fi is not working,I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n\n[2] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n\n"
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "\"Slow Wi-Fi, got it. Let me check a couple of things on our side first.\"",
+      "turnIndex": 2
+     },
+     {
+      "text": "Everything looks normal on our side. I have a guide that can help fix Wi-Fi connection issues or slowdowns. I can text you the guide, walk you through it now, or both. What works for you?",
+      "turnIndex": 2
+     },
+     {
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes it's this iPhone"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:48.433Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "\"Slow Wi-Fi, got it. Let me check a couple of things on our side first.\""
+          },
+          {
+           "toolCall": {
+            "id": "adk-3c7b810d-88fd-4fe7-835f-6e0c8ce0a6fd",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-aaa96587-7239-47ec-b428-3dac667c3692",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:49.587Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-3c7b810d-88fd-4fe7-835f-6e0c8ce0a6fd",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-aaa96587-7239-47ec-b428-3dac667c3692",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2025-11-02",
+               "line_id": "L1",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:49.787Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-84252402-65a8-4f2d-ac85-afc96e6e44cc",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "args": {
+             "rewrittenQueries": [
+              "slow wifi connection"
+             ],
+             "query": "wifi is really slow",
+             "filter": "device: ANY(\"iphone-13\")"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:50.606Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "steps_by_id": "{\"156126-wi-fi-connection-issues-or-slowdowns\": {\"title\": \"Wi-Fi connection issues or slowdowns\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\\nWithin this guide, you'll learn how to:\\nConfirm your Wi-Fi connection\\nTurn off Connectivity Assist\\nRestart your iPhone\\nRemove VPN profiles\\nTest your connection with other devices\\nReset your network settings\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Confirming your connection\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"Confirming your Wi-Fi connection\", \"text\": \"Within the Settings app, take a moment to confirm that your iPhone is connected to a Wi-Fi network. A blue checkmark will appear next to your active connection within your Wi-Fi settings. If you don't see one, tap on an available Wi-Fi network and attempt to connect. (Make sure your iPhone's Airplane Mode isn't on.)\\nNote: If you're successfully connected to Wi-Fi, but you're getting a \\\"No Internet Connection\\\" message, there may be an issue with your Wi-Fi router/gateway that you'll need to troubleshoot. Apple also maintains a list of recommended settings for Wi-Fi routers you'll want to review.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Turn off Connectivity Assist\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning your Wi-Fi on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Settings app, tap Wi-Fi.\", \"notes\": [\"Note: \\n\\nUsing Wi-Fi can deplete your battery power faster than your carrier network connection.\"]}, {\"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi switch to ON.\", \"notes\": [\"Note: \\n\\nTo turn off your Wi-Fi, tap or slide the Wi-Fi switch to OFF.\"]}, {\"heading\": \"\", \"text\": \"Select a network to join.\", \"notes\": [\"Note: \\n\\nWi-Fi hotspots may have security limitations. If necessary, enter a password and tap Join.\"]}, {\"heading\": \"\", \"text\": \"Tap the Info icon beside your Wi-Fi network.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions to manage your Wi-Fi connection:\", \"notes\": [\"Note:\\nForget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\\nPrivate Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\\nAuto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.\", \"Forget this Network - Select this option to remove the network from your device. You can re-add it later, but will need to enter its security information again.\", \"Private Wi-Fi Address - Reduce tracking from other devices on this Wi-Fi network by enabling a Fixed or Rotating Wi-Fi address.\", \"Auto-Join - When this option is enabled, your iPhone will always try to connect to this network when it's in range.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 3, \"heading\": \"Turning off Connectivity Assist\", \"text\": \"Try turning off Connectivity Assist, as your iPhone might be trying to use a connection from a nearby cellular network instead of your Wi-Fi connection.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Restart your iPhone\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning Wi-Fi assist off\", \"steps\": [{\"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device.\"]}, {\"heading\": \"\", \"text\": \"Scroll to Wi-Fi Assist.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi Assist switch to OFF.\", \"notes\": [\"Note: \\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 4, \"heading\": \"Try restarting your iPhone\", \"text\": \"Manually restarting your iPhone may help solve any issues you're experiencing with Wi-Fi Calling. It's a great \\\"first-step\\\" troubleshooting technique for most issues you encounter on your device.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Removing VPN profiles or related security apps\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Powering your iPhone on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"To turn on your iPhone, press and hold the Side button.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Press and hold the Side button and either Volume button until the Power Settings screen appears.\", \"notes\": [\"Note: \\n\\nYou can also reach Power Settings by opening the Control Center and holding the Power icon there.\"]}, {\"heading\": \"\", \"text\": \"Drag the slide to power off slider to the right.\", \"notes\": [\"Note: \\n\\nFrom this screen, you can also access your emergency info and send an SOS. If you have a passcode set, you'll need to input your passcode before your iPhone will power off.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 5, \"heading\": \"Removing VPN profiles or related security apps\", \"text\": \"It's possible that a VPN profile, or a security-themed app you've installed, is interfering with your connection. Try removing any VPN profiles within your Settings app's \\\"VPN & Device Management\\\" section, restart your iPhone, and try connecting to a nearby Wi-Fi network and using your device as you normally would.\\nIf you're required to use a VPN \u2014 for example, to access resources for your job \u2014 you may need to talk to your VPN manager to figure out a solution for any connection issues you're experiencing.\\nSimilarly, you may have installed a security-themed app on your iPhone that is somehow interfering with your network connection. Look for these, remove them, and see if that improves your experience. It's possible that you may be able to reinstall them and adjust their settings to fix your issue, if you've isolated your connection problems to a particular app.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Try another device\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Deleting an app\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Home screen, touch and hold an app you'd like to delete.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Remove App.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Delete App.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Delete.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 6, \"heading\": \"Try connecting with another device\", \"text\": \"From the same spot you're attempting to use Wi-Fi on your iPhone, try connecting to the same network on another device (such as an iPad, a laptop, another phone, et cetera). If you can connect and transfer data without issue, your router and network are likely configured correctly.\\nIf you're still experiencing issues, you may be at the limit of the Wi-Fi network's range, or you may need to split your single Wi-Fi network into a Wi-Fi network on 2.4GHz and a Wi-Fi network on 5GHz, then use whichever gives you the best connection manually.\\nYou can also try restarting your Wi-Fi router or cable modem, if applicable, to see if that helps. You should also check to see if your Wi-Fi router has any firmware updates, which may alleviate any issues you're experiencing.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Reset your network settings\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 7, \"heading\": \"Reset your network settings\", \"text\": \"Resetting your network settings will erase previously used settings like your Wi-Fi passwords, preferred networks, and VPN and APN settings.\\nYou'll be able to resync your Wi-Fi passwords from iCloud, but the other settings will need to be entered again.\\nOnce you've done this, reboot your device, connect to your Wi-Fi network, and check to see if your connection issues are fixed.\\nIf you're still having connection problems, or if your iPhone can't connect to any Wi-Fi networks successfully, you may need to contact Apple for service.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Resetting your iPhone\u2019s Settings and Network Settings\", \"steps\": [{\"heading\": \"\", \"text\": \"From within Settings, tap General.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Scroll to and tap Transfer or Reset iPhone.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Reset.\", \"notes\": [\"Note: \\n\\nErase All Content and Settings - Choosing this will reset and remove your apps, data, and Apple ID, returning the device to factory settings.\"]}, {\"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions:\", \"notes\": [\"Note:\\nReset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\\nReset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\\nDelete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\\nOther reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\", \"Reset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\", \"Delete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\", \"Other reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\", \"Reset Handwriting Style - Resets your personal handwriting style.\", \"Reset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\", \"Reset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}]}]}, \"feature_special_assist-turning-wi-fi-assist-off\": {\"title\": \"Turning Wi-Fi assist off\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Scroll to Wi-Fi Assist.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Tap or slide the Wi-Fi Assist switch to OFF.\", \"notes\": [\"Note: \\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:50.994Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-84252402-65a8-4f2d-ac85-afc96e6e44cc",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "response": {
+             "answer": "[1] Wi-Fi connection issues or slowdowns\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting,My internet is slow on my phone,I can't get Wi-Fi to work,My phone keeps losing Wi-Fi,Wi-Fi is not working,I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n\n[2] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:50.994Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Everything looks normal on our side. I have a guide that can help fix Wi-Fi connection issues or slowdowns. I can text you the guide, walk you through it now, or both. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:51.855Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:48.384325Z",
+        "endTime": "2026-10-21T03:58:51.909556Z",
+        "attributes": {
+         "connection index": 2.0,
+         "perceived latency (ms)": 3525.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 49.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:48.435258Z",
+          "endTime": "2026-10-21T03:58:49.584139Z",
+          "attributes": {
+           "input token count": 5529.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1146.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 62.0,
+           "output token count": 78.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "1.148881s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:49.587494Z",
+          "endTime": "2026-10-21T03:58:49.617112Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 15.0,
+            "sandbox init latency (ms)": 5.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.029618s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:49.587505Z",
+          "endTime": "2026-10-21T03:58:49.613428Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 13.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.025923s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:58:49.613492Z",
+          "endTime": "2026-10-21T03:58:49.767794Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2025-11-02",
+              "line_id": "L1",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "name": "support_get_line_status",
+           "tool call id": "adk-aaa96587-7239-47ec-b428-3dac667c3692"
+          },
+          "duration": "0.154302s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:58:49.617189Z",
+          "endTime": "2026-10-21T03:58:49.771708Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "zip_code": "30301"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "name": "support_check_outage",
+           "tool call id": "adk-3c7b810d-88fd-4fe7-835f-6e0c8ce0a6fd"
+          },
+          "duration": "0.154519s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:49.768010Z",
+          "endTime": "2026-10-21T03:58:49.779335Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.011325s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:49.771917Z",
+          "endTime": "2026-10-21T03:58:49.787026Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.015109s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:49.789027Z",
+          "endTime": "2026-10-21T03:58:50.603969Z",
+          "attributes": {
+           "input token count": 5691.0,
+           "[debug] decode queue time (ms)": 25.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 814.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] decode time to first token (ms)": 69.0,
+           "output token count": 41.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.814942s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:50.606396Z",
+          "endTime": "2026-10-21T03:58:50.614889Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 1.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.008493s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:58:50.614957Z",
+          "endTime": "2026-10-21T03:58:50.976946Z",
+          "attributes": {
+           "args": {
+            "rewrittenQueries": [
+             "slow wifi connection"
+            ],
+            "query": "wifi is really slow",
+            "filter": "device: ANY(\"iphone-13\")"
+           },
+           "type": "DataStoreTool",
+           "cited snippets": [],
+           "tool call id": "adk-84252402-65a8-4f2d-ac85-afc96e6e44cc",
+           "response": {
+            "answer": "[1] Wi-Fi connection issues or slowdowns\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWutuHLcVfhV2f8QJMFLRtGkB95cqx4lb2RYsJUFRFQF3hqNlNENOhhytt0GBPET_9PXyJP3OOZzbXmRLtZsEDQxD2lkOeS7f-c6F-m7R6LgKi8fqb98t8pW3ueEPf8_UIkTTpG8cfvwGj1ZGF9Zd49NigY_RvI70-7NSbXz3qDVqpW_xvbIhdCao3Dtn8khPoldafWWPnlrlTFz79iZTvlUa75jXjWmtcTmtC5Vfp3WhMaYIyjvavFX2fOWdyVRcGbxEL2pVmrViMWmJyrVTUd8YOiy2vltWJqy8j_SKiHR85b6ycWWxbmWDuu5sgR1J9qpSldGtUyucH_3jK3fqXWnbWg4XiXp9vLtylx0W-7JUp-nhrY0bdRKCDfHKvTIh6jZOJaeHtb816svzF6ppfWkhHvbBSlk27q7WEFJ50lQV5pacwluatDJZUOEBGTeQL5yPE9d1y8F79Nk3tC1_XLyA0x6rpB2ZfOvwBb2whinE0a6rKjzIdVV9bVzyfqmrAMMtar35umh9M3kE-30dPR_8z0wJdD6eQ2f77G3jTqE1uMuoi6St0k2TiaO1qn1tXCSP58lfcaVndofn-71NsQeHx-pELavOqHxl8ptaw65rCzjgFAACq17z9ryjJj-bbU9ZN9Wjd8qxkrBQhXePIh4bJfjVDWEaWNW32lYaKJ0LhK8KpWM0ddMrRqcdqw-fk86hA_Qn-j0K6sS2TaWh6nNfkL50nnfHH125F0DFYzXGZ-hygCmUcOpmbhUWIVPLLvZrr0UR2Otq8cKrZy6aFiIOgEcULFSN3fT1EJYAhFoaUo7jTYA8MQ6iErv8-lpHs8bS3lcUfs6IINPIhW-aBvYBtjz2ti7iPwCgKkQZok-1Jvc1EFDg3d7wqvTz40J_xFoLVFrElFkfPyBs7or6dxY43y2ijZUh-NN5W3HC2ClIiMWcpA-Q89PW13vjp5EN52ZYCGKuwHBfBDo5BSc8Whi4IibsLQmg7UY1fg2SKjXkaMmdKRRy3YLSR6YaI-Z4IbxwQNpLio4WaQDMzFKnoAKQ8hX57uWLgwJfAjy9f0aDpYi7c8-nT98g1oWpID6A1yuEt77x1h2URY5Y-Rga_Oe4QG5EAJq8awkzla1t1IwvZgqYh0Kp3WTKUKThrEaHgMMK9jcp8Wc-8Y32IxWfudIrC7MjHAPpPUFQT3xz_N-1a8IQmDTkrTEuG_ItUjfCrYa0txoeh2KISs2eDmSkWjvQw36ef7zHeFfuqW_BPHLai2TtI5UcwE8lLCWQOaOSwr1jShKVj5PMeaz-mkRtzZEuCmWjqkA_rXAdU31PPWJ4C38NbrKO1GM_KX0N9kEJcd7aW-yQ9Dkpihaeg4yvTNHlkKbV-Q2FDosyy-IUvKzCnPCXGxyNRCBs-9S-hjgA7CtPABliUMtBEOCki_6IwIBDv1oZNzMLfuPNTJHN0qAktQq0C8cgcsfMwqxLO_TyrGlPG5FZcESr3bVhrPzUPUMy_si-IRF-DO_cGb0w8yOuWmom8IK9wonjV1sUQP_6ou2386Ktz0SHkt-Ug0j-u5dnSoeZ_rW9XkUqHaB86he6QAXepNZinxEF6xZeyU1VdZUecwwqgwh5iYD20s1D8v2eOv59pvkEJjbRPTP8-nCh3KjTZKuD6er007OzL85OXvUFHKkDoAyPn5xcnhDsn7_807OzT-Uj6gFReGjRUly_IZXmrQfW-5IzAeIeyehAiSD7bGf1A_q-5MhP_h4iX5Ib26CwZcncMNGRzsp1o5e2stESY5SzaueH7_89RikkfHubPCxCf7cVoQi7VvA6lIwJspOjnmvXaar-9y-VSsVUjQq-uqVKftN386ktmLXrXN-L_U-xKx6hmCFq0uq6NSjurxZoykI8ImXQLkyLew5zk6-c_RadAhXttYcDx9PAlLnvmPm3EfaQSEZCoiOn7Td5qTWUdIoxsSBqwtsEeWy7-8T4OVXK29a-bzE_lLhbQ5GG0xxttfKVwOeCwgOJNO4w311IPL9zI_7CWA6eL33V1cMXcJOteDnrOXJQiinppsPBgOxLAe70gByE8NZGoHyPYGTU4BgkFYCpArVJtZwk7r-Wl7kA5s70DQH4pNXyXmIVnxobSl_8qJU0bFRLieqgGocLZVZMc_ctrjO1QTnlcqlkWIFgqPN36uLlxTA94K5BeoGcunt0udl2y2xd06UcNaxbGkSU2a0xBr3eCyV9MqekewbddKRIJNJ4cDrNR3hOoKe7yPRweP8I0tXYD9uwcSA5lQOcxTIquiyhpJQAHIcSk-JACX0meYn2ZjJP5zzT_Aoprxa08gP1hLlJPeeOh6ZS4Lsgu2c9286jlvu6drMzJ00Vzu5UqAsDgQgTpjJKOSqFidXXvqsKtAjjyKc133a2FaBISUXi_vD9v5hyzWtNDs74YEEnRMUBVBGXfRL7xi_5DTqKEsQwq9HVzTAco22l3eNgKe01Tap8R55DMumkhiO3uc20rDucXqDHBdpkFC7VJhsO54gYvHsABHOCFABRVPra0IR3Pxz2TCvUmfc3LDU2J3IfG5s6S0ELacp0Qg3A3Jo-wntVTEqKczz3-tC8jB8S8SW9eH8ZBBbfdIFH2LYdR1xs39dJRbJfRjL0yIe1Obq2x8oQDgfVQVDWUPbPuYSGxR40DQN2tZt2Ue8hbz5BfylzSM4i9xx6fQ6HD1wcfYe8MiQ32ZCtVqjKysVBQceZe5ajabJ_smPGN73Iyj38xXu89DA-__1uiTkhK46cLQDsc0LQ5ITGD6PlNN2eNHrDbHN-17NDjsN2Q53ttiRQHwb2cuAp9LkG_2tV6Sb6JhuWNrK_iWgjwQT6oyHfUq7uO2_hZ-0CtwI6ataYGC3FHAsrQ2ZePHA1dCRAyZBdmLDAr22LbavNjJ9DpLQ8q6qFEbMZQ8gtFk8Nqe8Y-550JuiFZwFZ6jxmPB0adCwiLWWQnRsH0OHOvQhZ9uPj3332-T-Eh3a__QTf8eDfsQvXK5uvzC1McW0TB7KYS7rhmrBQnTqQ462qL-7pX6ZjfFIsZ6asUeDUzHiI38ryQ85gUy6mJibIjAntRkfxTqfwLc9k7e4xK4bORtFt0po82TXwPfmDNWTDUuq5tTRourtBeuDM4eBF37u_m_vDdsV25y1jH9q8bHTT9lIpNRFXgEVDty2-C4gFoGRyTcOMOzF_P-4O3M4g5Chm0s5Bci2VGPTzBD-HezaGEZXDs0QaNi7fu7uMkexp5btCJo0EUqGFufx99GBfbjKotEgj4JdI6n26LaTAsIGKg6X3cVqgZdMx3u4MXtTai8ndComwWNIAcg9_pIv3PcmeCaHfNJVDiLlHcSoZoXgmWJhdFWY7jIJ3o8a7cj9H9VEw7b1783dfLWwBU_TlwcxYtcPi_fj6YoLt-w3a-jdlwPaZcUB7dY98PI7B-tudyz7T0HiZw1Ckv3ctglcPNqifckye4GRqoOnqnI4fbHOkTlfeB-mibYqDloWhdan4lbtwdGwZZ0UBsSDh2ROKgn76S5GVsjJVrACMB8kPkbt4D5dO-y-VxJ6k9lupit_CFC7CR1TJh61RVKpJbDtoV5hSd1WEbazLq44nEkNfKUY6RyDlWpgOtGQSu92YDbGZyLqN0P03LRLXzAyJAdKEbadMm8j8R7ppmajLDcZ-Hj-oHeTsa1di-otnzweLmgN3QXpYiHYNxkQhRPcmwieze6FLer_wMDYcSR7PTZVIsR_60987ILtfevozBW6Z17y5FAnjC7QuG9hqOq097qfAYoTESgNW_mI2Sw8fqSeWgaWhPBSkPxJK7V1AH1ooySk8xJPKcgKV8cbrJu2GKq0Y9ht8_TleX6ODJWddxA28dyRhnE4C3gPeIJYfFwZaOG5Bfc6FzNrO9IZqVNqDAjFtMl2RCunkzD4rVPxeNsWLX7vK60Kaar5w0lWz0kt0ZKBpGJsmY7qUy3_KTi2g1Ojr3okJBGmqV4-9MTVeJZow-uuM0UwTGSU1DyDQZUnYX1kAhtu2MVLOfC63gB8ovv3LN1vmq_oFEsqyZOqnwygnMvn5cMco7U-dPUjSnzt_kA6_MMgvDPK2DPK_wMN42n-BiMkm_3-YGJV_r6h4h7M6-vcfXFn3yg==\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting,My internet is slow on my phone,I can't get Wi-Fi to work,My phone keeps losing Wi-Fi,Wi-Fi is not working,I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n\n[2] Turning Wi-Fi assist off\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data,Why is my data bill so high?,My Wi-Fi is slow but it's still using data,How do I turn off Wi-Fi Assist?,I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n\n"
+           },
+           "name": "search_tutorials",
+           "agent": "Tech Support",
+           "snippets": [
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns",
+             "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWutuHLcVfhV2f8QJMFLRtGkB95cqx4lb2RYsJUFRFQF3hqNlNENOhhytt0GBPET_9PXyJP3OOZzbXmRLtZsEDQxD2lkOeS7f-c6F-m7R6LgKi8fqb98t8pW3ueEPf8_UIkTTpG8cfvwGj1ZGF9Zd49NigY_RvI70-7NSbXz3qDVqpW_xvbIhdCao3Dtn8khPoldafWWPnlrlTFz79iZTvlUa75jXjWmtcTmtC5Vfp3WhMaYIyjvavFX2fOWdyVRcGbxEL2pVmrViMWmJyrVTUd8YOiy2vltWJqy8j_SKiHR85b6ycWWxbmWDuu5sgR1J9qpSldGtUyucH_3jK3fqXWnbWg4XiXp9vLtylx0W-7JUp-nhrY0bdRKCDfHKvTIh6jZOJaeHtb816svzF6ppfWkhHvbBSlk27q7WEFJ50lQV5pacwluatDJZUOEBGTeQL5yPE9d1y8F79Nk3tC1_XLyA0x6rpB2ZfOvwBb2whinE0a6rKjzIdVV9bVzyfqmrAMMtar35umh9M3kE-30dPR_8z0wJdD6eQ2f77G3jTqE1uMuoi6St0k2TiaO1qn1tXCSP58lfcaVndofn-71NsQeHx-pELavOqHxl8ptaw65rCzjgFAACq17z9ryjJj-bbU9ZN9Wjd8qxkrBQhXePIh4bJfjVDWEaWNW32lYaKJ0LhK8KpWM0ddMrRqcdqw-fk86hA_Qn-j0K6sS2TaWh6nNfkL50nnfHH125F0DFYzXGZ-hygCmUcOpmbhUWIVPLLvZrr0UR2Otq8cKrZy6aFiIOgEcULFSN3fT1EJYAhFoaUo7jTYA8MQ6iErv8-lpHs8bS3lcUfs6IINPIhW-aBvYBtjz2ti7iPwCgKkQZok-1Jvc1EFDg3d7wqvTz40J_xFoLVFrElFkfPyBs7or6dxY43y2ijZUh-NN5W3HC2ClIiMWcpA-Q89PW13vjp5EN52ZYCGKuwHBfBDo5BSc8Whi4IibsLQmg7UY1fg2SKjXkaMmdKRRy3YLSR6YaI-Z4IbxwQNpLio4WaQDMzFKnoAKQ8hX57uWLgwJfAjy9f0aDpYi7c8-nT98g1oWpID6A1yuEt77x1h2URY5Y-Rga_Oe4QG5EAJq8awkzla1t1IwvZgqYh0Kp3WTKUKThrEaHgMMK9jcp8Wc-8Y32IxWfudIrC7MjHAPpPUFQT3xz_N-1a8IQmDTkrTEuG_ItUjfCrYa0txoeh2KISs2eDmSkWjvQw36ef7zHeFfuqW_BPHLai2TtI5UcwE8lLCWQOaOSwr1jShKVj5PMeaz-mkRtzZEuCmWjqkA_rXAdU31PPWJ4C38NbrKO1GM_KX0N9kEJcd7aW-yQ9Dkpihaeg4yvTNHlkKbV-Q2FDosyy-IUvKzCnPCXGxyNRCBs-9S-hjgA7CtPABliUMtBEOCki_6IwIBDv1oZNzMLfuPNTJHN0qAktQq0C8cgcsfMwqxLO_TyrGlPG5FZcESr3bVhrPzUPUMy_si-IRF-DO_cGb0w8yOuWmom8IK9wonjV1sUQP_6ou2386Ktz0SHkt-Ug0j-u5dnSoeZ_rW9XkUqHaB86he6QAXepNZinxEF6xZeyU1VdZUecwwqgwh5iYD20s1D8v2eOv59pvkEJjbRPTP8-nCh3KjTZKuD6er007OzL85OXvUFHKkDoAyPn5xcnhDsn7_807OzT-Uj6gFReGjRUly_IZXmrQfW-5IzAeIeyehAiSD7bGf1A_q-5MhP_h4iX5Ib26CwZcncMNGRzsp1o5e2stESY5SzaueH7_89RikkfHubPCxCf7cVoQi7VvA6lIwJspOjnmvXaar-9y-VSsVUjQq-uqVKftN386ktmLXrXN-L_U-xKx6hmCFq0uq6NSjurxZoykI8ImXQLkyLew5zk6-c_RadAhXttYcDx9PAlLnvmPm3EfaQSEZCoiOn7Td5qTWUdIoxsSBqwtsEeWy7-8T4OVXK29a-bzE_lLhbQ5GG0xxttfKVwOeCwgOJNO4w311IPL9zI_7CWA6eL33V1cMXcJOteDnrOXJQiinppsPBgOxLAe70gByE8NZGoHyPYGTU4BgkFYCpArVJtZwk7r-Wl7kA5s70DQH4pNXyXmIVnxobSl_8qJU0bFRLieqgGocLZVZMc_ctrjO1QTnlcqlkWIFgqPN36uLlxTA94K5BeoGcunt0udl2y2xd06UcNaxbGkSU2a0xBr3eCyV9MqekewbddKRIJNJ4cDrNR3hOoKe7yPRweP8I0tXYD9uwcSA5lQOcxTIquiyhpJQAHIcSk-JACX0meYn2ZjJP5zzT_Aoprxa08gP1hLlJPeeOh6ZS4Lsgu2c9286jlvu6drMzJ00Vzu5UqAsDgQgTpjJKOSqFidXXvqsKtAjjyKc133a2FaBISUXi_vD9v5hyzWtNDs74YEEnRMUBVBGXfRL7xi_5DTqKEsQwq9HVzTAco22l3eNgKe01Tap8R55DMumkhiO3uc20rDucXqDHBdpkFC7VJhsO54gYvHsABHOCFABRVPra0IR3Pxz2TCvUmfc3LDU2J3IfG5s6S0ELacp0Qg3A3Jo-wntVTEqKczz3-tC8jB8S8SW9eH8ZBBbfdIFH2LYdR1xs39dJRbJfRjL0yIe1Obq2x8oQDgfVQVDWUPbPuYSGxR40DQN2tZt2Ue8hbz5BfylzSM4i9xx6fQ6HD1wcfYe8MiQ32ZCtVqjKysVBQceZe5ajabJ_smPGN73Iyj38xXu89DA-__1uiTkhK46cLQDsc0LQ5ITGD6PlNN2eNHrDbHN-17NDjsN2Q53ttiRQHwb2cuAp9LkG_2tV6Sb6JhuWNrK_iWgjwQT6oyHfUq7uO2_hZ-0CtwI6ataYGC3FHAsrQ2ZePHA1dCRAyZBdmLDAr22LbavNjJ9DpLQ8q6qFEbMZQ8gtFk8Nqe8Y-550JuiFZwFZ6jxmPB0adCwiLWWQnRsH0OHOvQhZ9uPj3332-T-Eh3a__QTf8eDfsQvXK5uvzC1McW0TB7KYS7rhmrBQnTqQ462qL-7pX6ZjfFIsZ6asUeDUzHiI38ryQ85gUy6mJibIjAntRkfxTqfwLc9k7e4xK4bORtFt0po82TXwPfmDNWTDUuq5tTRourtBeuDM4eBF37u_m_vDdsV25y1jH9q8bHTT9lIpNRFXgEVDty2-C4gFoGRyTcOMOzF_P-4O3M4g5Chm0s5Bci2VGPTzBD-HezaGEZXDs0QaNi7fu7uMkexp5btCJo0EUqGFufx99GBfbjKotEgj4JdI6n26LaTAsIGKg6X3cVqgZdMx3u4MXtTai8ndComwWNIAcg9_pIv3PcmeCaHfNJVDiLlHcSoZoXgmWJhdFWY7jIJ3o8a7cj9H9VEw7b1783dfLWwBU_TlwcxYtcPi_fj6YoLt-w3a-jdlwPaZcUB7dY98PI7B-tudyz7T0HiZw1Ckv3ctglcPNqifckye4GRqoOnqnI4fbHOkTlfeB-mibYqDloWhdan4lbtwdGwZZ0UBsSDh2ROKgn76S5GVsjJVrACMB8kPkbt4D5dO-y-VxJ6k9lupit_CFC7CR1TJh61RVKpJbDtoV5hSd1WEbazLq44nEkNfKUY6RyDlWpgOtGQSu92YDbGZyLqN0P03LRLXzAyJAdKEbadMm8j8R7ppmajLDcZ-Hj-oHeTsa1di-otnzweLmgN3QXpYiHYNxkQhRPcmwieze6FLer_wMDYcSR7PTZVIsR_60987ILtfevozBW6Z17y5FAnjC7QuG9hqOq097qfAYoTESgNW_mI2Sw8fqSeWgaWhPBSkPxJK7V1AH1ooySk8xJPKcgKV8cbrJu2GKq0Y9ht8_TleX6ODJWddxA28dyRhnE4C3gPeIJYfFwZaOG5Bfc6FzNrO9IZqVNqDAjFtMl2RCunkzD4rVPxeNsWLX7vK60Kaar5w0lWz0kt0ZKBpGJsmY7qUy3_KTi2g1Ojr3okJBGmqV4-9MTVeJZow-uuM0UwTGSU1DyDQZUnYX1kAhtu2MVLOfC63gB8ovv3LN1vmq_oFEsqyZOqnwygnMvn5cMco7U-dPUjSnzt_kA6_MMgvDPK2DPK_wMN42n-BiMkm_3-YGJV_r6h4h7M6-vcfXFn3yg==\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting, My internet is slow on my phone, I can't get Wi-Fi to work, My phone keeps losing Wi-Fi, Wi-Fi is not working, I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n",
+             "title": "Wi-Fi connection issues or slowdowns",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/62675b56ddcd4624ea48025b1b006ea016076b12"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data, Why is my data bill so high?, My Wi-Fi is slow but it's still using data, How do I turn off Wi-Fi Assist?, I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n",
+             "title": "Turning Wi-Fi assist off",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/dc01ed34f0567135d979da919d3f1569b8c6d7d5"
+            }
+           ]
+          },
+          "childSpans": [
+           {
+            "name": "Search with original query",
+            "startTime": "2026-10-21T03:58:50.631Z",
+            "endTime": "2026-10-21T03:58:50.898Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Search with rewritten query",
+            "startTime": "2026-10-21T03:58:50.631Z",
+            "endTime": "2026-10-21T03:58:50.970Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Summarization",
+            "attributes": {
+             "summarization model display name": "disable_summarizer",
+             "disabled": true
+            }
+           },
+           {
+            "name": "Query rewrite",
+            "attributes": {
+             "rewriter model display name": "rewrite-by-agent (Default)"
+            }
+           }
+          ],
+          "duration": "0.361989s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:50.977094Z",
+          "endTime": "2026-10-21T03:58:50.994184Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 6.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.017090s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:50.996253Z",
+          "endTime": "2026-10-21T03:58:51.853952Z",
+          "attributes": {
+           "input token count": 6153.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 856.0,
+           "[debug] prefill time (ms)": 229.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "output token count": 45.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.857699s"
+         }
+        ],
+        "duration": "3.525231s"
+       }
+      },
+      "citations": {
+       "citedChunks": [
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_special_assist%2Dturning%2Dwi%2Dfi%2Dassist%2Doff%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_special_assist%2Dturning%2Dwi%2Dfi%2Dassist%2Doff",
+         "title": "Turning Wi-Fi assist off",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOwzAQ_JUlFy6lEo9TbwUaCSlQiRYhRFHlOhti4dqWvWmoKiR-g9_jS1gnVdUecqXKwZ5x1juz403iBJUhGcDrJpGlVRIb8NaDJBC67Ynh5ZypEkWuzDujJGFI-Elxn3q7hFpRqQxQiTBBIv4tgHCuByQc3KDWlRa-H8uMpbZL8sC7AczMzNyMsuwpGz7CUqxhgSCF1pjDjr4dTodgPdyPr--yUQtzdGiiHrAG1rbyzKzYQT9p5FeLnYOIrSNlzQ7WwpvWiqm0ZiJ2nLf3MVkIHZBZljPPvXV7VGnrOdnmnq8etMO56B7ORHqrNZCFZ3WWKhiGoAIdDuLf9V52651yXDzooFWOTZr7siFwzLKMbsZp2pnmmOs8bB3EdPhpBAjSI5om4VwVBfrDBGMvKZxYKK1IIdcVbapSeK_Q_37_BDBItfUfUeFxE7_qnuCLrU5X7MUunUbiVxydNcpOjpN6_P4AacRCnQ==\nsummary: This tutorial guides the user on how to disable Wi-Fi Assist on an iPhone 13 to prevent unexpected cellular data usage when Wi-Fi is poor.\nsymptoms: [My phone is using too much data, Why is my data bill so high?, My Wi-Fi is slow but it's still using data, How do I turn off Wi-Fi Assist?, I want to stop using cellular data when Wi-Fi is bad]\ntitle: Turning Wi-Fi assist off\ntutorial_id: feature_special_assist-turning-wi-fi-assist-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_special_assist-turning-wi-fi-assist-off\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20iOS%20New,156126%2Dwi%2Dfi%2Dconnection%2Dissues%2Dor%2Dslowdowns%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2F156126%2Dwi%2Dfi%2Dconnection%2Dissues%2Dor%2Dslowdowns",
+         "title": "Wi-Fi connection issues or slowdowns",
+         "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWutuHLcVfhV2f8QJMFLRtGkB95cqx4lb2RYsJUFRFQF3hqNlNENOhhytt0GBPET_9PXyJP3OOZzbXmRLtZsEDQxD2lkOeS7f-c6F-m7R6LgKi8fqb98t8pW3ueEPf8_UIkTTpG8cfvwGj1ZGF9Zd49NigY_RvI70-7NSbXz3qDVqpW_xvbIhdCao3Dtn8khPoldafWWPnlrlTFz79iZTvlUa75jXjWmtcTmtC5Vfp3WhMaYIyjvavFX2fOWdyVRcGbxEL2pVmrViMWmJyrVTUd8YOiy2vltWJqy8j_SKiHR85b6ycWWxbmWDuu5sgR1J9qpSldGtUyucH_3jK3fqXWnbWg4XiXp9vLtylx0W-7JUp-nhrY0bdRKCDfHKvTIh6jZOJaeHtb816svzF6ppfWkhHvbBSlk27q7WEFJ50lQV5pacwluatDJZUOEBGTeQL5yPE9d1y8F79Nk3tC1_XLyA0x6rpB2ZfOvwBb2whinE0a6rKjzIdVV9bVzyfqmrAMMtar35umh9M3kE-30dPR_8z0wJdD6eQ2f77G3jTqE1uMuoi6St0k2TiaO1qn1tXCSP58lfcaVndofn-71NsQeHx-pELavOqHxl8ptaw65rCzjgFAACq17z9ryjJj-bbU9ZN9Wjd8qxkrBQhXePIh4bJfjVDWEaWNW32lYaKJ0LhK8KpWM0ddMrRqcdqw-fk86hA_Qn-j0K6sS2TaWh6nNfkL50nnfHH125F0DFYzXGZ-hygCmUcOpmbhUWIVPLLvZrr0UR2Otq8cKrZy6aFiIOgEcULFSN3fT1EJYAhFoaUo7jTYA8MQ6iErv8-lpHs8bS3lcUfs6IINPIhW-aBvYBtjz2ti7iPwCgKkQZok-1Jvc1EFDg3d7wqvTz40J_xFoLVFrElFkfPyBs7or6dxY43y2ijZUh-NN5W3HC2ClIiMWcpA-Q89PW13vjp5EN52ZYCGKuwHBfBDo5BSc8Whi4IibsLQmg7UY1fg2SKjXkaMmdKRRy3YLSR6YaI-Z4IbxwQNpLio4WaQDMzFKnoAKQ8hX57uWLgwJfAjy9f0aDpYi7c8-nT98g1oWpID6A1yuEt77x1h2URY5Y-Rga_Oe4QG5EAJq8awkzla1t1IwvZgqYh0Kp3WTKUKThrEaHgMMK9jcp8Wc-8Y32IxWfudIrC7MjHAPpPUFQT3xz_N-1a8IQmDTkrTEuG_ItUjfCrYa0txoeh2KISs2eDmSkWjvQw36ef7zHeFfuqW_BPHLai2TtI5UcwE8lLCWQOaOSwr1jShKVj5PMeaz-mkRtzZEuCmWjqkA_rXAdU31PPWJ4C38NbrKO1GM_KX0N9kEJcd7aW-yQ9Dkpihaeg4yvTNHlkKbV-Q2FDosyy-IUvKzCnPCXGxyNRCBs-9S-hjgA7CtPABliUMtBEOCki_6IwIBDv1oZNzMLfuPNTJHN0qAktQq0C8cgcsfMwqxLO_TyrGlPG5FZcESr3bVhrPzUPUMy_si-IRF-DO_cGb0w8yOuWmom8IK9wonjV1sUQP_6ou2386Ktz0SHkt-Ug0j-u5dnSoeZ_rW9XkUqHaB86he6QAXepNZinxEF6xZeyU1VdZUecwwqgwh5iYD20s1D8v2eOv59pvkEJjbRPTP8-nCh3KjTZKuD6er007OzL85OXvUFHKkDoAyPn5xcnhDsn7_807OzT-Uj6gFReGjRUly_IZXmrQfW-5IzAeIeyehAiSD7bGf1A_q-5MhP_h4iX5Ib26CwZcncMNGRzsp1o5e2stESY5SzaueH7_89RikkfHubPCxCf7cVoQi7VvA6lIwJspOjnmvXaar-9y-VSsVUjQq-uqVKftN386ktmLXrXN-L_U-xKx6hmCFq0uq6NSjurxZoykI8ImXQLkyLew5zk6-c_RadAhXttYcDx9PAlLnvmPm3EfaQSEZCoiOn7Td5qTWUdIoxsSBqwtsEeWy7-8T4OVXK29a-bzE_lLhbQ5GG0xxttfKVwOeCwgOJNO4w311IPL9zI_7CWA6eL33V1cMXcJOteDnrOXJQiinppsPBgOxLAe70gByE8NZGoHyPYGTU4BgkFYCpArVJtZwk7r-Wl7kA5s70DQH4pNXyXmIVnxobSl_8qJU0bFRLieqgGocLZVZMc_ctrjO1QTnlcqlkWIFgqPN36uLlxTA94K5BeoGcunt0udl2y2xd06UcNaxbGkSU2a0xBr3eCyV9MqekewbddKRIJNJ4cDrNR3hOoKe7yPRweP8I0tXYD9uwcSA5lQOcxTIquiyhpJQAHIcSk-JACX0meYn2ZjJP5zzT_Aoprxa08gP1hLlJPeeOh6ZS4Lsgu2c9286jlvu6drMzJ00Vzu5UqAsDgQgTpjJKOSqFidXXvqsKtAjjyKc133a2FaBISUXi_vD9v5hyzWtNDs74YEEnRMUBVBGXfRL7xi_5DTqKEsQwq9HVzTAco22l3eNgKe01Tap8R55DMumkhiO3uc20rDucXqDHBdpkFC7VJhsO54gYvHsABHOCFABRVPra0IR3Pxz2TCvUmfc3LDU2J3IfG5s6S0ELacp0Qg3A3Jo-wntVTEqKczz3-tC8jB8S8SW9eH8ZBBbfdIFH2LYdR1xs39dJRbJfRjL0yIe1Obq2x8oQDgfVQVDWUPbPuYSGxR40DQN2tZt2Ue8hbz5BfylzSM4i9xx6fQ6HD1wcfYe8MiQ32ZCtVqjKysVBQceZe5ajabJ_smPGN73Iyj38xXu89DA-__1uiTkhK46cLQDsc0LQ5ITGD6PlNN2eNHrDbHN-17NDjsN2Q53ttiRQHwb2cuAp9LkG_2tV6Sb6JhuWNrK_iWgjwQT6oyHfUq7uO2_hZ-0CtwI6ataYGC3FHAsrQ2ZePHA1dCRAyZBdmLDAr22LbavNjJ9DpLQ8q6qFEbMZQ8gtFk8Nqe8Y-550JuiFZwFZ6jxmPB0adCwiLWWQnRsH0OHOvQhZ9uPj3332-T-Eh3a__QTf8eDfsQvXK5uvzC1McW0TB7KYS7rhmrBQnTqQ462qL-7pX6ZjfFIsZ6asUeDUzHiI38ryQ85gUy6mJibIjAntRkfxTqfwLc9k7e4xK4bORtFt0po82TXwPfmDNWTDUuq5tTRourtBeuDM4eBF37u_m_vDdsV25y1jH9q8bHTT9lIpNRFXgEVDty2-C4gFoGRyTcOMOzF_P-4O3M4g5Chm0s5Bci2VGPTzBD-HezaGEZXDs0QaNi7fu7uMkexp5btCJo0EUqGFufx99GBfbjKotEgj4JdI6n26LaTAsIGKg6X3cVqgZdMx3u4MXtTai8ndComwWNIAcg9_pIv3PcmeCaHfNJVDiLlHcSoZoXgmWJhdFWY7jIJ3o8a7cj9H9VEw7b1783dfLWwBU_TlwcxYtcPi_fj6YoLt-w3a-jdlwPaZcUB7dY98PI7B-tudyz7T0HiZw1Ckv3ctglcPNqifckye4GRqoOnqnI4fbHOkTlfeB-mibYqDloWhdan4lbtwdGwZZ0UBsSDh2ROKgn76S5GVsjJVrACMB8kPkbt4D5dO-y-VxJ6k9lupit_CFC7CR1TJh61RVKpJbDtoV5hSd1WEbazLq44nEkNfKUY6RyDlWpgOtGQSu92YDbGZyLqN0P03LRLXzAyJAdKEbadMm8j8R7ppmajLDcZ-Hj-oHeTsa1di-otnzweLmgN3QXpYiHYNxkQhRPcmwieze6FLer_wMDYcSR7PTZVIsR_60987ILtfevozBW6Z17y5FAnjC7QuG9hqOq097qfAYoTESgNW_mI2Sw8fqSeWgaWhPBSkPxJK7V1AH1ooySk8xJPKcgKV8cbrJu2GKq0Y9ht8_TleX6ODJWddxA28dyRhnE4C3gPeIJYfFwZaOG5Bfc6FzNrO9IZqVNqDAjFtMl2RCunkzD4rVPxeNsWLX7vK60Kaar5w0lWz0kt0ZKBpGJsmY7qUy3_KTi2g1Ojr3okJBGmqV4-9MTVeJZow-uuM0UwTGSU1DyDQZUnYX1kAhtu2MVLOfC63gB8ovv3LN1vmq_oFEsqyZOqnwygnMvn5cMco7U-dPUjSnzt_kA6_MMgvDPK2DPK_wMN42n-BiMkm_3-YGJV_r6h4h7M6-vcfXFn3yg==\nsummary: This guide helps troubleshoot and resolve Wi-Fi connection issues or slow Wi-Fi speeds on an iPhone 13.\nsymptoms: [My Wi-Fi isn't connecting, My internet is slow on my phone, I can't get Wi-Fi to work, My phone keeps losing Wi-Fi, Wi-Fi is not working, I have no internet connection on Wi-Fi]\ntitle: Wi-Fi connection issues or slowdowns\ntutorial_id: 156126-wi-fi-connection-issues-or-slowdowns\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/156126-wi-fi-connection-issues-or-slowdowns\n"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "walk me through it",
+   "call": 1,
+   "agent": "We'll go through a few steps to troubleshoot, like confirming your connection and restarting. To start, let's make sure Wi-Fi is on. Open Settings and tap Wi-Fi. Is the switch green?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "next_step",
+     "payload": {
+      "args": {
+       "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+       "caller_confirmed": false,
+       "choice": "",
+       "action": "next"
+      },
+      "result": {
+       "result": {
+        "step": 1.0,
+        "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+        "call_ending": false,
+        "heading": "",
+        "of": 7.0
+       }
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "We'll go through a few steps to troubleshoot, like confirming your connection and restarting. To start, let's make sure Wi-Fi is on. Open Settings and tap Wi-Fi. Is the switch green?",
+      "turnCompleted": true,
+      "turnIndex": 3,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "walk me through it"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:52.045Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-fd4cd0fc-0d52-47ee-9e4c-c1e0aba5eee3",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/next-step",
+            "args": {
+             "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+             "caller_confirmed": false,
+             "choice": "",
+             "action": "next"
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:52.961Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "walk": "{\"progress\": {\"156126-wi-fi-connection-issues-or-slowdowns\": {\"done\": 1, \"warned\": 0, \"choice\": \"\"}}, \"stack\": [], \"active\": \"156126-wi-fi-connection-issues-or-slowdowns\", \"resume\": {\"tutorial_id\": \"156126-wi-fi-connection-issues-or-slowdowns\", \"step\": 1, \"heading\": \"If you're having issues connecting to a Wi-Fi network, or are experiencing slow \", \"risk\": \"safe\", \"choice\": \"\"}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:53.018Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-fd4cd0fc-0d52-47ee-9e4c-c1e0aba5eee3",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/next-step",
+            "response": {
+             "result": {
+              "step": 1.0,
+              "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+              "call_ending": false,
+              "heading": "",
+              "of": 7.0
+             }
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:53.018Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "We'll go through a few steps to troubleshoot, like confirming your connection and restarting. To start, let's make sure Wi-Fi is on. Open Settings and tap Wi-Fi. Is the switch green?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:53.918Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:51.997218Z",
+        "endTime": "2026-10-21T03:58:53.971708Z",
+        "attributes": {
+         "connection index": 3.0,
+         "perceived latency (ms)": 1974.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 48.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:52.046862Z",
+          "endTime": "2026-10-21T03:58:52.959794Z",
+          "attributes": {
+           "input token count": 6212.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 912.0,
+           "[debug] prefill time (ms)": 229.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "output token count": 51.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.912932s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:52.961764Z",
+          "endTime": "2026-10-21T03:58:52.989203Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 14.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.027439s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:58:52.989264Z",
+          "endTime": "2026-10-21T03:58:53.009281Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "tutorial_id": "156126-wi-fi-connection-issues-or-slowdowns",
+            "caller_confirmed": false,
+            "choice": "",
+            "action": "next"
+           },
+           "type": "PythonFunctionTool",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 12.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "response": {
+            "result": {
+             "step": 1.0,
+             "text": "If you're having issues connecting to a Wi-Fi network, or are experiencing slow Wi-Fi speeds on your iPhone, there are a few steps you can take to troubleshoot the issue.\nWithin this guide, you'll learn how to:\nConfirm your Wi-Fi connection\nTurn off Connectivity Assist\nRestart your iPhone\nRemove VPN profiles\nTest your connection with other devices\nReset your network settings",
+             "call_ending": false,
+             "heading": "",
+             "of": 7.0
+            }
+           },
+           "name": "next_step",
+           "tool call id": "adk-fd4cd0fc-0d52-47ee-9e4c-c1e0aba5eee3"
+          },
+          "duration": "0.020017s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:58:53.009458Z",
+          "endTime": "2026-10-21T03:58:53.018896Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009438s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:53.020581Z",
+          "endTime": "2026-10-21T03:58:53.915301Z",
+          "attributes": {
+           "input token count": 6380.0,
+           "[debug] decode queue time (ms)": 21.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 893.0,
+           "[debug] prefill time (ms)": 230.0,
+           "[debug] decode time to first token (ms)": 64.0,
+           "output token count": 45.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.894720s"
+         }
+        ],
+        "duration": "1.974490s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "done",
+   "call": 1,
+   "agent": "Take your time. Say ready when you're on that screen.",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Take your time. Say ready when you're on that screen.",
+      "turnCompleted": true,
+      "turnIndex": 4,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "done"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:54.045Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Take your time. Say ready when you're on that screen."
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:54.624Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:54.001141Z",
+        "endTime": "2026-10-21T03:58:54.675125Z",
+        "attributes": {
+         "connection index": 4.0,
+         "perceived latency (ms)": 674.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 44.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:54.046716Z",
+          "endTime": "2026-10-21T03:58:54.622977Z",
+          "attributes": {
+           "input token count": 6436.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 574.0,
+           "[debug] prefill time (ms)": 231.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "output token count": 14.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.576261s"
+         }
+        ],
+        "duration": "0.673984s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "done",
+   "call": 1,
+   "agent": "Just checking in. Are you on the Wi-Fi screen?",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Just checking in. Are you on the Wi-Fi screen?",
+      "turnCompleted": true,
+      "turnIndex": 5,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "done"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:54.763Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Just checking in. Are you on the Wi-Fi screen?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:55.377Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:54.711634Z",
+        "endTime": "2026-10-21T03:58:55.432176Z",
+        "attributes": {
+         "connection index": 5.0,
+         "perceived latency (ms)": 721.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 52.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:54.765069Z",
+          "endTime": "2026-10-21T03:58:55.375273Z",
+          "attributes": {
+           "input token count": 6461.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 609.0,
+           "[debug] prefill time (ms)": 232.0,
+           "[debug] decode time to first token (ms)": 57.0,
+           "output token count": 13.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.610204s"
+         }
+        ],
+        "duration": "0.720542s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "done",
+   "call": 1,
+   "agent": "To continue, I'll need to know if the Wi-Fi switch is green. Let me know when you see that.",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "To continue, I'll need to know if the Wi-Fi switch is green. Let me know when you see that.",
+      "turnCompleted": true,
+      "turnIndex": 6,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "done"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:55.500Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "To continue, I'll need to know if the Wi-Fi switch is green. Let me know when you see that."
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:56.195Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:55.452183Z",
+        "endTime": "2026-10-21T03:58:56.246164Z",
+        "attributes": {
+         "connection index": 6.0,
+         "perceived latency (ms)": 794.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 48.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:55.501857Z",
+          "endTime": "2026-10-21T03:58:56.193764Z",
+          "attributes": {
+           "input token count": 6485.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 690.0,
+           "[debug] prefill time (ms)": 231.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "output token count": 26.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.691907s"
+         }
+        ],
+        "duration": "0.793981s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes, I'm okay to call back",
+   "call": 1,
+   "agent": "No, that step does not disconnect us. Just let me know if the Wi-Fi switch is green.",
+   "spans": [],
+   "raw": {
+    "outputs": [
+     {
+      "text": "No, that step does not disconnect us. Just let me know if the Wi-Fi switch is green.",
+      "turnCompleted": true,
+      "turnIndex": 7,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes, I'm okay to call back"
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:56.333Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "No, that step does not disconnect us. Just let me know if the Wi-Fi switch is green."
+          }
+         ],
+         "eventTime": "2026-10-21T03:58:56.986Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:58:56.276382Z",
+        "endTime": "2026-10-21T03:58:57.039726Z",
+        "attributes": {
+         "connection index": 7.0,
+         "perceived latency (ms)": 763.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 57.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:58:56.335973Z",
+          "endTime": "2026-10-21T03:58:56.984321Z",
+          "attributes": {
+           "input token count": 6530.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 647.0,
+           "[debug] prefill time (ms)": 231.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "output token count": 22.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.648348s"
+         }
+        ],
+        "duration": "0.763344s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "hi, I'm calling back",
+   "call": 2,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+       "status": "error"
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device": "iphone-13",
+           "device_label": "iPhone 13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device": "galaxy-a15-5g",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "name": "Jordan Reyes",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "steps_by_id": "",
+            "current_date": "2026-10-20[America/Los_Angeles]",
+            "walk": "",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:02.150Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "hi, I'm calling back"
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:02.151Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/tmeg-working-demos/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:02.747Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-7f5f7f48-2d88-480a-adb6-7a98846aa8eb",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:03.425Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-7f5f7f48-2d88-480a-adb6-7a98846aa8eb",
+            "response": {
+             "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+             "status": "error"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:03.741Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-50fe1ac7-b960-46b4-8200-489fb09460a8",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:04.422Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-50fe1ac7-b960-46b4-8200-489fb09460a8",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device": "iphone-13",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device": "galaxy-a15-5g",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "name": "Jordan Reyes",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:04.575Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:05.205Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:59:02.106469Z",
+        "endTime": "2026-10-21T03:59:05.255357Z",
+        "attributes": {
+         "connection index": 1.0,
+         "perceived latency (ms)": 3149.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 44.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:59:02.151828Z",
+          "endTime": "2026-10-21T03:59:02.746402Z",
+          "attributes": {
+           "input token count": 1362.0,
+           "[debug] decode queue time (ms)": 20.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 594.0,
+           "[debug] prefill time (ms)": 188.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "thought token count": 0.0
+          },
+          "duration": "0.594574s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:59:02.747Z",
+          "endTime": "2026-10-21T03:59:02.747Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:59:02.749301Z",
+          "endTime": "2026-10-21T03:59:03.423874Z",
+          "attributes": {
+           "input token count": 5256.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 674.0,
+           "[debug] prefill time (ms)": 221.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.674573s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:03.425793Z",
+          "endTime": "2026-10-21T03:59:03.443260Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 7.0,
+            "sandbox init latency (ms)": 3.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.017467s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:59:03.443321Z",
+          "endTime": "2026-10-21T03:59:03.732145Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+           "type": "McpTool",
+           "response": {
+            "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+            "status": "error"
+           },
+           "name": "support_get_progress",
+           "tool call id": "adk-7f5f7f48-2d88-480a-adb6-7a98846aa8eb"
+          },
+          "duration": "0.288824s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:03.732264Z",
+          "endTime": "2026-10-21T03:59:03.741040Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.008776s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:59:03.742429Z",
+          "endTime": "2026-10-21T03:59:04.420661Z",
+          "attributes": {
+           "input token count": 5317.0,
+           "[debug] decode queue time (ms)": 14.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 678.0,
+           "[debug] prefill time (ms)": 221.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.678232s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:04.422538Z",
+          "endTime": "2026-10-21T03:59:04.430148Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 1.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.007610s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:59:04.430219Z",
+          "endTime": "2026-10-21T03:59:04.565800Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device": "iphone-13",
+                "device_label": "iPhone 13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device": "galaxy-a15-5g",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "name": "Jordan Reyes",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "name": "support_get_lines",
+           "tool call id": "adk-50fe1ac7-b960-46b4-8200-489fb09460a8"
+          },
+          "duration": "0.135581s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:04.565933Z",
+          "endTime": "2026-10-21T03:59:04.575458Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009525s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:59:04.576688Z",
+          "endTime": "2026-10-21T03:59:05.204103Z",
+          "attributes": {
+           "input token count": 5517.0,
+           "[debug] decode queue time (ms)": 20.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 625.0,
+           "[debug] prefill time (ms)": 223.0,
+           "[debug] decode time to first token (ms)": 64.0,
+           "output token count": 17.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.627415s"
+         }
+        ],
+        "duration": "3.148888s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "no, it's still slow",
+   "call": 2,
+   "agent": "\"I understand, you're calling about the Galaxy. Before we get started, I need to check a couple of things on our side.\"\n\nEverything looks normal on our side. When you say it's slow, is that when you're browsing on Wi-Fi or using mobile data?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L2",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2026-03-14",
+         "line_id": "L2",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_data_usage",
+     "payload": {
+      "args": {
+       "line_id": "L2",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "used_gb": 11.9,
+         "throttled": false,
+         "allowance_gb": 25.0,
+         "cycle_ends": "2026-10-28"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "\"I understand, you're calling about the Galaxy. Before we get started, I need to check a couple of things on our side.\"\n",
+      "turnIndex": 2
+     },
+     {
+      "text": "Everything looks normal on our side. When you say it's slow, is that when you're browsing on Wi-Fi or using mobile data?",
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "no, it's still slow"
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:05.340Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "\"I understand, you're calling about the Galaxy. Before we get started, I need to check a couple of things on our side.\"\n"
+          },
+          {
+           "toolCall": {
+            "id": "adk-10b9942f-9bf4-40e8-8bbc-6c66110eb145",
+            "args": {
+             "line_id": "L2",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-001f6c73-b961-4280-9d3b-b3781080b668",
+            "args": {
+             "line_id": "L2",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_data_usage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_data_usage"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-a09f8b4d-c420-44f3-bb5d-9e5226bf14c3",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:06.934Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-10b9942f-9bf4-40e8-8bbc-6c66110eb145",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2026-03-14",
+               "line_id": "L2",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-001f6c73-b961-4280-9d3b-b3781080b668",
+            "response": {
+             "text_output": [
+              {
+               "used_gb": 11.9,
+               "throttled": false,
+               "allowance_gb": 25.0,
+               "cycle_ends": "2026-10-28"
+              }
+             ]
+            },
+            "displayName": "support_get_data_usage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_data_usage"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-a09f8b4d-c420-44f3-bb5d-9e5226bf14c3",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:07.095Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Everything looks normal on our side. When you say it's slow, is that when you're browsing on Wi-Fi or using mobile data?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:59:07.910Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:59:05.293246Z",
+        "endTime": "2026-10-21T03:59:07.958886Z",
+        "attributes": {
+         "connection index": 2.0,
+         "perceived latency (ms)": 2665.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 47.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:59:05.342121Z",
+          "endTime": "2026-10-21T03:59:06.932574Z",
+          "attributes": {
+           "input token count": 5551.0,
+           "[debug] decode queue time (ms)": 22.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1583.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 66.0,
+           "output token count": 121.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "1.590453s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:06.934632Z",
+          "endTime": "2026-10-21T03:59:06.953296Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 8.0,
+            "sandbox init latency (ms)": 3.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.018664s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:06.934647Z",
+          "endTime": "2026-10-21T03:59:06.959234Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 13.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.024587s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:06.934654Z",
+          "endTime": "2026-10-21T03:59:06.963908Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 15.0,
+            "sandbox init latency (ms)": 5.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.029254s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:59:06.953354Z",
+          "endTime": "2026-10-21T03:59:07.087179Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L2",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2026-03-14",
+              "line_id": "L2",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "name": "support_get_line_status",
+           "tool call id": "adk-10b9942f-9bf4-40e8-8bbc-6c66110eb145"
+          },
+          "duration": "0.133825s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:59:06.959293Z",
+          "endTime": "2026-10-21T03:59:07.111579Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L2",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "used_gb": 11.9,
+              "throttled": false,
+              "allowance_gb": 25.0,
+              "cycle_ends": "2026-10-28"
+             }
+            ]
+           },
+           "name": "support_get_data_usage",
+           "tool call id": "adk-001f6c73-b961-4280-9d3b-b3781080b668"
+          },
+          "duration": "0.152286s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:59:06.963982Z",
+          "endTime": "2026-10-21T03:59:07.114967Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "zip_code": "30301"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "name": "support_check_outage",
+           "tool call id": "adk-a09f8b4d-c420-44f3-bb5d-9e5226bf14c3"
+          },
+          "duration": "0.150985s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:07.087324Z",
+          "endTime": "2026-10-21T03:59:07.095753Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.008429s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:07.111709Z",
+          "endTime": "2026-10-21T03:59:07.122252Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.010543s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:59:07.115115Z",
+          "endTime": "2026-10-21T03:59:07.128768Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013653s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:59:07.130220Z",
+          "endTime": "2026-10-21T03:59:07.908663Z",
+          "attributes": {
+           "input token count": 5813.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 776.0,
+           "[debug] prefill time (ms)": 226.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 31.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.778443s"
+         }
+        ],
+        "duration": "2.665640s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "I1020 22:58:43.416482 7134117 ev_poll_posix.cc:587] FD from fork parent still in poll list: fd(8, generation: 1)\nreset failed: 401 \n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>401 Unauthorized</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Unauthorized</h1>\n<h2>Your clien",
+ "session_ids": [
+  "59e44f5d-9b86-434c-a9c2-730f7004a791",
+  "6a4273b5-45c1-4683-984b-24053d8267ef"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "get_line_status",
+  "check_outage",
+  "search_tutorials",
+  "next_step",
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "get_line_status",
+  "get_data_usage",
+  "check_outage"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

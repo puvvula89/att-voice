@@ -1,0 +1,1222 @@
+{
+ "id": "P4",
+ "title": "Galaxy will not power on, calling from the iPhone line",
+ "app": "projects/tmeg-working-demos/locations/us/apps/cricket-care",
+ "project": "tmeg-working-demos",
+ "started": "2026-10-21T03:54:58.984033+00:00",
+ "turns": [
+  {
+   "user": "my galaxy won't turn on at all",
+   "call": 1,
+   "agent": "I understand. Is that the Galaxy A15?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "progress": null
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device": "iphone-13",
+           "device_label": "iPhone 13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device": "galaxy-a15-5g",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "name": "Jordan Reyes",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I understand. Is that the Galaxy A15?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "steps_by_id": "",
+            "current_date": "2026-10-20[America/Los_Angeles]",
+            "walk": "",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:18.990Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "my galaxy won't turn on at all"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:18.990Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/tmeg-working-demos/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:19.624Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-73730487-cc8d-4744-960d-ad17571031d7",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:20.279Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-73730487-cc8d-4744-960d-ad17571031d7",
+            "response": {
+             "text_output": [
+              {
+               "progress": null
+              }
+             ]
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:20.606Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-74bbb720-697c-4043-b1d4-67eafb17bece",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:21.343Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-74bbb720-697c-4043-b1d4-67eafb17bece",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device": "iphone-13",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device": "galaxy-a15-5g",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "name": "Jordan Reyes",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:21.527Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I understand. Is that the Galaxy A15?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:22.076Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:57:18.948125Z",
+        "endTime": "2026-10-21T03:57:22.125995Z",
+        "attributes": {
+         "connection index": 1.0,
+         "perceived latency (ms)": 3177.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 42.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:18.990834Z",
+          "endTime": "2026-10-21T03:57:19.623010Z",
+          "attributes": {
+           "input token count": 1364.0,
+           "[debug] decode queue time (ms)": 13.0,
+           "[debug] prefill queue wait time (ms)": 2.0,
+           "time to first chunk (ms)": 631.0,
+           "[debug] prefill time (ms)": 268.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "thought token count": 0.0
+          },
+          "duration": "0.632176s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:19.624Z",
+          "endTime": "2026-10-21T03:57:19.624Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:19.626062Z",
+          "endTime": "2026-10-21T03:57:20.277545Z",
+          "attributes": {
+           "input token count": 5258.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 651.0,
+           "[debug] prefill time (ms)": 230.0,
+           "[debug] decode time to first token (ms)": 61.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.651483s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:20.279191Z",
+          "endTime": "2026-10-21T03:57:20.305092Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 13.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.025901s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:20.305147Z",
+          "endTime": "2026-10-21T03:57:20.593790Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "progress": null
+             }
+            ]
+           },
+           "name": "support_get_progress",
+           "tool call id": "adk-73730487-cc8d-4744-960d-ad17571031d7"
+          },
+          "duration": "0.288643s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:20.593908Z",
+          "endTime": "2026-10-21T03:57:20.606107Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.012199s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:20.607279Z",
+          "endTime": "2026-10-21T03:57:21.341838Z",
+          "attributes": {
+           "input token count": 5300.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "[debug] prefill queue wait time (ms)": 5.0,
+           "time to first chunk (ms)": 734.0,
+           "[debug] prefill time (ms)": 309.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.734559s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:21.343603Z",
+          "endTime": "2026-10-21T03:57:21.360778Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.017175s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:21.360832Z",
+          "endTime": "2026-10-21T03:57:21.518716Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device": "iphone-13",
+                "device_label": "iPhone 13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device": "galaxy-a15-5g",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "name": "Jordan Reyes",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "name": "support_get_lines",
+           "tool call id": "adk-74bbb720-697c-4043-b1d4-67eafb17bece"
+          },
+          "duration": "0.157884s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:21.518860Z",
+          "endTime": "2026-10-21T03:57:21.527739Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.008879s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:21.528936Z",
+          "endTime": "2026-10-21T03:57:22.075131Z",
+          "attributes": {
+           "input token count": 5500.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 545.0,
+           "[debug] prefill time (ms)": 224.0,
+           "[debug] decode time to first token (ms)": 61.0,
+           "output token count": 11.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.546195s"
+         }
+        ],
+        "duration": "3.177870s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "it's the second line",
+   "call": 1,
+   "agent": "Great. I can walk you through some steps to get it powered back on. I'll check a few things first.\nEverything looks normal on our side. I can walk you through a guide to get your Galaxy turning on again, or I can text it to you. What works best?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L2",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2026-03-14",
+         "line_id": "L2",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "search_tutorials",
+     "payload": {
+      "args": {
+       "rewrittenQueries": [
+        "galaxy won't power on"
+       ],
+       "query": "won't turn on at all",
+       "filter": "device: ANY(\"galaxy-a15-5g\")"
+      },
+      "result": {
+       "answer": "[1] Can't turn device on or off\ncategory: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: article\nsteps_b64: eNrtV9tuGzcQ_ZXpvhhBVSOXhwJ-CYoGQQMUtls7LYo6MOjdkZbwLsmSXKmqESD_0H5hvqRnyF1pZcu11SYvhWAY9q7IuZw5c2Z0UzgV61Ac0a83RVlbXXJ6KE7tgr02M7LTKbVLcrU1XLybUBEiu_6CwZ9neFWzqnAWT0WBx8i_R_n_zZSWtjvwTLWaiy0dQseB3GAbn_psObmxnqyZUKwZV5T80pQXlBzKWSqVoaiumaKl6G131XCorY1yhZy3eG4PL8zPOtYaJ2sdaNbpiicpjqahhpU3VNsFLBxdmJRkcr2OZPXWbLx8bX3J5DlE5aME5u0fbCTkzuCtsyboOQ-nv0HwEvA9eW96nIiV1Wc6wvVLgdHYmIuRUO-uVsDLs3VRw-fwuEBeuQKmaxq8KFXTXLLpyzJVTYCfolXLy8pbN3oFMC6jTXbeTyjX9PlmTcdcGNf33Oaw7-Qz1T6gKH5JubRSn4CqLSy1HGtbBVTp2RM6rZdBI1K66mJENsAeWAZSpkKRmirVNZcjnwDYUTej1y2bjpRzqGtIzBGCOFoVFn5ODAXbMrW24gaHthsWl4p-sk2Ho_27aGcsZIQRUBnlqAWEWtwZ8Yb8so0vh4tv3SG9kXRVpMpyMAeRFtZfbz38yi4MTD9_Qj90urymM44RDoDC2UI7hoGFEZ61KdpoXY8khdIzS6Mg03UiuuybB_lyw2XcQEESYC3ZrOuRI8M1uO1yU8GaQXVTz8mL6Qbt1zU-3IWgxTFMHlFqoa96W5vtXzyCw9F3D1L4pog6NpzI2SVr9Is4OU0ac5LLfJJZPNKxe_QL_I6wIlKQBCaT221S9Az60hPmFiipne4x_cqrWS6wWPZ6VgNzsWT7Tso1lhJYx_lUZknoWUJOGW52cHl-hy07Xl7TaeNecYz_jujCQPYEF1JNZG9UFD1E_HMNDU9avG7ZOyhKYAlJeTPqj0EZDovHh0dqpvQuyYEiB4i1tK1rOHKOJtHji1tG5GcQyRebIrkxILZPwQDtaoaZ0M-vlHAeXzzXtgv9uKt0JeJRc-Mmt9oSSA6dOXTT4cPKOfi5Cy6pPECDwvuoW4a1bwdREGMSLtyRurJdpK8_fvjz2VPwEAyqIINOQeuVWWYtTtLXCzLs_AglUiI1IksyEafMDYR2rq-8EoGQ2ReYUwCNndn-rkxxhVEobuWjCuCUiU5TbXSoaS0j_yxFxafERTx9GmTE0r_GRi4_Hp3dt4UdlXaD-StdzzE9TmhfD0PuOxnUw3hz91VupBFv3aAQo9Wg184ZBjBVyl_fq1dn4i4HGgjpIonfOt3vbkDzMRGMVYq0QbKqekCtdtObbGr7bm72q_l-Ne-psHUzH7ViKqB79H49EpywdQE-SlPCyKI5IgvKr6islZ-lvfl7a69JtDGpZP4gQYn0SxWtn4wFL8HdpGUIdqCi-CLRAvYDhFzGDrgtVyb6RRu7l4rYN5YyFoeOwrHKYwfgapKptmJnpm0LAUcBxUkQxnWYscFiH5ORq8CINotunwdMD4u8xJ63NbVQS0mQo_AinxzNghdPBy_D1xKE6EaNm5eUC3Ou3REd2y3QEM9xT02jCM447pd0DmMKO8J0in40cK-GVWII-YoRC-dk0rohnSs4Ds1IC7Tieq-ljx_-Ei-qa-Kyt6flODBtEW7iJFY75dsHBu5DpJDb_3NapBT_GzGKz_Idakex2a-4-xV3v-LuV9zPv-K-e_83UmHIeA==\nsummary: This guide provides troubleshooting steps for a Samsung Galaxy A15 5G that cannot be turned on or off, including how to force restart a frozen device.\nsymptoms: [My phone won't turn on.,I can't turn off my phone.,My phone is frozen.,My screen is unresponsive.,My phone is stuck.,It's not charging.]\ntitle: Can't turn device on or off\ntutorial_id: 155887-can-t-turn-device-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off\n\n[2] Turning Your Phone On and Off\ncategory: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: procedure\nsteps_b64: eNrFUk1Lw0AQ_SvjXryUgp-H3oSeRVEEsVK2ySRZ3Mwsu7ONpfjf3U1KqUiLglhyyL7ZZOa9eW-tnJYmqAm8rFXRsCmwB68jUEHQbW4ovc5SqUFdGqoTUipBwXfJ50cGiZ6ACaRBcA0TjsB5DAE0ldCwLeHBlAiLKMI0zj8Ty86suNiOy5idGKYt7LSnYS5Fa1Oh0NbOkTZkKm1DGqhavZqXnt1OqeFuLtz3-RjBoOR8v5Kp1zWU3A1CvKkbgZCJcwUrjh5C4RHTLQM7HL66j6Z4g4AiqWEApwntkRVeHPBKu571HXfowRRHd-PyMNeBJ1fVV5rqNp0mMKMZ3eSQgbaCnrSYJWZ3lga7pNOETYMWKX6LZN5DH8tceWIbW4RpNn-IaRirf9_G1Q-3AbrW5s-tEx9_wfV6P9dnjqfJiIJbZ1FwWHVP7OQ4acvPJx5VkPE=\nsummary: This tutorial guides the user on how to power off their Samsung Galaxy A15 5G.\nsymptoms: [How do I turn off my phone?,I need to power down my device.,My phone is stuck,I want to turn it off.,Where is the power button?]\ntitle: Turning Your Phone On and Off\ntutorial_id: feature_power_on-turning-your-phone-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/feature_power_on-turning-your-phone-on-and-off\n\n"
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Great. I can walk you through some steps to get it powered back on. I'll check a few things first.",
+      "turnIndex": 2
+     },
+     {
+      "text": "Everything looks normal on our side. I can walk you through a guide to get your Galaxy turning on again, or I can text it to you. What works best?",
+      "turnIndex": 2
+     },
+     {
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "it's the second line"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:22.228Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Great. I can walk you through some steps to get it powered back on. I'll check a few things first."
+          },
+          {
+           "toolCall": {
+            "id": "adk-efcb8741-9c28-4421-b134-7f995655d0a7",
+            "args": {
+             "line_id": "L2",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-cc598bf2-9449-4758-ab3c-da7614d76652",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:23.425Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-efcb8741-9c28-4421-b134-7f995655d0a7",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2026-03-14",
+               "line_id": "L2",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-cc598bf2-9449-4758-ab3c-da7614d76652",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:23.655Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-d7a00500-0feb-4abd-a1c0-60d7345ab4ae",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "args": {
+             "rewrittenQueries": [
+              "galaxy won't power on"
+             ],
+             "query": "won't turn on at all",
+             "filter": "device: ANY(\"galaxy-a15-5g\")"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:24.562Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "steps_by_id": "{\"155887-can-t-turn-device-on-or-off\": {\"title\": \"Can't turn device on or off\", \"paths\": [{\"choices\": [\"Powering off my phone\"], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"If you're having issues powering your phone off or on, there are a few steps you can take to troubleshoot the problem.\\nWithin this guide, you'll learn how to:\\nPower off your phone\\nPower on your phone\\nForce restart a frozen or unresponsive phone\\nAre you having issues powering off your phone, or powering it on?\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"Powering off\", \"text\": \"To power off your phone, first try one of these two methods.\\n1) Physical buttons\\nPress and hold the Power button until the Power menu appears, then tap Power off.\\nOn some models, hold the Power button and a Volume button together.\\nIf nothing happens, try Power + Volume Up. If that doesn't work, try Power + Volume Down.\\n2) Quick Settings\\nSwipe down from the top of the screen, tap the Power icon, then select Power off.\\nIf neither of these work, continue to the next step to force restart your phone.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Force-restarting your phone\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning Your Phone On and Off\", \"steps\": [{\"heading\": \"\", \"text\": \"To turn on the phone, press and hold Side button.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Drag down the right side of your screen to open the Quick settings panel.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap the Power icon.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Power off.\", \"notes\": [\"Note: \\n\\nAs an alternative to view this Power menu, press and hold the Side and Volume Down buttons.\"]}, {\"heading\": \"\", \"text\": \"Tap Power off again.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 3, \"heading\": \"Force restart\", \"text\": \"If you're still having trouble and the previous steps didn't help, the next step is to force-restart.\\nPress and hold the Power button and the Volume Down button at the same time.\\nContinue holding for about 7\u201310 seconds, past any menu that appears.\\nRelease when you feel a vibration or see the logo appear.\\nWait for the device to finish restarting.\", \"notes\": [], \"substeps\": [\"Press and hold the Power button and the Volume Down button at the same time.\", \"Continue holding for about 7\u201310 seconds, past any menu that appears.\", \"Release when you feel a vibration or see the logo appear.\", \"Wait for the device to finish restarting.\"], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Force restarting your device\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Home screen, press and hold the Power and Volume Up buttons until the screen goes dark.\", \"notes\": [\"Note: \\n\\nSome devices may require you to press and hold the Power and Volume Down buttons instead.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}]}, {\"choices\": [\"Powering on my phone\"], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"If you're having issues powering your phone off or on, there are a few steps you can take to troubleshoot the problem.\\nWithin this guide, you'll learn how to:\\nPower off your phone\\nPower on your phone\\nForce restart a frozen or unresponsive phone\\nAre you having issues powering off your phone, or powering it on?\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"Powering on\", \"text\": \"To power your device on, press and hold the Power button until the logo appears.\\nIf nothing happens:\\nConnect your phone to a charger.\\nLook out for a charging indicator, a vibration, or light to confirm it's actually charging. If the battery is completely drained, this can take a few minutes to show up, so don't assume the charger isn't working right away.\\nLet it charge for about 30 minutes, then try powering on again.\\nTip: No charging indicator even after a few minutes? Try a different cable and charger before assuming there's a problem with the phone \u2014 a faulty cable is a common false alarm.\", \"notes\": [], \"substeps\": [\"Connect your phone to a charger.\", \"Look out for a charging indicator, a vibration, or light to confirm it's actually charging. If the battery is completely drained, this can take a few minutes to show up, so don't assume the charger isn't working right away.\", \"Let it charge for about 30 minutes, then try powering on again.\"], \"options\": [\"Next: Force-restarting your phone\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"Force restart\", \"text\": \"If you're still having trouble and the previous steps didn't help, the next step is to force-restart.\\nPress and hold the Power button and the Volume Down button at the same time.\\nContinue holding for about 7\u201310 seconds, past any menu that appears.\\nRelease when you feel a vibration or see the logo appear.\\nWait for the device to finish restarting.\", \"notes\": [], \"substeps\": [\"Press and hold the Power button and the Volume Down button at the same time.\", \"Continue holding for about 7\u201310 seconds, past any menu that appears.\", \"Release when you feel a vibration or see the logo appear.\", \"Wait for the device to finish restarting.\"], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Force restarting your device\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Home screen, press and hold the Power and Volume Up buttons until the screen goes dark.\", \"notes\": [\"Note: \\n\\nSome devices may require you to press and hold the Power and Volume Down buttons instead.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}]}]}, \"feature_power_on-turning-your-phone-on-and-off\": {\"title\": \"Turning Your Phone On and Off\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"To turn on the phone, press and hold Side button.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Drag down the right side of your screen to open the Quick settings panel.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Tap the Power icon.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Tap Power off.\", \"notes\": [\"Note: \\n\\nAs an alternative to view this Power menu, press and hold the Side and Volume Down buttons.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"Tap Power off again.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:24.823Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-d7a00500-0feb-4abd-a1c0-60d7345ab4ae",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "response": {
+             "answer": "[1] Can't turn device on or off\ncategory: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: article\nsummary: This guide provides troubleshooting steps for a Samsung Galaxy A15 5G that cannot be turned on or off, including how to force restart a frozen device.\nsymptoms: [My phone won't turn on.,I can't turn off my phone.,My phone is frozen.,My screen is unresponsive.,My phone is stuck.,It's not charging.]\ntitle: Can't turn device on or off\ntutorial_id: 155887-can-t-turn-device-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off\n\n[2] Turning Your Phone On and Off\ncategory: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: procedure\nsummary: This tutorial guides the user on how to power off their Samsung Galaxy A15 5G.\nsymptoms: [How do I turn off my phone?,I need to power down my device.,My phone is stuck,I want to turn it off.,Where is the power button?]\ntitle: Turning Your Phone On and Off\ntutorial_id: feature_power_on-turning-your-phone-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/feature_power_on-turning-your-phone-on-and-off"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:24.823Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Everything looks normal on our side. I can walk you through a guide to get your Galaxy turning on again, or I can text it to you. What works best?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:25.578Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:57:22.178845Z",
+        "endTime": "2026-10-21T03:57:25.627483Z",
+        "attributes": {
+         "connection index": 2.0,
+         "perceived latency (ms)": 3449.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 50.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:22.229642Z",
+          "endTime": "2026-10-21T03:57:23.423432Z",
+          "attributes": {
+           "input token count": 5527.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1190.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "output token count": 82.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "1.193790s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:23.425474Z",
+          "endTime": "2026-10-21T03:57:23.453612Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 15.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.028138s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:23.425477Z",
+          "endTime": "2026-10-21T03:57:23.449880Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 10.0,
+            "sandbox init latency (ms)": 5.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.024403s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:23.449959Z",
+          "endTime": "2026-10-21T03:57:23.643863Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "zip_code": "30301"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "name": "support_check_outage",
+           "tool call id": "adk-cc598bf2-9449-4758-ab3c-da7614d76652"
+          },
+          "duration": "0.193904s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:23.453687Z",
+          "endTime": "2026-10-21T03:57:23.643594Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L2",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2026-03-14",
+              "line_id": "L2",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "name": "support_get_line_status",
+           "tool call id": "adk-efcb8741-9c28-4421-b134-7f995655d0a7"
+          },
+          "duration": "0.189907s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:23.643751Z",
+          "endTime": "2026-10-21T03:57:23.655264Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.011513s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:23.643953Z",
+          "endTime": "2026-10-21T03:57:23.655187Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.011234s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:23.656552Z",
+          "endTime": "2026-10-21T03:57:24.560502Z",
+          "attributes": {
+           "input token count": 5693.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 903.0,
+           "[debug] prefill time (ms)": 226.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "output token count": 51.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.903950s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:24.562787Z",
+          "endTime": "2026-10-21T03:57:24.573089Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.010302s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:24.573142Z",
+          "endTime": "2026-10-21T03:57:24.809889Z",
+          "attributes": {
+           "args": {
+            "rewrittenQueries": [
+             "galaxy won't power on"
+            ],
+            "query": "won't turn on at all",
+            "filter": "device: ANY(\"galaxy-a15-5g\")"
+           },
+           "type": "DataStoreTool",
+           "cited snippets": [],
+           "tool call id": "adk-d7a00500-0feb-4abd-a1c0-60d7345ab4ae",
+           "response": {
+            "answer": "[1] Can't turn device on or off\ncategory: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: article\nsteps_b64: eNrtV9tuGzcQ_ZXpvhhBVSOXhwJ-CYoGQQMUtls7LYo6MOjdkZbwLsmSXKmqESD_0H5hvqRnyF1pZcu11SYvhWAY9q7IuZw5c2Z0UzgV61Ac0a83RVlbXXJ6KE7tgr02M7LTKbVLcrU1XLybUBEiu_6CwZ9neFWzqnAWT0WBx8i_R_n_zZSWtjvwTLWaiy0dQseB3GAbn_psObmxnqyZUKwZV5T80pQXlBzKWSqVoaiumaKl6G131XCorY1yhZy3eG4PL8zPOtYaJ2sdaNbpiicpjqahhpU3VNsFLBxdmJRkcr2OZPXWbLx8bX3J5DlE5aME5u0fbCTkzuCtsyboOQ-nv0HwEvA9eW96nIiV1Wc6wvVLgdHYmIuRUO-uVsDLs3VRw-fwuEBeuQKmaxq8KFXTXLLpyzJVTYCfolXLy8pbN3oFMC6jTXbeTyjX9PlmTcdcGNf33Oaw7-Qz1T6gKH5JubRSn4CqLSy1HGtbBVTp2RM6rZdBI1K66mJENsAeWAZSpkKRmirVNZcjnwDYUTej1y2bjpRzqGtIzBGCOFoVFn5ODAXbMrW24gaHthsWl4p-sk2Ho_27aGcsZIQRUBnlqAWEWtwZ8Yb8so0vh4tv3SG9kXRVpMpyMAeRFtZfbz38yi4MTD9_Qj90urymM44RDoDC2UI7hoGFEZ61KdpoXY8khdIzS6Mg03UiuuybB_lyw2XcQEESYC3ZrOuRI8M1uO1yU8GaQXVTz8mL6Qbt1zU-3IWgxTFMHlFqoa96W5vtXzyCw9F3D1L4pog6NpzI2SVr9Is4OU0ac5LLfJJZPNKxe_QL_I6wIlKQBCaT221S9Az60hPmFiipne4x_cqrWS6wWPZ6VgNzsWT7Tso1lhJYx_lUZknoWUJOGW52cHl-hy07Xl7TaeNecYz_jujCQPYEF1JNZG9UFD1E_HMNDU9avG7ZOyhKYAlJeTPqj0EZDovHh0dqpvQuyYEiB4i1tK1rOHKOJtHji1tG5GcQyRebIrkxILZPwQDtaoaZ0M-vlHAeXzzXtgv9uKt0JeJRc-Mmt9oSSA6dOXTT4cPKOfi5Cy6pPECDwvuoW4a1bwdREGMSLtyRurJdpK8_fvjz2VPwEAyqIINOQeuVWWYtTtLXCzLs_AglUiI1IksyEafMDYR2rq-8EoGQ2ReYUwCNndn-rkxxhVEobuWjCuCUiU5TbXSoaS0j_yxFxafERTx9GmTE0r_GRi4_Hp3dt4UdlXaD-StdzzE9TmhfD0PuOxnUw3hz91VupBFv3aAQo9Wg184ZBjBVyl_fq1dn4i4HGgjpIonfOt3vbkDzMRGMVYq0QbKqekCtdtObbGr7bm72q_l-Ne-psHUzH7ViKqB79H49EpywdQE-SlPCyKI5IgvKr6islZ-lvfl7a69JtDGpZP4gQYn0SxWtn4wFL8HdpGUIdqCi-CLRAvYDhFzGDrgtVyb6RRu7l4rYN5YyFoeOwrHKYwfgapKptmJnpm0LAUcBxUkQxnWYscFiH5ORq8CINotunwdMD4u8xJ63NbVQS0mQo_AinxzNghdPBy_D1xKE6EaNm5eUC3Ou3REd2y3QEM9xT02jCM447pd0DmMKO8J0in40cK-GVWII-YoRC-dk0rohnSs4Ds1IC7Tieq-ljx_-Ei-qa-Kyt6flODBtEW7iJFY75dsHBu5DpJDb_3NapBT_GzGKz_Idakex2a-4-xV3v-LuV9zPv-K-e_83UmHIeA==\nsummary: This guide provides troubleshooting steps for a Samsung Galaxy A15 5G that cannot be turned on or off, including how to force restart a frozen device.\nsymptoms: [My phone won't turn on.,I can't turn off my phone.,My phone is frozen.,My screen is unresponsive.,My phone is stuck.,It's not charging.]\ntitle: Can't turn device on or off\ntutorial_id: 155887-can-t-turn-device-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off\n\n[2] Turning Your Phone On and Off\ncategory: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: procedure\nsteps_b64: eNrFUk1Lw0AQ_SvjXryUgp-H3oSeRVEEsVK2ySRZ3Mwsu7ONpfjf3U1KqUiLglhyyL7ZZOa9eW-tnJYmqAm8rFXRsCmwB68jUEHQbW4ovc5SqUFdGqoTUipBwXfJ50cGiZ6ACaRBcA0TjsB5DAE0ldCwLeHBlAiLKMI0zj8Ty86suNiOy5idGKYt7LSnYS5Fa1Oh0NbOkTZkKm1DGqhavZqXnt1OqeFuLtz3-RjBoOR8v5Kp1zWU3A1CvKkbgZCJcwUrjh5C4RHTLQM7HL66j6Z4g4AiqWEApwntkRVeHPBKu571HXfowRRHd-PyMNeBJ1fVV5rqNp0mMKMZ3eSQgbaCnrSYJWZ3lga7pNOETYMWKX6LZN5DH8tceWIbW4RpNn-IaRirf9_G1Q-3AbrW5s-tEx9_wfV6P9dnjqfJiIJbZ1FwWHVP7OQ4acvPJx5VkPE=\nsummary: This tutorial guides the user on how to power off their Samsung Galaxy A15 5G.\nsymptoms: [How do I turn off my phone?,I need to power down my device.,My phone is stuck,I want to turn it off.,Where is the power button?]\ntitle: Turning Your Phone On and Off\ntutorial_id: feature_power_on-turning-your-phone-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/feature_power_on-turning-your-phone-on-and-off\n\n"
+           },
+           "name": "search_tutorials",
+           "agent": "Tech Support",
+           "snippets": [
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off",
+             "text": "category: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: article\nsteps_b64: eNrtV9tuGzcQ_ZXpvhhBVSOXhwJ-CYoGQQMUtls7LYo6MOjdkZbwLsmSXKmqESD_0H5hvqRnyF1pZcu11SYvhWAY9q7IuZw5c2Z0UzgV61Ac0a83RVlbXXJ6KE7tgr02M7LTKbVLcrU1XLybUBEiu_6CwZ9neFWzqnAWT0WBx8i_R_n_zZSWtjvwTLWaiy0dQseB3GAbn_psObmxnqyZUKwZV5T80pQXlBzKWSqVoaiumaKl6G131XCorY1yhZy3eG4PL8zPOtYaJ2sdaNbpiicpjqahhpU3VNsFLBxdmJRkcr2OZPXWbLx8bX3J5DlE5aME5u0fbCTkzuCtsyboOQ-nv0HwEvA9eW96nIiV1Wc6wvVLgdHYmIuRUO-uVsDLs3VRw-fwuEBeuQKmaxq8KFXTXLLpyzJVTYCfolXLy8pbN3oFMC6jTXbeTyjX9PlmTcdcGNf33Oaw7-Qz1T6gKH5JubRSn4CqLSy1HGtbBVTp2RM6rZdBI1K66mJENsAeWAZSpkKRmirVNZcjnwDYUTej1y2bjpRzqGtIzBGCOFoVFn5ODAXbMrW24gaHthsWl4p-sk2Ho_27aGcsZIQRUBnlqAWEWtwZ8Yb8so0vh4tv3SG9kXRVpMpyMAeRFtZfbz38yi4MTD9_Qj90urymM44RDoDC2UI7hoGFEZ61KdpoXY8khdIzS6Mg03UiuuybB_lyw2XcQEESYC3ZrOuRI8M1uO1yU8GaQXVTz8mL6Qbt1zU-3IWgxTFMHlFqoa96W5vtXzyCw9F3D1L4pog6NpzI2SVr9Is4OU0ac5LLfJJZPNKxe_QL_I6wIlKQBCaT221S9Az60hPmFiipne4x_cqrWS6wWPZ6VgNzsWT7Tso1lhJYx_lUZknoWUJOGW52cHl-hy07Xl7TaeNecYz_jujCQPYEF1JNZG9UFD1E_HMNDU9avG7ZOyhKYAlJeTPqj0EZDovHh0dqpvQuyYEiB4i1tK1rOHKOJtHji1tG5GcQyRebIrkxILZPwQDtaoaZ0M-vlHAeXzzXtgv9uKt0JeJRc-Mmt9oSSA6dOXTT4cPKOfi5Cy6pPECDwvuoW4a1bwdREGMSLtyRurJdpK8_fvjz2VPwEAyqIINOQeuVWWYtTtLXCzLs_AglUiI1IksyEafMDYR2rq-8EoGQ2ReYUwCNndn-rkxxhVEobuWjCuCUiU5TbXSoaS0j_yxFxafERTx9GmTE0r_GRi4_Hp3dt4UdlXaD-StdzzE9TmhfD0PuOxnUw3hz91VupBFv3aAQo9Wg184ZBjBVyl_fq1dn4i4HGgjpIonfOt3vbkDzMRGMVYq0QbKqekCtdtObbGr7bm72q_l-Ne-psHUzH7ViKqB79H49EpywdQE-SlPCyKI5IgvKr6islZ-lvfl7a69JtDGpZP4gQYn0SxWtn4wFL8HdpGUIdqCi-CLRAvYDhFzGDrgtVyb6RRu7l4rYN5YyFoeOwrHKYwfgapKptmJnpm0LAUcBxUkQxnWYscFiH5ORq8CINotunwdMD4u8xJ63NbVQS0mQo_AinxzNghdPBy_D1xKE6EaNm5eUC3Ou3REd2y3QEM9xT02jCM447pd0DmMKO8J0in40cK-GVWII-YoRC-dk0rohnSs4Ds1IC7Tieq-ljx_-Ei-qa-Kyt6flODBtEW7iJFY75dsHBu5DpJDb_3NapBT_GzGKz_Idakex2a-4-xV3v-LuV9zPv-K-e_83UmHIeA==\nsummary: This guide provides troubleshooting steps for a Samsung Galaxy A15 5G that cannot be turned on or off, including how to force restart a frozen device.\nsymptoms: [My phone won't turn on., I can't turn off my phone., My phone is frozen., My screen is unresponsive., My phone is stuck., It's not charging.]\ntitle: Can't turn device on or off\ntutorial_id: 155887-can-t-turn-device-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off\n",
+             "title": "Can't turn device on or off",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/7dd0e6e159bb16a3263c05364cda81b469c5a5d4"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/feature_power_on-turning-your-phone-on-and-off",
+             "text": "category: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: procedure\nsteps_b64: eNrFUk1Lw0AQ_SvjXryUgp-H3oSeRVEEsVK2ySRZ3Mwsu7ONpfjf3U1KqUiLglhyyL7ZZOa9eW-tnJYmqAm8rFXRsCmwB68jUEHQbW4ovc5SqUFdGqoTUipBwXfJ50cGiZ6ACaRBcA0TjsB5DAE0ldCwLeHBlAiLKMI0zj8Ty86suNiOy5idGKYt7LSnYS5Fa1Oh0NbOkTZkKm1DGqhavZqXnt1OqeFuLtz3-RjBoOR8v5Kp1zWU3A1CvKkbgZCJcwUrjh5C4RHTLQM7HL66j6Z4g4AiqWEApwntkRVeHPBKu571HXfowRRHd-PyMNeBJ1fVV5rqNp0mMKMZ3eSQgbaCnrSYJWZ3lga7pNOETYMWKX6LZN5DH8tceWIbW4RpNn-IaRirf9_G1Q-3AbrW5s-tEx9_wfV6P9dnjqfJiIJbZ1FwWHVP7OQ4acvPJx5VkPE=\nsummary: This tutorial guides the user on how to power off their Samsung Galaxy A15 5G.\nsymptoms: [How do I turn off my phone?, I need to power down my device., My phone is stuck, I want to turn it off., Where is the power button?]\ntitle: Turning Your Phone On and Off\ntutorial_id: feature_power_on-turning-your-phone-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/feature_power_on-turning-your-phone-on-and-off\n",
+             "title": "Turning Your Phone On and Off",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/3b3d3d7adcda402033ca9d723c73d4e007bab125"
+            }
+           ]
+          },
+          "childSpans": [
+           {
+            "name": "Search with rewritten query",
+            "startTime": "2026-10-21T03:57:24.585Z",
+            "endTime": "2026-10-21T03:57:24.800Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Search with original query",
+            "startTime": "2026-10-21T03:57:24.585Z",
+            "endTime": "2026-10-21T03:57:24.806Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Summarization",
+            "attributes": {
+             "summarization model display name": "disable_summarizer",
+             "disabled": true
+            }
+           },
+           {
+            "name": "Query rewrite",
+            "attributes": {
+             "rewriter model display name": "rewrite-by-agent (Default)"
+            }
+           }
+          ],
+          "duration": "0.236747s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:24.810022Z",
+          "endTime": "2026-10-21T03:57:24.823493Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 6.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.013471s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:24.824730Z",
+          "endTime": "2026-10-21T03:57:25.576710Z",
+          "attributes": {
+           "input token count": 6141.0,
+           "[debug] decode queue time (ms)": 17.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 751.0,
+           "[debug] prefill time (ms)": 230.0,
+           "[debug] decode time to first token (ms)": 61.0,
+           "output token count": 34.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.751980s"
+         }
+        ],
+        "duration": "3.448638s"
+       }
+      },
+      "citations": {
+       "citedChunks": [
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Setup%20and,feature_power_on%2Dturning%2Dyour%2Dphone%2Don%2Dand%2Doff%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fgalaxy%2Da15%2D5g%2F16.0.0%2Ffeature_power_on%2Dturning%2Dyour%2Dphone%2Don%2Dand%2Doff",
+         "title": "Turning Your Phone On and Off",
+         "text": "category: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: procedure\nsteps_b64: eNrFUk1Lw0AQ_SvjXryUgp-H3oSeRVEEsVK2ySRZ3Mwsu7ONpfjf3U1KqUiLglhyyL7ZZOa9eW-tnJYmqAm8rFXRsCmwB68jUEHQbW4ovc5SqUFdGqoTUipBwXfJ50cGiZ6ACaRBcA0TjsB5DAE0ldCwLeHBlAiLKMI0zj8Ty86suNiOy5idGKYt7LSnYS5Fa1Oh0NbOkTZkKm1DGqhavZqXnt1OqeFuLtz3-RjBoOR8v5Kp1zWU3A1CvKkbgZCJcwUrjh5C4RHTLQM7HL66j6Z4g4AiqWEApwntkRVeHPBKu571HXfowRRHd-PyMNeBJ1fVV5rqNp0mMKMZ3eSQgbaCnrSYJWZ3lga7pNOETYMWKX6LZN5DH8tceWIbW4RpNn-IaRirf9_G1Q-3AbrW5s-tEx9_wfV6P9dnjqfJiIJbZ1FwWHVP7OQ4acvPJx5VkPE=\nsummary: This tutorial guides the user on how to power off their Samsung Galaxy A15 5G.\nsymptoms: [How do I turn off my phone?, I need to power down my device., My phone is stuck, I want to turn it off., Where is the power button?]\ntitle: Turning Your Phone On and Off\ntutorial_id: feature_power_on-turning-your-phone-on-and-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/feature_power_on-turning-your-phone-on-and-off\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Setup%20and,155887%2Dcan%2Dt%2Dturn%2Ddevice%2Don%2Dor%2Doff%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fgalaxy%2Da15%2D5g%2F16.0.0%2F155887%2Dcan%2Dt%2Dturn%2Ddevice%2Don%2Dor%2Doff",
+         "title": "Can't turn device on or off",
+         "text": "category: Setup and SIMs\ndevice: galaxy-a15-5g\nkind: article\nsteps_b64: eNrtV9tuGzcQ_ZXpvhhBVSOXhwJ-CYoGQQMUtls7LYo6MOjdkZbwLsmSXKmqESD_0H5hvqRnyF1pZcu11SYvhWAY9q7IuZw5c2Z0UzgV61Ac0a83RVlbXXJ6KE7tgr02M7LTKbVLcrU1XLybUBEiu_6CwZ9neFWzqnAWT0WBx8i_R_n_zZSWtjvwTLWaiy0dQseB3GAbn_psObmxnqyZUKwZV5T80pQXlBzKWSqVoaiumaKl6G131XCorY1yhZy3eG4PL8zPOtYaJ2sdaNbpiicpjqahhpU3VNsFLBxdmJRkcr2OZPXWbLx8bX3J5DlE5aME5u0fbCTkzuCtsyboOQ-nv0HwEvA9eW96nIiV1Wc6wvVLgdHYmIuRUO-uVsDLs3VRw-fwuEBeuQKmaxq8KFXTXLLpyzJVTYCfolXLy8pbN3oFMC6jTXbeTyjX9PlmTcdcGNf33Oaw7-Qz1T6gKH5JubRSn4CqLSy1HGtbBVTp2RM6rZdBI1K66mJENsAeWAZSpkKRmirVNZcjnwDYUTej1y2bjpRzqGtIzBGCOFoVFn5ODAXbMrW24gaHthsWl4p-sk2Ho_27aGcsZIQRUBnlqAWEWtwZ8Yb8so0vh4tv3SG9kXRVpMpyMAeRFtZfbz38yi4MTD9_Qj90urymM44RDoDC2UI7hoGFEZ61KdpoXY8khdIzS6Mg03UiuuybB_lyw2XcQEESYC3ZrOuRI8M1uO1yU8GaQXVTz8mL6Qbt1zU-3IWgxTFMHlFqoa96W5vtXzyCw9F3D1L4pog6NpzI2SVr9Is4OU0ac5LLfJJZPNKxe_QL_I6wIlKQBCaT221S9Az60hPmFiipne4x_cqrWS6wWPZ6VgNzsWT7Tso1lhJYx_lUZknoWUJOGW52cHl-hy07Xl7TaeNecYz_jujCQPYEF1JNZG9UFD1E_HMNDU9avG7ZOyhKYAlJeTPqj0EZDovHh0dqpvQuyYEiB4i1tK1rOHKOJtHji1tG5GcQyRebIrkxILZPwQDtaoaZ0M-vlHAeXzzXtgv9uKt0JeJRc-Mmt9oSSA6dOXTT4cPKOfi5Cy6pPECDwvuoW4a1bwdREGMSLtyRurJdpK8_fvjz2VPwEAyqIINOQeuVWWYtTtLXCzLs_AglUiI1IksyEafMDYR2rq-8EoGQ2ReYUwCNndn-rkxxhVEobuWjCuCUiU5TbXSoaS0j_yxFxafERTx9GmTE0r_GRi4_Hp3dt4UdlXaD-StdzzE9TmhfD0PuOxnUw3hz91VupBFv3aAQo9Wg184ZBjBVyl_fq1dn4i4HGgjpIonfOt3vbkDzMRGMVYq0QbKqekCtdtObbGr7bm72q_l-Ne-psHUzH7ViKqB79H49EpywdQE-SlPCyKI5IgvKr6islZ-lvfl7a69JtDGpZP4gQYn0SxWtn4wFL8HdpGUIdqCi-CLRAvYDhFzGDrgtVyb6RRu7l4rYN5YyFoeOwrHKYwfgapKptmJnpm0LAUcBxUkQxnWYscFiH5ORq8CINotunwdMD4u8xJ63NbVQS0mQo_AinxzNghdPBy_D1xKE6EaNm5eUC3Ou3REd2y3QEM9xT02jCM447pd0DmMKO8J0in40cK-GVWII-YoRC-dk0rohnSs4Ds1IC7Tieq-ljx_-Ei-qa-Kyt6flODBtEW7iJFY75dsHBu5DpJDb_3NapBT_GzGKz_Idakex2a-4-xV3v-LuV9zPv-K-e_83UmHIeA==\nsummary: This guide provides troubleshooting steps for a Samsung Galaxy A15 5G that cannot be turned on or off, including how to force restart a frozen device.\nsymptoms: [My phone won't turn on., I can't turn off my phone., My phone is frozen., My screen is unresponsive., My phone is stuck., It's not charging.]\ntitle: Can't turn device on or off\ntutorial_id: 155887-can-t-turn-device-on-or-off\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/galaxy-a15-5g/16.0.0/155887-can-t-turn-device-on-or-off\n"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "ok what do I do",
+   "call": 1,
+   "agent": "\"I'm going to walk you through some steps to get your phone turned back on.\"\n\"Are you having issues powering off your phone, or powering it on?\"",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "next_step",
+     "payload": {
+      "args": {
+       "tutorial_id": "155887-can-t-turn-device-on-or-off"
+      },
+      "result": {
+       "result": {
+        "step": 1.0,
+        "text": "If you're having issues powering your phone off or on, there are a few steps you can take to troubleshoot the problem.\nWithin this guide, you'll learn how to:\nPower off your phone\nPower on your phone\nForce restart a frozen or unresponsive phone\nAre you having issues powering off your phone, or powering it on?",
+        "call_ending": false,
+        "heading": "",
+        "of": 1.0
+       }
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "\"I'm going to walk you through some steps to get your phone turned back on.\"\n\"Are you having issues powering off your phone, or powering it on?\"",
+      "turnCompleted": true,
+      "turnIndex": 3,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "ok what do I do"
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:25.728Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-3d1e6cbd-70d3-4dcc-838d-9e3bee22d990",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/next-step",
+            "args": {
+             "tutorial_id": "155887-can-t-turn-device-on-or-off"
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:26.494Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "walk": "{\"progress\": {\"155887-can-t-turn-device-on-or-off\": {\"done\": 1, \"warned\": 0, \"choice\": \"\"}}, \"stack\": [], \"active\": \"155887-can-t-turn-device-on-or-off\", \"resume\": {\"tutorial_id\": \"155887-can-t-turn-device-on-or-off\", \"step\": 1, \"heading\": \"If you're having issues powering your phone off or on, there are a few steps you\", \"risk\": \"safe\", \"choice\": \"\"}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:26.571Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-3d1e6cbd-70d3-4dcc-838d-9e3bee22d990",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/next-step",
+            "response": {
+             "result": {
+              "step": 1.0,
+              "text": "If you're having issues powering your phone off or on, there are a few steps you can take to troubleshoot the problem.\nWithin this guide, you'll learn how to:\nPower off your phone\nPower on your phone\nForce restart a frozen or unresponsive phone\nAre you having issues powering off your phone, or powering it on?",
+              "call_ending": false,
+              "heading": "",
+              "of": 1.0
+             }
+            },
+            "displayName": "next_step"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:26.571Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "\"I'm going to walk you through some steps to get your phone turned back on.\"\n\"Are you having issues powering off your phone, or powering it on?\""
+          }
+         ],
+         "eventTime": "2026-10-21T03:57:27.344Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:57:25.675874Z",
+        "endTime": "2026-10-21T03:57:27.409027Z",
+        "attributes": {
+         "connection index": 3.0,
+         "perceived latency (ms)": 1734.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 53.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:25.729890Z",
+          "endTime": "2026-10-21T03:57:26.493328Z",
+          "attributes": {
+           "input token count": 6190.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 763.0,
+           "[debug] prefill time (ms)": 232.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 35.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.763438s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:26.495118Z",
+          "endTime": "2026-10-21T03:57:26.530701Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 20.0,
+            "sandbox init latency (ms)": 5.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.035583s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:57:26.530761Z",
+          "endTime": "2026-10-21T03:57:26.556784Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "tutorial_id": "155887-can-t-turn-device-on-or-off"
+           },
+           "type": "PythonFunctionTool",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 16.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "response": {
+            "result": {
+             "step": 1.0,
+             "text": "If you're having issues powering your phone off or on, there are a few steps you can take to troubleshoot the problem.\nWithin this guide, you'll learn how to:\nPower off your phone\nPower on your phone\nForce restart a frozen or unresponsive phone\nAre you having issues powering off your phone, or powering it on?",
+             "call_ending": false,
+             "heading": "",
+             "of": 1.0
+            }
+           },
+           "name": "next_step",
+           "tool call id": "adk-3d1e6cbd-70d3-4dcc-838d-9e3bee22d990"
+          },
+          "duration": "0.026023s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:57:26.556900Z",
+          "endTime": "2026-10-21T03:57:26.571503Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 5.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.014603s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:57:26.572780Z",
+          "endTime": "2026-10-21T03:57:27.342289Z",
+          "attributes": {
+           "input token count": 6330.0,
+           "[debug] decode queue time (ms)": 14.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 768.0,
+           "[debug] prefill time (ms)": 231.0,
+           "[debug] decode time to first token (ms)": 58.0,
+           "output token count": 35.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.769509s"
+         }
+        ],
+        "duration": "1.733153s"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "I1020 22:54:58.992914 7126081 ev_poll_posix.cc:587] FD from fork parent still in poll list: fd(8, generation: 1)\nreset failed: 401 \n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>401 Unauthorized</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Unauthorized</h1>\n<h2>Your clien",
+ "session_ids": [
+  "99765a72-8f91-4551-b380-eef72bfd3b75"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "check_outage",
+  "get_line_status",
+  "search_tutorials",
+  "next_step"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

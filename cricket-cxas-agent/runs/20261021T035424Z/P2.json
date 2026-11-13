@@ -1,0 +1,1159 @@
+{
+ "id": "P2",
+ "title": "Tower outage at the caller's zip",
+ "app": "projects/tmeg-working-demos/locations/us/apps/cricket-care",
+ "project": "tmeg-working-demos",
+ "started": "2026-10-21T03:54:37.061943+00:00",
+ "turns": [
+  {
+   "user": "I have no service at all right now",
+   "call": 1,
+   "agent": "I see you're calling from your iPhone. Is that the one having trouble?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "transfer_to_agent",
+     "payload": {
+      "args": {
+       "agent_name": "Tech Support"
+      },
+      "result": null
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_progress",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+       "status": "error"
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_lines",
+     "payload": {
+      "args": {
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "lines": [
+          {
+           "is_calling_line": true,
+           "os": "27.0.0",
+           "phone_last4": "4471",
+           "line_id": "L1",
+           "device": "iphone-13",
+           "device_label": "iPhone 13"
+          },
+          {
+           "is_calling_line": false,
+           "os": "16.0.0",
+           "phone_last4": "8820",
+           "line_id": "L2",
+           "device": "galaxy-a15-5g",
+           "device_label": "Galaxy A15 5G"
+          }
+         ],
+         "zip_code": "30301",
+         "name": "Jordan Reyes",
+         "customer_id": "cust_2001"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "I see you're calling from your iPhone. Is that the one having trouble?",
+      "turnCompleted": true,
+      "turnIndex": 1,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "defaultVariables": {
+            "steps_by_id": "",
+            "current_date": "2026-10-20[America/Los_Angeles]",
+            "walk": "",
+            "_session": {
+             "modality": "TEXT",
+             "channel": "API"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:39.141Z"
+        },
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "I have no service at all right now"
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:39.142Z"
+        },
+        {
+         "role": "Care Concierge",
+         "chunks": [
+          {
+           "agentTransfer": {
+            "targetAgent": "projects/tmeg-working-demos/locations/us/apps/cricket-care/agents/tech-support",
+            "displayName": "Tech Support"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:39.762Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-4479bf5b-6dd8-4be7-a89e-9aa578131db7",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:40.409Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-4479bf5b-6dd8-4be7-a89e-9aa578131db7",
+            "response": {
+             "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+             "status": "error"
+            },
+            "displayName": "support_get_progress",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_progress"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:40.689Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolCall": {
+            "id": "adk-951ca3eb-a7d4-401c-9b8d-ac5e07fba7bf",
+            "args": {
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:41.376Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-951ca3eb-a7d4-401c-9b8d-ac5e07fba7bf",
+            "response": {
+             "text_output": [
+              {
+               "lines": [
+                {
+                 "is_calling_line": true,
+                 "os": "27.0.0",
+                 "phone_last4": "4471",
+                 "line_id": "L1",
+                 "device": "iphone-13",
+                 "device_label": "iPhone 13"
+                },
+                {
+                 "is_calling_line": false,
+                 "os": "16.0.0",
+                 "phone_last4": "8820",
+                 "line_id": "L2",
+                 "device": "galaxy-a15-5g",
+                 "device_label": "Galaxy A15 5G"
+                }
+               ],
+               "zip_code": "30301",
+               "name": "Jordan Reyes",
+               "customer_id": "cust_2001"
+              }
+             ]
+            },
+            "displayName": "support_get_lines",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_lines"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:41.547Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I see you're calling from your iPhone. Is that the one having trouble?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:42.149Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:54:39.089333Z",
+        "endTime": "2026-10-21T03:54:42.201749Z",
+        "attributes": {
+         "connection index": 1.0,
+         "perceived latency (ms)": 3112.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 53.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:39.143533Z",
+          "endTime": "2026-10-21T03:54:39.760372Z",
+          "attributes": {
+           "input token count": 1363.0,
+           "[debug] decode queue time (ms)": 19.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 616.0,
+           "[debug] prefill time (ms)": 192.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "output token count": 19.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Care Concierge",
+           "thought token count": 0.0
+          },
+          "duration": "0.616839s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:39.762Z",
+          "endTime": "2026-10-21T03:54:39.762Z",
+          "attributes": {
+           "agent": "Care Concierge",
+           "args": {
+            "agent_name": "Tech Support"
+           },
+           "type": "TransferToAgentTool",
+           "name": "transfer_to_agent"
+          },
+          "duration": "0s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:39.766115Z",
+          "endTime": "2026-10-21T03:54:40.407254Z",
+          "attributes": {
+           "input token count": 5257.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 640.0,
+           "[debug] prefill time (ms)": 221.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.641139s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:40.409716Z",
+          "endTime": "2026-10-21T03:54:40.433836Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 12.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.024120s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:40.433912Z",
+          "endTime": "2026-10-21T03:54:40.679328Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+           "type": "McpTool",
+           "response": {
+            "error": "Tool 'support_get_progress' execution failed: Error executing tool get_progress",
+            "status": "error"
+           },
+           "name": "support_get_progress",
+           "tool call id": "adk-4479bf5b-6dd8-4be7-a89e-9aa578131db7"
+          },
+          "duration": "0.245416s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:40.679537Z",
+          "endTime": "2026-10-21T03:54:40.689356Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 3.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.009819s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:40.691015Z",
+          "endTime": "2026-10-21T03:54:41.374627Z",
+          "attributes": {
+           "input token count": 5318.0,
+           "[debug] decode queue time (ms)": 18.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 683.0,
+           "[debug] prefill time (ms)": 222.0,
+           "[debug] decode time to first token (ms)": 63.0,
+           "output token count": 23.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.683612s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:41.377067Z",
+          "endTime": "2026-10-21T03:54:41.384984Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 1.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.007917s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:41.385068Z",
+          "endTime": "2026-10-21T03:54:41.538679Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "lines": [
+               {
+                "is_calling_line": true,
+                "os": "27.0.0",
+                "phone_last4": "4471",
+                "line_id": "L1",
+                "device": "iphone-13",
+                "device_label": "iPhone 13"
+               },
+               {
+                "is_calling_line": false,
+                "os": "16.0.0",
+                "phone_last4": "8820",
+                "line_id": "L2",
+                "device": "galaxy-a15-5g",
+                "device_label": "Galaxy A15 5G"
+               }
+              ],
+              "zip_code": "30301",
+              "name": "Jordan Reyes",
+              "customer_id": "cust_2001"
+             }
+            ]
+           },
+           "name": "support_get_lines",
+           "tool call id": "adk-951ca3eb-a7d4-401c-9b8d-ac5e07fba7bf"
+          },
+          "duration": "0.153611s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:41.538903Z",
+          "endTime": "2026-10-21T03:54:41.547672Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.008769s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:41.549888Z",
+          "endTime": "2026-10-21T03:54:42.146824Z",
+          "attributes": {
+           "input token count": 5518.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 596.0,
+           "[debug] prefill time (ms)": 225.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "output token count": 17.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.596936s"
+         }
+        ],
+        "duration": "3.112416s"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "user": "yes",
+   "call": 1,
+   "agent": "Let me check a couple of things on our side first.\nEverything looks normal on our side. It might be a setting on your iPhone.\nI have a guide that walks through manually selecting a network. I can text you the guide, walk you through it now, or both. What works for you?",
+   "spans": [
+    {
+     "kind": "tool",
+     "name": "support_get_line_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "reason": null,
+         "since": "2025-11-02",
+         "line_id": "L1",
+         "status": "ACTIVE"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_get_sim_status",
+     "payload": {
+      "args": {
+       "line_id": "L1",
+       "customer_id": "cust_2001"
+      },
+      "result": {
+       "text_output": [
+        {
+         "provisioned": true,
+         "changed_days_ago": 340.0,
+         "sim_type": "eSIM",
+         "activated": "2025-11-02"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "support_check_outage",
+     "payload": {
+      "args": {
+       "zip_code": "30301"
+      },
+      "result": {
+       "text_output": [
+        {
+         "outage": false,
+         "zip_code": "30301"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "kind": "tool",
+     "name": "search_tutorials",
+     "payload": {
+      "args": {
+       "rewrittenQueries": [
+        "iPhone 13 no service"
+       ],
+       "query": "no service",
+       "filter": "device: ANY(\"iphone-13\")"
+      },
+      "result": {
+       "answer": "[1] Manually selecting a cellular network\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFkk1LAzEQhv_KmIuXpeDXpTcRCj1YD3oRKyVmZ00wmwnJxLUU_7uzu6VUsB5bckhm8jHP-042Kmq2WU3hZaOMJWdwCF4rUJkxbneCTBeSsqhrF94lUkpCxi_u17NELXSOrQvAFuERmeVYBh1jBawj3KH3xes06a8F4r0q5W1XqI8psqOwCzudwlgxFO8lYbT3KwxbjEb7jJJt9XpVJ4p7KUvdiml457uCUcPlYQ1PQrlA7ih9CL9H02P8xlULWU1hGZZh3sCaClj9idAWzy56kT2_zxU0LmWGPDwxuEEBoaEEnXXGDtc6HWSLoNWhiJw1iPOUETSYrU8QRpSJOrpHV_97JEKydzUO0m4LU6vZGcjSflEnoh5msxN3-fqwgrGzfRMSxIQNpoT1H66flP_mMP8zlXP5coZa-XAs6H0XBrKz0zD34wfkRV7R\nsummary: This tutorial guides the user through manually selecting a cellular network on their iPhone 13.\nsymptoms: [Can't connect to network,No service,Phone not registering,Want to pick a different carrier,Network issues,Bad signal]\ntitle: Manually selecting a cellular network\ntutorial_id: feature_manual_network_selection-manually-selecting-a-cellular-network\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_manual_network_selection-manually-selecting-a-cellular-network\n\n[2] Inserting and removing the Nano SIM card\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFVE2L2zAQ_StTX_YSFrL9OOytFAqBblnYQyndEhR7bKs7mRGSnNQshf6N_r3-ko5kJ01K3O6h7RJDLFmaN_Pem7kvnIltKC7hw31RtmJLzIuPMyhCRDd-Yf2b61aLprLc6KoodBnxc0zvb6Q0ESG2CGxY4GZxBaXxFURvehDOXwjrCOLB26aNEGyFIDX00nmocKPA5ykkSxwyKN7q2yXc8i2_1lv2uhVGmF_AWiqkAIYrIEX1sxw9QWa0rSWClcLlnKoj9FOg8K5FjyZAfYAyP0RB48k-FOc31WVOu9We1rQWF63wfrk1ngd-uSPSjdIQLZFH0mtDAXV3bfpl5cUdbLWyXUbJcb7MYFDsYlqxBQf0EdBqzn5fWNYMP2GZkoIoQkkwA8449CVZB0FrzxVajpLvOcutUK72KEwmKdHnutBCx9FSPpD3PZJSjmFS8itzhxA6j4nC71-_6YvNKWstA6s5u-l0ErIGBqMP69OQSr04EeLggCbO4DxukOOx2LWX9UiMXnZKPXrq_5Gk0XdTij6dVvSGkuemWrCLSSAbAwSSOEn7y18ur5OGpO1R9cnrgwRqdstjq_wNCsZ6H2jqZ380dZoxuJbNKTayT_RAFnRnx0k6dDTwT9_NUgistYQeyOqY6NyAILFslRSsmhNtIEdOOgvD8XN4Jd6rnygRbJvEjx604-dhuiDnDjCj4XaZpNbU9gjgyJQ6cbBRIMIQduDjFMsjLEnVhceYPs-nhbpOI2HCqitT3g0y7Rx2KM5_r-LFdBXvpTtTk5WydoSpK1JFObMnj5Nz-v0AFt6XZw==\nsummary: This guide explains how to insert or remove a Nano SIM card from an iPhone 13.\nsymptoms: [My phone isn't connecting to the network,I need to change my SIM card,My SIM card isn't working,I got a new SIM card,No service,SIM card error]\ntitle: Inserting and removing the Nano SIM card\ntutorial_id: feature_device_views_sim-inserting-and-removing-the-nano-sim-card\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_device_views_sim-inserting-and-removing-the-nano-sim-card\n\n[3] Can't make or receive calls\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1vHLcR_ivsfagd4HxA2qYtnE-KZDtCZVuIFBtFrzB4u7w7Vnvkdsm98zUokB_RL_17-SV9Zob7Kp0sKVHRoIET2LvHJYczzzzzQn43KXVch8lz9ZfvJtna28zww1-nahKiKdMvDn99jldro3PrVniaTPAYzcdI_z5dqr2vn1RG1U4vCqOiVxt9ZVS59s6oTBdFUN7RoErZc3o5VXFt8IGm_9XS7BQvR0Mw3qlIn2Oa3ERTbSxmscv0fQg1noLa2biWV7nZQnDlq967TFeVNZV6ql1O38Y1PsF_WkWzKX2lq70qKw9pN_ShViXW0c64qIKNtY5WBKZdGZf52kEQ7P2z2dy9xyrWyZSr2ubYDY0sClUYXTm19jvI_nzujtcmuxJ5zEcbIr5XmXfOZDT93H0bjDqyVVlgYfXa57zl-aQywcT5JG2kN17mW0Je-_ZC1WWuowlz940JUVexr19-adIrZ-LOV1cKL0gEfHGBnzT0ttR1EZWrNwuoiubl8Se1Lp5dnL6mD-pSPYX6dFkWNiPjfjZ3Ly10qvPcklS6UKEuodFIwuMtpA8yT9IvQcX52ENWvWjBRc--pIn4cfIGmHqueorLTFHUha7ISu_ts5cW9llh1Ql9uYO6BZCuLgq8IKx9MC6hdKmLAONMNnr_Ia982XsFG32IniX451QJxH8zhHhfiNYIfdzLAAC5E1JkA5h1rIE3fKcYKXCNEgh7VtnVOmK6ykHhftnH70y9MniLDezZO9TGA3sLXQU86ciuktsAsOxNLiMWMCjmYQlaCb9MrqLWemtUASxCc84n0aYyGTSCr_nLyugAMXfrfYv3jxDVAvWEV_a3QP5MTz2PhiN0jp-WNzmBgM3U-gQU7mmthhm2Ft7O-26VVRm3guMmTQW9YWLQM_WC-ITWFcvTuvRE0q9NUfI2oZBsSDWYhz5PFFHYjSXBRAutpTK_hbJXZvYAeF6CPAZ--whg_O0QjPejigE7xydBlT4EywYg6_dZk3VJSNFqBaXF3izs0GAPXS32neKi35meN-osI4cvvXVxqhY1zw6bWpgeTP4kSijQPQsBOX9ueB6aDDBTtia7CmvwOCw92O5U7bRlAgUVVf6j3YD7ir36_AuwFETOw1QR1ceajTDSlV-CwlbaugFoRchRzNIs4lTYPe5LS497tTHahRS0OIw0wYMxRrBd6yrfkZP2tYuhjT4hVPQz1ewcr5e22sg6pF8iE3a4ASvw2GvBVDN92-US4iBiFT7jgDV7MNWOYspd8Byr-pNw_m4SbSwMwfDyZsM4thrsMxmmHAdSjZeV37C2v_YgiZBVxjjYSpfqIgW3kQ7Ynw5MdonPsO9Q2FyocCib4JKA8fbNcNbJG_zruZq7DsjMcgS-bpLNcINYofL1SsBy7F2sfKGODeUVM5rpLYFLJQPRd4wM2SJ7qdgbuCjFBjKGIFHqhS3gHeDpJqak_OeH7_8d2vjfxPcUbya3Kgcbe7IlYt-UhWFiJ2omA_1qpGH607DW724KoWNwjVaBD-60i60HhrpxIsllyImq2jF6SIiCJokK9B2IpLBjTM6O1YabZr5MIjSCnzGDsKgd0r-kxiZVbNKjRk76zjqEcjDWAxxrkJWJyn-yMNHzq-OGN0jLnOyKyPQq7CHjpq_3O3rYTjLcxqemBEMP5VJAIJKF46Rk5Z7uduGXkUnyW5bpnl8f1dGD922WPr-Ps5-KsxAO08cUOMhowh9EBDtbmm4R5v1T0eYnWOC9BAEAVXCAkoGCSj4d4HhH4UYPps_9zhVe5y3mehYkeWGKtXEHQsog28oQf1bYt4RBRIQrk8-UBDvxh_4kVFqNl6bYTUG2LdU40m510XMElmmatjdS1UkzIY2FER6FYL4YEgxlYpU4WptAiLb7S73WrmYRbx7a5ZPBF4kcmqi9tXHf5MA3pMfQMKVXTe40nyCmh_iMtoGsDBRfQ09h7b3Ef5Otnf076ldy1o0Hi3VTd2Vma4CGqB9EPoeqv0eI7eeUEo6Vet_Qfpni57hRUHJBSVOtfSEouaCADbjGaynPbYA7v3Ui_sFYDsLvfFFv2h9gE8vAV7zPlhWb2Aw3QYoc7pYiACbIKUYTIf3ziEZNgBsmB63Ezc_yMdeWnI9-ws9OUOWIb0me45GrcwaPlIRfUUovlSAVpwe3kVKvNieZts0a3liqA6TZsTHVCnCG57ilhIxgqGeAkEKh-rQfiVWpQ8g44TKxrRqdEXazrqwTkNtxC7P0oxSBqbXd16Mwz--HzHObh_XW4mEd4YyHiuAIpCjvAPSt9XUAT9XB5N2Ywl6l3UrJRYrALFTy4BvkhBVGp5lTGfTu_A3_fYS_m3mk7CLl9qpx-MTeZTfOrpZkcXtc-DqXyo705NlDhvI3xlpQrwyQxdOw2oKpeYAAui8UuDdxc2wxpLtiM-3qGixyn5oitEwDCB2ptydFYr_c_HENqLYbxhXbqq641HoEFh1BRZDNCXxLFGTSNwlCFz20PTSte1gid3EtGbysUB0vpS0gjiHS3zO_408PEtAL9pIjrEwESXUvLd_q5hmM5n0QlrQJmdwf4XGV2fitaRMbbB5ZjxZvOSpBBOr0ZIpRTQOBsN4lS0udRU-9irbKvHUzh7kSqQOwugFAtxpJBJIL1C-a89Dw_IadN41c2vadtop_hT5chCFAxiaM8opE-7Zqd5cawtCNdVlRc8RhvXHhzko6R6qEgom5B0RhEt9cmT3xi8g6RijkvTAFsqlBipzKMSoGEAh4L5Iu9Tsm4yb_lwr5aW-7f6vDARI-vDvIeWKI-FmpBq7datQMJGR6ZNTodmBWV9RyAV_pPBcuGvRwL-n73EPZMCRZHFQ2amRTdyBgpFcrbsM7s-PJyXn6H9C4KSkjYgODqn7WdAtECYm-Wqz8yewXHjZSJ5aBRWcd2CAdTqQAHRB5cyUsz0kaz9aHCnM_j71KsyHNzdv5Wlt_jc93lXTmLuIe1nsmbtycAaBK50OCdW9goIHdFNTKuZBc6kzjq8hzkCOmSfojUq7SnF2k-F_wd9M-XlI1QrEI7s5N4aJc64XhegXKpsxHL5sGOifuwPSqMWICQcraCAahZQ_k7wU-76upJ6MEyxYEerkk7K8tAMPZYucpZ6lxp36tziu71dl-pL6ms5dcWYb07XQY5UQmPx_u6KT9X2cPkvTnzh-0h18Y5BcGuSuD_Dfw0K32IxDRm-T_DxPd5h8VFY9QW_9hfNjZZOByXk7kRpo-VIvdfBdFJtl5xcRrB_FrKgDdWVD2lYNRlQ79-fnmw7Q7P-gOJq4doMKodStv5kHvWaQgiAqFYEKzLZmZ6cxcHT6NFeTR8DXLsjP6anQY2-dwoHJtM4Zlc5rf1PQcFhANYdpF_3g1gVxcEws9pDB-lUrU69c_HuNw48LcoJ5Wm6hfIVPKItrwSGXd3Wri9h6P6VXYZSll8XGa72A5evzi7Ozbs6NvGu2TSLB3-_rk6PKIQvLrt1-dnr2Qx8HZ3d3P4i7pACsOGKqgO1Gsif6-h6KrE7yaqbeyRZBL4XdMlb1jUz5Qo7naYwKgpA73qtxvk06Oq6lNIKaiNU_SqHd030ydYezjC_mSG-7w31WlXboAIl1WugeiuCtLS9yy4Ea76_dFPtkFoA5tV_7LHF2aGWqsqynxovPxbl0615QW7Q_f_4uu_bBva_kR-aOt6PIDxSUKbG2ebSMnBo5u0LRz0QwrC1K2lC1myHkhVoGQVainZraaqfnkPEXU-YSWnU_eIxeeTz5TCFKWCMvoYKVPbHNafYn0NavAYtKQlkb9axMCNpf88VjyztCkK-_o2g-NRubvM6spNkiPLl0_IzGbSxFCbekHuodhJVVmvqRNzeQOW12mpuVxOvGkSeQaB7d8MkP7ThcQyc66uUnU8SofsF27FkSrlt7TBcKttoUcsO-TA3fVUCJjuhX4Qs7E2tuOQrPi34EF0wXfxuL3UhE1v9JNKJPzBajE8k1LKiFd6oqhW2HN4xQGCRpEjeenb2SlnJvtwGGlKYuRy2bBoPqgXaRAwIq8O5wfFtr_OAztryg2XY8dN0ZwuZ-TyrvhPbR-f_faiRFfQIJjFPmN1Y-clF-TgRI0sx-1x_lUsMU83yNtbgC5dBVVjmGQKdEJBwGUzgM5OWtbuYIJcbbRzSHJ_TI--UunxTDklNzQbCmx41StGF2_IrzJwSPlkbdf7lqMLvTp7qYSb4CPY4JvW-zt3YmkOkFiFJKHw2nONum614Z7sLGV8ZVxtg7qK7msqWuQU2X_QScZ6YJoJrdd7pN2_HQX6-jPfwB4wKgK\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls,Can't receive calls,My phone calls aren't working,Having trouble with calls,Calls not connecting,No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n\n[4] Auto-activating a pre-assigned eSIM (while setting up your device)\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOxDAM_BXTC5eCxOO0Vx4SSHABCSFAq2zjpRGpHRJnC0JI_Aa_x5fgtAtaDntl1UM9TjqdseetCkbaVE3g7q1qWnYNDuChhioJhuUJ6WtPWy0a6-hRUVUpFHyRUh_nqF2wuNDvIaHkUIOYAMKKPDYCRosmR7Rw43ZOHRBKz_EJ-hYJQuQuCNrdQkosKxry7FdGwRzEMf3C3kQa9VD2XhuN8X6KtBQ5Nz6hdjvzOrWRw0qr5X4qPPC81zA63F_v8IQEI7xyjhBMSirdqsOivdg8Z0cb1n6wXvu1KjxiEkcZy0ZMI25hBEc7eHV28Vd7danVBO7pns7m5RJYZ-nr41N0h8rQurTcWA1OQAXCDMEuyaFzKZU0jHtumEj3r8b1xpCSn3i0-BMY_bMylLMQccc7etKYKNc4bm-oBo7KHPE5uxKhxHPR8SHkYNXIbvXv4z5cP-5bztsLVONd8CjFiTodlG1tJiLl-QYydkWc\nsummary: This tutorial guides the user through activating a pre-assigned eSIM during the initial setup of an iPhone 13.\nsymptoms: [Activate eSIM,Set up new iPhone eSIM,eSIM not working,No cellular service on new phone,How to get network on new iPhone]\ntitle: Auto-activating a pre-assigned eSIM (while setting up your device)\ntutorial_id: feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\n\n[5] Troubleshooting why Wi-Fi calling isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlVtrGzEQhf_K1C9pIXHovfjBUELT9CGlNIFS6hLk3XFWsTwSktauCf3vPdKubwlOUzAuBu_qstKcb45Gtx2nYhU6Pfpx2ykqqwvOjZ-H1AmRXTsieDxHV8Wq1HKNVqeDZuRfMb2fVFyM6b32zihhOrclkw4Uay9ckh2NegPZHJ1pY6jUQQ0Nk5I5fdNHp5pGtRRRWwkU6qIiFdr-QhmDfbtpU7GxibHzGW89GshALitsFzhGTEo7G1uoiK1V7NGZnTD16aIZDXjdDAXhdTtZbz1cSk5t63Ioi-ZMeWm0S20MOlJQVywtkJEygdE7UfOr0lu31lXZ2VW0eZ3fh9TQfPE3mq1wK8IZCRBusKCZlYOIfz8mK6RoxgpvnmoJMWNdfdsdyImVkfYTmtv6wAN5EWusM19MSqykpEpNMUYlFyyRgr4WZTah7x3Uy-2gLuGvpL3hctJwAacPkvVv4tKStHvSXyorfLC0C2xqaaLGTC4N5PmB6pC-UfeysCsHOrcWQJ9yTOsdG5LutaE579dooRTW3vPyantevvIR7MO-Ad6E7lQI8GpJx3Rq_TXH7DfPNxaJidUiW8IxOTrVCxqqco08EiNwpMHKsO0QfMd3MsxTFtKjtlc5x8qHlcH34OPo6224Xj-ECwfWx3V7Qv-ZNSWVdtbQCbrkTIw1mp6m1tQw1bCOEWie4tjf1CHmacfRunbgMOEANiyFbyaodubZYVoPJGfacV66UZ1OgbMzTEM9bEIpeYrrYNfYWkaPdNmbh7BN7JRbG2kJDIRJjyixdPHpPBWCG2R-c0ZWhlG4BmaEaJZQp4JIDtFA_mPPer7BrCQvcjKb0UWuOliyySEKS6UiKklevJoHTDDLrXdxYv8N5dsHHYgD-bk5e8s6BYB5IJe0zK09natCha2pYuPAN1gzXd05Ux3nKIOhBoYR3FnZGJyNOyqfH1nYA2afLr2SMEqu9dSoaGtiv20unnfFdWmVRayFJAXcfeWdahX2n6Z329P0HXd3ZjxxhhOdXBlSYE_-zx2dfn8AhjVm9A==\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working.,I can't make calls over Wi-Fi.,Wi-Fi calls are dropping.,My phone won't use Wi-Fi for calls.,I have no signal,but Wi-Fi calling isn't kicking in.,Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n\n[6] Checking if your phone is carrier locked\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFVUtu3DAMvQrrTTZGgH7SFtmlAdIGaNNFuimaINDInEgYWTQkatxBUCAHaS-Xk5SSXeeDmaSrDLywPjTJ9_hIX1WdYhOrffhxVWlDVmPZnNdQRcZuvPHyeilHBlVj_aXsqkq2jD85r48CtdBbNtYDG4RTZBazCKrramDVwSE6l5wKu_kzTzxEqU5ktQ9n_swfz8ET6NEMPHJPYSEeAoJqGmyACVaUAjS4lCxBsYSyEdi2WIP1kq1qIC5sly1z7rC3WxUcaTZByXvq2JKftr0KfsDkk3NyoJVzF-hHoHPlogSoWrW6aAJ1d44M9RdMxc-vGgaWXm1m6ZvwcDLgEoYc6pzGY4QIXDBqidAmx7ZzQuzxl1jD3IbIEIuLwjd5hDkF6I3VpnzWK8-ZB01erFsgMbtldQfUUlmnZtZZXm2BpdePsyRQorMNFnAHialVbDVEkZjgE1hfj46eIG7SCXm3gsbGzqlVLExpFYLFIKJhEAE5u0AxcaQX2OzCJ-pxWW7XFWDSZebWEEUhXsRf3wt56zT50e3zU_xmM8UHfpBDi2yoNJYAtvPVCPkujpGrkZ18wiZQujRDaWaUshAHJUMuXT7-oPQCrEgPuM9-JEBATsHnVTZolQyKaUi06NP9aj47WXtPzLb1SdcQdSDnMizlmzLoPqLHoNyW8bx9vL9K3bac4rvNKZ5OrB6O8vss8vvfhp96_eb69wnlkSnqixxsUWm8uf4DM4z_psvdCKLkUt184R92wtTKDyfE2sA56mAv8eq1DnUKAT3LlLjfZFuYFe831-I7pR0ZgJpaGX-cf8NCWsnsxXb0k5-_l43hXQ==\nsummary: This tutorial guides users on how to check if their iPhone 13 is carrier locked using the Settings app.\nsymptoms: [Is my phone unlocked?,My new SIM card isn't working,I want to switch carriers,Can I use my phone with a different network?,I bought a used phone,is it locked?]\ntitle: Checking if your phone is carrier locked\ntutorial_id: feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\n\n"
+      }
+     }
+    }
+   ],
+   "raw": {
+    "outputs": [
+     {
+      "text": "Let me check a couple of things on our side first.",
+      "turnIndex": 2
+     },
+     {
+      "text": "Everything looks normal on our side. It might be a setting on your iPhone.",
+      "turnIndex": 2
+     },
+     {
+      "text": "I have a guide that walks through manually selecting a network. I can text you the guide, walk you through it now, or both. What works for you?",
+      "turnIndex": 2
+     },
+     {
+      "turnCompleted": true,
+      "turnIndex": 2,
+      "diagnosticInfo": {
+       "messages": [
+        {
+         "role": "user",
+         "chunks": [
+          {
+           "text": "yes"
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:42.343Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Let me check a couple of things on our side first."
+          },
+          {
+           "toolCall": {
+            "id": "adk-6cb470d3-432b-4bb6-af71-a351a308ab6b",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-1af8375f-e1d4-47da-9f74-89f59ecd4c84",
+            "args": {
+             "zip_code": "30301"
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolCall": {
+            "id": "adk-ad21af19-33f3-40b3-a4a9-4db48da347c8",
+            "args": {
+             "line_id": "L1",
+             "customer_id": "cust_2001"
+            },
+            "displayName": "support_get_sim_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_sim_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:43.720Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-6cb470d3-432b-4bb6-af71-a351a308ab6b",
+            "response": {
+             "text_output": [
+              {
+               "reason": null,
+               "since": "2025-11-02",
+               "line_id": "L1",
+               "status": "ACTIVE"
+              }
+             ]
+            },
+            "displayName": "support_get_line_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_line_status"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-1af8375f-e1d4-47da-9f74-89f59ecd4c84",
+            "response": {
+             "text_output": [
+              {
+               "outage": false,
+               "zip_code": "30301"
+              }
+             ]
+            },
+            "displayName": "support_check_outage",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "check_outage"
+            }
+           }
+          },
+          {
+           "toolResponse": {
+            "id": "adk-ad21af19-33f3-40b3-a4a9-4db48da347c8",
+            "response": {
+             "text_output": [
+              {
+               "provisioned": true,
+               "changed_days_ago": 340.0,
+               "sim_type": "eSIM",
+               "activated": "2025-11-02"
+              }
+             ]
+            },
+            "displayName": "support_get_sim_status",
+            "toolsetTool": {
+             "toolset": "projects/tmeg-working-demos/locations/us/apps/cricket-care/toolsets/support",
+             "toolId": "get_sim_status"
+            }
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:43.997Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "Everything looks normal on our side. It might be a setting on your iPhone."
+          },
+          {
+           "toolCall": {
+            "id": "adk-89e8adc4-7788-4160-aa16-8c8621e87be9",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "args": {
+             "rewrittenQueries": [
+              "iPhone 13 no service"
+             ],
+             "query": "no service",
+             "filter": "device: ANY(\"iphone-13\")"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:44.981Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "updatedVariables": {
+            "steps_by_id": "{\"feature_manual_network_selection-manually-selecting-a-cellular-network\": {\"title\": \"Manually selecting a cellular network\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Tap Network Selection.\", \"notes\": [\"Note: \\n\\nIf you have multiple SIMs, first select the one for which you want to manually choose a cellular network.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Tap or slide the Automatic switch to OFF.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Select your preferred cellular network.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"feature_device_views_sim-inserting-and-removing-the-nano-sim-card\": {\"title\": \"Inserting and removing the Nano SIM card\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"Locate the nano SIM card tray on the left or right side of your device.\", \"notes\": [\"Note: \\n\\nFor iPhone 12 models and later, the SIM tray will be located on the left side of your device. Whereas for iPhone 11 models and earlier, the SIM tray will be located on the right side of your device.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Insert either the SIM card ejection tool or a paperclip straight into the pinhole of the SIM card tray and push until the tray releases.\", \"notes\": [\"Note: \\n\\nMake sure you\u2019re inserting your tool straight into the pinhole and not at an angle. Inserting your tool at an angle can prevent the SIM tray from ejecting properly.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": true, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Slide the nano SIM card tray out of its slot.\", \"notes\": [\"Note: \\n\\nA nano SIM card may already be inserted in iPhone.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Insert or remove the nano SIM card into or from the tray.\", \"notes\": [\"Note: \\n\\nWhen inserting, carefully line up the notched edge of the SIM card to the SIM tray's notch. Correctly aligning this notch will ensure a proper insertion takes place regardless of the iPhone model in use.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"Push the nano SIM card tray back into iPhone.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"154674-can-t-make-or-receive-calls\": {\"title\": \"Can't make or receive calls\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"If you're unable to make phone calls on your iPhone, there are a few steps you can take to determine if your issue is with your device or with your carrier (and if this is a temporary problem or a permanent situation you're encountering).\\nWithin this guide, you'll learn how to:\\nCheck your existing connection\\nUse Airplane Mode to \\\"reset\\\" your connection\\nCheck for iOS updates\\nRestart your iPhone\\nReset your network settings\\nSet a default number for your Dual-SIM setup (if applicable)\\nFind additional support to address your problem\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Check your cellular or Wi-Fi signal\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"Check your connection\", \"text\": \"Check the cellular signal status icon in the upper-right corner of your device. Generally, the more bars that are displayed, the better the connection; if you have low or no signal, that may be the reason why you're experiencing issues making phone calls.\\nIf you're connected to Wi-Fi, you'll also be able to view your signal strength in the same area. Enabling Wi-Fi calling may help you place phone calls in areas with limited or no cellular coverage.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Try Airplane Mode\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"Use Airplane Mode to \\\"reset\\\" your connection\", \"text\": \"It's possible that your device may have a great connection to a nearby cellular tower or Wi-Fi access point, but you still can't make a phone call.\\nYou can try switching your phone to Airplane Mode, waiting approximately 15 seconds, and turning Airplane Mode off again.\\nIf you're still unable to make a call, this typically means there is a problem with the hardware your device is connecting to. You can confirm this by checking if your device can make phone calls at a different location.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Check for iOS updates\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Turning Airplane Mode on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"From the Home screen, tap Settings.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap or slide the Airplane Mode switch to ON.\", \"notes\": [\"Note: \\n\\nYou can also turn Airplane mode on and off through the Control Center.\\n\\nOther options on this screen may differ depending on the capabilities of your carrier\u2019s network or your device.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 4, \"heading\": \"Check for iOS updates\", \"text\": \"You'll want to make sure your iPhone is running the latest version of iOS. You'll also want to check to see if you have any pending carrier settings updates to install.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Restart your device\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Checking for and installing system updates\", \"steps\": [{\"heading\": \"\", \"text\": \"From within Settings, scroll to and tap General.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Software Update.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Automatic Updates.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"In the iOS Updates section, tap or swipe Automatically Install to ON.\", \"notes\": [\"Note: \\n\\nWith this option enabled, your iPhone will automatically download updates and install them when your device is connected to Wi-Fi, charging, and locked. If you want your device to download updates but wait on your approval to install them, enable Automatically Download instead.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 5, \"heading\": \"Try restarting your iPhone\", \"text\": \"Manually restarting your iPhone may help solve any connectivity issues you're experiencing. It's a great \\\"first-step\\\" troubleshooting technique for most issues you encounter on your device.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Reset your network settings\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Powering your iPhone on and off\", \"steps\": [{\"heading\": \"\", \"text\": \"To turn on your iPhone, press and hold the Side button.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Press and hold the Side button and either Volume button until the Power Settings screen appears.\", \"notes\": [\"Note: \\n\\nYou can also reach Power Settings by opening the Control Center and holding the Power icon there.\"]}, {\"heading\": \"\", \"text\": \"Drag the slide to power off slider to the right.\", \"notes\": [\"Note: \\n\\nFrom this screen, you can also access your emergency info and send an SOS. If you have a passcode set, you'll need to input your passcode before your iPhone will power off.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 6, \"heading\": \"Reset your network settings\", \"text\": \"Resetting your network settings will erase previously used settings like your Wi-Fi passwords, preferred networks, and VPN and APN settings.\\nYou'll be able to resync your Wi-Fi passwords from iCloud, but the other settings will need to be entered again.\\nIf you had to enter APN settings manually to access a cellular network, you'll need to do that again before attempting a phone call.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Check your Dual-SIM configuration\"], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": [{\"title\": \"Resetting your iPhone\u2019s Settings and Network Settings\", \"steps\": [{\"heading\": \"\", \"text\": \"From within Settings, tap General.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Scroll to and tap Transfer or Reset iPhone.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"Tap Reset.\", \"notes\": [\"Note: \\n\\nErase All Content and Settings - Choosing this will reset and remove your apps, data, and Apple ID, returning the device to factory settings.\"]}, {\"heading\": \"\", \"text\": \"From this screen, you can perform a variety of actions:\", \"notes\": [\"Note:\\nReset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\\nReset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\\nDelete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\\nOther reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset All Settings - Choosing this will reset all settings and preferences on your device to their factory defaults, including removing Apple Pay cards, passes, and keys.\", \"Reset Network Settings - Select this option if you are having trouble connecting with your device; it will reset just your network settings to their factory defaults.\", \"Delete All eSIMs - Choose this option to remove all eSIMs currently added to your device. This does not cancel your cellular plans. To get a new eSIM or cancel your plan, contact your carrier.\", \"Other reset options:\\nReset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\\nReset Handwriting Style - Resets your personal handwriting style.\\nReset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\\nReset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\", \"Reset Keyboard Dictionary - Clears your saved words and other preferences from your keyboard's dictionary.\", \"Reset Handwriting Style - Resets your personal handwriting style.\", \"Reset Home Screen Layout - Returns your Home Screen to the default iPhone layout, with your downloaded apps in alphabetical order after the first page. This option also removes your app folders from your Home Screen, but does not affect hidden apps.\", \"Reset Location & Privacy - Resets your location and privacy preferences to their factory defaults.\"]}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 7, \"heading\": \"Using the right SIM in a Dual-SIM configuration\", \"text\": \"If you're using two SIMs in your device, otherwise known as a Dual-SIM setup, check to make sure that your device is using the correct, intended SIM for calls. It's possible that your default SIM has a weak connection to your carrier, which you may be able to get around by switching to the other SIM.\", \"notes\": [], \"substeps\": [], \"options\": [\"Next: Getting additional support\"], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": [{\"title\": \"Set your default SIM for calls, texts, and cellular data\", \"steps\": [{\"heading\": \"\", \"text\": \"Within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nCELLULAR may be called CELLULAR DATA or MOBILE DATA depending on your device.\"]}, {\"heading\": \"\", \"text\": \"To set the default line for cellular data, tap Cellular Data. On the following screen, tap the line you want to use.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"To set the default line for calls and texts, tap Default Voice Line. On the following screen, tap the line you want to use.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"For more granular control over each line, tap the line you want to manage.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"From here, you can manage settings such as:\\nTurn the line on or off \u2014 disable a line entirely without removing it.\\nRename the line \u2014 give it a custom label (e.g. \\\"Personal\\\" or \\\"Work\\\") so it's easier to identify across the Phone, Messages, and Contacts apps.\\nView the associated phone number \u2014 confirm which number is tied to that line.\\nSet up Wi-Fi Calling \u2014 make and receive calls over a Wi-Fi connection when cellular coverage is poor (availability depends on your carrier).\\nEnable calls on other devices \u2014 allow other Apple devices signed in to your Apple ID to use this line for calls.\\nConfigure a SIM PIN \u2014 add an extra layer of security to the line.\", \"notes\": []}, {\"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": []}]}]}, {\"n\": 8, \"heading\": \"Get additional support\", \"text\": \"If you're still having issues making a phone call on your iPhone, you should contact your carrier for additional support. They'll be able to help identify if there is an issue on their end that's affecting your calls (e.g. a problem with your account, your SIM, or even a local cellular tower).\\nIt's also possible that your device may be experiencing a hardware issue. If so, you'll want to contact Apple to set up an appointment at a local Genius Bar or authorized support center.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\": {\"title\": \"Auto-activating a pre-assigned eSIM (while setting up your device)\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"During device setup, tap to select a secured Wi-Fi network when prompted.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Enter your password, then tap Join.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Tap Continue to activate your eSIM.\", \"notes\": [\"Note: \\n\\nIf you didn\u2019t see this prompt, it may be due to a missing Wi-Fi connection during setup, the device not being pre-linked to your plan, or a required software update.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\": {\"title\": \"Troubleshooting why Wi-Fi calling isn't working\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"Check Airplane Mode is turned off:\\nAirplane Mode will disable any Wi-Fi functions such as Wi-Fi calling.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > Airplane Mode off.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Check Wi-Fi connection:\\nWi-Fi calling won't work on a weak or unstable connection.\\nConfirm you're actually connected and have a decent signal.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Turn on Wi-Fi Calling:\\nEnable Wi-Fi calling in your iPhone's settings to make phone calls using a Wi-Fi connection.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > Apps settings > Phone settings > Wi-Fi Calling > Wi-Fi Calling on This iPhone on.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Re-enter your Wi-Fi password / Forget and rejoin the Wi-Fi network:\\nA bad connection can silently block Wi-Fi calling even if Wi-Fi appears connected.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": true, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"Restart your iPhone:\\nHold down the side and either volume button (or just side/top button, if an older model), then swipe the option to power off your device.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"Remove and reinsert the nano SIM:\\nEject and reinsert your SIM card to ensure a proper connection.\", \"notes\": [\"Note: \\n\\nThis will only be applicable to iPhones that use a physical SIM card.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 7, \"heading\": \"\", \"text\": \"Reset Network Settings:\\nResetting your network settings may help resolve connectivity issues for hotspot.\", \"notes\": [\"Note: \\n\\nThis setting is located at: Home > Settings > General > Transfer or Reset iPhone > Reset > Reset Network Settings. This will erase saved Wi-Fi passwords.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": true, \"may_drop\": false, \"how_to\": []}, {\"n\": 8, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}, \"feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\": {\"title\": \"Checking if your phone is carrier locked\", \"paths\": [{\"choices\": [], \"steps\": [{\"n\": 1, \"heading\": \"\", \"text\": \"From within the Settings app, tap Cellular.\", \"notes\": [\"Note: \\n\\nIf no cellular networks are added to your device at this time, instead skip to step 5.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 2, \"heading\": \"\", \"text\": \"Tap Network Selection.\", \"notes\": [\"Note: \\n\\nIf you have multiple SIMs, first select the one for which you want to confirm other networks' availability.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 3, \"heading\": \"\", \"text\": \"Tap or slide the Automatic switch to OFF.\", \"notes\": [\"Note: \\n\\nIf your device only displays one carrier, it is likely locked. However, if you have multiple networks to choose from, your device is likely unlocked.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 4, \"heading\": \"\", \"text\": \"Another method to verify if your device is carrier locked is through the About section. Tap the Back icon twice to return to the main Settings menu.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 5, \"heading\": \"\", \"text\": \"From the main Settings menu, scroll to and tap General.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 6, \"heading\": \"\", \"text\": \"Tap About.\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 7, \"heading\": \"\", \"text\": \"Scroll to Carrier Lock.\", \"notes\": [\"Note: \\n\\nIf your device displays \u201cNo SIM restrictions\u201d beside the Carrier Lock setting then your device is unlocked. However, if your device displays \u201cSIM locked\u201d, then your device is currently carrier locked.\"], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}, {\"n\": 8, \"heading\": \"\", \"text\": \"You've completed the steps!\", \"notes\": [], \"substeps\": [], \"options\": [], \"warning\": null, \"call_ending\": false, \"may_drop\": false, \"how_to\": []}]}]}}"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:45.436Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "toolResponse": {
+            "id": "adk-89e8adc4-7788-4160-aa16-8c8621e87be9",
+            "tool": "projects/tmeg-working-demos/locations/us/apps/cricket-care/tools/search-tutorials",
+            "response": {
+             "answer": "[1] Manually selecting a cellular network\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial guides the user through manually selecting a cellular network on their iPhone 13.\nsymptoms: [Can't connect to network,No service,Phone not registering,Want to pick a different carrier,Network issues,Bad signal]\ntitle: Manually selecting a cellular network\ntutorial_id: feature_manual_network_selection-manually-selecting-a-cellular-network\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_manual_network_selection-manually-selecting-a-cellular-network\n\n[2] Inserting and removing the Nano SIM card\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsummary: This guide explains how to insert or remove a Nano SIM card from an iPhone 13.\nsymptoms: [My phone isn't connecting to the network,I need to change my SIM card,My SIM card isn't working,I got a new SIM card,No service,SIM card error]\ntitle: Inserting and removing the Nano SIM card\ntutorial_id: feature_device_views_sim-inserting-and-removing-the-nano-sim-card\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_device_views_sim-inserting-and-removing-the-nano-sim-card\n\n[3] Can't make or receive calls\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls,Can't receive calls,My phone calls aren't working,Having trouble with calls,Calls not connecting,No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n\n[4] Auto-activating a pre-assigned eSIM (while setting up your device)\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial guides the user through activating a pre-assigned eSIM during the initial setup of an iPhone 13.\nsymptoms: [Activate eSIM,Set up new iPhone eSIM,eSIM not working,No cellular service on new phone,How to get network on new iPhone]\ntitle: Auto-activating a pre-assigned eSIM (while setting up your device)\ntutorial_id: feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\n\n[5] Troubleshooting why Wi-Fi calling isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working.,I can't make calls over Wi-Fi.,Wi-Fi calls are dropping.,My phone won't use Wi-Fi for calls.,I have no signal,but Wi-Fi calling isn't kicking in.,Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n\n[6] Checking if your phone is carrier locked\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsummary: This tutorial guides users on how to check if their iPhone 13 is carrier locked using the Settings app.\nsymptoms: [Is my phone unlocked?,My new SIM card isn't working,I want to switch carriers,Can I use my phone with a different network?,I bought a used phone,is it locked?]\ntitle: Checking if your phone is carrier locked\ntutorial_id: feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked"
+            },
+            "displayName": "search_tutorials"
+           }
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:45.436Z"
+        },
+        {
+         "role": "Tech Support",
+         "chunks": [
+          {
+           "text": "I have a guide that walks through manually selecting a network. I can text you the guide, walk you through it now, or both. What works for you?"
+          }
+         ],
+         "eventTime": "2026-10-21T03:54:46.239Z"
+        }
+       ],
+       "rootSpan": {
+        "name": "root",
+        "startTime": "2026-10-21T03:54:42.299408Z",
+        "endTime": "2026-10-21T03:54:46.295336Z",
+        "attributes": {
+         "connection index": 2.0,
+         "perceived latency (ms)": 3996.0,
+         "input types": [
+          "text"
+         ],
+         "[debug] agent start latency (ms)": 43.0
+        },
+        "childSpans": [
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:42.347158Z",
+          "endTime": "2026-10-21T03:54:43.717718Z",
+          "attributes": {
+           "input token count": 5546.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 1367.0,
+           "[debug] prefill time (ms)": 227.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 103.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "1.370560s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:43.720460Z",
+          "endTime": "2026-10-21T03:54:43.745857Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 14.0,
+            "sandbox init latency (ms)": 4.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.025397s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:43.720486Z",
+          "endTime": "2026-10-21T03:54:43.755455Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 15.0,
+            "sandbox init latency (ms)": 7.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.034969s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:43.720487Z",
+          "endTime": "2026-10-21T03:54:43.754760Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 15.0,
+            "sandbox init latency (ms)": 7.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.034273s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:43.745948Z",
+          "endTime": "2026-10-21T03:54:43.986275Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "reason": null,
+              "since": "2025-11-02",
+              "line_id": "L1",
+              "status": "ACTIVE"
+             }
+            ]
+           },
+           "name": "support_get_line_status",
+           "tool call id": "adk-6cb470d3-432b-4bb6-af71-a351a308ab6b"
+          },
+          "duration": "0.240327s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:43.754869Z",
+          "endTime": "2026-10-21T03:54:43.992160Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "line_id": "L1",
+            "customer_id": "cust_2001"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "provisioned": true,
+              "changed_days_ago": 340.0,
+              "sim_type": "eSIM",
+              "activated": "2025-11-02"
+             }
+            ]
+           },
+           "name": "support_get_sim_status",
+           "tool call id": "adk-ad21af19-33f3-40b3-a4a9-4db48da347c8"
+          },
+          "duration": "0.237291s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:43.755579Z",
+          "endTime": "2026-10-21T03:54:43.990648Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "args": {
+            "zip_code": "30301"
+           },
+           "type": "McpTool",
+           "response": {
+            "text_output": [
+             {
+              "outage": false,
+              "zip_code": "30301"
+             }
+            ]
+           },
+           "name": "support_check_outage",
+           "tool call id": "adk-1af8375f-e1d4-47da-9f74-89f59ecd4c84"
+          },
+          "duration": "0.235069s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:43.986433Z",
+          "endTime": "2026-10-21T03:54:43.997146Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.010713s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:43.990828Z",
+          "endTime": "2026-10-21T03:54:44.005013Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 5.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.014185s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:43.992315Z",
+          "endTime": "2026-10-21T03:54:44.004183Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 4.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.011868s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:44.006701Z",
+          "endTime": "2026-10-21T03:54:44.978683Z",
+          "attributes": {
+           "input token count": 5789.0,
+           "[debug] decode queue time (ms)": 15.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 969.0,
+           "[debug] prefill time (ms)": 227.0,
+           "[debug] decode time to first token (ms)": 59.0,
+           "output token count": 58.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.971982s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:44.981764Z",
+          "endTime": "2026-10-21T03:54:44.991366Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 2.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "BeforeTool"
+          },
+          "duration": "0.009602s"
+         },
+         {
+          "name": "Tool",
+          "startTime": "2026-10-21T03:54:44.991447Z",
+          "endTime": "2026-10-21T03:54:45.417406Z",
+          "attributes": {
+           "args": {
+            "rewrittenQueries": [
+             "iPhone 13 no service"
+            ],
+            "query": "no service",
+            "filter": "device: ANY(\"iphone-13\")"
+           },
+           "type": "DataStoreTool",
+           "cited snippets": [],
+           "tool call id": "adk-89e8adc4-7788-4160-aa16-8c8621e87be9",
+           "response": {
+            "answer": "[1] Manually selecting a cellular network\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFkk1LAzEQhv_KmIuXpeDXpTcRCj1YD3oRKyVmZ00wmwnJxLUU_7uzu6VUsB5bckhm8jHP-042Kmq2WU3hZaOMJWdwCF4rUJkxbneCTBeSsqhrF94lUkpCxi_u17NELXSOrQvAFuERmeVYBh1jBawj3KH3xes06a8F4r0q5W1XqI8psqOwCzudwlgxFO8lYbT3KwxbjEb7jJJt9XpVJ4p7KUvdiml457uCUcPlYQ1PQrlA7ih9CL9H02P8xlULWU1hGZZh3sCaClj9idAWzy56kT2_zxU0LmWGPDwxuEEBoaEEnXXGDtc6HWSLoNWhiJw1iPOUETSYrU8QRpSJOrpHV_97JEKydzUO0m4LU6vZGcjSflEnoh5msxN3-fqwgrGzfRMSxIQNpoT1H66flP_mMP8zlXP5coZa-XAs6H0XBrKz0zD34wfkRV7R\nsummary: This tutorial guides the user through manually selecting a cellular network on their iPhone 13.\nsymptoms: [Can't connect to network,No service,Phone not registering,Want to pick a different carrier,Network issues,Bad signal]\ntitle: Manually selecting a cellular network\ntutorial_id: feature_manual_network_selection-manually-selecting-a-cellular-network\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_manual_network_selection-manually-selecting-a-cellular-network\n\n[2] Inserting and removing the Nano SIM card\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFVE2L2zAQ_StTX_YSFrL9OOytFAqBblnYQyndEhR7bKs7mRGSnNQshf6N_r3-ko5kJ01K3O6h7RJDLFmaN_Pem7kvnIltKC7hw31RtmJLzIuPMyhCRDd-Yf2b61aLprLc6KoodBnxc0zvb6Q0ESG2CGxY4GZxBaXxFURvehDOXwjrCOLB26aNEGyFIDX00nmocKPA5ykkSxwyKN7q2yXc8i2_1lv2uhVGmF_AWiqkAIYrIEX1sxw9QWa0rSWClcLlnKoj9FOg8K5FjyZAfYAyP0RB48k-FOc31WVOu9We1rQWF63wfrk1ngd-uSPSjdIQLZFH0mtDAXV3bfpl5cUdbLWyXUbJcb7MYFDsYlqxBQf0EdBqzn5fWNYMP2GZkoIoQkkwA8449CVZB0FrzxVajpLvOcutUK72KEwmKdHnutBCx9FSPpD3PZJSjmFS8itzhxA6j4nC71-_6YvNKWstA6s5u-l0ErIGBqMP69OQSr04EeLggCbO4DxukOOx2LWX9UiMXnZKPXrq_5Gk0XdTij6dVvSGkuemWrCLSSAbAwSSOEn7y18ur5OGpO1R9cnrgwRqdstjq_wNCsZ6H2jqZ380dZoxuJbNKTayT_RAFnRnx0k6dDTwT9_NUgistYQeyOqY6NyAILFslRSsmhNtIEdOOgvD8XN4Jd6rnygRbJvEjx604-dhuiDnDjCj4XaZpNbU9gjgyJQ6cbBRIMIQduDjFMsjLEnVhceYPs-nhbpOI2HCqitT3g0y7Rx2KM5_r-LFdBXvpTtTk5WydoSpK1JFObMnj5Nz-v0AFt6XZw==\nsummary: This guide explains how to insert or remove a Nano SIM card from an iPhone 13.\nsymptoms: [My phone isn't connecting to the network,I need to change my SIM card,My SIM card isn't working,I got a new SIM card,No service,SIM card error]\ntitle: Inserting and removing the Nano SIM card\ntutorial_id: feature_device_views_sim-inserting-and-removing-the-nano-sim-card\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_device_views_sim-inserting-and-removing-the-nano-sim-card\n\n[3] Can't make or receive calls\ncategory: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1vHLcR_ivsfagd4HxA2qYtnE-KZDtCZVuIFBtFrzB4u7w7Vnvkdsm98zUokB_RL_17-SV9Zob7Kp0sKVHRoIET2LvHJYczzzzzQn43KXVch8lz9ZfvJtna28zww1-nahKiKdMvDn99jldro3PrVniaTPAYzcdI_z5dqr2vn1RG1U4vCqOiVxt9ZVS59s6oTBdFUN7RoErZc3o5VXFt8IGm_9XS7BQvR0Mw3qlIn2Oa3ERTbSxmscv0fQg1noLa2biWV7nZQnDlq967TFeVNZV6ql1O38Y1PsF_WkWzKX2lq70qKw9pN_ShViXW0c64qIKNtY5WBKZdGZf52kEQ7P2z2dy9xyrWyZSr2ubYDY0sClUYXTm19jvI_nzujtcmuxJ5zEcbIr5XmXfOZDT93H0bjDqyVVlgYfXa57zl-aQywcT5JG2kN17mW0Je-_ZC1WWuowlz940JUVexr19-adIrZ-LOV1cKL0gEfHGBnzT0ttR1EZWrNwuoiubl8Se1Lp5dnL6mD-pSPYX6dFkWNiPjfjZ3Ly10qvPcklS6UKEuodFIwuMtpA8yT9IvQcX52ENWvWjBRc--pIn4cfIGmHqueorLTFHUha7ISu_ts5cW9llh1Ql9uYO6BZCuLgq8IKx9MC6hdKmLAONMNnr_Ia982XsFG32IniX451QJxH8zhHhfiNYIfdzLAAC5E1JkA5h1rIE3fKcYKXCNEgh7VtnVOmK6ykHhftnH70y9MniLDezZO9TGA3sLXQU86ciuktsAsOxNLiMWMCjmYQlaCb9MrqLWemtUASxCc84n0aYyGTSCr_nLyugAMXfrfYv3jxDVAvWEV_a3QP5MTz2PhiN0jp-WNzmBgM3U-gQU7mmthhm2Ft7O-26VVRm3guMmTQW9YWLQM_WC-ITWFcvTuvRE0q9NUfI2oZBsSDWYhz5PFFHYjSXBRAutpTK_hbJXZvYAeF6CPAZ--whg_O0QjPejigE7xydBlT4EywYg6_dZk3VJSNFqBaXF3izs0GAPXS32neKi35meN-osI4cvvXVxqhY1zw6bWpgeTP4kSijQPQsBOX9ueB6aDDBTtia7CmvwOCw92O5U7bRlAgUVVf6j3YD7ir36_AuwFETOw1QR1ceajTDSlV-CwlbaugFoRchRzNIs4lTYPe5LS497tTHahRS0OIw0wYMxRrBd6yrfkZP2tYuhjT4hVPQz1ewcr5e22sg6pF8iE3a4ASvw2GvBVDN92-US4iBiFT7jgDV7MNWOYspd8Byr-pNw_m4SbSwMwfDyZsM4thrsMxmmHAdSjZeV37C2v_YgiZBVxjjYSpfqIgW3kQ7Ynw5MdonPsO9Q2FyocCib4JKA8fbNcNbJG_zruZq7DsjMcgS-bpLNcINYofL1SsBy7F2sfKGODeUVM5rpLYFLJQPRd4wM2SJ7qdgbuCjFBjKGIFHqhS3gHeDpJqak_OeH7_8d2vjfxPcUbya3Kgcbe7IlYt-UhWFiJ2omA_1qpGH607DW724KoWNwjVaBD-60i60HhrpxIsllyImq2jF6SIiCJokK9B2IpLBjTM6O1YabZr5MIjSCnzGDsKgd0r-kxiZVbNKjRk76zjqEcjDWAxxrkJWJyn-yMNHzq-OGN0jLnOyKyPQq7CHjpq_3O3rYTjLcxqemBEMP5VJAIJKF46Rk5Z7uduGXkUnyW5bpnl8f1dGD922WPr-Ps5-KsxAO08cUOMhowh9EBDtbmm4R5v1T0eYnWOC9BAEAVXCAkoGCSj4d4HhH4UYPps_9zhVe5y3mehYkeWGKtXEHQsog28oQf1bYt4RBRIQrk8-UBDvxh_4kVFqNl6bYTUG2LdU40m510XMElmmatjdS1UkzIY2FER6FYL4YEgxlYpU4WptAiLb7S73WrmYRbx7a5ZPBF4kcmqi9tXHf5MA3pMfQMKVXTe40nyCmh_iMtoGsDBRfQ09h7b3Ef5Otnf076ldy1o0Hi3VTd2Vma4CGqB9EPoeqv0eI7eeUEo6Vet_Qfpni57hRUHJBSVOtfSEouaCADbjGaynPbYA7v3Ui_sFYDsLvfFFv2h9gE8vAV7zPlhWb2Aw3QYoc7pYiACbIKUYTIf3ziEZNgBsmB63Ezc_yMdeWnI9-ws9OUOWIb0me45GrcwaPlIRfUUovlSAVpwe3kVKvNieZts0a3liqA6TZsTHVCnCG57ilhIxgqGeAkEKh-rQfiVWpQ8g44TKxrRqdEXazrqwTkNtxC7P0oxSBqbXd16Mwz--HzHObh_XW4mEd4YyHiuAIpCjvAPSt9XUAT9XB5N2Ywl6l3UrJRYrALFTy4BvkhBVGp5lTGfTu_A3_fYS_m3mk7CLl9qpx-MTeZTfOrpZkcXtc-DqXyo705NlDhvI3xlpQrwyQxdOw2oKpeYAAui8UuDdxc2wxpLtiM-3qGixyn5oitEwDCB2ptydFYr_c_HENqLYbxhXbqq641HoEFh1BRZDNCXxLFGTSNwlCFz20PTSte1gid3EtGbysUB0vpS0gjiHS3zO_408PEtAL9pIjrEwESXUvLd_q5hmM5n0QlrQJmdwf4XGV2fitaRMbbB5ZjxZvOSpBBOr0ZIpRTQOBsN4lS0udRU-9irbKvHUzh7kSqQOwugFAtxpJBJIL1C-a89Dw_IadN41c2vadtop_hT5chCFAxiaM8opE-7Zqd5cawtCNdVlRc8RhvXHhzko6R6qEgom5B0RhEt9cmT3xi8g6RijkvTAFsqlBipzKMSoGEAh4L5Iu9Tsm4yb_lwr5aW-7f6vDARI-vDvIeWKI-FmpBq7datQMJGR6ZNTodmBWV9RyAV_pPBcuGvRwL-n73EPZMCRZHFQ2amRTdyBgpFcrbsM7s-PJyXn6H9C4KSkjYgODqn7WdAtECYm-Wqz8yewXHjZSJ5aBRWcd2CAdTqQAHRB5cyUsz0kaz9aHCnM_j71KsyHNzdv5Wlt_jc93lXTmLuIe1nsmbtycAaBK50OCdW9goIHdFNTKuZBc6kzjq8hzkCOmSfojUq7SnF2k-F_wd9M-XlI1QrEI7s5N4aJc64XhegXKpsxHL5sGOifuwPSqMWICQcraCAahZQ_k7wU-76upJ6MEyxYEerkk7K8tAMPZYucpZ6lxp36tziu71dl-pL6ms5dcWYb07XQY5UQmPx_u6KT9X2cPkvTnzh-0h18Y5BcGuSuD_Dfw0K32IxDRm-T_DxPd5h8VFY9QW_9hfNjZZOByXk7kRpo-VIvdfBdFJtl5xcRrB_FrKgDdWVD2lYNRlQ79-fnmw7Q7P-gOJq4doMKodStv5kHvWaQgiAqFYEKzLZmZ6cxcHT6NFeTR8DXLsjP6anQY2-dwoHJtM4Zlc5rf1PQcFhANYdpF_3g1gVxcEws9pDB-lUrU69c_HuNw48LcoJ5Wm6hfIVPKItrwSGXd3Wri9h6P6VXYZSll8XGa72A5evzi7Ozbs6NvGu2TSLB3-_rk6PKIQvLrt1-dnr2Qx8HZ3d3P4i7pACsOGKqgO1Gsif6-h6KrE7yaqbeyRZBL4XdMlb1jUz5Qo7naYwKgpA73qtxvk06Oq6lNIKaiNU_SqHd030ydYezjC_mSG-7w31WlXboAIl1WugeiuCtLS9yy4Ea76_dFPtkFoA5tV_7LHF2aGWqsqynxovPxbl0615QW7Q_f_4uu_bBva_kR-aOt6PIDxSUKbG2ebSMnBo5u0LRz0QwrC1K2lC1myHkhVoGQVainZraaqfnkPEXU-YSWnU_eIxeeTz5TCFKWCMvoYKVPbHNafYn0NavAYtKQlkb9axMCNpf88VjyztCkK-_o2g-NRubvM6spNkiPLl0_IzGbSxFCbekHuodhJVVmvqRNzeQOW12mpuVxOvGkSeQaB7d8MkP7ThcQyc66uUnU8SofsF27FkSrlt7TBcKttoUcsO-TA3fVUCJjuhX4Qs7E2tuOQrPi34EF0wXfxuL3UhE1v9JNKJPzBajE8k1LKiFd6oqhW2HN4xQGCRpEjeenb2SlnJvtwGGlKYuRy2bBoPqgXaRAwIq8O5wfFtr_OAztryg2XY8dN0ZwuZ-TyrvhPbR-f_faiRFfQIJjFPmN1Y-clF-TgRI0sx-1x_lUsMU83yNtbgC5dBVVjmGQKdEJBwGUzgM5OWtbuYIJcbbRzSHJ_TI--UunxTDklNzQbCmx41StGF2_IrzJwSPlkbdf7lqMLvTp7qYSb4CPY4JvW-zt3YmkOkFiFJKHw2nONum614Z7sLGV8ZVxtg7qK7msqWuQU2X_QScZ6YJoJrdd7pN2_HQX6-jPfwB4wKgK\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls,Can't receive calls,My phone calls aren't working,Having trouble with calls,Calls not connecting,No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n\n[4] Auto-activating a pre-assigned eSIM (while setting up your device)\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOxDAM_BXTC5eCxOO0Vx4SSHABCSFAq2zjpRGpHRJnC0JI_Aa_x5fgtAtaDntl1UM9TjqdseetCkbaVE3g7q1qWnYNDuChhioJhuUJ6WtPWy0a6-hRUVUpFHyRUh_nqF2wuNDvIaHkUIOYAMKKPDYCRosmR7Rw43ZOHRBKz_EJ-hYJQuQuCNrdQkosKxry7FdGwRzEMf3C3kQa9VD2XhuN8X6KtBQ5Nz6hdjvzOrWRw0qr5X4qPPC81zA63F_v8IQEI7xyjhBMSirdqsOivdg8Z0cb1n6wXvu1KjxiEkcZy0ZMI25hBEc7eHV28Vd7danVBO7pns7m5RJYZ-nr41N0h8rQurTcWA1OQAXCDMEuyaFzKZU0jHtumEj3r8b1xpCSn3i0-BMY_bMylLMQccc7etKYKNc4bm-oBo7KHPE5uxKhxHPR8SHkYNXIbvXv4z5cP-5bztsLVONd8CjFiTodlG1tJiLl-QYydkWc\nsummary: This tutorial guides the user through activating a pre-assigned eSIM during the initial setup of an iPhone 13.\nsymptoms: [Activate eSIM,Set up new iPhone eSIM,eSIM not working,No cellular service on new phone,How to get network on new iPhone]\ntitle: Auto-activating a pre-assigned eSIM (while setting up your device)\ntutorial_id: feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\n\n[5] Troubleshooting why Wi-Fi calling isn't working\ncategory: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlVtrGzEQhf_K1C9pIXHovfjBUELT9CGlNIFS6hLk3XFWsTwSktauCf3vPdKubwlOUzAuBu_qstKcb45Gtx2nYhU6Pfpx2ykqqwvOjZ-H1AmRXTsieDxHV8Wq1HKNVqeDZuRfMb2fVFyM6b32zihhOrclkw4Uay9ckh2NegPZHJ1pY6jUQQ0Nk5I5fdNHp5pGtRRRWwkU6qIiFdr-QhmDfbtpU7GxibHzGW89GshALitsFzhGTEo7G1uoiK1V7NGZnTD16aIZDXjdDAXhdTtZbz1cSk5t63Ioi-ZMeWm0S20MOlJQVywtkJEygdE7UfOr0lu31lXZ2VW0eZ3fh9TQfPE3mq1wK8IZCRBusKCZlYOIfz8mK6RoxgpvnmoJMWNdfdsdyImVkfYTmtv6wAN5EWusM19MSqykpEpNMUYlFyyRgr4WZTah7x3Uy-2gLuGvpL3hctJwAacPkvVv4tKStHvSXyorfLC0C2xqaaLGTC4N5PmB6pC-UfeysCsHOrcWQJ9yTOsdG5LutaE579dooRTW3vPyantevvIR7MO-Ad6E7lQI8GpJx3Rq_TXH7DfPNxaJidUiW8IxOTrVCxqqco08EiNwpMHKsO0QfMd3MsxTFtKjtlc5x8qHlcH34OPo6224Xj-ECwfWx3V7Qv-ZNSWVdtbQCbrkTIw1mp6m1tQw1bCOEWie4tjf1CHmacfRunbgMOEANiyFbyaodubZYVoPJGfacV66UZ1OgbMzTEM9bEIpeYrrYNfYWkaPdNmbh7BN7JRbG2kJDIRJjyixdPHpPBWCG2R-c0ZWhlG4BmaEaJZQp4JIDtFA_mPPer7BrCQvcjKb0UWuOliyySEKS6UiKklevJoHTDDLrXdxYv8N5dsHHYgD-bk5e8s6BYB5IJe0zK09natCha2pYuPAN1gzXd05Ux3nKIOhBoYR3FnZGJyNOyqfH1nYA2afLr2SMEqu9dSoaGtiv20unnfFdWmVRayFJAXcfeWdahX2n6Z329P0HXd3ZjxxhhOdXBlSYE_-zx2dfn8AhjVm9A==\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working.,I can't make calls over Wi-Fi.,Wi-Fi calls are dropping.,My phone won't use Wi-Fi for calls.,I have no signal,but Wi-Fi calling isn't kicking in.,Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n\n[6] Checking if your phone is carrier locked\ncategory: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFVUtu3DAMvQrrTTZGgH7SFtmlAdIGaNNFuimaINDInEgYWTQkatxBUCAHaS-Xk5SSXeeDmaSrDLywPjTJ9_hIX1WdYhOrffhxVWlDVmPZnNdQRcZuvPHyeilHBlVj_aXsqkq2jD85r48CtdBbNtYDG4RTZBazCKrramDVwSE6l5wKu_kzTzxEqU5ktQ9n_swfz8ET6NEMPHJPYSEeAoJqGmyACVaUAjS4lCxBsYSyEdi2WIP1kq1qIC5sly1z7rC3WxUcaTZByXvq2JKftr0KfsDkk3NyoJVzF-hHoHPlogSoWrW6aAJ1d44M9RdMxc-vGgaWXm1m6ZvwcDLgEoYc6pzGY4QIXDBqidAmx7ZzQuzxl1jD3IbIEIuLwjd5hDkF6I3VpnzWK8-ZB01erFsgMbtldQfUUlmnZtZZXm2BpdePsyRQorMNFnAHialVbDVEkZjgE1hfj46eIG7SCXm3gsbGzqlVLExpFYLFIKJhEAE5u0AxcaQX2OzCJ-pxWW7XFWDSZebWEEUhXsRf3wt56zT50e3zU_xmM8UHfpBDi2yoNJYAtvPVCPkujpGrkZ18wiZQujRDaWaUshAHJUMuXT7-oPQCrEgPuM9-JEBATsHnVTZolQyKaUi06NP9aj47WXtPzLb1SdcQdSDnMizlmzLoPqLHoNyW8bx9vL9K3bac4rvNKZ5OrB6O8vss8vvfhp96_eb69wnlkSnqixxsUWm8uf4DM4z_psvdCKLkUt184R92wtTKDyfE2sA56mAv8eq1DnUKAT3LlLjfZFuYFe831-I7pR0ZgJpaGX-cf8NCWsnsxXb0k5-_l43hXQ==\nsummary: This tutorial guides users on how to check if their iPhone 13 is carrier locked using the Settings app.\nsymptoms: [Is my phone unlocked?,My new SIM card isn't working,I want to switch carriers,Can I use my phone with a different network?,I bought a used phone,is it locked?]\ntitle: Checking if your phone is carrier locked\ntutorial_id: feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\n\n"
+           },
+           "name": "search_tutorials",
+           "agent": "Tech Support",
+           "snippets": [
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_manual_network_selection-manually-selecting-a-cellular-network",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFkk1LAzEQhv_KmIuXpeDXpTcRCj1YD3oRKyVmZ00wmwnJxLUU_7uzu6VUsB5bckhm8jHP-042Kmq2WU3hZaOMJWdwCF4rUJkxbneCTBeSsqhrF94lUkpCxi_u17NELXSOrQvAFuERmeVYBh1jBawj3KH3xes06a8F4r0q5W1XqI8psqOwCzudwlgxFO8lYbT3KwxbjEb7jJJt9XpVJ4p7KUvdiml457uCUcPlYQ1PQrlA7ih9CL9H02P8xlULWU1hGZZh3sCaClj9idAWzy56kT2_zxU0LmWGPDwxuEEBoaEEnXXGDtc6HWSLoNWhiJw1iPOUETSYrU8QRpSJOrpHV_97JEKydzUO0m4LU6vZGcjSflEnoh5msxN3-fqwgrGzfRMSxIQNpoT1H66flP_mMP8zlXP5coZa-XAs6H0XBrKz0zD34wfkRV7R\nsummary: This tutorial guides the user through manually selecting a cellular network on their iPhone 13.\nsymptoms: [Can't connect to network, No service, Phone not registering, Want to pick a different carrier, Network issues, Bad signal]\ntitle: Manually selecting a cellular network\ntutorial_id: feature_manual_network_selection-manually-selecting-a-cellular-network\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_manual_network_selection-manually-selecting-a-cellular-network\n",
+             "title": "Manually selecting a cellular network",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/cd4086c8757bdad08eaccb8934cd71bfb58b0223"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_device_views_sim-inserting-and-removing-the-nano-sim-card",
+             "text": "category: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFVE2L2zAQ_StTX_YSFrL9OOytFAqBblnYQyndEhR7bKs7mRGSnNQshf6N_r3-ko5kJ01K3O6h7RJDLFmaN_Pem7kvnIltKC7hw31RtmJLzIuPMyhCRDd-Yf2b61aLprLc6KoodBnxc0zvb6Q0ESG2CGxY4GZxBaXxFURvehDOXwjrCOLB26aNEGyFIDX00nmocKPA5ykkSxwyKN7q2yXc8i2_1lv2uhVGmF_AWiqkAIYrIEX1sxw9QWa0rSWClcLlnKoj9FOg8K5FjyZAfYAyP0RB48k-FOc31WVOu9We1rQWF63wfrk1ngd-uSPSjdIQLZFH0mtDAXV3bfpl5cUdbLWyXUbJcb7MYFDsYlqxBQf0EdBqzn5fWNYMP2GZkoIoQkkwA8449CVZB0FrzxVajpLvOcutUK72KEwmKdHnutBCx9FSPpD3PZJSjmFS8itzhxA6j4nC71-_6YvNKWstA6s5u-l0ErIGBqMP69OQSr04EeLggCbO4DxukOOx2LWX9UiMXnZKPXrq_5Gk0XdTij6dVvSGkuemWrCLSSAbAwSSOEn7y18ur5OGpO1R9cnrgwRqdstjq_wNCsZ6H2jqZ380dZoxuJbNKTayT_RAFnRnx0k6dDTwT9_NUgistYQeyOqY6NyAILFslRSsmhNtIEdOOgvD8XN4Jd6rnygRbJvEjx604-dhuiDnDjCj4XaZpNbU9gjgyJQ6cbBRIMIQduDjFMsjLEnVhceYPs-nhbpOI2HCqitT3g0y7Rx2KM5_r-LFdBXvpTtTk5WydoSpK1JFObMnj5Nz-v0AFt6XZw==\nsummary: This guide explains how to insert or remove a Nano SIM card from an iPhone 13.\nsymptoms: [My phone isn't connecting to the network, I need to change my SIM card, My SIM card isn't working, I got a new SIM card, No service, SIM card error]\ntitle: Inserting and removing the Nano SIM card\ntutorial_id: feature_device_views_sim-inserting-and-removing-the-nano-sim-card\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_device_views_sim-inserting-and-removing-the-nano-sim-card\n",
+             "title": "Inserting and removing the Nano SIM card",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/a0095f345d5ee6c69cd312b4f90313a60db3a5c1"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls",
+             "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1vHLcR_ivsfagd4HxA2qYtnE-KZDtCZVuIFBtFrzB4u7w7Vnvkdsm98zUokB_RL_17-SV9Zob7Kp0sKVHRoIET2LvHJYczzzzzQn43KXVch8lz9ZfvJtna28zww1-nahKiKdMvDn99jldro3PrVniaTPAYzcdI_z5dqr2vn1RG1U4vCqOiVxt9ZVS59s6oTBdFUN7RoErZc3o5VXFt8IGm_9XS7BQvR0Mw3qlIn2Oa3ERTbSxmscv0fQg1noLa2biWV7nZQnDlq967TFeVNZV6ql1O38Y1PsF_WkWzKX2lq70qKw9pN_ShViXW0c64qIKNtY5WBKZdGZf52kEQ7P2z2dy9xyrWyZSr2ubYDY0sClUYXTm19jvI_nzujtcmuxJ5zEcbIr5XmXfOZDT93H0bjDqyVVlgYfXa57zl-aQywcT5JG2kN17mW0Je-_ZC1WWuowlz940JUVexr19-adIrZ-LOV1cKL0gEfHGBnzT0ttR1EZWrNwuoiubl8Se1Lp5dnL6mD-pSPYX6dFkWNiPjfjZ3Ly10qvPcklS6UKEuodFIwuMtpA8yT9IvQcX52ENWvWjBRc--pIn4cfIGmHqueorLTFHUha7ISu_ts5cW9llh1Ql9uYO6BZCuLgq8IKx9MC6hdKmLAONMNnr_Ia982XsFG32IniX451QJxH8zhHhfiNYIfdzLAAC5E1JkA5h1rIE3fKcYKXCNEgh7VtnVOmK6ykHhftnH70y9MniLDezZO9TGA3sLXQU86ciuktsAsOxNLiMWMCjmYQlaCb9MrqLWemtUASxCc84n0aYyGTSCr_nLyugAMXfrfYv3jxDVAvWEV_a3QP5MTz2PhiN0jp-WNzmBgM3U-gQU7mmthhm2Ft7O-26VVRm3guMmTQW9YWLQM_WC-ITWFcvTuvRE0q9NUfI2oZBsSDWYhz5PFFHYjSXBRAutpTK_hbJXZvYAeF6CPAZ--whg_O0QjPejigE7xydBlT4EywYg6_dZk3VJSNFqBaXF3izs0GAPXS32neKi35meN-osI4cvvXVxqhY1zw6bWpgeTP4kSijQPQsBOX9ueB6aDDBTtia7CmvwOCw92O5U7bRlAgUVVf6j3YD7ir36_AuwFETOw1QR1ceajTDSlV-CwlbaugFoRchRzNIs4lTYPe5LS497tTHahRS0OIw0wYMxRrBd6yrfkZP2tYuhjT4hVPQz1ewcr5e22sg6pF8iE3a4ASvw2GvBVDN92-US4iBiFT7jgDV7MNWOYspd8Byr-pNw_m4SbSwMwfDyZsM4thrsMxmmHAdSjZeV37C2v_YgiZBVxjjYSpfqIgW3kQ7Ynw5MdonPsO9Q2FyocCib4JKA8fbNcNbJG_zruZq7DsjMcgS-bpLNcINYofL1SsBy7F2sfKGODeUVM5rpLYFLJQPRd4wM2SJ7qdgbuCjFBjKGIFHqhS3gHeDpJqak_OeH7_8d2vjfxPcUbya3Kgcbe7IlYt-UhWFiJ2omA_1qpGH607DW724KoWNwjVaBD-60i60HhrpxIsllyImq2jF6SIiCJokK9B2IpLBjTM6O1YabZr5MIjSCnzGDsKgd0r-kxiZVbNKjRk76zjqEcjDWAxxrkJWJyn-yMNHzq-OGN0jLnOyKyPQq7CHjpq_3O3rYTjLcxqemBEMP5VJAIJKF46Rk5Z7uduGXkUnyW5bpnl8f1dGD922WPr-Ps5-KsxAO08cUOMhowh9EBDtbmm4R5v1T0eYnWOC9BAEAVXCAkoGCSj4d4HhH4UYPps_9zhVe5y3mehYkeWGKtXEHQsog28oQf1bYt4RBRIQrk8-UBDvxh_4kVFqNl6bYTUG2LdU40m510XMElmmatjdS1UkzIY2FER6FYL4YEgxlYpU4WptAiLb7S73WrmYRbx7a5ZPBF4kcmqi9tXHf5MA3pMfQMKVXTe40nyCmh_iMtoGsDBRfQ09h7b3Ef5Otnf076ldy1o0Hi3VTd2Vma4CGqB9EPoeqv0eI7eeUEo6Vet_Qfpni57hRUHJBSVOtfSEouaCADbjGaynPbYA7v3Ui_sFYDsLvfFFv2h9gE8vAV7zPlhWb2Aw3QYoc7pYiACbIKUYTIf3ziEZNgBsmB63Ezc_yMdeWnI9-ws9OUOWIb0me45GrcwaPlIRfUUovlSAVpwe3kVKvNieZts0a3liqA6TZsTHVCnCG57ilhIxgqGeAkEKh-rQfiVWpQ8g44TKxrRqdEXazrqwTkNtxC7P0oxSBqbXd16Mwz--HzHObh_XW4mEd4YyHiuAIpCjvAPSt9XUAT9XB5N2Ywl6l3UrJRYrALFTy4BvkhBVGp5lTGfTu_A3_fYS_m3mk7CLl9qpx-MTeZTfOrpZkcXtc-DqXyo705NlDhvI3xlpQrwyQxdOw2oKpeYAAui8UuDdxc2wxpLtiM-3qGixyn5oitEwDCB2ptydFYr_c_HENqLYbxhXbqq641HoEFh1BRZDNCXxLFGTSNwlCFz20PTSte1gid3EtGbysUB0vpS0gjiHS3zO_408PEtAL9pIjrEwESXUvLd_q5hmM5n0QlrQJmdwf4XGV2fitaRMbbB5ZjxZvOSpBBOr0ZIpRTQOBsN4lS0udRU-9irbKvHUzh7kSqQOwugFAtxpJBJIL1C-a89Dw_IadN41c2vadtop_hT5chCFAxiaM8opE-7Zqd5cawtCNdVlRc8RhvXHhzko6R6qEgom5B0RhEt9cmT3xi8g6RijkvTAFsqlBipzKMSoGEAh4L5Iu9Tsm4yb_lwr5aW-7f6vDARI-vDvIeWKI-FmpBq7datQMJGR6ZNTodmBWV9RyAV_pPBcuGvRwL-n73EPZMCRZHFQ2amRTdyBgpFcrbsM7s-PJyXn6H9C4KSkjYgODqn7WdAtECYm-Wqz8yewXHjZSJ5aBRWcd2CAdTqQAHRB5cyUsz0kaz9aHCnM_j71KsyHNzdv5Wlt_jc93lXTmLuIe1nsmbtycAaBK50OCdW9goIHdFNTKuZBc6kzjq8hzkCOmSfojUq7SnF2k-F_wd9M-XlI1QrEI7s5N4aJc64XhegXKpsxHL5sGOifuwPSqMWICQcraCAahZQ_k7wU-76upJ6MEyxYEerkk7K8tAMPZYucpZ6lxp36tziu71dl-pL6ms5dcWYb07XQY5UQmPx_u6KT9X2cPkvTnzh-0h18Y5BcGuSuD_Dfw0K32IxDRm-T_DxPd5h8VFY9QW_9hfNjZZOByXk7kRpo-VIvdfBdFJtl5xcRrB_FrKgDdWVD2lYNRlQ79-fnmw7Q7P-gOJq4doMKodStv5kHvWaQgiAqFYEKzLZmZ6cxcHT6NFeTR8DXLsjP6anQY2-dwoHJtM4Zlc5rf1PQcFhANYdpF_3g1gVxcEws9pDB-lUrU69c_HuNw48LcoJ5Wm6hfIVPKItrwSGXd3Wri9h6P6VXYZSll8XGa72A5evzi7Ozbs6NvGu2TSLB3-_rk6PKIQvLrt1-dnr2Qx8HZ3d3P4i7pACsOGKqgO1Gsif6-h6KrE7yaqbeyRZBL4XdMlb1jUz5Qo7naYwKgpA73qtxvk06Oq6lNIKaiNU_SqHd030ydYezjC_mSG-7w31WlXboAIl1WugeiuCtLS9yy4Ea76_dFPtkFoA5tV_7LHF2aGWqsqynxovPxbl0615QW7Q_f_4uu_bBva_kR-aOt6PIDxSUKbG2ebSMnBo5u0LRz0QwrC1K2lC1myHkhVoGQVainZraaqfnkPEXU-YSWnU_eIxeeTz5TCFKWCMvoYKVPbHNafYn0NavAYtKQlkb9axMCNpf88VjyztCkK-_o2g-NRubvM6spNkiPLl0_IzGbSxFCbekHuodhJVVmvqRNzeQOW12mpuVxOvGkSeQaB7d8MkP7ThcQyc66uUnU8SofsF27FkSrlt7TBcKttoUcsO-TA3fVUCJjuhX4Qs7E2tuOQrPi34EF0wXfxuL3UhE1v9JNKJPzBajE8k1LKiFd6oqhW2HN4xQGCRpEjeenb2SlnJvtwGGlKYuRy2bBoPqgXaRAwIq8O5wfFtr_OAztryg2XY8dN0ZwuZ-TyrvhPbR-f_faiRFfQIJjFPmN1Y-clF-TgRI0sx-1x_lUsMU83yNtbgC5dBVVjmGQKdEJBwGUzgM5OWtbuYIJcbbRzSHJ_TI--UunxTDklNzQbCmx41StGF2_IrzJwSPlkbdf7lqMLvTp7qYSb4CPY4JvW-zt3YmkOkFiFJKHw2nONum614Z7sLGV8ZVxtg7qK7msqWuQU2X_QScZ6YJoJrdd7pN2_HQX6-jPfwB4wKgK\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls, Can't receive calls, My phone calls aren't working, Having trouble with calls, Calls not connecting, No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n",
+             "title": "Can't make or receive calls",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/fb087cc711a7bb42d0a2c9b423de12b315d091fd"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device",
+             "text": "category: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOxDAM_BXTC5eCxOO0Vx4SSHABCSFAq2zjpRGpHRJnC0JI_Aa_x5fgtAtaDntl1UM9TjqdseetCkbaVE3g7q1qWnYNDuChhioJhuUJ6WtPWy0a6-hRUVUpFHyRUh_nqF2wuNDvIaHkUIOYAMKKPDYCRosmR7Rw43ZOHRBKz_EJ-hYJQuQuCNrdQkosKxry7FdGwRzEMf3C3kQa9VD2XhuN8X6KtBQ5Nz6hdjvzOrWRw0qr5X4qPPC81zA63F_v8IQEI7xyjhBMSirdqsOivdg8Z0cb1n6wXvu1KjxiEkcZy0ZMI25hBEc7eHV28Vd7danVBO7pns7m5RJYZ-nr41N0h8rQurTcWA1OQAXCDMEuyaFzKZU0jHtumEj3r8b1xpCSn3i0-BMY_bMylLMQccc7etKYKNc4bm-oBo7KHPE5uxKhxHPR8SHkYNXIbvXv4z5cP-5bztsLVONd8CjFiTodlG1tJiLl-QYydkWc\nsummary: This tutorial guides the user through activating a pre-assigned eSIM during the initial setup of an iPhone 13.\nsymptoms: [Activate eSIM, Set up new iPhone eSIM, eSIM not working, No cellular service on new phone, How to get network on new iPhone]\ntitle: Auto-activating a pre-assigned eSIM (while setting up your device)\ntutorial_id: feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\n",
+             "title": "Auto-activating a pre-assigned eSIM (while setting up your device)",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/ad1a75ad40eee7d400cd315ebb8e4ee87dd536a4"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working",
+             "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlVtrGzEQhf_K1C9pIXHovfjBUELT9CGlNIFS6hLk3XFWsTwSktauCf3vPdKubwlOUzAuBu_qstKcb45Gtx2nYhU6Pfpx2ykqqwvOjZ-H1AmRXTsieDxHV8Wq1HKNVqeDZuRfMb2fVFyM6b32zihhOrclkw4Uay9ckh2NegPZHJ1pY6jUQQ0Nk5I5fdNHp5pGtRRRWwkU6qIiFdr-QhmDfbtpU7GxibHzGW89GshALitsFzhGTEo7G1uoiK1V7NGZnTD16aIZDXjdDAXhdTtZbz1cSk5t63Ioi-ZMeWm0S20MOlJQVywtkJEygdE7UfOr0lu31lXZ2VW0eZ3fh9TQfPE3mq1wK8IZCRBusKCZlYOIfz8mK6RoxgpvnmoJMWNdfdsdyImVkfYTmtv6wAN5EWusM19MSqykpEpNMUYlFyyRgr4WZTah7x3Uy-2gLuGvpL3hctJwAacPkvVv4tKStHvSXyorfLC0C2xqaaLGTC4N5PmB6pC-UfeysCsHOrcWQJ9yTOsdG5LutaE579dooRTW3vPyantevvIR7MO-Ad6E7lQI8GpJx3Rq_TXH7DfPNxaJidUiW8IxOTrVCxqqco08EiNwpMHKsO0QfMd3MsxTFtKjtlc5x8qHlcH34OPo6224Xj-ECwfWx3V7Qv-ZNSWVdtbQCbrkTIw1mp6m1tQw1bCOEWie4tjf1CHmacfRunbgMOEANiyFbyaodubZYVoPJGfacV66UZ1OgbMzTEM9bEIpeYrrYNfYWkaPdNmbh7BN7JRbG2kJDIRJjyixdPHpPBWCG2R-c0ZWhlG4BmaEaJZQp4JIDtFA_mPPer7BrCQvcjKb0UWuOliyySEKS6UiKklevJoHTDDLrXdxYv8N5dsHHYgD-bk5e8s6BYB5IJe0zK09natCha2pYuPAN1gzXd05Ux3nKIOhBoYR3FnZGJyNOyqfH1nYA2afLr2SMEqu9dSoaGtiv20unnfFdWmVRayFJAXcfeWdahX2n6Z329P0HXd3ZjxxhhOdXBlSYE_-zx2dfn8AhjVm9A==\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working., I can't make calls over Wi-Fi., Wi-Fi calls are dropping., My phone won't use Wi-Fi for calls., I have no signal, but Wi-Fi calling isn't kicking in., Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n",
+             "title": "Troubleshooting why Wi-Fi calling isn't working",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/88fc384c3aa342cda1e1958fe93693097f0ae40a"
+            },
+            {
+             "uri": "https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked",
+             "text": "category: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFVUtu3DAMvQrrTTZGgH7SFtmlAdIGaNNFuimaINDInEgYWTQkatxBUCAHaS-Xk5SSXeeDmaSrDLywPjTJ9_hIX1WdYhOrffhxVWlDVmPZnNdQRcZuvPHyeilHBlVj_aXsqkq2jD85r48CtdBbNtYDG4RTZBazCKrramDVwSE6l5wKu_kzTzxEqU5ktQ9n_swfz8ET6NEMPHJPYSEeAoJqGmyACVaUAjS4lCxBsYSyEdi2WIP1kq1qIC5sly1z7rC3WxUcaTZByXvq2JKftr0KfsDkk3NyoJVzF-hHoHPlogSoWrW6aAJ1d44M9RdMxc-vGgaWXm1m6ZvwcDLgEoYc6pzGY4QIXDBqidAmx7ZzQuzxl1jD3IbIEIuLwjd5hDkF6I3VpnzWK8-ZB01erFsgMbtldQfUUlmnZtZZXm2BpdePsyRQorMNFnAHialVbDVEkZjgE1hfj46eIG7SCXm3gsbGzqlVLExpFYLFIKJhEAE5u0AxcaQX2OzCJ-pxWW7XFWDSZebWEEUhXsRf3wt56zT50e3zU_xmM8UHfpBDi2yoNJYAtvPVCPkujpGrkZ18wiZQujRDaWaUshAHJUMuXT7-oPQCrEgPuM9-JEBATsHnVTZolQyKaUi06NP9aj47WXtPzLb1SdcQdSDnMizlmzLoPqLHoNyW8bx9vL9K3bac4rvNKZ5OrB6O8vss8vvfhp96_eb69wnlkSnqixxsUWm8uf4DM4z_psvdCKLkUt184R92wtTKDyfE2sA56mAv8eq1DnUKAT3LlLjfZFuYFe831-I7pR0ZgJpaGX-cf8NCWsnsxXb0k5-_l43hXQ==\nsummary: This tutorial guides users on how to check if their iPhone 13 is carrier locked using the Settings app.\nsymptoms: [Is my phone unlocked?, My new SIM card isn't working, I want to switch carriers, Can I use my phone with a different network?, I bought a used phone, is it locked?]\ntitle: Checking if your phone is carrier locked\ntutorial_id: feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\n",
+             "title": "Checking if your phone is carrier locked",
+             "document": "projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials/branches/0/documents/9a98799cf7a99103ec766ef8802405d56f0f7863"
+            }
+           ]
+          },
+          "childSpans": [
+           {
+            "name": "Search with original query",
+            "startTime": "2026-10-21T03:54:45.011Z",
+            "endTime": "2026-10-21T03:54:45.237Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Search with rewritten query",
+            "startTime": "2026-10-21T03:54:45.009Z",
+            "endTime": "2026-10-21T03:54:45.406Z",
+            "attributes": {
+             "info": "[projects/827537433050/locations/global/collections/default_collection/dataStores/cricket-tutorials]",
+             "status": {
+              "code": "OK"
+             }
+            }
+           },
+           {
+            "name": "Summarization",
+            "attributes": {
+             "summarization model display name": "disable_summarizer",
+             "disabled": true
+            }
+           },
+           {
+            "name": "Query rewrite",
+            "attributes": {
+             "rewriter model display name": "rewrite-by-agent (Default)"
+            }
+           }
+          ],
+          "duration": "0.425959s"
+         },
+         {
+          "name": "Callback",
+          "startTime": "2026-10-21T03:54:45.417584Z",
+          "endTime": "2026-10-21T03:54:45.435983Z",
+          "attributes": {
+           "agent": "Tech Support",
+           "[debug] detailed latency": {
+            "waiting for external calls (ms)": 0.0,
+            "total code execution latency (ms)": 8.0,
+            "sandbox init latency (ms)": 0.0
+           },
+           "stage": "AfterTool"
+          },
+          "duration": "0.018399s"
+         },
+         {
+          "name": "LLM",
+          "startTime": "2026-10-21T03:54:45.437843Z",
+          "endTime": "2026-10-21T03:54:46.237135Z",
+          "attributes": {
+           "input token count": 7046.0,
+           "[debug] decode queue time (ms)": 16.0,
+           "[debug] prefill queue wait time (ms)": 0.0,
+           "time to first chunk (ms)": 797.0,
+           "[debug] prefill time (ms)": 235.0,
+           "[debug] decode time to first token (ms)": 60.0,
+           "output token count": 33.0,
+           "model": "gemini-3.1-flash-live",
+           "agent": "Tech Support",
+           "thought token count": 0.0
+          },
+          "duration": "0.799292s"
+         }
+        ],
+        "duration": "3.995928s"
+       }
+      },
+      "citations": {
+       "citedChunks": [
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20iOS%20New,154674%2Dcan%2Dt%2Dmake%2Dor%2Dreceive%2Dcalls%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2F154674%2Dcan%2Dt%2Dmake%2Dor%2Dreceive%2Dcalls",
+         "title": "Can't make or receive calls",
+         "text": "category: iOS New Features\ndevice: iphone-13\nkind: article\nsteps_b64: eNrtWm1vHLcR_ivsfagd4HxA2qYtnE-KZDtCZVuIFBtFrzB4u7w7Vnvkdsm98zUokB_RL_17-SV9Zob7Kp0sKVHRoIET2LvHJYczzzzzQn43KXVch8lz9ZfvJtna28zww1-nahKiKdMvDn99jldro3PrVniaTPAYzcdI_z5dqr2vn1RG1U4vCqOiVxt9ZVS59s6oTBdFUN7RoErZc3o5VXFt8IGm_9XS7BQvR0Mw3qlIn2Oa3ERTbSxmscv0fQg1noLa2biWV7nZQnDlq967TFeVNZV6ql1O38Y1PsF_WkWzKX2lq70qKw9pN_ShViXW0c64qIKNtY5WBKZdGZf52kEQ7P2z2dy9xyrWyZSr2ubYDY0sClUYXTm19jvI_nzujtcmuxJ5zEcbIr5XmXfOZDT93H0bjDqyVVlgYfXa57zl-aQywcT5JG2kN17mW0Je-_ZC1WWuowlz940JUVexr19-adIrZ-LOV1cKL0gEfHGBnzT0ttR1EZWrNwuoiubl8Se1Lp5dnL6mD-pSPYX6dFkWNiPjfjZ3Ly10qvPcklS6UKEuodFIwuMtpA8yT9IvQcX52ENWvWjBRc--pIn4cfIGmHqueorLTFHUha7ISu_ts5cW9llh1Ql9uYO6BZCuLgq8IKx9MC6hdKmLAONMNnr_Ia982XsFG32IniX451QJxH8zhHhfiNYIfdzLAAC5E1JkA5h1rIE3fKcYKXCNEgh7VtnVOmK6ykHhftnH70y9MniLDezZO9TGA3sLXQU86ciuktsAsOxNLiMWMCjmYQlaCb9MrqLWemtUASxCc84n0aYyGTSCr_nLyugAMXfrfYv3jxDVAvWEV_a3QP5MTz2PhiN0jp-WNzmBgM3U-gQU7mmthhm2Ft7O-26VVRm3guMmTQW9YWLQM_WC-ITWFcvTuvRE0q9NUfI2oZBsSDWYhz5PFFHYjSXBRAutpTK_hbJXZvYAeF6CPAZ--whg_O0QjPejigE7xydBlT4EywYg6_dZk3VJSNFqBaXF3izs0GAPXS32neKi35meN-osI4cvvXVxqhY1zw6bWpgeTP4kSijQPQsBOX9ueB6aDDBTtia7CmvwOCw92O5U7bRlAgUVVf6j3YD7ir36_AuwFETOw1QR1ceajTDSlV-CwlbaugFoRchRzNIs4lTYPe5LS497tTHahRS0OIw0wYMxRrBd6yrfkZP2tYuhjT4hVPQz1ewcr5e22sg6pF8iE3a4ASvw2GvBVDN92-US4iBiFT7jgDV7MNWOYspd8Byr-pNw_m4SbSwMwfDyZsM4thrsMxmmHAdSjZeV37C2v_YgiZBVxjjYSpfqIgW3kQ7Ynw5MdonPsO9Q2FyocCib4JKA8fbNcNbJG_zruZq7DsjMcgS-bpLNcINYofL1SsBy7F2sfKGODeUVM5rpLYFLJQPRd4wM2SJ7qdgbuCjFBjKGIFHqhS3gHeDpJqak_OeH7_8d2vjfxPcUbya3Kgcbe7IlYt-UhWFiJ2omA_1qpGH607DW724KoWNwjVaBD-60i60HhrpxIsllyImq2jF6SIiCJokK9B2IpLBjTM6O1YabZr5MIjSCnzGDsKgd0r-kxiZVbNKjRk76zjqEcjDWAxxrkJWJyn-yMNHzq-OGN0jLnOyKyPQq7CHjpq_3O3rYTjLcxqemBEMP5VJAIJKF46Rk5Z7uduGXkUnyW5bpnl8f1dGD922WPr-Ps5-KsxAO08cUOMhowh9EBDtbmm4R5v1T0eYnWOC9BAEAVXCAkoGCSj4d4HhH4UYPps_9zhVe5y3mehYkeWGKtXEHQsog28oQf1bYt4RBRIQrk8-UBDvxh_4kVFqNl6bYTUG2LdU40m510XMElmmatjdS1UkzIY2FER6FYL4YEgxlYpU4WptAiLb7S73WrmYRbx7a5ZPBF4kcmqi9tXHf5MA3pMfQMKVXTe40nyCmh_iMtoGsDBRfQ09h7b3Ef5Otnf076ldy1o0Hi3VTd2Vma4CGqB9EPoeqv0eI7eeUEo6Vet_Qfpni57hRUHJBSVOtfSEouaCADbjGaynPbYA7v3Ui_sFYDsLvfFFv2h9gE8vAV7zPlhWb2Aw3QYoc7pYiACbIKUYTIf3ziEZNgBsmB63Ezc_yMdeWnI9-ws9OUOWIb0me45GrcwaPlIRfUUovlSAVpwe3kVKvNieZts0a3liqA6TZsTHVCnCG57ilhIxgqGeAkEKh-rQfiVWpQ8g44TKxrRqdEXazrqwTkNtxC7P0oxSBqbXd16Mwz--HzHObh_XW4mEd4YyHiuAIpCjvAPSt9XUAT9XB5N2Ywl6l3UrJRYrALFTy4BvkhBVGp5lTGfTu_A3_fYS_m3mk7CLl9qpx-MTeZTfOrpZkcXtc-DqXyo705NlDhvI3xlpQrwyQxdOw2oKpeYAAui8UuDdxc2wxpLtiM-3qGixyn5oitEwDCB2ptydFYr_c_HENqLYbxhXbqq641HoEFh1BRZDNCXxLFGTSNwlCFz20PTSte1gid3EtGbysUB0vpS0gjiHS3zO_408PEtAL9pIjrEwESXUvLd_q5hmM5n0QlrQJmdwf4XGV2fitaRMbbB5ZjxZvOSpBBOr0ZIpRTQOBsN4lS0udRU-9irbKvHUzh7kSqQOwugFAtxpJBJIL1C-a89Dw_IadN41c2vadtop_hT5chCFAxiaM8opE-7Zqd5cawtCNdVlRc8RhvXHhzko6R6qEgom5B0RhEt9cmT3xi8g6RijkvTAFsqlBipzKMSoGEAh4L5Iu9Tsm4yb_lwr5aW-7f6vDARI-vDvIeWKI-FmpBq7datQMJGR6ZNTodmBWV9RyAV_pPBcuGvRwL-n73EPZMCRZHFQ2amRTdyBgpFcrbsM7s-PJyXn6H9C4KSkjYgODqn7WdAtECYm-Wqz8yewXHjZSJ5aBRWcd2CAdTqQAHRB5cyUsz0kaz9aHCnM_j71KsyHNzdv5Wlt_jc93lXTmLuIe1nsmbtycAaBK50OCdW9goIHdFNTKuZBc6kzjq8hzkCOmSfojUq7SnF2k-F_wd9M-XlI1QrEI7s5N4aJc64XhegXKpsxHL5sGOifuwPSqMWICQcraCAahZQ_k7wU-76upJ6MEyxYEerkk7K8tAMPZYucpZ6lxp36tziu71dl-pL6ms5dcWYb07XQY5UQmPx_u6KT9X2cPkvTnzh-0h18Y5BcGuSuD_Dfw0K32IxDRm-T_DxPd5h8VFY9QW_9hfNjZZOByXk7kRpo-VIvdfBdFJtl5xcRrB_FrKgDdWVD2lYNRlQ79-fnmw7Q7P-gOJq4doMKodStv5kHvWaQgiAqFYEKzLZmZ6cxcHT6NFeTR8DXLsjP6anQY2-dwoHJtM4Zlc5rf1PQcFhANYdpF_3g1gVxcEws9pDB-lUrU69c_HuNw48LcoJ5Wm6hfIVPKItrwSGXd3Wri9h6P6VXYZSll8XGa72A5evzi7Ozbs6NvGu2TSLB3-_rk6PKIQvLrt1-dnr2Qx8HZ3d3P4i7pACsOGKqgO1Gsif6-h6KrE7yaqbeyRZBL4XdMlb1jUz5Qo7naYwKgpA73qtxvk06Oq6lNIKaiNU_SqHd030ydYezjC_mSG-7w31WlXboAIl1WugeiuCtLS9yy4Ea76_dFPtkFoA5tV_7LHF2aGWqsqynxovPxbl0615QW7Q_f_4uu_bBva_kR-aOt6PIDxSUKbG2ebSMnBo5u0LRz0QwrC1K2lC1myHkhVoGQVainZraaqfnkPEXU-YSWnU_eIxeeTz5TCFKWCMvoYKVPbHNafYn0NavAYtKQlkb9axMCNpf88VjyztCkK-_o2g-NRubvM6spNkiPLl0_IzGbSxFCbekHuodhJVVmvqRNzeQOW12mpuVxOvGkSeQaB7d8MkP7ThcQyc66uUnU8SofsF27FkSrlt7TBcKttoUcsO-TA3fVUCJjuhX4Qs7E2tuOQrPi34EF0wXfxuL3UhE1v9JNKJPzBajE8k1LKiFd6oqhW2HN4xQGCRpEjeenb2SlnJvtwGGlKYuRy2bBoPqgXaRAwIq8O5wfFtr_OAztryg2XY8dN0ZwuZ-TyrvhPbR-f_faiRFfQIJjFPmN1Y-clF-TgRI0sx-1x_lUsMU83yNtbgC5dBVVjmGQKdEJBwGUzgM5OWtbuYIJcbbRzSHJ_TI--UunxTDklNzQbCmx41StGF2_IrzJwSPlkbdf7lqMLvTp7qYSb4CPY4JvW-zt3YmkOkFiFJKHw2nONum614Z7sLGV8ZVxtg7qK7msqWuQU2X_QScZ6YJoJrdd7pN2_HQX6-jPfwB4wKgK\nsummary: This guide helps troubleshoot issues with making or receiving phone calls on an iPhone.\nsymptoms: [Can't make calls, Can't receive calls, My phone calls aren't working, Having trouble with calls, Calls not connecting, No signal for calls]\ntitle: Can't make or receive calls\ntutorial_id: 154674-can-t-make-or-receive-calls\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/154674-can-t-make-or-receive-calls\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_manual_network_selection%2Dmanually%2Dselecting%2Da%2Dcellular%2Dnetwork%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_manual_network_selection%2Dmanually%2Dselecting%2Da%2Dcellular%2Dnetwork",
+         "title": "Manually selecting a cellular network",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFkk1LAzEQhv_KmIuXpeDXpTcRCj1YD3oRKyVmZ00wmwnJxLUU_7uzu6VUsB5bckhm8jHP-042Kmq2WU3hZaOMJWdwCF4rUJkxbneCTBeSsqhrF94lUkpCxi_u17NELXSOrQvAFuERmeVYBh1jBawj3KH3xes06a8F4r0q5W1XqI8psqOwCzudwlgxFO8lYbT3KwxbjEb7jJJt9XpVJ4p7KUvdiml457uCUcPlYQ1PQrlA7ih9CL9H02P8xlULWU1hGZZh3sCaClj9idAWzy56kT2_zxU0LmWGPDwxuEEBoaEEnXXGDtc6HWSLoNWhiJw1iPOUETSYrU8QRpSJOrpHV_97JEKydzUO0m4LU6vZGcjSflEnoh5msxN3-fqwgrGzfRMSxIQNpoT1H66flP_mMP8zlXP5coZa-XAs6H0XBrKz0zD34wfkRV7R\nsummary: This tutorial guides the user through manually selecting a cellular network on their iPhone 13.\nsymptoms: [Can't connect to network, No service, Phone not registering, Want to pick a different carrier, Network issues, Bad signal]\ntitle: Manually selecting a cellular network\ntutorial_id: feature_manual_network_selection-manually-selecting-a-cellular-network\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_manual_network_selection-manually-selecting-a-cellular-network\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Wi%2DFi%2C%20Mobile,feature_tbs_wifi_calling_issues%2Dtroubleshooting%2Dwhy%2Dwi%2Dfi%2Dcalling%2Disn%2Dt%2Dworking%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_tbs_wifi_calling_issues%2Dtroubleshooting%2Dwhy%2Dwi%2Dfi%2Dcalling%2Disn%2Dt%2Dworking",
+         "title": "Troubleshooting why Wi-Fi calling isn't working",
+         "text": "category: Wi-Fi, Mobile Data, Bluetooth, and Browsers\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFlVtrGzEQhf_K1C9pIXHovfjBUELT9CGlNIFS6hLk3XFWsTwSktauCf3vPdKubwlOUzAuBu_qstKcb45Gtx2nYhU6Pfpx2ykqqwvOjZ-H1AmRXTsieDxHV8Wq1HKNVqeDZuRfMb2fVFyM6b32zihhOrclkw4Uay9ckh2NegPZHJ1pY6jUQQ0Nk5I5fdNHp5pGtRRRWwkU6qIiFdr-QhmDfbtpU7GxibHzGW89GshALitsFzhGTEo7G1uoiK1V7NGZnTD16aIZDXjdDAXhdTtZbz1cSk5t63Ioi-ZMeWm0S20MOlJQVywtkJEygdE7UfOr0lu31lXZ2VW0eZ3fh9TQfPE3mq1wK8IZCRBusKCZlYOIfz8mK6RoxgpvnmoJMWNdfdsdyImVkfYTmtv6wAN5EWusM19MSqykpEpNMUYlFyyRgr4WZTah7x3Uy-2gLuGvpL3hctJwAacPkvVv4tKStHvSXyorfLC0C2xqaaLGTC4N5PmB6pC-UfeysCsHOrcWQJ9yTOsdG5LutaE579dooRTW3vPyantevvIR7MO-Ad6E7lQI8GpJx3Rq_TXH7DfPNxaJidUiW8IxOTrVCxqqco08EiNwpMHKsO0QfMd3MsxTFtKjtlc5x8qHlcH34OPo6224Xj-ECwfWx3V7Qv-ZNSWVdtbQCbrkTIw1mp6m1tQw1bCOEWie4tjf1CHmacfRunbgMOEANiyFbyaodubZYVoPJGfacV66UZ1OgbMzTEM9bEIpeYrrYNfYWkaPdNmbh7BN7JRbG2kJDIRJjyixdPHpPBWCG2R-c0ZWhlG4BmaEaJZQp4JIDtFA_mPPer7BrCQvcjKb0UWuOliyySEKS6UiKklevJoHTDDLrXdxYv8N5dsHHYgD-bk5e8s6BYB5IJe0zK09natCha2pYuPAN1gzXd05Ux3nKIOhBoYR3FnZGJyNOyqfH1nYA2afLr2SMEqu9dSoaGtiv20unnfFdWmVRayFJAXcfeWdahX2n6Z329P0HXd3ZjxxhhOdXBlSYE_-zx2dfn8AhjVm9A==\nsummary: This tutorial helps troubleshoot issues with Wi-Fi calling not working on an iPhone 13.\nsymptoms: [My Wi-Fi calling isn't working., I can't make calls over Wi-Fi., Wi-Fi calls are dropping., My phone won't use Wi-Fi for calls., I have no signal, but Wi-Fi calling isn't kicking in., Calls aren't going through on Wi-Fi.]\ntitle: Troubleshooting why Wi-Fi calling isn't working\ntutorial_id: feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_tbs_wifi_calling_issues-troubleshooting-why-wi-fi-calling-isn-t-working\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Setup%20and,feature_esim_during_setup_auto_esim_install%2Dauto%2Dactivating%2Da%2Dpre%2Dassigned%2Desim%2Dwhile%2Dsetting%2Dup%2Dyour%2Ddevice%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_esim_during_setup_auto_esim_install%2Dauto%2Dactivating%2Da%2Dpre%2Dassigned%2Desim%2Dwhile%2Dsetting%2Dup%2Dyour%2Ddevice",
+         "title": "Auto-activating a pre-assigned eSIM (while setting up your device)",
+         "text": "category: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFUstOxDAM_BXTC5eCxOO0Vx4SSHABCSFAq2zjpRGpHRJnC0JI_Aa_x5fgtAtaDntl1UM9TjqdseetCkbaVE3g7q1qWnYNDuChhioJhuUJ6WtPWy0a6-hRUVUpFHyRUh_nqF2wuNDvIaHkUIOYAMKKPDYCRosmR7Rw43ZOHRBKz_EJ-hYJQuQuCNrdQkosKxry7FdGwRzEMf3C3kQa9VD2XhuN8X6KtBQ5Nz6hdjvzOrWRw0qr5X4qPPC81zA63F_v8IQEI7xyjhBMSirdqsOivdg8Z0cb1n6wXvu1KjxiEkcZy0ZMI25hBEc7eHV28Vd7danVBO7pns7m5RJYZ-nr41N0h8rQurTcWA1OQAXCDMEuyaFzKZU0jHtumEj3r8b1xpCSn3i0-BMY_bMylLMQccc7etKYKNc4bm-oBo7KHPE5uxKhxHPR8SHkYNXIbvXv4z5cP-5bztsLVONd8CjFiTodlG1tJiLl-QYydkWc\nsummary: This tutorial guides the user through activating a pre-assigned eSIM during the initial setup of an iPhone 13.\nsymptoms: [Activate eSIM, Set up new iPhone eSIM, eSIM not working, No cellular service on new phone, How to get network on new iPhone]\ntitle: Auto-activating a pre-assigned eSIM (while setting up your device)\ntutorial_id: feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Setup%20and,feature_device_views_sim%2Dinserting%2Dand%2Dremoving%2Dthe%2Dnano%2Dsim%2Dcard%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_device_views_sim%2Dinserting%2Dand%2Dremoving%2Dthe%2Dnano%2Dsim%2Dcard",
+         "title": "Inserting and removing the Nano SIM card",
+         "text": "category: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFVE2L2zAQ_StTX_YSFrL9OOytFAqBblnYQyndEhR7bKs7mRGSnNQshf6N_r3-ko5kJ01K3O6h7RJDLFmaN_Pem7kvnIltKC7hw31RtmJLzIuPMyhCRDd-Yf2b61aLprLc6KoodBnxc0zvb6Q0ESG2CGxY4GZxBaXxFURvehDOXwjrCOLB26aNEGyFIDX00nmocKPA5ykkSxwyKN7q2yXc8i2_1lv2uhVGmF_AWiqkAIYrIEX1sxw9QWa0rSWClcLlnKoj9FOg8K5FjyZAfYAyP0RB48k-FOc31WVOu9We1rQWF63wfrk1ngd-uSPSjdIQLZFH0mtDAXV3bfpl5cUdbLWyXUbJcb7MYFDsYlqxBQf0EdBqzn5fWNYMP2GZkoIoQkkwA8449CVZB0FrzxVajpLvOcutUK72KEwmKdHnutBCx9FSPpD3PZJSjmFS8itzhxA6j4nC71-_6YvNKWstA6s5u-l0ErIGBqMP69OQSr04EeLggCbO4DxukOOx2LWX9UiMXnZKPXrq_5Gk0XdTij6dVvSGkuemWrCLSSAbAwSSOEn7y18ur5OGpO1R9cnrgwRqdstjq_wNCsZ6H2jqZ380dZoxuJbNKTayT_RAFnRnx0k6dDTwT9_NUgistYQeyOqY6NyAILFslRSsmhNtIEdOOgvD8XN4Jd6rnygRbJvEjx604-dhuiDnDjCj4XaZpNbU9gjgyJQ6cbBRIMIQduDjFMsjLEnVhceYPs-nhbpOI2HCqitT3g0y7Rx2KM5_r-LFdBXvpTtTk5WydoSpK1JFObMnj5Nz-v0AFt6XZw==\nsummary: This guide explains how to insert or remove a Nano SIM card from an iPhone 13.\nsymptoms: [My phone isn't connecting to the network, I need to change my SIM card, My SIM card isn't working, I got a new SIM card, No service, SIM card error]\ntitle: Inserting and removing the Nano SIM card\ntutorial_id: feature_device_views_sim-inserting-and-removing-the-nano-sim-card\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_device_views_sim-inserting-and-removing-the-nano-sim-card\n"
+        },
+        {
+         "uri": "https://www.cricketwireless.com/support/device-tutorials#:~:text=category:%20Setup%20and,feature_carrier_lock_status%2Dchecking%2Dif%2Dyour%2Dphone%2Dis%2Dcarrier%2Dlocked%20url:%20https:%2F%2Fwww.cricketwireless.com%2Fsupport%2Fdevice%2Dtutorials%23%2Ftutorial%2Fiphone%2D13%2F27.0.0%2Ffeature_carrier_lock_status%2Dchecking%2Dif%2Dyour%2Dphone%2Dis%2Dcarrier%2Dlocked",
+         "title": "Checking if your phone is carrier locked",
+         "text": "category: Setup and SIMs\ndevice: iphone-13\nkind: procedure\nsteps_b64: eNrFVUtu3DAMvQrrTTZGgH7SFtmlAdIGaNNFuimaINDInEgYWTQkatxBUCAHaS-Xk5SSXeeDmaSrDLywPjTJ9_hIX1WdYhOrffhxVWlDVmPZnNdQRcZuvPHyeilHBlVj_aXsqkq2jD85r48CtdBbNtYDG4RTZBazCKrramDVwSE6l5wKu_kzTzxEqU5ktQ9n_swfz8ET6NEMPHJPYSEeAoJqGmyACVaUAjS4lCxBsYSyEdi2WIP1kq1qIC5sly1z7rC3WxUcaTZByXvq2JKftr0KfsDkk3NyoJVzF-hHoHPlogSoWrW6aAJ1d44M9RdMxc-vGgaWXm1m6ZvwcDLgEoYc6pzGY4QIXDBqidAmx7ZzQuzxl1jD3IbIEIuLwjd5hDkF6I3VpnzWK8-ZB01erFsgMbtldQfUUlmnZtZZXm2BpdePsyRQorMNFnAHialVbDVEkZjgE1hfj46eIG7SCXm3gsbGzqlVLExpFYLFIKJhEAE5u0AxcaQX2OzCJ-pxWW7XFWDSZebWEEUhXsRf3wt56zT50e3zU_xmM8UHfpBDi2yoNJYAtvPVCPkujpGrkZ18wiZQujRDaWaUshAHJUMuXT7-oPQCrEgPuM9-JEBATsHnVTZolQyKaUi06NP9aj47WXtPzLb1SdcQdSDnMizlmzLoPqLHoNyW8bx9vL9K3bac4rvNKZ5OrB6O8vss8vvfhp96_eb69wnlkSnqixxsUWm8uf4DM4z_psvdCKLkUt184R92wtTKDyfE2sA56mAv8eq1DnUKAT3LlLjfZFuYFe831-I7pR0ZgJpaGX-cf8NCWsnsxXb0k5-_l43hXQ==\nsummary: This tutorial guides users on how to check if their iPhone 13 is carrier locked using the Settings app.\nsymptoms: [Is my phone unlocked?, My new SIM card isn't working, I want to switch carriers, Can I use my phone with a different network?, I bought a used phone, is it locked?]\ntitle: Checking if your phone is carrier locked\ntutorial_id: feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\nurl: https://www.cricketwireless.com/support/device-tutorials#/tutorial/iphone-13/27.0.0/feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked\n"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "reset": "I1020 22:54:37.070547 7124960 ev_poll_posix.cc:587] FD from fork parent still in poll list: fd(8, generation: 1)\nreset failed: 401 \n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>401 Unauthorized</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Unauthorized</h1>\n<h2>Your clien",
+ "session_ids": [
+  "1efd3813-0321-4f84-9b32-12f352230bc9"
+ ],
+ "tools_seen": [
+  "transfer_to_agent",
+  "get_progress",
+  "get_lines",
+  "get_line_status",
+  "get_sim_status",
+  "check_outage",
+  "search_tutorials"
+ ],
+ "missing_expected": [],
+ "forbidden_hit": [],
+ "passed": true
+}

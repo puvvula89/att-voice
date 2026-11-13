@@ -1,0 +1,18 @@
+Conversation: 065P2UdGQLhSuG-dUUdcAGlyA
+  source=LIVE  channel=OTHER  turns=2
+  start=2026-11-13T16:03:11.001147Z  end=2026-11-13T16:03:21.034369Z
+  total_duration=4813.7ms  perceived=864.0ms  tokens(in/out/think/total)=1945/94/62/2101
+
+-- Turn 0 --  duration=1857.2ms  perceived=797.0ms  tokens=1945in/94out
+[0]   var_default {"step_given": "", "step_said": "", "channel": "voice", "_session": {"channel": "GOOGLE_TELEPHONY_PLATFORM", "modality": "VOICE"}, "current_date": "2026-11-13[America/Los_Angeles]", "show_image": "", "image_links": "", "walk": "", "steps_by_id": "", "customer_name": "Jordan", "customer_id": "cust_2001"}
+[0]   var_update {"telephony-caller-id": "+12012948672", "x-headers": {"google-session-callid": "7VFT0NMYjWGDguKq", "google-source-address": "67.231.9.110", "google-caller-gtp-application": "APPLICATION_UNDEFINED", "google-caller-did-data-application": "NOT_ALLOCATED", "google-product-type": "GOOGLE_CLOUD_CONTACT_CENTER", "google-sbc-address": "216.239.32.1", "google-callee-gtp-application": "GOOGLE_CLOUD_CONTACT_CENTER", "google-inbound-carrier-id": "BANDWIDTH_INBOUND", "google-call-flow-type": "TPAPI_TO_CLIENT", "google-callee-did-data-application": "GOOGLE_CLOUD_CONTACT_CENTER"}, "uui-headers": []}
+[0] USER: <event>session start</event>
+[0] AGENT (Care_Concierge): Thanks for calling Cricket. I can help with your bill or with a phone that isn't working. What's going on today?
+    * Callback[BeforeAgent] 26.9ms
+    * LLM gemini-composite-v2 514.1ms  in=1945 out=94 ttfc_ms=512
+    * TTS 1235.0ms
+-- Turn 1 --  duration=2956.4ms  perceived=67.0ms
+[1] USER: <event>sys.remote-call-disconnected</event>
+[1]   tool_call end_session args={"session_escalated": false, "reason": "call disconnected by the client"}
+    * Callback[BeforeAgent] 20.7ms
+    * Tool end_session 0.0ms  args={"session_escalated": false, "reason": "call disconnected by the client"}
