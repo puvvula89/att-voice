@@ -100,9 +100,16 @@ open with "Welcome back":
 
 ## 6. Demo scripts
 
-Two scenarios, one per channel, on the same app and the same account. Both were run end to end
-against the deployed app: the voice one with spoken turns, the chat one on the chat page.
-Reset the account (section 5) before each.
+Four scenarios on the same app and the same account: three for voice, one for chat. All were run
+end to end against the deployed app, the voice ones with spoken turns and the chat one with typed
+turns. Reset the account (section 5) before each.
+
+| Scenario | Channel | Phone | Shows |
+|---|---|---|---|
+| Wi-Fi calling isn't working | Voice | iPhone 18 Pro | Empathy, the warning before a step that ends the call, calling back |
+| Battery draining too quickly | Voice | iPhone 18 Pro | A 7-step walk with no interruption, ending in a support ticket |
+| Can't receive texts | Voice | Galaxy A15 5G | Switching to the other phone on the account, a guide with a choice in it |
+| Delete and restore a voicemail | Chat | iPhone 18 Pro | A picture under every step, quick replies |
 
 ### Voice: Wi-Fi calling isn't working, a frustrated caller, the call drops, the caller rings back
 
@@ -127,6 +134,48 @@ caller left off.
 
 End the demo at row 12. The step after it resets network settings, which also ends the call, so
 "Done" brings the same warning again. The frustrated line in row 5 works on any step.
+
+### Voice: the battery drains too quickly, a straight walk through seven steps
+
+Shows: a longer guide walked one step at a time with progress cues ("we are about halfway
+through"), and a support ticket when the steps do not fix it. No step in this guide ends the call,
+and the agent runs no outage check because the problem is not about the network.
+
+| # | Say | The agent |
+|---|---|---|
+| 1 | "My iPhone battery is draining really fast" | Says it sees you are calling from your iPhone 18 Pro and asks if that is the one |
+| 2 | "Yes, this iPhone" | Names the guide Battery draining too quickly, offers to text it, walk you through it, or both |
+| 3 | "Walk me through it" | Says what the guide covers and asks you to say when you are ready |
+| 4 | "I'm ready" | Settings, General, Software Update: asks whether it is up to date |
+| 5 | "Okay, I did that, it's still the same. What's next?" | Settings, Battery: usage and battery health |
+| 6 | Same line | Display and Brightness, Auto-Lock |
+| 7 | Same line | Wi-Fi instead of cellular, 5G Auto |
+| 8 | Same line | Low Power Mode from Control Center |
+| 9 | Same line | Final step: the battery may need service; offers to open a support ticket |
+| 10 | "Yes, please" | Opens the ticket, reads its number, says a specialist will call back |
+
+### Voice: the other phone on the account can't receive texts
+
+Shows: the caller corrects which phone it is, the agent switches to the Galaxy A15 5G and finds
+that phone's guide, checks the line and outages first, and follows the right branch of a guide that
+splits into sending and receiving.
+
+| # | Say | The agent |
+|---|---|---|
+| 1 | "I'm not receiving text messages on my phone" | Says it sees you are calling from your iPhone 18 Pro and asks if that is the one |
+| 2 | "No, it's my other phone, the Galaxy" | Confirms the Galaxy A15 5G, says everything looks normal on its side, names the guide Can't send or receive texts, offers to text it, walk you through it, or both |
+| 3 | "Walk me through it" | Asks whether the trouble is sending or receiving |
+| 4 | "Receiving" | Check the signal bars with Wi-Fi turned off |
+| 5 | "Okay, I did that, it's still the same. What's next?" | Airplane mode is off |
+| 6 | Same line | Do Not Disturb |
+| 7 | Same line | Storage space |
+| 8 | Same line | The blocked numbers list |
+| 9 | Same line | Last step: texts going to another linked device |
+| 10 | Same line | Asks you to have someone send a test text |
+| 11 | "It still isn't coming through" | Sums up what was ruled out and opens a support ticket |
+
+In the test runs of these two scenarios every reply after row 4 was the line in row 5; the shorter
+answers in the last rows and "Receiving" are the natural replies and were not run word for word.
 
 ### Chat: delete and restore a voicemail, with a picture of every step
 
