@@ -16,7 +16,7 @@ def test_two_lines_with_calling_line_marked():
 
 
 def test_lines_are_returned_both_never_first_only():
-    assert {l["device"] for l in get_lines("cust_2001")["lines"]} == {"iphone-13", "galaxy-a15-5g"}
+    assert {l["device"] for l in get_lines("cust_2001")["lines"]} == {"iphone-18-pro", "galaxy-a15-5g"}
 
 
 def test_p1_is_suspended():

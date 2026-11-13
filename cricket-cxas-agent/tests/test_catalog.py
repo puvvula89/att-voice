@@ -12,9 +12,9 @@ def cat():
     return Catalog.load(CAT)
 
 
-def test_four_devices(cat):
+def test_devices(cat):
     assert {d["device"] for d in cat.devices()} == {
-        "iphone-13", "moto-g-2025", "moto-g-stylus-5g-2024", "galaxy-a15-5g"}
+        "iphone-13", "iphone-18-pro", "moto-g-2025", "moto-g-stylus-5g-2024", "galaxy-a15-5g"}
 
 
 def test_symptom_search_finds_calls_article_on_every_device(cat):

@@ -47,7 +47,8 @@ def normalize_step(raw: dict, tutorial_title: str) -> dict:
         "links": list(raw.get("links", [])),
         "options": list(raw.get("options", [])),
         "substeps": list(raw.get("substeps", [])),
-        "image_url": raw.get("image_url", ""),
+        # the site sometimes gives the path with a doubled slash, which its image host refuses
+        "image_url": re.sub(r"(?<!:)//+", "/", raw.get("image_url", "")),
         "call_ending": bool(CALL_ENDING.search(instr)),
         "warning": warning,
     }
