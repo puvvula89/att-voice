@@ -9,9 +9,12 @@ next_step must stay the first function: the platform takes the first one in the 
 """
 import json
 
-SAY_CALL_ENDING = ("This next step will disconnect our call. I'll save your place so we can pick up right after "
-                   "it when you call back. Please confirm by saying you're okay to call back.")
-REASK = "I need your confirmation before we run this step. Are you okay to call back?"
+SAY_CALL_ENDING = ("Before we go on, one important thing: the next step will disconnect this call. I've saved your "
+                   "place, so once the step is done, call us back and we'll pick up right where we left off. "
+                   "Are you okay to hang up and call back?")
+REASK = ("Explain it again in new, simpler words, never the sentence you used before: say what the next step is "
+         "in a few words, that doing it ends this call, that their place is saved, and that when they call back "
+         "you continue from this exact step. Then ask a plain yes or no: are they okay to call back?")
 
 
 def next_step(tutorial_id: str, action: str = "next", caller_confirmed: bool = False, choice: str = "") -> dict:

@@ -66,6 +66,15 @@
       }
     },
     {
+      "name": "step_said",
+      "description": "Text of the step just given and of the one before it, to check the reply gives the new step",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
       "name": "show_image",
       "description": "Chat: picture name of the step just given, for the reply to show",
       "schema": {

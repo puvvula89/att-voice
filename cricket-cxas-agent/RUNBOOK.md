@@ -112,19 +112,21 @@ caller left off.
 
 | # | Say | The agent |
 |---|---|---|
-| 1 | "Wi-Fi calling isn't working on my phone" | Says it sees you are calling from your iPhone and asks if that is the one |
+| 1 | "Wi-Fi calling isn't working on my phone" | Says it sees you are calling from your iPhone 18 Pro and asks if that is the one |
 | 2 | "Yes, this iPhone" | Says everything looks normal on its side, names the guide Wi-Fi Calling isn't working, offers to text it, walk you through it, or both |
-| 3 | "Walk me through it" | Settings, Apps, Phone: asks whether you see Wi-Fi Calling |
-| 4 | "Where the hell is that? I can't find Wi-Fi calling anywhere, this is so frustrating" | Apologises, says it is not your fault, and guides you there in smaller moves; asks what you see |
-| 5 | "Okay, I found it, it's turned on" | Next step: Cellular, turn off Wi-Fi Assist |
-| 6 | "Done" | Next step: General, Software Update |
-| 7 | "Done, it's up to date" | Warns that the next step will disconnect the call, says it saved your place, asks you to confirm you are okay to call back |
-| 8 | "Yes, I'm okay to call back" | Tells you how to restart the iPhone and to call back |
-| 9 | Hang up. Call again within 30 minutes: "Hi, my call dropped while I was restarting my phone" | "Welcome back, I saved your place." Asks whether the restart fixed it |
-| 10 | "No, Wi-Fi calling still isn't working" | Next step: try a different Wi-Fi network or turn off a VPN |
+| 3 | "Walk me through it" | Says what the guide covers and asks you to say when you are ready |
+| 4 | "I'm ready" | Settings, Apps, Phone: asks whether Wi-Fi Calling is turned on |
+| 5 | "Where the hell is that? I can't find Wi-Fi calling anywhere, this is so frustrating" | Apologises, says it is not your fault, and guides you there in smaller moves; asks what you see |
+| 6 | "Okay, I found it, it's turned on" | Next step: Cellular, turn off Wi-Fi Assist |
+| 7 | "Done" | Next step: General, Software Update |
+| 8 | "Done" | Warns that the next step will disconnect the call, says it saved your place, asks whether you are okay to hang up and call back |
+| 9 | "Sorry, I did not understand what you said" (optional) | Explains again in simpler words: the step is a restart, it ends the call, your place is saved |
+| 10 | "Ok" | Tells you how to restart the iPhone and to call back |
+| 11 | Hang up. Call again within 30 minutes: "Hi, I called a few minutes ago about Wi-Fi calling" | "Welcome back, I saved your place." Asks whether the restart fixed it |
+| 12 | "No, it still isn't working" | Next step: try a different Wi-Fi network or turn off a VPN |
 
-End the demo at row 10. The step after it resets network settings, which also ends the call, so
-"Done" brings the same warning again. The frustrated line in row 4 works on any step.
+End the demo at row 12. The step after it resets network settings, which also ends the call, so
+"Done" brings the same warning again. The frustrated line in row 5 works on any step.
 
 ### Chat: delete and restore a voicemail, with a picture of every step
 
@@ -135,7 +137,7 @@ private window and maximise it.
 | # | Type or click | The agent |
 |---|---|---|
 | 1 | Open the chat: the mascot's **Start chat** button or the chat button at the bottom right | "Welcome to Cricket Wireless, Jordan. How can I help you today?" |
-| 2 | "How do I delete a voicemail on my iPhone?" | Says it sees you are chatting from your iPhone and asks if that is the one |
+| 2 | "How do I delete a voicemail on my iPhone?" | Says it sees you are chatting from your iPhone 18 Pro and asks if that is the one |
 | 3 | "Yes" | Names the guide Deleting and restoring voicemails, offers the link, a walk-through here, or both |
 | 4 | "Walk me through it here" | Step 1 with a picture of the screen, and the quick replies Done, Say it again, I'm stuck |
 | 5 | Click **Done** | Step 2 with its picture |

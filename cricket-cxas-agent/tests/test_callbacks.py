@@ -195,3 +195,36 @@ def test_second_next_step_in_a_turn_is_answered_without_the_tool():
     assert "agent_action" in before(None, {"tutorial_id": "t"}, ctx)
     load("before_agent.py")["before_agent_callback"](ctx)
     assert before(None, {"tutorial_id": "t"}, ctx) is None
+
+
+def test_reply_that_repeats_the_previous_step_is_replaced_with_the_new_step():
+    ctx = Ctx(channel="chat")
+    after_tool = load("after_tool.py")["after_tool_callback"]
+    after_tool(None, {}, ctx, {"result": {"step": 2, "of": 13, "text": "Tap the Menu icon."}})
+    after_tool(None, {}, ctx, {"result": {"step": 3, "of": 13, "text": "Tap Voicemail."}})
+    model = load("after_model.py")
+    reply = model["LlmResponse"](content=Content(parts=[Part(text="Next, tap the Menu icon on your screen.")]))
+    out = model["after_model_callback"](ctx, reply)
+    assert "Tap Voicemail." in out.content.parts[0].text and "Menu" not in out.content.parts[0].text
+    after_tool(None, {}, ctx, {"result": {"step": 4, "of": 13, "text": "Tap Edit."}})
+    good = model["LlmResponse"](content=Content(parts=[Part(text="Now tap Edit at the top.")]))
+    assert model["after_model_callback"](ctx, good).content.parts[0].text == "Now tap Edit at the top."
+
+
+def test_end_session_is_dropped_in_the_turn_that_fetched_a_step():
+    class Call:
+        def __init__(self, name): self.name = name
+    after_tool = load("after_tool.py")["after_tool_callback"]
+    model = load("after_model.py")
+    for channel in ("voice", "chat"):
+        ctx = Ctx(channel=channel)
+        after_tool(None, {}, ctx, {"result": {"step": 3, "of": 13, "text": "Tap Voicemail."}})
+        both = model["LlmResponse"](content=Content(parts=[Part(text="Tap Voicemail now."), Part(function_call=Call("end_session"))]))
+        out = model["after_model_callback"](ctx, both)
+        assert out.content.parts[0].text == "Tap Voicemail now." and not any(p.function_call for p in out.content.parts)
+        only = model["LlmResponse"](content=Content(parts=[Part(function_call=Call("end_session"))]))
+        out = model["after_model_callback"](ctx, only)
+        assert "Tap Voicemail." in out.content.parts[0].text
+    ctx = Ctx(channel="voice", step_given="")
+    bye = model["LlmResponse"](content=Content(parts=[Part(text="Goodbye."), Part(function_call=Call("end_session"))]))
+    assert model["after_model_callback"](ctx, bye) is None
