@@ -67,6 +67,8 @@ def after_tool_callback(tool: Tool, input: dict[str, Any], callback_context: Cal
     step = tool_response.get("result") if isinstance(tool_response.get("result"), dict) else tool_response
     if "step" in step and "of" in step:
         image = step.pop("image", "")
+        if "text" in step:
+            callback_context.variables["step_given"] = "1"   # one step per caller turn; see before_tool
         if callback_context.variables.get("channel") != "chat" or "text" not in step:
             return tool_response if image else None   # voice, or a save/confirm result with no step to show
         # "-" marks a step without a picture: the reply still gets quick replies.

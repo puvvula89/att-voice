@@ -184,3 +184,14 @@ def test_sign_images_is_filled_with_the_active_guides_pictures():
     inp = {"names": ""}
     load("before_tool.py")["before_tool_callback"](None, inp, ctx)
     assert inp["names"] == "a.png,b.jpeg"
+
+
+def test_second_next_step_in_a_turn_is_answered_without_the_tool():
+    ctx = Ctx(channel="voice")
+    load("before_agent.py")["before_agent_callback"](ctx)
+    before = load("before_tool.py")["before_tool_callback"]
+    assert before(None, {"tutorial_id": "t"}, ctx) is None
+    load("after_tool.py")["after_tool_callback"](None, {}, ctx, {"result": {"step": 1, "of": 3, "text": "Tap Edit."}})
+    assert "agent_action" in before(None, {"tutorial_id": "t"}, ctx)
+    load("before_agent.py")["before_agent_callback"](ctx)
+    assert before(None, {"tutorial_id": "t"}, ctx) is None

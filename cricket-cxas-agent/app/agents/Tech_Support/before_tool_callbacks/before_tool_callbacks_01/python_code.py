@@ -2,12 +2,19 @@
 variables, so the model never copies the walk or the steps. next_step leaves the place to save in
 walk["pending"]; marking walk["saved"] lets next_step release the step it was holding.
 
-In chat, also fill sign_images with the picture names of the guide being walked (walk["active"])."""
+In chat, also fill sign_images with the picture names of the guide being walked (walk["active"]).
+
+next_step gives one step per caller turn: once this turn has its step (`step_given`), a further
+next_step call is answered here, without running the tool, so the model cannot look ahead and lose
+the caller's place."""
 import json
 from typing import Any, Optional
 
 
 def before_tool_callback(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]:
+    if "tutorial_id" in input and "walk" not in input and callback_context.variables.get("step_given"):
+        return {"agent_action": "You already have this turn's step. Say that step to the caller now, "
+                                "then wait for their reply before calling next_step again."}
     if "walk" in input and "steps_by_id" in input:
         walk = json.loads(callback_context.variables.get("walk") or "{}")
         save = walk.get("pending") or json.dumps({k: v for k, v in walk.items() if k != "saved"})

@@ -57,6 +57,15 @@
       }
     },
     {
+      "name": "step_given",
+      "description": "Set once this caller turn has been given its step, so next_step is not called again in the turn",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
       "name": "show_image",
       "description": "Chat: picture name of the step just given, for the reply to show",
       "schema": {
