@@ -208,7 +208,7 @@ def test_reply_that_repeats_the_previous_step_is_replaced_with_the_new_step():
     assert "Tap Voicemail." in out.content.parts[0].text and "Menu" not in out.content.parts[0].text
     after_tool(None, {}, ctx, {"result": {"step": 4, "of": 13, "text": "Tap Edit."}})
     good = model["LlmResponse"](content=Content(parts=[Part(text="Now tap Edit at the top.")]))
-    assert model["after_model_callback"](ctx, good).content.parts[0].text == "Now tap Edit at the top."
+    assert model["after_model_callback"](ctx, good).content.parts[0].text == "**Step 4 of 13**\n\nNow tap Edit at the top."
 
 
 def test_end_session_is_dropped_in_the_turn_that_fetched_a_step():
@@ -221,7 +221,7 @@ def test_end_session_is_dropped_in_the_turn_that_fetched_a_step():
         after_tool(None, {}, ctx, {"result": {"step": 3, "of": 13, "text": "Tap Voicemail."}})
         both = model["LlmResponse"](content=Content(parts=[Part(text="Tap Voicemail now."), Part(function_call=Call("end_session"))]))
         out = model["after_model_callback"](ctx, both)
-        assert out.content.parts[0].text == "Tap Voicemail now." and not any(p.function_call for p in out.content.parts)
+        assert out.content.parts[0].text.endswith("Tap Voicemail now.") and not any(p.function_call for p in out.content.parts)
         only = model["LlmResponse"](content=Content(parts=[Part(function_call=Call("end_session"))]))
         out = model["after_model_callback"](ctx, only)
         assert "Tap Voicemail." in out.content.parts[0].text
@@ -252,3 +252,30 @@ def test_specialist_gets_the_place_the_concierge_found_without_asking_the_server
     assert ctx.variables["resume_info"] == ""
     assert before(NamedTool("support_get_progress"), {"customer_id": "c"}, ctx) is None   # next time: the server
     assert before(NamedTool("support_get_lines"), {"customer_id": "c"}, Ctx(resume_info="{}")) is None
+
+
+def test_a_silent_end_session_gets_a_spoken_goodbye():
+    class Call:
+        def __init__(self, name): self.name = name
+    model = load("after_model.py")
+    for channel, word in (("voice", "calling"), ("chat", "chatting")):
+        silent = model["LlmResponse"](content=Content(parts=[Part(function_call=Call("end_session"))]))
+        out = model["after_model_callback"](Ctx(channel=channel, step_given=""), silent)
+        assert word in out.content.parts[0].text and "Cricket Wireless" in out.content.parts[0].text
+        assert out.content.parts[1].function_call.name == "end_session"
+
+
+def test_chat_guide_link_is_shown_as_a_card_and_never_texted():
+    before = load("before_tool.py")["before_tool_callback"]
+    ctx = Ctx(channel="chat")
+    out = before(None, {"customer_id": "c", "line_id": "L1", "title": "Voicemail", "url": "https://x/guide"}, ctx)
+    assert out["shown"] and json.loads(ctx.variables["show_link"]) == {"title": "Voicemail", "url": "https://x/guide"}
+    model = load("after_model.py")
+    reply = model["LlmResponse"](content=Content(parts=[Part(text="The link is just below.")]))
+    out = model["after_model_callback"](ctx, reply)
+    cards = json.loads(out.content.parts[1].data)["richContent"]
+    assert cards == [[{"type": "info", "title": "Voicemail", "subtitle": "Open the full guide", "actionLink": "https://x/guide"}]]
+    assert ctx.variables["show_link"] == ""
+    voice = Ctx(channel="voice")
+    assert before(None, {"customer_id": "c", "line_id": "L1", "title": "V", "url": "https://x"}, voice) is None
+    assert "show_link" not in voice.variables

@@ -75,6 +75,15 @@
       }
     },
     {
+      "name": "show_link",
+      "description": "Chat: title and url of the guide link to show as a card under the next reply",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
       "name": "step_said",
       "description": "Text of the step just given and of the one before it, to check the reply gives the new step",
       "schema": {

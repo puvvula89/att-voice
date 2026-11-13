@@ -8,6 +8,10 @@ next_step gives one step per caller turn: once this turn has its step (`step_giv
 next_step call is answered here, without running the tool, so the model cannot look ahead and lose
 the caller's place.
 
+In chat the guide's link is never texted or typed by the model (the platform rejects a reply with
+a web address in it): send_guide_link is answered here, and the title and url go to `show_link` for
+the after_model_callback to show as a card under the reply.
+
 When the concierge already fetched the saved place as the call connected (`resume_info`), get_progress
 is answered here with that place: the server hands it out only once."""
 import json
@@ -19,6 +23,10 @@ def before_tool_callback(tool: Tool, input: dict[str, Any], callback_context: Ca
         found = json.loads(callback_context.variables["resume_info"])
         callback_context.variables["resume_info"] = ""
         return {"progress": found}
+    if "url" in input and "title" in input and callback_context.variables.get("channel") == "chat":
+        callback_context.variables["show_link"] = json.dumps({"title": input["title"], "url": input["url"]})
+        return {"shown": True, "note": "The link appears as a card under your reply. Say the link is just below; "
+                                       "do not write the web address."}
     if "tutorial_id" in input and "walk" not in input and callback_context.variables.get("step_given"):
         return {"agent_action": "You already have this turn's step. Say that step to the caller now, "
                                 "then wait for their reply before calling next_step again."}

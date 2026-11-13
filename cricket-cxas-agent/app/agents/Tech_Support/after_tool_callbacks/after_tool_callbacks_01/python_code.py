@@ -72,7 +72,7 @@ def after_tool_callback(tool: Tool, input: dict[str, Any], callback_context: Cal
             callback_context.variables["step_given"] = "1"   # one step per caller turn; see before_tool
             said = json.loads(callback_context.variables.get("step_said") or "{}")
             if said.get("n") != step["step"]:   # a repeat keeps the step before it
-                said = {"n": step["step"], "cur": step["text"], "prev": said.get("cur", "")}
+                said = {"n": step["step"], "of": step["of"], "cur": step["text"], "prev": said.get("cur", "")}
                 callback_context.variables["step_said"] = json.dumps(said)
         if callback_context.variables.get("channel") != "chat" or "text" not in step:
             return tool_response if image else None   # voice, or a save/confirm result with no step to show

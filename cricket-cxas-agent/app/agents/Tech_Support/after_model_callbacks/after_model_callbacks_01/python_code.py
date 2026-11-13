@@ -1,12 +1,16 @@
 """after_model_callback for Tech Support, chat only: under the reply that gives a step, attach the
 step's picture (a signed link from `image_links`) and quick replies, as a rich content payload the
 web chat renders. The model only writes the text. On voice nothing is attached.
+A step reply is headed "Step 3 of 13".
+A guide link the customer asked for (`show_link`) is attached the same way, as a card that opens it.
 
 The model sometimes writes the previous step again after next_step has moved on. When the reply fits
 the previous step's words better than the new step's, the new step's own text is sent instead.
 
 On both channels, a turn that has just fetched a step cannot end the session: an end_session call in
-that turn is dropped, because the model sometimes takes the caller's "done" as goodbye."""
+that turn is dropped, because the model sometimes takes the caller's "done" as goodbye. And when the
+model ends the session without saying anything, a short goodbye is added, so the caller never hears
+the line just go quiet."""
 import json
 import re
 from typing import Optional
@@ -31,22 +35,33 @@ def after_model_callback(callback_context: CallbackContext, llm_response: LlmRes
         parts = [p for p in parts if p not in ending]
         if not parts:
             parts = [Part(text="Next: " + said.get("cur", "").strip() + " Tell me when that's done.")]
+    if ending and not dropped and not any((getattr(p, "text", None) or "").strip() for p in parts):
+        bye = "Thanks for chatting with Cricket Wireless. Take care." if v.get("channel") == "chat" else \
+            "Thanks for calling Cricket Wireless. Take care."
+        return LlmResponse(content=Content(parts=[Part(text=bye)] + parts))
     kept = LlmResponse(content=Content(parts=parts)) if dropped else None
-    if v.get("channel") != "chat" or not shown:
+    link = json.loads(v.get("show_link") or "{}")
+    if v.get("channel") != "chat" or not (shown or link):
         return kept
     if not parts or any(getattr(p, "function_call", None) for p in parts):
         return kept
     text = "".join(p.text or "" for p in parts)
     if not text.strip():
         return kept
-    v["show_image"] = ""
+    v["show_image"] = v["show_link"] = ""
     cur, prev = said.get("cur", ""), said.get("prev", "")
-    if cur and prev and _fit(text, cur) < 0.5 and _fit(text, prev) > _fit(text, cur):
+    if shown and cur and prev and _fit(text, cur) < 0.5 and _fit(text, prev) > _fit(text, cur):
         text = "Next: " + cur.strip() + (" See the picture below." if shown != "-" else "") + " Tell me when that's done."
+    if shown and said.get("of"):   # a step reply: head it with where the customer is in the guide
+        text = "**Step %d of %d**\n\n" % (said["n"], said["of"]) + text.strip()
     cards = []
-    link = json.loads(v.get("image_links") or "{}").get(shown, "")
     if link:
-        cards.append([{"type": "image", "rawUrl": link, "accessibilityText": "Screen for this step"}])
-    cards.append([{"type": "chips", "options": [{"text": c} for c in CHIPS]}])
+        cards.append([{"type": "info", "title": link.get("title", "Guide"), "subtitle": "Open the full guide",
+                       "actionLink": link.get("url", "")}])
+    pic = json.loads(v.get("image_links") or "{}").get(shown, "")
+    if pic:
+        cards.append([{"type": "image", "rawUrl": pic, "accessibilityText": "Screen for this step"}])
+    if shown:
+        cards.append([{"type": "chips", "options": [{"text": c} for c in CHIPS]}])
     return LlmResponse(content=Content(parts=[Part(text=text),
                                               Part.from_json(data=json.dumps({"richContent": cards}))]))
