@@ -100,7 +100,7 @@ open with "Welcome back":
 
 ## 6. Demo scripts
 
-Four scenarios on the same app and the same account: three for voice, one for chat. All were run
+Five scenarios on the same app and the same account: three for voice, two for chat. All were run
 end to end against the deployed app, the voice ones with spoken turns and the chat one with typed
 turns. Reset the account (section 5) before each.
 
@@ -110,6 +110,7 @@ turns. Reset the account (section 5) before each.
 | Battery draining too quickly | Voice | iPhone 18 Pro | A 7-step walk with no interruption, ending in a support ticket |
 | Can't receive texts | Voice | Galaxy A15 5G | Switching to the other phone on the account, a guide with a choice in it |
 | Delete and restore a voicemail | Chat | iPhone 18 Pro | A picture under every step, quick replies |
+| Block a spam caller | Chat | iPhone 18 Pro | A short five-step guide, the guide link as a card, the chat stays open after goodbye |
 
 ### Voice: Wi-Fi calling isn't working, a frustrated caller, the call drops, the caller rings back
 
@@ -192,6 +193,25 @@ private window and maximise it.
 | 5 | Click **Done** | Step 2 with its picture |
 | 6 | "Where the hell is the menu icon? I can't see it anywhere" | Apologises and explains where to look, in different words |
 | 7 | Click **Done** for each remaining step | A picture under every step, through deleting, restoring and clearing voicemails. No step in this guide ends a call |
+
+### Chat: block a spam caller, a short guide of five steps
+
+Shows: the same chat experience in a shorter run: the guide's link as a card, a picture under every
+step with a "Step 2 of 5" heading, and a goodbye that leaves the chat open for another question.
+
+| # | Type or click | The agent |
+|---|---|---|
+| 1 | Open the chat | "Welcome to Cricket Wireless, Jordan. How can I help you today?" |
+| 2 | "How do I block a spam number that just called me on my iPhone?" | Names the guide Blocking a recent caller, offers the link, a walk-through here, or both. It may first ask whether the iPhone 18 Pro is the phone; answer "Yes" |
+| 3 | "Both" | A card that opens the guide, then Step 1 of 5 with its picture: open Phone and tap Recents |
+| 4 | Click **Done** | Step 2 of 5: tap the call from that number |
+| 5 | Click **Done** | Step 3 of 5: scroll down and tap Block Contact |
+| 6 | Click **Done** | Step 4 of 5: tap Block Contact again to confirm |
+| 7 | Click **Done** | Step 5 of 5: the steps are complete |
+| 8 | "I think I'm good, thanks" | Says goodbye. The chat stays open, so you can ask something else |
+
+To start over at any point, click **New chat** next to the chat button, or refresh the page: every
+page load is a fresh chat.
 
 ## 7. Save a call's trace
 

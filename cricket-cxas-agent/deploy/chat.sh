@@ -16,14 +16,14 @@ step "Demo page $CHAT_SERVICE in $REGION"
 gcloud run deploy "$CHAT_SERVICE" \
   --source chat_web --region "$REGION" --project "$PROJECT" \
   --allow-unauthenticated --max-instances 2 \
-  --set-env-vars "^|^CHAT_DEPLOYMENT=${APP}/deployments/${CHAT_DEPLOYMENT_ID}|CHAT_TITLE=${CHAT_TITLE:-Cricket Support}|CHAT_USER=${CHAT_USER:-Jordan}" \
+  --set-env-vars "^|^CHAT_DEPLOYMENT=${APP}/deployments/${CHAT_DEPLOYMENT_ID}|CHAT_TITLE=${CHAT_TITLE:-Cricket Chat}|CHAT_USER=${CHAT_USER:-Jordan}" \
   --quiet >/dev/null
 # A service has two addresses; the widget is allowed from both.
 ORIGINS=$(gcloud run services describe "$CHAT_SERVICE" --region "$REGION" --project "$PROJECT" \
             --format='value(status.url,metadata.annotations."run.googleapis.com/urls")')
 
 step "Chat channel $CHAT_DEPLOYMENT_ID on $APP_ID: chat only, public, allowed only from the demo page"
-$PY - "$APP" "$CHAT_DEPLOYMENT_ID" "${CHAT_TITLE:-Cricket Support}" "$ORIGINS" "${CHAT_EXTRA_ORIGINS:-}" <<'PY'
+$PY - "$APP" "$CHAT_DEPLOYMENT_ID" "${CHAT_TITLE:-Cricket Chat}" "$ORIGINS" "${CHAT_EXTRA_ORIGINS:-}" <<'PY'
 import re, sys, time
 import google.cloud.ces_v1beta.types as T
 from cxas_scrapi.core.deployments import Deployments

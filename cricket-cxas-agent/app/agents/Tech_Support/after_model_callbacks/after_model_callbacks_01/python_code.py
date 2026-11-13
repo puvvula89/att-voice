@@ -37,7 +37,9 @@ def after_model_callback(callback_context: CallbackContext, llm_response: LlmRes
     if dropped:
         parts = [p for p in parts if p not in ending]
         if not any((getattr(p, "text", None) or "").strip() for p in parts):
-            parts = [Part(text="Next: " + said.get("cur", "").strip() + " Tell me when that's done.")] if v.get("step_given") \
+            last = said.get("of") and said.get("n") == said.get("of")   # the guide's closing step
+            parts = [Part(text=(said.get("cur", "").strip() + " Did that do the trick?") if last else
+                           ("Next: " + said.get("cur", "").strip() + " Tell me when that's done."))] if v.get("step_given") \
                 else [Part(text="You're all set. Thanks for chatting with Cricket Wireless. "
                                 "If anything else comes up, just type it here.")]
     elif ending and not any((getattr(p, "text", None) or "").strip() for p in parts):

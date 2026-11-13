@@ -54,8 +54,8 @@
     --chat-messenger-internal-primary-color: #044a07;
     --chat-messenger-internal-focus-color: #044a07;
     --chat-messenger-internal-chat-background: #fff;
-    --chat-messenger-internal-chat-border: 1px solid #767676;
-    --chat-messenger-internal-chat-border-radius: 24px;
+    --chat-messenger-internal-chat-border: 4px solid rgba(186, 188, 192, .6);
+    --chat-messenger-internal-chat-border-radius: 28px;
     --chat-messenger-font-family: "Simply Cricket VF", Helvetica, Arial, sans-serif;
     /* Title bar: white, with a bold black title and a hairline under it. */
     --chat-messenger-internal-titlebar-background: #fff;
@@ -81,8 +81,11 @@
     --chat-messenger-internal-card-border: 1px solid #e1dfe1;
     --chat-messenger-internal-card-border-top-left-radius: 16px;
     --chat-messenger-internal-link-font-color: #3170b7;
-    --chat-messenger-internal-chips-border-color: #044a07;
+    --chat-messenger-internal-chips-background: #f0f0f0;
+    --chat-messenger-internal-chips-background-hover: #e1dfe1;
+    --chat-messenger-internal-chips-border-color: transparent;
     --chat-messenger-internal-chips-font-color: #000;
+    --chat-messenger-internal-chips-font-weight: 700;
     --chat-messenger-internal-chips-border-radius: 999px;
     /* Message box: light grey with a soft border, and a blue send button. */
     --chat-messenger-internal-input-background: #fff;
@@ -1762,7 +1765,7 @@
                 </div>
             </template>
             <chat-messenger service='{"name":"ces","deployment-id":"CHAT_DEPLOYMENT"}' url-allowlist="*">
-  <chat-messenger-chat-bubble chat-title="CHAT_TITLE"></chat-messenger-chat-bubble>
+  <chat-messenger-chat-bubble chat-title="CHAT_TITLE" placeholder-text="Ask Cricket anything..."></chat-messenger-chat-bubble>
 </chat-messenger>
 <script>
   // Public access: the widget gets a short-lived chat token for this deployment from the service.
@@ -1790,6 +1793,33 @@
   document.addEventListener("click", (e) => { if (e.target.closest("a")) e.preventDefault(); });
   // The mascot, and a Start chat bubble next to it, open the chat.
   const openChat = () => document.querySelector("chat-messenger-chat-bubble").openChat();
+  // Above each reply from the agent, a "Digital Assistant" label with a green star, in place of the
+  // widget's avatar. The message list lives inside the widget, so its style sheet is added there once
+  // the first message exists. If the widget's markup changes, this does nothing and the chat still works.
+  const labelStyle = () => {
+    const walk = (n) => {
+      for (const k of [...(n.shadowRoot ? n.shadowRoot.children : []), ...n.children]) {
+        if (k.classList && k.classList.contains("entry")) return k;
+        const hit = walk(k);
+        if (hit) return hit;
+      }
+      return null;
+    };
+    const entry = walk(document.querySelector("chat-messenger"));
+    if (!entry) return false;
+    const star = encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="#40a829" d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>');
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(
+      ".entry.bot{flex-direction:column!important;gap:6px!important}" +
+      ".entry.bot .actor-container{display:none!important}" +
+      '.entry.bot::before{content:"Digital Assistant";font-weight:700;font-size:14px;line-height:20px;' +
+      "letter-spacing:.3px;color:#000;margin-left:4px;padding-left:22px;" +
+      'background:url("data:image/svg+xml,' + star + '") left center/16px 16px no-repeat}');
+    const root = entry.getRootNode();
+    root.adoptedStyleSheets = [...root.adoptedStyleSheets, sheet];
+    return true;
+  };
+  const labelTimer = setInterval(() => { try { if (labelStyle()) clearInterval(labelTimer); } catch (e) { clearInterval(labelTimer); } }, 300);
   // New chat: reload the page (which forgets the old chat) and open the chat again.
   const fresh = document.createElement("button");
   fresh.className = "demo-new-chat";

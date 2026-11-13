@@ -13,7 +13,7 @@ TYPES = {".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml"}
 def page() -> bytes:
     text = (HERE / "index.html").read_text()
     return (text.replace("CHAT_DEPLOYMENT", html.escape(os.environ.get("CHAT_DEPLOYMENT", ""), quote=True))
-                .replace("CHAT_TITLE", html.escape(os.environ.get("CHAT_TITLE", "Cricket Support"), quote=True))
+                .replace("CHAT_TITLE", html.escape(os.environ.get("CHAT_TITLE", "Cricket Chat"), quote=True))
                 .replace("CHAT_USER", html.escape(os.environ.get("CHAT_USER", "Jordan"), quote=True))).encode()
 
 

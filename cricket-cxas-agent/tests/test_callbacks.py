@@ -225,6 +225,10 @@ def test_end_session_is_dropped_in_the_turn_that_fetched_a_step():
         only = model["LlmResponse"](content=Content(parts=[Part(function_call=Call("end_session"))]))
         out = model["after_model_callback"](ctx, only)
         assert "Tap Voicemail." in out.content.parts[0].text
+    ctx = Ctx(channel="chat")
+    after_tool(None, {}, ctx, {"result": {"step": 5, "of": 5, "text": "You've completed the steps!"}})
+    out = model["after_model_callback"](ctx, model["LlmResponse"](content=Content(parts=[Part(function_call=Call("end_session"))])))
+    assert out.content.parts[0].text.endswith("You've completed the steps! Did that do the trick?")
     ctx = Ctx(channel="voice", step_given="")
     bye = model["LlmResponse"](content=Content(parts=[Part(text="Goodbye."), Part(function_call=Call("end_session"))]))
     assert model["after_model_callback"](ctx, bye) is None
