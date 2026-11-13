@@ -6,12 +6,19 @@ In chat, also fill sign_images with the picture names of the guide being walked 
 
 next_step gives one step per caller turn: once this turn has its step (`step_given`), a further
 next_step call is answered here, without running the tool, so the model cannot look ahead and lose
-the caller's place."""
+the caller's place.
+
+When the concierge already fetched the saved place as the call connected (`resume_info`), get_progress
+is answered here with that place: the server hands it out only once."""
 import json
 from typing import Any, Optional
 
 
 def before_tool_callback(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]:
+    if "get_progress" in (getattr(tool, "name", "") or "") and callback_context.variables.get("resume_info"):
+        found = json.loads(callback_context.variables["resume_info"])
+        callback_context.variables["resume_info"] = ""
+        return {"progress": found}
     if "tutorial_id" in input and "walk" not in input and callback_context.variables.get("step_given"):
         return {"agent_action": "You already have this turn's step. Say that step to the caller now, "
                                 "then wait for their reply before calling next_step again."}

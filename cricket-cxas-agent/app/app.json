@@ -66,6 +66,15 @@
       }
     },
     {
+      "name": "resume_info",
+      "description": "Saved place the concierge found when the call connected, kept for Tech Support",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
       "name": "step_said",
       "description": "Text of the step just given and of the one before it, to check the reply gives the new step",
       "schema": {

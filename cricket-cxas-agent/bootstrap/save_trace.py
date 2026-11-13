@@ -5,8 +5,10 @@
 
 A trace lists every turn with the tools the agent called. Files are named by start time and
 conversation id; one that is already saved is skipped. A call shows up a minute or so after it ends.
+The caller's phone number and the network addresses of the call are blanked out.
 """
 import json
+import re
 import subprocess
 import sys
 
@@ -15,6 +17,7 @@ from common import APP, ROOT
 CXAS = [str(ROOT / ".venv/bin/cxas"), "trace"]
 ARGS = ["--app-name", APP, "--app-dir", str(ROOT / "app")]
 OUT = ROOT / "traces"
+PRIVATE = re.compile(r'("(?:telephony-caller-id|google-[a-z-]*address|google-session-callid)": ")[^"]*"')
 
 
 def latest(count: int) -> list[dict]:
@@ -33,6 +36,7 @@ def main():
             continue
         subprocess.run(CXAS + ["get", *ARGS, "--format", "text", "--out", str(path), c["id"]],
                        capture_output=True, text=True, check=True)
+        path.write_text(PRIVATE.sub(r'\1removed"', path.read_text()))
         print("saved", path.relative_to(ROOT))
 
 

@@ -228,3 +228,27 @@ def test_end_session_is_dropped_in_the_turn_that_fetched_a_step():
     ctx = Ctx(channel="voice", step_given="")
     bye = model["LlmResponse"](content=Content(parts=[Part(text="Goodbye."), Part(function_call=Call("end_session"))]))
     assert model["after_model_callback"](ctx, bye) is None
+
+
+class NamedTool:
+    def __init__(self, name):
+        self.name = name
+
+
+def test_concierge_keeps_the_saved_place_for_the_specialist():
+    g = {"Tool": object, "CallbackContext": Ctx}
+    exec((SRC.parent / "Care_Concierge/after_tool_callbacks/after_tool_callbacks_01/python_code.py").read_text(), g)
+    ctx = Ctx()
+    resp = {"text_output": [{"progress": {"step": 5, "risk": "drops"}, "walk": "W", "steps_by_id": "S"}]}
+    assert g["after_tool_callback"](None, {}, ctx, resp) == {"progress": {"step": 5, "risk": "drops"}}
+    assert ctx.variables["walk"] == "W" and json.loads(ctx.variables["resume_info"])["step"] == 5
+    assert g["after_tool_callback"](None, {}, Ctx(), {"text_output": [{"progress": None}]}) is None
+
+
+def test_specialist_gets_the_place_the_concierge_found_without_asking_the_server_again():
+    before = load("before_tool.py")["before_tool_callback"]
+    ctx = Ctx(resume_info=json.dumps({"step": 5}))
+    assert before(NamedTool("support_get_progress"), {"customer_id": "c"}, ctx) == {"progress": {"step": 5}}
+    assert ctx.variables["resume_info"] == ""
+    assert before(NamedTool("support_get_progress"), {"customer_id": "c"}, ctx) is None   # next time: the server
+    assert before(NamedTool("support_get_lines"), {"customer_id": "c"}, Ctx(resume_info="{}")) is None
