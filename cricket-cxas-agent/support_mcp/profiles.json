@@ -6,7 +6,7 @@
   "lines": {
    "L1": {
     "line_id": "L1", "phone_last4": "4471", "sms_number": "",
-    "device": "iphone-13", "device_label": "iPhone 13", "os": "27.0.0",
+    "device": "iphone-18-pro", "device_label": "iPhone 18 Pro", "os": "27.0.0",
     "is_calling_line": true, "status": "ACTIVE", "since": "2025-11-02", "reason": null,
     "used_gb": 6.2, "allowance_gb": 25, "throttled": false, "cycle_ends": "2026-10-28",
     "sim_type": "eSIM", "activated": "2025-11-02", "changed_days_ago": 340, "provisioned": true,

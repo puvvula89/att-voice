@@ -378,5 +378,129 @@
     "text": "Insert or remove the nano SIM card into or from the tray with the gold contacts facing the back of the phone."
    }
   ]
+ },
+ "iphone-18-pro": {
+  "155869-personal-hotspot-isn-t-working": [
+   {
+    "n": 5,
+    "risk": "may_drop",
+    "why": "Airplane Mode only if issues remain",
+    "text": "It's possible that devices can connect to your Personal Hotspot, but you have a weak or problematic cellular connection that's affecting your devices' performance.\nTry turning off your Personal Hotspot temporarily and use your iPhone as you normally would. Make sure you're not connected to a Wi-Fi network and try placing a call or loading a webpage.\nIf you're encountering issues, try switching your phone to Airplane Mode, waiting 15 seconds, and turning it off. Otherwise, try moving to a location with a stronger or more consistent cellular signal and testing Personal Hotspot again to see if the issue is with your iPhone's connection or the hotspot."
+   }
+  ],
+  "155842-wi-fi-calling-isn-t-working": [
+   {
+    "n": 2,
+    "risk": "may_drop",
+    "why": "Airplane Mode is an optional test",
+    "text": "Take a moment to check that Wi-Fi calling is enabled on your device. You'll also want to confirm that your carrier and service plan includes Wi-Fi Calling.\nWhen you enable Wi-Fi Calling, you'll likely be prompted to enter your permanent address. If you can't do this within your iPhone's interface, check to see if you need to do this within your carrier's account settings (on its website or mobile app).\nTo test if Wi-Fi calling works, simply enable Airplane Mode on your iPhone and attempt to make a phone call while connected to a Wi-Fi network."
+   }
+  ],
+  "feature_satellite_send-using-satellite-when-cellular-or-wi-fi-is-unavailable": [
+   {
+    "n": 5,
+    "risk": "may_drop",
+    "why": "Only one of two demo options disables calling",
+    "text": "From this screen, you can choose from two demos to test network functionality via satellite:"
+   }
+  ],
+  "156125-battery-draining-too-quickly": [
+   {
+    "n": 7,
+    "risk": "safe",
+    "why": "Advice to book a repair; the restart is only mentioned",
+    "text": "If you're still encountering issues with your battery, and that hasn't been resolved by any of the previous steps, restarting your iPhone, or using different cables to charge your device, you may need to set up a service appointment at an Apple Genius Bar or other Authorized Service Provider.\nSimilarly, if your iPhone is reporting an issue with your Battery Health, or your iPhone is recommending service for your battery, you'll want to consider replacing your battery to restore your device's performance and total capacity."
+   },
+   {
+    "n": 2,
+    "risk": "safe",
+    "why": "Same step as on the iPhone 13",
+    "text": "To start, make sure your iPhone is running the latest version of iOS. This may help resolve any issues you're experiencing. You'll also need iOS 26 or later to view your device's Daily Usage chart and use its Adaptive Power feature to help extend your iPhone's battery life."
+   }
+  ],
+  "feature_home_control-using-control-center": [
+   {
+    "n": 2,
+    "risk": "safe",
+    "why": "Describes Control Center; nothing to do",
+    "text": "Your Control Center allows you to perform a variety of actions all in one place:"
+   }
+  ],
+  "feature_settings_reset-performing-a-factory-reset": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Erase All Content and Settings."
+   },
+   {
+    "n": 4,
+    "risk": "drops",
+    "why": "Same step as on the iPhone 13",
+    "text": "Tap Continue."
+   }
+  ],
+  "feature_delete_esim-removing-esims-from-your-phone": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Opens a confirm screen; the next tap drops the call",
+    "text": "Tap Delete eSIM again."
+   }
+  ],
+  "feature_recovery_mode-using-recovery-mode": [
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "The phone already restarted at the step before",
+    "text": "Continue to hold the Side button and connect the device to your computer."
+   }
+  ],
+  "feature_dual_sim_preferences-set-your-default-sim-for-calls-texts-and-cellular-data": [
+   {
+    "n": 5,
+    "risk": "safe",
+    "why": "Same step as on the iPhone 13",
+    "text": "From here, you can manage settings such as:\nTurn the line on or off — disable a line entirely without removing it.\nRename the line — give it a custom label (e.g. \"Personal\" or \"Work\") so it's easier to identify across the Phone, Messages, and Contacts apps.\nView the associated phone number — confirm which number is tied to that line.\nSet up Wi-Fi Calling — make and receive calls over a Wi-Fi connection when cellular coverage is poor (availability depends on your carrier).\nEnable calls on other devices — allow other Apple devices signed in to your Apple ID to use this line for calls.\nConfigure a SIM PIN — add an extra layer of security to the line."
+   }
+  ],
+  "feature_emergency_access-using-emergency-mode": [
+   {
+    "n": 2,
+    "risk": "safe",
+    "why": "Same step as on the iPhone 13",
+    "text": "Slide the Emergency Call switch from left to right to call emergency services."
+   },
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "Same step as on the iPhone 13",
+    "text": "You can tap an emergency contact’s number to call them directly."
+   }
+  ],
+  "feature_lockdown_mode-using-lockdown-mode-and-setting-up-sensitive-content-warnings": [
+   {
+    "n": 3,
+    "risk": "safe",
+    "why": "Same step as on the iPhone 13",
+    "text": "From here, you can manage the following settings:"
+   }
+  ],
+  "feature_manual_network_selection-manually-selecting-a-cellular-network": [
+   {
+    "n": 4,
+    "risk": "safe",
+    "why": "Same step as on the iPhone 13",
+    "text": "Select your preferred cellular network."
+   }
+  ],
+  "feature_power_on-powering-your-iphone-on-and-off": [
+   {
+    "n": 2,
+    "risk": "safe",
+    "why": "Same step as on the iPhone 13",
+    "text": "Press and hold the Side button and either Volume button until the Power Settings screen appears."
+   }
+  ]
  }
 }

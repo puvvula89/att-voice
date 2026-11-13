@@ -86,7 +86,7 @@ tests:
       value: search_tutorials
     - type: tool_input
       value:
-        filter: 'device: ANY("iphone-13")'
+        filter: 'device: ANY("iphone-18-pro")'
   - turn: first step
     user: walk me through it
     expectations:
@@ -213,7 +213,7 @@ tests:
       value: search_tutorials
     - type: tool_input
       value:
-        filter: 'device: ANY("iphone-13")'
+        filter: 'device: ANY("iphone-18-pro")'
   - turn: first step
     user: walk me through it
     expectations:

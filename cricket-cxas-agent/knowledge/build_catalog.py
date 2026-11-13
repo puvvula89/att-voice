@@ -17,6 +17,7 @@ REVIEW = Path(__file__).parent / "step_review.json"
 RISKS = {"drops": (True, False), "may_drop": (False, True), "safe": (False, False)}
 LABELS = {
     "iphone-13": "iPhone 13",
+    "iphone-18-pro": "iPhone 18 Pro",
     "moto-g-2025": "Moto G 2025",
     "moto-g-stylus-5g-2024": "Moto G Stylus 5G 2024",
     "galaxy-a15-5g": "Galaxy A15 5G",

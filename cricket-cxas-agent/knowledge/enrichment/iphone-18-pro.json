@@ -1,0 +1,7764 @@
+{
+ "156125-battery-draining-too-quickly": {
+  "hash": "a0d7c0b4a1737bbd0beeccebdb25fe4ae5281a2d0dcc52cb4a4e903995285772",
+  "result": {
+   "summary": "This guide helps troubleshoot an iPhone battery that is draining too quickly by checking software, optimizing settings, and considering service.",
+   "symptoms": [
+    "My phone battery dies fast",
+    "My iPhone isn't holding a charge",
+    "The battery percentage drops quickly",
+    "I have to charge my phone all the time",
+    "My battery life is terrible",
+    "Phone dies too soon"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Installing an iOS update, implied by 'make sure your iPhone is running the latest version', restarts the phone."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "The step explicitly mentions 'restarting your iPhone'."
+    }
+   ]
+  }
+ },
+ "154674-can-t-make-or-receive-calls": {
+  "hash": "d4eb2b7610c1c1423939497d39e7c395ea527f10a5d6d57b4d756bbd7356119c",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for an iPhone that cannot make or receive calls.",
+   "symptoms": [
+    "My phone isn't making calls.",
+    "I can't receive calls.",
+    "Calls aren't going through.",
+    "My phone won't ring.",
+    "I have no service for calls.",
+    "People can't reach me."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Enabling Airplane Mode cuts cellular service."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the iPhone interrupts the call."
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Resetting network settings interrupts cellular service."
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "155986-can-t-send-or-receive-messages": {
+  "hash": "9a64dbfd11eca05b2f17f463eccab7087ebd8b6ab661711f637a179b0b9a2c97",
+  "result": {
+   "summary": "This tutorial helps troubleshoot issues with sending or receiving messages on an iPhone.",
+   "symptoms": [
+    "My texts aren't going through.",
+    "I can't get any messages.",
+    "My iMessages aren't sending.",
+    "I'm not receiving texts.",
+    "Messages are stuck on sending.",
+    "I see a 'Not Delivered' error."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Enabling Airplane Mode cuts cellular service."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Restarting the iPhone will end the call."
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Resetting network settings will interrupt cellular service and Wi-Fi, ending the call."
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "155869-personal-hotspot-isn-t-working": {
+  "hash": "06f13e144212008b163781c4517117af50c75d7238472a99055d0969be7722e7",
+  "result": {
+   "summary": "This tutorial helps troubleshoot issues with setting up or using the Personal Hotspot feature on an iPhone.",
+   "symptoms": [
+    "My Personal Hotspot isn't working.",
+    "I can't connect to my iPhone's hotspot.",
+    "My devices aren't getting internet from the hotspot.",
+    "Personal Hotspot isn't showing up on my iPhone.",
+    "My hotspot keeps disconnecting.",
+    "I can't enable Personal Hotspot."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "The step instructs the user to restart their iPhone."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "The step instructs the user to switch their phone to Airplane Mode, which cuts cellular service."
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "The step instructs the user to reset network settings and reboot the device, both of which interrupt the call."
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "The step instructs the user to enable Airplane Mode, which cuts cellular service."
+    }
+   ]
+  }
+ },
+ "155842-wi-fi-calling-isn-t-working": {
+  "hash": "09ff715af656873fe1183fafc7e4514e1b1a2c0d0062b8b60617abe900a780c6",
+  "result": {
+   "summary": "This tutorial provides troubleshooting steps for an iPhone user experiencing issues with Wi-Fi Calling.",
+   "symptoms": [
+    "Wi-Fi Calling isn't working",
+    "Can't make calls over Wi-Fi",
+    "My phone won't use Wi-Fi for calls",
+    "Wi-Fi calls keep dropping",
+    "I can't enable Wi-Fi Calling",
+    "Emergency address for Wi-Fi Calling"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Enabling Airplane Mode cuts cellular service."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Restarting the iPhone ends any active call."
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Resetting network settings and rebooting the device will end any active call and interrupt service."
+    }
+   ]
+  }
+ },
+ "156126-wi-fi-connection-issues-or-slowdowns": {
+  "hash": "b8daadeb6f285b427cfad207e061e1b932ad5e3cca115ab22959eac0beb1406b",
+  "result": {
+   "summary": "This tutorial helps troubleshoot Wi-Fi connection problems or slow Wi-Fi speeds on an iPhone.",
+   "symptoms": [
+    "My Wi-Fi isn't working",
+    "I can't connect to Wi-Fi",
+    "My Wi-Fi is really slow",
+    "My internet keeps cutting out",
+    "I can't get online with Wi-Fi",
+    "My phone won't connect to the internet"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "restarting your iPhone"
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "restart your iPhone"
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": true,
+     "reason": "Resetting your network settings and rebooting your device"
+    }
+   ]
+  }
+ },
+ "155889-iphone-won-t-power-on-or-off": {
+  "hash": "f20e9fd2ab1bc898f520e0f9ecc2a547e4affed5579dce9fed6462783b452c50",
+  "result": {
+   "summary": "This tutorial provides steps to troubleshoot an iPhone that won't power on or off, including normal power cycles and force restarts.",
+   "symptoms": [
+    "My iPhone won't turn on.",
+    "My phone is stuck on the Apple logo.",
+    "I can't turn off my iPhone.",
+    "My screen is black and won't respond.",
+    "My iPhone is frozen.",
+    "The power button isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Instructs the user to power off the iPhone."
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Instructs the user to force-restart the iPhone."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": true,
+     "reason": "Instructs the user to force-restart the iPhone."
+    }
+   ]
+  }
+ },
+ "feature_settings_access-accessing-your-settings?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "0496b54341f888c187e8a12b630ec2f1fd88e1cd8b94ef5e6c31ac7d58533390",
+  "result": {
+   "summary": "This tutorial guides the user on how to access the settings within the YouTube application.",
+   "symptoms": [
+    "How do I change YouTube settings?",
+    "Where are the settings in YouTube?",
+    "I can't find YouTube settings.",
+    "Need to adjust YouTube app settings."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_wifi-activating-wi-fi-calling": {
+  "hash": "afd8f2dff1922d6b760a581098b2eee17f5a438e15cf2ecc603e2320ba16565e",
+  "result": {
+   "summary": "This tutorial guides the user through activating Wi-Fi calling on their iPhone to improve call quality or make calls in areas with poor cellular reception.",
+   "symptoms": [
+    "My calls are breaking up",
+    "I can't make calls over Wi-Fi",
+    "How do I turn on Wi-Fi calling?",
+    "I have bad cell service at home",
+    "Wi-Fi calling isn't working"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_add-adding-a-facebook-account?topicSource=app-facebook-ios-smartphone&topicVersion=586.0.0": {
+  "hash": "b570236136d8c7d00a4cae6b5e0a2503af6e3607a4049f0ce4f7e48b61d4166f",
+  "result": {
+   "summary": "This tutorial guides the user through logging into their Facebook account on the Facebook app.",
+   "symptoms": [
+    "I can't log into Facebook.",
+    "How do I sign in to Facebook?",
+    "My Facebook app isn't working.",
+    "I need to add my Facebook account.",
+    "I want to use Facebook on my phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_lock_add-adding-a-new-lock-screen": {
+  "hash": "4db45e1166451ba6a7f9dc2983913b1e349be5b7af4f52b8005ef4d8c60404de",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a new lock screen to their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I change my lock screen?",
+    "I want a new lock screen.",
+    "Can I customize my lock screen?",
+    "How do I add a new wallpaper to my lock screen?",
+    "My lock screen is boring.",
+    "I want to set a new lock screen."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_add-adding-a-contact": {
+  "hash": "2292311dca0cfd6106fb6664bdb5c5c5431add286823a4f6241b2af5e618d263",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a new contact to their iPhone.",
+   "symptoms": [
+    "How do I add a new contact?",
+    "I want to save a new number.",
+    "Can you help me add someone to my contacts?",
+    "I need to create a new contact entry."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_focus_modes-adding-a-new-lock-screen-for-different-focus-modes": {
+  "hash": "25a859a5fba960258d9fa086ee936340056503adb159f8ac43cbf342343b21f8",
+  "result": {
+   "summary": "This tutorial guides the user through adding a new Lock Screen that can be linked to different Focus Modes on an iPhone.",
+   "symptoms": [
+    "How do I set a different lock screen for my focus modes?",
+    "I want to customize my lock screen for Do Not Disturb.",
+    "Can I link a specific lock screen to a focus mode?",
+    "How do I create a new lock screen for a focus setting?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_email_personal-adding-an-email-account": {
+  "hash": "d4b6a28bd333a0d3dd88f9c65d53063d87ae3d14c13513d3b6faf1db192c37b1",
+  "result": {
+   "summary": "This tutorial guides the user through the process of adding a new email account to their iPhone 18 Pro.",
+   "symptoms": [
+    "I can't add my email account.",
+    "How do I set up a new email?",
+    "My email isn't showing up on my phone.",
+    "I need to add another email account to my iPhone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_customize-adding-and-customizing-a-widget": {
+  "hash": "feeddb79b13331200b1fa9c610a592c4b8eaff7ff09c71fe51c53e4aa65f798b",
+  "result": {
+   "summary": "This guide explains how to add and customize widgets, including changing app icon sizes and styles, on an iPhone Home Screen.",
+   "symptoms": [
+    "How do I add a widget?",
+    "I want to customize my home screen.",
+    "Can I change icon sizes on my iPhone?",
+    "My widgets don't look right.",
+    "How do I personalize my iPhone?",
+    "I want to change my app icon style."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playlist_watchlater-adding-videos-to-your-watch-later-playlist?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "4de41a3eb2fae7d624b0703acce9fb532b6bca4a291f7eb8fbdadc04594d9c56",
+  "result": {
+   "summary": "This guide explains how to add a YouTube video to your 'Watch later' playlist.",
+   "symptoms": [
+    "How do I save a video for later?",
+    "I want to add a video to my watch later list.",
+    "Where is the watch later option?",
+    "Can I save YouTube videos?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_mode_standby-adjusting-standby-s-display-times": {
+  "hash": "07b7478b19d15d85fc799139cee9ddf67e0e89f2ce5f951ae102b2208a8ce598",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust the display settings for StandBy mode on their iPhone 18 Pro.",
+   "symptoms": [
+    "How to change StandBy display settings?",
+    "My StandBy screen turns off too fast",
+    "I want StandBy to stay on longer",
+    "Can I customize StandBy display?",
+    "Adjust StandBy always-on",
+    "StandBy display options"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_contact-assigning-your-preferred-sim-to-use-with-a-contact": {
+  "hash": "b897c49dd4deac7505780ad11458ce0d038a593be5fd9ff9f22712bd02e4348f",
+  "result": {
+   "summary": "This tutorial guides you on how to assign a preferred SIM card to a specific contact on your iPhone 18 Pro.",
+   "symptoms": [
+    "How do I choose which SIM to use for a contact?",
+    "I want to use a specific line for certain people.",
+    "Can I set a default SIM for a contact?",
+    "My phone keeps using the wrong SIM for calls to someone.",
+    "How do I manage dual SIM for contacts?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_during_setup_auto_esim_install-auto-activating-a-pre-assigned-esim-while-setting-up-your-device": {
+  "hash": "1aa2e5245975b688f3fe1c24bf43a1fe02c0dd6131b749bdd8875e414ff9593e",
+  "result": {
+   "summary": "This tutorial guides users through the process of auto-activating a pre-assigned eSIM on an iPhone 18 Pro during the initial device setup.",
+   "symptoms": [
+    "How do I activate my eSIM on a new iPhone?",
+    "My new iPhone needs eSIM setup.",
+    "I'm setting up my device and need to activate cellular service.",
+    "eSIM activation during initial phone setup.",
+    "How to get my cellular plan working on my new iPhone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_code_delete-automatically-deleting-your-2fa-codes-from-your-text-messages": {
+  "hash": "dc25540420411c4f4d44d80f1bab1f55905c9ff3fcd694096749b4612e336517",
+  "result": {
+   "summary": "This tutorial shows how to enable automatic deletion of two-factor authentication codes from text messages after use.",
+   "symptoms": [
+    "My text messages are full of old codes",
+    "How do I stop 2FA codes from cluttering my texts?",
+    "I want my phone to delete security codes automatically",
+    "Can I make my phone clean up old verification codes?",
+    "My messages app is messy with one-time passwords"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_autodelete-automatically-deleting-your-old-text-message-conversations": {
+  "hash": "0f0a56752295f5eaefef3b9dc063ac65ffd0df59ee1ce45ed44a303a067da1e5",
+  "result": {
+   "summary": "This tutorial guides the user on how to set their iPhone to automatically delete old text message conversations to save storage space.",
+   "symptoms": [
+    "My phone is full of old texts",
+    "How do I delete old messages automatically?",
+    "I want to save space from texts",
+    "Can I make my phone delete old messages?",
+    "My message app is taking up too much storage",
+    "How to manage message history"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_icloud-backing-up-iphone-using-icloud": {
+  "hash": "c7e002ca355efe8ba37d134ebb0a74b750450961c816173feef695cf684a1e52",
+  "result": {
+   "summary": "This tutorial guides the user through the process of backing up their iPhone to iCloud.",
+   "symptoms": [
+    "How do I back up my iPhone?",
+    "I need to save my phone's data.",
+    "Can I back up my phone to the cloud?",
+    "My phone is full, I want to back it up.",
+    "How do I use iCloud backup?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_message_block-blocking-a-number-from-messages": {
+  "hash": "8eade0342e3b263584139853fb4275498262825f023447e3e61cdf8fc4b90d99",
+  "result": {
+   "summary": "This tutorial guides you through blocking a specific phone number from sending messages on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I stop getting texts from someone?",
+    "I want to block a number from messaging me.",
+    "Someone is spamming me with texts.",
+    "Can I block a contact from texting me?",
+    "How do I block messages on my iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_block_recent_caller-blocking-a-recent-caller": {
+  "hash": "54c91b5a984d52425b94f3ceaa4ae5bfb26ee83082a2c58209fbfbc085f02c11",
+  "result": {
+   "summary": "This tutorial guides you through blocking a recent caller on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I block a number?",
+    "I want to stop getting calls from someone.",
+    "Can I block a recent caller?",
+    "How do I block a contact?",
+    "Someone keeps calling me, how do I make it stop?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_block-blocking-and-unblocking-a-contact": {
+  "hash": "451a99e5d4e3865907169db0ca37261ff1c1ece69b986d041d5979a40838d239",
+  "result": {
+   "summary": "This tutorial guides users on how to block and unblock contacts on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I block a number?",
+    "I want to stop receiving calls from someone.",
+    "Someone is bothering me.",
+    "I need to unblock a contact.",
+    "I accidentally blocked a person.",
+    "How do I manage my blocked list?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facetime_settings-changing-facetime-settings": {
+  "hash": "494a5fc14ec413478d7dea1edd7cbfcfd3f52734b6a58bef33dfb23e962f7d9c",
+  "result": {
+   "summary": "This tutorial guides you through adjusting various FaceTime settings on your iPhone.",
+   "symptoms": [
+    "How do I change my FaceTime settings?",
+    "I want to adjust my FaceTime caller ID.",
+    "How do I block someone on FaceTime?",
+    "I need to enable SharePlay.",
+    "Where can I find FaceTime options?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_change-changing-account-settings": {
+  "hash": "e1da490c7642c745dea8e5345ef4ef187bf07cefc335de8c5a123750a06cefda",
+  "result": {
+   "summary": "This tutorial guides the user through changing mail account settings on their iPhone.",
+   "symptoms": [
+    "My email isn't syncing",
+    "I want to remove an email account",
+    "How do I manage my mail settings?",
+    "I need to update my mail server",
+    "My contacts aren't syncing from my email",
+    "I need to change my email password"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_wallpaper-changing-your-home-screen-wallpaper": {
+  "hash": "7fbaf5eb57c3c4468b9c8aeefb2ce3c3f1c6ab39bf6246ac725092fe7d478773",
+  "result": {
+   "summary": "This tutorial guides the user through changing their iPhone's Home Screen wallpaper.",
+   "symptoms": [
+    "How do I change my background?",
+    "I want a new wallpaper.",
+    "My home screen picture is old.",
+    "Can I customize my wallpaper?",
+    "Change home screen image."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_timeout-changing-your-auto-lock-and-brightness-preferences": {
+  "hash": "7f5f54a38f6770b8034adfeb1b5bc9a2b37dde261ec1a7ef6af4da20b526bca6",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust their iPhone's auto-lock duration and screen brightness settings.",
+   "symptoms": [
+    "My screen is too dim",
+    "My screen is too bright",
+    "My phone locks too fast",
+    "My phone stays on too long",
+    "How do I change auto-lock?",
+    "How do I adjust brightness?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_default-changing-your-default-notification-sound-and-haptic-settings": {
+  "hash": "3fb61d346cbf7a5949a8159b9c09fe8e2af70301f5ac663c5076c0c93365560f",
+  "result": {
+   "summary": "This tutorial guides you through changing the default notification, sound, and haptic settings on your iPhone.",
+   "symptoms": [
+    "My phone is too loud",
+    "I want to change my notification sound",
+    "How do I adjust vibrations?",
+    "My alerts are too quiet",
+    "I want different haptics"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_name-changing-your-iphone-s-name": {
+  "hash": "0febfa77eae5e6ad9f9a2002144ee198f9d0cf579ee87babb75f0ca0da2e2ea9",
+  "result": {
+   "summary": "This tutorial guides the user through changing the name of their iPhone.",
+   "symptoms": [
+    "How do I change my iPhone's name?",
+    "I want to rename my phone.",
+    "My iPhone has the wrong name.",
+    "Can I customize my device name?",
+    "Where do I change the name of my iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_notifications-changing-your-notification-settings?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "fcc6ecbc1f402cd9cbd91cfa93589639ee20a52a41731adb4fda872ea428503a",
+  "result": {
+   "summary": "This tutorial guides the user through enabling and customizing notification settings for the YouTube app on an iPhone 18 Pro.",
+   "symptoms": [
+    "YouTube notifications not working",
+    "Can't get YouTube alerts",
+    "Turn on YouTube notifications",
+    "Manage YouTube app notifications",
+    "No YouTube push notifications"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_start_language-changing-your-phone-s-language": {
+  "hash": "389c5ef7a5c86a84f6d9f3a6d5510b3a2d31a8a8c3846f5ac6a423bd899edcbf",
+  "result": {
+   "summary": "This tutorial guides the user through changing the display language on their iPhone.",
+   "symptoms": [
+    "My phone is in the wrong language",
+    "How do I change the language on my iPhone?",
+    "I want to switch my phone to Spanish",
+    "The menu is in a language I don't understand",
+    "Can I change my iPhone's display language?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_password-changing-your-voicemail-pin-or-password": {
+  "hash": "94226426632c2380816c679369d04b69a3d81347fe46f37b9d157e143b1a4296",
+  "result": {
+   "summary": "This tutorial guides you through changing your voicemail PIN or password on an iPhone 18 Pro.",
+   "symptoms": [
+    "I forgot my voicemail password",
+    "How do I change my voicemail PIN?",
+    "My voicemail password isn't working",
+    "I need to update my voicemail security",
+    "Can I reset my voicemail PIN?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_device_views_charge-charging-the-iphone-with-a-usb-c-cable": {
+  "hash": "2ab64542618892b6b2d60784078a3cff3ed46df1e6eab54ff5a2ddff49c5a7f7",
+  "result": {
+   "summary": "This guide explains how to charge an iPhone using a USB-C cable.",
+   "symptoms": [
+    "My iPhone isn't charging.",
+    "How do I charge my new iPhone?",
+    "Where is the charging port?",
+    "What cable do I use to charge?",
+    "Is my phone charging correctly?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_update-checking-for-and-installing-system-updates": {
+  "hash": "21a81003de0cb564f6c0a1e33c13a9c6ebd8eb0c8305d8b7123216f08bdbdb8f",
+  "result": {
+   "summary": "This tutorial guides the user through enabling automatic system updates on their iPhone.",
+   "symptoms": [
+    "My phone isn't updating",
+    "How do I get the latest iOS?",
+    "I want automatic updates",
+    "Is my iPhone up to date?",
+    "My apps are crashing, maybe an update will help"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_carrier_lock_status-checking-if-your-phone-is-carrier-locked": {
+  "hash": "7a0471e1320791d3b97f94af4f8a352bec08c86629c4dce374c8d24a9ac0b4fb",
+  "result": {
+   "summary": "This tutorial guides the user through checking if their iPhone is carrier locked by navigating through the device's settings.",
+   "symptoms": [
+    "Is my phone locked?",
+    "How to check if my iPhone is carrier locked?",
+    "Can I use my phone with a different SIM?",
+    "My phone won't connect to a new network.",
+    "Is my phone unlocked?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_clear-clearing-browsing-cache-and-data": {
+  "hash": "fb78e50864c351e788bda16cbaee07386b65d02227fe9bca0128e6398bcd9242",
+  "result": {
+   "summary": "This tutorial guides the user through clearing browsing cache and data on their iPhone.",
+   "symptoms": [
+    "My internet is slow",
+    "Websites aren't loading correctly",
+    "I want to clear my browsing history",
+    "My browser is acting weird",
+    "I'm having trouble with a specific website"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_history_clear-clearing-your-history?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "d8888c4ca790d96480eadbe1e7662b78535a5d7d7212f4c3296c7e18c5f2b419",
+  "result": {
+   "summary": "This tutorial guides the user through clearing their watch and search history within the YouTube app.",
+   "symptoms": [
+    "How do I delete my YouTube history?",
+    "I want to clear my watch history on YouTube.",
+    "My YouTube recommendations are strange.",
+    "Can I remove my YouTube search history?",
+    "How do I clear YouTube data?",
+    "I need to delete my activity on YouTube."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_family_appleid-create-an-apple-account-for-your-child": {
+  "hash": "afd70bb787783583bf66c83b4fe4b38add380fde4856722315aa9620950a0b74",
+  "result": {
+   "summary": "This tutorial guides the user through creating an Apple ID for a child within a Family Sharing group.",
+   "symptoms": [
+    "I need to make an Apple ID for my kid.",
+    "How do I set up a child account?",
+    "My child needs an Apple ID.",
+    "I want to add my child to Family Sharing."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_playlist_create-creating-a-playlist?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "fefb1ac52880d11fa8477f4f9c14757ca56ad83f2b4e3d5cc0419211b64f8298",
+  "result": {
+   "summary": "This tutorial guides the user through the process of creating a new playlist on YouTube from a video.",
+   "symptoms": [
+    "How do I make a playlist?",
+    "I want to save videos to a list.",
+    "Can I organize my YouTube videos?",
+    "How do I create a new playlist on YouTube?",
+    "I need to make a playlist."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_shortcut_apple_intelligence-creating-a-new-shortcut-using-apple-intelligence": {
+  "hash": "ddbe0b2c698e8422d2d38849a18a7d519a461319d0c18ce8834788525038f86e",
+  "result": {
+   "summary": "This tutorial guides the user through creating a new shortcut using Apple Intelligence in the Shortcuts app.",
+   "symptoms": [
+    "How do I make a new shortcut?",
+    "I want to use Apple Intelligence for a shortcut.",
+    "Can you help me create a workflow?",
+    "How do I automate a task on my iPhone?",
+    "I need to build a custom shortcut."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_camera_control-customizing-the-camera-control": {
+  "hash": "e4dc658470eb41c21512f612855019c93f3d613d248ec22488e4aa67e7619de4",
+  "result": {
+   "summary": "This tutorial guides the user through customizing camera control settings on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I change camera settings?",
+    "I want to customize my camera.",
+    "Where are the camera controls?",
+    "Can I adjust camera options?",
+    "How to set up camera features?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_default-setting-your-iphone-s-default-apps": {
+  "hash": "992d5495029f8f0ee3d7561200ca8527544fdb8ae260887c1612a27618b03497",
+  "result": {
+   "summary": "This tutorial guides the user through the process of deleting an application from their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I remove an app?",
+    "I want to delete an application.",
+    "An app is taking up too much space.",
+    "I don't want this app anymore.",
+    "Can you help me uninstall an app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_delete-deleting-and-restoring-voicemails": {
+  "hash": "8bfbb5d3af089679219a2e8c6a403ea753cbf5b33e77ea84708806c4b45f01bc",
+  "result": {
+   "summary": "This tutorial guides users on how to delete and restore voicemails, as well as clear all deleted voicemails on an iPhone 18 Pro.",
+   "symptoms": [
+    "I accidentally deleted a voicemail.",
+    "How do I restore a voicemail?",
+    "I want to delete old voicemails.",
+    "My voicemail inbox is full.",
+    "How do I clear deleted voicemails?",
+    "I need to manage my voicemails."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_store_download-downloading-an-app-and-checking-for-app-updates": {
+  "hash": "a2443806aa842fc9d7c4077883c729334a8a72ea44f4a2a2ddb56c1bef598c1b",
+  "result": {
+   "summary": "This tutorial guides the user through downloading a new app from the App Store.",
+   "symptoms": [
+    "I can't download an app",
+    "How do I get a new app?",
+    "My app isn't installing",
+    "I need to download an app",
+    "App Store isn't working",
+    "How do I find an app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_store_uninstall-deleting-an-app": {
+  "hash": "bb40541ef667206bf1887836516da9057d91cfe5d0a02aa877e61c913026f4b8",
+  "result": {
+   "summary": "This tutorial guides the user through downloading a new app from the App Store on an iPhone 18 Pro.",
+   "symptoms": [
+    "I can't download an app",
+    "How do I get a new app?",
+    "My app won't install",
+    "I need to download an app",
+    "Where do I find apps?",
+    "How do I install something from the App Store?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_ringtone-editing-and-deleting-a-contact": {
+  "hash": "44fa9ffe378a0c66416e26c65735c1da2229ec0e984ba667fa8f5bde71eb5208",
+  "result": {
+   "summary": "This tutorial guides users on how to edit existing contact information and delete contacts on their iPhone.",
+   "symptoms": [
+    "How do I change a contact's phone number?",
+    "I need to update someone's email address.",
+    "Can I delete a contact from my phone?",
+    "How do I add a special ringtone for a specific person?",
+    "I want to add more details to a contact entry.",
+    "How do I remove a contact completely?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_greeting-editing-your-voicemail-greeting": {
+  "hash": "744dde3229c3db7ec67738121afdf4e6b7dcdd05cb41673ec6781fc14c9502ec",
+  "result": {
+   "summary": "This guide explains how to customize your voicemail greeting on an iPhone.",
+   "symptoms": [
+    "How do I change my voicemail message?",
+    "I want to record a new greeting.",
+    "My voicemail greeting is wrong.",
+    "Can I customize my voicemail?",
+    "How to edit my voicemail?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_siri_on-enabling-siri-and-voice-activation": {
+  "hash": "5123062bff3b5472bc7af783525d68e318cb404d999500f8a88afafd11036221",
+  "result": {
+   "summary": "This tutorial guides users on how to enable Siri and set up voice activation on their iPhone 18 Pro.",
+   "symptoms": [
+    "Siri isn't working",
+    "How do I turn on Siri?",
+    "I want to use 'Hey Siri'",
+    "Siri doesn't respond to my voice",
+    "Can you help me set up Siri?",
+    "My voice commands for Siri aren't working"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_explore-exploring-new-videos?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "b253669fbaab4d498f81364195aa9151652fbb11f003a4456c921284914edd6d",
+  "result": {
+   "summary": "This tutorial guides the user on how to explore and find new videos within the YouTube application.",
+   "symptoms": [
+    "How do I find new videos on YouTube?",
+    "Where is the explore section?",
+    "I can't find trending videos.",
+    "Show me how to browse YouTube for new content."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_library_explore-exploring-your-library?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "aede9ef0d51aa573d7b09fac3dd9d40d099b82f89c7d865472611bfe777ab441",
+  "result": {
+   "summary": "This tutorial guides the user through exploring the 'Your videos' and 'Watch later' sections within the YouTube app's library.",
+   "symptoms": [
+    "Where are my saved videos?",
+    "How do I find videos I want to watch later?",
+    "I can't find my YouTube library.",
+    "How do I access my watch later list on YouTube?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_iccid-finding-your-iccid": {
+  "hash": "90fb3aeafb353bea9f9bcc3941e62710c173e33df2f8addce5fe8b6c4481e04c",
+  "result": {
+   "summary": "This tutorial guides the user on how to locate the ICCID on their iPhone 18 Pro.",
+   "symptoms": [
+    "Where is my ICCID?",
+    "I need to find my ICCID number.",
+    "How do I get my SIM card number?",
+    "Locate ICCID on iPhone.",
+    "What's the ICCID for my device?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_imei-finding-your-imei-device-id": {
+  "hash": "edc4862ba59d655135d9ce89e7e2ab673ac87998be4cb6ca9200d226d337750e",
+  "result": {
+   "summary": "This tutorial guides the user on how to locate the IMEI or Device ID on their iPhone 18 Pro.",
+   "symptoms": [
+    "Where is my IMEI?",
+    "I need my device ID.",
+    "How do I find my phone's serial number?",
+    "What's my iPhone's IMEI?",
+    "Find device identifier"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_restart-force-restarting-iphone": {
+  "hash": "459ec6c6b43b8962fffdaf0811ece545bcf00f0f4234590de82a44e53d20475e",
+  "result": {
+   "summary": "This guide explains how to force restart an iPhone to resolve unresponsiveness or other software issues.",
+   "symptoms": [
+    "My iPhone is frozen",
+    "My phone is unresponsive",
+    "My screen is black",
+    "Apps are crashing",
+    "My phone won't turn on",
+    "I need to restart my iPhone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "This step initiates the force restart, causing the phone to power cycle."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_messages_icloud-forcing-icloud-to-sync-text-messages-on-your-iphone": {
+  "hash": "0be56253c37449b9db7a6c27cd53a9b485edd3389a142286f695dd6399f4130b",
+  "result": {
+   "summary": "This tutorial guides you on how to manually force iCloud to sync text messages on your iPhone.",
+   "symptoms": [
+    "My texts aren't showing up on my new iPhone.",
+    "iCloud messages aren't syncing.",
+    "My messages are missing.",
+    "Texts not updating across devices.",
+    "iMessage not syncing.",
+    "Can't see old messages."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_live-going-live-on-facebook?topicSource=app-facebook-ios-smartphone&topicVersion=586.0.0": {
+  "hash": "9fad082a7f9a6aa229e08a2338e4d65c05c31ffbc9e7c520ee0cff646dd09a69",
+  "result": {
+   "summary": "This tutorial guides the user on how to start and end a live video session on Facebook.",
+   "symptoms": [
+    "How do I go live on Facebook?",
+    "I want to start a live video on Facebook.",
+    "Where is the live button?",
+    "How do I broadcast live on Facebook?",
+    "Facebook live stream help."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_live_go-going-live?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "6036739f445704386791748ee3995a24a2ec69be8fa2d7f8cd3cf571d51c37e1",
+  "result": {
+   "summary": "This tutorial guides the user on how to start a live stream on YouTube from their iPhone.",
+   "symptoms": [
+    "How do I go live on YouTube?",
+    "I want to start a live stream.",
+    "Where is the live button?",
+    "Can you help me stream live?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_app_lock-hiding-or-locking-an-app": {
+  "hash": "009ad4f21e36c7fa3e07dbe82969404abb802a16d0e06c382513171431c81527",
+  "result": {
+   "summary": "This tutorial guides you on how to hide or lock an app on an iPhone 18 Pro using Face ID.",
+   "symptoms": [
+    "How do I hide an app?",
+    "I want to lock an app with Face ID.",
+    "Can I make an app invisible?",
+    "How to secure an app?",
+    "I need to hide an app from my home screen."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_voicemail_inbox-how-to-manage-your-voicemail-by-dialing-in": {
+  "hash": "d4ce2f8ee516269b93102ce8d971d76b543da747a7b581640a77154bf7a39402",
+  "result": {
+   "summary": "This tutorial guides users on how to access and manage their voicemail messages by dialing into their voicemail inbox.",
+   "symptoms": [
+    "How do I check my voicemail?",
+    "I can't listen to my messages.",
+    "Where is my voicemail?",
+    "How do I dial into voicemail?",
+    "I need to manage my voicemail."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_import-importing-contacts-from-a-sim-card-to-icloud": {
+  "hash": "d06a4da3d023c46a23670eb821a2ccc30dab988cef9b96e92a0d000160ec5d3d",
+  "result": {
+   "summary": "This tutorial guides the user on how to import contacts stored on their SIM card to iCloud on an iPhone 18 Pro.",
+   "symptoms": [
+    "My contacts aren't showing up",
+    "I need to get my contacts from my old SIM",
+    "How do I transfer contacts from SIM to phone?",
+    "My new phone doesn't have my contacts",
+    "I want to save my SIM contacts to iCloud"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_keyboard_basics-learning-the-basics-of-your-device-s-keyboard": {
+  "hash": "97f1f799a69610b432055db41ac22b430e250b124bb476137762ff51256b0118",
+  "result": {
+   "summary": "This tutorial guides users through the basic functions and features of the iPhone 18 Pro's on-screen keyboard.",
+   "symptoms": [
+    "How do I type capital letters?",
+    "I need to delete text.",
+    "How do I add a new line?",
+    "Where are the numbers and symbols?",
+    "How do I use emojis?",
+    "Can I change keyboard languages?",
+    "How do I use voice dictation?",
+    "How do I copy and paste text?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_guided-limiting-an-iphone-to-a-single-app-using-guided-access": {
+  "hash": "f10c89efbfa3ab0ff8bd913c5eab12fe95d592767baee86750fbcf6944f04ca2",
+  "result": {
+   "summary": "This tutorial explains how to enable and use Guided Access to restrict an iPhone to a single application.",
+   "symptoms": [
+    "How do I keep my kid in one app?",
+    "I want to lock my phone to a single app.",
+    "Need to prevent switching apps.",
+    "How to use Guided Access?",
+    "My child keeps leaving the game.",
+    "I want to focus on one app."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_listen-listening-to-a-voicemail": {
+  "hash": "6a6a6d2daade239dee87747a0f1c26ecf7398109d0f1d092d80dad835547c332",
+  "result": {
+   "summary": "This tutorial explains how to access and listen to voicemails on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I check my voicemail?",
+    "I can't find my voicemails.",
+    "Where are my missed call messages?",
+    "How do I listen to a voicemail?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_logout-logging-out-of-facebook?topicSource=app-facebook-ios-smartphone&topicVersion=586.0.0": {
+  "hash": "159b94ec88851a57804ddfefe8d85fb0b5fd64e71d95a3526b7908c9f47f0e6d",
+  "result": {
+   "summary": "This tutorial guides the user through logging out of the Facebook application on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I log out of Facebook?",
+    "I want to sign out of my Facebook account.",
+    "Can you help me log off Facebook?",
+    "I need to log out of the Facebook app.",
+    "How do I switch Facebook accounts?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facetime_call-making-a-facetime-video-call": {
+  "hash": "3d598fe2d0a1b752ccad02fb779c6d7238adc90534644c15c7186007ee23aee8",
+  "result": {
+   "summary": "This guide explains how to initiate a FaceTime video call on an iPhone.",
+   "symptoms": [
+    "How do I make a video call?",
+    "I want to FaceTime someone.",
+    "Can you help me start a FaceTime call?",
+    "How do I use FaceTime?",
+    "I can't make a video call."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_use-making-phone-calls-and-conference-calls": {
+  "hash": "7a887befc9d6fd7202f6f0b9e4dbba8b3b9ce24507e0f343530ad2f595d7923e",
+  "result": {
+   "summary": "This tutorial guides users on how to make phone calls and set up conference calls on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I make a phone call?",
+    "I want to start a conference call.",
+    "How can I add someone to an existing call?",
+    "Can I merge two calls together?",
+    "I need to make a group call.",
+    "How do I hang up a call?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_parental_controls-manage-your-child-s-screen-time-schedule-and-time-allowances": {
+  "hash": "38ad4f7ac395cd5defcd33b8cec071c082bdc842cfab2f2f724b6a7c3886c21b",
+  "result": {
+   "summary": "This tutorial guides users on how to manage their child's screen time schedule and app time allowances on an iPhone.",
+   "symptoms": [
+    "My child is spending too much time on their phone.",
+    "How do I set screen time limits for my kid?",
+    "I need to change my child's device schedule.",
+    "Can I pause my child's iPhone remotely?",
+    "How do I adjust app time allowances for my child?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_apps-managing-and-closing-opened-apps": {
+  "hash": "1170e9961a8439b4497750415628a0d1c1862fccb4006bda87fd5da44db74322",
+  "result": {
+   "summary": "This tutorial guides users on how to view and close open applications on their iPhone.",
+   "symptoms": [
+    "My phone is slow",
+    "Apps are crashing",
+    "How do I close apps?",
+    "Too many apps open",
+    "Battery draining fast"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_contacts_share-managing-apps-access-to-your-contacts": {
+  "hash": "17cad1f12dcea844752858fd58bccdd91c5ffc46fc907204be946844634563fc",
+  "result": {
+   "summary": "This tutorial guides users on how to manage specific apps' access to their contacts on an iPhone.",
+   "symptoms": [
+    "An app is asking for my contacts",
+    "I want to stop an app from seeing my contacts",
+    "How do I control contact access for an app?",
+    "I only want an app to see some contacts",
+    "My contacts are being shared",
+    "I need to change app permissions for contacts"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_apps-managing-background-app-refresh-for-individual-apps": {
+  "hash": "9edd253b56f3b030466e64b4618c9aa7503c9bf94fd60482a4b460fd812ccd47",
+  "result": {
+   "summary": "This tutorial guides users on how to manage background app refresh settings for individual applications on their iPhone.",
+   "symptoms": [
+    "My battery is draining quickly",
+    "Apps are using data in the background",
+    "How do I stop apps from refreshing?",
+    "I want to control app background activity",
+    "My phone feels slow",
+    "Apps are updating when I don't want them to"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notifications_app-managing-notification-settings-for-individual-apps": {
+  "hash": "c3fcab6fd8cefceb66800a5bad6399ccd83a40e1676ca3ab1cc2da2d1cc27c4e",
+  "result": {
+   "summary": "This tutorial guides the user on how to manage notification settings for individual applications on their iPhone.",
+   "symptoms": [
+    "My phone keeps buzzing for every text.",
+    "I want to turn off notifications for an app.",
+    "How do I change my message alerts?",
+    "Notifications are too loud.",
+    "I'm getting too many notifications.",
+    "I want to customize app notifications."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_group-managing-text-message-conversations": {
+  "hash": "bd9c90deca9b8a27c3007e38b249ddb85f2563cbb8b6470b9158a56373974338",
+  "result": {
+   "summary": "This tutorial guides users on how to manage text message conversations by swiping to reveal options like hiding alerts or deleting messages.",
+   "symptoms": [
+    "How do I delete a text message?",
+    "I want to mute a conversation.",
+    "My messages app is cluttered.",
+    "How do I manage my text messages?",
+    "I want to delete a group chat.",
+    "How do I stop getting notifications from a text?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_silent-managing-your-do-not-disturb-settings": {
+  "hash": "38c2361e45b5774984dd000545e77bab8355cd53adb0a9f539fd54e25ec23dcf",
+  "result": {
+   "summary": "This tutorial guides users on how to manage and customize their Do Not Disturb settings on an iPhone.",
+   "symptoms": [
+    "My phone keeps buzzing at night",
+    "I want to stop notifications",
+    "How do I turn on Do Not Disturb?",
+    "I need to change my Do Not Disturb settings",
+    "Notifications are bothering me",
+    "I want to silence my phone"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_browser_tabs-managing-your-browser-tabs": {
+  "hash": "0919b0f92efe5ecfd946d15b41bb0642f25ab6a09df12fbf39207bed57698e00",
+  "result": {
+   "summary": "This tutorial guides users on how to manage their browser tabs in the Safari app, including opening, switching, closing, and organizing tabs and tab groups.",
+   "symptoms": [
+    "How do I open a new tab?",
+    "I have too many tabs open.",
+    "I want to close a tab.",
+    "How do I switch between tabs?",
+    "Can I organize my tabs?",
+    "Where are my private tabs?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_battery-managing-your-iphone-battery": {
+  "hash": "45075a7953b90bb3291250de60b4f19ec49298ffed4fddca260b12e4a58b058c",
+  "result": {
+   "summary": "This tutorial guides users on how to access and manage battery settings on their iPhone, including viewing usage, health, and charging options.",
+   "symptoms": [
+    "My iPhone battery drains quickly.",
+    "How do I check my battery health?",
+    "What's using my battery?",
+    "I want to manage my battery usage.",
+    "Where are the battery settings?",
+    "How can I make my battery last longer?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_memory-managing-your-iphone-s-storage": {
+  "hash": "e18a0aa238b6109fcab893cf48ea117be068717762e49ce68f9485b627afcbf1",
+  "result": {
+   "summary": "This tutorial guides users on how to manage and free up storage space on their iPhone.",
+   "symptoms": [
+    "My phone is full",
+    "I'm running out of space",
+    "I can't download new apps",
+    "My phone is slow because of storage",
+    "How do I free up space?",
+    "I need to delete some things"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_time-managing-your-own-screen-time-and-app-limits": {
+  "hash": "5340f8be96c852ce2cd3439f8f272659f5b9e3eb6db54b918fc95be54504a86c",
+  "result": {
+   "summary": "This tutorial guides you through managing your Screen Time and setting app limits on your iPhone.",
+   "symptoms": [
+    "I want to limit app usage.",
+    "How do I set a time limit for an app?",
+    "I need to manage my screen time.",
+    "How to create app categories?",
+    "Adjust daily app limits."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_manual_network_selection-manually-selecting-a-cellular-network": {
+  "hash": "654ef5068fcc418393330f1b86890a87a34a1ead6e8011360f95b7b9eaa7c3f4",
+  "result": {
+   "summary": "This tutorial guides the user through manually selecting a cellular network on their iPhone 18 Pro.",
+   "symptoms": [
+    "My phone isn't connecting to the network.",
+    "I have no service.",
+    "I want to switch networks.",
+    "My calls are dropping.",
+    "My data isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Selecting a new cellular network requires the phone to disconnect from the current network and connect to a different one, which will interrupt cellular service and any active calls."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_cellular_settings_access-navigating-to-cellular-settings": {
+  "hash": "64963d6c2c7c044b28fd6cec9422b10e35e28fc7d350866019ff55291d7a1853",
+  "result": {
+   "summary": "This tutorial guides users on how to access and manage various cellular settings on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I turn off cellular data?",
+    "I want to check my data usage.",
+    "How do I enable data roaming?",
+    "My internet isn't working without Wi-Fi.",
+    "I need to manage which apps use cellular data.",
+    "Where are the cellular settings?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_voice-navigating-your-iphone-with-voiceover": {
+  "hash": "0550d43374f037fc1682628c2daff03f14c8705e5990df2e82747bc435fdda8a",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and disable the VoiceOver accessibility feature on an iPhone.",
+   "symptoms": [
+    "How do I turn on VoiceOver?",
+    "My phone is talking to me, how do I turn it off?",
+    "I need help with VoiceOver settings.",
+    "VoiceOver isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_folders-organizing-your-iphone-s-home-screen": {
+  "hash": "2d470c8d1e40f021c284f72d7b30efc405fb0a5266d6ac7c69c400a80e94333b",
+  "result": {
+   "summary": "This tutorial guides users on how to organize their iPhone's home screen by reordering apps, creating folders, and customizing widgets.",
+   "symptoms": [
+    "My home screen is messy",
+    "How do I move apps around?",
+    "I want to create app folders",
+    "Can I customize my app icons?",
+    "How do I add widgets to my home screen?",
+    "My iPhone home screen is disorganized"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_bluetooth-pairing-your-iphone-with-a-bluetooth-device": {
+  "hash": "4049b77f716c301fb10e510ac43b8d0d476d9d1fd37885d4a75d348d60920c4d",
+  "result": {
+   "summary": "This tutorial guides the user through pairing their iPhone with a Bluetooth device.",
+   "symptoms": [
+    "My Bluetooth isn't connecting.",
+    "I can't pair my headphones.",
+    "How do I connect a new Bluetooth device?",
+    "My phone won't find my speaker.",
+    "Bluetooth connection problems."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_safety_check-performing-a-safety-check": {
+  "hash": "6028066c9bd4a39609d0151f109b544a7c982e59438c4124708499c5beeb6908",
+  "result": {
+   "summary": "This tutorial guides users through performing a Safety Check on their iPhone to manage access to personal information shared with apps and people, and to review account security.",
+   "symptoms": [
+    "I think someone has access to my phone",
+    "I want to stop sharing my location",
+    "How do I check who has access to my data?",
+    "I need to revoke app permissions",
+    "My privacy settings are compromised",
+    "I want to secure my iPhone",
+    "Someone is tracking me"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_reset-performing-a-factory-reset": {
+  "hash": "fbeb9405c5433fca7dc7af311910a077223dbb22145d1fb2f23c48ffe7bf2679",
+  "result": {
+   "summary": "This tutorial guides the user through performing a factory reset on an iPhone 18 Pro to resolve software issues or prepare the device for sale.",
+   "symptoms": [
+    "My phone is slow",
+    "Apps keep crashing",
+    "Phone is frozen",
+    "Selling my phone",
+    "Phone acting weird"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Tapping 'Erase All Content and Settings' will initiate a factory reset, which restarts the phone and deletes all data, interrupting any active call."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_tbs_personal_hotspot-personal-hotspot-isn-t-working": {
+  "hash": "45c4897ed58a65d6d2b60c1e4a37fad534dfddf938fc4c4bb40ec53c0ad62c8f",
+  "result": {
+   "summary": "This tutorial helps troubleshoot issues with setting up or using the Personal Hotspot feature on an iPhone.",
+   "symptoms": [
+    "My personal hotspot isn't working",
+    "Can't connect to my iPhone's hotspot",
+    "Hotspot not showing up",
+    "No internet on my hotspot",
+    "My hotspot keeps disconnecting"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_facebook_post-posting-status-updates-and-photos-to-facebook?topicSource=app-facebook-ios-smartphone&topicVersion=586.0.0": {
+  "hash": "d3dc7db68919d862686e4c35040a0e37c3dd2ff66256baef9687b6905c2731f6",
+  "result": {
+   "summary": "This tutorial guides users on how to post status updates and photos to Facebook.",
+   "symptoms": [
+    "How do I post on Facebook?",
+    "I want to share a photo on Facebook.",
+    "Can you help me update my Facebook status?",
+    "How do I add a picture to my Facebook post?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_power_on-powering-your-iphone-on-and-off": {
+  "hash": "c2bc5bb756ca5dbe338987fae5499ec9667468ca385a524b9d34a34819ff6092",
+  "result": {
+   "summary": "This guide explains how to power your iPhone 18 Pro on and off.",
+   "symptoms": [
+    "My iPhone won't turn on",
+    "How do I turn off my iPhone?",
+    "My phone is frozen",
+    "I need to restart my iPhone",
+    "My screen is black"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "This step brings up the power off screen."
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "This step powers off the phone."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_memo_add-recording-a-voice-memo": {
+  "hash": "9787bfa563618e76f2db8d43e1f6e1970c344fc7d46c33f598de551734cb3493",
+  "result": {
+   "summary": "This tutorial guides the user on how to record a voice memo on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I record a voice memo?",
+    "I want to make an audio recording.",
+    "Where is the voice recorder app?",
+    "Can I record my voice on this phone?",
+    "How to use the Voice Memos app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_car_play-connecting-apple-carplay": {
+  "hash": "c943aa71c61e8ee35d923b74cd73dfc37c3cd9c897fc3253e56fd5a3f7cf542c",
+  "result": {
+   "summary": "This tutorial guides the user on how to record a voice memo on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I record a voice memo?",
+    "I want to make an audio recording.",
+    "Where is the voice recorder app?",
+    "Can I record my voice on my phone?",
+    "Need to record a quick audio note."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_record_transcribe-recording-and-transcribing-a-phone-call": {
+  "hash": "c2304f86f4f8b0fa5400677ea7b0bc716f5846c8d2adfb393b7eebaa740ed29b",
+  "result": {
+   "summary": "This tutorial guides the user on how to record an ongoing phone call and view its transcript on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I record a call?",
+    "I want to record this conversation.",
+    "Can I get a transcript of my call?",
+    "How do I save a phone call?",
+    "Record phone call",
+    "Transcribe call"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_clean_up-reframe-extend-and-clean-up-photos-with-apple-intelligence": {
+  "hash": "8695811874e03a08fa9b3a4b5b837088699a7e0e044d43f84dea878b5348956a",
+  "result": {
+   "summary": "This tutorial guides users on how to use Apple Intelligence features like Reframe, Extend, and Clean Up to edit photos on their iPhone.",
+   "symptoms": [
+    "How to reframe a photo",
+    "Extend a picture",
+    "Clean up objects in photos",
+    "Edit photos with Apple Intelligence",
+    "Remove something from my picture"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_phone_remove-removing-a-device-from-your-apple-id": {
+  "hash": "034fa09786e86219a00599e002285543cf2e71ec85b0d1e9e170fcdff9c85a6e",
+  "result": {
+   "summary": "This tutorial guides the user through removing a device from their Apple ID account settings.",
+   "symptoms": [
+    "I sold my old iPhone",
+    "I want to remove an old device",
+    "My old phone is still linked",
+    "How do I unlink a device?",
+    "I need to remove a device from my Apple ID"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_delete_esim-removing-esims-from-your-phone": {
+  "hash": "1bee6c2a284430a938ed68a1b379d873b3f9e39ef2de73e31776131164e27853",
+  "result": {
+   "summary": "This tutorial guides users on how to remove one or more eSIMs from their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I delete an eSIM?",
+    "I want to remove an eSIM profile.",
+    "My phone has too many eSIMs.",
+    "I need to get rid of an eSIM.",
+    "Can I delete all eSIMs from my iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Deleting an eSIM cuts cellular service for that specific line."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": true,
+     "reason": "Deleting all eSIMs cuts cellular service for all eSIM lines on the device."
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_forgot_password-resetting-your-apple-id-password": {
+  "hash": "090729d992ac4b6ce6929be12c9df00785bee2027070927b2814c17344969a9c",
+  "result": {
+   "summary": "This tutorial guides the user through resetting their Apple ID password.",
+   "symptoms": [
+    "I forgot my Apple ID password",
+    "I can't sign in to my Apple ID",
+    "My Apple ID is locked",
+    "I need to reset my Apple ID password",
+    "I can't access my iCloud",
+    "I can't download apps"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_network_reset-resetting-your-iphone-s-settings-and-network-settings": {
+  "hash": "6958478f6a34add451aae305bc35f883b062ef574fda91022b243b779188e7b0",
+  "result": {
+   "summary": "This tutorial guides users through resetting their iPhone's settings and network settings to resolve various device issues.",
+   "symptoms": [
+    "My iPhone isn't working right",
+    "I have problems with my settings",
+    "My Wi-Fi isn't connecting",
+    "My cellular data isn't working",
+    "I need to reset my network",
+    "My phone is acting weird"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "This step presents options including 'Reset All Settings', 'Reset Network Settings', and 'Delete All eSIMs', all of which can interrupt or drop a call."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_icloud_contacts-restoring-your-contacts": {
+  "hash": "e5b70fcfdada70f3b9d6e22ceb9aec4c6ce2830bbad02bfb553e8849e8315279",
+  "result": {
+   "summary": "This tutorial guides you through restoring your contacts by re-syncing them with iCloud.",
+   "symptoms": [
+    "My contacts are gone",
+    "I lost my contacts",
+    "My contacts aren't showing up",
+    "I can't see my contacts",
+    "My contacts disappeared",
+    "How do I get my contacts back?",
+    "Contacts not syncing"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_save-save-or-share-voicemails": {
+  "hash": "ed8a5fbf9268dfa8b7a0f7a72392c3676faacd86b01b8baccb102e9da492b59d",
+  "result": {
+   "summary": "This tutorial guides users on how to save or share voicemails from their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I save a voicemail?",
+    "I want to share a voicemail message.",
+    "Can I export my voicemails?",
+    "Where can I find my saved voicemails?",
+    "I need to send a voicemail to someone else."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_history_call-searching-your-call-history": {
+  "hash": "c3b37928ccdb41e502152caf04613c9300850f5d43f34f40b1b6ec315bd0008d",
+  "result": {
+   "summary": "This tutorial guides users on how to search their call history within the phone application on an iPhone.",
+   "symptoms": [
+    "I can't find a specific call in my history.",
+    "How do I search my call log?",
+    "I need to look up a number I called recently.",
+    "Where is the search function in the phone app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_send-sending-a-text-with-an-attachment": {
+  "hash": "7dc28ac6c4b2ea8b371b75b4db5e13d43ea59bf5364c18d330d9a0053abaf1e4",
+  "result": {
+   "summary": "This tutorial guides you through sending a text message with an attached photo on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I send a picture message?",
+    "I want to text a photo.",
+    "Can I attach a file to my text?",
+    "My picture won't send in a text.",
+    "How do I add an attachment to a message?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_email_send-sending-an-email": {
+  "hash": "9e2a8c3a0f6fbee480f4c600f7efc64a7827e6a267218af1ea2a7f2f7c98b7d0",
+  "result": {
+   "summary": "This tutorial guides the user through the process of sending an email using the Mail app on an iPhone.",
+   "symptoms": [
+    "How do I send an email?",
+    "I need to compose a new email.",
+    "Where is the send button in Mail?",
+    "I can't figure out how to email someone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_familyshare_settings-set-up-family-sharing": {
+  "hash": "7bb9fe5855b5d3c339d4074c9005b6f078016e0e354110bd81a86baaa0e67c88",
+  "result": {
+   "summary": "This tutorial guides users on how to set up Family Sharing on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I set up Family Sharing?",
+    "I want to share purchases with my family.",
+    "How do I add a family member to my Apple account?",
+    "Can I share my subscriptions?",
+    "I need to invite someone to my family group."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_sim_preferences-set-your-default-sim-for-calls-texts-and-cellular-data": {
+  "hash": "8ffcfcdce76075ef02e73d8e78cb3ab82257cfe09bcce72d0dac5a814bccb28c",
+  "result": {
+   "summary": "This tutorial guides users on how to set their default SIM card for calls, texts, and cellular data on an iPhone.",
+   "symptoms": [
+    "My phone is using the wrong SIM",
+    "How do I change my default line?",
+    "I want to use a different SIM for data",
+    "My calls are going through the wrong number",
+    "I need to manage my dual SIM settings",
+    "How do I switch between my personal and work lines?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "One of the options presented is 'Turn the line on or off', which can disable a line and interrupt an active call."
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_special_quickstart-setting-up-iphone-with-quick-start": {
+  "hash": "901ee6dfd4786d27d2d9db6b80fc1648050cb525e311123f14e8764357321bda",
+  "result": {
+   "summary": "This tutorial guides users through the process of setting up a new iPhone using Quick Start with an existing iPhone.",
+   "symptoms": [
+    "How do I set up my new iPhone?",
+    "I need help with Quick Start.",
+    "Transferring data to a new iPhone.",
+    "My new iPhone isn't set up yet.",
+    "What are the first steps for a new iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    },
+    {
+     "n": 17,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_content_restriction-setting-content-purchase-and-browsing-restrictions": {
+  "hash": "fba4fd5ab5eb61eef20052a8b5c78ae3934de0199d5e544527754da30124a1a2",
+  "result": {
+   "summary": "This tutorial guides the user through setting up content, purchase, and browsing restrictions on an iPhone 18 Pro using Screen Time.",
+   "symptoms": [
+    "I want to block certain apps.",
+    "How do I restrict purchases?",
+    "My kid keeps buying things on my phone.",
+    "I need to set parental controls.",
+    "How do I stop my child from seeing inappropriate content?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_location-setting-location-access-for-individual-apps": {
+  "hash": "9a129b85aff79f04d8ba601270281d720676480c777d3c3e4c212a5064eb8b7a",
+  "result": {
+   "summary": "This tutorial guides the user on how to adjust location access settings for individual applications on their iPhone.",
+   "symptoms": [
+    "My map app isn't working.",
+    "An app can't find my location.",
+    "I need to change location settings for an app.",
+    "My location services are off.",
+    "An app is asking for location permission."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_motion_cues-setting-motion-accessibility-settings": {
+  "hash": "889384fc348823b8b005e56c693d110cf9db0167a4134d64ba5eb09b952349df",
+  "result": {
+   "summary": "This tutorial guides users on how to access and adjust motion accessibility settings on an iPhone, including Vehicle Motion Cues, Reduce Motion, and Dim Flashing Lights.",
+   "symptoms": [
+    "My phone makes me feel sick in the car",
+    "I want to reduce animations",
+    "Flashing lights bother me",
+    "How do I change motion settings?",
+    "I need to adjust accessibility for motion"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_assistive-setting-touch-accessibility-settings": {
+  "hash": "220af8659115cb122d42b58dcbf0f014f84ea3561387b5d55d2c542238e4e4b6",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust various touch accessibility settings on their iPhone, including AssistiveTouch, Haptic Touch, and Back Tap.",
+   "symptoms": [
+    "I need to adjust touch settings.",
+    "How do I enable AssistiveTouch?",
+    "My Haptic Touch isn't right.",
+    "I want to use Back Tap.",
+    "I need accessibility options for touch."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_face-setting-up-face-id": {
+  "hash": "9598886d6059b04e738355fd90a2baedf70a9a6161a8265ad565061e02a2bc65",
+  "result": {
+   "summary": "This guide provides instructions on how to set up Face ID on an iPhone.",
+   "symptoms": [
+    "I need to set up Face ID.",
+    "How do I configure Face ID?",
+    "My Face ID isn't working yet.",
+    "I want to use Face ID for unlocking.",
+    "Help me enable Face ID."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_esim_qr-setting-up-a-dual-sim-from-an-esim-qr-code": {
+  "hash": "aead94cd73024fef88b992e28464feda0b84531b5fb7c5bf80b5c46ef3734922",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a Dual SIM on an iPhone 18 Pro by scanning an eSIM QR code provided by their carrier.",
+   "symptoms": [
+    "I need to set up my eSIM.",
+    "How do I add a second line to my iPhone?",
+    "My new cellular plan uses an eSIM.",
+    "I want to activate Dual SIM.",
+    "I have a QR code for my new plan."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_esim-setting-up-a-dual-sim-from-an-esim-notification": {
+  "hash": "3cc7231b4e7f15e3ae4e5761a3f692a3516d2e66b6a3ace3086f5149a4efc8b9",
+  "result": {
+   "summary": "This tutorial guides users through setting up a Dual SIM configuration on an iPhone 18 Pro by activating an eSIM from a notification.",
+   "symptoms": [
+    "My eSIM isn't activating.",
+    "How do I set up my second phone line?",
+    "I received a notification to install a cellular plan.",
+    "I need to configure my dual SIM.",
+    "My new eSIM isn't working."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_push_notification-setting-up-a-pending-esim-notification-device-already-set-up": {
+  "hash": "7a0ece6b7c43f580e0731d8315c1ca923380377463a0ff9bea111b641673df6d",
+  "result": {
+   "summary": "This tutorial guides the user through setting up a pending eSIM notification on an iPhone 18 Pro.",
+   "symptoms": [
+    "My eSIM isn't working",
+    "I need to activate my eSIM",
+    "How do I set up my new eSIM?",
+    "I have a pending eSIM notification",
+    "My phone isn't connecting to cellular with my eSIM",
+    "I got a new eSIM and don't know how to set it up"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_qr_code-setting-up-an-esim-via-qr-code-or-activation-code-device-already-set-up": {
+  "hash": "964485e87048b2d0fd653e0f12752e313d7ba9c32e7d9310c62c6f46fcf61fef",
+  "result": {
+   "summary": "This tutorial guides the user through the process of setting up an eSIM on an iPhone 18 Pro using a QR code or by manually entering activation details.",
+   "symptoms": [
+    "I need to add an eSIM to my iPhone.",
+    "How do I activate my new cellular plan with a QR code?",
+    "My eSIM isn't set up yet.",
+    "I received an activation code for my eSIM.",
+    "I want to set up cellular service on my new phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_pay_setup-setting-up-and-using-apple-pay": {
+  "hash": "d0a17baf4925098f2b7542724a481951e2366c3e838b178c979cd418368e65b1",
+  "result": {
+   "summary": "This guide explains how to set up and use Apple Pay on an iPhone.",
+   "symptoms": [
+    "I can't set up Apple Pay",
+    "How do I add a card to Wallet?",
+    "Apple Pay isn't working",
+    "I need help using Apple Pay",
+    "My card won't add to my phone",
+    "How do I pay with my iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_communication_safety-setting-up-communication-safety-and-contact-approval": {
+  "hash": "97a7f9455e106dca1fd5a18b02ad71715fe82caf353097541c98ef29d50f15b6",
+  "result": {
+   "summary": "This tutorial guides you through setting up communication safety and contact approval features for a child's iPhone.",
+   "symptoms": [
+    "How do I set up communication safety for my child?",
+    "I need to approve contacts for my kid's phone.",
+    "My child is receiving inappropriate messages.",
+    "How do I manage who my child can contact?",
+    "I want to turn on communication safety.",
+    "How to restrict contacts on my child's iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_icloud_restore-setting-up-iphone-by-restoring-from-icloud": {
+  "hash": "61656207d1bf11afac253bb739e6ff8168824f6cf477e7df2a432f07363f244a",
+  "result": {
+   "summary": "This tutorial guides the user through the initial setup of a new iPhone by restoring data from an iCloud backup.",
+   "symptoms": [
+    "How do I set up my new iPhone?",
+    "I want to transfer my old data to my new phone.",
+    "Can I restore from iCloud?",
+    "My new iPhone is on the 'Hello' screen.",
+    "I need help with initial setup.",
+    "How do I get my apps back?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    },
+    {
+     "n": 17,
+     "call_ending": false
+    },
+    {
+     "n": 18,
+     "call_ending": false
+    },
+    {
+     "n": 19,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_initial_setup-setting-up-iphone-manually-as-a-new-device": {
+  "hash": "c48671a03e9c2257d5ed8d81dbd44c631cfa8bd0364cdd8ba17d68f316dbe088",
+  "result": {
+   "summary": "This tutorial guides users through the manual setup process for a new iPhone, covering initial configuration, Apple ID login, and feature setup.",
+   "symptoms": [
+    "How do I set up my new iPhone?",
+    "I just got a new iPhone, what do I do?",
+    "Help me set up my iPhone from scratch.",
+    "I need to activate my new iPhone.",
+    "How do I get my new iPhone ready to use?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    },
+    {
+     "n": 16,
+     "call_ending": false
+    },
+    {
+     "n": 17,
+     "call_ending": false
+    },
+    {
+     "n": 18,
+     "call_ending": false
+    },
+    {
+     "n": 19,
+     "call_ending": false
+    },
+    {
+     "n": 20,
+     "call_ending": false
+    },
+    {
+     "n": 21,
+     "call_ending": false
+    },
+    {
+     "n": 22,
+     "call_ending": false
+    },
+    {
+     "n": 23,
+     "call_ending": false
+    },
+    {
+     "n": 24,
+     "call_ending": false
+    },
+    {
+     "n": 25,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screen_parent-setting-up-parental-controls-for-the-first-time": {
+  "hash": "ffa31ddf9d73712925d596324a340d1b951b42451adc3cc6316afb302320deb7",
+  "result": {
+   "summary": "This tutorial guides users through the initial setup of parental controls and Screen Time features for a child on an iPhone.",
+   "symptoms": [
+    "How do I set up parental controls?",
+    "I want to restrict my child's phone use.",
+    "Need to manage screen time for my kid.",
+    "How to block apps for my child?",
+    "I want to set communication limits.",
+    "Help with family settings on iPhone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_voicemail_setup-setting-up-your-voicemail": {
+  "hash": "a2ba627e35fd5b02087b868c3416ec5be5fc033ff21efe3d005475808fdbb7ab",
+  "result": {
+   "summary": "This tutorial guides you through the process of setting up your voicemail, including creating a password and recording a custom greeting.",
+   "symptoms": [
+    "How do I set up my voicemail?",
+    "I need to set up my voicemail.",
+    "My voicemail isn't set up.",
+    "I want to record a custom voicemail greeting.",
+    "How do I create a voicemail password?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_volume-setting-your-volume-and-ringtone-levels": {
+  "hash": "8b517ba66215c1346d0beb3b3891495a5abed91c6eac3505fd20986b40a5f669",
+  "result": {
+   "summary": "This tutorial guides users on how to adjust various volume and ringtone settings on their iPhone, including ringtone, alert, alarm, and headphone volumes.",
+   "symptoms": [
+    "My phone is too loud.",
+    "I can't hear my ringtone.",
+    "My alerts are too quiet.",
+    "How do I change the volume?",
+    "My headphones are too loud.",
+    "I want to limit the volume."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_special_find-sharing-your-location-and-finding-your-iphone-using-the-find-my-app": {
+  "hash": "94445e32a772d66849704ad602b6c2821045635ccdb0738a5f78da8582ececea",
+  "result": {
+   "summary": "This guide explains how to share your location with contacts and how to locate your iPhone using the Find My app.",
+   "symptoms": [
+    "I want to share my location with a friend.",
+    "How do I let people see where I am?",
+    "I can't find my iPhone.",
+    "My phone is lost.",
+    "How do I locate my device?",
+    "I need to make my lost phone play a sound."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_location-sharing-your-location-in-a-text-message-conversation": {
+  "hash": "a43b5cb0f2684e81558b4f9e5f60e07565f01c6864184d8f4dc8d4dd561fea2d",
+  "result": {
+   "summary": "This tutorial guides the user on how to share their current location within an ongoing text message conversation on an iPhone.",
+   "symptoms": [
+    "How do I send my location in a text?",
+    "I want to share where I am with someone.",
+    "Can I send my current location?",
+    "My friend asked for my location.",
+    "How to share location in Messages app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_messages_profile-sharing-your-name-and-photo-with-your-contacts-automatically": {
+  "hash": "8c5b7f23983f75b8ddc8b275ecefb3c7214bfabde7ae110eafd9e13cfa4c15ae",
+  "result": {
+   "summary": "This tutorial guides users on how to set up automatic sharing of their name and photo with contacts on their iPhone.",
+   "symptoms": [
+    "How do I share my contact info?",
+    "I want to share my photo with contacts.",
+    "Can I automatically share my name?",
+    "My contact card isn't sharing.",
+    "How to set up contact sharing?",
+    "Share my profile picture."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_manage_caller_id-show-or-hide-your-caller-id": {
+  "hash": "8c823ece8242682b7ce43dbb894c51b7ff894f374120e26bbc261c6ac7dacce4",
+  "result": {
+   "summary": "This tutorial guides you on how to show or hide your Caller ID on an iPhone 18 Pro.",
+   "symptoms": [
+    "My caller ID isn't showing.",
+    "I want to hide my number when I call.",
+    "How do I turn off caller ID?",
+    "Can I make my calls anonymous?",
+    "My number is private.",
+    "I want to show my number."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_appleid_sign_in-signing-in-and-out-of-your-apple-id": {
+  "hash": "3ed407584d36b877ef55a9fe1a6745fb09327b5dd2e57982686c2a3e4fdd8745",
+  "result": {
+   "summary": "This tutorial guides the user through the process of signing in and out of their Apple ID on an iPhone 18 Pro.",
+   "symptoms": [
+    "I can't sign into my Apple ID",
+    "How do I sign out of my Apple ID?",
+    "I need to change my Apple ID",
+    "My Apple ID isn't working",
+    "I want to sign in with a different Apple ID",
+    "How do I manage my Apple ID?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_channel_subscribe-subscribing-to-your-favorite-channels?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "089ea72372801c13d60b238f695c44435d6e864eebc4b5aa34db04ceb4f93dee",
+  "result": {
+   "summary": "This tutorial guides the user on how to subscribe to a YouTube channel on their iPhone.",
+   "symptoms": [
+    "How do I subscribe to a channel?",
+    "I want to follow a YouTube channel.",
+    "Can you help me subscribe on YouTube?",
+    "How do I get updates from a channel?",
+    "I can't find the subscribe button."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_summarize_transcriptions-summarizing-transcripts-of-audio-recordings-in-your-notes": {
+  "hash": "c6f76553a09d557555c374f8933ee851f6d3057cfc1cc0fc06f5d03f8e7a8b4f",
+  "result": {
+   "summary": "This tutorial guides users on how to summarize audio recordings directly within the Notes app on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I summarize an audio recording in Notes?",
+    "Can I get a summary of my voice notes?",
+    "I want to summarize a meeting recording in the Notes app.",
+    "How to get a transcript summary in Notes?",
+    "Summarize audio in Notes app."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_volte_on-switching-lte-or-5g-voice-and-data-settings": {
+  "hash": "badaabf0b2887dc3da293bb9927b0b5c2bde5d334935e4b7978a419611dbee11",
+  "result": {
+   "summary": "This tutorial guides the user on how to adjust their iPhone's cellular data settings to prioritize 5G, LTE, or manage data usage.",
+   "symptoms": [
+    "My 5G isn't working right",
+    "I want to save battery on 5G",
+    "How do I turn off 5G?",
+    "I want better call quality",
+    "My data is slow",
+    "I want to use less data"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_phone-switching-phone-numbers-for-calls-with-dual-sim": {
+  "hash": "91b417272020b07cc9d2001028bd7d944af06c6ddeaec29e995bf7ce27900fd8",
+  "result": {
+   "summary": "This guide explains how to switch between different phone numbers when making a call on an iPhone 18 Pro with Dual SIM.",
+   "symptoms": [
+    "How do I choose which number to call from?",
+    "My phone has two numbers, how do I use the other one?",
+    "I want to switch SIMs for a call.",
+    "How do I manage dual SIM calls?",
+    "Can I select my outgoing number?",
+    "The wrong number is being used for calls."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_data-switching-phone-numbers-for-cellular-data-with-dual-sim": {
+  "hash": "c8c293940002eaa9286d0925e69b14808669a1ad676271ce3af05302d6922200",
+  "result": {
+   "summary": "This tutorial guides the user on how to switch between different SIMs for cellular data on an iPhone 18 Pro with Dual SIM.",
+   "symptoms": [
+    "How do I change which SIM uses data?",
+    "My data isn't working on the right line.",
+    "I want to use my other number for internet.",
+    "Can I switch my data plan?",
+    "How do I manage dual SIM data?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_dual_text-switching-phone-numbers-for-texts-with-dual-sim": {
+  "hash": "f541bc30dee847b0a99ca10495142bfa7f40f3a81317c5fbcbfc6650ce935557",
+  "result": {
+   "summary": "This guide shows how to switch between different phone numbers when sending text messages on an iPhone with Dual SIM.",
+   "symptoms": [
+    "I can't change my text message number.",
+    "How do I pick which number to text from?",
+    "My iPhone has two numbers, but I can't switch them for texts.",
+    "I want to send a text from my other line.",
+    "Dual SIM texting issue.",
+    "Can't select my preferred number for messages."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_camera_use-taking-pictures-and-changing-camera-modes": {
+  "hash": "ba5931297e89369a82f82cf07484722232eeb28eb9ada992898e8af8063c838d",
+  "result": {
+   "summary": "This tutorial guides users on how to take photos, record videos, and utilize various camera modes and features on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I take a picture?",
+    "I want to record a video.",
+    "How do I use time-lapse?",
+    "Can I switch camera views?",
+    "How do I take a live photo?",
+    "Where can I view my photos?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_screenshot_edit-taking-and-editing-a-screenshot": {
+  "hash": "ff2c95fcd302f74ee4949f9f08d54b179529bd1b55da9d3a3d20fd2cfb0d95e4",
+  "result": {
+   "summary": "This tutorial guides the user on how to take a screenshot and then edit it on their iPhone 18 Pro.",
+   "symptoms": [
+    "How to take a screenshot",
+    "Edit a screenshot",
+    "Capture my phone screen",
+    "Screenshot not working",
+    "Where are my screenshots saved?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_number_transfer_android-transfer-your-esim-from-android-device-already-set-up": {
+  "hash": "1daf3178024eeb3f2f14c7ff14ca36ee7485f4237863ee98469a0d2e44bb6f2f",
+  "result": {
+   "summary": "This tutorial guides users through the process of transferring an eSIM from an Android device to an already set up iPhone 18 Pro.",
+   "symptoms": [
+    "I need to move my eSIM to my new iPhone.",
+    "How do I transfer my phone number from Android to iPhone?",
+    "My new iPhone doesn't have cellular service after switching from Android.",
+    "I'm trying to activate my eSIM on my iPhone from an Android phone.",
+    "Help with eSIM transfer from an old Android device."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_post_setup_number_transfer-transfer-your-esim-from-iphone-device-already-set-up": {
+  "hash": "3a3c7f6769fb5cb30ce43e8e783b948c123c8bd1d7b0e2a26762a44f6c3e5f55",
+  "result": {
+   "summary": "This tutorial guides the user through transferring an eSIM from another iPhone to their already set up iPhone 18 Pro.",
+   "symptoms": [
+    "How do I move my phone number to this iPhone?",
+    "I need to transfer my cellular plan to my new phone.",
+    "My eSIM isn't on this device yet.",
+    "How do I get service on my new iPhone?",
+    "Can I transfer my eSIM from my old iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_esim_during_setup_number_transfer-transfer-your-esim-from-iphone-while-setting-up-your-device": {
+  "hash": "7220333f0a2176343e30345ab8992cb93ce983e044b57af10cd9f3572055c2e4",
+  "result": {
+   "summary": "This tutorial guides users through transferring an eSIM from an old iPhone to a new iPhone during the initial device setup process.",
+   "symptoms": [
+    "I need to move my phone number to my new iPhone.",
+    "How do I transfer my eSIM to a new phone?",
+    "My new phone doesn't have my cellular plan.",
+    "I'm setting up my new iPhone and want to keep my old number.",
+    "eSIM transfer during new device setup.",
+    "Moving my cellular plan to a new device."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_move_ios-transferring-data-from-android-to-iphone-move-to-ios": {
+  "hash": "d12850b74f75ee97faa97caadf7289d6d55c3fac01728b648c86d984fdd73470",
+  "result": {
+   "summary": "This tutorial guides users through the initial setup of a new iPhone, specifically focusing on transferring data from an Android device using the Move to iOS app.",
+   "symptoms": [
+    "I just got a new iPhone.",
+    "I want to transfer data from my Android phone.",
+    "How do I set up my new iPhone?",
+    "I need help with the Move to iOS app.",
+    "My old phone was an Android."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_transfer_iphone_to_android-transferring-data-from-iphone-to-android": {
+  "hash": "b2aa37295ab4c71b2120e21a4f15b0ec80b80b2e0d521ccb163c5fb5450a0c28",
+  "result": {
+   "summary": "This tutorial guides users through transferring data from an Android device to a new iPhone using the Move to iOS app during the initial iPhone setup.",
+   "symptoms": [
+    "How do I move my data from Android to iPhone?",
+    "I need to transfer my contacts to my new iPhone.",
+    "Setting up my new iPhone from an Android phone.",
+    "Move to iOS app instructions.",
+    "How to get my photos from Android to iPhone.",
+    "Transferring everything from my old Android."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    },
+    {
+     "n": 15,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_airplane-turning-airplane-mode-on-and-off": {
+  "hash": "69b3c2973b535095e5ca7d662adfad2b67947c9d17b816a12ea93fff6dfed77a",
+  "result": {
+   "summary": "This tutorial guides the user on how to toggle Airplane Mode on their iPhone to resolve connectivity issues.",
+   "symptoms": [
+    "No cellular service",
+    "Can't make or receive calls",
+    "Mobile data not working",
+    "Phone shows no signal",
+    "Airplane mode is stuck on"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Turning Airplane Mode ON cuts cellular service, which would end an active call."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_call_forwarding-turning-call-forwarding-on-or-off": {
+  "hash": "4f48db02cb2eef11e37597f86a8b58881b5dd49034017a8c46f8b17ccb8dd5ae",
+  "result": {
+   "summary": "This guide explains how to turn call forwarding on or off and set the forwarding number on an iPhone.",
+   "symptoms": [
+    "My calls are being forwarded.",
+    "I want to forward my calls.",
+    "How do I stop call forwarding?",
+    "I need to change my call forwarding number.",
+    "Calls are not reaching my phone."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_do_not_disturb-turning-do-not-disturb-on-and-off": {
+  "hash": "0fb36099e29029a3b651ef320db15d7290b1bc7e635ffbf2386b6ede2dc0569b",
+  "result": {
+   "summary": "This tutorial guides the user on how to turn Do Not Disturb on and off on an iPhone 18 Pro.",
+   "symptoms": [
+    "My phone isn't ringing",
+    "I'm not getting notifications",
+    "How do I silence my phone?",
+    "My calls are going straight to voicemail",
+    "I want to turn off Do Not Disturb",
+    "My alerts are not making sound"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_tracking_eye-turning-eye-tracking-on": {
+  "hash": "09915ff926931e0fb27dccc8fad22ae7fa5cff4ea010f5cfb18c8039886617a9",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable Eye Tracking on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I turn on eye tracking?",
+    "Eye tracking isn't working",
+    "I want to use eye tracking",
+    "Enable eye tracking",
+    "Where is the eye tracking setting?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_find_on-turning-find-my-iphone-on-or-off": {
+  "hash": "7420fa3cdf7d8a6aaae7510f8ada364c4247f828c4924cd2438e903d069ea10f",
+  "result": {
+   "summary": "This tutorial guides users on how to enable or disable the 'Find My iPhone' feature on their device.",
+   "symptoms": [
+    "How do I turn off Find My iPhone?",
+    "I need to enable Find My.",
+    "Can you help me with my Find My settings?",
+    "I want to disable location tracking.",
+    "Where is the Find My iPhone switch?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_haptic_music-turning-music-haptics-on-and-off": {
+  "hash": "d256aa160f19ad0d91c52f271df974cb052b5f2f47883b4adefe47783b1baedd",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable or disable Music Haptics on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I turn on music vibrations?",
+    "I want haptics for music.",
+    "Music haptics aren't working.",
+    "Where is the music haptics setting?",
+    "Turn off music vibrations.",
+    "I want to feel the music."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_rcs_activate-turning-rcs-messaging-on-or-off": {
+  "hash": "467c76c3adf1486363ea6c3892602ef8a810ce33ccd3f107185b09e9855fc27d",
+  "result": {
+   "summary": "This guide explains how to enable or disable RCS messaging on an iPhone 18 Pro.",
+   "symptoms": [
+    "RCS messages not working",
+    "How to turn on chat features",
+    "I want to disable RCS",
+    "My messages are not sending as RCS",
+    "Enable advanced messaging",
+    "RCS is not active"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_shortcut_vocal-turning-vocal-shortcuts-on-and-off": {
+  "hash": "d4f3bc7c6fcefb1540ad8b369908ff6143721f4e7510cd274542ae98b2da3440",
+  "result": {
+   "summary": "This tutorial guides users on how to set up, test, and remove Vocal Shortcuts on their iPhone.",
+   "symptoms": [
+    "How do I turn on vocal shortcuts?",
+    "I want to set up a vocal shortcut.",
+    "My vocal shortcut isn't working.",
+    "How do I delete a vocal shortcut?",
+    "I need to change my wake word.",
+    "Where are vocal shortcut settings?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_special_assist-turning-wi-fi-assist-off": {
+  "hash": "0d7b76925fec4092c2dda110e5b713da3831b85eee2b8c0a72d289dae4e69daa",
+  "result": {
+   "summary": "This tutorial guides the user on how to turn off Wi-Fi Assist on their iPhone to manage data usage.",
+   "symptoms": [
+    "My phone uses too much cellular data",
+    "Wi-Fi assist is draining my data",
+    "I want to turn off Wi-Fi assist",
+    "My Wi-Fi is slow but it's using data",
+    "How do I stop Wi-Fi assist?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_autoplay-turning-autoplay-off?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "d15189cab982416f93ba0dc313370d66e16c95112b280f97d76bc8f5528cffa8",
+  "result": {
+   "summary": "This tutorial guides the user on how to disable the autoplay feature for videos within the YouTube app.",
+   "symptoms": [
+    "My YouTube videos keep playing automatically.",
+    "How do I stop YouTube from playing the next video?",
+    "I want to turn off autoplay on YouTube.",
+    "YouTube keeps playing videos I don't want to watch.",
+    "Disable YouTube autoplay."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_data-turning-cellular-data-on-and-off-for-individual-apps": {
+  "hash": "0944d79e36030e1735a7c6eff448e5574477c194d5e4119f030e9fd7404df83b",
+  "result": {
+   "summary": "This tutorial guides users on how to manage cellular data access for specific applications on their iPhone.",
+   "symptoms": [
+    "My app isn't using data",
+    "How do I stop an app from using cellular data?",
+    "I want to save data",
+    "An app is using too much data",
+    "Can I turn off data for just one app?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_data_roaming-turning-data-roaming-on-and-off-single-and-dual-sim": {
+  "hash": "1fb13ba6138b717aa638eda0772648d89d29328069741213ce9128c8ac4d335c",
+  "result": {
+   "summary": "This tutorial guides users on how to enable or disable data roaming on an iPhone 18 Pro, supporting both single and dual SIM configurations.",
+   "symptoms": [
+    "My internet isn't working when I'm abroad.",
+    "I can't use data while traveling.",
+    "How do I turn on data roaming?",
+    "I want to avoid roaming charges.",
+    "My phone isn't connecting to data overseas."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_text_imessage-turning-imessage-on-or-off": {
+  "hash": "fd6b79b04d32f684f96fca1270841789ab272e22ed65a6ab426db97380d8cd9e",
+  "result": {
+   "summary": "This guide explains how to turn iMessage on or off on an iPhone 18 Pro.",
+   "symptoms": [
+    "iMessage isn't working",
+    "I want to disable iMessage",
+    "How do I enable iMessage?",
+    "My messages are sending as green bubbles",
+    "Can't send iMessages"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_mobile_data-turning-mobile-data-on-or-off": {
+  "hash": "53ffb5a1ae7fce0f862e6f3f69f182351c3dba0cda536851df3d6e842c25276f",
+  "result": {
+   "summary": "This guide explains how to turn mobile data on or off on an iPhone 18 Pro using either the Settings app or Control Center.",
+   "symptoms": [
+    "My phone isn't connecting to the internet without Wi-Fi.",
+    "I want to turn off cellular data to save usage.",
+    "How do I enable mobile data?",
+    "My apps aren't working when I'm not on Wi-Fi.",
+    "I need to manage my data connection."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notifications_led-turning-on-flash-for-alerts": {
+  "hash": "2bdf96990adb3888a9605b2806281dd96aa6ae6bc7a6403454e0a7d5d2d3bec8",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable the LED Flash for Alerts feature on their iPhone 18 Pro.",
+   "symptoms": [
+    "My flash isn't blinking for calls",
+    "How do I get the light to flash when I get a text?",
+    "I want my phone's light to blink for notifications",
+    "Flash alerts are off",
+    "Can I make the camera flash blink for alerts?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_live_voicemail-turning-on-live-voicemail-for-real-time-call-screening": {
+  "hash": "efceb7cfc4513d067442ec2e332f17dbd1568ecb816c69e3103ca0fe05a60c2d",
+  "result": {
+   "summary": "This tutorial guides you through enabling Live Voicemail on your iPhone 18 Pro to screen calls in real-time.",
+   "symptoms": [
+    "How do I turn on Live Voicemail?",
+    "I want to screen calls as they come in.",
+    "Live Voicemail is not active.",
+    "Enable call screening feature.",
+    "Can I see voicemail in real-time?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_hotspot-turning-on-and-managing-your-personal-hotspot-s-settings": {
+  "hash": "f3ca591b99539797c4cfc8b9d4e9c865b24d6386bf795c17b56ebd8f8062c22c",
+  "result": {
+   "summary": "This tutorial guides users on how to turn on and manage their personal hotspot settings on an iPhone.",
+   "symptoms": [
+    "Can't turn on hotspot",
+    "Hotspot not working",
+    "How to share internet",
+    "Personal hotspot settings",
+    "My other device can't connect"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_settings_captions-turning-on-captions?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "cd851da645ad5dd55b91988af031032df474cdb7aae3a968fa310ced1ba3bbe8",
+  "result": {
+   "summary": "This tutorial guides the user on how to enable captions for a YouTube video on an iPhone-18-pro.",
+   "symptoms": [
+    "I can't see captions on YouTube.",
+    "How do I turn on subtitles?",
+    "Where are the captions for this video?",
+    "I need to enable captions.",
+    "My YouTube captions aren't showing."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_stolen_protect-turning-your-passcode-and-stolen-device-protection-on": {
+  "hash": "38d7c57e7adc53a30f23b55e74b43175979fc456f1f2f6cab0820cd6b143ce22",
+  "result": {
+   "summary": "This tutorial guides you through enabling a passcode and Stolen Device Protection on your iPhone to enhance device security.",
+   "symptoms": [
+    "I want to set up a passcode.",
+    "How do I turn on Stolen Device Protection?",
+    "My phone isn't secure enough.",
+    "I need to add a passcode.",
+    "How do I protect my iPhone if it's stolen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_sim_pin-turning-your-sim-pin-on-and-off": {
+  "hash": "25bb426bac38cfae6229a63fde1c15ff07a7d7861f61a74504a518c1875566ce",
+  "result": {
+   "summary": "This tutorial guides users on how to turn the SIM PIN on or off on an iPhone.",
+   "symptoms": [
+    "How do I turn on my SIM PIN?",
+    "I want to secure my SIM card.",
+    "My phone is asking for a SIM PIN.",
+    "How to disable SIM PIN?",
+    "I need to change my SIM PIN setting."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_image_wand-turning-your-sketch-into-a-related-ai-generated-image-using-image-wand": {
+  "hash": "aad2af86c54536c3634783f4b23d8dafb61fbd1850cc17c55c722bc36477da1b",
+  "result": {
+   "summary": "This tutorial guides users on how to transform a sketch or handwritten note in the Notes app into an AI-generated image using the Image Wand tool.",
+   "symptoms": [
+    "How do I turn my sketch into an image?",
+    "I want to use AI for my drawings.",
+    "Can I generate an image from my notes?",
+    "Where is the image wand tool?",
+    "How do I change the style of an AI image?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_vpn_on-turning-your-vpn-on-and-off": {
+  "hash": "51e7019a2274022c428976a8ee1eda8c16e169fd4eec4dc987c0ae7eda91ac84",
+  "result": {
+   "summary": "This tutorial guides you on how to access and add VPN configurations on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I set up a VPN?",
+    "I need to add a VPN profile.",
+    "Where are the VPN settings?",
+    "My VPN isn't connecting.",
+    "I want to configure a new VPN."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_connections_wifi-turning-your-wi-fi-on-and-off": {
+  "hash": "d48746c8723d5700105d94b3b568d6f9d998c83ad080490a1aed67884940394b",
+  "result": {
+   "summary": "This tutorial guides you through turning Wi-Fi on and off and managing Wi-Fi network settings on your iPhone 18 Pro.",
+   "symptoms": [
+    "My Wi-Fi isn't connecting.",
+    "How do I turn on Wi-Fi?",
+    "I need to forget a Wi-Fi network.",
+    "My phone won't join my home Wi-Fi.",
+    "I want to manage my Wi-Fi settings."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_start_unlock-unlocking-the-screen": {
+  "hash": "9d7fa693e2844b8c8dbc47146c6837d5c53f70aa2fdd895f6ed95dd1460ba471",
+  "result": {
+   "summary": "This tutorial guides the user on how to unlock their iPhone screen.",
+   "symptoms": [
+    "My phone is locked",
+    "I can't unlock my screen",
+    "How do I get past the lock screen?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_icloud_upgrade-upgrading-your-icloud-storage-plan": {
+  "hash": "a23b1d4776c851a7d06cc482ea3d8b0b03777cf1888de4163683fa8cf2078843",
+  "result": {
+   "summary": "This guide explains how to upgrade your iCloud storage plan on an iPhone.",
+   "symptoms": [
+    "My iCloud storage is full",
+    "I need more space on iCloud",
+    "How do I upgrade my iCloud plan?",
+    "I can't back up my phone",
+    "I'm running out of iCloud storage"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_air_drop-using-airdrop": {
+  "hash": "21ac91ed44c0af3d0a69c72a0b1f311db594480a7d6bb13d24232b4009bc5c5a",
+  "result": {
+   "summary": "This tutorial guides users on how to use AirDrop to share content with another person.",
+   "symptoms": [
+    "How do I use AirDrop?",
+    "I want to share a photo with AirDrop.",
+    "Where is the AirDrop option?",
+    "How do I send files to another iPhone?",
+    "I can't find AirDrop."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_assistive_access-using-assistive-access-to-simplify-your-iphone-s-features": {
+  "hash": "febdd0b867901b5f3f735b4e81e96b36e092ab9f0b38995c887519aeda7e3419",
+  "result": {
+   "summary": "This tutorial guides users on how to set up and enable Assistive Access to simplify the iPhone's features and user interface.",
+   "symptoms": [
+    "My iPhone is too complicated to use.",
+    "I need to simplify my phone's interface.",
+    "How do I make my iPhone easier for someone to operate?",
+    "I want to set up Assistive Access.",
+    "My phone is difficult for me to navigate."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    },
+    {
+     "n": 11,
+     "call_ending": false
+    },
+    {
+     "n": 12,
+     "call_ending": false
+    },
+    {
+     "n": 13,
+     "call_ending": false
+    },
+    {
+     "n": 14,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_control-using-control-center": {
+  "hash": "7cd95f993b5b97fb63c1cf24ea50283c19be28019e149e63f3427107cfe2dfdb",
+  "result": {
+   "summary": "This tutorial explains how to access and utilize the Control Center on an iPhone 18 Pro to quickly manage settings and apps.",
+   "symptoms": [
+    "How do I open Control Center?",
+    "Where is Control Center?",
+    "I can't find my flashlight.",
+    "How do I turn on Wi-Fi quickly?",
+    "I want to adjust brightness fast.",
+    "How do I use quick settings?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "It mentions turning on Airplane Mode, which interrupts cellular service."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_maps_directions-using-gps-turn-by-turn-navigation": {
+  "hash": "090f0d56ec9adff96e9daf346a1a07364ed2b649355dc2fb62480a692576c483",
+  "result": {
+   "summary": "This tutorial guides the user on how to use GPS turn-by-turn navigation on their iPhone 18 Pro.",
+   "symptoms": [
+    "My GPS isn't working",
+    "How do I get directions?",
+    "I can't find my way",
+    "How do I use maps?",
+    "I need turn-by-turn directions"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_assist_hold-using-hold-assist": {
+  "hash": "71ea3172437d00e34852eb773d174e522d7b5bccf6647c83d5f84b49e185aa21",
+  "result": {
+   "summary": "This tutorial explains how to use the Hold Assist feature during an ongoing phone call.",
+   "symptoms": [
+    "How do I use Hold Assist?",
+    "I'm on hold, what can I do?",
+    "Tell me about Hold Assist.",
+    "How do I activate Hold Assist?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_listen-using-live-listen-to-boost-the-volume-of-real-world-conversations": {
+  "hash": "e885956f8b8b051edc0f138288091a5c1614935cc5995324432e403a041bc4f1",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and use Live Listen on an iPhone to amplify real-world conversations.",
+   "symptoms": [
+    "Can't hear conversations clearly",
+    "Need to boost volume for real-world sounds",
+    "Difficulty hearing people talk",
+    "Want to use my iPhone as a hearing aid",
+    "Live Listen isn't working"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_live_speech-using-live-speech-to-type-what-you-want-to-say-in-a-call": {
+  "hash": "d43448ce1fe16a4178684f6fbe442e9e29959ba1c50b3d708c34176665eb8c23",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and configure Live Speech on an iPhone 18 Pro, allowing them to type what they want to say during a call.",
+   "symptoms": [
+    "I can't speak on calls.",
+    "How do I type what I want to say?",
+    "My voice isn't working.",
+    "I need to use text-to-speech during a call.",
+    "Live Speech isn't on."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_translation_live-using-live-translation": {
+  "hash": "55fcb98b4db9c0de572850d42279fc2e0c631cb26a09d669f983445e709e6d43",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and use Live Translation for messages, phone calls, and FaceTime calls on an iPhone 18 Pro.",
+   "symptoms": [
+    "How do I translate messages?",
+    "I need live translation for a phone call.",
+    "Can I get real-time translation on FaceTime?",
+    "My phone isn't translating conversations.",
+    "How do I turn on live translation?",
+    "Where is the translation feature?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_lockdown_mode-using-lockdown-mode-and-setting-up-sensitive-content-warnings": {
+  "hash": "0a2f682c89e64ccf9864c10b1e7069d6d4900f9e6b1af171d562ed90db797002",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and manage Lockdown Mode and Sensitive Content Warnings on their iPhone.",
+   "symptoms": [
+    "How do I turn on content warnings?",
+    "I want to use lockdown mode.",
+    "My phone is being attacked, I need high security.",
+    "How to block inappropriate images?",
+    "Where are privacy settings?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "This step presents the option to enable Lockdown Mode, which can limit or restrict phone functionality, potentially interrupting a call."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_magnifier-using-magnifier-to-help-view-nearby-objects": {
+  "hash": "58c54687f455981b3d65a77cd55d7ab33d0040ce94f2fafeb0dda33b40ebb634",
+  "result": {
+   "summary": "This tutorial explains how to use the Magnifier app on an iPhone 18 Pro to zoom in on nearby objects and take photos.",
+   "symptoms": [
+    "I can't see small text",
+    "I need to magnify something",
+    "How do I use the magnifier?",
+    "My vision isn't great for small details",
+    "I want to zoom in on something close up"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_name_drop-using-namedrop-to-share-contact-information": {
+  "hash": "64513423fd26b968face883b760910e69d83887e26185773d536e2b0f2d9be14",
+  "result": {
+   "summary": "This tutorial explains how to use NameDrop to quickly share contact information between two iPhones.",
+   "symptoms": [
+    "How do I use NameDrop?",
+    "I want to share my contact card.",
+    "How do I exchange contact info?",
+    "NameDrop isn't working.",
+    "Can I share my number by tapping phones?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_personal_voice-using-personal-voice-to-communicate-with-others-by-using-a-voice-that-sounds-like-yourself": {
+  "hash": "3a2b450c3aa5579b8c9d4dc0b97e71d07cacee1ae66aac199abe58c01d51ae37",
+  "result": {
+   "summary": "This tutorial guides users on how to create a Personal Voice on their iPhone to communicate using a voice that sounds like their own.",
+   "symptoms": [
+    "How do I create a personal voice?",
+    "I want my phone to sound like me.",
+    "Can I make my iPhone speak in my voice?",
+    "Setting up personal voice."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_point_speak-using-point-and-speak-to-read-physical-labels-out-loud": {
+  "hash": "7ff4f0be8651c25c15068a3948943d5cef0cd285a5938e3a6009d20e8592bfd0",
+  "result": {
+   "summary": "This tutorial guides users on how to enable and use the Point & Speak feature within the Magnifier app to read physical labels aloud.",
+   "symptoms": [
+    "How do I make my iPhone read text?",
+    "I need help reading small labels.",
+    "Can my phone read things out loud for me?",
+    "Where is the Point & Speak feature?",
+    "Magnifier app text reading.",
+    "How to use Magnifier to read."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_satellite_send-using-satellite-when-cellular-or-wi-fi-is-unavailable": {
+  "hash": "3d110f1721281d7a2e5ca5a707adb7c250eb8fef96e9392a55c4c02ed9b411c2",
+  "result": {
+   "summary": "This tutorial guides users on how to access and test the satellite connection feature on their iPhone 18 Pro when traditional network services are unavailable.",
+   "symptoms": [
+    "How do I use satellite on my iPhone?",
+    "My phone has no signal.",
+    "I'm in an area with no cell service.",
+    "I want to test satellite connection.",
+    "How do I use Emergency SOS via satellite?",
+    "I need to connect to satellite."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": true,
+     "reason": "Choosing 'Try Connecting to Satellite' temporarily disables internet and calling capabilities."
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_siri_use-using-siri-ai": {
+  "hash": "360f670565b9a77ed6a6990548f0d4076ac1d5490414f7a5f75974e4dd42e803",
+  "result": {
+   "summary": "This tutorial guides users on how to activate and interact with Siri AI on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I use Siri?",
+    "Siri isn't responding",
+    "I want to ask Siri a question",
+    "How do I start Siri?",
+    "Can Siri identify things with my camera?",
+    "Where can I see my past Siri conversations?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_visual_intelligence-using-siri-and-visual-intelligence-in-camera": {
+  "hash": "f47cdc4dfe1f9a1960ef7d85126de9d461a1b384e0bfac2926c0863b79a2b907",
+  "result": {
+   "summary": "This tutorial guides users on how to utilize Siri and Visual Intelligence features directly from the Camera app to identify objects and get information.",
+   "symptoms": [
+    "How do I use Siri with my camera?",
+    "I want to identify an object using my camera.",
+    "Can my camera tell me about things I see?",
+    "How do I use visual search on my iPhone?",
+    "Siri camera features."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_smart_reply-using-smart-reply-to-draft-a-quick-response-to-an-email": {
+  "hash": "6aad8696b8b3956fe213f520486750337fdbfa3532c08509eb42bb1a225464c5",
+  "result": {
+   "summary": "This tutorial guides the user on how to use the Smart Reply feature to quickly draft and send a response to an email.",
+   "symptoms": [
+    "How do I reply to an email quickly?",
+    "I want to use smart reply for emails.",
+    "Can I draft a quick response to an email?",
+    "How do I send a smart reply?",
+    "My email app has smart reply, how do I use it?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_accessibility_spoken-using-spoken-content-to-read-selected-text-or-what-s-on-your-device-s-entire-screen": {
+  "hash": "41169c13eb6d914e3c4c47a70383c4bb754dcc25d6c2d9191e6d196b0d0a5038",
+  "result": {
+   "summary": "This tutorial explains how to enable and use Spoken Content features like Speak Selection and Speak Screen to have text read aloud on an iPhone.",
+   "symptoms": [
+    "My iPhone isn't reading text aloud.",
+    "How do I make my phone speak what's on the screen?",
+    "I want my device to read selected text.",
+    "Spoken content feature is not working.",
+    "How do I turn on text-to-speech on my iPhone?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_writing_tools-using-writing-tools-to-write-summarize-and-improve-text": {
+  "hash": "166b464e94bd5a650170bc61a3372ea0c06aa680aeea83f66729ed64c06c0663",
+  "result": {
+   "summary": "This tutorial guides users on how to access and utilize the Writing Tools feature on an iPhone-18-pro to proofread, rewrite, summarize, and compose text.",
+   "symptoms": [
+    "How do I use writing tools?",
+    "Can I check my grammar on my phone?",
+    "How do I summarize text?",
+    "I need help rewriting a message.",
+    "Where are the writing assistance features?",
+    "How do I use AI to write messages?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_emergency_access-using-emergency-mode": {
+  "hash": "7584ec28d1108e702881bb26f244477e3c963e28002731ecc175bcfe16a01d22",
+  "result": {
+   "summary": "This guide explains how to activate and use the emergency features on an iPhone 18 Pro, including calling emergency services and accessing emergency contacts.",
+   "symptoms": [
+    "How do I call emergency services?",
+    "I need to make an emergency call.",
+    "Where is my Medical ID?",
+    "How do I contact my emergency contacts?",
+    "My phone is locked, but I need help."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": true,
+     "reason": "Calling emergency services will end any current call on the device."
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": true,
+     "reason": "Tapping to call an emergency contact will end any current call on the device."
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_recovery_mode-using-recovery-mode": {
+  "hash": "150dea52ee38c1f06b67c656d49705825c76d5158d26ad162a212378e08daa33",
+  "result": {
+   "summary": "This tutorial guides you on how to put your iPhone 18 Pro into recovery mode to perform an update.",
+   "symptoms": [
+    "My iPhone is stuck on the Apple logo",
+    "My phone won't turn on",
+    "I need to update my iPhone but it's not working",
+    "My iPhone is frozen",
+    "I see the recovery mode screen",
+    "My iPhone is unresponsive"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": true,
+     "reason": "Pressing and holding the side button until the Apple logo appears initiates a restart process to enter recovery mode, which will interrupt any active call."
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_usage_view-viewing-your-app-usage?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "08b738f75722afd9a1aab62838ca378283a123a9c3c6c3d22f1083a3f0a75884",
+  "result": {
+   "summary": "This tutorial guides the user on how to set up a 'Remind me to take a break' reminder within the YouTube app.",
+   "symptoms": [
+    "I want to set a reminder to take a break on YouTube.",
+    "How do I manage my screen time on YouTube?",
+    "I need to limit my YouTube usage.",
+    "Can I get a notification to stop watching YouTube?",
+    "How do I turn on break reminders in YouTube?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_history_view-viewing-your-history?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "9f62bef272c730d4f47e592863ebd90a950ae61d546bd7bdb8a64ff3541e4135",
+  "result": {
+   "summary": "This tutorial guides the user on how to view their watch history within the YouTube application.",
+   "symptoms": [
+    "How do I see what I watched?",
+    "Where is my YouTube history?",
+    "I want to check my past videos.",
+    "Show me my viewing history.",
+    "Can I see my watched videos?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_home_notifications-viewing-your-notifications": {
+  "hash": "f7f6ece8f51068ab65f4fbaa089594f2cbbbe147a26804af3381acb5fc9478ea",
+  "result": {
+   "summary": "This tutorial guides users on how to view and interact with notifications directly from the Lock Screen of their iPhone.",
+   "symptoms": [
+    "How do I see my notifications?",
+    "My notifications aren't showing up.",
+    "I missed a notification, how do I find it?",
+    "How do I interact with notifications on the lock screen?",
+    "I can't preview my notifications."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_notifications_view-viewing-your-notifications?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "514bd81ea0c31e9914278b81db68acd0b4fc32e9bcd30a9a40a2ef71e4a8ea13",
+  "result": {
+   "summary": "This tutorial guides the user on how to view notifications on their iPhone 18 Pro.",
+   "symptoms": [
+    "How do I see my notifications?",
+    "Where are my alerts?",
+    "I can't find my notifications.",
+    "Show me my recent messages.",
+    "How do I check for new activity?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_video_watch-watching-a-video?topicSource=app-youtube-ios-smartphone&topicVersion=21.41.5": {
+  "hash": "c07aec6e491b712b66a9a5b162225bd4839ac3a84cc29d37c1b984469eaf190b",
+  "result": {
+   "summary": "This guide explains how to find and watch a video on an iPhone 18 Pro using the YouTube app.",
+   "symptoms": [
+    "How do I watch a video?",
+    "I can't find a video on YouTube.",
+    "Help me play a video.",
+    "I want to search for a video."
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    }
+   ]
+  }
+ },
+ "feature_new_features-what-s-new-in-ios-27": {
+  "hash": "2e9b247e257979fd885af73908ff1e75f224e3e85f09f7c467a457f54b85f621",
+  "result": {
+   "summary": "This tutorial introduces users to the new features and enhancements available in iOS 27.",
+   "symptoms": [
+    "What's new in iOS 27?",
+    "How do I use the new Siri features?",
+    "Tell me about the new photo editing tools.",
+    "I want to customize my iPhone's look.",
+    "How can I manage passwords more easily?",
+    "What are the new child safety options?",
+    "Can I set different volumes for alarms and alerts?"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "call_ending": false
+    },
+    {
+     "n": 2,
+     "call_ending": false
+    },
+    {
+     "n": 3,
+     "call_ending": false
+    },
+    {
+     "n": 4,
+     "call_ending": false
+    },
+    {
+     "n": 5,
+     "call_ending": false
+    },
+    {
+     "n": 6,
+     "call_ending": false
+    },
+    {
+     "n": 7,
+     "call_ending": false
+    },
+    {
+     "n": 8,
+     "call_ending": false
+    },
+    {
+     "n": 9,
+     "call_ending": false
+    },
+    {
+     "n": 10,
+     "call_ending": false
+    }
+   ]
+  }
+ }
+}
