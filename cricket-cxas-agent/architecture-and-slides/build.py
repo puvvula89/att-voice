@@ -58,33 +58,35 @@ FRAMES = [
     Frame(500, 150, 1090, 570, "Google Cloud", "cloud", "gcp"),
     Frame(520, 190, 500, 510, "", "", "ces"),
     Frame(1620, 150, 260, 570, "Cricket", "list", "cricket"),
-    Frame(40, 770, 1840, 270, "Content pipeline · offline", "code", "pipeline"),
-    Frame(340, 815, 1000, 185, "Pipeline job · Cloud Run · weekly via Cloud Scheduler", "cloud-run", "job"),
+    Frame(40, 770, 1840, 270, "Content loading · offline, done once", "code", "pipeline"),
+    Frame(340, 815, 1000, 185, "knowledge/ · run from the repository", "code", "job"),
 ]
 
-PANEL = dict(x=540, y=206, icon="contact-center-ai", title="Gemini Enterprise for CX", sub="CX Agent Studio app")
+PANEL = dict(x=540, y=206, icon="contact-center-ai", title="Gemini Enterprise for CX",
+             sub="CX Agent Studio · one app for phone and chat")
 
 PY, PH = 845, 130
 BOXES = [
     Box(40, 330, 180, 100, "person", "Customer"),
-    Box(245, 320, 195, 120, "headset-grey", "Cricket IVR", "VAIL", "third"),
-    Box(245, 490, 195, 120, "chat", "Chat UI", "Demo web app + relay", "third"),
-    Box(540, 290, 460, 90, "agents", "Care Concierge", "Root agent"),
-    Box(540, 440, 220, 100, "agents", "Billing", "Sub-agent", "planned"),
-    Box(780, 440, 220, 100, "agents", "Tech Support", "Sub-agent", "focus"),
-    Box(540, 590, 460, 80, "gemini", "Gemini Live", "Native-audio model", "model"),
-    Box(1100, 200, 460, 210, "cloud-run", "MCP server", "Cloud Run · stateless", "",
-        ["Tutorial tools · checkpoint", "Account and network tools", "SMS and ticket tools"]),
-    Box(1100, 470, 220, 110, "vertex-ai", "Agent Search", "Data store"),
-    Box(1340, 470, 220, 110, "databases", "Tutorial store", "Firestore"),
-    Box(1640, 200, 220, 140, "integration-services", "Cricket APIs", "Account · Network · Tickets"),
-    Box(1640, 380, 220, 100, "chat", "SMS API"),
-    Box(80, PY, 220, PH, "list", "Cricket support site", "or Ozmo content feed"),
-    Box(360, PY, 225, PH, "code", "Fetch", "Headless browser · text + images"),
-    Box(605, PY, 225, PH, "code", "Extract", "Tutorial data · step graph"),
-    Box(850, PY, 225, PH, "check", "Validate", "Schema · branches"),
-    Box(1095, PY, 225, PH, "gemini", "Enrich", "Gemini · safety flags"),
-    Box(1380, PY, 180, PH, "cloud-storage", "Cloud Storage", "Content + step images"),
+    Box(245, 320, 195, 120, "headset-grey", "Phone call", "Telephony", "third"),
+    Box(245, 490, 195, 120, "chat", "Chat page", "Chat widget", "third"),
+    Box(540, 290, 460, 90, "agents", "Care Concierge", "Root agent · greets, resumes a call back"),
+    Box(540, 440, 220, 100, "agents", "Billing", "Not on this line yet", "planned"),
+    Box(780, 440, 220, 100, "agents", "Tech Support", "Walks the guide", "focus"),
+    Box(540, 580, 220, 100, "code", "Step keeper", "Tool + callbacks"),
+    Box(780, 580, 220, 100, "gemini", "Gemini", "Voice + text model", "model"),
+    Box(1100, 200, 460, 210, "cloud-run", "Support MCP server", "Cloud Run · stateless", "",
+        ["Account, line and outage checks", "Saved place · picture links", "Guide link by text · ticket"]),
+    Box(1100, 470, 220, 110, "vertex-ai", "Agent Search", "995 guides"),
+    Box(1340, 470, 220, 100, "databases", "Firestore", "Saved place"),
+    Box(1340, 600, 220, 100, "cloud-storage", "Cloud Storage", "Step pictures"),
+    Box(1640, 200, 220, 140, "integration-services", "Cricket APIs", "Account · Network · Tickets (simulated)"),
+    Box(1640, 380, 220, 100, "chat", "Text message", "SMS provider"),
+    Box(80, PY, 220, PH, "list", "Cricket device tutorials", "Public support site"),
+    Box(360, PY, 225, PH, "code", "Extract", "Headless browser · every step and choice"),
+    Box(605, PY, 225, PH, "gemini", "Label", "Gemini · risky steps, symptoms"),
+    Box(850, PY, 225, PH, "check", "Build", "One catalog per phone · review"),
+    Box(1095, PY, 225, PH, "sync", "Load", "Records and pictures"),
 ]
 
 EDGES = [
@@ -94,32 +96,33 @@ EDGES = [
     Edge([(440, 550), (480, 550), (480, 368), (540, 368)], "live", True),
     Edge([(890, 380), (890, 440)], "live"),
     Edge([(650, 380), (650, 440)], "planned"),
-    Edge([(1000, 465), (1050, 465), (1050, 300), (1100, 300)], "live"),
+    Edge([(1000, 320), (1100, 320)], "live"),
+    Edge([(1000, 465), (1060, 465), (1060, 375), (1100, 375)], "live"),
     Edge([(1000, 525), (1100, 525)], "live"),
-    Edge([(1210, 410), (1210, 470)], "live"),
     Edge([(1450, 410), (1450, 470)], "live"),
     Edge([(1560, 270), (1640, 270)], "live"),
     Edge([(1560, 380), (1600, 380), (1600, 430), (1640, 430)], "live"),
     *[Edge([(a, PY + PH // 2), (b, PY + PH // 2)], "content")
-      for a, b in [(300, 360), (585, 605), (830, 850), (1075, 1095), (1320, 1380)]],
-    Edge([(1490, PY), (1490, 580)], "content"),
-    Edge([(1420, PY), (1420, 795), (1230, 795), (1230, 580)], "content"),
-    Edge([(1470, 975), (1470, 1018), (322, 1018), (322, 610)], "image"),
+      for a, b in [(300, 360), (585, 605), (830, 850), (1075, 1095)]],
+    Edge([(1210, PY), (1210, 580)], "content"),
+    Edge([(1280, PY), (1280, 795), (1500, 795), (1500, 700)], "content"),
+    Edge([(1400, 700), (1400, 742), (342, 742), (342, 610)], "image"),
 ]
 
 LABELS = [
-    Label(490, 316, "Bidi-SAC", "pill"),
-    Label(1075, 280, "MCP"),
-    Label(1050, 548, "data store tool"),
-    Label(1210, 432, "find"),
-    Label(1450, 432, "walk · progress"),
+    Label(490, 316, "voice", "pill"),
+    Label(480, 450, "text"),
+    Label(1050, 294, "saved place"),
+    Label(1060, 410, "MCP"),
+    Label(1050, 536, "search"),
+    Label(1450, 430, "save · resume"),
     Label(1600, 248, "REST"),
-    Label(1230, 650, "import"),
-    Label(1490, 650, "upsert"),
-    Label(900, 1006, "step images, served to the chat UI by the relay"),
+    Label(1210, 650, "records"),
+    Label(1500, 760, "pictures"),
+    Label(800, 731, "step pictures, shown in chat by signed link"),
 ]
 
-LEGEND = [("live", "Live call"), ("content", "Content pipeline"), ("image", "Step images")]
+LEGEND = [("live", "Live conversation"), ("content", "Content loading"), ("image", "Step pictures")]
 LEGEND_X, LEGEND_Y = 1180, 58
 
 # Geometry shared by the draw.io and Slides renderers (the HTML page lays boxes out with CSS to the same metrics).
